@@ -38,3 +38,8 @@ an approval link, or call the evaluation fee a payout.
 
 `bun run validate` runs Claude Code's plugin validator on both marketplaces and every plugin. You
 need the Claude Code CLI installed for it.
+
+## License
+
+By contributing, you agree that your contribution becomes part of this repository under its
+[LICENSE](LICENSE), owned by IXO.
