@@ -37,6 +37,9 @@ Add the marketplace once, then install the oracle you want.
 Then run `/mcp`, pick `plugin:ixo-swiftdrop-devnet:ixo-shipment-delivery`, and choose
 **Authenticate**. Your browser opens IXO's sign-in page — sign in and click **Allow**. That's it.
 
+**Updating.** When we ship a new version, run `/plugin marketplace update ixo-plugins` in Claude
+Code, then reconnect the server in `/mcp`.
+
 **Codex**
 
 ```bash
@@ -107,6 +110,9 @@ anyone is allowed to act on it. That's still up to your own rules.
 
 ## If something's off
 
+- **No cards, or a tool seems to be missing.** Your app loads the oracle's tools when it connects.
+  After an update (new tools or cards), reconnect once: quit and reopen the app, or run `/mcp` and
+  reconnect in Claude Code. A new chat alone isn't enough, and you stay signed in.
 - **It asks you to upload a photo.** There's no upload — give it a link to the photo (`https://…`).
 - **It shows you an "approve" link.** Open it, check the price, approve, then tell it to carry on.
 - **The app won't run `submit_claim`.** Some apps hold back tools that might spend money. Allow just
