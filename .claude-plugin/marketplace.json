@@ -9,9 +9,9 @@
   },
   "plugins": [
     {
-      "name": "ixo-decisions",
-      "source": "./plugins/ixo-decisions",
-      "description": "Submit claims to an IXO evaluation oracle, follow the decision and verify its signed receipt. Sign in with IXO — no API key."
+      "name": "ixo-swiftdrop-devnet",
+      "source": "./plugins/ixo-swiftdrop-devnet",
+      "description": "Proof of delivery for SwiftDrop Express couriers, decided by IXO's independent engine — devnet (test network)."
     }
   ]
 }

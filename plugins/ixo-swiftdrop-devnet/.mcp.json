@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "ixo-shipment-delivery": {
+      "type": "http",
+      "url": "https://shipment-delivery-oracle.devnet.ixo.earth/v1/mcp"
+    }
+  }
+}

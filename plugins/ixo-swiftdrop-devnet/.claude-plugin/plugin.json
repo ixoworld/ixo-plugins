@@ -1,0 +1,18 @@
+{
+  "name": "ixo-swiftdrop-devnet",
+  "version": "0.1.0",
+  "description": "Proof of delivery for SwiftDrop Express couriers, decided by IXO's independent engine — devnet (test network).",
+  "author": {
+    "name": "IXO",
+    "url": "https://ixo.world"
+  },
+  "homepage": "https://github.com/ixoworld/ixo-plugins/tree/main/plugins/ixo-swiftdrop-devnet",
+  "repository": "https://github.com/ixoworld/ixo-plugins",
+  "keywords": [
+    "ixo",
+    "decisions",
+    "claims",
+    "verification",
+    "mcp"
+  ]
+}

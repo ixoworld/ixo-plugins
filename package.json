@@ -1,0 +1,9 @@
+{
+  "name": "ixo-plugins",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "add-oracle": "bun scripts/add-oracle.ts",
+    "validate": "claude plugin validate . --strict && for p in plugins/*/; do claude plugin validate \"$p\" --strict || exit 1; done"
+  }
+}
