@@ -15,8 +15,10 @@ reasons, checks), any pending review tasks, and `payment`. It never returns the 
 Call `verify_receipt`:
 
 - with the `claimId` — the oracle fetches the claim's receipt; or
-- with a `jws` (and optionally its `cid`) the user already has — how a third party checks it
-  independently, without trusting the oracle that served it.
+- with a `jws` (and optionally its `cid`) the user already has — to check a receipt they were given.
+
+This tool runs on the oracle. For a check that trusts no oracle at all, verify the JWS yourself
+against the decision engine's published key (IXO's client library has `verifyReceipt`).
 
 It checks the signature and that the issuer is the decision engine. Report `valid: true/false` and
 the reason when false. A receipt is a signed credential; `cid` is its content id (the proof an oracle

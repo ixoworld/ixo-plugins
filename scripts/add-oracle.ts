@@ -22,6 +22,7 @@ const { values } = parseArgs({
     title: { type: "string" },
     url: { type: "string" },
     description: { type: "string" },
+    version: { type: "string" },
   },
 });
 const { name, title, url } = values;
@@ -33,19 +34,48 @@ if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(name) || name.length > 64) {
   console.error("--name must be kebab-case (a-z, 0-9, -), at most 64 characters");
   process.exit(64);
 }
-const mcp = new URL(url);
+// The title lands in each skill's YAML frontmatter: keep it to plain text.
+if (/[:#"\n\r]/.test(title) || title.length > 80) {
+  console.error('--title must be plain text (no ":", "#", quotes or newlines), at most 80 characters');
+  process.exit(64);
+}
+let mcp: URL;
+try {
+  mcp = new URL(url);
+} catch {
+  console.error("--url must be a URL: https://<oracle host>/v1/mcp");
+  process.exit(64);
+}
 if (mcp.protocol !== "https:" || mcp.pathname !== "/v1/mcp" || mcp.search || mcp.hash) {
   console.error("--url must be an oracle's MCP endpoint: https://<oracle host>/v1/mcp");
   process.exit(64);
 }
+const root = join(import.meta.dir, "..");
+const claudeCatalog = join(root, ".claude-plugin", "marketplace.json");
+/** A catalog file, or null when it doesn't exist yet — never a silently emptied one. */
+const readJson = (path: string) => {
+  try {
+    return JSON.parse(readFileSync(path, "utf8"));
+  } catch (err) {
+    if ((err as NodeJS.ErrnoException).code === "ENOENT") return null;
+    throw new Error(`${path} is not valid JSON — fix it before adding an oracle: ${err}`);
+  }
+};
+const listed = readJson(claudeCatalog)?.plugins?.find((p: { name: string }) => p.name === name);
+// A re-run keeps what is already published unless told otherwise.
 const description =
   values.description ??
+  listed?.description ??
   `Submit claims to the ${title} oracle, follow the decision and verify its signed receipt.`;
+const version = values.version ?? "0.1.0";
+if (!/^\d+\.\d+\.\d+$/.test(version)) {
+  console.error("--version must be x.y.z (bump it when the skills change, so installs update)");
+  process.exit(64);
+}
 // The MCP server's name: `ixo-<the host's first label, minus "-oracle">` — the same name the IXO
 // Decision Console shows for this oracle (e.g. shipment-delivery-oracle.… → ixo-shipment-delivery).
 const server = `ixo-${mcp.hostname.split(".")[0].replace(/-oracle$/, "")}`;
 
-const root = join(import.meta.dir, "..");
 const out = join(root, "plugins", name);
 const write = (path: string, data: unknown) => {
   mkdirSync(dirname(path), { recursive: true });
@@ -68,7 +98,7 @@ copySkills(join(root, "template", "skills"), join(out, "skills"));
 
 const meta = {
   name,
-  version: "0.1.0",
+  version,
   description,
   author: { name: "IXO", url: "https://ixo.world" },
   homepage: `https://github.com/ixoworld/ixo-plugins/tree/main/plugins/${name}`,
@@ -95,18 +125,16 @@ write(
 // Both catalogs: Claude Code's, and Codex's native one (Codex also reads Claude Code's).
 const entry = { name, source: `./plugins/${name}`, description };
 const catalog = (path: string, base: Record<string, unknown>, extra: Record<string, unknown> = {}) => {
-  let doc: { plugins: Record<string, unknown>[] } & Record<string, unknown>;
-  try {
-    doc = JSON.parse(readFileSync(path, "utf8"));
-  } catch {
-    doc = { ...base, plugins: [] };
-  }
+  const doc: { plugins: Record<string, unknown>[] } & Record<string, unknown> = readJson(path) ?? {
+    ...base,
+    plugins: [],
+  };
   doc.plugins = [...doc.plugins.filter((p) => p.name !== name), { ...entry, ...extra }].sort((a, b) =>
     String(a.name).localeCompare(String(b.name)),
   );
   write(path, doc);
 };
-catalog(join(root, ".claude-plugin", "marketplace.json"), {
+catalog(claudeCatalog, {
   name: "ixo-plugins",
   owner: { name: "IXO", url: "https://ixo.world" },
   metadata: { description: "IXO's plugins for AI assistants: independent, signed decisions on claims." },

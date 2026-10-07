@@ -50,8 +50,10 @@ Then connect it once: run `/mcp`, pick **plugin:ixo-swiftdrop-devnet:ixo-shipmen
 ```bash
 codex plugin marketplace add ixoworld/ixo-plugins
 codex plugin add ixo-swiftdrop-devnet@ixo-plugins
-codex mcp login ixo-shipment-delivery
 ```
+
+Codex asks you to sign in with IXO when you install. If it doesn't, run `codex mcp list` and
+`codex mcp login <the oracle's server>`.
 
 ### Claude.ai, Claude Desktop, ChatGPT and other apps
 
@@ -63,7 +65,8 @@ https://shipment-delivery-oracle.devnet.ixo.earth/v1/mcp
 ```
 
 - **Claude.ai / Claude Desktop:** Settings › Connectors › *Add custom connector*.
-- **ChatGPT:** Settings › Apps & Connectors › developer mode › create a connector with the URL.
+- **ChatGPT:** Settings › Apps & Connectors › developer mode › create a connector with the URL. On a
+  Pro plan, developer mode runs the read tools only (no submitting).
 
 ## How it works
 
@@ -82,7 +85,9 @@ https://shipment-delivery-oracle.devnet.ixo.earth/v1/mcp
   that price, to that oracle** — nothing more.
 - **"Don't ask again"** (verified apps only): set a per-claim limit, a total (at most $100) and an
   end date (at most 7 days). Change or turn it off any time.
-- **Disconnect** an app any time from IXO's *Connected apps* page or the Decision Console.
+- **A daily ceiling**: an app never spends more than $20 a day through IXO, whatever is approved.
+- **Disconnect** an app any time from IXO's *Connected apps* page. The Decision Console can turn its
+  auto-approve off.
 
 ### Four things the assistant keeps apart
 
@@ -110,7 +115,8 @@ https://shipment-delivery-oracle.devnet.ixo.earth/v1/mcp
 | **"Approve this claim"** with a link | Open it, check the price, click **Approve**, then tell the assistant to continue. |
 | The app **holds back `submit_claim`** | Allow just that tool — in Claude Code: `/permissions` › Allow › `mcp__plugin_ixo-swiftdrop-devnet_ixo-shipment-delivery__submit_claim`. Never turn safety checks off: every charge still needs your approval. |
 | **"Choose a source"** | You belong to several workspaces on the oracle; tell the assistant which one. |
-| **No source on this oracle** | Create one, or ask to be invited, in the oracle's Decision Console. |
+| **No source on this oracle** | Create one in the oracle's Decision Console — submitting needs a source you own. |
+| **Card needs 3-D Secure** | Open the bank's link the assistant shows you, confirm, then tell it to continue. |
 | Sign-in fails | Run `/mcp` (Claude Code) or `codex mcp login <server>` (Codex) again. You need an IXO account. |
 
 ## Add an oracle

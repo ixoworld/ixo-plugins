@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "ixo-swiftdrop-devnet",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Proof of delivery for SwiftDrop Express couriers, decided by IXO's independent engine — devnet (test network).",
   "author": {
     "name": "IXO",

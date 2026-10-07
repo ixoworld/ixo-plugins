@@ -18,8 +18,9 @@ Check, in order, and report a short list of what is ready and what is missing:
 3. **How a charge is approved**: each claim is approved by the user on an IXO page before anything is
    charged — or within auto-approve limits the user set themselves on IXO (verified apps only, at most
    $100 and 7 days). Say which applies only if the user tells you; you can't read their settings.
-4. **What they need**: an IXO account and a source on this oracle (the oracle's Decision Console);
-   for paid sources, IXO credits (PAY) or a saved card.
+4. **What they need**: an IXO account and a source on this oracle that they own — submitting needs
+   the owner role (the oracle's Decision Console); for paid sources, IXO credits (PAY) or a saved card.
+   Every app is also capped at $20 a day.
 
 Wording: the evaluation fee pays for a decision. It is **not** a payout, and being "ready to pay the
 fee" does not mean anyone is allowed to act on a decision.

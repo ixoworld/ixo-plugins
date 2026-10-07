@@ -31,18 +31,23 @@ Call `submit_claim`. Expect these answers and act on each:
 | Answer | What you do |
 | --- | --- |
 | `APPROVAL_REQUIRED` with `approveUrl` | Show the link to the user and ask them to approve **there**. Then call `submit_claim` again with **exactly the same arguments**. |
-| `APPROVAL_PENDING` | They haven't answered yet: wait, then call again with the same arguments. |
-| `APPROVAL_STALE` | The price changed: show the new link. |
+| `APPROVAL_PENDING` | They haven't answered yet. Show `approveUrl` again and ask them to tell you once they've approved — don't poll — then call again with the same arguments. |
+| `APPROVAL_STALE` | The price changed: show the new `approveUrl`, then call again with the same arguments once they've approved. |
 | `SOURCE_REQUIRED` | Ask the user which of the listed sources the claim is for; call again with `sourceId`. |
-| `NO_SOURCE` | The user has no source on this oracle: send them to `consoleUrl`. |
+| `NO_SOURCE` | The user has no source on this oracle they can submit for (submitting needs the owner role): send them to `consoleUrl`. |
+| `SCOPE` | The app was connected for reading only: ask the user to reconnect it and allow submitting. |
+| `INSUFFICIENT_CREDITS` | Not enough IXO credits: show `fundingUrl`. |
+| `CARD_AUTHENTICATION_REQUIRED` | The bank wants 3-D Secure: show `confirmUrl` to the user (never open it yourself). Once they've confirmed, call again with the same arguments **plus** the error's `idempotencyKey` and `resumePayment` = the error's `paymentRequired` — the one time you add arguments. |
+| `AWAITING_CARD_CONFIRMATION` | The card confirmation is still pending: wait for the user, then resume as above. |
 | `SUBMITTER_REQUIRED` | Ask for the person's stable id (see above), then call again with `submitter`. |
 | `SPEND_CAP` | The app reached today's limit. Stop and tell the user. |
 | `autoApproved: true` | The user's own auto-approve limits paid it; say so and how much is left (`autoApproveRemaining`). |
 
 Rules:
 
-- **Never** try to approve for the user, open the link yourself, or change the arguments between the
-  first call and the retry (a different body is a different claim and a new approval).
+- **Never** try to approve for the user, open a link yourself, or change the arguments between the
+  first call and the retry (a different body is a different claim and a new approval) — except to
+  resume a card payment as above.
 - A retry with the same arguments is safe: it never submits or charges twice.
 - If your app asks permission before running `submit_claim`, explain: the tool submits a claim for an
   independent decision; any charge still needs the user's approval on IXO. Let the user allow just
