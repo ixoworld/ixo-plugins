@@ -1,0 +1,25 @@
+name: Something isn't working
+description: A plugin, skill or install step doesn't behave as it should.
+labels: [bug]
+body:
+  - type: input
+    id: plugin
+    attributes:
+      label: Plugin
+      placeholder: ixo-swiftdrop-devnet
+    validations:
+      required: true
+  - type: dropdown
+    id: app
+    attributes:
+      label: Which app
+      options: [Claude Code, Codex, Claude.ai / Claude Desktop, ChatGPT, Other]
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what you expected
+      description: Leave out tokens, keys and personal data. A claim id is fine.
+    validations:
+      required: true
