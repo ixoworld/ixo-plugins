@@ -37,6 +37,9 @@ Add the marketplace once, then install the oracle you want.
 Then run `/mcp`, pick `plugin:ixo-swiftdrop-devnet:ixo-shipment-delivery`, and choose
 **Authenticate**. Your browser opens IXO's sign-in page — sign in and click **Allow**. That's it.
 
+**Updating.** When we ship a new version, run `/plugin marketplace update ixo-plugins` in Claude
+Code, then reconnect the server in `/mcp`.
+
 **Codex**
 
 ```bash
