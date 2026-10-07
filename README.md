@@ -135,6 +135,11 @@ That writes `plugins/<plugin-name>/` with everything Claude Code and Codex need,
 both marketplaces. A plugin only ever holds your oracle's public URL — never a key. See
 [CONTRIBUTING.md](CONTRIBUTING.md), then open a pull request and the IXO team will review it.
 
+## License
+
+The plugins are free to install and use with your AI assistant. Everything else in this repository
+is IXO's — please don't copy, modify or redistribute it. See [LICENSE](LICENSE).
+
 ## Security
 
 Found something? Please report it privately — see [SECURITY.md](SECURITY.md).
