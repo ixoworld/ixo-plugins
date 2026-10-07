@@ -26,7 +26,10 @@ tells you:
 
 ## 2. Submit — and let the user approve
 
-Call `submit_claim`. Expect these answers and act on each:
+Call `submit_claim`. Expect these answers and act on each. The three `APPROVAL_*` answers are **not**
+errors: the result's text starts `NOT SUBMITTED.` and `structuredContent` has `status:
+"approval_required"`, with the code and `approveUrl` under `error`. Nothing was submitted or charged
+yet. In apps that show cards, the card's *Approve on IXO* button opens the same link.
 
 | Answer | What you do |
 | --- | --- |
