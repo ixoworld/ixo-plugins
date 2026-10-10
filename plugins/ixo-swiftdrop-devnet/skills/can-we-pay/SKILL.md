@@ -25,4 +25,4 @@ Check, in order, and report a short list of what is ready and what is missing:
 
 Wording: the evaluation fee pays for a decision. It is **not** a payout, and being "ready to pay the
 fee" does not mean anyone is allowed to act on a decision. If the protocol pays someone on approval,
-claims sent from an AI app wait for the company's approver before that payout.
+the company's own payout rule decides when (some wait for an approver above a limit).
