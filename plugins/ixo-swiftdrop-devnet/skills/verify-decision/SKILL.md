@@ -29,5 +29,6 @@ puts on chain when it acts).
 - **The receipt verifies** = this decision was signed by the engine, unaltered. Nothing more.
 - It does **not** prove the claim's facts are true beyond what the engine checked, that anyone may act
   on it (the user's own rules decide that), or that money moved (only `payment` says that; the
-  evaluation fee is not a payout).
+  evaluation fee is not a payout). A payout from a claim sent through an AI app also waits for the
+  company's approver.
 - If verification fails, say so plainly and do not present the decision as genuine.
