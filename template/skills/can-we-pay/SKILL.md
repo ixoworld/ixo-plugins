@@ -16,11 +16,13 @@ Check, in order, and report a short list of what is ready and what is missing:
 2. **The protocol and its fee**: `list_protocols` with the `protocolDid` — the evaluation fee per
    decision (`price`), the answers and files it needs, whether it counts claims per person.
 3. **How a charge is approved**: each claim is approved by the user on an IXO page before anything is
-   charged — or within auto-approve limits the user set themselves on IXO (verified apps only, at most
-   $100 and 7 days). Say which applies only if the user tells you; you can't read their settings.
+   charged. Some oracles also let the user set auto-approve limits on IXO (verified apps only, at most
+   $100 and 7 days); IXO only offers it where the oracle allows it. Say which applies only if the user
+   tells you; you can't read their settings.
 4. **What they need**: an IXO account and a source on this oracle that they own — submitting needs
    the owner role (the oracle's Decision Console); for paid sources, IXO credits (PAY) or a saved card.
    Every app is also capped at $20 a day.
 
 Wording: the evaluation fee pays for a decision. It is **not** a payout, and being "ready to pay the
-fee" does not mean anyone is allowed to act on a decision.
+fee" does not mean anyone is allowed to act on a decision. If the protocol pays someone on approval,
+claims sent from an AI app wait for the company's approver before that payout.
