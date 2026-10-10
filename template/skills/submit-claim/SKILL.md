@@ -26,7 +26,8 @@ tells you:
 - **Who the claim is for**: never send `submitter`. The oracle records the signed-in user. If the
   protocol pays or counts a person named in one of its answers (for a delivery, the courier id), fill
   that answer with the real id the user gives you, never a placeholder; if it's missing, `submit_claim`
-  answers `VALIDATION` naming the field (`answers.<field>`), before anything is approved or charged.
+  answers `SUBMITTER_REQUIRED` (or `VALIDATION`) naming the field (`answers.<field>`), before anything
+  is approved or charged.
 - `price`: the evaluation fee for one decision.
 
 ## 2. Submit — and let the user approve
@@ -48,6 +49,7 @@ yet. In apps that show cards, the card's *Approve on IXO* button opens the same 
 | `CARD_AUTHENTICATION_REQUIRED` | The bank wants 3-D Secure: show `confirmUrl` to the user (never open it yourself). Once they've confirmed, call again with the same arguments **plus** the error's `idempotencyKey` and `resumePayment` = the error's `paymentRequired` — the one time you add arguments. |
 | `AWAITING_CARD_CONFIRMATION` | The card confirmation is still pending: wait for the user, then resume as above. |
 | `UPLOAD_PENDING` | The user hasn't uploaded the file yet: ask them to choose it in the upload card (or run the `curl`), then call again with the same arguments. If the link expired, call `upload_file` again and use the new `uploadId`. |
+| `SUBMITTER_REQUIRED` | The answer that names the person (see "Who the claim is for") is missing: ask the user for the real id, put it in that answer — never in `submitter` — and call again. |
 | `VALIDATION` | An answer or file is missing or wrong; `details` names the field. Ask the user for it, then call again. |
 | `SPEND_CAP` | The app reached today's limit. Stop and tell the user. |
 | `autoApproved: true` | The user's own auto-approve limits paid it (only on oracles that allow auto-approve); say so and how much is left (`autoApproveRemaining`). |
