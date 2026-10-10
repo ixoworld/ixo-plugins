@@ -79,6 +79,6 @@ Keep these apart — they are different statements:
 - **You are allowed to act**: the user's own rules decide that, not this tool.
 - **Money moved**: only what `payment` on the record says. The evaluation fee the user approved pays
   for the decision; it is **not** a payout to anyone.
-- **A payout**: if the protocol pays someone on approval, a claim sent from an AI app is marked
-  unverified, so the company's approver must approve that payout first. Say it is waiting for the
-  company — never that it was paid.
+- **A payout**: if the protocol pays someone on approval, the company's payout rule decides whether
+  it pays at once or waits for its approver (e.g. above a limit). Say only what the record shows —
+  never that it was paid before it was.
