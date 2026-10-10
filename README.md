@@ -90,8 +90,8 @@ Nothing gets charged without you.
 
 - **You approve every claim.** Before anything costs money, IXO shows you the oracle, the app and
   the exact price on its own page. You click **Approve** there — the assistant can't do it for you.
-- **Or set your own limits.** On the approve page you can tick *"don't ask again"* for a trusted
-  app, with a per-claim limit, a total (up to $100) and an end date (up to 7 days). You can change
+- **Or set your own limits.** Where the oracle allows it, you can tick *"don't ask again"* on the
+  approve page for a trusted app, with a per-claim limit, a total (up to $100) and an end date (up to 7 days). You can change
   it or turn it off any time.
 - **There's a daily ceiling.** An app never spends more than $20 a day through IXO.
 - **You can cut an app off.** Disconnect it from IXO's *Connected apps* page.
@@ -104,6 +104,7 @@ anyone is allowed to act on it. That's still up to your own rules.
 | Tool | In plain words |
 | --- | --- |
 | `list_protocols` | What you can submit and what it costs — or exactly what one kind of claim needs. |
+| `upload_file` | Gives a one-time link to upload a file for a claim, with a **Choose file** card. |
 | `submit_claim` | Sends a claim and waits up to 90 seconds for the decision. Asks for your approval first. Safe to retry. |
 | `get_decision` | Looks up a decision, any review that's pending, and the payment. Never shows your answers back. |
 | `verify_receipt` | Checks a decision's signed receipt, by claim id or from a receipt you already have. |
@@ -113,7 +114,8 @@ anyone is allowed to act on it. That's still up to your own rules.
 - **No cards, or a tool seems to be missing.** Your app loads the oracle's tools when it connects.
   After an update (new tools or cards), reconnect once: quit and reopen the app, or run `/mcp` and
   reconnect in Claude Code. A new chat alone isn't enough, and you stay signed in.
-- **It asks you to upload a photo.** There's no upload — give it a link to the photo (`https://…`).
+- **It needs a photo.** Give it a link (`https://…`), or let it upload one: it shows a card with
+  **Choose file** (in Claude Code or Codex it can upload a file from your machine itself).
 - **It shows you an "approve" link.** Open it, check the price, approve, then tell it to carry on.
 - **The app won't run `submit_claim`.** Some apps hold back tools that might spend money. Allow just
   that one tool (in Claude Code: `/permissions` → Allow →

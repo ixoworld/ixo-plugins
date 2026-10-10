@@ -5,8 +5,8 @@ description: Use when the user wants the SwiftDrop Express (devnet) oracle to de
 
 # Submit a claim and follow it to a decision
 
-This plugin connects you to the **SwiftDrop Express (devnet)** oracle (`https://shipment-delivery-oracle.devnet.ixo.earth/v1/mcp`). Its MCP server gives you four
-tools: `list_protocols`, `submit_claim`, `get_decision`, `verify_receipt`. The user is signed in with
+This plugin connects you to the **SwiftDrop Express (devnet)** oracle (`https://shipment-delivery-oracle.devnet.ixo.earth/v1/mcp`). Its MCP server gives you five
+tools: `list_protocols`, `upload_file`, `submit_claim`, `get_decision`, `verify_receipt`. The user is signed in with
 IXO; you never need an API key.
 
 ## 1. Read the work order first
@@ -16,12 +16,17 @@ tells you:
 
 - `answers`: the JSON Schema the claim's answers must match. Fill every required field from what the
   user told you; ask for what is missing, never invent facts (an order id, a code, a time, a place).
-- `files`: the file questions. A file is passed **by https URL** in `attachments`
-  (`{ "question": "<file question>", "url": "https://…" }`). There is no upload: a photo pasted into
-  the chat stays in the chat — ask the user for a link.
-- `facts.frequency`: if true, the claim is counted per person. The oracle usually fills `submitter`
-  itself; if `submit_claim` answers `SUBMITTER_REQUIRED`, send `submitter` = a stable id for the
-  person the claim is about (e.g. the courier id), never a placeholder.
+- `files`: the file questions. Attach each file one of two ways:
+  - **A link**: `{ "question": "<file question>", "url": "https://…" }`.
+  - **An upload**: call `upload_file`. In apps that show cards, ask the user to choose the file in the
+    card; if you can run shell commands and the file is on this machine, run the `curl` it gives you.
+    Then attach `{ "question": "<file question>", "uploadId": "<from upload_file>" }` — the oracle
+    fills in the file's `cid`. One link per file; it works once and expires after 10 minutes.
+  A photo pasted into the chat can't be sent on as it is: use `upload_file` and ask the user to pick it.
+- **Who the claim is for**: never send `submitter`. The oracle records the signed-in user. If the
+  protocol pays or counts a person named in one of its answers (for a delivery, the courier id), fill
+  that answer with the real id the user gives you, never a placeholder; if it's missing, `submit_claim`
+  answers `VALIDATION` naming the field (`answers.<field>`), before anything is approved or charged.
 - `price`: the evaluation fee for one decision.
 
 ## 2. Submit — and let the user approve
@@ -42,9 +47,10 @@ yet. In apps that show cards, the card's *Approve on IXO* button opens the same 
 | `INSUFFICIENT_CREDITS` | Not enough IXO credits: show `fundingUrl`. |
 | `CARD_AUTHENTICATION_REQUIRED` | The bank wants 3-D Secure: show `confirmUrl` to the user (never open it yourself). Once they've confirmed, call again with the same arguments **plus** the error's `idempotencyKey` and `resumePayment` = the error's `paymentRequired` — the one time you add arguments. |
 | `AWAITING_CARD_CONFIRMATION` | The card confirmation is still pending: wait for the user, then resume as above. |
-| `SUBMITTER_REQUIRED` | Ask for the person's stable id (see above), then call again with `submitter`. |
+| `UPLOAD_PENDING` | The user hasn't uploaded the file yet: ask them to choose it in the upload card (or run the `curl`), then call again with the same arguments. If the link expired, call `upload_file` again and use the new `uploadId`. |
+| `VALIDATION` | An answer or file is missing or wrong; `details` names the field. Ask the user for it, then call again. |
 | `SPEND_CAP` | The app reached today's limit. Stop and tell the user. |
-| `autoApproved: true` | The user's own auto-approve limits paid it; say so and how much is left (`autoApproveRemaining`). |
+| `autoApproved: true` | The user's own auto-approve limits paid it (only on oracles that allow auto-approve); say so and how much is left (`autoApproveRemaining`). |
 
 Rules:
 
@@ -71,3 +77,6 @@ Keep these apart — they are different statements:
 - **You are allowed to act**: the user's own rules decide that, not this tool.
 - **Money moved**: only what `payment` on the record says. The evaluation fee the user approved pays
   for the decision; it is **not** a payout to anyone.
+- **A payout**: if the protocol pays someone on approval, a claim sent from an AI app is marked
+  unverified, so the company's approver must approve that payout first. Say it is waiting for the
+  company — never that it was paid.
