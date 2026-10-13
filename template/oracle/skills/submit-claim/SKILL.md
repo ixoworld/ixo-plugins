@@ -51,7 +51,7 @@ yet. In apps that show cards, the card's *Approve on IXO* button opens the same 
 | `UPLOAD_PENDING` | The user hasn't uploaded the file yet: ask them to choose it in the upload card (or run the `curl`), then call again with the same arguments. If the link expired, call `upload_file` again and use the new `uploadId`. |
 | `SUBMITTER_REQUIRED` | The answer that names the person (see "Who the claim is for") is missing: ask the user for the real id, put it in that answer — never in `submitter` — and call again. |
 | `VALIDATION` | An answer or file is missing or wrong; `details` names the field. Ask the user for it, then call again. |
-| `SPEND_CAP` | The app reached today's limit. Stop and tell the user. |
+| `SPEND_CAP` | A spending limit stopped the payment, or the payment permission isn't active yet. Show the user the message. If they only just bought or topped up IXO credits, wait about a minute and call again once with the same arguments; otherwise stop and tell them. |
 | `autoApproved: true` | The user's own auto-approve limits paid it (only on oracles that allow auto-approve); say so and how much is left (`autoApproveRemaining`). |
 
 Rules:
