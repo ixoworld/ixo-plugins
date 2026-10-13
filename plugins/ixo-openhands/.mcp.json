@@ -8,8 +8,7 @@
         "@ixo/openhands-mcp@1"
       ],
       "env": {
-        "NEXT_PUBLIC_CHAIN_NETWORK": "${OPENHANDS_NETWORK:-testnet}",
-        "OPENHANDS_ALLOW_MAINNET": "${OPENHANDS_ALLOW_MAINNET:-0}"
+        "NEXT_PUBLIC_CHAIN_NETWORK": "${OPENHANDS_NETWORK:-mainnet}"
       }
     }
   }
