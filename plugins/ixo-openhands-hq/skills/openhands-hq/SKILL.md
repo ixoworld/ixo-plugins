@@ -33,11 +33,10 @@ click, and send money.
 | Name in this skill | What runs | Status |
 | --- | --- | --- |
 | `eval-oracle` | `npx -y ./ixo-eval-oracle.tgz` | Not on npm yet: IXO sends the file; it must be in the folder you run in. When published: `npx -y @ixo/eval-oracle`. |
-| `installer` | `npx -y ./ixo-payouts-facilitator.tgz` | **Pending S4**: the payouts facilitator installer; IXO sends the file. Every command is idempotent, prints JSON on its last line, and never prints a secret. |
+| `installer` | `npx -y ./ixo-payouts-facilitator-0.1.0.tgz` | **Pending S4** (ixo-pay-facilitator PR #118): IXO sends the file. Every command is idempotent, dry-runs without `--yes` where it changes things, prints its JSON result on the last stdout line, and never prints a secret. Exit 0 ok, 1 failed, 2 usage error. |
 | `wrangler` | `npx -y wrangler` | Cloudflare's own CLI. |
 | `stripe` | the Stripe CLI (`brew install stripe/stripe-cli/stripe` on macOS; ask before installing) | Only for way C. |
 | IXO's Openhands oracle | its URL and DID per network | **Pending S3**: not published yet. Until then only "your own oracle" can finish step 8. |
-| Openhands site (for `--payee-origins`) | testnet `https://test.openhands.network`, mainnet `https://openhands.network`, devnet **pending S6 O1–O5** | |
 | Console | devnet `https://decision-console.devnet.ixo.earth`, testnet `https://decision-console.testnet.ixo.earth`, mainnet `https://decision-console.ixo.earth` | |
 
 Wherever a step below says `eval-oracle …` or `installer …`, run the command from this table with
@@ -74,8 +73,9 @@ Ask, one question at a time, and write the answers in your notes:
 5. Which network: **devnet** (test run), **testnet** (trial, play money) or **mainnet** (live, real
    money). If unsure, devnet.
 6. An email address for the oracle to contact the company.
+7. Way C only: the country the company's Stripe account is in (a two-letter code, like `US` or `DE`).
 
-Check: all six answers are in the notes.
+Check: all the answers that apply are in the notes.
 
 The Openhands tools run on the network in `OPENHANDS_NETWORK`. If `my_status` shows another
 network, tell the person to quit Claude, start it again with `OPENHANDS_NETWORK=<network> claude`,
@@ -119,27 +119,31 @@ Check: run the balance command again until the balance covers what you said. Nev
 ### 5. Payouts facilitator on the company's Cloudflare (ways B and C)
 
 The facilitator is the company's own small service that pays workers when the oracle approves.
-`<worker>` is a short name you pick, like `<company>-payouts` (lowercase, dashes). Write it in the notes.
+`<worker>` is a short name you pick, like `<company>-payouts` (lowercase, dashes). Write it in the
+notes. `<rails>` is `stripe` (way C) or `usdc_base` (way B).
 
 1. Run `npx -y wrangler whoami`. If it says you are not logged in, run `npx -y wrangler login`.
    A page opens. Say: "If Cloudflare asks you to sign in or make a free account, do that. Then click
    **Allow**." Run `whoami` again to check.
 2. Check: if the notes hold the facilitator URL and
-   `installer trust-check --url <facilitator url> --org <org DID> --network <network>` says
-   `"ok": true`, skip to step 6 (way C) or step 7 (way B).
+   `installer trust-check --url <facilitator url> --org <org DID> --network <network> --name <worker>`
+   exits 0, skip to step 6 (way C) or step 7 (way B).
 3. Way C only: do step 6 parts 1–3 now, so the restricted key is on the clipboard.
-4. Deploy. `<rails>` is `stripe` (way C) or `usdc_base` (way B).
-   - Way B: `installer deploy --network <network> --name <worker> --entity <org DID> --rails usdc_base --payee-origins <Openhands site> --console-origins <console> --yes`
+4. Deploy (`--yes` applies it; without it, it only shows the plan):
+   - Way B: `installer deploy --network <network> --name <worker> --entity <org DID> --rails usdc_base --console-origins <console> --yes --json`.
+     This also makes the Base payout wallet.
    - Way C, so the key goes from the clipboard into the command's environment and is never shown:
-     `STRIPE_SECRET_KEY="$(pbpaste)" installer deploy --network <network> --name <worker> --entity <org DID> --rails stripe --payee-origins <Openhands site> --console-origins <console> --yes`.
-   It prints `{url, did, worker, d1, kv, health}`. Write `url` and `did` in the notes.
-5. Way C: check `npx -y wrangler secret list --name <worker>` lists `STRIPE_SECRET_KEY`; if not, run
-   `pbpaste | npx -y wrangler secret put STRIPE_SECRET_KEY --name <worker>`. Then clear the clipboard.
-6. Link it to the organisation both ways:
-   `installer anchor --network <network> --org <org DID> --facilitator-url <facilitator url> --session ~/.ixo/publish-session-<network>.json --yes`
-   (without `--yes` it only shows what it would do).
-7. Check: `installer trust-check --url <facilitator url> --org <org DID> --network <network>` says
-   `"ok": true`. If not, tell the person the `problems` in plain words and stop.
+     `STRIPE_SECRET_KEY="$(pbpaste)" installer deploy --network <network> --name <worker> --entity <org DID> --rails stripe --company-country <country> --console-origins <console> --yes --json`.
+     Then clear the clipboard (`pbcopy < /dev/null`).
+   It prints `{url, did, worker, d1, kv, health, …}` and exits 1 if the service is not healthy. Write
+   `url` in the notes as the facilitator URL.
+5. Link it to the organisation both ways:
+   `installer anchor --network <network> --org <org DID> --facilitator-url <facilitator url> --session ~/.ixo/publish-session-<network>.json --yes`.
+6. Run the same `deploy` command again (way C: without `STRIPE_SECRET_KEY` and `--company-country`;
+   the installer keeps them), so the service's public identity names the facilitator entity that
+   `anchor` made.
+7. Check: `installer trust-check --url <facilitator url> --org <org DID> --network <network> --name <worker>`
+   exits 0. If not, tell the person the `problems` it lists in plain words, and stop.
 
 ### 6. Stripe (way C)
 
@@ -150,7 +154,7 @@ The facilitator is the company's own small service that pays workers when the or
 2. **Connect and business details.** Check `stripe get /v1/account` shows
    `"details_submitted": true`. Else open `https://dashboard.stripe.com/connect` and say: "Click
    **Get started**, and fill in Stripe's form about your business. I can't do this part for you."
-3. **Restricted key** (skip if step 5 already stored `STRIPE_SECRET_KEY`). Open
+3. **Restricted key** (skip if step 5's check already passes, or `npx -y wrangler secret list --name <worker>` lists `STRIPE_SECRET_KEY`). Open
    `https://dashboard.stripe.com/apikeys/create` and say:
    - "Check the switch at the top: **Test mode / sandbox** for devnet and testnet, **live** for
      mainnet."
@@ -171,14 +175,14 @@ The facilitator is the company's own small service that pays workers when the or
 
 ### 7. Base wallet (way B)
 
-1. Run `installer payout-wallet --name <worker> --network <network>`. It makes the wallet once (a
-   re-run returns the same one), stores its key in Cloudflare without showing it, and prints
-   `{address, chainId}`. Never pass `--rotate`.
+Step 5's deploy already made the payout wallet.
+
+1. Run `installer payout-wallet --name <worker> --network <network> --check --json`. It prints
+   `{address, chainId, usdc, eth}`.
 2. Show the address and ask the person to send USDC for the rewards plus a little ETH for gas (Base
-   Sepolia on devnet and testnet, Base on mainnet).
-3. Check: `installer payout-wallet --name <worker> --network <network> --check` prints
-   `{address, chainId, usdc, eth}`. Run it again until `usdc` covers the first ask's rewards and
-   `eth` is above 0.
+   Sepolia on devnet and testnet, Base on mainnet). Wait until they say it is sent.
+3. Check: run the same command again until `usdc.amount` covers the first ask's rewards and
+   `eth.amount` is above 0.
 
 ### 8. Oracle
 
@@ -202,19 +206,24 @@ Write the oracle's DID in the notes.
 
 ### 9. Trust and limits on the facilitator (ways B and C)
 
-Asks the facilitator finds under the organisation **pay nothing until the limits below are set**.
-Tell the person that. Every `installer admin` command takes
+Do this **before the first ask**. Tell the person two things: claims checked by an oracle the
+facilitator does not trust yet are skipped **for good**, and asks pay nothing until the limits are
+set.
+
+Every `installer admin` command takes
 `--url <facilitator url> --session ~/.ixo/publish-session-<network>.json --network <network>`;
 below, `<admin flags>` means those three.
 
-1. Check `installer admin oracles list <admin flags>`.
-   If the oracle DID from step 8 is listed, skip to 3.
-2. `installer admin oracles add <oracle DID> <admin flags>`.
-3. Ask the person for the most per payout, the most per day, and the amount above which they approve
-   each payout themselves (in USD). Then run
-   `installer admin defaults set --max-per-payout <amount> --max-per-day <amount> --currency USD --approval-over <amount> --rails <rails> <admin flags>`.
-   Running it again with the same values changes nothing.
-4. Check: `admin oracles list` shows the oracle, and the defaults command reported success.
+1. Check `installer admin oracles list <admin flags>`. If the oracle DID from step 8 is listed, skip
+   to 3.
+2. `installer admin oracles add <oracle DID> <admin flags>`. Run the check again.
+3. Ask the person the most one payout may be, and the amount above which they want to approve each
+   payout themselves. `<currency>` is `USD` (way C) or `USDC` (way B). Then run
+   `installer admin defaults set --max <amount> --currency <currency> --approval-over <amount> --rails <rails> <admin flags>`.
+   By default, the most per payee per day equals `--max` and the most per day is ten times `--max`.
+   If they want other limits, add `--per-payee-per-day <amount>` or `--per-day <amount>`. Running it
+   again with the same values changes nothing.
+4. Check: the command exits 0.
 
 ### 10. Connect the Openhands tools
 
