@@ -32,7 +32,7 @@ click, and send money.
 
 | Name in this skill | What runs | Status |
 | --- | --- | --- |
-| `eval-oracle` | `npx -y ./ixo-eval-oracle.tgz` | Not on npm yet: IXO sends the file; it must be in the folder you run in. When published: `npx -y @ixo/eval-oracle`. |
+| `eval-oracle` | `npx --yes file:$PWD/ixo-eval-oracle-0.2.0-draft.1.tgz` | Not on npm yet: IXO sends the file (packed from eval-oracle `decisions-engine-via-api` at 13ee2e4 or later); run from the folder it is in. Absolute `file:` path; a re-packed tarball needs a new filename. When published: `npx -y @ixo/eval-oracle`. |
 | `installer` | `npx --yes file:$PWD/ixo-payouts-facilitator-0.1.0.tgz` | **Pending S4** (ixo-pay-facilitator PR #118): IXO sends the file; run from the folder it is in. The `file:` path must be absolute (a relative `./…tgz` fails inside a workspace), and npx caches per path, so a re-packed tarball needs a new filename. Every command is idempotent, dry-runs without `--yes` where it changes things, prints its JSON result on the last stdout line, and never prints a secret. Exit 0 ok, 1 failed, 2 usage error. |
 | `wrangler` | `npx -y wrangler` | Cloudflare's own CLI. |
 | `stripe` | the Stripe CLI (`brew install stripe/stripe-cli/stripe` on macOS; ask before installing) | Only for way C. |
