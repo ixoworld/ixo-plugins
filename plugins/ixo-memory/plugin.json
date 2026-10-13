@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "ixo-memory",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Your IXO Companion's memory — remember, recall and import what matters, with your IXO sign-in.",
   "author": {
     "name": "IXO",
