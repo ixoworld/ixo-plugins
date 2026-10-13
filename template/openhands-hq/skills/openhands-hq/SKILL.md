@@ -131,8 +131,7 @@ The facilitator is the company's own small service that pays workers when the or
 4. Deploy. `<rails>` is `stripe` (way C) or `usdc_base` (way B).
    - Way B: `installer deploy --network <network> --name <worker> --entity <org DID> --rails usdc_base --payee-origins <Openhands site> --console-origins <console> --yes`
    - Way C, so the key goes from the clipboard into the command's environment and is never shown:
-     `STRIPE_SECRET_KEY="$(pbpaste)" installer deploy --network <network> --name <worker> --entity <org DID> --rails stripe --payee-origins <Openhands site> --console-origins <console> --stripe-webhook --yes`.
-     `--stripe-webhook` creates the Stripe Connect webhook and stores its secret.
+     `STRIPE_SECRET_KEY="$(pbpaste)" installer deploy --network <network> --name <worker> --entity <org DID> --rails stripe --payee-origins <Openhands site> --console-origins <console> --yes`.
    It prints `{url, did, worker, d1, kv, health}`. Write `url` and `did` in the notes.
 5. Way C: check `npx -y wrangler secret list --name <worker>` lists `STRIPE_SECRET_KEY`; if not, run
    `pbpaste | npx -y wrangler secret put STRIPE_SECRET_KEY --name <worker>`. Then clear the clipboard.
@@ -144,7 +143,7 @@ The facilitator is the company's own small service that pays workers when the or
 
 ### 6. Stripe (way C)
 
-1. **Sign in to the Stripe CLI** (only used to check the account). Check `stripe config --list` shows
+1. **Sign in to the Stripe CLI** (used for the account check and the webhook). Check `stripe config --list` shows
    an account; else run `stripe login --non-interactive`, open the link it prints, and say: "Click
    **Allow access**." Then run the completion command it printed. On mainnet add `--live` to every
    `stripe` command.
@@ -158,11 +157,17 @@ The facilitator is the company's own small service that pays workers when the or
    - "Choose **Building your own integration**, name it `Openhands payouts`."
    - "Set these to the level shown, leave everything else at **None**: Transfers **Write**,
      Balance **Read**, Connected accounts (Accounts) **Write**, Account links **Write**, Payouts
-     **Read**, Balance transactions **Read**, Webhook endpoints **Write**."
+     **Read**, Balance transactions **Read**."
    - "Click **Create key**, then click the new key to copy it. Don't paste it anywhere. Tell me when
      it's copied."
    Then go back to step 5, part 4.
-4. Tell the person their Stripe **balance** pays workers, and to top it up in the Dashboard.
+4. **Webhook** (after step 5, so the facilitator URL is known). Check `stripe webhook_endpoints list`
+   shows `<facilitator url>/webhooks/stripe-connect`; if so, skip. Else run this, so the signing
+   secret goes straight into Cloudflare and never reaches the screen:
+   `stripe webhook_endpoints create --url <facilitator url>/webhooks/stripe-connect --connect=true --enabled-events account.updated --enabled-events payout.failed --confirm | jq -r .secret | npx -y wrangler secret put STRIPE_CONNECT_WEBHOOK_SECRET --name <worker>`.
+   Check the list again, and that `npx -y wrangler secret list --name <worker>` lists
+   `STRIPE_CONNECT_WEBHOOK_SECRET`.
+5. Tell the person their Stripe **balance** pays workers, and to top it up in the Dashboard.
 
 ### 7. Base wallet (way B)
 
@@ -170,10 +175,10 @@ The facilitator is the company's own small service that pays workers when the or
    re-run returns the same one), stores its key in Cloudflare without showing it, and prints
    `{address, chainId}`. Never pass `--rotate`.
 2. Show the address and ask the person to send USDC for the rewards plus a little ETH for gas (Base
-   Sepolia on devnet and testnet, Base on mainnet). Open
-   `https://sepolia.basescan.org/address/<address>` (Base Sepolia) or
-   `https://basescan.org/address/<address>` (Base).
-3. Check: the page shows the USDC and ETH arrived. Wait until it does.
+   Sepolia on devnet and testnet, Base on mainnet).
+3. Check: `installer payout-wallet --name <worker> --network <network> --check` prints
+   `{address, chainId, usdc, eth}`. Run it again until `usdc` covers the first ask's rewards and
+   `eth` is above 0.
 
 ### 8. Oracle
 
@@ -198,14 +203,16 @@ Write the oracle's DID in the notes.
 ### 9. Trust and limits on the facilitator (ways B and C)
 
 Asks the facilitator finds under the organisation **pay nothing until the limits below are set**.
-Tell the person that.
+Tell the person that. Every `installer admin` command takes
+`--url <facilitator url> --session ~/.ixo/publish-session-<network>.json --network <network>`;
+below, `<admin flags>` means those three.
 
-1. Check `installer admin oracles list --url <facilitator url> --session ~/.ixo/publish-session-<network>.json`.
+1. Check `installer admin oracles list <admin flags>`.
    If the oracle DID from step 8 is listed, skip to 3.
-2. `installer admin oracles add <oracle DID> --url <facilitator url> --session ~/.ixo/publish-session-<network>.json`.
+2. `installer admin oracles add <oracle DID> <admin flags>`.
 3. Ask the person for the most per payout, the most per day, and the amount above which they approve
    each payout themselves (in USD). Then run
-   `installer admin defaults set --max-per-payout <amount> --max-per-day <amount> --currency USD --approval-over <amount> --rails <rails> --url <facilitator url> --session ~/.ixo/publish-session-<network>.json`.
+   `installer admin defaults set --max-per-payout <amount> --max-per-day <amount> --currency USD --approval-over <amount> --rails <rails> <admin flags>`.
    Running it again with the same values changes nothing.
 4. Check: `admin oracles list` shows the oracle, and the defaults command reported success.
 
