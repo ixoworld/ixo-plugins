@@ -1,0 +1,10 @@
+{
+  "$comment": "Kind-level defaults for plugins built with `bun run add-plugin --kind openhands-hosted`: the READ-ONLY hosted Openhands endpoint, no sign-in. Placeholders: {{TITLE}} {{URL}} {{SERVER}} {{DESCRIPTION}}.",
+  "description": "Read the open asks on the Openhands Network and see how it works, read-only: {{TITLE}} needs no sign-in and nothing installed.",
+  "keywords": ["ixo", "openhands", "marketplace", "tasks", "read-only", "mcp"],
+  "serverName": "openhands-network-hosted",
+  "codex": {
+    "policy": { "installation": "AVAILABLE", "authentication": "ON_USE" },
+    "category": "Productivity"
+  }
+}
