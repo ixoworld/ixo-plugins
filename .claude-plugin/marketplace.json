@@ -5,13 +5,40 @@
     "url": "https://ixo.world"
   },
   "metadata": {
-    "description": "IXO's plugins for AI assistants: independent, signed decisions on claims."
+    "description": "IXO's plugins for AI assistants: independent, signed decisions on claims, and your IXO memory."
   },
   "plugins": [
     {
+      "name": "ixo-memory",
+      "source": "./plugins/ixo-memory",
+      "description": "Your IXO Companion's memory — remember, recall and import what matters, with your IXO sign-in.",
+      "metadata": {
+        "kind": "memory"
+      }
+    },
+    {
+      "name": "ixo-memory-devnet",
+      "source": "./plugins/ixo-memory-devnet",
+      "description": "Your IXO Companion's memory — remember, recall and import what matters, with your IXO sign-in. Devnet (test network).",
+      "metadata": {
+        "kind": "memory"
+      }
+    },
+    {
+      "name": "ixo-memory-testnet",
+      "source": "./plugins/ixo-memory-testnet",
+      "description": "Your IXO Companion's memory — remember, recall and import what matters, with your IXO sign-in. Testnet (test network).",
+      "metadata": {
+        "kind": "memory"
+      }
+    },
+    {
       "name": "ixo-swiftdrop-devnet",
       "source": "./plugins/ixo-swiftdrop-devnet",
-      "description": "Proof of delivery for SwiftDrop Express couriers, decided by IXO's independent engine — devnet (test network)."
+      "description": "Proof of delivery for SwiftDrop Express couriers, decided by IXO's independent engine — devnet (test network).",
+      "metadata": {
+        "kind": "oracle"
+      }
     }
   ]
 }

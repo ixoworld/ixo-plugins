@@ -1,0 +1,7 @@
+{
+  "$comment": "Kind-level defaults for plugins built with `bun run add-plugin --kind oracle`. Placeholders: {{TITLE}} {{URL}} {{SERVER}} {{DESCRIPTION}}; serverName also takes {{HOST_LABEL}}.",
+  "description": "Submit claims to the {{TITLE}} oracle, follow the decision and verify its signed receipt.",
+  "keywords": ["ixo", "decisions", "claims", "verification", "mcp"],
+  "serverName": "ixo-{{HOST_LABEL}}",
+  "hostLabelStripSuffix": "-oracle"
+}

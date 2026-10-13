@@ -1,0 +1,6 @@
+{
+  "$comment": "Kind-level defaults for plugins built with `bun run add-plugin --kind memory`. Placeholders: {{TITLE}} {{URL}} {{SERVER}} {{DESCRIPTION}}; serverName takes {{NAME}} (the plugin's name), so each network's plugin gets its own server name.",
+  "description": "Remember, recall and import what matters to you with {{TITLE}}, signed in with IXO.",
+  "keywords": ["ixo", "memory", "knowledge-graph", "recall", "mcp"],
+  "serverName": "{{NAME}}"
+}

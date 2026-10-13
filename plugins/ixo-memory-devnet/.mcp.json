@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "ixo-memory-devnet": {
+      "type": "http",
+      "url": "https://memory-engine.devnet.ixo.earth/v1/mcp"
+    }
+  }
+}

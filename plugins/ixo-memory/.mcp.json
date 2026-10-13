@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "ixo-memory": {
+      "type": "http",
+      "url": "https://memory-engine.ixo.earth/v1/mcp"
+    }
+  }
+}

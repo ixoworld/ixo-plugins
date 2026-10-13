@@ -1,0 +1,9 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "ixo-memory": {
+      "type": "streamable-http",
+      "url": "https://memory-engine.ixo.earth/v1/mcp"
+    }
+  }
+}
