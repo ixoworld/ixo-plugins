@@ -51,7 +51,7 @@
         "kind": "openhands",
         "package": "@ixo/openhands-mcp",
         "major": "1",
-        "network": "testnet"
+        "network": "mainnet"
       },
       "policy": {
         "installation": "AVAILABLE",

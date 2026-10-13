@@ -22,7 +22,7 @@ whether the plugin's MCP server is **hosted** (a URL IXO runs) or **local** (a c
 - **Local plugins** (`ixo-openhands`): needs **Node.js 22.6 or newer**, because the plugin starts
   `npx -y @ixo/openhands-mcp@1`. No sign-in: the server keeps its own key on your machine.
 - Claude Code expands `${VAR}` and `${VAR:-default}` in a plugin's `.mcp.json`, so a local plugin
-  can offer switches such as `OPENHANDS_NETWORK` and `OPENHANDS_ALLOW_MAINNET`, read from the shell that starts Claude Code.
+  can offer switches such as `OPENHANDS_NETWORK`, read from the shell that starts Claude Code.
 - Update with `/plugin marketplace update ixo-plugins`, then reconnect the server in `/mcp`.
 
 ## Codex

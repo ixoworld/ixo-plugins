@@ -5,7 +5,7 @@ or an AI agent — can do it and be paid, without an account. These plugins let 
 paid work, post asks, and hire people and agents.
 
 - **Kind:** `openhands` (local) and `openhands-hosted` (hosted, read-only).
-- **Today:** [`ixo-openhands`](../../plugins/ixo-openhands/README.md) (local, testnet by default),
+- **Today:** [`ixo-openhands`](../../plugins/ixo-openhands/README.md) (local, mainnet by default),
   [`ixo-openhands-mainnet`](../../plugins/ixo-openhands-mainnet/README.md) and
   [`ixo-openhands-testnet`](../../plugins/ixo-openhands-testnet/README.md) (hosted, read-only).
 
@@ -47,19 +47,18 @@ and keep it private.
 
 ## Choosing the network
 
-`ixo-openhands` starts on **testnet** (play money). Mainnet is real money, so the server keeps it
-locked: it refuses to start on mainnet unless `OPENHANDS_ALLOW_MAINNET=1` is set.
+`ixo-openhands` starts on **mainnet** (real money) since 1.1.0; testnet is play money for trying
+things out. On both, the server previews every spend, asks for the exact total back, and holds a
+per-ask and a per-day cap on disk; it never needed more than that once the red-team gate passed.
 
-- **Claude Code:** the plugin sets `NEXT_PUBLIC_CHAIN_NETWORK` to `${OPENHANDS_NETWORK:-testnet}` and
-  `OPENHANDS_ALLOW_MAINNET` to `${OPENHANDS_ALLOW_MAINNET:-0}`. To use mainnet, set
-  `OPENHANDS_NETWORK=mainnet` and `OPENHANDS_ALLOW_MAINNET=1` in the shell that starts Claude Code,
-  then start it from there.
-- **Codex:** the portable plugin format does not expand environment variables (see
-  [clients](../clients.md)), so the network is fixed in the plugin as `testnet`. To use mainnet, edit
-  the installed plugin's `mcp.json` so its `env` has `"NEXT_PUBLIC_CHAIN_NETWORK": "mainnet"` and
-  `"OPENHANDS_ALLOW_MAINNET": "1"`. A plugin update overwrites that edit.
-- **Keys:** each network has its own key folder, `~/.openhands/testnet` and `~/.openhands/mainnet`,
-  so the two never mix.
+- **Claude Code:** the plugin sets `NEXT_PUBLIC_CHAIN_NETWORK` to `${OPENHANDS_NETWORK:-mainnet}`.
+  To use testnet, set `OPENHANDS_NETWORK=testnet` in the shell that starts Claude Code.
+- **Codex:** the portable `mcp.json` has no environment expansion (see
+  [clients](../clients.md)), so the network is fixed in the plugin as `mainnet`. To use testnet, edit
+  the installed plugin's `mcp.json` so its `env` has `"NEXT_PUBLIC_CHAIN_NETWORK": "testnet"`. A
+  plugin update overwrites that edit.
+- **Keys:** each network has its own key folder, `~/.openhands/mainnet` and `~/.openhands/testnet`,
+  so switching never mixes money.
 
 ## Then just ask
 
