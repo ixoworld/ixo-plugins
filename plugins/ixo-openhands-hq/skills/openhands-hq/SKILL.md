@@ -33,10 +33,11 @@ click, and send money.
 | Name in this skill | What runs | Status |
 | --- | --- | --- |
 | `eval-oracle` | `npx -y ./ixo-eval-oracle.tgz` | Not on npm yet: IXO sends the file; it must be in the folder you run in. When published: `npx -y @ixo/eval-oracle`. |
-| `installer` | `npx -y ./ixo-payouts-facilitator.tgz` | **Pending S4**: the payouts facilitator installer; IXO sends the file. |
+| `installer` | `npx -y ./ixo-payouts-facilitator.tgz` | **Pending S4**: the payouts facilitator installer; IXO sends the file. Every command is idempotent, prints JSON on its last line, and never prints a secret. |
 | `wrangler` | `npx -y wrangler` | Cloudflare's own CLI. |
 | `stripe` | the Stripe CLI (`brew install stripe/stripe-cli/stripe` on macOS; ask before installing) | Only for way C. |
 | IXO's Openhands oracle | its URL and DID per network | **Pending S3**: not published yet. Until then only "your own oracle" can finish step 8. |
+| Openhands site (for `--payee-origins`) | testnet `https://test.openhands.network`, mainnet `https://openhands.network`, devnet **pending S6 O1–O5** | |
 | Console | devnet `https://decision-console.devnet.ixo.earth`, testnet `https://decision-console.testnet.ixo.earth`, mainnet `https://decision-console.ixo.earth` | |
 
 Wherever a step below says `eval-oracle …` or `installer …`, run the command from this table with
@@ -76,9 +77,9 @@ Ask, one question at a time, and write the answers in your notes:
 
 Check: all six answers are in the notes.
 
-If the network is not the one this plugin's Openhands server runs on (see `my_status`), tell the
-person to quit Claude, start it again with `OPENHANDS_NETWORK=<network> claude`, and say "carry on".
-Openhands itself runs only on testnet and mainnet: on **devnet**, steps 10 and 12 stop (see there).
+The Openhands tools run on the network in `OPENHANDS_NETWORK`. If `my_status` shows another
+network, tell the person to quit Claude, start it again with `OPENHANDS_NETWORK=<network> claude`,
+and say "carry on". (Devnet in the Openhands tools: **pending S6 O1–O5**.)
 
 ### 2. Sign in to IXO
 
@@ -118,50 +119,61 @@ Check: run the balance command again until the balance covers what you said. Nev
 ### 5. Payouts facilitator on the company's Cloudflare (ways B and C)
 
 The facilitator is the company's own small service that pays workers when the oracle approves.
+`<worker>` is a short name you pick, like `<company>-payouts` (lowercase, dashes). Write it in the notes.
 
 1. Run `npx -y wrangler whoami`. If it says you are not logged in, run `npx -y wrangler login`.
    A page opens. Say: "If Cloudflare asks you to sign in or make a free account, do that. Then click
    **Allow**." Run `whoami` again to check.
-2. Run `installer trust-check`. If it reports no problems for this organisation, skip to step 6.
-3. Run `installer deploy`, then `installer anchor` (links the facilitator and the organisation both
-   ways). Write the worker name and URL it prints in the notes.
-4. Check: `installer trust-check` reports no problems.
+2. Check: if the notes hold the facilitator URL and
+   `installer trust-check --url <facilitator url> --org <org DID> --network <network>` says
+   `"ok": true`, skip to step 6 (way C) or step 7 (way B).
+3. Way C only: do step 6 parts 1–3 now, so the restricted key is on the clipboard.
+4. Deploy. `<rails>` is `stripe` (way C) or `usdc_base` (way B).
+   - Way B: `installer deploy --network <network> --name <worker> --entity <org DID> --rails usdc_base --payee-origins <Openhands site> --console-origins <console> --yes`
+   - Way C, so the key goes from the clipboard into the command's environment and is never shown:
+     `STRIPE_SECRET_KEY="$(pbpaste)" installer deploy --network <network> --name <worker> --entity <org DID> --rails stripe --payee-origins <Openhands site> --console-origins <console> --stripe-webhook --yes`.
+     `--stripe-webhook` creates the Stripe Connect webhook and stores its secret.
+   It prints `{url, did, worker, d1, kv, health}`. Write `url` and `did` in the notes.
+5. Way C: check `npx -y wrangler secret list --name <worker>` lists `STRIPE_SECRET_KEY`; if not, run
+   `pbpaste | npx -y wrangler secret put STRIPE_SECRET_KEY --name <worker>`. Then clear the clipboard.
+6. Link it to the organisation both ways:
+   `installer anchor --network <network> --org <org DID> --facilitator-url <facilitator url> --session ~/.ixo/publish-session-<network>.json --yes`
+   (without `--yes` it only shows what it would do).
+7. Check: `installer trust-check --url <facilitator url> --org <org DID> --network <network>` says
+   `"ok": true`. If not, tell the person the `problems` in plain words and stop.
 
 ### 6. Stripe (way C)
 
-1. **Sign in.** Check `stripe config --list` shows an account; else run
-   `stripe login --non-interactive`, open the link it prints, and say: "Click **Allow access**." Then
-   run the completion command it printed. On mainnet add `--live` to every `stripe` command below.
-2. **Restricted key.** Check `npx -y wrangler secret list --name <worker>` lists
-   `STRIPE_SECRET_KEY`; if so, skip. Else open `https://dashboard.stripe.com/apikeys/create` and say:
+1. **Sign in to the Stripe CLI** (only used to check the account). Check `stripe config --list` shows
+   an account; else run `stripe login --non-interactive`, open the link it prints, and say: "Click
+   **Allow access**." Then run the completion command it printed. On mainnet add `--live` to every
+   `stripe` command.
+2. **Connect and business details.** Check `stripe get /v1/account` shows
+   `"details_submitted": true`. Else open `https://dashboard.stripe.com/connect` and say: "Click
+   **Get started**, and fill in Stripe's form about your business. I can't do this part for you."
+3. **Restricted key** (skip if step 5 already stored `STRIPE_SECRET_KEY`). Open
+   `https://dashboard.stripe.com/apikeys/create` and say:
    - "Check the switch at the top: **Test mode / sandbox** for devnet and testnet, **live** for
      mainnet."
    - "Choose **Building your own integration**, name it `Openhands payouts`."
    - "Set these to the level shown, leave everything else at **None**: Transfers **Write**,
      Balance **Read**, Connected accounts (Accounts) **Write**, Account links **Write**, Payouts
-     **Read**, Balance transactions **Read**."
+     **Read**, Balance transactions **Read**, Webhook endpoints **Write**."
    - "Click **Create key**, then click the new key to copy it. Don't paste it anywhere. Tell me when
      it's copied."
-   Then run `pbpaste | npx -y wrangler secret put STRIPE_SECRET_KEY --name <worker>` and clear the
-   clipboard. Check the secret list again.
-3. **Webhook.** Check `stripe webhook_endpoints list` shows `<worker URL>/webhooks/stripe-connect`.
-   Else run, so the signing secret never reaches the screen:
-   `stripe webhook_endpoints create -d url=<worker URL>/webhooks/stripe-connect -d connect=true -d "enabled_events[]=account.updated" -d "enabled_events[]=payout.failed" | jq -r .secret | npx -y wrangler secret put STRIPE_CONNECT_WEBHOOK_SECRET --name <worker>`.
-   Check the list again.
-4. **Connect and business details.** Check `stripe get /v1/account` shows
-   `"details_submitted": true`. Else open `https://dashboard.stripe.com/connect` and say: "Click
-   **Get started**, and fill in Stripe's form about your business. I can't do this part for you."
-5. Tell the person their Stripe **balance** pays workers, and to top it up in the Dashboard.
+   Then go back to step 5, part 4.
+4. Tell the person their Stripe **balance** pays workers, and to top it up in the Dashboard.
 
 ### 7. Base wallet (way B)
 
-**Missing command (S4):** there is no installer command yet that makes the payout wallet, stores
-its key in Cloudflare as `PAYOUT_USDC_KEY` without showing it, and prints its address and balance.
-Stop here and tell the person this part is not ready. Never make a wallet or key any other way.
-
-Once it exists: show the address, and ask the person to send USDC for the rewards plus a little ETH
-for gas (Base Sepolia on devnet and testnet, Base on mainnet). Check: its balance covers the first
-ask's rewards.
+1. Run `installer payout-wallet --name <worker> --network <network>`. It makes the wallet once (a
+   re-run returns the same one), stores its key in Cloudflare without showing it, and prints
+   `{address, chainId}`. Never pass `--rotate`.
+2. Show the address and ask the person to send USDC for the rewards plus a little ETH for gas (Base
+   Sepolia on devnet and testnet, Base on mainnet). Open
+   `https://sepolia.basescan.org/address/<address>` (Base Sepolia) or
+   `https://basescan.org/address/<address>` (Base).
+3. Check: the page shows the USDC and ETH arrived. Wait until it does.
 
 ### 8. Oracle
 
@@ -185,13 +197,19 @@ Write the oracle's DID in the notes.
 
 ### 9. Trust and limits on the facilitator (ways B and C)
 
-**Missing command (S4):** there is no installer command yet to put the oracle's DID on the
-facilitator's trusted-oracle list and set the limits (most per payout, most per day, approval
-threshold). Stop here and tell the person this part is not ready.
+Asks the facilitator finds under the organisation **pay nothing until the limits below are set**.
+Tell the person that.
+
+1. Check `installer admin oracles list --url <facilitator url> --session ~/.ixo/publish-session-<network>.json`.
+   If the oracle DID from step 8 is listed, skip to 3.
+2. `installer admin oracles add <oracle DID> --url <facilitator url> --session ~/.ixo/publish-session-<network>.json`.
+3. Ask the person for the most per payout, the most per day, and the amount above which they approve
+   each payout themselves (in USD). Then run
+   `installer admin defaults set --max-per-payout <amount> --max-per-day <amount> --currency USD --approval-over <amount> --rails <rails> --url <facilitator url> --session ~/.ixo/publish-session-<network>.json`.
+   Running it again with the same values changes nothing.
+4. Check: `admin oracles list` shows the oracle, and the defaults command reported success.
 
 ### 10. Connect the Openhands tools
-
-On **devnet**, stop: Openhands has no devnet site, so these tools cannot run there yet.
 
 1. Check: `my_status`. If it shows the account from step 2 connected, skip.
 2. Call `connect_account`. It returns a link. Open it and say: "Sign in, check that it says up to 30
@@ -209,8 +227,6 @@ Check: `~/.ixo/publish-session-<network>.json` no longer exists.
 
 ### 12. First ask
 
-On **devnet**, stop (see step 10).
-
 1. Draft it with the person: the task in their words (12–300 characters), the reward, how many
    answers, how many days, and where, if it must be done in a place (`"lat,lon"`).
 2. Check: if your notes already hold the first ask's link, share it and stop.
@@ -218,8 +234,8 @@ On **devnet**, stop (see step 10).
 4. Call `post_ask` with `confirm` set to that exact total. Write the link it returns in the notes
    and share it.
 
-Ways B and C: today `post_ask` only takes a positive on-chain reward and has no way to say "paid in
-USDC on Base" or "paid by Stripe". Stop and tell the person this part is not ready; do not post a
-B or C ask with an on-chain reward, because the worker would be paid twice.
+Ways B and C: `post_ask` does not yet take a 0 on-chain reward with "paid in USDC on Base" or "paid
+by Stripe" (**pending S6 O1–O5**). Until it does, stop and tell the person this part is not ready.
+Never post a B or C ask with an on-chain reward: the worker would be paid twice.
 
 After this, the person posts more asks just by talking to you, with the Openhands tools.
