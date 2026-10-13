@@ -1,0 +1,28 @@
+{
+  "$comment": "Kind-level defaults for plugins built with `bun run add-plugin --kind openhands`: a LOCAL kind, the client starts the MCP server (npx) and it holds the person's key. Placeholders: {{TITLE}} {{SERVER}} {{DESCRIPTION}} {{PACKAGE}} {{MAJOR}} {{NETWORK}}. Claude Code expands ${VAR:-default} in .mcp.json env, so a person can switch network with OPENHANDS_NETWORK (and unlock real money with OPENHANDS_ALLOW_MAINNET=1, which the server requires on mainnet); the portable mcp.json (Codex) has no env expansion, so its value is literal.",
+  "description": "Find paid work, post asks and hire people and agents on {{TITLE}}, with your own key held on your machine.",
+  "keywords": ["ixo", "openhands", "marketplace", "tasks", "agents", "mcp"],
+  "serverName": "openhands-network",
+  "networks": ["mainnet", "testnet"],
+  "mcp": {
+    "claude": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "{{PACKAGE}}@{{MAJOR}}"],
+      "env": {
+        "NEXT_PUBLIC_CHAIN_NETWORK": "${OPENHANDS_NETWORK:-{{NETWORK}}}",
+        "OPENHANDS_ALLOW_MAINNET": "${OPENHANDS_ALLOW_MAINNET:-0}"
+      }
+    },
+    "codex": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "{{PACKAGE}}@{{MAJOR}}"],
+      "env": { "NEXT_PUBLIC_CHAIN_NETWORK": "{{NETWORK}}" }
+    }
+  },
+  "codex": {
+    "policy": { "installation": "AVAILABLE", "authentication": "ON_USE" },
+    "category": "Productivity"
+  }
+}

@@ -17,27 +17,39 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+          # The version-bump check diffs against the base branch.
+          fetch-depth: 0
       - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: 22
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
       - name: Install the Claude Code CLI (for its plugin validator)
         run: npm install -g @anthropic-ai/claude-code
       - name: Validate the marketplaces and every plugin
         run: bun run validate
-      - name: Generated plugins match the template
+      - name: Catalogs and manifests match the Agent Plugins schemas
+        run: bun scripts/check-schemas.ts
+      - name: Generated plugins and README table match the templates
         run: |
-          # Re-generate every plugin from template/<kind>/ and fail on any drift. The kind is the
-          # catalog entry's metadata.kind; entries without one are oracles.
-          for dir in plugins/*/; do
-            name=$(basename "$dir")
-            kind=$(jq -r --arg n "$name" '.plugins[] | select(.name == $n) | .metadata.kind // "oracle"' .claude-plugin/marketplace.json)
-            url=$(jq -r '.mcpServers | to_entries[0].value.url' "$dir/.mcp.json")
-            title=$(head -1 "$dir/README.md" | sed 's/^# //')
-            version=$(jq -r .version "$dir/.claude-plugin/plugin.json")
-            bun scripts/add-plugin.ts --kind "${kind:-oracle}" --name "$name" --title "$title" --url "$url" --version "$version" >/dev/null
-          done
-          git diff --exit-code
+          # Re-generate every plugin from template/<kind>/ (the kind and the --package/--major/--network
+          # flags come from its catalog entry's metadata, an entry without metadata.kind is an oracle,
+          # and --url is read back from the plugin's .mcp.json), rewrite the README table, and fail on
+          # ANY change, including untracked generated files, which `git diff` would miss.
+          bun scripts/regenerate.ts
+          status=$(git status --porcelain)
+          if [ -n "$status" ]; then
+            echo "Generated files are out of date. Run 'bun scripts/regenerate.ts' and commit:"
+            echo "$status"
+            git diff
+            exit 1
+          fi
+      - name: Changed plugins carry a new version
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_REF: ${{ github.base_ref }}
+        run: bun scripts/check-versions.ts "origin/$BASE_REF"
       - name: No secrets in the tree
         run: |
-          ! grep -rInE 'eo_(live|test)_[0-9a-z]{8}_|sk_(live|test)_|BEGIN [A-Z ]*PRIVATE KEY|xox[abp]-' --exclude-dir=.git .
+          ! grep -rInE 'eo_(live|test)_[0-9a-z]{8}_|sk_(live|test)_|BEGIN [A-Z ]*PRIVATE KEY|xox[abp]-' --exclude-dir=.git --exclude-dir=node_modules .
