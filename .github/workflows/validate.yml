@@ -27,13 +27,15 @@ jobs:
         run: bun run validate
       - name: Generated plugins match the template
         run: |
-          # Re-generate every listed oracle plugin from template/ and fail on any drift.
+          # Re-generate every plugin from template/<kind>/ and fail on any drift. The kind is the
+          # catalog entry's metadata.kind; entries without one are oracles.
           for dir in plugins/*/; do
             name=$(basename "$dir")
+            kind=$(jq -r --arg n "$name" '.plugins[] | select(.name == $n) | .metadata.kind // "oracle"' .claude-plugin/marketplace.json)
             url=$(jq -r '.mcpServers | to_entries[0].value.url' "$dir/.mcp.json")
             title=$(head -1 "$dir/README.md" | sed 's/^# //')
             version=$(jq -r .version "$dir/.claude-plugin/plugin.json")
-            bun scripts/add-oracle.ts --name "$name" --title "$title" --url "$url" --version "$version" >/dev/null
+            bun scripts/add-plugin.ts --kind "${kind:-oracle}" --name "$name" --title "$title" --url "$url" --version "$version" >/dev/null
           done
           git diff --exit-code
       - name: No secrets in the tree
