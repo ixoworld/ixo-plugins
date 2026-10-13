@@ -33,7 +33,7 @@ click, and send money.
 | Name in this skill | What runs | Status |
 | --- | --- | --- |
 | `eval-oracle` | `npx -y ./ixo-eval-oracle.tgz` | Not on npm yet: IXO sends the file; it must be in the folder you run in. When published: `npx -y @ixo/eval-oracle`. |
-| `installer` | `npx -y ./ixo-payouts-facilitator-0.1.0.tgz` | **Pending S4** (ixo-pay-facilitator PR #118): IXO sends the file. Every command is idempotent, dry-runs without `--yes` where it changes things, prints its JSON result on the last stdout line, and never prints a secret. Exit 0 ok, 1 failed, 2 usage error. |
+| `installer` | `npx --yes file:$PWD/ixo-payouts-facilitator-0.1.0.tgz` | **Pending S4** (ixo-pay-facilitator PR #118): IXO sends the file; run from the folder it is in. The `file:` path must be absolute (a relative `./…tgz` fails inside a workspace), and npx caches per path, so a re-packed tarball needs a new filename. Every command is idempotent, dry-runs without `--yes` where it changes things, prints its JSON result on the last stdout line, and never prints a secret. Exit 0 ok, 1 failed, 2 usage error. |
 | `wrangler` | `npx -y wrangler` | Cloudflare's own CLI. |
 | `stripe` | the Stripe CLI (`brew install stripe/stripe-cli/stripe` on macOS; ask before installing) | Only for way C. |
 | IXO's Openhands oracle | its URL and DID per network | **Pending S3**: not published yet. Until then only "your own oracle" can finish step 8. |
