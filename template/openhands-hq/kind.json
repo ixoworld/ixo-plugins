@@ -1,5 +1,5 @@
 {
-  "$comment": "Kind-level defaults for `bun run add-plugin --kind openhands-hq`: a LOCAL kind for Claude Code / Cowork. The plugin is one interview skill that runs the company-onboarding steps as ordinary terminal commands (eval-oracle CLI, the payouts facilitator installer, wrangler, the Stripe CLI), plus the existing @ixo/openhands-mcp server, declared exactly as the openhands kind declares it. No server of its own. Placeholders: {{TITLE}} {{SERVER}} {{DESCRIPTION}} {{PACKAGE}} {{MAJOR}} {{NETWORK}}.",
+  "$comment": "Kind-level defaults for `add-plugin --kind openhands-hq`: a LOCAL kind for Claude Code / Cowork. The plugin is one interview skill that runs the company-onboarding steps as ordinary terminal commands (eval-oracle CLI, the payouts facilitator installer, wrangler, the Stripe CLI), plus the existing @ixo/openhands-mcp server, declared exactly as the openhands kind declares it. No server of its own. Placeholders: {{TITLE}} {{SERVER}} {{DESCRIPTION}} {{PACKAGE}} {{MAJOR}} {{NETWORK}}.",
   "description": "{{TITLE}}: set up your company on Openhands — an organisation on chain, a way to pay workers, an oracle and a first ask, with Claude doing every step and telling you exactly what to click.",
   "keywords": ["ixo", "openhands", "onboarding", "organisation", "payouts", "oracle", "mcp"],
   "serverName": "openhands-network",
