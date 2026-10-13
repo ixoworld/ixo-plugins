@@ -1,0 +1,40 @@
+name: List my plugin
+description: Ask for an IXO service to be added to the marketplace.
+labels: [new-plugin]
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind
+      description: Pick the closest kind, or Other if none fits (a new kind is a template, see CONTRIBUTING.md).
+      options: [Oracle, Memory, Openhands, Other]
+    validations:
+      required: true
+  - type: dropdown
+    id: runs
+    attributes:
+      label: Where does the MCP server run
+      options: [Hosted (a URL), Local (a command the app starts)]
+    validations:
+      required: true
+  - type: input
+    id: endpoint
+    attributes:
+      label: MCP endpoint or command
+      description: For a hosted service, its URL. For a local one, the package and major version. Never paste a key or token.
+      placeholder: https://your-service.example/v1/mcp  or  @scope/package@1
+    validations:
+      required: true
+  - type: input
+    id: network
+    attributes:
+      label: Network
+      placeholder: devnet / testnet / mainnet
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What it does
+    validations:
+      required: true

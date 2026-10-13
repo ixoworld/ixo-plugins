@@ -6,7 +6,14 @@ body:
     id: plugin
     attributes:
       label: Plugin
-      placeholder: ixo-swiftdrop-devnet
+      placeholder: ixo-openhands
+    validations:
+      required: true
+  - type: dropdown
+    id: runs
+    attributes:
+      label: Hosted connector or local plugin
+      options: [Hosted (a URL), Local (a command on my machine), Not sure]
     validations:
       required: true
   - type: dropdown

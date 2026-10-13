@@ -1,0 +1,19 @@
+{
+  "name": "ixo-openhands-testnet",
+  "version": "1.0.0",
+  "description": "Read the open asks on the Openhands Network and see how it works, read-only: Openhands Network (testnet) needs no sign-in and nothing installed.",
+  "author": {
+    "name": "IXO",
+    "url": "https://ixo.world"
+  },
+  "homepage": "https://github.com/ixoworld/ixo-plugins/tree/main/plugins/ixo-openhands-testnet",
+  "repository": "https://github.com/ixoworld/ixo-plugins",
+  "keywords": [
+    "ixo",
+    "openhands",
+    "marketplace",
+    "tasks",
+    "read-only",
+    "mcp"
+  ]
+}
