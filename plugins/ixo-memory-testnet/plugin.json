@@ -1,0 +1,19 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "ixo-memory-testnet",
+  "version": "0.1.0",
+  "description": "Your IXO Companion's memory — remember, recall and import what matters, with your IXO sign-in. Testnet (test network).",
+  "author": {
+    "name": "IXO",
+    "url": "https://ixo.world"
+  },
+  "homepage": "https://github.com/ixoworld/ixo-plugins/tree/main/plugins/ixo-memory-testnet",
+  "repository": "https://github.com/ixoworld/ixo-plugins",
+  "keywords": [
+    "ixo",
+    "memory",
+    "knowledge-graph",
+    "recall",
+    "mcp"
+  ]
+}
