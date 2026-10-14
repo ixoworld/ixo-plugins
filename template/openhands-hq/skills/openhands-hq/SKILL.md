@@ -79,8 +79,9 @@ Ask, one question at a time, and write the answers in your notes:
    organisation), so they must pick the final name now and confirm it.
 2. What work it wants done (a sentence or two).
 3. How it pays workers, one of:
-   - **A. On chain**: the reward is locked on IXO when the ask is posted and paid by the chain.
-     Nothing else to set up.
+   - **A. On chain**: the organisation's account funds the ask's deed when the ask is posted (the
+     reward for every answer, plus the checker fees), and the chain pays on approval. Nothing else to
+     set up.
    - **B. USDC on Base**: the company's own payouts service sends USDC from a wallet it controls.
    - **C. Stripe**: the company's own payouts service sends Stripe transfers from its Stripe balance.
 4. Which oracle checks the work: **IXO's** oracle, or **your own** (you will help build it).
@@ -124,19 +125,22 @@ Check: `entityDid` starts with `did:ixo:entity:`.
 Run `eval-oracle org balance --entity <org DID> --network <network>`. It prints
 `{ adminAddress, balances: [{denom, amount}] }`.
 
-Tell the person the address and what it needs:
+Tell the person the address and what it needs. The organisation's account pays for its asks, never
+the person's own wallet. It holds the reward coin (PAY on devnet and testnet, Noble USDC on mainnet)
+plus the fee coin (also PAY on devnet and testnet, USDC on mainnet), so on each network it is one coin:
 
-- **Checker fees in PAY** (USDC on mainnet): the oracle is paid per check from this account, on
+- **Checker fees** (PAY; USDC on mainnet): the oracle is paid per check from this account, on
   every way (A, B and C), at the price on its card ("1 PAY per check" means 1 PAY). Fund the price ×
-  the number of answers of the first ask. Never fund fees in IXO: an ask whose organisation lacks the
-  PAY is refused before anything is signed ("<Org> needs N PAY for reviews"). If the oracle's price
-  is 0, skip the fee funding and say why (nothing is charged per check).
-- **Rewards**, only for way A, in the reward currency (IXO on devnet and testnet, USDC on mainnet),
-  never PAY: the rewards of the first ask (reward × number of answers).
+  the number of answers of the first ask. If the oracle's price is 0, skip the fee funding and say
+  why (nothing is charged per check).
+- **Rewards**, only for way A (PAY; USDC on mainnet): the rewards of the first ask (reward × number
+  of answers). When the ask is posted, the organisation's account sends the rewards and the fees into
+  the ask's deed in one transaction, and the deed pays each approved answer. Fund both; an ask whose
+  organisation is short is refused before anything is signed ("<Org> needs N PAY for rewards and M
+  for reviews; it holds X PAY").
 
 On devnet and testnet the money is test money: IXO hands out PAY on request (ask IXO, and wait for
-it), and IXO comes from `https://faucet.devnet.ixo.earth` on devnet. On mainnet, explain that USDC
-must first be moved onto IXO, and wait while they do it.
+it). On mainnet, explain that USDC must first be moved onto IXO, and wait while they do it.
 
 Check: run the balance command again until the balance covers what you said (nothing to check
 if there was nothing to fund). Never go on without it.
@@ -372,8 +376,9 @@ It needs the Openhands tools connected as the account from step 2, so **do this 
    oracle's signing address from the chain (the oracle entity's `#orz` grantee) and refuses an address
    that does not match the signer. If it says the oracle's signing wallet could not be confirmed,
    wait and retry later; do not work around it. The preview reads "Review fee: N PAY per check, paid
-   by <Org>"; if it refuses with "<Org> needs N PAY for reviews", fund that PAY as in step 4, then
-   preview again. If it refuses with "sign in with eval-oracle login first", the session from step 2
+   by <Org>", and for way A it says the organisation's account funds the rewards; nothing comes from
+   the person's wallet. If it refuses with "<Org> needs N PAY for rewards and M for reviews" (or "for
+   reviews" alone on ways B and C), fund that as in step 4, then preview again. If it refuses with "sign in with eval-oracle login first", the session from step 2
    is gone or expired: run step 2 again (the ask's documents upload as the person's own Matrix
    account), then preview again.
 4. Call `post_ask` with `confirm` set to that exact total. Write the link it returns in the notes
