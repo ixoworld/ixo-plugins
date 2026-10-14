@@ -259,11 +259,21 @@ Steps 1–4 below apply to the chosen oracle, with `<kit>` = its URL.
 
 **Their own oracle** (once IXO has built it, or self-serve when available): run `eval-oracle init <folder> --name <oracle name>` (not in the bundle yet: if the command is missing, stop and say so), then follow the skills it
 puts in that folder to build, deploy and register it, asking the person about the checks it must
-make. Then do 1–4 above with `<kit>` = its URL. Then open
+make. **Before linking**, register the oracle with the decision engine: run
+`eval-oracle engine register --network <network>` from the oracle's own project folder, with its keys
+(when IXO builds the oracle for the company, IXO does this; ask whether it is done and do not guess).
+Registering needs an active decision-engine subscription for the oracle's owner; without one it fails
+with `402 NO_SUBSCRIPTION`: tell the person the owner must subscribe, then run it again. Then do 1–4
+above with `<kit>` = its URL. Then open
 `<console>/billing/credits?topup=1&from=openhands` and say: "This is where your oracle's decision
 fees are paid. Top up with a card or with PAY." Check: the person says the top-up went through.
 
 Write the oracle's DID in the notes.
+
+Troubleshooting: `api source link` failing with `VALIDATION — Company link: <did:web> is not a
+registered oracle` means the oracle was never registered with the decision engine: run
+`eval-oracle engine register` as above, then link again. `eval-oracle api source create --help` is not
+supported; run `eval-oracle help` to see the flags.
 
 The Console's "Get started" checklist (get an API key, send an example claim) does not apply to
 Openhands companies: steps 10 to 12 replace it. Tell the person to ignore it.
