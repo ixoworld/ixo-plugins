@@ -307,13 +307,37 @@ ask (IXO's managed oracles, such as OpenHands and Spongy). Check: `curl -s <orac
 this step, the fee is escrowed as in step 4.
 
 The payer is the organisation's **owner** (the chain owner of the organisation entity, the account from
-step 2 that created it), and only they can turn it on:
+step 2 that created it), and only they can turn it on. It needs the organisation's Decision API source
+on that oracle (step 8). It signs one standing permission: each check is paid from the owner's own
+Console credits at the oracle's price (`reviewBilling.pricePerReview`), up to a cap. The default cap is
+**1,000 PAY, cumulative for its lifetime** (not per month). Offer the person both ways and let them pick:
 
-1. Open the Decision Console at Billing › review billing (`<console>/billing`) signed in as the owner.
-2. Say: "Turn on 'Pay for reviews' and sign once. Each check of your company's asks is then billed
-   from your own Console credits (N PAY each, the oracle's price). Keep credits topped up." The price is
-   `reviewBilling.pricePerReview` from `/v1/info`.
-3. Check: the person says it shows as on. Write "review billing: on" in the notes.
+- **In Claude Code** (you run it, as the owner's `eval-oracle login`):
+  1. Dry run first: `eval-oracle api review-billing enable --source <source id> --kit <oracle URL>`
+     (add `--cap <PAY>` for another cap). It signs nothing and prints what it would sign: the cap, the
+     oracle, the payer. Show it to the person and get a yes.
+  2. Then the same command with `--yes`. It signs, stores it on the oracle and keeps a copy in the UCAN
+     store so it can be revoked later.
+  3. Check: `eval-oracle api review-billing status --source <source id> --kit <oracle URL>` says `active`.
+- **In OpenHands** (the owner clicks): open `<OpenHands site>/org/<org DID>/settings#pay-for-reviews`
+  signed in with the owner's IXO account (not a passkey: a passkey session cannot sign this), and click
+  **Allow reviews to be paid from my credits**. It shows the price per review and the cap (1,000 PAY,
+  editable). Check: the section says "On" with the cap.
+
+(The Decision Console's Billing › Pay for reviews does the same, for an owner who prefers it.)
+
+Say: "Each check of your company's asks is billed from your own Console credits (N PAY each), up to
+1,000 PAY in total. Keep credits topped up." Write "review billing: on, cap <cap> PAY" in the notes.
+
+**Raising the cap** later: run `enable` again with a higher `--cap` (dry run, then `--yes`), or click
+**Raise cap** on the OpenHands settings page. The new permission replaces the old one and its cap counts
+from zero. **Turning it off**: `eval-oracle api review-billing disable --source <source id> --kit <oracle URL>`
+(dry run, then `--yes`) or **Turn off** on the settings page; both also revoke it in the UCAN store.
+New reviews then pause until it is on again.
+
+Anyone (including claude.ai or ChatGPT through the hosted Openhands tools) can call the
+`review_billing_status` tool with the organisation's DID: it says which oracles bill per check, the
+price, and these ways in. It never signs.
 
 Nothing to set on the organisation for this: when the oracle bills per check, every ask it judges posts
 with no checker fee in escrow.
@@ -417,8 +441,10 @@ It needs the Openhands tools connected as the account from step 2, so **do this 
    is gone or expired: run step 2 again (the ask's documents upload as the person's own Matrix
    account), then preview again.
 4. Call `post_ask` with `confirm` set to that exact total. Write the link it returns in the notes
-   and share it. If its answer adds "<Org>'s owner needs to turn on review billing in the Decision
-   Console", do step 8b, then nothing else: the oracle registers the ask on its own once billing is on.
+   and share it. If its answer adds "<Org>'s owner needs to turn on Pay for reviews, in <Org>'s
+   OpenHands settings or the Decision Console", do step 8b, then nothing else: the oracle registers the
+   ask on its own once billing is on. The same goes for "Reviews paused: ... renew Pay for reviews"
+   (step 8b with a higher cap); "top up ... Console credits" means the owner buys credits.
    "It will retry on its own" needs nothing from you either. Every ask posted for a company is a deed ask: the deed's `requestedBy` links to the
    organisation, and the organisation's `request` links back to the deed. The old shape
    (collection.entity = the organisation) is removed, and the facilitator refuses it
