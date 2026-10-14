@@ -38,14 +38,18 @@ newer. If it is missing or older, help them install it from `https://nodejs.org`
 | Name in this skill | What runs | Status |
 | --- | --- | --- |
 | `eval-oracle` | `npx --yes file:$PWD/ixo-eval-oracle-cli-0.2.0-draft.1.tgz` | Not on npm yet: IXO sends the file (S3's node-only bundle, the second path `./scripts/pack-local.sh` prints in eval-oracle; one file, no dependencies, installs in about 2 s); run from the folder it is in. Absolute `file:` path; a re-packed tarball needs a new filename. Covers `login`, `logout`, `org create`, `org balance`, `api sources`, `api source create`, `api source link`, `api key create`. |
-| `installer` | `npx --yes file:$PWD/ixo-payouts-facilitator-0.1.0.tgz` | **Pending S4** (ixo-pay-facilitator PR #118): IXO sends the file; run from the folder it is in. The `file:` path must be absolute (a relative `./…tgz` fails inside a workspace), and npx caches per path, so a re-packed tarball needs a new filename. Every command is idempotent, dry-runs without `--yes` where it changes things, prints its JSON result on the last stdout line, and never prints a secret. Exit 0 ok, 1 failed, 2 usage error. |
+| `installer` | `npx --yes file:$PWD/ixo-payouts-facilitator-0.1.0-<commit>.tgz` | Not on npm yet: IXO sends the file; run from the folder it is in. It must be packed from ixo-pay-facilitator `main` at `cc0cfe6` (#119) or later; an older one lacks fixes this skill needs. Name it with the version and short commit (the `<commit>` above), because npx caches per path and a re-packed tarball under the same name runs the old build. The `file:` path must be absolute (a relative `./…tgz` fails inside a workspace). Every command is idempotent, dry-runs without `--yes` where it changes things, prints its JSON result on the last stdout line, and never prints a secret. Exit 0 ok, 1 failed, 2 usage error. |
 | `wrangler` | `npx -y wrangler` | Cloudflare's own CLI. |
 | `stripe` | the Stripe CLI (`brew install stripe/stripe-cli/stripe` on macOS; ask before installing) | Only for way C. |
-| IXO's Openhands oracle | its URL and DID per network | **Pending S3**: not published yet. Until then only "your own oracle" can finish step 8. |
+| IXO's Openhands oracle | its URL and DID per network | **Pending S3**: not published yet. Until then only "your own oracle" can finish step 8. If `sources/list-organisation` answers 401 "unknown capabilities", the oracle is older than the 0.2.0 CLI and rejects its sign-in: tell the person it must be updated first, and stop. |
 | Console | devnet `https://decision-console.devnet.ixo.earth`, testnet `https://decision-console.testnet.ixo.earth`, mainnet `https://decision-console.ixo.earth` | |
 
 Wherever a step below says `eval-oracle …` or `installer …`, run the command from this table with
 those arguments. Always pass `--network <network>` to `eval-oracle`.
+
+**Agent and test runs.** A test run with no person to click through AuthHub may sign in with a scratch
+`HOME` (so it never touches a real session) and the `ixo-test-login` skill. A real company run never
+does: the person signs in themselves, with their own account.
 
 Keep your notes (answers and the ids the steps print, **never secrets**) in
 `~/.ixo/openhands-hq-<network>.json`. Read it at the start: it tells you what was already answered.
@@ -67,7 +71,9 @@ this plugin (`connect_account`, `my_status`, `post_ask`). Step 11 deletes the se
 
 Ask, one question at a time, and write the answers in your notes:
 
-1. The company's name, and a link to its logo (optional).
+1. The company's name, and a link to its logo (optional). Warn them: the name is how the
+   organisation is found, and renaming is not supported yet (a new name makes a second
+   organisation), so they must pick the final name now and confirm it.
 2. What work it wants done (a sentence or two).
 3. How it pays workers, one of:
    - **A. On chain**: the reward is locked on IXO when the ask is posted and paid by the chain.
@@ -77,7 +83,9 @@ Ask, one question at a time, and write the answers in your notes:
 4. Which oracle checks the work: **IXO's** oracle, or **your own** (you will help build it).
 5. Which network: **devnet** (test run), **testnet** (trial, play money) or **mainnet** (live, real
    money). If unsure, devnet.
-6. An email address for the oracle to contact the company.
+6. An email address for the oracle to contact the company. It must be a real inbox the company
+   reads (not a made-up or personal-test address). Ask for it explicitly and read it back to
+   the person to confirm.
 7. Way C only: the country the company's Stripe account is in (a two-letter code, like `US` or `DE`).
 
 Check: all the answers that apply are in the notes.
@@ -88,7 +96,11 @@ and say "carry on". (Devnet in the Openhands tools: **pending S6 O1–O5**.)
 
 ### 2. Sign in to IXO
 
-Check: `~/.ixo/publish-session-<network>.json` exists. If it does, skip.
+Check: `~/.ixo/publish-session-<network>.json` exists **and is the person's**. Read the `address`/DID
+in it (never print the key) and compare with the address in your notes, or with the person being
+onboarded (ask them to confirm it if the notes are empty). If it matches, skip. If it is someone
+else's, do not reuse it: run `eval-oracle logout --network <network>` if the person agrees it is
+safe to remove it, or ask them what to do. Never sign as another person.
 
 Act: run `eval-oracle login --network <network>`. A page opens. Say: "Sign in with your email, then
 type your PIN. When the page says you can close it, tell me." The command prints `logged in as
@@ -111,14 +123,16 @@ Run `eval-oracle org balance --entity <org DID> --network <network>`. It prints
 
 Tell the person the address and what it needs:
 
-- **Decision fees**, always: the oracle is paid per decision from this account, in the network's
-  currency (`uixo` on devnet and testnet, USDC on mainnet).
+- **Decision fees**: the oracle is paid per decision from this account, in the network's
+  currency (`uixo` on devnet and testnet, USDC on mainnet). If the oracle's price is 0, skip the
+  fee funding and say why (nothing is charged per decision); still fund rewards for way A.
 - **Rewards**, only for way A: the rewards of the first ask (reward × number of answers).
 
 On devnet and testnet the money is test money (`https://faucet.devnet.ixo.earth` on devnet). On
 mainnet, explain that USDC must first be moved onto IXO, and wait while they do it.
 
-Check: run the balance command again until the balance covers what you said. Never go on without it.
+Check: run the balance command again until the balance covers what you said (nothing to check
+if there was nothing to fund). Never go on without it.
 
 ### 5. Payouts facilitator on the company's Cloudflare (ways B and C)
 
@@ -128,9 +142,11 @@ notes. `<rails>` is `stripe` (way C) or `usdc_base` (way B).
 
 1. Run `npx -y wrangler whoami`. If it says you are not logged in, run `npx -y wrangler login`.
    A page opens. Say: "If Cloudflare asks you to sign in or make a free account, do that. Then click
-   **Allow**." Run `whoami` again to check.
+   **Allow**." Run `whoami` again to check. If it lists several accounts, ask which one the
+   company uses and set `CLOUDFLARE_ACCOUNT_ID=<id>` for every `wrangler` and `installer` command
+   (or pass `--account-id <id>` to the installer).
 2. Check: if the notes hold the facilitator URL and
-   `installer trust-check --url <facilitator url> --org <org DID> --network <network> --name <worker>`
+   `installer trust-check --url <facilitator url> --org <org DID> --network <network>`
    exits 0, skip to step 6 (way C) or step 7 (way B).
 3. Way C only: do step 6 parts 1–3 now, so the restricted key is on the clipboard.
 4. Deploy (`--yes` applies it; without it, it only shows the plan):
@@ -146,8 +162,9 @@ notes. `<rails>` is `stripe` (way C) or `usdc_base` (way B).
 6. Run the same `deploy` command again (way C: without `STRIPE_SECRET_KEY` and `--company-country`;
    the installer keeps them), so the service's public identity names the facilitator entity that
    `anchor` made.
-7. Check: `installer trust-check --url <facilitator url> --org <org DID> --network <network> --name <worker>`
-   exits 0. If not, tell the person the `problems` it lists in plain words, and stop.
+7. Check: `installer trust-check --url <facilitator url> --org <org DID> --network <network>`
+   exits 0. Do not pass `--name` here: with it, the check also needs the payout wallet funded
+   (way B funds it in step 7). If not, tell the person the `problems` it lists in plain words, and stop.
 
 ### 6. Stripe (way C)
 
@@ -187,6 +204,8 @@ Step 5's deploy already made the payout wallet.
    Sepolia on devnet and testnet, Base on mainnet). Wait until they say it is sent.
 3. Check: run the same command again until `usdc.amount` covers the first ask's rewards and
    `eth.amount` is above 0.
+4. Now the full check: `installer trust-check --url <facilitator url> --org <org DID> --network <network> --name <worker>`
+   exits 0.
 
 ### 8. Oracle
 
@@ -253,6 +272,13 @@ Check: `~/.ixo/publish-session-<network>.json` no longer exists.
 3. Call `post_ask` **without** `confirm` and show the person the exact total and terms. Get a yes.
 4. Call `post_ask` with `confirm` set to that exact total. Write the link it returns in the notes
    and share it.
+5. Ways B and C, after every successful `post_ask` that carries `#payoutTerms` (off-chain rails),
+   register the ask's collection with the facilitator:
+   `installer asks register <collectionId> --url <facilitator origin> --network <network>`.
+   The facilitator origin comes from `#payoutTerms.facilitator`: `did:web:<host>` is
+   `https://<host>`. This is best-effort: if it fails or the command is missing (S4 is still building
+   it, so the tarball may not have it), say nothing alarming, the ask stands, and the
+   facilitator's one-minute chain scan picks the ask up anyway.
 
 Ways B and C: `post_ask` does not yet take a 0 on-chain reward with "paid in USDC on Base" or "paid
 by Stripe" (**pending S6 O1–O5**). Until it does, stop and tell the person this part is not ready.
