@@ -93,7 +93,7 @@ Check: all the answers that apply are in the notes.
 
 The Openhands tools run on the network in `OPENHANDS_NETWORK`. If `my_status` shows another
 network, tell the person to quit Claude, start it again with `OPENHANDS_NETWORK=<network> claude`,
-and say "carry on". (Devnet in the Openhands tools: **pending S6 O1–O5**.)
+and say "carry on". (Devnet in the Openhands tools: use the local openhands-mcp tarball from branch `s6/org-offchain-asks-on-shape`, see the command table.)
 
 ### 2. Sign in to IXO
 
