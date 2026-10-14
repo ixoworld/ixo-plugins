@@ -37,7 +37,7 @@ newer. If it is missing or older, help them install it from `https://nodejs.org`
 
 | Name in this skill | What runs | Status |
 | --- | --- | --- |
-| `eval-oracle` | `npx --yes file:$PWD/ixo-eval-oracle-cli-0.2.0-draft.1.tgz` | Not on npm yet: IXO sends the file (S3's node-only bundle, the second path `./scripts/pack-local.sh` prints in eval-oracle; one file, no dependencies, installs in about 2 s); run from the folder it is in. Absolute `file:` path; a re-packed tarball needs a new filename. Covers `login`, `logout`, `org create`, `org balance`, `api sources`, `api source create`, `api source link`, `api key create`. |
+| `eval-oracle` | `npx --yes file:$PWD/ixo-eval-oracle-cli-0.2.0-draft.1-6101910.tgz` | Not on npm yet: IXO sends the file (the node-only bundle, the second path `./scripts/pack-local.sh` prints in eval-oracle). It must be packed from eval-oracle `decisions-engine-via-api` at `6101910` (#177) or later; an older one lacks `api review-billing`. One file, no dependencies, installs in about 2 s; run from the folder it is in. Name it with the version and short commit (the `<commit>` above), because npx caches per path and a re-packed tarball under the same name runs the old build. Absolute `file:` path. Covers `login`, `logout`, `org create`, `org balance`, `api sources`, `api source create`, `api source link`, `api key create`, `api review-billing enable|status|disable`. |
 | `installer` | `npx --yes file:$PWD/ixo-payouts-facilitator-0.1.0-<commit>.tgz` | Not on npm yet: IXO sends the file; run from the folder it is in. It must be packed from ixo-pay-facilitator `main` at `cc0cfe6` (#119) or later; an older one lacks fixes this skill needs. Name it with the version and short commit (the `<commit>` above), because npx caches per path and a re-packed tarball under the same name runs the old build. The `file:` path must be absolute (a relative `./…tgz` fails inside a workspace). Every command is idempotent, dry-runs without `--yes` where it changes things, prints its JSON result on the last stdout line, and never prints a secret. Exit 0 ok, 1 failed, 2 usage error. |
 | Openhands tools (`openhands-mcp`) | the plugin's `openhands-network` server, started from `OPENHANDS_MCP_PACKAGE=file:/abs/path/ixo-openhands-mcp-0.0.0-development-<commit>.tgz claude` | Not published with what this skill needs yet (`set_payout_settings`, `create_campaign`, org asks as deeds, campaign asks, ask images): until IXO publishes, use a local tarball. Without `OPENHANDS_MCP_PACKAGE` the plugin runs the published `@ixo/openhands-mcp@1`, which lacks them. IXO packs it from openhands-network branch `s6/org-offchain-asks-on-shape`: `pnpm -C services/openhands-mcp build && c=$(git rev-parse --short HEAD) && npm pack ./services/openhands-mcp --pack-destination <dir> && mv <dir>/ixo-openhands-mcp-0.0.0-development.tgz <dir>/ixo-openhands-mcp-0.0.0-development-$c.tgz`. The commit in the name matters for the same reason as the installer's: npx caches per path. The path must be absolute. |
 | `wrangler` | `npx -y wrangler` | Cloudflare's own CLI. |
@@ -313,10 +313,10 @@ Console credits at the oracle's price (`reviewBilling.pricePerReview`), up to a 
 **1,000 PAY, cumulative for its lifetime** (not per month). Offer the person both ways and let them pick:
 
 - **In Claude Code** (you run it, as the owner's `eval-oracle login`):
-  1. Dry run first: `eval-oracle api review-billing enable --source <source id> --kit <oracle URL>`
+  1. Preview first (the default, no flag): `eval-oracle api review-billing enable --source <source id> --kit <oracle URL>`
      (add `--cap <PAY>` for another cap). It signs nothing and prints what it would sign: the cap, the
      oracle, the payer. Show it to the person and get a yes.
-  2. Then the same command with `--yes`. It signs, stores it on the oracle and keeps a copy in the UCAN
+  2. Then the same command with `--yes`, which is what signs. It signs, stores it on the oracle and keeps a copy in the UCAN
      store so it can be revoked later.
   3. Check: `eval-oracle api review-billing status --source <source id> --kit <oracle URL>` says `active`.
 - **In OpenHands** (the owner clicks): open `<OpenHands site>/org/<org DID>/settings#pay-for-reviews`
@@ -327,12 +327,13 @@ Console credits at the oracle's price (`reviewBilling.pricePerReview`), up to a 
 (The Decision Console's Billing › Pay for reviews does the same, for an owner who prefers it.)
 
 Say: "Each check of your company's asks is billed from your own Console credits (N PAY each), up to
-1,000 PAY in total. Keep credits topped up." Write "review billing: on, cap <cap> PAY" in the notes.
+1,000 PAY in total. Keep credits topped up." Tell them they get an email when 80% and again when 95% of the cap is used, so they can raise it in time.
+Write "review billing: on, cap <cap> PAY" in the notes.
 
 **Raising the cap** later: run `enable` again with a higher `--cap` (dry run, then `--yes`), or click
 **Raise cap** on the OpenHands settings page. The new permission replaces the old one and its cap counts
 from zero. **Turning it off**: `eval-oracle api review-billing disable --source <source id> --kit <oracle URL>`
-(dry run, then `--yes`) or **Turn off** on the settings page; both also revoke it in the UCAN store.
+(preview, then `--yes`) or **Turn off** on the settings page; both also revoke it in the UCAN store.
 New reviews then pause until it is on again.
 
 Anyone (including claude.ai or ChatGPT through the hosted Openhands tools) can call the
