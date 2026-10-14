@@ -39,7 +39,7 @@ newer. If it is missing or older, help them install it from `https://nodejs.org`
 | --- | --- | --- |
 | `eval-oracle` | `npx --yes file:$PWD/ixo-eval-oracle-cli-0.2.0-draft.1.tgz` | Not on npm yet: IXO sends the file (S3's node-only bundle, the second path `./scripts/pack-local.sh` prints in eval-oracle; one file, no dependencies, installs in about 2 s); run from the folder it is in. Absolute `file:` path; a re-packed tarball needs a new filename. Covers `login`, `logout`, `org create`, `org balance`, `api sources`, `api source create`, `api source link`, `api key create`. |
 | `installer` | `npx --yes file:$PWD/ixo-payouts-facilitator-0.1.0-<commit>.tgz` | Not on npm yet: IXO sends the file; run from the folder it is in. It must be packed from ixo-pay-facilitator `main` at `cc0cfe6` (#119) or later; an older one lacks fixes this skill needs. Name it with the version and short commit (the `<commit>` above), because npx caches per path and a re-packed tarball under the same name runs the old build. The `file:` path must be absolute (a relative `./…tgz` fails inside a workspace). Every command is idempotent, dry-runs without `--yes` where it changes things, prints its JSON result on the last stdout line, and never prints a secret. Exit 0 ok, 1 failed, 2 usage error. |
-| Openhands tools (`openhands-mcp`) | the plugin's `openhands-network` server, started from `OPENHANDS_MCP_PACKAGE=file:/abs/path/ixo-openhands-mcp-0.0.0-development-<commit>.tgz claude` | Not published with what this skill needs yet (`set_payout_settings`, org asks as deeds): until IXO publishes, use a local tarball. Without `OPENHANDS_MCP_PACKAGE` the plugin runs the published `@ixo/openhands-mcp@1`, which lacks them. IXO packs it from openhands-network branch `s6/org-offchain-asks-on-shape`: `pnpm -C services/openhands-mcp build && c=$(git rev-parse --short HEAD) && npm pack ./services/openhands-mcp --pack-destination <dir> && mv <dir>/ixo-openhands-mcp-0.0.0-development.tgz <dir>/ixo-openhands-mcp-0.0.0-development-$c.tgz`. The commit in the name matters for the same reason as the installer's: npx caches per path. The path must be absolute. |
+| Openhands tools (`openhands-mcp`) | the plugin's `openhands-network` server, started from `OPENHANDS_MCP_PACKAGE=file:/abs/path/ixo-openhands-mcp-0.0.0-development-<commit>.tgz claude` | Not published with what this skill needs yet (`set_payout_settings`, `create_campaign`, org asks as deeds, campaign asks, ask images): until IXO publishes, use a local tarball. Without `OPENHANDS_MCP_PACKAGE` the plugin runs the published `@ixo/openhands-mcp@1`, which lacks them. IXO packs it from openhands-network branch `s6/org-offchain-asks-on-shape`: `pnpm -C services/openhands-mcp build && c=$(git rev-parse --short HEAD) && npm pack ./services/openhands-mcp --pack-destination <dir> && mv <dir>/ixo-openhands-mcp-0.0.0-development.tgz <dir>/ixo-openhands-mcp-0.0.0-development-$c.tgz`. The commit in the name matters for the same reason as the installer's: npx caches per path. The path must be absolute. |
 | `wrangler` | `npx -y wrangler` | Cloudflare's own CLI. |
 | `stripe` | the Stripe CLI (`brew install stripe/stripe-cli/stripe` on macOS; ask before installing) | Only for way C. |
 | IXO's Openhands oracle | devnet: `https://openhands-oracle.devnet.ixo.earth`, `did:web:openhands-oracle.devnet.ixo.earth` | Live on devnet with the API lane. Testnet and mainnet: not published yet (only "your own oracle" finishes step 8 there). A 401 "unknown capabilities" means the oracle is outdated (older than the 0.2.0 CLI): tell the person it must be updated, and stop. |
@@ -369,10 +369,22 @@ It needs the Openhands tools connected as the account from step 2, so **do this 
 ### 12. First ask
 
 1. Draft it with the person: the task in their words (12–300 characters), the reward, how many
-   answers, how many days, and where, if it must be done in a place (`"lat,lon"`).
+   answers, how many days, and where, if it must be done in a place (`"lat,lon"`). Ask for a picture
+   for the ask too (optional): a png, jpg or webp of at most 5 MB, as a file path on this machine or an
+   https URL. Pass it as `post_ask` `image`; it uploads as the person and becomes the ask's picture.
 2. Check: if your notes already hold the first ask's link, share it and stop.
-3. Call `post_ask` **without** `confirm` and show the person the exact total and terms. Get a yes.
-   Pass only the oracle's DID (the one chosen in step 8), never an address: `post_ask` reads the
+   **A campaign of its own** (the company checks its asks with its own rubric, as a cleaning or
+   brand-test campaign does): if your notes already hold its campaign DID, skip to step 3. Otherwise
+   call `create_campaign` with its `title`, `description`, `tag` (lowercase, dashes) and `rubric` (the
+   path to its rubric JSON, or the JSON itself), **without** `confirm`. Show the preview: it is minted
+   and owned by the connected account from step 10, never by the Openhands key. If it refuses with
+   "connect_account first" or "reconnect needed", redo step 10. Get a yes, call it again with the same
+   values and `confirm: true`, and write the campaign DID it returns in the notes. Then pass
+   `campaign` = that DID to every `post_ask` in this campaign: the deed is classed under it and
+   `partOf` it, and checked by its shared rubric.
+3. Call `post_ask` **without** `confirm` (with `campaign` and `image` when you have them) and show
+   the person the exact total and terms. Get a yes.
+   Pass only the oracle's entity DID (the one chosen in step 8), never an address: `post_ask` reads the
    oracle's signing address from the chain (the oracle entity's `#orz` grantee) and refuses an address
    that does not match the signer. If it says the oracle's signing wallet could not be confirmed,
    wait and retry later; do not work around it. The preview reads "Review fee: N PAY per check, paid
