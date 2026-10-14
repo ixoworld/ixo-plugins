@@ -133,7 +133,9 @@ on mainnet it is two, PAY and USDC.
 - **Checker fees** (PAY on every network, mainnet included): the oracle is paid per check from this
   account, on every way (A, B and C), at the price on its card ("1 PAY" means 1 PAY). Fund the price ×
   the number of answers of the first ask. If the oracle's price is 0, skip the fee funding and say
-  why (nothing is charged per check).
+  why (nothing is charged per check). If the oracle bills per check from Console credits (step 8b:
+  IXO's managed oracles, such as OpenHands and Spongy, do), skip the fee funding too: nothing is
+  escrowed for reviews; the organisation's owner pays each check from their own Console credits.
 - **Rewards**, only for way A (PAY on devnet and testnet; USDC on mainnet): the rewards of the first ask (reward × number
   of answers). When the ask is posted, the organisation's account sends the rewards and the fees into
   the ask's deed in one transaction, and the deed pays each approved answer. Fund both; an ask whose
@@ -297,6 +299,25 @@ Openhands companies: steps 10 to 12 replace it. Tell the person to ignore it.
 The Console may say "Allowed protocols: none / every claim is refused". That applies only to claims
 sent over the Decision API, not to Openhands asks, so you can ignore it for Openhands.
 
+### 8b. Review billing (an oracle that bills per check)
+
+Some oracles bill each check to the payer's Decision Console credits instead of a checker fee held in the
+ask (IXO's managed oracles, such as OpenHands and Spongy). Check: `curl -s <oracle URL>/v1/info` shows
+`"reviewBilling": {"mode": "x402", ...}`. Anything else (no `reviewBilling`, or `"mode": "escrow"`): skip
+this step, the fee is escrowed as in step 4.
+
+The payer is the organisation's **owner** (the chain owner of the organisation entity, the account from
+step 2 that created it), and only they can turn it on:
+
+1. Open the Decision Console at Billing › review billing (`<console>/billing`) signed in as the owner.
+2. Say: "Turn on 'Pay for reviews' and sign once. Each check of your company's asks is then billed
+   from your own Console credits (N PAY each, the oracle's price). Keep credits topped up." The price is
+   `reviewBilling.pricePerReview` from `/v1/info`.
+3. Check: the person says it shows as on. Write "review billing: on" in the notes.
+
+Nothing to set on the organisation for this: when the oracle bills per check, every ask it judges posts
+with no checker fee in escrow.
+
 ### 9. Trust and limits on the facilitator (ways B and C)
 
 Do this **before the first ask**. Tell the person two things: claims checked by an oracle the
@@ -389,13 +410,16 @@ It needs the Openhands tools connected as the account from step 2, so **do this 
    oracle's signing address from the chain (the oracle entity's `#orz` grantee) and refuses an address
    that does not match the signer. If it says the oracle's signing wallet could not be confirmed,
    wait and retry later; do not work around it. The preview reads "Review fee: N PAY per check, paid
-   by <Org>", and for way A it says the organisation's account funds the rewards; nothing comes from
-   the person's wallet. If it refuses with "<Org> needs N PAY for rewards and M for reviews" (or "for
+   by <Org>" (or, for an oracle that bills per check, step 8b, "Reviews billed per check from <Org>'s
+   owner's Console credits (N PAY each)": nothing is escrowed for reviews), and for way A it says the
+   organisation's account funds the rewards; nothing comes from the person's wallet. If it refuses with "<Org> needs N PAY for rewards and M for reviews" (or "for
    reviews" alone on ways B and C), fund that as in step 4, then preview again. If it refuses with "sign in with eval-oracle login first", the session from step 2
    is gone or expired: run step 2 again (the ask's documents upload as the person's own Matrix
    account), then preview again.
 4. Call `post_ask` with `confirm` set to that exact total. Write the link it returns in the notes
-   and share it. Every ask posted for a company is a deed ask: the deed's `requestedBy` links to the
+   and share it. If its answer adds "<Org>'s owner needs to turn on review billing in the Decision
+   Console", do step 8b, then nothing else: the oracle registers the ask on its own once billing is on.
+   "It will retry on its own" needs nothing from you either. Every ask posted for a company is a deed ask: the deed's `requestedBy` links to the
    organisation, and the organisation's `request` links back to the deed. The old shape
    (collection.entity = the organisation) is removed, and the facilitator refuses it
    (`NOT_DEED_ASK`).
