@@ -8,7 +8,7 @@
     "claude": {
       "type": "stdio",
       "command": "npx",
-      "args": ["-y", "{{PACKAGE}}@{{MAJOR}}"],
+      "args": ["-y", "${OPENHANDS_MCP_PACKAGE:-{{PACKAGE}}@{{MAJOR}}}"],
       "env": {
         "NEXT_PUBLIC_CHAIN_NETWORK": "${OPENHANDS_NETWORK:-{{NETWORK}}}"
       }

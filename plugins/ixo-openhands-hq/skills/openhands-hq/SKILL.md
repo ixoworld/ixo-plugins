@@ -365,8 +365,9 @@ Check: `~/.ixo/publish-session-<network>.json` no longer exists.
    it, so the tarball may not have it), say nothing alarming, the ask stands, and the
    facilitator's one-minute chain scan picks the ask up anyway.
 
-Ways B and C: `post_ask` does not yet take a 0 on-chain reward with "paid in USDC on Base" or "paid
-by Stripe" (**pending S6 O1–O5**). Until it does, stop and tell the person this part is not ready.
+Ways B and C: off-chain asks (a 0 on-chain reward, "paid in USDC on Base" or "paid by Stripe") are
+supported on openhands-network branch `s6/org-offchain-asks-on-shape`, through the local
+openhands-mcp tarball (`OPENHANDS_MCP_PACKAGE`, see the command table). Use it for these asks.
 Never post a B or C ask with an on-chain reward: the worker would be paid twice.
 
 After this, the person posts more asks just by talking to you, with the Openhands tools.
