@@ -259,12 +259,17 @@ Steps 1–4 below apply to the chosen oracle, with `<kit>` = its URL.
 
 **Their own oracle** (once IXO has built it, or self-serve when available): run `eval-oracle init <folder> --name <oracle name>` (not in the bundle yet: if the command is missing, stop and say so), then follow the skills it
 puts in that folder to build, deploy and register it, asking the person about the checks it must
-make. **Before linking**, register the oracle with the decision engine: run
-`eval-oracle engine register --network <network>` from the oracle's own project folder, with its keys
-(when IXO builds the oracle for the company, IXO does this; ask whether it is done and do not guess).
-Registering needs an active decision-engine subscription for the oracle's owner; without one it fails
-with `402 NO_SUBSCRIPTION`: tell the person the owner must subscribe, then run it again. Then do 1–4
-above with `<kit>` = its URL. Then open
+make. **Before linking**, two things, in this order (when IXO builds the oracle for the company, IXO
+does both; ask whether they are done and do not guess):
+
+- The oracle's **owner** (the account that made the engine delegation) buys credits at Decision
+  Console › Billing › Credits (Stripe, not the Qi portal). That first purchase creates the
+  decision-engine subscription.
+- Register the oracle with the decision engine: run `eval-oracle engine register --network <network>`
+  from the oracle's own project folder, with its keys. Without the subscription it fails with
+  `402 NO_SUBSCRIPTION`: tell the person the owner must buy credits as above, then run it again.
+
+Then do 1–4 above with `<kit>` = its URL. Then open
 `<console>/billing/credits?topup=1&from=openhands` and say: "This is where your oracle's decision
 fees are paid. Top up with a card or with PAY." Check: the person says the top-up went through.
 
@@ -272,8 +277,8 @@ Write the oracle's DID in the notes.
 
 Troubleshooting: `api source link` failing with `VALIDATION — Company link: <did:web> is not a
 registered oracle` means the oracle was never registered with the decision engine: run
-`eval-oracle engine register` as above, then link again. `eval-oracle api source create --help` is not
-supported; run `eval-oracle help` to see the flags.
+`eval-oracle engine register` as above, then link again. `eval-oracle api <command> --help` (for
+example `eval-oracle api source create --help`) lists a command's flags.
 
 The Console's "Get started" checklist (get an API key, send an example claim) does not apply to
 Openhands companies: steps 10 to 12 replace it. Tell the person to ignore it.
@@ -325,7 +330,9 @@ It needs the Openhands tools connected as the account from step 2, so **do this 
    - `rails`: what the company pays on: `usdc_base` (way B), `stripe` (way C), plus `chain` only if
      it also wants asks escrowed on chain;
    - `oracles`: **the oracle(s) chosen in step 8.0**, the default first. If the company chose its
-     own custom oracle, list only that one. Never add the IXO OpenHands oracle as a stand-in;
+     own custom oracle, list only that one. Never add the IXO OpenHands oracle as a stand-in. Pass
+     only the oracle's DID: the tool reads its signing address from the chain (the oracle entity's
+     `#orz` grantee). Never pass the entity owner's address;
    - `currency`: `USDC` for way B only, `USD` for way C.
 2. It answers with a preview: the current settings, the new ones, each change, and warnings. Show
    it to the person as it is and ask them to approve it.
@@ -362,6 +369,10 @@ Check: `~/.ixo/publish-session-<network>.json` no longer exists.
    answers, how many days, and where, if it must be done in a place (`"lat,lon"`).
 2. Check: if your notes already hold the first ask's link, share it and stop.
 3. Call `post_ask` **without** `confirm` and show the person the exact total and terms. Get a yes.
+   Pass only the oracle's DID (the one chosen in step 8), never an address: `post_ask` reads the
+   oracle's signing address from the chain (the oracle entity's `#orz` grantee) and refuses an address
+   that does not match the signer. If it says the oracle's signing wallet could not be confirmed,
+   wait and retry later; do not work around it.
 4. Call `post_ask` with `confirm` set to that exact total. Write the link it returns in the notes
    and share it. Every ask posted for a company is a deed ask: the deed's `requestedBy` links to the
    organisation, and the organisation's `request` links back to the deed. The old shape
