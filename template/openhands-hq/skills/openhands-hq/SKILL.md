@@ -59,7 +59,9 @@ The checks, not the notes, decide whether a step is done.
 ## The steps
 
 Steps 2–9 sign with the IXO sign-in (the session file). Steps 9b, 10 and 12 use the Openhands tools of
-this plugin (`connect_account`, `my_status`, `set_payout_settings`, `post_ask`); 9b runs right after 10. Step 11 deletes the session file.
+this plugin (`connect_account`, `my_status`, `set_payout_settings`, `post_ask`); 9b runs right after 10. Step 11 deletes the session file
+and runs **last, after step 12**: an ask's documents upload as the signed-in person's own Matrix account, read from
+that session, so the step 2 sign-in must stay active through step 12. No Matrix bot token is needed.
 
 | # | Only if |
 | --- | --- |
@@ -360,13 +362,6 @@ It needs the Openhands tools connected as the account from step 2, so **do this 
    until it reports connected.
 4. Check: `my_status` shows it connected.
 
-### 11. Sign out of IXO
-
-The sign-in file can sign anything and never expires. It is no longer needed.
-
-Run `eval-oracle logout --network <network>`.
-Check: `~/.ixo/publish-session-<network>.json` no longer exists.
-
 ### 12. First ask
 
 1. Draft it with the person: the task in their words (12–300 characters), the reward, how many
@@ -378,7 +373,9 @@ Check: `~/.ixo/publish-session-<network>.json` no longer exists.
    that does not match the signer. If it says the oracle's signing wallet could not be confirmed,
    wait and retry later; do not work around it. The preview reads "Review fee: N PAY per check, paid
    by <Org>"; if it refuses with "<Org> needs N PAY for reviews", fund that PAY as in step 4, then
-   preview again.
+   preview again. If it refuses with "sign in with eval-oracle login first", the session from step 2
+   is gone or expired: run step 2 again (the ask's documents upload as the person's own Matrix
+   account), then preview again.
 4. Call `post_ask` with `confirm` set to that exact total. Write the link it returns in the notes
    and share it. Every ask posted for a company is a deed ask: the deed's `requestedBy` links to the
    organisation, and the organisation's `request` links back to the deed. The old shape
@@ -397,4 +394,14 @@ supported on openhands-network branch `s6/org-offchain-asks-on-shape`, through t
 openhands-mcp tarball (`OPENHANDS_MCP_PACKAGE`, see the command table). Use it for these asks.
 Never post a B or C ask with an on-chain reward: the worker would be paid twice.
 
-After this, the person posts more asks just by talking to you, with the Openhands tools.
+After this and step 11, the person posts more asks just by talking to you, with the Openhands tools. Each
+posting session needs the IXO sign-in again (`eval-oracle login --network <network>`), because the ask's
+documents upload as the person's own Matrix account; sign out again when done.
+
+### 11. Sign out of IXO (last, after step 12)
+
+The sign-in file can sign anything and never expires. Once the first ask is posted it is no longer needed.
+
+Run `eval-oracle logout --network <network>`.
+Check: `~/.ixo/publish-session-<network>.json` no longer exists.
+
