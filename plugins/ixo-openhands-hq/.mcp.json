@@ -5,7 +5,7 @@
       "command": "npx",
       "args": [
         "-y",
-        "@ixo/openhands-mcp@1"
+        "${OPENHANDS_MCP_PACKAGE:-@ixo/openhands-mcp@1}"
       ],
       "env": {
         "NEXT_PUBLIC_CHAIN_NETWORK": "${OPENHANDS_NETWORK:-testnet}"
