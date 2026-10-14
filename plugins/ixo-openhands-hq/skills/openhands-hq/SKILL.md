@@ -235,6 +235,9 @@ Write the oracle's DID in the notes.
 The Console's "Get started" checklist (get an API key, send an example claim) does not apply to
 Openhands companies: steps 10 to 12 replace it. Tell the person to ignore it.
 
+The Console may say "Allowed protocols: none / every claim is refused". That applies only to claims
+sent over the Decision API, not to Openhands asks, so you can ignore it for Openhands.
+
 ### 9. Trust and limits on the facilitator (ways B and C)
 
 Do this **before the first ask**. Tell the person two things: claims checked by an oracle the
@@ -284,11 +287,6 @@ Check: `~/.ixo/publish-session-<network>.json` no longer exists.
 
 ### 12. First ask
 
-0. **Protocols check.** A new source allows no protocols, so every claim is refused
-   `PROTOCOL_NOT_ALLOWED`. List the source's allowed protocols with `eval-oracle` if it can;
-   otherwise read **Console › Settings › Organisation › Allowed protocols**. If none are allowed, add
-   this action for the person and IXO: "ask IXO's oracle operator to allow the OpenHands protocols
-   for source `<source id>`". Do not post any ask until protocols are allowed; check again after.
 1. Draft it with the person: the task in their words (12–300 characters), the reward, how many
    answers, how many days, and where, if it must be done in a place (`"lat,lon"`).
 2. Check: if your notes already hold the first ask's link, share it and stop.
