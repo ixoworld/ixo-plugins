@@ -209,6 +209,38 @@ Step 5's deploy already made the payout wallet.
 
 ### 8. Oracle
 
+#### 8.0 Choose the oracle (fit check)
+
+Do this first, before any `api source link`.
+
+1. Recap the company's use case from the interview: what workers do, what proof they submit
+   (photos, location, documents), what makes a claim good or bad, and the volume.
+2. List the oracles available on the network: the same ones OpenHands lists, i.e. on-chain entities
+   of type "oracle" that publish an Agent Card (`#acard`). Show each one's name, description,
+   services and price per check. Use the openhands-mcp tool if one lists oracles; otherwise read
+   Blocksync plus the cards as OpenHands does (`packages/openhands-sdk/src/data/oracles.ts`). Don't
+   invent capabilities beyond what a card says.
+3. For each plausible oracle, say plainly what it can check for this use case, what it can't, and
+   the price. Example: the IXO OpenHands oracle checks cleanup photos plus location; it doesn't know
+   car-wash rules such as same vehicle before/after, cleanliness score, or one wash per car per day.
+4. Ask the person to choose: **(a)** use an existing oracle (which one), or **(b)** build their own
+   custom decision oracle with their own rules. Recommend one with a one-line reason. Rule: a
+   company with its own business rules gets its own oracle; never link a generic oracle as a
+   stand-in "for now".
+5. If (b): say the custom oracle is built by IXO for now (the self-serve `eval-oracle init` isn't
+   available yet). Collect the rules from the interview as a short spec: checks, pass/review/reject
+   thresholds, limits and the price per check. Hand the spec to IXO, and pause onboarding at step 8
+   until the oracle exists. Then link to it in 8.1+, and use it in the facilitator's trusted
+   oracles (step 9) and in `#payoutSettings` oracles (step 9b).
+6. If the company was linked to the wrong oracle earlier: unlink with
+   `eval-oracle api source delete <sourceId>` (preview, then `--yes`) once that CLI command ships
+   (S3, branch go-prod/s3-cli-source-delete; **pending**), or through Console › organisation ›
+   oracle › remove.
+
+#### 8.1+ Link the chosen oracle
+
+Steps 1–4 below apply to the chosen oracle, with `<kit>` = its URL.
+
 **IXO's oracle** (`<kit>` = its URL from the table):
 
 1. Check: `eval-oracle api sources --entity <org DID> --kit <kit> --network <network> --json`. If a
@@ -224,7 +256,7 @@ Step 5's deploy already made the payout wallet.
    `active`.
 4. Run the check again: the source is `active`.
 
-**Their own oracle:** run `eval-oracle init <folder> --name <oracle name>` (not in the bundle yet: if the command is missing, stop and say so), then follow the skills it
+**Their own oracle** (once IXO has built it, or self-serve when available): run `eval-oracle init <folder> --name <oracle name>` (not in the bundle yet: if the command is missing, stop and say so), then follow the skills it
 puts in that folder to build, deploy and register it, asking the person about the checks it must
 make. Then do 1–4 above with `<kit>` = its URL. Then open
 `<console>/billing/credits?topup=1&from=openhands` and say: "This is where your oracle's decision
