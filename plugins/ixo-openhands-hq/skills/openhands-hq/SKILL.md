@@ -57,13 +57,13 @@ The checks, not the notes, decide whether a step is done.
 
 ## The steps
 
-Steps 2–9 sign with the IXO sign-in (the session file). Steps 10 and 12 use the Openhands tools of
-this plugin (`connect_account`, `my_status`, `post_ask`). Step 11 deletes the session file.
+Steps 2–9 sign with the IXO sign-in (the session file). Steps 9b, 10 and 12 use the Openhands tools of
+this plugin (`connect_account`, `my_status`, `set_payout_settings`, `post_ask`); 9b runs right after 10. Step 11 deletes the session file.
 
 | # | Only if |
 | --- | --- |
 | 1 Interview, 2 Sign in, 3 Organisation, 4 Fund, 8 Oracle, 10 Connect Openhands, 11 Sign out, 12 First ask | always |
-| 5 Payouts facilitator, 9 Trust and limits | way B or C |
+| 5 Payouts facilitator, 9 Trust and limits, 9b Payout settings | way B or C |
 | 6 Stripe | way C |
 | 7 Base wallet | way B |
 
@@ -280,9 +280,13 @@ Every `installer admin` command takes
 `--url <facilitator url> --session ~/.ixo/publish-session-<network>.json --network <network>`;
 below, `<admin flags>` means those three.
 
-1. Check `installer admin oracles list <admin flags>`. If the oracle DID from step 8 is listed, skip
-   to 3.
-2. `installer admin oracles add <oracle DID> <admin flags>`. Run the check again.
+The facilitator trusts **the oracle(s) chosen in step 8.0**, and only those. If the company chose
+its own custom oracle, only that one is trusted. Never add the IXO OpenHands oracle as a stand-in.
+
+1. Check `installer admin oracles list <admin flags>`. If every oracle DID chosen in step 8.0 is
+   listed, skip to 3.
+2. `installer admin oracles add <oracle DID> <admin flags>` for each chosen oracle that is missing.
+   Run the check again.
 3. Ask the person the most one payout may be, and the amount above which they want to approve each
    payout themselves. `<currency>` is `USD` (way C) or `USDC` (way B). Then run
    `installer admin defaults set --max <amount> --currency <currency> --approval-over <amount> --rails <rails> <admin flags>`.
@@ -291,15 +295,36 @@ below, `<admin flags>` means those three.
    again with the same values changes nothing.
 4. Check: the command exits 0.
 
-### 9b. Payout settings on the organisation (pending)
+### 9b. Payout settings on the organisation
 
 The company's payout settings live on the organisation as `#payoutSettings`: the facilitator, the
-enabled rails, and the allowed oracles with the default first. The Openhands web UI reads them, so
-onboarding should write them once steps 5, 8 and 9 are done. The writer is in the Openhands SDK
-(branch `s6/org-offchain-asks-on-shape`, next to `payoutTerms.ts`). The exact bytes matter (keys `v`,
-`facilitator`, `rails`, `oracles`, `currency?`, in that order), so always use the SDK writer, never
-hand-written JSON. **Pending: no CLI or MCP command calls it yet.** Until one exists, say this step is
-not done and carry on; do not write it by hand.
+enabled rails, and the allowed oracles with the default first. The Openhands web UI reads them when
+someone posts for the company. Write them with the Openhands tool `set_payout_settings`, never by
+hand (it uses the Openhands SDK's writer, so the bytes and CID are what the UI reads).
+
+It needs the Openhands tools connected as the account from step 2, so **do this right after step
+10**, then go on to step 11.
+
+1. Call `set_payout_settings` with no `confirm`:
+   - `orgDid`: the org DID from step 3;
+   - `facilitator`: the facilitator URL from step 5;
+   - `rails`: what the company pays on: `usdc_base` (way B), `stripe` (way C), plus `chain` only if
+     it also wants asks escrowed on chain;
+   - `oracles`: **the oracle(s) chosen in step 8.0**, the default first. If the company chose its
+     own custom oracle, list only that one. Never add the IXO OpenHands oracle as a stand-in;
+   - `currency`: `USDC` for way B only, `USD` for way C.
+2. It answers with a preview: the current settings, the new ones, each change, and warnings. Show
+   it to the person as it is and ask them to approve it.
+3. When they approve, call it again with the same values and `confirm: true`. It says **Set** only
+   after reading the settings back from the chain.
+4. If it says:
+   - **Already set**: nothing to do.
+   - **Refused: reconnect needed**: the connection is older than this tool. Run step 10 again (it
+     grants what is missing), then go back to 1.
+   - **Refused** for another reason (no key on the organisation, the facilitator not healthy, an
+     oracle that does not resolve): fix that first (steps 3, 5 or 8), then go back to 1.
+   - **Not confirmed**: write the transaction hash in the notes, open
+     `/org/<org DID>/settings` on the Openhands site (the one `connect_account` linked to) with the person, and check what it shows before trying again.
 
 ### 10. Connect the Openhands tools
 
