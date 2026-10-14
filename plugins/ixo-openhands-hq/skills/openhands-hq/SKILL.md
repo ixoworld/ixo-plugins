@@ -124,13 +124,17 @@ Run `eval-oracle org balance --entity <org DID> --network <network>`. It prints
 
 Tell the person the address and what it needs:
 
-- **Decision fees**: the oracle is paid per decision from this account, in the network's
-  currency (`uixo` on devnet and testnet, USDC on mainnet). If the oracle's price is 0, skip the
-  fee funding and say why (nothing is charged per decision); still fund rewards for way A.
-- **Rewards**, only for way A: the rewards of the first ask (reward × number of answers).
+- **Checker fees in PAY** (USDC on mainnet): the oracle is paid per check from this account, on
+  every way (A, B and C), at the price on its card ("1 PAY per check" means 1 PAY). Fund the price ×
+  the number of answers of the first ask. Never fund fees in IXO: an ask whose organisation lacks the
+  PAY is refused before anything is signed ("<Org> needs N PAY for reviews"). If the oracle's price
+  is 0, skip the fee funding and say why (nothing is charged per check).
+- **Rewards**, only for way A, in the reward currency (IXO on devnet and testnet, USDC on mainnet),
+  never PAY: the rewards of the first ask (reward × number of answers).
 
-On devnet and testnet the money is test money (`https://faucet.devnet.ixo.earth` on devnet). On
-mainnet, explain that USDC must first be moved onto IXO, and wait while they do it.
+On devnet and testnet the money is test money: IXO hands out PAY on request (ask IXO, and wait for
+it), and IXO comes from `https://faucet.devnet.ixo.earth` on devnet. On mainnet, explain that USDC
+must first be moved onto IXO, and wait while they do it.
 
 Check: run the balance command again until the balance covers what you said (nothing to check
 if there was nothing to fund). Never go on without it.
@@ -372,7 +376,9 @@ Check: `~/.ixo/publish-session-<network>.json` no longer exists.
    Pass only the oracle's DID (the one chosen in step 8), never an address: `post_ask` reads the
    oracle's signing address from the chain (the oracle entity's `#orz` grantee) and refuses an address
    that does not match the signer. If it says the oracle's signing wallet could not be confirmed,
-   wait and retry later; do not work around it.
+   wait and retry later; do not work around it. The preview reads "Review fee: N PAY per check, paid
+   by <Org>"; if it refuses with "<Org> needs N PAY for reviews", fund that PAY as in step 4, then
+   preview again.
 4. Call `post_ask` with `confirm` set to that exact total. Write the link it returns in the notes
    and share it. Every ask posted for a company is a deed ask: the deed's `requestedBy` links to the
    organisation, and the organisation's `request` links back to the deed. The old shape
