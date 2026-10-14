@@ -126,21 +126,22 @@ Run `eval-oracle org balance --entity <org DID> --network <network>`. It prints
 `{ adminAddress, balances: [{denom, amount}] }`.
 
 Tell the person the address and what it needs. The organisation's account pays for its asks, never
-the person's own wallet. It holds the reward coin (PAY on devnet and testnet, Noble USDC on mainnet)
-plus the fee coin (also PAY on devnet and testnet, USDC on mainnet), so on each network it is one coin:
+the person's own wallet. It always holds PAY for the checker fees, on every network, plus the reward coin for way-A
+rewards (PAY on devnet and testnet, Noble USDC on mainnet). On devnet and testnet that is one coin;
+on mainnet it is two, PAY and USDC.
 
-- **Checker fees** (PAY; USDC on mainnet): the oracle is paid per check from this account, on
-  every way (A, B and C), at the price on its card ("1 PAY per check" means 1 PAY). Fund the price ×
+- **Checker fees** (PAY on every network, mainnet included): the oracle is paid per check from this
+  account, on every way (A, B and C), at the price on its card ("1 PAY" means 1 PAY). Fund the price ×
   the number of answers of the first ask. If the oracle's price is 0, skip the fee funding and say
   why (nothing is charged per check).
-- **Rewards**, only for way A (PAY; USDC on mainnet): the rewards of the first ask (reward × number
+- **Rewards**, only for way A (PAY on devnet and testnet; USDC on mainnet): the rewards of the first ask (reward × number
   of answers). When the ask is posted, the organisation's account sends the rewards and the fees into
   the ask's deed in one transaction, and the deed pays each approved answer. Fund both; an ask whose
-  organisation is short is refused before anything is signed ("<Org> needs N PAY for rewards and M
-  for reviews; it holds X PAY").
+  organisation is short is refused before anything is signed ("<Org> needs N USDC for rewards and M PAY
+  for reviews; it holds X USDC and Y PAY").
 
 On devnet and testnet the money is test money: IXO hands out PAY on request (ask IXO, and wait for
-it). On mainnet, explain that USDC must first be moved onto IXO, and wait while they do it.
+it). On mainnet, PAY is money and the reward coin is USDC: explain that the USDC must first be moved onto IXO, and wait while they do it.
 
 Check: run the balance command again until the balance covers what you said (nothing to check
 if there was nothing to fund). Never go on without it.
