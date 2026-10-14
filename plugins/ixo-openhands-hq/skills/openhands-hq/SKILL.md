@@ -41,7 +41,7 @@ newer. If it is missing or older, help them install it from `https://nodejs.org`
 | `installer` | `npx --yes file:$PWD/ixo-payouts-facilitator-0.1.0-<commit>.tgz` | Not on npm yet: IXO sends the file; run from the folder it is in. It must be packed from ixo-pay-facilitator `main` at `cc0cfe6` (#119) or later; an older one lacks fixes this skill needs. Name it with the version and short commit (the `<commit>` above), because npx caches per path and a re-packed tarball under the same name runs the old build. The `file:` path must be absolute (a relative `./…tgz` fails inside a workspace). Every command is idempotent, dry-runs without `--yes` where it changes things, prints its JSON result on the last stdout line, and never prints a secret. Exit 0 ok, 1 failed, 2 usage error. |
 | `wrangler` | `npx -y wrangler` | Cloudflare's own CLI. |
 | `stripe` | the Stripe CLI (`brew install stripe/stripe-cli/stripe` on macOS; ask before installing) | Only for way C. |
-| IXO's Openhands oracle | its URL and DID per network | **Pending S3**: not published yet. Until then only "your own oracle" can finish step 8. If `sources/list-organisation` answers 401 "unknown capabilities", the oracle is older than the 0.2.0 CLI and rejects its sign-in: tell the person it must be updated first, and stop. |
+| IXO's Openhands oracle | devnet: `https://openhands-oracle.devnet.ixo.earth`, `did:web:openhands-oracle.devnet.ixo.earth` | Live on devnet with the API lane. Testnet and mainnet: not published yet (only "your own oracle" finishes step 8 there). A 401 "unknown capabilities" means the oracle is outdated (older than the 0.2.0 CLI): tell the person it must be updated, and stop. |
 | Console | devnet `https://decision-console.devnet.ixo.earth`, testnet `https://decision-console.testnet.ixo.earth`, mainnet `https://decision-console.ixo.earth` | |
 
 Wherever a step below says `eval-oracle …` or `installer …`, run the command from this table with
@@ -214,7 +214,12 @@ Step 5's deploy already made the payout wallet.
 1. Check: `eval-oracle api sources --entity <org DID> --kit <kit> --network <network> --json`. If a
    source is `active`, skip. If one is `pending-link`, go to 3 with its id.
 2. `eval-oracle api source create --name "<company name>" --contact <email> --entity <org DID> --kit <kit> --network <network> --yes --json`.
-   Note the source id. It is `pending-link`.
+   `<company name>` is exactly the name from step 3 (the one in your notes), never a different or
+   shortened one: the Console shows both the chain name and the source name.
+   Note the source id. It is `pending-link`. This command prints a **one-time webhook signing
+   secret**. Do not echo it into the chat or write it in the notes. Tell the person it was shown
+   once, and to store it in their secret manager now. If it is lost, they can make a new one under
+   **Console › Developers › Webhooks**.
 3. `eval-oracle api source link <source id> --kit <kit> --network <network> --yes`. It prints
    `active`.
 4. Run the check again: the source is `active`.
@@ -226,6 +231,9 @@ make. Then do 1–4 above with `<kit>` = its URL. Then open
 fees are paid. Top up with a card or with PAY." Check: the person says the top-up went through.
 
 Write the oracle's DID in the notes.
+
+The Console's "Get started" checklist (get an API key, send an example claim) does not apply to
+Openhands companies: steps 10 to 12 replace it. Tell the person to ignore it.
 
 ### 9. Trust and limits on the facilitator (ways B and C)
 
@@ -248,6 +256,16 @@ below, `<admin flags>` means those three.
    again with the same values changes nothing.
 4. Check: the command exits 0.
 
+### 9b. Payout settings on the organisation (pending)
+
+The company's payout settings live on the organisation as `#payoutSettings`: the facilitator, the
+enabled rails, and the allowed oracles with the default first. The Openhands web UI reads them, so
+onboarding should write them once steps 5, 8 and 9 are done. The writer is in the Openhands SDK
+(branch `s6/org-offchain-asks-on-shape`, next to `payoutTerms.ts`). The exact bytes matter (keys `v`,
+`facilitator`, `rails`, `oracles`, `currency?`, in that order), so always use the SDK writer, never
+hand-written JSON. **Pending: no CLI or MCP command calls it yet.** Until one exists, say this step is
+not done and carry on; do not write it by hand.
+
 ### 10. Connect the Openhands tools
 
 1. Check: `my_status`. If it shows the account from step 2 connected, skip.
@@ -266,12 +284,20 @@ Check: `~/.ixo/publish-session-<network>.json` no longer exists.
 
 ### 12. First ask
 
+0. **Protocols check.** A new source allows no protocols, so every claim is refused
+   `PROTOCOL_NOT_ALLOWED`. List the source's allowed protocols with `eval-oracle` if it can;
+   otherwise read **Console › Settings › Organisation › Allowed protocols**. If none are allowed, add
+   this action for the person and IXO: "ask IXO's oracle operator to allow the OpenHands protocols
+   for source `<source id>`". Do not post any ask until protocols are allowed; check again after.
 1. Draft it with the person: the task in their words (12–300 characters), the reward, how many
    answers, how many days, and where, if it must be done in a place (`"lat,lon"`).
 2. Check: if your notes already hold the first ask's link, share it and stop.
 3. Call `post_ask` **without** `confirm` and show the person the exact total and terms. Get a yes.
 4. Call `post_ask` with `confirm` set to that exact total. Write the link it returns in the notes
-   and share it.
+   and share it. Every ask posted for a company is a deed ask: the deed's `requestedBy` links to the
+   organisation, and the organisation's `request` links back to the deed. The old shape
+   (collection.entity = the organisation) is removed, and the facilitator refuses it
+   (`NOT_DEED_ASK`).
 5. Ways B and C, after every successful `post_ask` that carries `#payoutTerms` (off-chain rails),
    register the ask's collection with the facilitator:
    `installer asks register <collectionId> --url <facilitator origin> --network <network>`.
