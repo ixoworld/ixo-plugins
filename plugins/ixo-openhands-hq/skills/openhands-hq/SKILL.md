@@ -308,31 +308,30 @@ this step, the fee is escrowed as in step 4.
 
 The payer is the organisation's **owner** (the chain owner of the organisation entity, the account from
 step 2 that created it), and only they can turn it on. It needs the organisation's Decision API source
-on that oracle (step 8). It signs one standing permission: each check is paid from the owner's own
-Console credits at the oracle's price (`reviewBilling.pricePerReview`), up to a cap. The default cap is
-**1,000 PAY, cumulative for its lifetime** (not per month). Offer the person both ways and let them pick:
+on that oracle (step 8). Each enable signs a budget: each check is paid from the owner's own
+Console credits at the oracle's price (`reviewBilling.pricePerReview`), up to that budget. The default budget is
+**1,000 PAY per delegation**; "spent" counts only under the current budget. Offer the person both ways and let them pick:
 
 - **In Claude Code** (you run it, as the owner's `eval-oracle login`):
   1. Preview first (the default, no flag): `eval-oracle api review-billing enable --source <source id> --kit <oracle URL>`
-     (add `--cap <PAY>` for another cap). It signs nothing and prints what it would sign: the cap, the
+     (add `--cap <PAY>` for another budget). It signs nothing and prints what it would sign: the budget, the
      oracle, the payer. Show it to the person and get a yes.
   2. Then the same command with `--yes`, which is what signs. It signs, stores it on the oracle and keeps a copy in the UCAN
      store so it can be revoked later.
   3. Check: `eval-oracle api review-billing status --source <source id> --kit <oracle URL>` says `active`.
 - **In OpenHands** (the owner clicks): open `<OpenHands site>/org/<org DID>/settings#pay-for-reviews`
   signed in with the owner's IXO account (not a passkey: a passkey session cannot sign this), and click
-  **Allow reviews to be paid from my credits**. It shows the price per review and the cap (1,000 PAY,
-  editable). Check: the section says "On" with the cap.
+  **Allow reviews to be paid from my credits**. It shows the price per review and the budget (1,000 PAY,
+  editable). Check: the section says "On" with the budget.
 
 (The Decision Console's Billing › Pay for reviews does the same, for an owner who prefers it.)
 
 Say: "Each check of your company's asks is billed from your own Console credits (N PAY each), up to
-1,000 PAY in total. Keep credits topped up." Tell them they get an email when 80% and again when 95% of the cap is used, so they can raise it in time.
-Write "review billing: on, cap <cap> PAY" in the notes.
+a budget of 1,000 PAY. Keep credits topped up." Tell them they get an email when 80% and again when 95% of the budget is used, so they can sign a new one in time.
+Write "review billing: on, budget <N> PAY" in the notes.
 
-**Raising the cap** later: run `enable` again with a higher `--cap` (dry run, then `--yes`), or click
-**Raise cap** on the OpenHands settings page. The new permission replaces the old one and its cap counts
-from zero. **Turning it off**: `eval-oracle api review-billing disable --source <source id> --kit <oracle URL>`
+**Raising** it later means signing a new budget: run `enable` again with `--cap N` (dry run, then `--yes`), or click
+**Sign a new budget** on the OpenHands settings page. The new budget replaces the old one and starts from 0 spent. **Turning it off**: `eval-oracle api review-billing disable --source <source id> --kit <oracle URL>`
 (preview, then `--yes`) or **Turn off** on the settings page; both also revoke it in the UCAN store.
 New reviews then pause until it is on again.
 
