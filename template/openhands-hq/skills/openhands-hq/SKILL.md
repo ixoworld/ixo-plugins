@@ -52,6 +52,9 @@ say it to them. Keep the two apart: the technical words in **Do** never reach th
   the same way.
 - **Check, act, check.** Each step starts with its check. If it passes, say "Already done" and move
   on. Never go on while a check fails. This is what makes a re-run pick up where it stopped.
+- **Never pass setting names to the person** (anything like `NEXT_PUBLIC_…`, `OPENHANDS_…`). If a
+  tool's refusal mentions one, **Say:** "Openhands needs a setup change from IXO before this can
+  work." and stop.
 - **Never ask the person to type a command** (no `/add-dir`, no terminal lines). If a tool or file
   isn't reachable, say in one plain sentence what's missing and what IXO or their admin needs to do.
 - **No workarounds.** Run only the commands written here. If one is missing or fails, stop, tell the
@@ -69,8 +72,8 @@ pay people, we do it here: it runs on your computer, so your keys stay with you.
 
 | Name here | What runs |
 | --- | --- |
-| `eval-oracle` | `npx --yes file:<abs path>/ixo-eval-oracle-cli-0.2.0-draft.1-6101910.tgz` (IXO sends the file; packed from eval-oracle `decisions-engine-via-api` at `6101910` or later). Always pass `--network <network>`. |
-| `installer` | `npx --yes file:<abs path>/ixo-payouts-facilitator-0.1.0-<commit>.tgz` (IXO sends the file; packed from ixo-pay-facilitator `main` at `cc0cfe6` or later). Ways B and C only. Prints its JSON result on the last line; never prints a secret. |
+| `eval-oracle` | `npx --yes file:$HOME/.ixo/packages/ixo-eval-oracle-cli-0.2.0-draft.1-6101910.tgz` (IXO puts it there; packed from eval-oracle `decisions-engine-via-api` at `6101910` or later). Always pass `--network <network>`. |
+| `installer` | `npx --yes file:$HOME/.ixo/packages/ixo-payouts-facilitator-0.1.0-<commit>.tgz` (IXO puts it there; packed from ixo-pay-facilitator `main` at `cc0cfe6` or later). Ways B and C only. Prints its JSON result on the last line; never prints a secret. |
 | Openhands tools | the plugin's `openhands-network` server. It runs `OPENHANDS_MCP_PACKAGE` (default `@ixo/openhands-mcp@1`). If a tool this skill names is missing, IXO gives a newer package: restart with `OPENHANDS_MCP_PACKAGE=file:<abs path to .tgz> claude`. |
 | `wrangler` | `npx -y wrangler` (Cloudflare's CLI). Ways B and C only. |
 | `stripe` | the Stripe CLI (`brew install stripe/stripe-cli/stripe`; ask before installing). Way C only. |
@@ -78,6 +81,11 @@ pay people, we do it here: it runs on your computer, so your keys stay with you.
 | Blocksync (`<graphql>`) | devnet `https://devnet-blocksync-graphql.ixo.earth/graphql`, testnet `https://testnet-blocksync-graphql.ixo.earth/graphql`, mainnet `https://blocksync-graphql.ixo.earth/graphql` |
 | Openhands website (`<site>`) | the site `connect_account` links to: mainnet `https://openhands.network`, testnet `https://test.openhands.network`; devnet has no public site: the local test site the tools point at (`OPENHANDS_SITE`) |
 | Decision Console | devnet `https://decision-console.devnet.ixo.earth`, testnet `https://decision-console.testnet.ixo.earth`, mainnet `https://decision-console.ixo.earth` |
+
+**Where the setup tools live:** `~/.ixo/packages/` is the one place to look (`ls ~/.ixo/packages/*.tgz`;
+nothing else under `~/.ixo`). Not there → **Say:** "The setup tool isn't on this computer yet. IXO
+needs to put it in place for you; I'll carry on once it's there." and stop. Never ask the person for a
+folder, a download location or `/add-dir`.
 
 Tarball paths must be absolute, and their names carry the commit (npx caches per path, so a re-packed
 file under an old name runs the old build). The computer needs Node.js 22.6 or newer
@@ -119,10 +127,10 @@ Ask one at a time; write the answers in the notes.
    back.
 7. Way C only: the country of their Stripe account (two letters, like `US` or `DE`).
 
-**Do:** the Openhands tools run on `OPENHANDS_NETWORK`. If `my_status` shows another network, **Say:**
-"I'm set to a different network than the one you chose. IXO or your admin needs to restart me on
-the <test run / trial / live> network; then say 'carry on'." (For whoever restarts it: start Claude
-Code with `OPENHANDS_NETWORK=<network>`.)
+**Do:** the Openhands tools run on `OPENHANDS_NETWORK` (the fix is a restart with it set; that's for
+IXO or the admin, never said to the person). If `my_status` shows another network, **Say:** "I'm set
+to a different network than the one you chose. IXO or your admin needs to restart me on the
+<test run / trial / live> network; then say 'carry on'."
 
 ### 2. Sign in to IXO
 
@@ -131,8 +139,11 @@ the person confirms it is theirs). Never print the key. If it isn't clearly thei
 or they're "not sure"), don't use it and don't delete it: on a shared computer it is someone else's
 sign-in. **Say:** "This computer is signed in as someone else. Ask them first, or use a different
 computer user." Run `eval-oracle logout --network <network>` only after an explicit "yes, remove it".
-**Do:** `eval-oracle login --network <network>`. A page opens.
-**Say:** "Sign in with your email, then type your PIN. When the page says you can close it, tell me."
+**Do:** `eval-oracle login --network <network>`. Note in the notes that **this run created the
+sign-in** (`"signedInByThisRun": true`). If the page doesn't open by itself (blocked, headless or
+remote), print the sign-in link it shows on its own line.
+**Say:** "Open this link to sign in: <link>. Sign in with your email, then type your PIN. When the
+page says you can close it, tell me." (Or, if it opened: "A sign-in page has opened…")
 **Do:** write the printed address and did in the notes.
 
 ### 3. Create the company
@@ -179,17 +190,20 @@ as the org DID. Check: it starts with `did:ixo:entity:`.
 Only the company's **owner** (the account from step 2) can approve it, and they need review credits.
 
 **Say:** "Each review costs <price> PAY from your review credits. To allow that, you approve a review
-budget once. The usual budget is 1,000 PAY. Shall I set it up here, or would you rather click it on
-the website?" Three places do the same thing:
+budget once. Let's start small: 50 PAY (about <50 ÷ price> reviews). You can raise it any time.
+Shall I set it up here, or would you rather click it on the website?" Three places do the same thing:
 
-- **Here:** `eval-oracle api review-billing enable --source <source id> --kit <kit> --network <network> [--cap <PAY>]`
+- **Here:** `eval-oracle api review-billing enable --source <source id> --kit <kit> --network <network> --cap 50`
+  (or the amount they chose; the tool's own default is 1,000)
   (preview: show budget, reviewer, payer), then with `--yes`. Check:
   `eval-oracle api review-billing status --source <source id> --kit <kit> --network <network>` says `active`.
 - **Openhands website:** `<site>/org/<org DID>/settings#pay-for-reviews`, signed in with their IXO
-  account (not a passkey). **Say:** "Click **Allow reviews to be paid from my credits**."
+  account (not a passkey). **Say:** "Change the budget to 50, then click **Allow reviews to be paid
+  from my credits**."
 - **Decision Console:** `<console>/billing/reviews`.
 
-**Say:** "Done. Your budget is <N> PAY. You'll get an email at 80% and at 95% used. A new budget
+**Say:** "Done. Your budget is <N> PAY. You'll get an email at 80% and at 95% used, so you can raise
+it in time. A new budget
 starts again from zero; it lasts about 100 years unless you turn it off." Note "review budget: on,
 <N> PAY". Top up credits: `<console>/billing/credits?topup=1&from=openhands`.
 
@@ -276,19 +290,25 @@ the first task's rewards and `eth.amount` > 0. Then `installer trust-check … -
    payout yourself?" Then `installer admin defaults set --max <n> --currency <USDC|USD> --approval-over <n> --rails <rails> <admin>`
    (add `--per-payee-per-day` / `--per-day` only if they ask). Check: exit 0.
 
-### 10. Sign out of IXO
+### 10. Offer to sign out of IXO
 
 The sign-in file can sign anything and never expires; the rest uses the Openhands connection instead.
-**Do:** `eval-oracle logout --network <network>`. Check the session file is gone.
-**Say:** "I've signed you out of the setup tool, for safety."
+- **This run created it** (`signedInByThisRun` in the notes): **Say:** "The setup is done with the
+  sign-in on this computer. Shall I remove it, for safety? You can sign in again any time." Only on yes:
+  `eval-oracle logout --network <network>`, then check the file is gone.
+- **It was there before this run:** leave it. Remove it only after the person says "yes, remove it"
+  to "This computer already had a sign-in before we started. Shall I remove it?"
 
 ### 11. Connect Openhands to your account
 
 **Do (check):** `my_status` shows the person's account connected → skip.
-**Do:** `connect_account` → a link; open it.
-**Say:** "Sign in, check it says up to 30 days and the spending cap, and tap **Approve**."
-**Do:** `connect_account` with `principal` = their address from step 2 and `wait_seconds: 45`, until
-connected.
+**Do:** `connect_account` → a link; open it (or print it if it doesn't open).
+**Say:** "Open this link, sign in, check it says up to 30 days and the spending cap, and tap
+**Approve**. Then tell me."
+**Do:** `connect_account` with `principal` = the address from step 2 (in the notes) and
+`wait_seconds: 45`; repeat until connected. No address in the notes: call it with `wait_seconds: 45`
+alone, and pin the one account it reports only after **Say:** "Your approval shows an account ending
+in …<last 4>; is that you?" **Never ask the person for an address.**
 
 ### 12. Company payout settings
 
@@ -307,10 +327,10 @@ your company's **Payouts** page."
 1. **Say:** "Let's post your first task. What should people do?" Then, with defaults they can accept:
    the reward, how many answers (1), how many days (7), where (if it must be done in a place), and an
    optional picture (png/jpg/webp, max 5 MB).
-2. A company with its own checking rules (a campaign): `create_campaign` (title, description, tag,
+2. A company with its own checking rules (say "your own checking rules", not "campaign"): `create_campaign` (title, description, tag,
    rubric) without `confirm`, show it, then `confirm: true`; note the campaign DID and pass it as
    `campaign` on each `post_ask`.
-3. `post_ask` without `confirm`: `task`, `pay`, `quota`, `days`, `near` ("lat,lon"), `place`, `image`,
+3. `post_ask` without `confirm`: `title` (a short phrase for the card, at most 80 characters), `task`, `pay`, `quota`, `days`, `near` ("lat,lon"), `place`, `image`,
    `org` = org DID, `oracle` = `{ did: <reviewer DID>, url: <kit> }` (no `url` for the company's own
    reviewer), way A `currency` = `IXO` or `USDC`. Ways B/C: `pay: 0` and
    `payout: { rail, amount, currency, facilitator: <url> }` — never a reward on chain too (paid twice).

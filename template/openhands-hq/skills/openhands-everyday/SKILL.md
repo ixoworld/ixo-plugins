@@ -24,6 +24,9 @@ one yes. The words in **Do** are for you; the person only hears what is under **
   (no `ls`, `grep` or `find` there).
 - **Examples and task text** use only the person's own brand and their own places. Never name
   other real companies, brands or shops.
+- **Never pass setting names to the person** (anything like `NEXT_PUBLIC_…`, `OPENHANDS_…`). If a
+  tool's refusal mentions one, **Say:** "Openhands needs a setup change from IXO before this can
+  work." and stop.
 - **Never ask the person to type a command.** If a tool or file isn't reachable, say in one plain
   sentence what's missing and what IXO or their admin needs to do.
 - **Describe a reviewer only with what its card or `/v1/info` says.** If unsure: "it checks the
@@ -68,7 +71,7 @@ their company's **Payouts** page on the Openhands website and read you the revie
 PAY) · "Does it have to be done in a particular place?" (if yes, get the place; turn it into
 `"lat,lon"` and read the place back to check).
 **Do:** `post_ask` without `confirm`: `title` = a short question or phrase for the card, at most
-80 characters (e.g. "Is Red Harbor Ketchup on the shelf at <store>?"), `task` = everything the person must do, `pay`, `currency: "IXO"` (or `"USDC"`, live only),
+80 characters (e.g. "Is <their brand> on the shelf at <their store>?"), `task` = everything the person must do, `pay`, `currency: "IXO"` (or `"USDC"`, live only),
 `quota` 1, `days` (what they said, else 7), `near`/`place` when it's somewhere, optional `image`, a `series` name when it's
 the same task at many addresses.
 As a company, add `org` and `oracle: { did: <reviewer>, url: <reviewer URL> }` (no `url` for a
@@ -88,10 +91,15 @@ It costs <total> today. OK?" → with
 `confirm`. Later: `collect_answer` (with `wait_seconds` to wait). Report what came back, how sure it
 is and what wasn't checked; never call it certain.
 
-### Run a campaign
+### Groups and campaigns
 
-- **The company's own checking rules** (cleanups, brand checks…): **Ask:** "What's the campaign called,
-  and what makes an answer good or bad?" **Do:** `create_campaign` (`title`, `description`, `tag`,
+Words: several related tasks are a **group** (the same `series` name on each `post_ask`; the board
+shows them as one card). A **campaign** is only a set of tasks checked by the company's own shared
+rules. When the person says "campaign", ask once: "Do you mean a group of tasks, or tasks checked by
+your own rules?" A group needs nothing more than the shared `series`.
+
+- **Tasks checked by the company's own rules** (cleanups, brand checks…): **Ask:** "What should we
+  call it, and what makes an answer good or bad?" **Do:** `create_campaign` (`title`, `description`, `tag`,
   `rubric`) without `confirm` → **Say:** "This creates the campaign '<title>' with your rules. It
   costs only a tiny network fee. OK?" → `confirm: true`. Then post its tasks with `post_ask`
   `campaign` = what it returned.
@@ -133,8 +141,9 @@ on the website?" Then either:
   to be paid from my credits**." (Signed in with their IXO account, not a passkey.)
 - the Decision Console: `<console>/billing/reviews`;
 - here, with the eval-oracle CLI: openhands-hq step 5.
-**Say:** "Each review costs <price> from your review credits, up to a budget of 1,000 PAY. You get an
-email at 80% and 95%. A new budget starts from zero." Raising it = signing a new budget.
+**Say:** "Each review costs <price> from your review credits. Let's start with a small budget of
+50 PAY; you can raise it any time. You get an email at 80% and 95%, so you can raise it in time. A
+new budget starts from zero." Raising it = signing a new budget.
 
 ### Change how the company pays, or its reviewer
 
