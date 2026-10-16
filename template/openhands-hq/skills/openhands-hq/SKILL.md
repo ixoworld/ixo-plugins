@@ -1,6 +1,6 @@
 ---
 name: openhands-hq
-description: Set a company up on Openhands from nothing — an organisation on chain, a way to pay workers (on chain, USDC on Base, or Stripe), an oracle, and a first ask — by interviewing the person and running each setup step as a terminal command. Use when someone wants to register their company or organisation on Openhands, post asks as a company, set up payouts for workers, or resume an onboarding that stopped part way.
+description: Set a company up on Openhands from nothing — an organisation on chain, one way to pay workers (on chain in IXO or USDC, USDC on Base, or Stripe), an oracle, and a first ask — by interviewing the person and running each setup step as a terminal command. Use when someone wants to register their company or organisation on Openhands, post asks as a company, set up payouts for workers, or resume an onboarding that stopped part way.
 ---
 
 # Openhands HQ: set up a company
@@ -77,8 +77,8 @@ that session, so the step 2 sign-in must stay active through step 12. No Matrix 
 
 | # | Only if |
 | --- | --- |
-| 1 Interview, 2 Sign in, 3 Organisation, 4 Fund, 8 Oracle, 10 Connect Openhands, 11 Sign out, 12 First ask | always |
-| 5 Payouts facilitator, 9 Trust and limits, 9b Payout settings | way B or C |
+| 1 Interview, 2 Sign in, 3 Organisation, 4 Fund, 8 Oracle, 9b Payout settings, 10 Connect Openhands, 11 Sign out, 12 First ask | always |
+| 5 Payouts facilitator, 9 Trust and limits | way B or C |
 | 6 Stripe | way C |
 | 7 Base wallet | way B |
 
@@ -90,10 +90,11 @@ Ask, one question at a time, and write the answers in your notes:
    organisation is found, and renaming is not supported yet (a new name makes a second
    organisation), so they must pick the final name now and confirm it.
 2. What work it wants done (a sentence or two).
-3. How it pays workers, one of:
+3. How it pays workers. A company picks **one** way:
    - **A. On chain**: the organisation's account funds the ask's deed when the ask is posted (the
-     reward for every answer, plus the checker fees), and the chain pays on approval. Nothing else to
-     set up.
+     reward for every answer, plus the checker fees), and the chain pays on approval. Rewards are in
+     **IXO** or **USDC** (Noble USDC; mainnet only for now, devnet and testnet have no USDC). Ask which,
+     and write it in the notes. Rewards are never PAY. Nothing else to set up.
    - **B. USDC on Base**: the company's own payouts service sends USDC from a wallet it controls.
    - **C. Stripe**: the company's own payouts service sends Stripe transfers from its Stripe balance.
 4. Which oracle checks the work: **IXO's** oracle, or **your own** (you will help build it).
@@ -138,9 +139,8 @@ Run `eval-oracle org balance --entity <org DID> --network <network>`. It prints
 `{ adminAddress, balances: [{denom, amount}] }`.
 
 Tell the person the address and what it needs. The organisation's account pays for its asks, never
-the person's own wallet. It always holds PAY for the checker fees, on every network, plus the reward coin for way-A
-rewards (PAY on devnet and testnet, Noble USDC on mainnet). On devnet and testnet that is one coin;
-on mainnet it is two, PAY and USDC.
+the person's own wallet. It holds PAY for the checker fees, plus, for way A, the reward coin chosen in
+step 1 (IXO, or Noble USDC on mainnet).
 
 - **Checker fees** (PAY on every network, mainnet included): the oracle is paid per check from this
   account, on every way (A, B and C), at the price on its card ("1 PAY" means 1 PAY). Fund the price ×
@@ -148,14 +148,15 @@ on mainnet it is two, PAY and USDC.
   why (nothing is charged per check). If the oracle bills per check from Console credits (step 8b:
   IXO's managed oracles, such as OpenHands and Spongy, do), skip the fee funding too: nothing is
   escrowed for reviews; the organisation's owner pays each check from their own Console credits.
-- **Rewards**, only for way A (PAY on devnet and testnet; USDC on mainnet): the rewards of the first ask (reward × number
+- **Rewards**, only for way A (IXO or USDC, never PAY): the rewards of the first ask (reward × number
   of answers). When the ask is posted, the organisation's account sends the rewards and the fees into
   the ask's deed in one transaction, and the deed pays each approved answer. Fund both; an ask whose
-  organisation is short is refused before anything is signed ("<Org> needs N USDC for rewards and M PAY
-  for reviews; it holds X USDC and Y PAY").
+  organisation is short is refused before anything is signed ("<Org> needs N IXO for rewards and M PAY
+  for reviews; it holds X IXO and Y PAY").
 
-On devnet and testnet the money is test money: IXO hands out PAY on request (ask IXO, and wait for
-it). On mainnet, PAY is money and the reward coin is USDC: explain that the USDC must first be moved onto IXO, and wait while they do it.
+On devnet and testnet the money is test money: IXO hands out PAY and IXO on request (ask IXO, and wait
+for it). On mainnet it is real money; for USDC rewards, explain that the USDC must first be moved onto
+IXO, and wait while they do it.
 
 Check: run the balance command again until the balance covers what you said (nothing to check
 if there was nothing to fund). Never go on without it.
@@ -381,8 +382,8 @@ its own custom oracle, only that one is trusted. Never add the IXO OpenHands ora
 
 ### 9b. Payout settings on the organisation
 
-The company's payout settings live on the organisation as `#payoutSettings`: the facilitator, the
-enabled rails, and the allowed oracles with the default first. The Openhands web UI reads them when
+The company's payout settings live on the organisation as `#payoutSettings`: the one way it pays
+(its rail), the facilitator for ways B and C, and the allowed oracles with the default first. The Openhands web UI reads them when
 someone posts for the company. Write them with the Openhands tool `set_payout_settings`, never by
 hand (it uses the Openhands SDK's writer, so the bytes and CID are what the UI reads).
 
@@ -394,14 +395,14 @@ It needs the Openhands tools connected as the account from step 2, so **do this 
    top), then carry on from step 10.
 1. Call `set_payout_settings` with no `confirm`:
    - `orgDid`: the org DID from step 3;
-   - `facilitator`: the facilitator URL from step 5;
-   - `rails`: what the company pays on: `usdc_base` (way B), `stripe` (way C), plus `chain` only if
-     it also wants asks escrowed on chain;
+   - `facilitator`: the facilitator URL from step 5 (ways B and C; leave it out for way A);
+   - `rails`: a one-item list, the way chosen in step 1: `["chain"]` (way A), `["usdc_base"]` (way B)
+     or `["stripe"]` (way C). More than one is refused;
    - `oracles`: **the oracle(s) chosen in step 8.0**, the default first. If the company chose its
      own custom oracle, list only that one. Never add the IXO OpenHands oracle as a stand-in. Pass
      only the oracle's DID: the tool reads its signing address from the chain (the oracle entity's
      `#orz` grantee). Never pass the entity owner's address;
-   - `currency`: `USDC` for way B only, `USD` for way C.
+   - `currency`: way A: `USDC` for USDC rewards, left out for IXO; way B: `USDC`; way C: `USD`.
 2. It answers with a preview: the current settings, the new ones, each change, and warnings. Show
    it to the person as it is and ask them to approve it.
 3. When they approve, call it again with the same values and `confirm: true`. It says **Set** only
@@ -411,7 +412,8 @@ It needs the Openhands tools connected as the account from step 2, so **do this 
    - **Refused: reconnect needed**: the connection is older than this tool. Run step 10 again (it
      grants what is missing), then go back to 1.
    - **Refused** for another reason (no key on the organisation, the facilitator not healthy, an
-     oracle that does not resolve): fix that first (steps 3, 5 or 8), then go back to 1.
+     oracle that does not resolve, more than one rail): fix that first (steps 1, 3, 5 or 8), then go
+     back to 1.
    - **Not confirmed**: write the transaction hash in the notes, open
      `/org/<org DID>/settings` on the Openhands site (the one `connect_account` linked to) with the person, and check what it shows before trying again.
 
@@ -441,14 +443,16 @@ It needs the Openhands tools connected as the account from step 2, so **do this 
    `campaign` = that DID to every `post_ask` in this campaign: the deed is classed under it and
    `partOf` it, and checked by its shared rubric.
 3. Call `post_ask` **without** `confirm` (with `campaign` and `image` when you have them) and show
-   the person the exact total and terms. Get a yes.
+   the person the exact total and terms. Get a yes. Way A: pass `currency`, `"IXO"` or `"USDC"` (the
+   coin from step 1; USDC on mainnet only). Left out, it is IXO (USDC on mainnet). `"PAY"` is refused:
+   rewards are never PAY.
    Pass only the oracle's entity DID (the one chosen in step 8), never an address: `post_ask` reads the
    oracle's signing address from the chain (the oracle entity's `#orz` grantee) and refuses an address
    that does not match the signer. If it says the oracle's signing wallet could not be confirmed,
    wait and retry later; do not work around it. The preview reads "Review fee: N PAY per check, paid
    by <Org>" (or, for an oracle that bills per check, step 8b, "Reviews billed per check from <Org>'s
    owner's Console credits (N PAY each)": nothing is escrowed for reviews), and for way A it says the
-   organisation's account funds the rewards; nothing comes from the person's wallet. If it refuses with "<Org> needs N PAY for rewards and M for reviews" (or "for
+   organisation's account funds the rewards; nothing comes from the person's wallet. If it refuses with "<Org> needs N IXO for rewards and M PAY for reviews" (or "for
    reviews" alone on ways B and C), fund that as in step 4, then preview again. If it refuses with "sign in with eval-oracle login first", the session from step 2
    is gone or expired: run step 2 again (the ask's documents upload as the person's own Matrix
    account), then preview again.

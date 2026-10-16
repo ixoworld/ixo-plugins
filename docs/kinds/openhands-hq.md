@@ -1,7 +1,7 @@
 # Openhands HQ
 
 A company installs one plugin, says *Set up my company on Openhands*, and Claude does the rest: an
-organisation on chain, a way to pay workers, an oracle, and a first ask.
+organisation on chain, one way to pay workers, an oracle, and a first ask.
 
 - **Kind:** `openhands-hq` (local). For Claude Code and Cowork, because Claude runs the setup as
   terminal commands on the person's computer.
@@ -17,21 +17,23 @@ organisation on chain, a way to pay workers, an oracle, and a first ask.
 | The payouts facilitator installer | Deploy the company's own payouts service to its Cloudflare, link it to the organisation, check the links |
 | `wrangler` | Cloudflare sign-in and secrets |
 | The Stripe CLI | Stripe sign-in and the Connect webhook (Stripe payouts only) |
-| The Openhands tools (`connect_account`, `my_status`, `post_ask`) | Give the plugin key a 30-day, capped permission, and post the first ask |
+| The Openhands tools (`connect_account`, `my_status`, `set_payout_settings`, `post_ask`) | Give the plugin key a 30-day, capped permission, save the payout way on the organisation, and post the first ask |
 
 The skill's "Commands and addresses" table is the one place that says how each is started, so moving
 a tool from a local file to npm is a one-line change.
 
-## Three ways to pay workers
+## Three ways to pay workers (a company picks one)
 
 | | A. On chain | B. USDC on Base | C. Stripe |
 | --- | --- | --- | --- |
 | Company funds | The ask, when posting | Its payout wallet on Base | Its Stripe balance |
+| Reward coin | IXO or USDC (USDC on mainnet only) | USDC | USD |
 | Who pays the worker | The chain | The company's facilitator | The company's facilitator |
 | Facilitator needed | No | Yes | Yes |
 
-Decision fees for IXO's oracle are paid from the organisation's account on chain, in the network's
-currency (`uixo` on devnet and testnet, USDC on mainnet).
+Rewards are never PAY. Review (checker) fees are PAY on every way: from the organisation's account,
+or, for oracles that bill per check, from the owner's Console credits (Pay for reviews). Credit bought
+with a card stays on the subscription and pays for reviews; it cannot be withdrawn to a wallet.
 
 ## Secrets
 
