@@ -84,16 +84,17 @@ is and what wasn't checked; never call it certain.
 - **Map rubbish where people find it:** `organise_campaign` (`name`, `pins`, `pin_pay`, `days`).
 - **Clean one spot:** `post_cleanup` (`near`, `pay`; optional `follow_days`/`follow_pay` to pay again
   if it stays clean).
-Both preview first and take `confirm`. Rewards (`pay`, `pin_pay`, `follow_pay`) are in IXO (or USDC,
-live only), never dollars or PAY: pass `currency` the same way as `post_ask`, and say the reward in
-that coin.
+Both preview first and take `confirm`. They take no `currency`: rewards (`pay`, `pin_pay`,
+`follow_pay`) are in the network's reward coin (IXO on a test run or trial, USDC on live), never
+PAY. Say the amounts in that coin.
 
 ### Open call (people answer with their own AI, you pick a winner)
 
 **Do:** `draft_call`, passing what the person says; it answers with the next question to ask. When
 nothing is missing it shows the whole call: read it to them, get a yes, then `post_call` with
-`confirm`, again until it says everything is posted. Never invent their brief. The prize, runners-up
-and entry rewards are in IXO (or USDC, live only), never PAY; say them in that coin.
+`confirm`, again until it says everything is posted. Never invent their brief. No `currency`: the prize,
+runners-up and entry rewards are in the network's reward coin (IXO on a test run or trial, USDC on
+live), never PAY. Say them in that coin.
 
 ### Check my tasks and answers
 
@@ -129,8 +130,8 @@ here: `set_payout_settings` (preview, then `confirm: true`; the oracle list repl
 ### Prediction market (find signal before a market closes)
 
 `scope_market` (the link) → talk it through → `draft_plan` → show its summary → `fund_plan` with
-`confirm` → `plan_status`. Each check's `pay` is a reward in IXO (or USDC, live only), never PAY; say
-the total in that coin.
+`confirm` → `plan_status`. No `currency`: each check's `pay` is in the network's reward coin (IXO on a
+test run or trial, USDC on live), never PAY. Say the total in that coin.
 
 ## Money
 
