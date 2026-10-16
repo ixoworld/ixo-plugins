@@ -67,19 +67,20 @@ their company's **Payouts** page on the Openhands website and read you the revie
 **Ask:** "What should people do?" · "What does each answer earn?" (in IXO, or USDC on live; never
 PAY) · "Does it have to be done in a particular place?" (if yes, get the place; turn it into
 `"lat,lon"` and read the place back to check).
-**Do:** `post_ask` without `confirm`: `task`, `pay`, `currency: "IXO"` (or `"USDC"`, live only),
+**Do:** `post_ask` without `confirm`: `title` = a short question or phrase for the card, at most
+80 characters (e.g. "Is Red Harbor Ketchup on the shelf at <store>?"), `task` = everything the person must do, `pay`, `currency: "IXO"` (or `"USDC"`, live only),
 `quota` 1, `days` (what they said, else 7), `near`/`place` when it's somewhere, optional `image`, a `series` name when it's
 the same task at many addresses.
 As a company, add `org` and `oracle: { did: <reviewer>, url: <reviewer URL> }` (no `url` for a
 reviewer built for the company); a company that pays by USDC on Base or card passes `pay: 0` and
 `payout: { rail, amount, currency, facilitator }` instead of a reward on chain.
-**Say:** "This posts '<task>' for <n> person/people, paying <reward> each, for <days> days. It costs
+**Say:** "This posts '<title>' for <n> person/people, paying <reward> each, for <days> days. It costs
 <total> today. Post it?" → on yes, `post_ask` with `confirm`. Share the link.
 
 ### Ask the World (find something out somewhere)
 
 **Ask:** "What do you want to know?" · "Where?" · "Photo, or just a short answer?"
-**Do:** `ask_the_world` without `confirm`: `question`, `near` ("lat,lon"), `needs` (`observation` or
+**Do:** `ask_the_world` without `confirm`: `question`, a short `title` (at most 80 characters), `near` ("lat,lon"), `needs` (`observation` or
 `photo`; `url-check` for a web page, no place), `pay` in the reward coin with `currency` `IXO` (or
 `USDC`, live only), `hours` (what they said, else 24), `quota` 1. The preview says how asks near there usually go: pass that on.
 **Say:** "Someone near <place> will check '<question>' within <hours> hours, for <reward> <IXO|USDC>.
