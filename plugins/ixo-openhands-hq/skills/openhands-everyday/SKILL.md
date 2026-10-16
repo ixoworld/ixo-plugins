@@ -24,6 +24,10 @@ one yes. The words in **Do** are for you; the person only hears what is under **
   (no `ls`, `grep` or `find` there).
 - **Examples and task text** use only the person's own brand and their own places. Never name
   other real companies, brands or shops.
+- **Never ask the person to type a command.** If a tool or file isn't reachable, say in one plain
+  sentence what's missing and what IXO or their admin needs to do.
+- **Describe a reviewer only with what its card or `/v1/info` says.** If unsure: "it checks the
+  answer against your question".
 - **Payout methods** (card, crypto, USDC on Base) come up only when the person is setting up a
   company. Don't mention them otherwise.
 - **Time:** the person's stated time always wins. Otherwise Ask the World lasts 24 hours and a task
@@ -46,7 +50,7 @@ Check quietly, fix inline with one sentence and the next action, then carry on w
 
 | If | Say | Do |
 | --- | --- | --- |
-| a tool this skill names is missing | "I need a newer Openhands package from IXO; once you have it, restart me with it." | see openhands-hq's command table (`OPENHANDS_MCP_PACKAGE`) |
+| a tool this skill names is missing | "I need a newer Openhands version. IXO or your admin needs to install it and restart me." | see openhands-hq's command table (`OPENHANDS_MCP_PACKAGE`) |
 | not connected (`my_status`) | "First, let's link this to your account so tasks are posted in your name. Open this and tap **Approve**." | `connect_account` → give the link. Then call it again with `wait_seconds: 45` (repeat) until it reports the approval; it finds the account itself. To pin it, pass `principal` = the address in the notes file if there is one; otherwise the one account it reports, after the person confirms it's theirs ("Your approval shows an account ending in …<last 4>; is that you?"). Never ask them to type or send an address. |
 | posting as a company that isn't set up | "Your company isn't set up yet. It takes about 10 minutes; shall we do it now?" | switch to the openhands-hq skill |
 | the company's reviews are paused or off | "Reviews need a review budget. It's one approval; shall we do it?" | the *Review budget* job below |
