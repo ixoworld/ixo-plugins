@@ -27,8 +27,9 @@ reviewer · within 400 m of the place.
 
 **Places:** `<console>` = `https://decision-console.devnet.ixo.earth` (test run),
 `https://decision-console.testnet.ixo.earth` (trial), `https://decision-console.ixo.earth` (live).
-`<site>` = the Openhands website `connect_account` links to (`https://openhands.network` live,
-`https://test.openhands.network` trial).
+`<site>` = the Openhands website `connect_account` links to: `https://openhands.network` (live),
+`https://test.openhands.network` (trial). A test run (devnet) has no public site: it is the local
+test site the tools point at (`OPENHANDS_SITE`).
 
 ## Before any job: is the person ready?
 
@@ -50,8 +51,8 @@ their company's **Payouts** page on the Openhands website and read you the revie
 
 ### Post a task
 
-**Ask:** "What should people do?" · "What does each answer earn?" (default: a fair small amount in
-IXO) · "Does it have to be done in a particular place?" (if yes, get the place; turn it into
+**Ask:** "What should people do?" · "What does each answer earn?" (in IXO, or USDC on live; never
+PAY) · "Does it have to be done in a particular place?" (if yes, get the place; turn it into
 `"lat,lon"` and read the place back to check).
 **Do:** `post_ask` without `confirm`: `task`, `pay`, `currency: "IXO"` (or `"USDC"`, live only),
 `quota` 1, `days` 7, `near`/`place` when it's somewhere, optional `image`, a `series` name when it's
@@ -66,9 +67,10 @@ reviewer built for the company); a company that pays by USDC on Base or card pas
 
 **Ask:** "What do you want to know?" · "Where?" · "Photo, or just a short answer?"
 **Do:** `ask_the_world` without `confirm`: `question`, `near` ("lat,lon"), `needs` (`observation` or
-`photo`; `url-check` for a web page, no place), `pay` (dollars), `hours` 24, `quota` 1. The preview
-says how asks near there usually go: pass that on.
-**Say:** "Someone near <place> will check '<question>' within <hours> hours, for <total>. OK?" → with
+`photo`; `url-check` for a web page, no place), `pay` in the reward coin with `currency` `IXO` (or
+`USDC`, live only), `hours` 24, `quota` 1. The preview says how asks near there usually go: pass that on.
+**Say:** "Someone near <place> will check '<question>' within <hours> hours, for <reward> <IXO|USDC>.
+It costs <total> today. OK?" → with
 `confirm`. Later: `collect_answer` (with `wait_seconds` to wait). Report what came back, how sure it
 is and what wasn't checked; never call it certain.
 
@@ -82,13 +84,16 @@ is and what wasn't checked; never call it certain.
 - **Map rubbish where people find it:** `organise_campaign` (`name`, `pins`, `pin_pay`, `days`).
 - **Clean one spot:** `post_cleanup` (`near`, `pay`; optional `follow_days`/`follow_pay` to pay again
   if it stays clean).
-Both preview first and take `confirm`.
+Both preview first and take `confirm`. Rewards (`pay`, `pin_pay`, `follow_pay`) are in IXO (or USDC,
+live only), never dollars or PAY: pass `currency` the same way as `post_ask`, and say the reward in
+that coin.
 
 ### Open call (people answer with their own AI, you pick a winner)
 
 **Do:** `draft_call`, passing what the person says; it answers with the next question to ask. When
 nothing is missing it shows the whole call: read it to them, get a yes, then `post_call` with
-`confirm`, again until it says everything is posted. Never invent their brief.
+`confirm`, again until it says everything is posted. Never invent their brief. The prize, runners-up
+and entry rewards are in IXO (or USDC, live only), never PAY; say them in that coin.
 
 ### Check my tasks and answers
 
@@ -124,14 +129,18 @@ here: `set_payout_settings` (preview, then `confirm: true`; the oracle list repl
 ### Prediction market (find signal before a market closes)
 
 `scope_market` (the link) → talk it through → `draft_plan` → show its summary → `fund_plan` with
-`confirm` → `plan_status`.
+`confirm` → `plan_status`. Each check's `pay` is a reward in IXO (or USDC, live only), never PAY; say
+the total in that coin.
 
 ## Money
 
+Rewards are paid in **IXO** (or **USDC** on live), from the person's or the company's account.
+PAY never pays a reward; it only pays for reviews.
+
 - **Your own account:** the connection lets tasks spend from it, up to the cap you approved.
-- **Card:** `top_up` (10, 25 or 100 PAY) gives a card payment link the person opens and pays. Never
-  handle card details.
-- **Review credits:** buy by card at `<console>/billing/credits?topup=1&from=openhands`.
+- **Review credits:** buy by card at `<console>/billing/credits?topup=1&from=openhands`. Only if a
+  reviewer holds its fee with the task does the account need PAY itself: `top_up` (10, 25 or 100
+  PAY) gives a card payment link the person opens and pays. Never handle card details.
 - **IXO:** buy on an exchange that lists IXO and send it to the account address.
 - **USDC on IXO (live only):** move USDC over to IXO, for example with Keplr or Skip Go.
 - **Test run or trial:** test money; IXO hands it out.

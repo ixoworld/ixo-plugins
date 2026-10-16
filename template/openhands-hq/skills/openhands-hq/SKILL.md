@@ -73,7 +73,7 @@ pay people, we do it here: it runs on your computer, so your keys stay with you.
 | `wrangler` | `npx -y wrangler` (Cloudflare's CLI). Ways B and C only. |
 | `stripe` | the Stripe CLI (`brew install stripe/stripe-cli/stripe`; ask before installing). Way C only. |
 | IXO's reviewer | devnet `https://openhands-oracle.devnet.ixo.earth` (testnet and mainnet: not live yet; only the company's own reviewer works there) |
-| Openhands website (`<site>`) | the site `connect_account` links to: mainnet `https://openhands.network`, testnet `https://test.openhands.network` |
+| Openhands website (`<site>`) | the site `connect_account` links to: mainnet `https://openhands.network`, testnet `https://test.openhands.network`; devnet has no public site: the local test site the tools point at (`OPENHANDS_SITE`) |
 | Decision Console | devnet `https://decision-console.devnet.ixo.earth`, testnet `https://decision-console.testnet.ixo.earth`, mainnet `https://decision-console.ixo.earth` |
 
 Tarball paths must be absolute, and their names carry the commit (npx caches per path, so a re-packed
