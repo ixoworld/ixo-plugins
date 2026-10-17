@@ -10,14 +10,15 @@
       "command": "npx",
       "args": ["-y", "${OPENHANDS_MCP_PACKAGE:-{{PACKAGE}}@{{MAJOR}}}"],
       "env": {
-        "NEXT_PUBLIC_CHAIN_NETWORK": "${OPENHANDS_NETWORK:-{{NETWORK}}}"
+        "NEXT_PUBLIC_CHAIN_NETWORK": "${OPENHANDS_NETWORK:-{{NETWORK}}}",
+        "NEXT_PUBLIC_REVIEW_BILLING": "credits"
       }
     },
     "codex": {
       "type": "stdio",
       "command": "npx",
       "args": ["-y", "{{PACKAGE}}@{{MAJOR}}"],
-      "env": { "NEXT_PUBLIC_CHAIN_NETWORK": "{{NETWORK}}" }
+      "env": { "NEXT_PUBLIC_CHAIN_NETWORK": "{{NETWORK}}", "NEXT_PUBLIC_REVIEW_BILLING": "credits" }
     }
   },
   "codex": {
