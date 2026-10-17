@@ -99,7 +99,7 @@ done.
 
 | Step | When |
 | --- | --- |
-| 1 Questions · 2 Sign in · 3 Company · 4 Reviewer · 6 Money · 10 Sign out · 11 Connect · 12 Settings · 13 First task | always |
+| 1 Questions · 2 Sign in · 3 Company · 4 Reviewer · 5b Answers a person checks · 6 Money · 10 Sign out · 11 Connect · 12 Settings · 13 First task | always |
 | 5 Review budget | the reviewer bills per review (IXO's reviewers do) |
 | 7 Payouts service · 9 Payout limits | way B or C |
 | 8 Stripe | way C |
@@ -191,7 +191,9 @@ Only the company's **owner** (the account from step 2) can approve it, and they 
 
 **Say:** "Each review costs <price> PAY from your review credits. To allow that, you approve a review
 budget once. Let's start small: 50 PAY (about <50 ÷ price> reviews). You can raise it any time.
-Shall I set it up here, or would you rather click it on the website?" Three places do the same thing:
+Shall I set it up here, or would you rather click it on the website?" If they already named the
+amount and said to set it up here (e.g. "set it up here, 50 PAY is fine"), don't ask again: show the
+preview in one line and run it with `--yes`. Three places do the same thing:
 
 - **Here:** `eval-oracle api review-billing enable --source <source id> --kit <kit> --network <network> --cap 50`
   (or the amount they chose; the tool's own default is 1,000)
@@ -209,6 +211,22 @@ starts again from zero; it lasts about 100 years unless you turn it off." Note "
 
 Later: a bigger budget = run `enable` again with `--cap` (or **Sign a new budget** on the website);
 turn off = `eval-oracle api review-billing disable …` (preview, then `--yes`) or **Turn off**.
+
+### 5b. Answers a person checks
+
+Some answers can't be decided by the reviewer alone (for example a photo nobody can vouch for). They
+wait for someone at the company to answer, and are turned down after 48 hours if nobody does.
+**Say:** "Now and then an answer needs a person to look at it. It waits in the Decision Console, and
+if nobody answers within 48 hours it's turned down. Let's make sure you hear about it: it takes a
+minute."
+**Do:** open `<console>/claims/review`.
+**Say:** "Sign in, and you'll see **Review queue**. In the box **Reviewer key and emails**:
+- if there's a button **Create and register a reviewer key**, click it (once per browser);
+- turn on **Email me when a claim needs my review**.
+Then tell me." If it says "You review as an admin of this organisation", there's no key to make;
+only the email switch. Anyone else at the company who should check answers does the same, signed in
+as themselves.
+Note "review emails: on".
 
 ### 6. Money in the company's account
 
@@ -296,8 +314,7 @@ The sign-in file can sign anything and never expires; the rest uses the Openhand
 - **This run created it** (`signedInByThisRun` in the notes): **Say:** "The setup is done with the
   sign-in on this computer. Shall I remove it, for safety? You can sign in again any time." Only on yes:
   `eval-oracle logout --network <network>`, then check the file is gone.
-- **It was there before this run:** leave it. Remove it only after the person says "yes, remove it"
-  to "This computer already had a sign-in before we started. Shall I remove it?"
+- **It was there before this run:** leave it and say nothing about it. Never offer to remove it.
 
 ### 11. Connect Openhands to your account
 
@@ -336,7 +353,9 @@ your company's **Payouts** page."
    `payout: { rail, amount, currency, facilitator: <url> }` — never a reward on chain too (paid twice).
    **Say** the preview plainly: "This task pays <reward> to each of <n> people, from your company's
    account. Reviews come from your review budget. Post it?"
-4. On yes: `post_ask` again with `confirm` = the exact total shown. Note and share the link.
+4. On yes: `post_ask` again with `confirm` = the exact total shown. Note and share the link. Always
+   show the preview and wait for that yes, unless their message this turn already said to post it
+   without asking again.
 5. Ways B/C: `installer asks register <collectionId> --url <url> --network <network>` (best effort; if
    it fails, say nothing alarming: the service finds the task within a minute anyway).
 

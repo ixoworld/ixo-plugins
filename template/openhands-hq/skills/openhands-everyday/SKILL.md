@@ -13,7 +13,10 @@ one yes. The words in **Do** are for you; the person only hears what is under **
 - Ask **at most 2–3 questions**, one at a time, and offer a default they can accept with "yes".
 - Before anything spends money, show **one plain preview**: what will happen, the reward, and what it
   costs today. Then wait for one yes. The tools that spend take `confirm` = the exact total the
-  preview showed; call once without it, once with it.
+  preview showed; call once without it, once with it. Always show the preview and wait for the
+  yes, unless the person's message this turn already says to go ahead without asking again (for
+  example they named the amount and said "set it up, 50 PAY is fine"): then show the preview and go
+  ahead, without asking "Shall I?" a second time.
 - Never show IDs, addresses or codes unless they ask (or must send money to an address).
 - Never say: DID, entity, deed, collection, UCAN, x402, IID, Vault, IPFS, CID, Blocksync,
   facilitator, oracle, escrow. Say: **task**, **your company**, **your company's account**,
@@ -55,8 +58,10 @@ Check quietly, fix inline with one sentence and the next action, then carry on w
 | --- | --- | --- |
 | a tool this skill names is missing | "I need a newer Openhands version. IXO or your admin needs to install it and restart me." | see openhands-hq's command table (`OPENHANDS_MCP_PACKAGE`) |
 | not connected (`my_status`) | "First, let's link this to your account so tasks are posted in your name. Open this and tap **Approve**." | `connect_account` → give the link. Then call it again with `wait_seconds: 45` (repeat) until it reports the approval; it finds the account itself. To pin it, pass `principal` = the address in the notes file if there is one; otherwise the one account it reports, after the person confirms it's theirs ("Your approval shows an account ending in …<last 4>; is that you?"). Never ask them to type or send an address. |
+| they ask on behalf of a group, club, company or association | "Post this as yourself, or set <group> up so the checks come from it?" (ask once) | as yourself → carry on; set it up → switch to the openhands-hq skill |
 | posting as a company that isn't set up | "Your company isn't set up yet. It takes about 10 minutes; shall we do it now?" | switch to the openhands-hq skill |
 | the company's reviews are paused or off | "Reviews need a review budget. It's one approval; shall we do it?" | the *Review budget* job below |
+| posting fails: the network-fee allowance on the connection is used up | "Tap this link and approve again — it tops up the small network-fee allowance. Then tell me." | `connect_account` for a fresh link, then wait as above and post again. Don't blame IXO. |
 | not enough money for the task | "This needs <amount> more in <your/your company's> account." | point to *Money* below |
 
 Company details (its DID, way it pays, reviewer, payouts service URL) are in
@@ -124,6 +129,18 @@ live), never PAY. Say them in that coin.
 answers; `check_verdict` for an answer's review; `plan_status` for a market plan.
 **Say** it in a line or two: "2 of 3 answered; one approved and paid."
 
+**"Did anyone answer? Is anything waiting for me?"** Besides the above, some answers wait for a
+person at the company to look at them. **Say:** "Answers that need a person wait in the Decision
+Console under **Claims › Review queue**: <console>/claims/review. If nobody answers within 48 hours,
+they're turned down." If they don't get emails about it, **Say:** "On that page, turn on **Email me
+when a claim needs my review**." (and click **Create and register a reviewer key** if it's there).
+
+### Close a task or take its money back
+
+**Do:** `close_ask` with `collectionId` without `confirm` → **Say:** "This closes '<title>' and sends
+the <amount> not yet paid out back to your account. OK?" → `close_ask` with `confirm`. Don't send
+them to the website for this.
+
 ### Find work and get paid
 
 **Do:** `list_asks` (filter by `near`, `does`, `min_pay`, `q`) → `read_ask` → do only what can
@@ -136,7 +153,7 @@ computer's own key: `sweep_earnings` sends them home (to the address fixed at in
 
 **Do:** `review_billing_status` with the company's DID: is a budget needed, the price per review.
 Only the company's owner can approve it. **Ask:** "Shall I set it up here, or do you want to click it
-on the website?" Then either:
+on the website?" (Skip the question if they already said where and how much.) Then either:
 - the website: `<site>/org/<company DID>/settings#pay-for-reviews` → **Say:** "Click **Allow reviews
   to be paid from my credits**." (Signed in with their IXO account, not a passkey.)
 - the Decision Console: `<console>/billing/reviews`;
