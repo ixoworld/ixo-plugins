@@ -81,7 +81,8 @@ PAY) · "Does it have to be done in a particular place?" (if yes, get the place;
 `quota` 1, `days` (what they said, else 7), `near`/`place` when it's somewhere, optional `image`, a `series` name when it's
 the same task at many addresses.
 As a company, add `org` and `oracle: { did: <reviewer>, url: <reviewer URL> }` (no `url` for a
-reviewer built for the company); a company that pays by USDC on Base or card passes `pay: 0` and
+reviewer built for the company). Prefer the company's Ask the World checker for photos, "go and look"
+and short written answers; its Openhands checker for cleanup or work campaigns; a company that pays by USDC on Base or card passes `pay: 0` and
 `payout: { rail, amount, currency, facilitator }` instead of a reward on chain.
 **Say:** "This posts '<title>' for <n> person/people, paying <reward> each, for <days> days. It costs
 <total> today. Post it?" → on yes, `post_ask` with `confirm`. Share the link.
