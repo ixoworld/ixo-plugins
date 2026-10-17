@@ -49,7 +49,7 @@ and keep it private.
 
 `ixo-openhands` starts on **mainnet** (real money) since 1.1.0; testnet is play money for trying
 things out. On both, the server previews every spend, asks for the exact total back, and holds a
-per-ask and a per-day cap on disk; it never needed more than that once the red-team gate passed.
+per-ask and a per-day cap on disk.
 
 - **Claude Code:** the plugin sets `NEXT_PUBLIC_CHAIN_NETWORK` to `${OPENHANDS_NETWORK:-mainnet}`.
   To use testnet, set `OPENHANDS_NETWORK=testnet` in the shell that starts Claude Code.
