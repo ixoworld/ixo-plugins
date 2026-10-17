@@ -62,7 +62,8 @@ Check quietly, fix inline with one sentence and the next action, then carry on w
 | posting as a company that isn't set up | "Your company isn't set up yet. It takes about 10 minutes; shall we do it now?" | switch to the openhands-hq skill |
 | the company's reviews are paused or off | "Reviews need a review budget. It's one approval; shall we do it?" | the *Review budget* job below |
 | posting fails: the network-fee allowance on the connection is used up | "Open this link, tap **Disconnect**, then **Connect** again — that tops up the small network-fee allowance. Then tell me." | `connect_account` for a fresh link, then wait as above and post again. Don't blame IXO. |
-| not enough money for the task | "This needs <amount> more in <your/your company's> account." | point to *Money* below |
+| the company's account is short for the task | "<company>'s account needs <amount> more (reward plus about 0.1 IXO for fees). Shall I move it from your own account? The network fee is about 0.02 IXO." | dry run `eval-oracle org fund --entity <org DID> --amount <amount> --network <network>` (command table in openhands-hq; it says why if it can't), then on yes the same with `--yes --json`. If their own account is short too, give the company's address from `org balance` and point to *Money* below. |
+| your own account is short for the task | "This needs <amount> more in your account." | point to *Money* below |
 
 Company details (its DID, way it pays, reviewer, payouts service URL) are in
 `~/.ixo/openhands-hq-<network>.json` if this computer set it up. Otherwise ask the person to open
@@ -179,6 +180,8 @@ Rewards are paid in **IXO** (or **USDC** on live), from the person's or the comp
 PAY never pays a reward; it only pays for reviews.
 
 - **Your own account:** the connection lets tasks spend from it, up to the cap you approved.
+- **Your company's account:** Claude moves money into it from your own account with one yes
+  (`eval-oracle org fund`); or anyone sends to its address (`eval-oracle org balance` shows it).
 - **Review credits:** buy by card at `<console>/billing/credits?topup=1&from=openhands`. Only if a
   reviewer holds its fee with the task does the account need PAY itself: `top_up` (10, 25 or 100
   PAY) gives a card payment link the person opens and pays. Never handle card details.
