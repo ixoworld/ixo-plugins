@@ -1,0 +1,27 @@
+{
+  "$comment": "Kind-level defaults for `add-plugin --kind openhands-hq`: a LOCAL kind for Claude Code / Cowork. The plugin is one interview skill that runs the company-onboarding steps as ordinary terminal commands (eval-oracle CLI, the payouts facilitator installer, wrangler, the Stripe CLI), plus the existing @ixo/openhands-mcp server, declared exactly as the openhands kind declares it. No server of its own. Placeholders: {{TITLE}} {{SERVER}} {{DESCRIPTION}} {{PACKAGE}} {{MAJOR}} {{NETWORK}}.",
+  "description": "{{TITLE}}: set up your company on Openhands — an organisation on chain, one way to pay workers, an oracle and a first ask, with Claude doing every step and telling you exactly what to click.",
+  "keywords": ["ixo", "openhands", "onboarding", "organisation", "payouts", "oracle", "mcp"],
+  "serverName": "openhands-network",
+  "networks": ["mainnet", "testnet"],
+  "mcp": {
+    "claude": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "${OPENHANDS_MCP_PACKAGE:-{{PACKAGE}}@{{MAJOR}}}"],
+      "env": {
+        "NEXT_PUBLIC_CHAIN_NETWORK": "${OPENHANDS_NETWORK:-{{NETWORK}}}"
+      }
+    },
+    "codex": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "{{PACKAGE}}@{{MAJOR}}"],
+      "env": { "NEXT_PUBLIC_CHAIN_NETWORK": "{{NETWORK}}" }
+    }
+  },
+  "codex": {
+    "policy": { "installation": "AVAILABLE", "authentication": "ON_USE" },
+    "category": "Productivity"
+  }
+}

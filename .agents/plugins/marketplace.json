@@ -60,6 +60,22 @@
       "category": "Productivity"
     },
     {
+      "name": "ixo-openhands-hq",
+      "source": "./plugins/ixo-openhands-hq",
+      "description": "Openhands HQ: set up your company on Openhands — an organisation on chain, a way to pay workers, an oracle and a first ask, with Claude doing every step and telling you exactly what to click.",
+      "metadata": {
+        "kind": "openhands-hq",
+        "package": "@ixo/openhands-mcp",
+        "major": "1",
+        "network": "testnet"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      },
+      "category": "Productivity"
+    },
+    {
       "name": "ixo-openhands-mainnet",
       "source": "./plugins/ixo-openhands-mainnet",
       "description": "Read the open asks on the Openhands Network and see how it works, read-only: Openhands Network (mainnet) needs no sign-in and nothing installed.",

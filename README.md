@@ -24,6 +24,8 @@ There are three kinds, and more will come:
 - **Openhands** finds paid work, posts asks, and hires people and agents on the Openhands Network.
   Runs on your machine with a key of its own, or as a read-only hosted connector.
   [Read more](docs/kinds/openhands.md).
+- **Openhands HQ** sets a company up on Openhands: an organisation, a way to pay workers, an oracle
+  and a first ask, with Claude running every step (draft). [Read more](docs/kinds/openhands-hq.md).
 
 <p align="center">
   <img src="assets/flow.svg" alt="You ask → the assistant sends the claim → you approve the fee on IXO → the engine decides and signs a receipt" width="100%">
@@ -38,6 +40,7 @@ There are three kinds, and more will come:
 | [`ixo-memory-devnet`](plugins/ixo-memory-devnet/README.md) | memory | hosted, memory-engine.devnet.ixo.earth | Your IXO Companion's memory — remember, recall and import what matters, with your IXO sign-in. Devnet (test network). |
 | [`ixo-memory-testnet`](plugins/ixo-memory-testnet/README.md) | memory | hosted, memory-engine.testnet.ixo.earth | Your IXO Companion's memory — remember, recall and import what matters, with your IXO sign-in. Testnet (test network). |
 | [`ixo-openhands`](plugins/ixo-openhands/README.md) | openhands | local, `npx @ixo/openhands-mcp@1` (mainnet) | Find paid work, post asks and hire people and agents on Openhands Network, with your own key held on your machine. |
+| [`ixo-openhands-hq`](plugins/ixo-openhands-hq/README.md) | openhands-hq | local, `npx @ixo/openhands-mcp@1` (testnet) | Openhands HQ: set up your company on Openhands — an organisation on chain, a way to pay workers, an oracle and a first ask, with Claude doing every step and telling you exactly what to click. |
 | [`ixo-openhands-mainnet`](plugins/ixo-openhands-mainnet/README.md) | openhands-hosted | hosted, openhands.network | Read the open asks on the Openhands Network and see how it works, read-only: Openhands Network (mainnet) needs no sign-in and nothing installed. |
 | [`ixo-openhands-testnet`](plugins/ixo-openhands-testnet/README.md) | openhands-hosted | hosted, test.openhands.network | Read the open asks on the Openhands Network and see how it works, read-only: Openhands Network (testnet) needs no sign-in and nothing installed. |
 | [`ixo-swiftdrop-devnet`](plugins/ixo-swiftdrop-devnet/README.md) | oracle | hosted, shipment-delivery-oracle.devnet.ixo.earth | Proof of delivery for SwiftDrop Express couriers, decided by IXO's independent engine — devnet (test network). |
@@ -119,6 +122,7 @@ CI rebuilds every plugin to check nothing drifted. To add one, see
 - [Oracles](docs/kinds/oracle.md): signed decisions, your money and your call, what the tools do.
 - [IXO Memory](docs/kinds/memory.md): what you allow, what it can remember and forget.
 - [Openhands Network](docs/kinds/openhands.md): the key, the network, hosted versus local.
+- [Openhands HQ](docs/kinds/openhands-hq.md): company onboarding, the three ways to pay, secrets.
 - [Clients](docs/clients.md): plugin, connector or local command, per app.
 - [Signing in](docs/sign-in.md): IXO sign-in for hosted plugins, a key for local ones.
 - [Contributing](CONTRIBUTING.md): add a plugin or a kind, versioning, CI.
