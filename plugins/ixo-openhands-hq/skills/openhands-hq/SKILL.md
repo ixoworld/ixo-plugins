@@ -72,7 +72,7 @@ pay people, we do it here: it runs on your computer, so your keys stay with you.
 
 | Name here | What runs |
 | --- | --- |
-| `eval-oracle` | `npx --yes file:$HOME/.ixo/packages/ixo-eval-oracle-cli-0.2.0-draft.1-6101910.tgz` (IXO puts it there; packed from eval-oracle `decisions-engine-via-api` at `6101910` or later). Always pass `--network <network>`. |
+| `eval-oracle` | `npx --yes file:$HOME/.ixo/packages/ixo-eval-oracle-cli-0.2.0-draft.1-45d8c45.tgz` (IXO puts it there; packed from eval-oracle at `45d8c45` or later (has `org fund`)). Always pass `--network <network>`. |
 | `installer` | `npx --yes file:$HOME/.ixo/packages/ixo-payouts-facilitator-0.1.0-<commit>.tgz` (IXO puts it there; packed from ixo-pay-facilitator `main` at `cc0cfe6` or later). Ways B and C only. Prints its JSON result on the last line; never prints a secret. |
 | Openhands tools | the plugin's `openhands-network` server. It runs `OPENHANDS_MCP_PACKAGE` (default `@ixo/openhands-mcp@1`). If a tool this skill names is missing, IXO gives a newer package: restart with `OPENHANDS_MCP_PACKAGE=file:<abs path to .tgz> claude`. |
 | `wrangler` | `npx -y wrangler` (Cloudflare's CLI). Ways B and C only. |
@@ -245,9 +245,17 @@ What the company's account needs:
   the task (its `/v1/info` has no `reviewBilling`, or `"mode": "escrow"`) needs PAY here: its
   price × answers.
 
-If nothing is needed, say so and move on. Otherwise:
-**Say:** "Your company's account needs <amount> <coin> before the first task. Send it to this
-address: <adminAddress>." Then point to *Getting money in* below if they ask how.
+If nothing is needed, say so and move on. Otherwise add ~0.1 IXO for posting fees (they come from this
+account too) and offer to move it from their own account:
+**Do:** `eval-oracle org fund --entity <org DID> --amount <amount> --network <network>` (dry run: it says
+what it would send, or why it can't, e.g. their wallet holds too little).
+**Say:** "Your company's account needs <amount> <coin> before the first task. Shall I move it from
+your own account to <company>'s account? The network fee is about 0.02 IXO." On yes:
+**Do:** the same command with `--yes --json` → `{ adminAddress, sent, balance, tx }`. **Say:** "Done:
+<company>'s account now has <balance>."
+If their own account is short (the dry run says so), **say:** "Your own account has too little. Add
+<coin> to it, or send <amount> straight to <company>'s account: <adminAddress>." Then point to
+*Getting money in* below.
 **Do (check):** run the balance again until it covers that amount. A post that is short is refused
 before anything is signed, saying what is missing.
 
