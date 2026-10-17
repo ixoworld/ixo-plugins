@@ -20,9 +20,8 @@ say it to them. Keep the two apart: the technical words in **Do** never reach th
   say exactly what to click, with the button's words in **bold**.
 - **No IDs, addresses or codes** unless they ask, or they must send money to an address.
 - **Before money moves**, say the amount, the coin and where it goes, and get a yes.
-- **Never use these words with the person**: DID, entity, deed, collection, UCAN, x402, IID,
-  linked resource, Vault, IPFS, CID, Blocksync, facilitator, oracle, escrow, rail. Use the plain words
-  below.
+- **No technical words with the person** (no IDs, chain or protocol terms, "oracle", "escrow",
+  "facilitator", "rail"). Use the plain words below.
 
 ### Plain words (for you)
 
@@ -32,11 +31,11 @@ say it to them. Keep the two apart: the technical words in **Do** never reach th
 | org admin address | your company's account |
 | oracle | the reviewer (the checker that reviews answers) |
 | facilitator | your payouts service |
-| review billing / x402 delegation / Pay for reviews | your review budget |
+| review billing / Pay for reviews | your review budget |
 | Console credits | review credits |
 | deed / collection / ask | a task (an "ask") |
 | rails (chain, usdc_base, stripe) | how you pay people |
-| sign a delegation / UCAN | approve |
+| sign a permission | approve |
 | devnet / testnet / mainnet | test run / trial with play money / live with real money |
 
 ## Safety rules (never bend these)
@@ -77,9 +76,8 @@ pay people, we do it here: it runs on your computer, so your keys stay with you.
 | Openhands tools | the plugin's `openhands-network` server. It runs `OPENHANDS_MCP_PACKAGE` (default `@ixo/openhands-mcp@1`). If a tool this skill names is missing, IXO gives a newer package: restart with `OPENHANDS_MCP_PACKAGE=file:<abs path to .tgz> claude`. |
 | `wrangler` | `npx -y wrangler` (Cloudflare's CLI). Ways B and C only. |
 | `stripe` | the Stripe CLI (`brew install stripe/stripe-cli/stripe`; ask before installing). Way C only. |
-| Reviewers (fallback list) | Step 4 lists the network's reviewers live. If that fails, devnet has: Openhands checker `https://openhands-oracle.devnet.ixo.earth`, and Ask the World checker `https://ask-the-world-oracle.devnet.ixo.earth` (`did:ixo:entity:e720f496883d32df8fd323f80d962d18`). Testnet has: Openhands checker `https://openhands-oracle.testnet.ixo.earth` (`did:ixo:entity:472d061a704afe76118d3f753c843d4d`), and Ask the World checker `https://ask-the-world-oracle.testnet.ixo.earth` (`did:ixo:entity:36a90a9d3f8858525c5f5dbdef266b79`). Mainnet: none from IXO yet; only the company's own reviewer works there. |
-| Blocksync (`<graphql>`) | devnet `https://devnet-blocksync-graphql.ixo.earth/graphql`, testnet `https://testnet-blocksync-graphql.ixo.earth/graphql`, mainnet `https://blocksync-graphql.ixo.earth/graphql` |
-| Openhands website (`<site>`) | the site `connect_account` links to: mainnet `https://openhands.network`, testnet `https://test.openhands.network`; devnet: the site in `OPENHANDS_SITE` |
+| Reviewers | Step 4 lists them from the Openhands website. |
+| Openhands website (`<site>`) | the site `connect_account` links to: mainnet `https://openhands.network`, testnet `https://test.openhands.network` |
 | Decision Console | devnet `https://decision-console.devnet.ixo.earth`, testnet `https://decision-console.testnet.ixo.earth`, mainnet `https://decision-console.ixo.earth` |
 
 **Where the setup tools live:** `~/.ixo/packages/` is the one place to look (`ls ~/.ixo/packages/*.tgz`;
@@ -157,8 +155,8 @@ as the org DID. Check: it starts with `did:ixo:entity:`.
 1. **Do:** recap their work from step 1. List the network's reviewers with one plain read of the
    Openhands site, never from memory: `curl -s <site>/api/oracles` → `{oracles:[{value, name, what,
    priceBase, perReview}]}` (`value` is the reviewer's DID; `priceBase` is upay per review). Don't
-   write query scripts. For a reviewer's address (`<kit>`), read `<kit>/v1/info`; its card is at the
-   `#acard` link. If the read fails, use the fallback list in the command table.
+   write query scripts. For a reviewer's address (`<kit>`), read `<kit>/v1/info`. If the read fails,
+   say the reviewer list can't be reached right now and try again shortly.
    **Suggest each reviewer from its own card:** in one line each, say how it would help with *their*
    work (what it checks, e.g. photos, place, a written answer), and the price. Then recommend:
    **IXO's Ask the World checker by default** (it fits most jobs: photos, "go and look", short
@@ -174,9 +172,7 @@ as the org DID. Check: it starts with `did:ixo:entity:`.
    stand-in.
 2. **Their own reviewer:** **Say:** "IXO builds that for you. I'll send them your rules." Write a short
    spec (checks, pass/review/reject lines, limits, price) and pause here until IXO says it exists.
-   Before linking it, IXO (or its owner) buys review credits in the Console and registers it
-   (`eval-oracle engine register --network <network>` from its project folder; `402 NO_SUBSCRIPTION`
-   means credits first). Ask whether that's done; don't guess.
+   Ask IXO whether it's ready to link; don't guess.
 3. **Link it** (`<kit>` = the reviewer's URL):
    - Check: `eval-oracle api sources --entity <org DID> --kit <kit> --network <network> --json`.
      `active` → done; `pending-link` → go to the link command with its id.
@@ -190,7 +186,7 @@ as the org DID. Check: it starts with `did:ixo:entity:`.
 
 ### 5. Review budget (a reviewer that bills per review)
 
-**Do (check):** `curl -s <kit>/v1/info` shows `"reviewBilling": {"mode": "x402", …}`. Otherwise skip.
+**Do (check):** `review_billing_status` with the company's DID says a budget is needed. Otherwise skip.
 Only the company's **owner** (the account from step 2) can approve it, and they need review credits.
 
 **Say:** "Each review costs <price> PAY from your review credits. To allow that, you approve a review
@@ -242,9 +238,8 @@ What the company's account needs:
   reward × answers, in the coin from step 1 (IXO, or USDC
   on mainnet). Never PAY. Ways B and C pay rewards outside, so nothing here.
 - **Review fees:** usually nothing here. IXO's reviewers bill each review (in PAY) to the company
-  owner's review credits through the review budget (step 5). Only a reviewer that holds its fee with
-  the task (its `/v1/info` has no `reviewBilling`, or `"mode": "escrow"`) needs PAY here: its
-  price × answers.
+  owner's review credits through the review budget (step 5). If `post_ask` says the company needs PAY
+  for reviews, that reviewer takes its fee with the task: add price × answers in PAY.
 
 If nothing is needed, say so and move on. Otherwise add ~0.1 IXO for posting fees (they come from this
 account too) and offer to move it from their own account:
@@ -384,12 +379,8 @@ your review budget."
 
 ## If something goes wrong (for you, Claude)
 
-- **"401 unknown capabilities"** from IXO's reviewer: the reviewer is older than the CLI. Say it needs
-  an update, and stop.
-- **`api source link` → "not a registered oracle":** run `eval-oracle engine register` for that
-  reviewer, then link again.
+- **Linking a reviewer fails:** say the reviewer isn't ready yet, tell IXO, and stop.
 - **Wrong reviewer linked:** remove it in the Decision Console (organisation › reviewer › remove).
-- **Decision Console says "Allowed protocols: none":** only for its own API, not Openhands. Ignore.
 - **`post_ask` refusals:**
   - "<Company> needs N IXO for rewards and M PAY for reviews" → fund as step 6, preview again.
   - "the oracle's signing wallet could not be confirmed" → wait and retry; don't work around it.
