@@ -47,8 +47,7 @@ reviewer · within 400 m of the place.
 **Places:** `<console>` = `https://decision-console.devnet.ixo.earth` (test run),
 `https://decision-console.testnet.ixo.earth` (trial), `https://decision-console.ixo.earth` (live).
 `<site>` = the Openhands website `connect_account` links to: `https://openhands.network` (live),
-`https://test.openhands.network` (trial). A test run (devnet) has no public site: it is the local
-test site the tools point at (`OPENHANDS_SITE`).
+`https://test.openhands.network` (trial); a test run (devnet) uses the site in `OPENHANDS_SITE`.
 
 ## Before any job: is the person ready?
 
