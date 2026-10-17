@@ -61,7 +61,7 @@ Check quietly, fix inline with one sentence and the next action, then carry on w
 | they ask on behalf of a group, club, company or association | "Post this as yourself, or set <group> up so the checks come from it?" (ask once) | as yourself → carry on; set it up → switch to the openhands-hq skill |
 | posting as a company that isn't set up | "Your company isn't set up yet. It takes about 10 minutes; shall we do it now?" | switch to the openhands-hq skill |
 | the company's reviews are paused or off | "Reviews need a review budget. It's one approval; shall we do it?" | the *Review budget* job below |
-| posting fails: the network-fee allowance on the connection is used up | "Tap this link and approve again — it tops up the small network-fee allowance. Then tell me." | `connect_account` for a fresh link, then wait as above and post again. Don't blame IXO. |
+| posting fails: the network-fee allowance on the connection is used up | "Open this link, tap **Disconnect**, then **Connect** again — that tops up the small network-fee allowance. Then tell me." | `connect_account` for a fresh link, then wait as above and post again. Don't blame IXO. |
 | not enough money for the task | "This needs <amount> more in <your/your company's> account." | point to *Money* below |
 
 Company details (its DID, way it pays, reviewer, payouts service URL) are in
