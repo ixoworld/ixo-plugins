@@ -9,7 +9,8 @@
         "@ixo/openhands-mcp@1"
       ],
       "env": {
-        "NEXT_PUBLIC_CHAIN_NETWORK": "testnet"
+        "NEXT_PUBLIC_CHAIN_NETWORK": "testnet",
+        "NEXT_PUBLIC_REVIEW_BILLING": "credits"
       }
     }
   }
