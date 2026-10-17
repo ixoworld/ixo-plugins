@@ -155,12 +155,15 @@ as the org DID. Check: it starts with `did:ixo:entity:`.
 
 ### 4. Reviewer
 
-1. **Do:** recap their work from step 1. List the network's reviewers the way OpenHands does, never
-   from memory or one hard-coded entry: query `<graphql>` for
-   `entities(filter: {type: {equalTo: "oracle"}, status: {equalTo: 0}}) { nodes { id } }`, then
-   `iids(filter: {id: {in: [...]}}) { nodes { id linkedResource } }`; keep those with an `#acard`
-   (type `agentCard`) and read each card at its `serviceEndpoint` (name, description, services), plus
-   `<url>/v1/info` for the price. If this fails, use the fallback list in the command table.
+1. **Do:** recap their work from step 1. List the network's reviewers with one plain read of the
+   Openhands site, never from memory: `curl -s <site>/api/oracles` → `{oracles:[{value, name, what,
+   priceBase, perReview}]}` (`value` is the reviewer's DID; `priceBase` is upay per review). Don't
+   write query scripts. For a reviewer's address (`<kit>`), read `<kit>/v1/info`; its card is at the
+   `#acard` link. If the read fails, use the fallback list in the command table.
+   **Suggest each reviewer from its own card:** in one line each, say how it would help with *their*
+   work (what it checks, e.g. photos, place, a written answer), and the price. Then recommend the
+   best fit. Never mention internal details such as answers being archived or stored, the decision
+   engine, or anything else that isn't about checking their answers.
    **Describe a reviewer only with what its card or `/v1/info` says.** Never add abilities (for
    example "the location is confirmed automatically") the card doesn't state. If unsure, say "it
    checks the answer against your question".
