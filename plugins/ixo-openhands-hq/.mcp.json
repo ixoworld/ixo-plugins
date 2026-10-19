@@ -8,7 +8,7 @@
         "${OPENHANDS_MCP_PACKAGE:-@ixo/openhands-mcp@1}"
       ],
       "env": {
-        "NEXT_PUBLIC_CHAIN_NETWORK": "${OPENHANDS_NETWORK:-testnet}",
+        "NEXT_PUBLIC_CHAIN_NETWORK": "${OPENHANDS_NETWORK:-mainnet}",
         "NEXT_PUBLIC_REVIEW_BILLING": "credits"
       }
     }

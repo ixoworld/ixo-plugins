@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "ixo-openhands-hq",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "Openhands HQ: set up your company on Openhands — an organisation on chain, a way to pay workers, an oracle and a first ask, with Claude doing every step and telling you exactly what to click.",
   "author": {
     "name": "IXO",
