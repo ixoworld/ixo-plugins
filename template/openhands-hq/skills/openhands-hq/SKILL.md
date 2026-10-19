@@ -132,7 +132,9 @@ to a different network than the one you chose. IXO or your admin needs to restar
 ### 2. Sign in to IXO
 
 **Do (check):** `~/.ixo/publish-session-<network>.json` exists and its address matches the notes (or
-the person confirms it is theirs). Never print the key. If it isn't clearly theirs (someone else's,
+the person confirms it is theirs). **Never open, read or print this file**: it holds the keys that sign for the
+person. Read only its address, with exactly:
+`node -e 'try{console.log(JSON.parse(require("fs").readFileSync(require("os").homedir()+"/.ixo/publish-session-<network>.json","utf8")).address)}catch{console.log("no sign-in")}'` If it isn't clearly theirs (someone else's,
 or they're "not sure"), don't use it and don't delete it: on a shared computer it is someone else's
 sign-in. **Say:** "This computer is signed in as someone else. Ask them first, or use a different
 computer user." Run `decision-oracle logout --network <network>` only after an explicit "yes, remove it".
