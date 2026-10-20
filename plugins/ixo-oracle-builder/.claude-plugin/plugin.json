@@ -1,0 +1,20 @@
+{
+  "name": "ixo-oracle-builder",
+  "version": "0.1.0",
+  "description": "IXO Oracle Builder: build your own IXO evaluation oracle with your AI agent, no coding background needed. It explains every term in plain words, checks what you need, installs the package and walks you through each step in order, asking before anything is signed.",
+  "author": {
+    "name": "IXO",
+    "url": "https://ixo.world"
+  },
+  "homepage": "https://github.com/ixoworld/ixo-plugins/tree/main/plugins/ixo-oracle-builder",
+  "repository": "https://github.com/ixoworld/ixo-plugins",
+  "keywords": [
+    "ixo",
+    "oracle",
+    "evaluation",
+    "no-code",
+    "beginner",
+    "onboarding",
+    "decision-oracle"
+  ]
+}

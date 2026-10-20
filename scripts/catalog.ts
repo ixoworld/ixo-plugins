@@ -6,7 +6,7 @@
  */
 import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { pluginInputs } from "./add-plugin.ts";
+import { loadKind, pluginInputs } from "./add-plugin.ts";
 
 const root = join(import.meta.dir, "..");
 const START = "<!-- plugins:start -->";
@@ -23,7 +23,7 @@ const runs = (p: Entry) => {
   const m = pluginInputs(p.name, p.metadata).flags;
   if (m.url) return `hosted, ${new URL(m.url).host}`;
   if (m.package) return `local, \`npx ${m.package}@${m.major}\` (${m.network})`;
-  return "";
+  return loadKind(String(p.metadata?.kind ?? "oracle")).mcp ? "" : "skills only";
 };
 
 const rows = [

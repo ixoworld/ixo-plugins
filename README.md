@@ -26,6 +26,9 @@ There are three kinds, and more will come:
   [Read more](docs/kinds/openhands.md).
 - **Openhands HQ** sets a company up on Openhands: an organisation, a way to pay workers, an oracle
   and a first ask, with Claude running every step (draft). [Read more](docs/kinds/openhands-hq.md).
+- **Oracle Builder** helps someone with no coding background build their own oracle: the agent
+  explains the terms, installs IXO's oracle package and walks them through each step, asking before
+  anything is signed. Skills only, no server. [Read more](docs/kinds/oracle-builder.md).
 
 <p align="center">
   <img src="assets/flow.svg" alt="You ask → the assistant sends the claim → you approve the fee on IXO → the engine decides and signs a receipt" width="100%">
@@ -43,6 +46,7 @@ There are three kinds, and more will come:
 | [`ixo-openhands-hq`](plugins/ixo-openhands-hq/README.md) | openhands-hq | local, `npx @ixo/openhands-mcp@1` (mainnet) | Openhands HQ: set up your company on Openhands — an organisation on chain, a way to pay workers, an oracle and a first ask, with Claude doing every step and telling you exactly what to click. |
 | [`ixo-openhands-mainnet`](plugins/ixo-openhands-mainnet/README.md) | openhands-hosted | hosted, openhands.network | Read the open asks on the Openhands Network and see how it works, read-only: Openhands Network (mainnet) needs no sign-in and nothing installed. |
 | [`ixo-openhands-testnet`](plugins/ixo-openhands-testnet/README.md) | openhands-hosted | hosted, test.openhands.network | Read the open asks on the Openhands Network and see how it works, read-only: Openhands Network (testnet) needs no sign-in and nothing installed. |
+| [`ixo-oracle-builder`](plugins/ixo-oracle-builder/README.md) | oracle-builder | skills only | IXO Oracle Builder: build your own IXO evaluation oracle with your AI agent, no coding background needed. It explains every term in plain words, checks what you need, installs the package and walks you through each step in order, asking before anything is signed. |
 | [`ixo-swiftdrop-devnet`](plugins/ixo-swiftdrop-devnet/README.md) | oracle | hosted, shipment-delivery-oracle.devnet.ixo.earth | Proof of delivery for SwiftDrop Express couriers, decided by IXO's independent engine — devnet (test network). |
 <!-- plugins:end -->
 
@@ -123,6 +127,7 @@ CI rebuilds every plugin to check nothing drifted. To add one, see
 - [IXO Memory](docs/kinds/memory.md): what you allow, what it can remember and forget.
 - [Openhands Network](docs/kinds/openhands.md): the key, the network, hosted versus local.
 - [Openhands HQ](docs/kinds/openhands-hq.md): company onboarding, the three ways to pay, secrets.
+- [Oracle Builder](docs/kinds/oracle-builder.md): build your own oracle, step by step, no code background.
 - [Clients](docs/clients.md): plugin, connector or local command, per app.
 - [Signing in](docs/sign-in.md): IXO sign-in for hosted plugins, a key for local ones.
 - [Contributing](CONTRIBUTING.md): add a plugin or a kind, versioning, CI.

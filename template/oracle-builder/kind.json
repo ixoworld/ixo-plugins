@@ -1,0 +1,10 @@
+{
+  "$comment": "Kind-level defaults for `add-plugin --kind oracle-builder`: a SKILLS-ONLY kind (\"mcp\": null, so no MCP server and no transport flags). It teaches a non-technical person's AI agent the IXO oracle terms and the order of steps, and hands off to the detailed skills that `bunx @ixo/decision-oracle init` copies into the new project. The agent runs the decision-oracle CLI in a terminal. Placeholders: {{NAME}} {{TITLE}} {{DESCRIPTION}}.",
+  "description": "{{TITLE}}: build your own IXO evaluation oracle with your AI agent, no coding background needed. It explains every term in plain words, checks what you need, installs the package and walks you through each step in order, asking before anything is signed.",
+  "keywords": ["ixo", "oracle", "evaluation", "no-code", "beginner", "onboarding", "decision-oracle"],
+  "mcp": null,
+  "codex": {
+    "policy": { "installation": "AVAILABLE", "authentication": "ON_USE" },
+    "category": "Productivity"
+  }
+}
