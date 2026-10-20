@@ -335,7 +335,8 @@ The sign-in file can sign anything and never expires; the rest uses the Openhand
 **Do:** `connect_account` with `principal` = the address from step 2 (in the notes) and
 `wait_seconds: 45`; repeat until connected. No address in the notes: call it with `wait_seconds: 45`
 alone, and pin the one account it reports only after **Say:** "Your approval shows an account ending
-in …<last 4>; is that you?" **Never ask the person for an address.**
+in …<last 4>; is that you?" Several accounts: ask which ending is theirs; none matches → pin none.
+Never pick one yourself, and never ask the person to type an address.
 
 ### 12. Company payout settings
 
@@ -376,7 +377,7 @@ your review budget."
 
 - **Review credits:** buy by card in the Decision Console: `<console>/billing/credits?topup=1&from=openhands`.
 - **IXO:** buy it on an exchange that lists IXO, then send it to the company's account address.
-- **USDC on IXO (live only):** move Noble USDC to IXO over IBC, for example with Keplr or Skip Go. Look up
+- **USDC on IXO (live only):** move Noble USDC over to IXO, for example with Keplr or Skip Go. Look up
   the current steps on the web if they ask.
 - **Test run or trial:** it's test money; IXO hands it out on request. Ask IXO and wait.
 

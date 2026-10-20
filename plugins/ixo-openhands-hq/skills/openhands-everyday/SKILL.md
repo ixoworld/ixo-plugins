@@ -41,8 +41,8 @@ one yes. The words in **Do** are for you; the person only hears what is under **
   person asked for, in their words.
 
 **Defaults:** the network the Openhands tools run on (live by default; a trial with play money only
-if Claude Code was started with `OPENHANDS_NETWORK=testnet`) · 1 answer · 7 days · pay in IXO · the company's default
-reviewer · within 400 m of the place.
+if Claude Code was started with `OPENHANDS_NETWORK=testnet`) · 1 answer · 7 days · pay in USDC on live
+(IXO on a trial) · the company's default reviewer · within 400 m of the place.
 
 **Places:** `<console>` = `https://decision-console.devnet.ixo.earth` (test run),
 `https://decision-console.testnet.ixo.earth` (trial), `https://decision-console.ixo.earth` (live).
@@ -72,14 +72,14 @@ their company's **Payouts** page on the Openhands website and read you the revie
 
 ### Post a task
 
-**Ask:** "What should people do?" · "What does each answer earn?" (in IXO, or USDC on live; never
-PAY) · "Does it have to be done in a particular place?" (if yes, get the place; turn it into
+**Ask:** "What should people do?" · "What does each answer earn?" (in USDC on live by default, or
+IXO; a trial pays in IXO; never PAY) · "Does it have to be done in a particular place?" (if yes, get the place; turn it into
 `"lat,lon"` and read the place back to check).
 **Do:** `post_ask` without `confirm`: `title` = a short question or phrase for the card, at most
-80 characters (e.g. "Is <their brand> on the shelf at <their store>?"), `task` = everything the person must do, `pay`, `currency: "IXO"` (or `"USDC"`, live only),
+80 characters (e.g. "Is <their brand> on the shelf at <their store>?"), `task` = everything the person must do, `pay`, `currency: "USDC"` on live (or `"IXO"`; a trial uses `"IXO"`),
 `quota` 1, `days` (what they said, else 7), `near`/`place` when it's somewhere, optional `image`, a `series` name when it's
 the same task at many addresses.
-As a company, add `org` and `oracle: { did: <reviewer>, url: <reviewer URL> }` (no `url` for a
+As themselves, pass no `org` and no `oracle`: the Ask the World reviewer checks it. As a company, add `org` and `oracle: { did: <reviewer>, url: <reviewer URL> }` (no `url` for a
 reviewer built for the company). Prefer the company's Ask the World checker for photos, "go and look"
 and short written answers; its Openhands checker for cleanup or work campaigns; a company that pays by USDC on Base or card passes `pay: 0` and
 `payout: { rail, amount, currency, facilitator }` instead of a reward on chain.
@@ -90,8 +90,8 @@ and short written answers; its Openhands checker for cleanup or work campaigns; 
 
 **Ask:** "What do you want to know?" · "Where?" · "Photo, or just a short answer?"
 **Do:** `ask_the_world` without `confirm`: `question`, a short `title` (at most 80 characters), `near` ("lat,lon"), `needs` (`observation` or
-`photo`; `url-check` for a web page, no place), `pay` in the reward coin with `currency` `IXO` (or
-`USDC`, live only), `hours` (what they said, else 24), `quota` 1. The preview says how asks near there usually go: pass that on.
+`photo`; `url-check` for a web page, no place), `pay` in the reward coin with `currency` `USDC` on
+live (or `IXO`; a trial uses `IXO`), `hours` (what they said, else 24), `quota` 1. The preview says how asks near there usually go: pass that on.
 **Say:** "Someone near <place> will check '<question>' within <hours> hours, for <reward> <IXO|USDC>.
 It costs <total> today. OK?" → with
 `confirm`. Later: `collect_answer` (with `wait_seconds` to wait). Report what came back, how sure it
@@ -127,7 +127,7 @@ live), never PAY. Say them in that coin.
 ### Check my tasks and answers
 
 **Do:** `list_asks` with `poster` = their address (open tasks); `collect_answer` for one task's
-answers; `check_verdict` for an answer's review; `plan_status` for a market plan.
+answers; `check_verdict` for an answer's review.
 **Say** it in a line or two: "2 of 3 answered; one approved and paid."
 
 **"Did anyone answer? Is anything waiting for me?"** Besides the above, some answers wait for a
@@ -168,15 +168,9 @@ new budget starts from zero." Raising it = signing a new budget.
 **Say:** "Open your company's **Payouts** page on the Openhands website and click to change it." Or
 here: `set_payout_settings` (preview, then `confirm: true`; the oracle list replaces the old one).
 
-### Prediction market (find signal before a market closes)
-
-`scope_market` (the link) → talk it through → `draft_plan` → show its summary → `fund_plan` with
-`confirm` → `plan_status`. No `currency`: each check's `pay` is in the network's reward coin (IXO on a
-test run or trial, USDC on live), never PAY. Say the total in that coin.
-
 ## Money
 
-Rewards are paid in **IXO** (or **USDC** on live), from the person's or the company's account.
+Rewards are paid in **USDC** (the default on live) or **IXO**, from the person's or the company's account.
 PAY never pays a reward; it only pays for reviews.
 
 - **Your own account:** the connection lets tasks spend from it, up to the cap you approved.
