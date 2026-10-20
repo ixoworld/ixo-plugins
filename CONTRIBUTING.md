@@ -14,7 +14,8 @@ on the IXO core team approves it. Force-pushes and deletes are blocked.
 
 ## Adding a plugin
 
-Every plugin has a **kind** (`oracle`, `memory`, `openhands`, `openhands-hosted` today). The kind decides
+Every plugin has a **kind** (`oracle`, `memory`, `openhands`, `openhands-hosted`,
+`oracle-builder` today). The kind decides
 its skills, README, default description, keywords, MCP server name and transport. Which flags you
 pass depends on the transport.
 
@@ -104,6 +105,13 @@ A kind is one directory, `template/<kind>/`. No code changes.
     `.mcp.json`, `codex` to the portable `mcp.json`. Claude Code expands `${VAR}` and
     `${VAR:-default}` in `env`; the portable format does not (only `${PLUGIN_ROOT}` and
     `${PLUGIN_DATA}`), so give `codex` a literal. See [docs/clients.md](docs/clients.md).
+    A **skills-only** kind sets `"mcp": null`: the plugin gets no `.mcp.json` or `mcp.json`, takes
+    no transport flags (only `--name`, `--title`, `--version`, `--description`), and needs no
+    `serverName` (`{{SERVER}}` is then the plugin's name). The README table lists it as "skills
+    only". `oracle-builder` is one:
+    ```bash
+    bun run add-plugin --kind oracle-builder --name ixo-oracle-builder --title "IXO Oracle Builder" --version 0.1.0
+    ```
   - `codex` (optional): `{"policy": {"installation": …, "authentication": …}, "category": …}` for
     the Codex catalog. Default `AVAILABLE` / `ON_INSTALL` / `Productivity`. `installation` is one of
     `NOT_AVAILABLE`, `AVAILABLE`, `INSTALLED_BY_DEFAULT`; `authentication` is `ON_INSTALL` or

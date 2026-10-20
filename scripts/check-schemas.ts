@@ -17,6 +17,7 @@ import Ajv2020 from "ajv/dist/2020.js";
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { isDeepStrictEqual } from "node:util";
 import { join } from "node:path";
+import { loadKind } from "./add-plugin.ts";
 
 const root = join(import.meta.dir, "..");
 const readJson = (...p: string[]) => JSON.parse(readFileSync(join(root, ...p), "utf8"));
@@ -62,8 +63,15 @@ for (const name of c2.keys()) if (!c1.has(name)) bad(`${name} is in the Codex ca
 const dirs = readdirSync(join(root, "plugins")).filter((d) => statSync(join(root, "plugins", d)).isDirectory());
 for (const d of dirs) {
   if (!c1.has(d)) bad(`plugins/${d} is not in the catalogs`);
+  // A skills-only kind (`"mcp": null`) writes no MCP files; any other kind must have them.
+  const kind = c1.get(d)?.metadata?.kind;
+  const skillsOnly = typeof kind === "string" && loadKind(kind).mcp === null;
+  for (const mcpFile of [".mcp.json", "mcp.json"]) {
+    if (skillsOnly && existsSync(join(root, "plugins", d, mcpFile))) bad(`plugins/${d}/${mcpFile}: kind "${kind}" has no MCP server`);
+  }
   for (const [file, validate] of Object.entries(validators)) {
     const path = join("plugins", d, file);
+    if (skillsOnly && file === "mcp.json") continue;
     if (!existsSync(join(root, path))) {
       bad(`${path} is missing`);
       continue;
