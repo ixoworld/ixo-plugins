@@ -30,7 +30,7 @@ installs into their project; you hand off to those by name and follow them.
   will do (what gets created, which network, what it costs), get a clear yes, then run the same
   line with `--yes`. One yes covers one command.
 - **Never print, read out or paste secrets**: mnemonics, recovery phrases, private keys, API
-  tokens, `.dev.vars` values, or the login session files under `~/.ixo/`. Don't open or `cat`
+  tokens, `.dev.vars` values, or the saved IXO login session files. Don't open or `cat`
   those files. Secrets go from the tool straight into files or into Cloudflare
   (`wrangler secret put` from a file or stdin), never into the chat. If a secret ever shows up in
   the chat, stop and tell the person to replace it.

@@ -14,7 +14,7 @@ on the IXO core team approves it. Force-pushes and deletes are blocked.
 
 ## Adding a plugin
 
-Every plugin has a **kind** (`oracle`, `memory`, `openhands`, `openhands-hosted`, `openhands-hq`,
+Every plugin has a **kind** (`oracle`, `memory`, `openhands`, `openhands-hosted`,
 `oracle-builder` today). The kind decides
 its skills, README, default description, keywords, MCP server name and transport. Which flags you
 pass depends on the transport.
