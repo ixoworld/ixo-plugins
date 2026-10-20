@@ -3,7 +3,7 @@
 {{DESCRIPTION}}
 
 - For: Claude Code and Cowork. Claude runs every step on your computer, so it needs Node.js 22.6 or newer.
-- Skill `openhands-hq`: sets your company up. A few plain questions, then Claude does the rest and tells you exactly what to click: your company on Openhands, the one way you pay people (on chain in IXO or USDC, with nothing to set up; or USDC on Base or card, through a small payouts service in your Cloudflare account), the reviewer that checks answers, your review budget, and your first task. If you stop, run it again and it carries on where it stopped.
+- Skill `openhands-hq`: sets your company up. A few plain questions, then Claude does the rest and tells you exactly what to click: your company on Openhands, the one way you pay people (on chain in IXO, with nothing to set up; or USDC on Base or card, through a small payouts service in your Cloudflare account), the reviewer that checks answers, your review budget, and your first task. If you stop, run it again and it carries on where it stopped.
 - Skill `openhands-everyday`: everything after that, in two or three questions and one yes: post a task (as you or as your company), Ask the World, campaigns, open calls, check answers, get paid, and your review budget.
 - Tools: `{{SERVER}}`, the same Openhands server as `ixo-openhands` (`npx -y {{PACKAGE}}@{{MAJOR}}`). For the setup, Claude also runs the public npm packages `@ixo/decision-oracle` (your company, reviewer and review budget) and, for USDC on Base or card only, `@ixo/payouts-facilitator`. Nothing to download by hand.
 - Network: `{{NETWORK}}` (live, real money) by default. To try it first with play money, start Claude Code with `OPENHANDS_NETWORK=testnet claude`; the setup then uses testnet for every step.
