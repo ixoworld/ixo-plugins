@@ -41,8 +41,7 @@ one yes. The words in **Do** are for you; the person only hears what is under **
   person asked for, in their words.
 
 **Defaults:** the network the Openhands tools run on (live by default; a trial with play money only
-if Claude Code was started with `OPENHANDS_NETWORK=testnet`) · 1 answer · 7 days · pay in IXO (USDC on live
-only if they want it) · the company's default reviewer · within 400 m of the place.
+if Claude Code was started with `OPENHANDS_NETWORK=testnet`) · 1 answer · 7 days · pay in IXO · the company's default reviewer · within 400 m of the place.
 
 **Places:** `<console>` = `https://decision-console.devnet.ixo.earth` (test run),
 `https://decision-console.testnet.ixo.earth` (trial), `https://decision-console.ixo.earth` (live).
@@ -61,7 +60,7 @@ Check quietly, fix inline with one sentence and the next action, then carry on w
 | posting as a company that isn't set up | "Your company isn't set up yet. It takes about 10 minutes; shall we do it now?" | switch to the openhands-hq skill |
 | the company's reviews are paused or off | "Reviews need a review budget. It's one approval; shall we do it?" | the *Review budget* job below |
 | posting fails: the network-fee allowance on the connection is used up | "Open this link, tap **Disconnect**, then **Connect** again — that tops up the small network-fee allowance. Then tell me." | `connect_account` for a fresh link, then wait as above and post again. Don't blame IXO. |
-| the company's account is short for the task | "<company>'s account needs <amount> more (reward plus about 0.1 IXO for fees). Shall I move it from your own account? The network fee is about 0.02 IXO." | dry run `decision-oracle org fund --entity <org DID> --amount <amount> --network <network>` (`--coin usdc` for USDC rewards; command table in openhands-hq; always pass `--network`; it says why if it can't), then on yes the same with `--yes --json`. If their own account is short too, give the company's address from `org balance` and point to *Money* below. |
+| the company's account is short for the task | "<company>'s account needs <amount> more (reward plus about 0.1 IXO for fees). Shall I move it from your own account? The network fee is about 0.02 IXO." | dry run `decision-oracle org fund --entity <org DID> --amount <amount> --network <network>` (command table in openhands-hq; always pass `--network`; it says why if it can't), then on yes the same with `--yes --json`. If their own account is short too, give the company's address from `org balance` and point to *Money* below. |
 | your own account is short for the task | "This needs <amount> more in your account." | point to *Money* below |
 
 Company details (its DID, way it pays, reviewer, payouts service URL) are in
@@ -72,11 +71,10 @@ their company's **Payouts** page on the Openhands website and read you the revie
 
 ### Post a task
 
-**Ask:** "What should people do?" · "What does each answer earn?" (in IXO by default, or USDC on
-live if they want; never PAY) · "Does it have to be done in a particular place?" (if yes, get the place; turn it into
+**Ask:** "What should people do?" · "What does each answer earn?" (in IXO; never PAY. For dollars, a company pays by USDC on Base or card) · "Does it have to be done in a particular place?" (if yes, get the place; turn it into
 `"lat,lon"` and read the place back to check).
 **Do:** `post_ask` without `confirm`: `title` = a short question or phrase for the card, at most
-80 characters (e.g. "Is <their brand> on the shelf at <their store>?"), `task` = everything the person must do, `pay` (in IXO), `currency: "USDC"` only if they chose USDC (live only; otherwise leave it out),
+80 characters (e.g. "Is <their brand> on the shelf at <their store>?"), `task` = everything the person must do, `pay` (in IXO; no `currency`),
 `quota` 1, `days` (what they said, else 7), `near`/`place` when it's somewhere, optional `image`, a `series` name when it's
 the same task at many addresses.
 As themselves, pass no `org` and no `oracle`: the Ask the World reviewer checks it. As a company, add `org` and `oracle: { did: <reviewer>, url: <reviewer URL> }` (no `url` for a
@@ -90,9 +88,8 @@ and short written answers; its Openhands checker for cleanup or work campaigns; 
 
 **Ask:** "What do you want to know?" · "Where?" · "Photo, or just a short answer?"
 **Do:** `ask_the_world` without `confirm`: `question`, a short `title` (at most 80 characters), `near` ("lat,lon"), `needs` (`observation` or
-`photo`; `url-check` for a web page, no place), `pay` in IXO (add `currency: "USDC"`
-only if they chose USDC, live only), `hours` (what they said, else 24), `quota` 1. The preview says how asks near there usually go: pass that on.
-**Say:** "Someone near <place> will check '<question>' within <hours> hours, for <reward> <IXO|USDC>.
+`photo`; `url-check` for a web page, no place), `pay` in IXO (no `currency`), `hours` (what they said, else 24), `quota` 1. The preview says how asks near there usually go: pass that on.
+**Say:** "Someone near <place> will check '<question>' within <hours> hours, for <reward> IXO.
 It costs <total> today. OK?" → with
 `confirm`. Later: `collect_answer` (with `wait_seconds` to wait). Report what came back, how sure it
 is and what wasn't checked; never call it certain.
@@ -168,7 +165,7 @@ here: `set_payout_settings` (preview, then `confirm: true`; the oracle list repl
 
 ## Money
 
-Rewards are paid in **IXO** by default, or **USDC** on live if the person wants, from the person's or the company's account.
+On-chain rewards are paid in **IXO**, from the person's or the company's account.
 PAY never pays a reward; it only pays for reviews.
 
 - **Your own account:** the connection lets tasks spend from it, up to the cap you approved.
@@ -178,7 +175,8 @@ PAY never pays a reward; it only pays for reviews.
   reviewer holds its fee with the task does the account need PAY itself: `top_up` (10, 25 or 100
   PAY) gives a card payment link the person opens and pays. Never handle card details.
 - **IXO:** buy on an exchange that lists IXO and send it to the account address.
-- **USDC on IXO (live only):** move Noble USDC over to IXO, for example with Keplr or Skip Go.
+- **USDC on the IXO network** is moving to a new route and isn't offered for new setups right now.
+  A company that wants to pay in dollars uses USDC on Base or card (set up with openhands-hq).
 - **Test run or trial:** test money; IXO hands it out.
 
 The web connector (claude.ai, ChatGPT) can only read; posting, paying and getting paid happen here.

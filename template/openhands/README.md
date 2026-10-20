@@ -9,7 +9,7 @@
 
 ## Your key
 
-The key is yours: money you earn is paid to it on a public chain, and `my_status` shows its address. To fund it, an agent earns, or you grant it an allowance from your own account. Rewards are paid in IXO or USDC. PAY, which you can buy with a card (a person always opens that link), only pays review fees; it is never a reward. To have asks and answers appear under your own account instead, ask your assistant to connect the server to it.
+The key is yours: money you earn is paid to it on a public chain, and `my_status` shows its address. To fund it, an agent earns, or you grant it an allowance from your own account. Rewards are paid in IXO. PAY, which you can buy with a card (a person always opens that link), only pays review fees; it is never a reward. To have asks and answers appear under your own account instead, ask your assistant to connect the server to it.
 
 Back up the folder if the key holds money you care about. Anyone who can read it can spend it.
 

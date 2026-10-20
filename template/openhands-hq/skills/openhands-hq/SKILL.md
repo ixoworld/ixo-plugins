@@ -1,6 +1,6 @@
 ---
 name: openhands-hq
-description: Set a company up on Openhands from nothing, for a non-technical business owner, by interviewing them in plain words and running every setup step yourself as a terminal command — their company account, the one way it pays people (on chain in IXO or USDC, USDC on Base, or card payouts through Stripe), the reviewer that checks answers, the review budget, and a first ask. Use whenever someone wants to register their company or organisation on Openhands, post asks as a company, set up payouts for workers, pay for reviews, or pick up a company setup that stopped part way.
+description: Set a company up on Openhands from nothing, for a non-technical business owner, by interviewing them in plain words and running every setup step yourself as a terminal command — their company account, the one way it pays people (on chain in IXO, USDC on Base, or card payouts through Stripe), the reviewer that checks answers, the review budget, and a first ask. Use whenever someone wants to register their company or organisation on Openhands, post asks as a company, set up payouts for workers, pay for reviews, or pick up a company setup that stopped part way.
 ---
 
 # Openhands HQ: set up a company
@@ -109,11 +109,11 @@ Ask one at a time; write the answers in the notes.
    Ask for a logo link too (optional).
 2. **Say:** "In a sentence or two, what work do you want people to do?"
 3. **Say:** "How do you want to pay people? If you don't want to run anything yourselves, pick
-   **On chain**: nothing to set up. Pick **USDC on Base** or **Card** only if you need to pay people
-   outside IXO; that needs a small payouts service we set up together in your Cloudflare account
+   **On chain** in IXO: nothing to set up. To pay in dollars, pick **USDC on Base** or **Card**; that needs a small payouts service we set up together in your Cloudflare account
    (about 15 minutes)." They pick **one**:
-   - **A. On chain** (the default). Your company's account pays each approved answer. Then ask:
-     "Pay people in **IXO** (the default) or **USDC**?" USDC is live only (mainnet); a trial uses IXO.
+   - **A. On chain** (the default). Your company's account pays each approved answer, in IXO. If they
+     ask for USDC on IXO, **Say:** "USDC on the IXO network is moving to a new route and isn't
+     offered for new setups right now. To pay in dollars, pick USDC on Base or Card."
    - **B. USDC on Base.** A payouts service sends USDC from a wallet the company controls.
    - **C. Card (Stripe).** A payouts service sends money from the company's Stripe balance.
 4. **Say:** "Who should check the answers? IXO's ready-made reviewer, or one built for your own
@@ -237,16 +237,14 @@ Note "review emails: on".
 What the company's account needs:
 
 - **Rewards, way A only** (ask what the first task will pay and for how many answers; default 1):
-  reward × answers, in the coin from step 1 (IXO, or USDC
-  on mainnet). Never PAY. Ways B and C pay rewards outside, so nothing here.
+  reward × answers, in IXO. Never PAY. Ways B and C pay rewards outside, so nothing here.
 - **Review fees:** usually nothing here. IXO's reviewers bill each review (in PAY) to the company
   owner's review credits through the review budget (step 5). If `post_ask` says the company needs PAY
   for reviews, that reviewer takes its fee with the task: add price × answers in PAY.
 
 If nothing is needed, say so and move on. Otherwise add ~0.1 IXO for posting fees (they come from this
 account too) and offer to move it from their own account:
-**Do:** `decision-oracle org fund --entity <org DID> --amount <amount> --network <network>` (IXO; add
-`--coin usdc` for USDC rewards, and fund the IXO for fees in a second run) (dry run: it says
+**Do:** `decision-oracle org fund --entity <org DID> --amount <amount> --network <network>` (IXO) (dry run: it says
 what it would send, or why it can't, e.g. their wallet holds too little).
 **Say:** "Your company's account needs <amount> <coin> before the first task. Shall I move it from
 your own account to <company>'s account? The network fee is about 0.02 IXO." On yes:
@@ -342,8 +340,7 @@ tool printed.
 
 **Do:** if `set_payout_settings` isn't a tool, see the command table (newer package). Call it without
 `confirm`: `orgDid`; `facilitator` (B, C); `rails`: one of `["chain"]`, `["usdc_base"]`, `["stripe"]`;
-`oracles`: the reviewer(s) from step 4, default first (DIDs only); `currency`: A + USDC → `USDC`
-(else leave out), B → `USDC`, C → `USD`.
+`oracles`: the reviewer(s) from step 4, default first (DIDs only); `currency`: A → leave out, B → `USDC`, C → `USD`.
 **Say** the preview in plain words ("You pay people on chain in IXO; answers are checked by <reviewer
 name>. OK?"), then call again with `confirm: true`. It says **Set** after reading it back.
 "Reconnect needed" → redo step 11. Other refusals → fix the step it names.
@@ -360,7 +357,7 @@ your company's **Payouts** page."
    `campaign` on each `post_ask`.
 3. `post_ask` without `confirm`: `title` (a short phrase for the card, at most 80 characters), `task`, `pay`, `quota`, `days`, `near` ("lat,lon"), `place`, `image`,
    `org` = org DID, `oracle` = `{ did: <reviewer DID>, url: <kit> }` (no `url` for the company's own
-   reviewer), way A: `currency: "USDC"` only if they chose USDC (otherwise leave it out: IXO). Ways B/C: `pay: 0` and
+   reviewer), way A: no `currency` (it pays in IXO). Ways B/C: `pay: 0` and
    `payout: { rail, amount, currency, facilitator: <url> }` — never a reward on chain too (paid twice).
    **Say** the preview plainly: "This task pays <reward> to each of <n> people, from your company's
    account. Reviews come from your review budget. Post it?"
@@ -377,8 +374,6 @@ your review budget."
 
 - **Review credits:** buy by card in the Decision Console: `<console>/billing/credits?topup=1&from=openhands`.
 - **IXO:** buy it on an exchange that lists IXO, then send it to the company's account address.
-- **USDC on IXO (live only):** move Noble USDC over to IXO, for example with Keplr or Skip Go. Look up
-  the current steps on the web if they ask.
 - **Test run or trial:** it's test money; IXO hands it out on request. Ask IXO and wait.
 
 ## If something goes wrong (for you, Claude)
@@ -388,7 +383,7 @@ your review budget."
 - **`post_ask` refusals:**
   - "<Company> needs N IXO for rewards and M PAY for reviews" → fund as step 6, preview again.
   - "the oracle's signing wallet could not be confirmed" → wait and retry; don't work around it.
-  - "PAY is no longer a reward" → use IXO or USDC.
+  - "PAY is no longer a reward" → use IXO.
   - "USDC isn't available on <network>" → use IXO.
 - **After posting:** "<Company>'s owner needs to turn on Pay for reviews" or "Reviews paused … renew"
   → step 5 (a bigger budget); "top up … credits" → the owner buys credits. "It will retry on its own"

@@ -79,7 +79,7 @@ your confirmation, and never handle card details.
 Posting an ask moves real money into escrow, in two steps: a preview with the exact total, then the
 call again with that total confirmed. There are per-ask and per-day ceilings that the server keeps
 on disk. To fund it, link your own account, grant the key an allowance from your own account, or let
-an agent earn. Rewards are paid in IXO (or USDC on mainnet); a card only buys review credits (PAY), which pay
+an agent earn. Rewards are paid in IXO; a card only buys review credits (PAY), which pay
 review fees and never rewards, and a person always opens that link.
 
 ## If something's off

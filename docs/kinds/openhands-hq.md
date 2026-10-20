@@ -26,7 +26,7 @@ company on Openhands, one way to pay workers, a reviewer for answers, and a firs
 | | A. On chain | B. USDC on Base | C. Stripe |
 | --- | --- | --- | --- |
 | Company funds | Its account on Openhands | Its payout wallet on Base | Its Stripe balance |
-| Reward coin | IXO or USDC (Noble USDC, mainnet only) | USDC on Base | USD |
+| Reward coin | IXO | USDC on Base | USD |
 | Payouts service needed | No | Yes | Yes |
 
 Rewards are never PAY. Reviews are paid in PAY from the owner's review credits, through a review
