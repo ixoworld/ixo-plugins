@@ -21,7 +21,8 @@
  *         (Claude Code) and `mcp.json` (portable Agent Plugins / Codex). Absent = the hosted
  *         default: `{type: http, url}` / `{type: streamable-http, url}`. The placeholders used in it
  *         decide which flags are required: {{URL}} → --url, {{PACKAGE}} → --package,
- *         {{MAJOR}} → --major, {{NETWORK}} → --network.
+ *         {{MAJOR}} → --major, {{NETWORK}} → --network. `null` = a skills-only kind: no MCP
+ *         server, no `.mcp.json` / `mcp.json`, no transport flags (`serverName` is then optional).
  *       - `urlPath` (default `/v1/mcp`): the path a hosted plugin's --url must have.
  *       - `networks` (optional): the values --network may take.
  *       - `codex` `{ policy: {installation, authentication}, category }`: the Codex catalog fields
@@ -73,11 +74,12 @@ type Kind = {
   name: string;
   description: string;
   keywords: string[];
-  serverName: string;
+  serverName?: string;
   hostLabelStripSuffix?: string;
   urlPath: string;
   networks?: string[];
-  mcp: { claude: McpEntry; codex: McpEntry };
+  /** null: a skills-only kind (no MCP server, no transport flags). */
+  mcp: { claude: McpEntry; codex: McpEntry } | null;
   codex: { policy: { installation: string; authentication: string }; category: string };
   /** Which of the generation flags this kind's `mcp` block needs. */
   needs: Param[];
@@ -125,10 +127,9 @@ export const loadKind = (name: string): Kind => {
     if (typeof v !== "object" || v === null || Array.isArray(v)) throw new Error(`${file}: ${where} must be an object`);
     return v as Record<string, unknown>;
   };
-  // Transport: the hosted default unless the kind says otherwise.
-  const mcpRaw = raw.mcp === undefined ? DEFAULT_MCP : obj(raw.mcp, '"mcp"');
-  const claude = obj(mcpRaw.claude, '"mcp.claude"');
-  const codex = obj(mcpRaw.codex, '"mcp.codex"');
+  // Transport: the hosted default unless the kind says otherwise; `null` = skills only.
+  const skillsOnly = raw.mcp === null;
+  const mcpRaw = raw.mcp === undefined ? DEFAULT_MCP : skillsOnly ? null : obj(raw.mcp, '"mcp"');
   const checkEntry = (e: Record<string, unknown>, where: string, types: string[]) => {
     if (typeof e.type !== "string" || !types.includes(e.type)) {
       throw new Error(`${file}: "${where}.type" must be one of ${types.join(", ")}`);
@@ -150,10 +151,14 @@ export const loadKind = (name: string): Kind => {
       throw new Error(`${file}: "${where}.url" is required for ${e.type}`);
     }
   };
-  checkEntry(claude, "mcp.claude", ["stdio", "http", "sse"]);
-  checkEntry(codex, "mcp.codex", ["stdio", "streamable-http", "sse"]);
+  let mcp: Kind["mcp"] = null;
+  if (mcpRaw) {
+    mcp = { claude: obj(mcpRaw.claude, '"mcp.claude"'), codex: obj(mcpRaw.codex, '"mcp.codex"') };
+    checkEntry(mcp.claude, "mcp.claude", ["stdio", "http", "sse"]);
+    checkEntry(mcp.codex, "mcp.codex", ["stdio", "streamable-http", "sse"]);
+  }
   const used = new Set(
-    [...JSON.stringify([claude, codex]).matchAll(/\{\{([A-Z_]+)\}\}/g)].map((m) => m[1].toLowerCase()),
+    [...JSON.stringify(mcp ?? []).matchAll(/\{\{([A-Z_]+)\}\}/g)].map((m) => m[1].toLowerCase()),
   );
   const unknown = [...used].filter((u) => !(PARAMS as readonly string[]).includes(u));
   if (unknown.length) throw new Error(`${file}: unknown placeholder {{${unknown[0].toUpperCase()}}} in "mcp"`);
@@ -180,7 +185,7 @@ export const loadKind = (name: string): Kind => {
     name,
     urlPath,
     networks: networks as string[] | undefined,
-    mcp: { claude, codex },
+    mcp,
     codex: {
       policy: { installation: policy.installation, authentication: policy.authentication },
       category: codexRaw.category,
@@ -188,7 +193,7 @@ export const loadKind = (name: string): Kind => {
     needs,
     description: str("description")!,
     keywords,
-    serverName: str("serverName")!,
+    serverName: str("serverName", skillsOnly),
     hostLabelStripSuffix: str("hostLabelStripSuffix", true),
     readme,
     skillsDir,
@@ -365,7 +370,10 @@ export function main(argv: string[], opts: MainOptions = {}): void {
     }
     serverVars.HOST_LABEL = hostLabel;
   }
-  const server = render(kind.serverName, serverVars, `template/${kind.name}/kind.json serverName`);
+  // A skills-only kind has no server: {{SERVER}} is then the plugin's name.
+  const server = kind.serverName
+    ? render(kind.serverName, serverVars, `template/${kind.name}/kind.json serverName`)
+    : name;
   if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(server)) {
     throw new Error(`MCP server name "${server}" (from template/${kind.name}/kind.json) must be kebab-case`);
   }
@@ -410,15 +418,17 @@ export function main(argv: string[], opts: MainOptions = {}): void {
   // portable Agent Plugins pair (plugin.json + mcp.json) when present.
   write(join(out, ".claude-plugin", "plugin.json"), meta);
   const mcpWhere = `template/${kind.name}/kind.json mcp`;
-  write(join(out, ".mcp.json"), { mcpServers: { [server]: renderDeep(kind.mcp.claude, vars, mcpWhere) } });
+  if (kind.mcp) write(join(out, ".mcp.json"), { mcpServers: { [server]: renderDeep(kind.mcp.claude, vars, mcpWhere) } });
   write(join(out, "plugin.json"), {
     $schema: "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
     ...meta,
   });
-  write(join(out, "mcp.json"), {
-    $schema: "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
-    mcpServers: { [server]: renderDeep(kind.mcp.codex, vars, mcpWhere) },
-  });
+  if (kind.mcp) {
+    write(join(out, "mcp.json"), {
+      $schema: "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+      mcpServers: { [server]: renderDeep(kind.mcp.codex, vars, mcpWhere) },
+    });
+  }
   write(join(out, "README.md"), render(kind.readme, vars, `template/${kind.name}/README.md`));
 
   // Both catalogs: Claude Code's, and Codex's native one (Codex also reads Claude Code's).
@@ -454,7 +464,8 @@ export function main(argv: string[], opts: MainOptions = {}): void {
     { policy: kind.codex.policy, category: kind.codex.category },
   );
 
-  console.log(`✓ plugins/${name} (${kind.name}) → ${given.url ?? `${given.package}@${given.major} (${given.network})`} (server "${server}")`);
+  const target = !kind.mcp ? "skills only" : `${given.url ?? `${given.package}@${given.major} (${given.network})`} (server "${server}")`;
+  console.log(`✓ plugins/${name} (${kind.name}) → ${target}`);
 }
 
 if (import.meta.main) main(process.argv.slice(2));

@@ -1,0 +1,57 @@
+# IXO Oracle Builder
+
+IXO Oracle Builder: build your own IXO evaluation oracle with your AI agent, no coding background needed. It explains every term in plain words, checks what you need, installs the package and walks you through each step in order, asking before anything is signed.
+
+## Who it's for
+
+You want your own **evaluation oracle** on IXO: a small service that checks people's submissions
+(a delivery, a photo of a planted tree, a finished task) and records a signed verdict. You don't
+need to code. You tell your AI agent what you want checked, answer its questions, and click where
+it tells you. The agent does the typing.
+
+## What it does
+
+- Skill `oracle-builder`: the guided setup. It asks what you want checked, explains each new word
+  the first time it comes up, checks you have what you need, installs IXO's oracle package
+  (`@ixo/decision-oracle`) into a new folder, and then takes you through the steps in order:
+  sign in, design the form and the rules, publish them, write the checks, put your oracle online,
+  and send a first test claim.
+- Skill `oracle-terms`: the glossary, in plain words. What an oracle, a protocol, a rubric, a claim
+  or a collection is, what is practice and what is real money, and what costs money.
+- It starts on **devnet**, IXO's practice network. Nothing is signed on chain until you say yes,
+  and the agent never shows your keys or recovery phrase.
+- There is no server in this plugin. The agent runs IXO's `decision-oracle` tool in a terminal on
+  your computer, and the package brings its own detailed skills for each step.
+
+## What you need
+
+- A computer where your agent can use a terminal (Claude Code, Cowork or Codex), with
+  [bun](https://bun.sh) installed (the agent can install it for you).
+- A Cloudflare account that owns the web address (domain) your oracle will live at.
+- An IXO login (the agent opens the sign-in page in your browser), a little IXO for fees, and an
+  IXO subscription so the decision engine can bill you for decisions.
+
+## Install
+
+Claude Code, one step:
+
+```text
+/plugin install ixo-oracle-builder --marketplace ixoworld/ixo-plugins
+```
+
+Or in two steps: `/plugin marketplace add ixoworld/ixo-plugins`, then `/plugin install ixo-oracle-builder@ixo-plugins`.
+
+Cowork: add the plugin marketplace `ixoworld/ixo-plugins`, then install `ixo-oracle-builder`.
+
+Codex:
+
+```bash
+codex plugin marketplace add ixoworld/ixo-plugins
+codex plugin add ixo-oracle-builder@ixo-plugins
+```
+
+## Start
+
+Say: *I want to build my own IXO oracle.*
+
+More: see [docs/kinds/oracle-builder.md](../../docs/kinds/oracle-builder.md).

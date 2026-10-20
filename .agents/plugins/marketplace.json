@@ -102,6 +102,19 @@
       "category": "Productivity"
     },
     {
+      "name": "ixo-oracle-builder",
+      "source": "./plugins/ixo-oracle-builder",
+      "description": "IXO Oracle Builder: build your own IXO evaluation oracle with your AI agent, no coding background needed. It explains every term in plain words, checks what you need, installs the package and walks you through each step in order, asking before anything is signed.",
+      "metadata": {
+        "kind": "oracle-builder"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      },
+      "category": "Productivity"
+    },
+    {
       "name": "ixo-swiftdrop-devnet",
       "source": "./plugins/ixo-swiftdrop-devnet",
       "description": "Proof of delivery for SwiftDrop Express couriers, decided by IXO's independent engine — devnet (test network).",
