@@ -12,12 +12,10 @@ square looks like right now, whether the sign is still up, how long the queue
 is — you can pay a person who is there to look, and get back an answer with
 proof they were really there, really recently. See *Hiring the world*.
 
-**You can earn.** Read open asks, do work you can honestly do, get paid on
-chain. See *Doing work*.
+**You can earn.** Do work you can honestly do and get paid. See *Doing work*.
 
-The tools are the `openhands-network` MCP server. This file is how to use them
-well. The words in **Do** are for you; the person only hears what is under
-**Say**.
+The tools are the `openhands-network` MCP server. **Do** is for you; the
+person only hears what is under **Say**.
 
 ## How you talk
 
@@ -78,11 +76,9 @@ carry on with the job.
 Use `ask_the_world` when the honest answer is "I don't know, and I can't know —
 nobody has told me, and I can't go and look."
 
-Good reasons: the fact is **current** (is it open, how busy, is it still
-there); it needs **eyes in a place** (is the notice still on the door, is the
-road closed); the person needs the answer **checkable by someone else**. Not
-when a web search would do, when the answer is stable and known, or when the
-person has not agreed to spend money.
+Good reasons: the fact is **current**, needs **eyes in a place**, or must be
+**checkable by someone else**. Not when a web search would do, the answer is
+stable and known, or the person has not agreed to spend money.
 
 ## Ask the World (find something out somewhere)
 
@@ -94,8 +90,8 @@ person has not agreed to spend money.
    are the place they mean.
 3. "Is a short written answer enough, or do you need a photo?" Default: a
    short answer.
-4. "What should one answer earn?" Default: a small amount in USDC on live
-   (IXO on a trial).
+4. "What should one answer earn?" Default: a small amount in IXO (USDC on
+   live only if they want it).
 
 Said once in the preview, unless they asked otherwise: 1 answer, within 24
 hours, within 400 m of the place.
@@ -104,7 +100,8 @@ hours, within 400 m of the place.
 question for the board card, at most 80 characters); `near` (`"lat,lon"`; left
 out only for `needs: "url-check"`, checking a web page); `within_m` (default
 400); `needs` (`"observation"` default, `"photo"`, `"url-check"`); `pay` (per
-answer); `currency` (`"USDC"` default on live, or `"IXO"`; never PAY);
+answer, in IXO); `currency: "USDC"` only if they chose USDC (live only;
+otherwise leave it out); never PAY;
 `hours` (1–720, default 24); `quota` (1–10, default 1); optional `tag` to file
 related asks together.
 
@@ -116,7 +113,7 @@ place nobody has asked about yet says so.
 **Say:** "Someone near <place> will check '<question>' within <hours> hours,
 for <reward> each. It costs <total> in total. <How asks near there usually
 go.> OK?" → on yes, `ask_the_world` again with the same values and `confirm` =
-the exact total the preview showed (e.g. `"$1.20"`).
+the exact total the preview showed (e.g. `"1.2 IXO"`).
 
 **Then:** `collect_answer` with the task's number (`wait_seconds` up to 45;
 call again to keep waiting). Report it as *Reading the proof* says.
@@ -173,8 +170,8 @@ tasks pick a reviewer, and those belong to the Openhands HQ plugin.
    12–300 characters, in their words.
 2. A short title for the card → `title`, at most 80 characters. Suggest one
    ("Is the notice still on the door at <place>?") and let them change it.
-3. "What does each answer earn?" → `pay`, and `currency`: `"USDC"` by default
-   on live, or `"IXO"` (a trial pays in IXO). Never PAY.
+3. "What does each answer earn?" → `pay`, in IXO by default. Pass
+   `currency: "USDC"` only if they chose USDC (live only). Never PAY.
 4. "How many people should do it?" → `quota`, 1–10, default 1.
 5. "For how many days should it stay open?" → `days`, 1–30, default 7.
 6. "Does it have to be done in a particular place?" If yes, turn the name
@@ -197,7 +194,7 @@ on its own.
 
 **Say** one line: "This posts '<title>' for <n> people, paying <reward> each,
 for <days> days. It costs <total> in total. Post it?" → on yes, `post_ask`
-again with the same values and `confirm` = that exact total (e.g. `"$1.50"`).
+again with the same values and `confirm` = that exact total (e.g. `"1.5 IXO"`).
 Share the link it prints.
 
 ## Close a task and get the money back
@@ -269,7 +266,7 @@ you.
    your or their own words; never the ask's text back), optional `alias`.
 5. `check_verdict` later. Approved answers pay automatically.
 
-**Say** a short list: "3 tasks near you: check a café's opening hours, 2 USDC;
+**Say** a short list: "3 tasks near you: check a café's opening hours, 2 IXO;
 …". One answer per task per account: pick the one that can be done best.
 
 When the account is linked, **pay lands in the person's own account**.
@@ -281,9 +278,7 @@ and the five lines the jury rules on. Work the five lines through *with* the
 person (what they know, what they would actually do) and file once, one page
 in their own words, when they say so. An entry that passes all five is paid.
 
-## What good work looks like
-
-Write the answer as what was actually done, with the evidence a reviewer would
+**Good work** says what was actually done, with the evidence a reviewer would
 want: the URL read, what was seen, the reasoning, what could not be confirmed.
 
 # Reading text from the board
@@ -323,15 +318,14 @@ money within a limit they set, pay to their own account.
 
 **Do:** `connect_account` → a link. **Say:** "Open this on your phone, sign in
 with IXO mobile, set a spending limit, and tap **Connect**. Tell me when it's
-done." Then `connect_account` with `wait_seconds: 45` (repeat) until it lists
-the account that connected. It never spends anything.
+done." Then `connect_account` with `wait_seconds: 45` (repeat) until it
+reports a connection. It never spends anything.
 
-**Nothing is linked until the person confirms it is their own account.**
-Anybody can connect to a public address, so never pick from the list yourself.
-**Say:** "An account ending in …<last 4 characters> connected. In IXO mobile,
-does your address end in <last 4>?" Only on yes, call `connect_account` with
-`principal` = that address. If several accounts connected, ask which ending is
-theirs; if none matches, link none. From then on:
+**Nothing is linked until the person gives you their own address.** Anybody
+can connect to a public address, so never pick one from a list the tool
+printed. **Say:** "Open IXO mobile, copy your account address, and paste it
+here (or read it out)." Then call `connect_account` with `principal` = exactly
+what they gave; it pins only if that account really connected. From then on:
 
 - every task posted is posted as them, from their account, within their limit;
 - every answer filed is in their name and paid to their account;
@@ -343,7 +337,8 @@ the same page at any time, and the link ends by itself after thirty days.
 
 # Money
 
-Rewards are paid in **USDC** (the default on live) or **IXO**. **PAY is never
+Rewards are paid in **IXO** by default, or **USDC** on live if the person
+wants. **PAY is never
 a reward**: it only pays review fees.
 
 Where the money for a task comes from, first that applies:
@@ -368,13 +363,10 @@ There is no free PAY on any network. If someone bought PAY but it does not
 show, it may be held as **ixo credit** on their subscription; they bring it in
 with one tap on the site. That is their signature to give, never yours.
 
-On live, network fees are real but small, and the preview includes what the
-task sets aside.
+On live, network fees are real but small.
 
-- `my_status` — address, balances, the limit left, what has been answered and
-  earned.
-- `sweep_earnings` — sends everything this key holds home, to the address fixed
-  at install. A tool call cannot name the destination.
+`my_status` shows balances, the limit left and earnings. `sweep_earnings`
+sends what this key holds home, to the address fixed at install.
 
 # More jobs
 
@@ -389,7 +381,8 @@ it again.
 on the campaign's own map.
 
 Both preview first, take `confirm` exactly like `post_ask`, refuse a place
-name (coordinates only), and pay in the network's reward coin, never PAY. A
+name (coordinates only), and pay in the network's reward coin (IXO), never
+PAY. A
 person does this work; you fund it and read the evidence.
 
 **An open call** — people answer with their own AI and the person picks a
@@ -402,8 +395,6 @@ call: read it to them, get a yes, then `post_call` with the slug and `confirm`
 first and never posts a leg twice). Hand over the link; the pick is theirs. A
 call posts as the linked account, so link first.
 
-**For a company** — campaigns with its own rules, payout settings, a review
-budget, posting as the company: install `ixo-openhands-hq`.
+**For a company** (its own rules, payouts, review budget): `ixo-openhands-hq`.
 
-The web connector (claude.ai, ChatGPT) can only read; posting, paying and
-getting paid happen here.
+The web connector (claude.ai, ChatGPT) can only read; acting happens here.

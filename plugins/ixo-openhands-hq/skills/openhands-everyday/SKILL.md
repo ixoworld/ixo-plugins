@@ -41,8 +41,8 @@ one yes. The words in **Do** are for you; the person only hears what is under **
   person asked for, in their words.
 
 **Defaults:** the network the Openhands tools run on (live by default; a trial with play money only
-if Claude Code was started with `OPENHANDS_NETWORK=testnet`) · 1 answer · 7 days · pay in USDC on live
-(IXO on a trial) · the company's default reviewer · within 400 m of the place.
+if Claude Code was started with `OPENHANDS_NETWORK=testnet`) · 1 answer · 7 days · pay in IXO (USDC on live
+only if they want it) · the company's default reviewer · within 400 m of the place.
 
 **Places:** `<console>` = `https://decision-console.devnet.ixo.earth` (test run),
 `https://decision-console.testnet.ixo.earth` (trial), `https://decision-console.ixo.earth` (live).
@@ -56,7 +56,7 @@ Check quietly, fix inline with one sentence and the next action, then carry on w
 | If | Say | Do |
 | --- | --- | --- |
 | a tool this skill names is missing | "I need a newer Openhands version. Restart Claude Code and I'll pick it up." | nothing more; the plugin runs the newest `@ixo/openhands-mcp@1` |
-| not connected (`my_status`) | "First, let's link this to your account so tasks are posted in your name. Open this and tap **Approve**." | `connect_account` → give the link. Then call it again with `wait_seconds: 45` (repeat) until it reports the approval; it finds the account itself. To pin it, pass `principal` = the address in the notes file if there is one; otherwise the one account it reports, after the person confirms it's theirs ("Your approval shows an account ending in …<last 4>; is that you?"). Never ask them to type or send an address. |
+| not connected (`my_status`) | "First, let's link this to your account so tasks are posted in your name. Open this and tap **Approve**." | `connect_account` → give the link. Then call it again with `wait_seconds: 45` (repeat) until it reports the approval; it finds the account itself. To pin it, pass `principal` = the address in the notes file if there is one; otherwise **Say:** "Open IXO mobile, copy your account address and paste it here." and pass exactly what they give. Never pick one from a list the tool printed. |
 | they ask on behalf of a group, club, company or association | "Post this as yourself, or set <group> up so the checks come from it?" (ask once) | as yourself → carry on; set it up → switch to the openhands-hq skill |
 | posting as a company that isn't set up | "Your company isn't set up yet. It takes about 10 minutes; shall we do it now?" | switch to the openhands-hq skill |
 | the company's reviews are paused or off | "Reviews need a review budget. It's one approval; shall we do it?" | the *Review budget* job below |
@@ -72,11 +72,11 @@ their company's **Payouts** page on the Openhands website and read you the revie
 
 ### Post a task
 
-**Ask:** "What should people do?" · "What does each answer earn?" (in USDC on live by default, or
-IXO; a trial pays in IXO; never PAY) · "Does it have to be done in a particular place?" (if yes, get the place; turn it into
+**Ask:** "What should people do?" · "What does each answer earn?" (in IXO by default, or USDC on
+live if they want; never PAY) · "Does it have to be done in a particular place?" (if yes, get the place; turn it into
 `"lat,lon"` and read the place back to check).
 **Do:** `post_ask` without `confirm`: `title` = a short question or phrase for the card, at most
-80 characters (e.g. "Is <their brand> on the shelf at <their store>?"), `task` = everything the person must do, `pay`, `currency: "USDC"` on live (or `"IXO"`; a trial uses `"IXO"`),
+80 characters (e.g. "Is <their brand> on the shelf at <their store>?"), `task` = everything the person must do, `pay` (in IXO), `currency: "USDC"` only if they chose USDC (live only; otherwise leave it out),
 `quota` 1, `days` (what they said, else 7), `near`/`place` when it's somewhere, optional `image`, a `series` name when it's
 the same task at many addresses.
 As themselves, pass no `org` and no `oracle`: the Ask the World reviewer checks it. As a company, add `org` and `oracle: { did: <reviewer>, url: <reviewer URL> }` (no `url` for a
@@ -90,8 +90,8 @@ and short written answers; its Openhands checker for cleanup or work campaigns; 
 
 **Ask:** "What do you want to know?" · "Where?" · "Photo, or just a short answer?"
 **Do:** `ask_the_world` without `confirm`: `question`, a short `title` (at most 80 characters), `near` ("lat,lon"), `needs` (`observation` or
-`photo`; `url-check` for a web page, no place), `pay` in the reward coin with `currency` `USDC` on
-live (or `IXO`; a trial uses `IXO`), `hours` (what they said, else 24), `quota` 1. The preview says how asks near there usually go: pass that on.
+`photo`; `url-check` for a web page, no place), `pay` in IXO (add `currency: "USDC"`
+only if they chose USDC, live only), `hours` (what they said, else 24), `quota` 1. The preview says how asks near there usually go: pass that on.
 **Say:** "Someone near <place> will check '<question>' within <hours> hours, for <reward> <IXO|USDC>.
 It costs <total> today. OK?" → with
 `confirm`. Later: `collect_answer` (with `wait_seconds` to wait). Report what came back, how sure it
@@ -113,16 +113,14 @@ your own rules?" A group needs nothing more than the shared `series`.
 - **Clean one spot:** `post_cleanup` (`near`, `pay`; optional `follow_days`/`follow_pay` to pay again
   if it stays clean).
 Both preview first and take `confirm`. They take no `currency`: rewards (`pay`, `pin_pay`,
-`follow_pay`) are in the network's reward coin (IXO on a test run or trial, USDC on live), never
-PAY. Say the amounts in that coin.
+`follow_pay`) are in the network's reward coin (IXO), never PAY. Say the amounts in that coin.
 
 ### Open call (people answer with their own AI, you pick a winner)
 
 **Do:** `draft_call`, passing what the person says; it answers with the next question to ask. When
 nothing is missing it shows the whole call: read it to them, get a yes, then `post_call` with
 `confirm`, again until it says everything is posted. Never invent their brief. No `currency`: the prize,
-runners-up and entry rewards are in the network's reward coin (IXO on a test run or trial, USDC on
-live), never PAY. Say them in that coin.
+runners-up and entry rewards are in the network's reward coin (IXO), never PAY. Say them in that coin.
 
 ### Check my tasks and answers
 
@@ -170,7 +168,7 @@ here: `set_payout_settings` (preview, then `confirm: true`; the oracle list repl
 
 ## Money
 
-Rewards are paid in **USDC** (the default on live) or **IXO**, from the person's or the company's account.
+Rewards are paid in **IXO** by default, or **USDC** on live if the person wants, from the person's or the company's account.
 PAY never pays a reward; it only pays for reviews.
 
 - **Your own account:** the connection lets tasks spend from it, up to the cap you approved.

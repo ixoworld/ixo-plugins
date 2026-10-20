@@ -113,7 +113,7 @@ Ask one at a time; write the answers in the notes.
    outside IXO; that needs a small payouts service we set up together in your Cloudflare account
    (about 15 minutes)." They pick **one**:
    - **A. On chain** (the default). Your company's account pays each approved answer. Then ask:
-     "Pay people in **IXO** or **USDC**?" USDC is live only (mainnet); a trial uses IXO.
+     "Pay people in **IXO** (the default) or **USDC**?" USDC is live only (mainnet); a trial uses IXO.
    - **B. USDC on Base.** A payouts service sends USDC from a wallet the company controls.
    - **C. Card (Stripe).** A payouts service sends money from the company's Stripe balance.
 4. **Say:** "Who should check the answers? IXO's ready-made reviewer, or one built for your own
@@ -334,9 +334,9 @@ The sign-in file can sign anything and never expires; the rest uses the Openhand
 **Approve**. Then tell me."
 **Do:** `connect_account` with `principal` = the address from step 2 (in the notes) and
 `wait_seconds: 45`; repeat until connected. No address in the notes: call it with `wait_seconds: 45`
-alone, and pin the one account it reports only after **Say:** "Your approval shows an account ending
-in …<last 4>; is that you?" Several accounts: ask which ending is theirs; none matches → pin none.
-Never pick one yourself, and never ask the person to type an address.
+alone until it reports a connection, then **Say:** "Open IXO mobile, copy your account address and
+paste it here." and call it with `principal` = exactly what they gave. Never pick one from a list the
+tool printed.
 
 ### 12. Company payout settings
 
@@ -360,7 +360,7 @@ your company's **Payouts** page."
    `campaign` on each `post_ask`.
 3. `post_ask` without `confirm`: `title` (a short phrase for the card, at most 80 characters), `task`, `pay`, `quota`, `days`, `near` ("lat,lon"), `place`, `image`,
    `org` = org DID, `oracle` = `{ did: <reviewer DID>, url: <kit> }` (no `url` for the company's own
-   reviewer), way A `currency` = `IXO` or `USDC`. Ways B/C: `pay: 0` and
+   reviewer), way A: `currency: "USDC"` only if they chose USDC (otherwise leave it out: IXO). Ways B/C: `pay: 0` and
    `payout: { rail, amount, currency, facilitator: <url> }` — never a reward on chain too (paid twice).
    **Say** the preview plainly: "This task pays <reward> to each of <n> people, from your company's
    account. Reviews come from your review budget. Post it?"
