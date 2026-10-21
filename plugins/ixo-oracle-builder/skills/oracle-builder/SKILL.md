@@ -52,6 +52,8 @@ Ask, one at a time, and write the answers down (you'll need them in step 3):
 4. Is there an outside service that can confirm it? (a courier API, a registry) Or should an AI
    look at a photo or document?
 5. Who will send the claims, and which company owns them?
+6. Should people be able to pick your oracle in the **Openhands** app (someone posts a task, a
+   person or an agent does it, your oracle checks the answer)? Yes or no.
 
 Then say back the plan in three or four plain sentences, and the path below, before you start.
 
@@ -74,9 +76,13 @@ Check and fix, one by one:
 Then create the project. Ask for a folder name (suggest `my-oracle`).
 
 ```bash
-bunx @ixo/decision-oracle init my-oracle
+bunx @ixo/decision-oracle init my-oracle              # add --openhands if they said yes to question 6
 cd my-oracle && bun install
 ```
+
+With `--openhands`, the oracle also answers the Openhands app by itself: when someone posts a task
+and picks this oracle, it gives itself permission on that task and starts checking the answers.
+Nothing more to build for that.
 
 `init` also copies the package's detailed skills into `my-oracle/.claude/skills/`: `create-oracle`,
 `create-rubric`, `publish-protocol`, `create-collection`, `write-facts`, `decision-api-oracle`,
@@ -108,7 +114,7 @@ on top of whatever the package skill says.
 | 3 | Design the **claim form** and the **rubric** (the rules) from their answers, and check the rules with the engine. | `create-rubric` |
 | 4 | Publish them on chain as a **protocol**, so claims and oracles can point at it. Chain write. | `publish-protocol` |
 | 5 | Write the **checks** (handlers) the rules need that no ready-made check answers. Skip if every fact is stock. Test them on a sample claim. | `write-facts` |
-| 6 | Put the **oracle** online on Cloudflare at their address, give it its IXO identity, and register it with the **decision engine**. Chain writes and a deploy. The engine needs the owner's IXO **subscription**: if it answers "payment required" (402), open the page it names so they can add credits, then try again. | `create-oracle` |
+| 6 | Put the **oracle** online on Cloudflare at their address, give it its IXO identity, and register it with the **decision engine**. Chain writes and a deploy. The engine needs the owner's IXO **subscription**: if it answers "payment required" (402), open the page it names so they can add credits, then try again. Ask first whether they will also **review** claims themselves: the login that registers an oracle can never review that oracle's claims, so if yes, register it with a separate company login. | `create-oracle` |
 | 7 | Create the company's **deed** and **collection**, hire the oracle on it, and send a **test claim**. Then show them the verdict and its **receipt**. Chain writes. | `create-collection` |
 
 After step 7, celebrate briefly, then say what they now have in two sentences.
@@ -117,7 +123,10 @@ After step 7, celebrate briefly, then say what they now have in two sentences.
 
 - **Claims over the web instead of on chain** (a business wants to plug its own app in):
   `decision-api-oracle`, and `decision-api-client` to test it from the customer side.
-- **Get hired from the Openhands app** (asks, campaigns): `add-openhands-support`.
+- **Get hired from the Openhands app** (asks, campaigns): if they said yes to question 6, `init
+  --openhands` already did the code; `add-openhands-support` covers who pays for the checks and how
+  the oracle shows up in the app's list. Otherwise it also shows how to add it to an existing
+  oracle.
 - **Move to testnet or mainnet**: repeat steps 2 to 7 with `--network testnet` or
   `--network mainnet`, as a separate, explicit decision, with "real money" said out loud for
   mainnet.

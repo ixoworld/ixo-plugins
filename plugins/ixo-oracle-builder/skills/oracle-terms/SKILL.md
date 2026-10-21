@@ -40,6 +40,7 @@ records that signed verdict on the IXO chain, so anyone can check it later.
 | **Delegation** | A signed permission one identity gives another, limited to one job and a time. (The company lets your oracle read its claims.) |
 | **AuthHub login** | IXO's sign-in. A browser page opens, you sign in, and the tool keeps a session file on your computer. Nobody ever needs to see that file. |
 | **Payouts** | Paying people after their claim is approved. It goes through the company's own payouts service, not through your oracle's fee. |
+| **Openhands checker** | An oracle people can pick in the Openhands app when they post a task. It sets itself up on each task that picks it and checks the answers. `init --openhands` makes one. |
 | **Decision API** | Another way to send claims: over the web (HTTPS) straight to your oracle, instead of on chain. Useful for a business that wants to plug in its own app. |
 | **Cloudflare Workers** | Where your oracle runs. Cloudflare hosts it at your domain; you pay Cloudflare for hosting, often nothing at small sizes. |
 
