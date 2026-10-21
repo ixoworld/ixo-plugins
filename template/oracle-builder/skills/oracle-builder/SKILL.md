@@ -54,6 +54,9 @@ Ask, one at a time, and write the answers down (you'll need them in step 3):
 5. Who will send the claims, and which company owns them?
 6. Should people be able to pick your oracle in the **Openhands** app (someone posts a task, a
    person or an agent does it, your oracle checks the answer)? Yes or no.
+7. What's your oracle's logo? An image file on their computer (.png, .jpg, .webp or .svg, up to
+   5 MB) or a link to one. It shows on the portal, the console and the Openhands app; step 6 uses
+   it. No logo yet? Offer to make a simple one with them before step 6.
 
 Then say back the plan in three or four plain sentences, and the path below, before you start.
 
