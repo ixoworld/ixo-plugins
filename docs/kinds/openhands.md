@@ -53,6 +53,11 @@ per-ask and a per-day cap on disk.
 
 - **Claude Code:** the plugin sets `NEXT_PUBLIC_CHAIN_NETWORK` to `${OPENHANDS_NETWORK:-mainnet}`.
   To use testnet, set `OPENHANDS_NETWORK=testnet` in the shell that starts Claude Code.
+- **Newest test version (Claude Code):** the plugin runs the stable server (`@ixo/openhands-mcp@1`).
+  To try features that are on testnet but not released yet, also set
+  `OPENHANDS_MCP_PACKAGE=@ixo/openhands-mcp@dev`:
+  `OPENHANDS_NETWORK=testnet OPENHANDS_MCP_PACKAGE=@ixo/openhands-mcp@dev claude`.
+  Use it on testnet only; without it nothing changes.
 - **Codex:** the portable `mcp.json` has no environment expansion (see
   [clients](../clients.md)), so the network is fixed in the plugin as `mainnet`. To use testnet, edit
   the installed plugin's `mcp.json` so its `env` has `"NEXT_PUBLIC_CHAIN_NETWORK": "testnet"`. A
