@@ -36,6 +36,8 @@ say it to them. Keep the two apart: the technical words in **Do** never reach th
 | deed / collection / ask | a task (an "ask") |
 | rails (chain, usdc_base, stripe) | how you pay people |
 | sign a permission | approve |
+| approver | the person who gives the final OK |
+| review grant / allow reviewing | turn on checking |
 | devnet / testnet / mainnet | test run / trial with play money / live with real money |
 
 ## Safety rules (never bend these)
@@ -359,8 +361,14 @@ your company's **Payouts** page."
    `org` = org DID, `oracle` = `{ did: <reviewer DID>, url: <kit> }` (no `url` for the company's own
    reviewer), way A: no `currency` (it pays in IXO). Ways B/C: `pay: 0` and
    `payout: { rail, amount, currency, facilitator: <url> }` — never a reward on chain too (paid twice).
+   Optional, ask once: "Who gives the final OK: the AI, you, or an expert?" (default the AI). You →
+   `approver: "me"`; an expert → their Openhands address as `approver`; optional `person_checks`
+   (Yes/No questions). A short report with screenshots is set on the website (<site>/ask, **Me**,
+   **Answer as a report**), not here.
    **Say** the preview plainly: "This task pays <reward> to each of <n> people, from your company's
-   account. Reviews come from your review budget. Post it?"
+   account. Reviews come from your review budget<; you check each answer before it's paid>. Post it?"
+   After posting with an approver: "Open your Me page on Openhands once, signed in with Google, and
+   checking turns on. Answers then wait under **Waiting on you**; press **Send decision** on each."
 4. On yes: `post_ask` again with `confirm` = the exact total shown. Note and share the link. Always
    show the preview and wait for that yes, unless their message this turn already said to post it
    without asking again.

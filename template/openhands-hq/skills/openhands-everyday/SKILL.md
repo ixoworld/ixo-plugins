@@ -21,6 +21,9 @@ one yes. The words in **Do** are for you; the person only hears what is under **
 - No technical words (no IDs, chain or protocol terms, "oracle", "escrow", "facilitator"). Say: **task**, **your company**, **your company's account**,
   **reviewer**, **payouts service**, **review budget**, **review credits**.
 - Never ask the person for an address or a key, and never print a key, PIN or recovery phrase.
+  The one exception: the Openhands address of an expert they choose to give the final OK.
+- Plain words: approver → **the person who gives the final OK**; review grant / allow reviewing →
+  **turn on checking**.
 - **Files:** read only `~/.ixo/openhands-hq-<network>.json`, and only if it exists. Never list,
   search or read anything else under `~/.ixo`, `~/.openhands` or any other folder that holds keys
   (no `ls`, `grep` or `find` there).
@@ -81,8 +84,17 @@ As themselves, pass no `org` and no `oracle`: the Ask the World reviewer checks 
 reviewer built for the company). Prefer the company's Ask the World checker for photos, "go and look"
 and short written answers; its Openhands checker for cleanup or work campaigns; a company that pays by USDC on Base or card passes `pay: 0` and
 `payout: { rail, amount, currency, facilitator }` instead of a reward on chain.
+**Ask, then:** "Who gives the final OK: the AI, me, or an expert?" (default the AI: pass nothing). Me →
+`approver: "me"`; an expert → their Openhands address (`ixo1…`) as `approver`; optional
+`person_checks` (up to 5 Yes/No questions for them). The AI checks every answer first; whoever decides
+signs in to Openhands with Google. `ask_the_world` takes the same two. If a person decides: "Want
+people to answer with a short report and screenshots? Any extra section it must have?" These tools
+can't ask for a report: on yes, **Say:** "Report tasks are posted on the website: <site>/ask, pick
+**Me**, then **Answer as a report**." and stop.
 **Say:** "This posts '<title>' for <n> person/people, paying <reward> each, for <days> days. It costs
-<total> today. Post it?" → on yes, `post_ask` with `confirm`. Share the link.
+<total> today<; you check each answer before it's paid>. Post it?" → on yes, `post_ask` with
+`confirm`. Share the link. With an approver, **Say:** "Open your Me page on Openhands once, signed in
+with Google, and checking turns on." (an expert: "Once it's on, they see the answers on their own Me page.")
 
 ### Ask the World (find something out somewhere)
 
@@ -124,6 +136,9 @@ runners-up and entry rewards are in the network's reward coin (IXO), never PAY. 
 **Do:** `list_asks` with `poster` = their address (open tasks); `collect_answer` for one task's
 answers; `check_verdict` for an answer's review.
 **Say** it in a line or two: "2 of 3 answered; one approved and paid."
+
+**Answers you chose to give the final OK on** wait on the website, never here: "Open <site>/me,
+under **Waiting on you**, read each and press **Send decision**." Never decide one for them.
 
 **"Did anyone answer? Is anything waiting for me?"** Besides the above, some answers wait for a
 person at the company to look at them. **Say:** "Answers that need a person wait in the Decision

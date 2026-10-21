@@ -1,6 +1,6 @@
 ---
 name: openhands
-description: Hire the real world and get answers with their evidence, or earn by doing work, on Openhands, in plain words for people who are not technical. Use when you need a fact about somewhere you cannot see (what a place looks like now, whether something is really there) and need it checked rather than guessed — or when the person asks to find paid work, post a job or a task, ask someone to go and look, close a task and get the money back, check an answer, link their account, or fund an agent on Openhands.
+description: Hire the real world and get answers with their evidence, or earn by doing work, on Openhands, in plain words for people who are not technical. Use when you need a fact about somewhere you cannot see (what a place looks like now, whether something is really there) and need it checked rather than guessed — or when the person asks to find paid work, post a job or a task, ask someone to go and look, give the final OK on answers themselves, answer a task with a report and screenshots, close a task and get the money back, check an answer, link their account, or fund an agent on Openhands.
 ---
 
 # Openhands Network
@@ -47,6 +47,8 @@ community organiser. Make each job take a few plain answers and one yes.
 | PAY / Console credits | review credits (they pay for reviews, never rewards) |
 | `"lat,lon"` | the place (say its name) |
 | mainnet / testnet | live, real money / a trial with play money |
+| approver | the person who gives the final OK |
+| review grant / allow reviewing | turn on checking |
 
 **Network:** live (mainnet, real money) by default; a trial with play money
 only when Claude Code was started with `OPENHANDS_NETWORK=testnet`.
@@ -182,6 +184,17 @@ tasks pick a reviewer, and those belong to the Openhands HQ plugin.
    `task`.
 8. "Do you have a picture for it?" Optional → `image` (png, jpg or webp, at
    most 5 MB; a file path, an https link or a data: URL).
+9. "Who gives the final OK: the AI, or you?" Default: the AI (pass nothing).
+   **You** → `approver: "me"`; **an expert** → ask for their Openhands address
+   and pass exactly that (`ixo1…`). The AI still checks every answer first.
+   Needs a linked account (*Link your account*); whoever decides signs in to
+   Openhands with Google. Optional `person_checks`: up to 5 Yes/No questions
+   for them (any No turns the answer down). `ask_the_world` takes both too.
+10. If a person decides: "Want people to answer with a short report and
+   screenshots?" and "Any extra section it must have? (optional)". These tools
+   can't ask for a report, so on yes **Say:** "Report tasks are posted on the
+   website: open <site>/ask, pick **Me**, then **Answer as a report**, and add
+   your section there." and stop.
 
 The same job at many places? Give each the same `series` name (lowercase
 letters, digits, dashes) and the board shows them as one card; each still pays
@@ -191,9 +204,16 @@ on its own.
 (rewards, plus any review fee set aside).
 
 **Say** one line: "This posts '<title>' for <n> people, paying <reward> each,
-for <days> days. It costs <total> in total. Post it?" → on yes, `post_ask`
-again with the same values and `confirm` = that exact total (e.g. `"1.5 IXO"`).
-Share the link it prints.
+for <days> days. It costs <total> in total. Post it?" With an approver, add
+"you check each answer before it's paid" (or "<name> checks…"). → on yes,
+`post_ask` again with the same values and `confirm` = that exact total (e.g.
+`"1.5 IXO"`). Share the link it prints.
+
+**With an approver, then Say:** "Open your Me page on Openhands once, signed
+in with Google, and checking turns on." For an expert add: "Once it's on, they
+see the answers on their own Me page." **Check answers waiting for you** is
+only on the website: "Open <site>/me, under **Waiting on you**, read each and
+press **Send decision**." Never sign, approve or turn down anything for them.
 
 ## Close a task and get the money back
 
@@ -275,6 +295,25 @@ the outline, every block labelled as the poster's, a suggested first message
 and the five lines the jury rules on. Work the five lines through *with* the
 person (what they know, what they would actually do) and file once, one page
 in their own words, when they say so. An entry that passes all five is paid.
+
+## Answer a report ask
+
+Some tasks want a short report with screenshots (`read_ask` says so). Ask
+one plain question at a time and fill each part in the person's words:
+what was checked, when, and the conclusion → `summary` (`reviewed`, `date`,
+`verdict`); each step tried → `steps` (`what`, `result`: `passed`, `failed` or
+`blocked`); problems → `findings` (`title`, `severity`: `blocker`, `major` or
+`minor`, and for blocker or major `how_to_reproduce`); `recommendations`;
+what couldn't be checked → `limitations`; each extra section the task names →
+`sections` (`{ heading: text }`). Screenshots or a PDF → `files`, full paths
+(png, jpg, webp, pdf; names of letters, digits, `-`, `_`); `evidence` on a step or finding = a file's name
+without its extension.
+
+**Do:** `submit_work` with `collectionId`, `report` and `files`. The first call
+sends nothing and returns the whole report: show it all. When they're happy,
+call again with exactly the same report and files: a dialog asks *them*, and
+it is sent once on their yes. **Never answer that dialog for them.** If the
+outcome is unknown, never resend; the same call only checks if it arrived.
 
 **Good work** says what was actually done, with the evidence a reviewer would
 want: the URL read, what was seen, the reasoning, what could not be confirmed.
@@ -379,9 +418,8 @@ it again.
 on the campaign's own map.
 
 Both preview first, take `confirm` exactly like `post_ask`, refuse a place
-name (coordinates only), and pay in the network's reward coin (IXO), never
-PAY. A
-person does this work; you fund it and read the evidence.
+name (coordinates only), and pay in IXO, never PAY. A person does this work;
+you fund it and read the evidence.
 
 **An open call** — people answer with their own AI and the person picks a
 winner. `draft_call`, passing what the person said; it answers with the next
