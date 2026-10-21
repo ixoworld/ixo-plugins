@@ -21,6 +21,9 @@ one yes. The words in **Do** are for you; the person only hears what is under **
 - No technical words (no IDs, chain or protocol terms, "oracle", "escrow", "facilitator"). Say: **task**, **your company**, **your company's account**,
   **reviewer**, **payouts service**, **review budget**, **review credits**.
 - Never ask the person for an address or a key, and never print a key, PIN or recovery phrase.
+  The one exception: the Openhands address of an expert they choose to give the final OK.
+- Plain words: approver → **the person who gives the final OK**; review grant / allow reviewing →
+  **turn on checking**.
 - **Files:** read only `~/.ixo/openhands-hq-<network>.json`, and only if it exists. Never list,
   search or read anything else under `~/.ixo`, `~/.openhands` or any other folder that holds keys
   (no `ls`, `grep` or `find` there).
@@ -71,18 +74,31 @@ their company's **Payouts** page on the Openhands website and read you the revie
 
 ### Post a task
 
-**Ask:** "What should people do?" · "What does each answer earn?" (in IXO; never PAY. For dollars, a company pays by USDC on Base or card) · "Does it have to be done in a particular place?" (if yes, get the place; turn it into
+**Ask:** "What should people do?" · "What does each answer earn?" (IXO by default; on live, one plain sentence offering USDC (Injective) instead. Never PAY) · "Does it have to be done in a particular place?" (if yes, get the place; turn it into
 `"lat,lon"` and read the place back to check).
 **Do:** `post_ask` without `confirm`: `title` = a short question or phrase for the card, at most
-80 characters (e.g. "Is <their brand> on the shelf at <their store>?"), `task` = everything the person must do, `pay` (in IXO; no `currency`),
+80 characters (e.g. "Is <their brand> on the shelf at <their store>?"), `task` = everything the person must do, `pay` (in IXO by default; `currency: "USDC"` for USDC (Injective) on live),
 `quota` 1, `days` (what they said, else 7), `near`/`place` when it's somewhere, optional `image`, a `series` name when it's
 the same task at many addresses.
 As themselves, pass no `org` and no `oracle`: the Ask the World reviewer checks it. As a company, add `org` and `oracle: { did: <reviewer>, url: <reviewer URL> }` (no `url` for a
 reviewer built for the company). Prefer the company's Ask the World checker for photos, "go and look"
 and short written answers; its Openhands checker for cleanup or work campaigns; a company that pays by USDC on Base or card passes `pay: 0` and
 `payout: { rail, amount, currency, facilitator }` instead of a reward on chain.
+**Specialised task** (invoices, receipts, contracts…): call `list_checkers` quietly; if an expert
+checker clearly fits, recommend it in one sentence (what it checks, the fee) and, if chosen, pass `checker`
+(and `check`). Otherwise use the usual checks without asking. An expert's "me" OK only works when that
+check has a person step; no report option.
+**Ask, then:** "Who gives the final OK: the AI, me, or an expert?" (default the AI: pass nothing). Me →
+`approver: "me"`; an expert → their Openhands address (`ixo1…`) as `approver`; optional
+`person_checks` (up to 5 Yes/No questions for them). The AI checks every answer first; whoever decides
+signs in to Openhands with Google. If a person decides and it isn't a photo task: "Want people to
+answer with a short report and screenshots? Any extra section it must have?" → `report: true`, or the
+section names (up to 5). `ask_the_world` takes all three.
 **Say:** "This posts '<title>' for <n> person/people, paying <reward> each, for <days> days. It costs
-<total> today. Post it?" → on yes, `post_ask` with `confirm`. Share the link.
+<total> today<; you check each answer before it's paid>. Post it?" → on yes, `post_ask` with
+`confirm`. Share the link. With an approver the reply ends with one link (`<site>/t/<id>?approve=1`):
+**Say:** "Open this link and tap **Approve** to switch on your checks." (an expert: "Once it's on, they
+see the answers on their own Me page.")
 
 ### Ask the World (find something out somewhere)
 
@@ -116,7 +132,7 @@ Both preview first and take `confirm`. They take no `currency`: rewards (`pay`, 
 
 **Do:** `draft_call`, passing what the person says; it answers with the next question to ask. When
 nothing is missing it shows the whole call: read it to them, get a yes, then `post_call` with
-`confirm`, again until it says everything is posted. Never invent their brief. No `currency`: the prize,
+`confirm`, again until it says everything is posted. A call is a competition (prize plus runners-up) or a hire (everyone whose work passes is paid, up to a count). To limit who can answer, `post_ask`/`draft_call` take `access` (`"public"` default, `"apply"`, `"invite"`) and `invite` (@handles, addresses, or `"link"`); ask "Who can answer?" only when it matters. Never invent their brief. No `currency`: the prize,
 runners-up and entry rewards are in the network's reward coin (IXO), never PAY. Say them in that coin.
 
 ### Check my tasks and answers
@@ -124,6 +140,9 @@ runners-up and entry rewards are in the network's reward coin (IXO), never PAY. 
 **Do:** `list_asks` with `poster` = their address (open tasks); `collect_answer` for one task's
 answers; `check_verdict` for an answer's review.
 **Say** it in a line or two: "2 of 3 answered; one approved and paid."
+
+**Answers you chose to give the final OK on** wait on the website, never here: "Open <site>/me,
+under **Waiting for you to check**, read each and press **Send decision**." Never decide one for them.
 
 **"Did anyone answer? Is anything waiting for me?"** Besides the above, some answers wait for a
 person at the company to look at them. **Say:** "Answers that need a person wait in the Decision
