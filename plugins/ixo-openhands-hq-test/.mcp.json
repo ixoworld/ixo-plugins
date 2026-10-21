@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "openhands-test": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@ixo/openhands-mcp@dev"
+      ],
+      "env": {
+        "NEXT_PUBLIC_CHAIN_NETWORK": "testnet",
+        "NEXT_PUBLIC_REVIEW_BILLING": "credits"
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "openhands-test": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@ixo/openhands-mcp@dev"
+      ],
+      "env": {
+        "NEXT_PUBLIC_CHAIN_NETWORK": "testnet"
+      }
+    }
+  }
+}
