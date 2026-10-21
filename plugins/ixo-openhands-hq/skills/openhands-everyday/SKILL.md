@@ -132,7 +132,7 @@ Both preview first and take `confirm`. They take no `currency`: rewards (`pay`, 
 
 **Do:** `draft_call`, passing what the person says; it answers with the next question to ask. When
 nothing is missing it shows the whole call: read it to them, get a yes, then `post_call` with
-`confirm`, again until it says everything is posted. Never invent their brief. No `currency`: the prize,
+`confirm`, again until it says everything is posted. A call is a competition (prize plus runners-up) or a hire (everyone whose work passes is paid, up to a count). To limit who can answer, `post_ask`/`draft_call` take `access` (`"public"` default, `"apply"`, `"invite"`) and `invite` (@handles, addresses, or `"link"`); ask "Who can answer?" only when it matters. Never invent their brief. No `currency`: the prize,
 runners-up and entry rewards are in the network's reward coin (IXO), never PAY. Say them in that coin.
 
 ### Check my tasks and answers
