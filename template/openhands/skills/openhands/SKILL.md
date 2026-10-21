@@ -335,8 +335,8 @@ the same page at any time, and the link ends by itself after thirty days.
 
 # Money
 
-Rewards are paid in **IXO**. USDC on the IXO network is moving to a new
-route and isn't offered right now. **PAY is never
+Rewards are paid in **IXO**. USDC (Injective) on the IXO network is on
+mainnet only; devnet and testnet have none. **PAY is never
 a reward**: it only pays review fees.
 
 Where the money for a task comes from, first that applies:

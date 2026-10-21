@@ -112,8 +112,8 @@ Ask one at a time; write the answers in the notes.
    **On chain** in IXO: nothing to set up. To pay in dollars, pick **USDC on Base** or **Card**; that needs a small payouts service we set up together in your Cloudflare account
    (about 15 minutes)." They pick **one**:
    - **A. On chain** (the default). Your company's account pays each approved answer, in IXO. If they
-     ask for USDC on IXO, **Say:** "USDC on the IXO network is moving to a new route and isn't
-     offered for new setups right now. To pay in dollars, pick USDC on Base or Card."
+     ask for USDC on IXO, **Say:** "USDC (Injective) on the IXO network is on mainnet only, and this
+     way pays in IXO. To pay in dollars, pick USDC on Base or Card."
    - **B. USDC on Base.** A payouts service sends USDC from a wallet the company controls.
    - **C. Card (Stripe).** A payouts service sends money from the company's Stripe balance.
 4. **Say:** "Who should check the answers? IXO's ready-made reviewer, or one built for your own

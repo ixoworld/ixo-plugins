@@ -175,8 +175,8 @@ PAY never pays a reward; it only pays for reviews.
   reviewer holds its fee with the task does the account need PAY itself: `top_up` (10, 25 or 100
   PAY) gives a card payment link the person opens and pays. Never handle card details.
 - **IXO:** buy on an exchange that lists IXO and send it to the account address.
-- **USDC on the IXO network** is moving to a new route and isn't offered for new setups right now.
-  A company that wants to pay in dollars uses USDC on Base or card (set up with openhands-hq).
+- **USDC (Injective)** on the IXO network is on mainnet only; devnet and testnet have none, so use
+  IXO there. A company that wants to pay in dollars uses USDC on Base or card (set up with openhands-hq).
 - **Test run or trial:** test money; IXO hands it out.
 
 The web connector (claude.ai, ChatGPT) can only read; posting, paying and getting paid happen here.
