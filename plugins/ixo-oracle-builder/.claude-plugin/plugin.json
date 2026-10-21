@@ -1,6 +1,6 @@
 {
   "name": "ixo-oracle-builder",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "IXO Oracle Builder: build your own IXO evaluation oracle with your AI agent, no coding background needed. It explains every term in plain words, checks what you need, installs the package and walks you through each step in order, asking before anything is signed.",
   "author": {
     "name": "IXO",
