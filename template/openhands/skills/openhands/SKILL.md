@@ -59,6 +59,11 @@ before this can work." and stop.
 
 ## Before any job: is the person ready?
 
+**Running in Claude Code's auto mode?** Linking an account and posting are
+steps its safety check may stop on its own. Before you start, say once: "You're
+in auto mode, which can block some of these steps. Switch to manual (Shift+Tab)
+and you'll get an Allow button instead." Then carry on either way.
+
 **Do:** `my_status` quietly first. Fix what is missing in one sentence, then
 carry on with the job.
 
