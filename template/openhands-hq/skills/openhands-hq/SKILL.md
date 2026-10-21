@@ -363,12 +363,13 @@ your company's **Payouts** page."
    `payout: { rail, amount, currency, facilitator: <url> }` — never a reward on chain too (paid twice).
    Optional, ask once: "Who gives the final OK: the AI, you, or an expert?" (default the AI). You →
    `approver: "me"`; an expert → their Openhands address as `approver`; optional `person_checks`
-   (Yes/No questions). A short report with screenshots is set on the website (<site>/ask, **Me**,
-   **Answer as a report**), not here.
+   (Yes/No questions). With a person and not a photo task: "Answer with a short report and
+   screenshots?" → `report: true`, or the extra section names (up to 5).
    **Say** the preview plainly: "This task pays <reward> to each of <n> people, from your company's
    account. Reviews come from your review budget<; you check each answer before it's paid>. Post it?"
-   After posting with an approver: "Open your Me page on Openhands once, signed in with Google, and
-   checking turns on. Answers then wait under **Waiting on you**; press **Send decision** on each."
+   After posting with an approver, the reply ends with one link: "Open this link and tap **Approve** to
+   switch on your checks. Answers then wait on your Me page under **Waiting for you to check**; press
+   **Send decision** on each."
 4. On yes: `post_ask` again with `confirm` = the exact total shown. Note and share the link. Always
    show the preview and wait for that yes, unless their message this turn already said to post it
    without asking again.

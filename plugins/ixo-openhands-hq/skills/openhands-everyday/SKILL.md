@@ -87,14 +87,14 @@ and short written answers; its Openhands checker for cleanup or work campaigns; 
 **Ask, then:** "Who gives the final OK: the AI, me, or an expert?" (default the AI: pass nothing). Me →
 `approver: "me"`; an expert → their Openhands address (`ixo1…`) as `approver`; optional
 `person_checks` (up to 5 Yes/No questions for them). The AI checks every answer first; whoever decides
-signs in to Openhands with Google. `ask_the_world` takes the same two. If a person decides: "Want
-people to answer with a short report and screenshots? Any extra section it must have?" These tools
-can't ask for a report: on yes, **Say:** "Report tasks are posted on the website: <site>/ask, pick
-**Me**, then **Answer as a report**." and stop.
+signs in to Openhands with Google. If a person decides and it isn't a photo task: "Want people to
+answer with a short report and screenshots? Any extra section it must have?" → `report: true`, or the
+section names (up to 5). `ask_the_world` takes all three.
 **Say:** "This posts '<title>' for <n> person/people, paying <reward> each, for <days> days. It costs
 <total> today<; you check each answer before it's paid>. Post it?" → on yes, `post_ask` with
-`confirm`. Share the link. With an approver, **Say:** "Open your Me page on Openhands once, signed in
-with Google, and checking turns on." (an expert: "Once it's on, they see the answers on their own Me page.")
+`confirm`. Share the link. With an approver the reply ends with one link (`<site>/t/<id>?approve=1`):
+**Say:** "Open this link and tap **Approve** to switch on your checks." (an expert: "Once it's on, they
+see the answers on their own Me page.")
 
 ### Ask the World (find something out somewhere)
 
@@ -138,7 +138,7 @@ answers; `check_verdict` for an answer's review.
 **Say** it in a line or two: "2 of 3 answered; one approved and paid."
 
 **Answers you chose to give the final OK on** wait on the website, never here: "Open <site>/me,
-under **Waiting on you**, read each and press **Send decision**." Never decide one for them.
+under **Waiting for you to check**, read each and press **Send decision**." Never decide one for them.
 
 **"Did anyone answer? Is anything waiting for me?"** Besides the above, some answers wait for a
 person at the company to look at them. **Say:** "Answers that need a person wait in the Decision
