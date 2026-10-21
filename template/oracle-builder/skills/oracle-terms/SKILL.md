@@ -33,7 +33,7 @@ records that signed verdict on the IXO chain, so anyone can check it later.
 | **Review** | When the rubric says "unsure", a person looks at the claim and answers a few questions; their answers complete the same decision. |
 | **PAY** (`upay` on chain) | IXO's payment token for engine credits. 1 PAY is about 1 US dollar; 1 PAY is 1,000,000 upay. Only oracles IXO runs may charge their fee in PAY; yours charges in IXO or USDC. |
 | **Subscription / credits** | Your IXO account's plan with the engine. The engine bills it per decision, so you need one before the engine will work for your oracle. |
-| **Evaluation fee** | What a collection pays your oracle for checking each claim. It is your income, not a payout to the claimant. You set it in IXO (`uixo`) or, on mainnet, in USDC: the USDC IXO's on-ramp uses (USDC on Injective, shown as "USDC · Injective"). Devnet and testnet have no USDC, so use IXO there. |
+| **Evaluation fee** | What a collection pays your oracle for checking each claim. It is your income, not a payout to the claimant. You set it in IXO (`uixo`) or, on mainnet, in USDC: the USDC IXO's on-ramp uses (USDC on Injective, shown as "USDC (Injective)"). Devnet and testnet have no USDC, so use IXO there. |
 | **Gas** | The small fee, in IXO, every chain transaction costs. A little IXO in your login's wallet covers it. |
 | **did:web** | Your oracle's identity on the web, built from its address (`did:web:myoracle.example.com`). The engine knows your oracle by it. |
 | **DID** | An identity on IXO (a person, a company, an oracle). Like an account name that can sign. |
