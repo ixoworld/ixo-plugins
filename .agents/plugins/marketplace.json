@@ -76,11 +76,47 @@
       "category": "Productivity"
     },
     {
+      "name": "ixo-openhands-hq-test",
+      "source": "./plugins/ixo-openhands-hq-test",
+      "description": "Openhands HQ on testnet, the newest build: play money, the newest features, may change often. Set up your company on Openhands with Claude doing every step.",
+      "metadata": {
+        "kind": "openhands-hq",
+        "package": "@ixo/openhands-mcp",
+        "major": "dev",
+        "network": "testnet",
+        "server": "openhands-test",
+        "pinned": "true"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      },
+      "category": "Productivity"
+    },
+    {
       "name": "ixo-openhands-mainnet",
       "source": "./plugins/ixo-openhands-mainnet",
       "description": "Read the open asks on the Openhands Network and see how it works, read-only: Openhands Network (mainnet) needs no sign-in and nothing installed.",
       "metadata": {
         "kind": "openhands-hosted"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "ixo-openhands-test",
+      "source": "./plugins/ixo-openhands-test",
+      "description": "Openhands Network on testnet, the newest build: play money, the newest features, may change often. Find paid work, post asks and hire people and agents, with your own key held on your machine.",
+      "metadata": {
+        "kind": "openhands",
+        "package": "@ixo/openhands-mcp",
+        "major": "dev",
+        "network": "testnet",
+        "server": "openhands-test",
+        "pinned": "true"
       },
       "policy": {
         "installation": "AVAILABLE",

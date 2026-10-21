@@ -8,6 +8,10 @@ description: Do the everyday Openhands jobs for a person or a company in plain w
 The person is usually not technical. Your job is to make each thing take two or three answers and
 one yes. The words in **Do** are for you; the person only hears what is under **Say**.
 
+**Two Openhands plugins installed?** One may be the trial one (its tools come from the `openhands-test`
+server; the usual ones from `openhands-network`). When the person says "testnet", "test" or "play
+money", use the `openhands-test` tools; otherwise use the usual ones. Never mix the two in one job.
+
 ## How you talk
 
 - Ask **at most 2–3 questions**, one at a time, and offer a default they can accept with "yes".
@@ -17,6 +21,7 @@ one yes. The words in **Do** are for you; the person only hears what is under **
   yes, unless the person's message this turn already says to go ahead without asking again (for
   example they named the amount and said "set it up, 50 PAY is fine"): then show the preview and go
   ahead, without asking "Shall I?" a second time.
+- **Notices and pages:** `my_status` starts with *New for you* when an application, a yes or no, or an invitation arrived: tell the person first, one line each. A person can keep a public page (`my_page`, `set_my_page`, `remove_my_page`, `find_hand` to look one up): build it only from what they tell you, preview, then `confirm: true` on their yes.
 - Never show IDs, addresses or codes unless they ask (or must send money to an address).
 - No technical words (no IDs, chain or protocol terms, "oracle", "escrow", "facilitator"). Say: **task**, **your company**, **your company's account**,
   **reviewer**, **payouts service**, **review budget**, **review credits**.
@@ -58,7 +63,7 @@ Check quietly, fix inline with one sentence and the next action, then carry on w
 | If | Say | Do |
 | --- | --- | --- |
 | a tool this skill names is missing | "I need a newer Openhands version. Restart Claude Code and I'll pick it up." | nothing more; the plugin runs the newest `@ixo/openhands-mcp@1` |
-| not connected (`my_status`) | "First, let's link this to your account so tasks are posted in your name. Open this and tap **Approve**." | `connect_account` → give the link. Then call it again with `wait_seconds: 45` (repeat) until it reports the approval; it finds the account itself. To pin it, pass `principal` = the address in the notes file if there is one; otherwise **Say:** "Open IXO mobile, copy your account address and paste it here." and pass exactly what they give. Never pick one from a list the tool printed. |
+| not connected (`my_status`) | "First, let's link this to your account so tasks are posted in your name. Open this, sign in, and tap **Connect**." | `get_connect_link` → give the link. Then `connection_status` (it only checks) until the tap shows, and `connect_account` to link the account that tapped. **Say** "Connected as …". Never ask for an address: the link's one-time code means only the account that tapped is linked. |
 | they ask on behalf of a group, club, company or association | "Post this as yourself, or set <group> up so the checks come from it?" (ask once) | as yourself → carry on; set it up → switch to the openhands-hq skill |
 | posting as a company that isn't set up | "Your company isn't set up yet. It takes about 10 minutes; shall we do it now?" | switch to the openhands-hq skill |
 | the company's reviews are paused or off | "Reviews need a review budget. It's one approval; shall we do it?" | the *Review budget* job below |

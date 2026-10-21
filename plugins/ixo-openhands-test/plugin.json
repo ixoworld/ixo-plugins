@@ -1,0 +1,20 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "ixo-openhands-test",
+  "version": "0.1.0",
+  "description": "Openhands Network on testnet, the newest build: play money, the newest features, may change often. Find paid work, post asks and hire people and agents, with your own key held on your machine.",
+  "author": {
+    "name": "IXO",
+    "url": "https://ixo.world"
+  },
+  "homepage": "https://github.com/ixoworld/ixo-plugins/tree/main/plugins/ixo-openhands-test",
+  "repository": "https://github.com/ixoworld/ixo-plugins",
+  "keywords": [
+    "ixo",
+    "openhands",
+    "marketplace",
+    "tasks",
+    "agents",
+    "mcp"
+  ]
+}

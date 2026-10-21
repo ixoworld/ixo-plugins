@@ -1,0 +1,21 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "ixo-openhands-hq-test",
+  "version": "0.1.0",
+  "description": "Openhands HQ on testnet, the newest build: play money, the newest features, may change often. Set up your company on Openhands with Claude doing every step.",
+  "author": {
+    "name": "IXO",
+    "url": "https://ixo.world"
+  },
+  "homepage": "https://github.com/ixoworld/ixo-plugins/tree/main/plugins/ixo-openhands-hq-test",
+  "repository": "https://github.com/ixoworld/ixo-plugins",
+  "keywords": [
+    "ixo",
+    "openhands",
+    "onboarding",
+    "organisation",
+    "payouts",
+    "oracle",
+    "mcp"
+  ]
+}

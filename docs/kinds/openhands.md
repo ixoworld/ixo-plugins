@@ -37,6 +37,19 @@ codex plugin add ixo-openhands@ixo-plugins
 No Node.js 22.6 or newer, or you're in Claude.ai, Claude Desktop or ChatGPT: add a custom connector with
 `https://openhands.network/v1/mcp` (mainnet) or `https://test.openhands.network/v1/mcp` (testnet).
 
+## Testing the newest build (testnet)
+
+For testers who want play money and the newest features, install `ixo-openhands-test`. It is always
+testnet and always `@ixo/openhands-mcp@dev`, with its own server name (`openhands-test`), so it can sit
+beside the stable plugin; Claude picks the test one when the person says "testnet", "test" or "play money".
+
+```text
+/plugin install ixo-openhands-test@ixo-plugins
+```
+
+(`ixo-openhands-hq-test` is the same for company setup.) Generated with
+`--major dev --network testnet --server openhands-test --pinned true`.
+
 ## Your key
 
 The local server makes its own key the first time it runs and keeps it on your machine, under
