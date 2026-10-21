@@ -361,6 +361,8 @@ your company's **Payouts** page."
    `org` = org DID, `oracle` = `{ did: <reviewer DID>, url: <kit> }` (no `url` for the company's own
    reviewer), way A: no `currency` (it pays in IXO). Ways B/C: `pay: 0` and
    `payout: { rail, amount, currency, facilitator: <url> }` — never a reward on chain too (paid twice).
+   Specialised task (invoices, receipts…): call `list_checkers` quietly; if an expert checker clearly fits,
+   recommend it in one sentence (what it checks, the fee) and pass `checker` (and `check`) if chosen.
    Optional, ask once: "Who gives the final OK: the AI, you, or an expert?" (default the AI). You →
    `approver: "me"`; an expert → their Openhands address as `approver`; optional `person_checks`
    (Yes/No questions). With a person and not a photo task: "Answer with a short report and

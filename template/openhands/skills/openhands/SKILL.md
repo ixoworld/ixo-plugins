@@ -169,6 +169,13 @@ tell the person that before they confirm.
 `org` or `oracle`: it is reviewed by the Ask the World reviewer. Only company
 tasks pick a reviewer, and those belong to the Openhands HQ plugin.
 
+**First,** for a specialised task (invoices, receipts, lab results, contracts…),
+call `list_checkers` quietly. If an expert checker clearly fits, recommend it in
+ONE sentence: "Acme Finance checks invoices: amount, date and supplier, 0.5 PAY
+a check. Use them, or Openhands' usual checks?" Otherwise use Openhands without
+asking. An expert → pass `checker` (name or id) and, if it has several,
+`check`; its own rules and form apply. `ask_the_world` takes both too.
+
 **Ask**, one at a time, each with its default:
 
 1. "What should people do?" → `task`: everything whoever answers must do,
@@ -192,10 +199,11 @@ tasks pick a reviewer, and those belong to the Openhands HQ plugin.
 9. "Who gives the final OK: the AI, or you?" Default: the AI (pass nothing).
    **You** → `approver: "me"`; **an expert** → ask for their Openhands address
    and pass exactly that (`ixo1…`). The AI still checks every answer first.
+   With an expert checker, "you" only if that check has a person step.
    Needs a linked account (*Link your account*); whoever decides signs in to
    Openhands with Google. Optional `person_checks`: up to 5 Yes/No questions
    for them (any No turns the answer down). `ask_the_world` takes both too.
-10. If a person decides, and it isn't a photo task: "Want people to answer
+10. If a person decides, and it isn't a photo task or an expert checker: "Want people to answer
    with a short report and screenshots?" Yes → `report: true`. Then "Any extra
    section it must have? (optional)" → `report` = the section names instead
    (up to 5, 60 characters each). `ask_the_world` takes it too.
@@ -208,7 +216,8 @@ on its own.
 (rewards, plus any review fee set aside).
 
 **Say** one line: "This posts '<title>' for <n> people, paying <reward> each,
-for <days> days. It costs <total> in total. Post it?" With an approver, add
+for <days> days. It costs <total> in total. <Checker> checks <what>; people
+will be asked for <what they provide>; the check costs <fee>. Post it?" With an approver, add
 "you check each answer before it's paid" (or "<name> checks…"). → on yes,
 `post_ask` again with the same values and `confirm` = that exact total (e.g.
 `"1.5 IXO"`). Share the link it prints.
@@ -336,6 +345,13 @@ separate dialogs: what you remembered (if `uses_memory`), the files (public,
 for good), then the report. Any no stops it; any change is shown again.
 **Never answer a dialog for them.** If the outcome is unknown, never resend;
 the same call only checks whether it arrived.
+
+## Answer an expert check
+
+Some tasks use an expert checker (`read_ask` shows its form). Ask for each
+field one at a time, in plain words, then show all the answers. On their OK,
+`submit_work` with `collectionId` and `fields` (the form values), the same
+confirm steps as above.
 
 **Good work** says what was actually done, with the evidence a reviewer would
 want: the URL read, what was seen, the reasoning, what could not be confirmed.

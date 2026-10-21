@@ -84,6 +84,10 @@ As themselves, pass no `org` and no `oracle`: the Ask the World reviewer checks 
 reviewer built for the company). Prefer the company's Ask the World checker for photos, "go and look"
 and short written answers; its Openhands checker for cleanup or work campaigns; a company that pays by USDC on Base or card passes `pay: 0` and
 `payout: { rail, amount, currency, facilitator }` instead of a reward on chain.
+**Specialised task** (invoices, receipts, contracts…): call `list_checkers` quietly; if an expert
+checker clearly fits, recommend it in one sentence (what it checks, the fee) and, if chosen, pass `checker`
+(and `check`). Otherwise use the usual checks without asking. An expert's "me" OK only works when that
+check has a person step; no report option.
 **Ask, then:** "Who gives the final OK: the AI, me, or an expert?" (default the AI: pass nothing). Me →
 `approver: "me"`; an expert → their Openhands address (`ixo1…`) as `approver`; optional
 `person_checks` (up to 5 Yes/No questions for them). The AI checks every answer first; whoever decides
