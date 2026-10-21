@@ -30,6 +30,7 @@
  *   - `README.md`: the plugin README; its first line must be `# {{TITLE}}` (CI reads the title back
  *     from it).
  *   - `skills/`: the plugin's skills.
+ * Text templates may wrap text in {{#PINNED}}…{{/PINNED}} (kept only with --pinned true) or {{^PINNED}}…{{/PINNED}} (kept only without it).
  * Text templates take {{NAME}} (the plugin's name), {{TITLE}}, {{SERVER}}, {{DESCRIPTION}} and the placeholders above that the kind's
  * `mcp` block uses; any other `{{…}}` fails.
  *
@@ -229,7 +230,11 @@ export const pluginInputs = (
 
 /** Replace the known placeholders in one pass (so a value is never itself expanded). */
 const render = (text: string, vars: Record<string, string>, where: string) => {
-  const out = text.replace(/\{\{([A-Z_]+)\}\}/g, (m, key: string) => vars[key] ?? m);
+  // {{#PINNED}}…{{/PINNED}} stays only for a --pinned plugin, {{^PINNED}}…{{/PINNED}} only for the others (no nesting).
+  const kept = text.replace(/\{\{([#^])PINNED\}\}([\s\S]*?)\{\{\/PINNED\}\}/g, (_m, k: string, body: string) =>
+    (k === "#") === Boolean(vars.PINNED) ? body : "",
+  );
+  const out = kept.replace(/\{\{([A-Z_]+)\}\}/g, (m, key: string) => vars[key] ?? m);
   const left = out.match(/\{\{[A-Z_]+\}\}/);
   if (left) throw new Error(`${where}: unknown placeholder ${left[0]}`);
   return out;
@@ -399,7 +404,7 @@ export function main(argv: string[], opts: MainOptions = {}): void {
     values.description ??
     listed?.description ??
     render(kind.description, { NAME: name, TITLE: title, SERVER: server, ...flagVars }, `template/${kind.name}/kind.json description`);
-  const vars = { NAME: name, TITLE: title, SERVER: server, DESCRIPTION: description, ...flagVars };
+  const vars = { NAME: name, TITLE: title, SERVER: server, DESCRIPTION: description, PINNED: optional.pinned ?? "", ...flagVars };
 
   const out = join(root, "plugins", name);
   const write = (path: string, data: unknown) => {

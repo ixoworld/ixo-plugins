@@ -55,8 +55,7 @@ from the `openhands-test` server; the usual ones from `openhands-network`).
 When the person says "testnet", "test" or "play money", use the `openhands-test`
 tools; otherwise use the usual ones. Never mix the two inside one job.
 
-**Network:** live (mainnet, real money) by default; a trial with play money
-only when Claude Code was started with `OPENHANDS_NETWORK=testnet`.
+**Network:** this plugin is always the trial network (play money).
 `my_status` shows which. `<site>` is `https://openhands.network` (live) or
 `https://test.openhands.network` (trial). Never tell the person setting names;
 if a tool's refusal mentions one, **Say:** "Openhands needs a setup change
@@ -513,12 +512,6 @@ call: read it to them, get a yes, then `post_call` with the slug and `confirm`
 = the total, once per leg, until it says everything is posted (it checks
 first and never posts a leg twice). Hand over the link; a competition's pick is
 theirs. A call posts as the linked account, so link first.
-
-**A plan of checks for a prediction market** — only when the person pastes a
-market link. `scope_market` reads it, and you ask where something could be
-checked ahead of it; `draft_plan` prices a plan; `fund_plan` posts it after
-their yes (same two-step `confirm`); `plan_status` shows where it stands;
-`close_plan` takes the unspent money back.
 
 **For a company** (its own rules, payouts, review budget): `ixo-openhands-hq`.
 

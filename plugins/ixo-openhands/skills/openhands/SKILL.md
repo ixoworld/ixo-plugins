@@ -514,12 +514,6 @@ call: read it to them, get a yes, then `post_call` with the slug and `confirm`
 first and never posts a leg twice). Hand over the link; a competition's pick is
 theirs. A call posts as the linked account, so link first.
 
-**A plan of checks for a prediction market** — only when the person pastes a
-market link. `scope_market` reads it, and you ask where something could be
-checked ahead of it; `draft_plan` prices a plan; `fund_plan` posts it after
-their yes (same two-step `confirm`); `plan_status` shows where it stands;
-`close_plan` takes the unspent money back.
-
 **For a company** (its own rules, payouts, review budget): `ixo-openhands-hq`.
 
 The web connector (claude.ai, ChatGPT) can only read; acting happens here.

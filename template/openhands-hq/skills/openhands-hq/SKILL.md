@@ -86,9 +86,9 @@ money", use the `openhands-test` tools; otherwise use the usual ones. Never mix 
 | Openhands website (`<site>`) | the site `connect_account` links to: mainnet `https://openhands.network`, testnet `https://test.openhands.network` |
 | Decision Console | devnet `https://decision-console.devnet.ixo.earth`, testnet `https://decision-console.testnet.ixo.earth`, mainnet `https://decision-console.ixo.earth` |
 
-**`<network>`** is the network the Openhands tools run on (`my_status` shows it): `mainnet` (live,
+**`<network>`** is the network the Openhands tools run on (`my_status` shows it): {{#PINNED}}always `testnet` (a trial with play money).{{/PINNED}}{{^PINNED}}`mainnet` (live,
 real money) by default, or `testnet` (a trial with play money) when Claude Code was started with
-`OPENHANDS_NETWORK=testnet`. Pass that same `--network` to every `decision-oracle` and `installer`
+`OPENHANDS_NETWORK=testnet`.{{/PINNED}} Pass that same `--network` to every `decision-oracle` and `installer`
 command.
 
 The computer needs Node.js 22.6 or newer (`node --version`); if not, help them install it from
@@ -130,10 +130,10 @@ Ask one at a time; write the answers in the notes.
    back.
 7. Way C only: the country of their Stripe account (two letters, like `US` or `DE`).
 
-**Do:** the Openhands tools run on `OPENHANDS_NETWORK` (the fix is a restart with it set; that's for
+**Do:** {{#PINNED}}the Openhands tools here always run on the trial network. If the person wants live (real money), **Say:** "This plugin is the trial one. For real money, install the usual Openhands HQ plugin." and stop.{{/PINNED}}{{^PINNED}}the Openhands tools run on `OPENHANDS_NETWORK` (the fix is a restart with it set; that's for
 IXO or the admin, never said to the person). If `my_status` shows another network, **Say:** "I'm set
 to a different network than the one you chose. IXO or your admin needs to restart me on the
-<trial / live> network; then say 'carry on'."
+<trial / live> network; then say 'carry on'."{{/PINNED}}
 
 ### 2. Sign in to IXO
 
