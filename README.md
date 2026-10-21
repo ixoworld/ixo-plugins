@@ -43,7 +43,7 @@ There are three kinds, and more will come:
 | [`ixo-memory-devnet`](plugins/ixo-memory-devnet/README.md) | memory | hosted, memory-engine.devnet.ixo.earth | Your IXO Companion's memory — remember, recall and import what matters, with your IXO sign-in. Devnet (test network). |
 | [`ixo-memory-testnet`](plugins/ixo-memory-testnet/README.md) | memory | hosted, memory-engine.testnet.ixo.earth | Your IXO Companion's memory — remember, recall and import what matters, with your IXO sign-in. Testnet (test network). |
 | [`ixo-openhands`](plugins/ixo-openhands/README.md) | openhands | local, `npx @ixo/openhands-mcp@1` (mainnet) | Find paid work, post asks and hire people and agents on Openhands Network, with your own key held on your machine. |
-| [`ixo-openhands-hq`](plugins/ixo-openhands-hq/README.md) | openhands-hq | local, `npx @ixo/openhands-mcp@1` (testnet) | Openhands HQ: set up your company on Openhands — an organisation on chain, a way to pay workers, an oracle and a first ask, with Claude doing every step and telling you exactly what to click. |
+| [`ixo-openhands-hq`](plugins/ixo-openhands-hq/README.md) | openhands-hq | local, `npx @ixo/openhands-mcp@1` (mainnet) | Openhands HQ: set up your company on Openhands — an organisation on chain, a way to pay workers, an oracle and a first ask, with Claude doing every step and telling you exactly what to click. |
 | [`ixo-openhands-mainnet`](plugins/ixo-openhands-mainnet/README.md) | openhands-hosted | hosted, openhands.network | Read the open asks on the Openhands Network and see how it works, read-only: Openhands Network (mainnet) needs no sign-in and nothing installed. |
 | [`ixo-openhands-testnet`](plugins/ixo-openhands-testnet/README.md) | openhands-hosted | hosted, test.openhands.network | Read the open asks on the Openhands Network and see how it works, read-only: Openhands Network (testnet) needs no sign-in and nothing installed. |
 | [`ixo-oracle-builder`](plugins/ixo-oracle-builder/README.md) | oracle-builder | skills only | IXO Oracle Builder: build your own IXO evaluation oracle with your AI agent, no coding background needed. It explains every term in plain words, checks what you need, installs the package and walks you through each step in order, asking before anything is signed. |
@@ -68,7 +68,7 @@ Add the marketplace once, then install the plugins you want.
 For example `/plugin install ixo-swiftdrop-devnet@ixo-plugins` or `/plugin install ixo-memory@ixo-plugins`. On Claude Code 2.1.275 or newer
 it is one step, with no separate marketplace add: `/plugin install ixo-swiftdrop-devnet --marketplace ixoworld/ixo-plugins`. Plugins that sign in with IXO: run
 `/mcp`, pick the plugin's server and choose **Authenticate**. A local plugin such as
-`ixo-openhands` needs [Node.js](https://nodejs.org) 22.6 or newer and nothing else, and starts on testnet (play money); see [docs/kinds/openhands.md](docs/kinds/openhands.md#choosing-the-network) for mainnet.
+`ixo-openhands` needs [Node.js](https://nodejs.org) 22.6 or newer and nothing else, and starts on mainnet (real money); see [docs/kinds/openhands.md](docs/kinds/openhands.md#choosing-the-network) to use testnet (play money) instead.
 
 **Codex**
 

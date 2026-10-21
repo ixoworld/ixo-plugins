@@ -8,13 +8,15 @@ company on Openhands, one way to pay workers, a reviewer for answers, and a firs
 - **Today:** [`ixo-openhands-hq`](../../plugins/ixo-openhands-hq/README.md).
 - **What is in it:** two skills, `openhands-hq` (setup) and `openhands-everyday` (everything after),
   and the same Openhands tools as [`ixo-openhands`](openhands.md) (`npx -y @ixo/openhands-mcp@1`).
+- **Network:** mainnet (real money) by default. To try it with play money, start Claude Code with
+  `OPENHANDS_NETWORK=testnet`; every setup step then runs on testnet.
 
 ## What it uses
 
 | Tool | For |
 | --- | --- |
-| IXO's setup tool | Sign in to IXO, create the company, add money to its account, link a reviewer, set the review budget |
-| The payouts service installer | Deploy the company's own payouts service to its Cloudflare (USDC on Base or Stripe only) |
+| `@ixo/decision-oracle` (npm) | Sign in to IXO, create the company, add money to its account, link a reviewer, set the review budget |
+| `@ixo/payouts-facilitator` (npm) | Deploy the company's own payouts service to its Cloudflare (USDC on Base or Stripe only) |
 | `wrangler` | Cloudflare sign-in and secrets |
 | The Stripe CLI | Stripe sign-in (Stripe payouts only) |
 | The Openhands tools | Connect to the person's account, save how the company pays, post and close tasks |
@@ -24,7 +26,7 @@ company on Openhands, one way to pay workers, a reviewer for answers, and a firs
 | | A. On chain | B. USDC on Base | C. Stripe |
 | --- | --- | --- | --- |
 | Company funds | Its account on Openhands | Its payout wallet on Base | Its Stripe balance |
-| Reward coin | IXO or USDC (USDC on mainnet only) | USDC | USD |
+| Reward coin | IXO | USDC on Base | USD |
 | Payouts service needed | No | Yes | Yes |
 
 Rewards are never PAY. Reviews are paid in PAY from the owner's review credits, through a review

@@ -1,6 +1,6 @@
 ---
 name: openhands-hq
-description: Set a company up on Openhands from nothing, for a non-technical business owner, by interviewing them in plain words and running every setup step yourself as a terminal command — their company account, the one way it pays people (on chain in IXO or USDC, USDC on Base, or card payouts through Stripe), the reviewer that checks answers, the review budget, and a first ask. Use whenever someone wants to register their company or organisation on Openhands, post asks as a company, set up payouts for workers, pay for reviews, or pick up a company setup that stopped part way.
+description: Set a company up on Openhands from nothing, for a non-technical business owner, by interviewing them in plain words and running every setup step yourself as a terminal command — their company account, the one way it pays people (on chain in IXO, USDC on Base, or card payouts through Stripe), the reviewer that checks answers, the review budget, and a first ask. Use whenever someone wants to register their company or organisation on Openhands, post asks as a company, set up payouts for workers, pay for reviews, or pick up a company setup that stopped part way.
 ---
 
 # Openhands HQ: set up a company
@@ -71,22 +71,22 @@ pay people, we do it here: it runs on your computer, so your keys stay with you.
 
 | Name here | What runs |
 | --- | --- |
-| `eval-oracle` | `npx --yes file:$HOME/.ixo/packages/ixo-eval-oracle-cli-0.2.0-draft.1-45d8c45.tgz` (IXO provides it). Always pass `--network <network>`. |
-| `installer` | `npx --yes file:$HOME/.ixo/packages/ixo-payouts-facilitator-0.1.0-<version>.tgz` (IXO provides it). Ways B and C only. Prints its JSON result on the last line; never prints a secret. |
-| Openhands tools | the plugin's `openhands-network` server. It runs `OPENHANDS_MCP_PACKAGE` (default `@ixo/openhands-mcp@1`). If a tool this skill names is missing, IXO gives a newer package: restart with `OPENHANDS_MCP_PACKAGE=file:<abs path to .tgz> claude`. |
+| `decision-oracle` | `npx -y @ixo/decision-oracle@0.2`. Always pass `--network <network>`: its own default is devnet, so never leave it out. |
+| `installer` | `npx -y @ixo/payouts-facilitator@0.1`. Ways B and C only. Prints its JSON result on the last line; never prints a secret. |
+| Openhands tools | the plugin's `openhands-network` server (`@ixo/openhands-mcp@1`). If a tool this skill names is missing, Openhands needs updating: restart Claude Code so it picks up the newest version. |
 | `wrangler` | `npx -y wrangler` (Cloudflare's CLI). Ways B and C only. |
 | `stripe` | the Stripe CLI (`brew install stripe/stripe-cli/stripe`; ask before installing). Way C only. |
 | Reviewers | Step 4 lists them from the Openhands website. |
 | Openhands website (`<site>`) | the site `connect_account` links to: mainnet `https://openhands.network`, testnet `https://test.openhands.network` |
 | Decision Console | devnet `https://decision-console.devnet.ixo.earth`, testnet `https://decision-console.testnet.ixo.earth`, mainnet `https://decision-console.ixo.earth` |
 
-**Where the setup tools live:** `~/.ixo/packages/` is the one place to look (`ls ~/.ixo/packages/*.tgz`;
-nothing else under `~/.ixo`). Not there → **Say:** "The setup tool isn't on this computer yet. IXO
-needs to put it in place for you; I'll carry on once it's there." and stop. Never ask the person for a
-folder, a download location or `/add-dir`.
+**`<network>`** is the network the Openhands tools run on (`my_status` shows it): `mainnet` (live,
+real money) by default, or `testnet` (a trial with play money) when Claude Code was started with
+`OPENHANDS_NETWORK=testnet`. Pass that same `--network` to every `decision-oracle` and `installer`
+command.
 
-Tarball paths must be absolute. The computer needs Node.js 22.6 or newer
-(`node --version`); if not, help them install it from `https://nodejs.org` first.
+The computer needs Node.js 22.6 or newer (`node --version`); if not, help them install it from
+`https://nodejs.org` first.
 
 **Notes.** Keep answers and the ids commands print (never secrets) in
 `~/.ixo/openhands-hq-<network>.json`. Read it at the start. The checks, not the notes, decide what is
@@ -109,17 +109,17 @@ Ask one at a time; write the answers in the notes.
    Ask for a logo link too (optional).
 2. **Say:** "In a sentence or two, what work do you want people to do?"
 3. **Say:** "How do you want to pay people? If you don't want to run anything yourselves, pick
-   **On chain**: nothing to set up. Pick **USDC on Base** or **Card** only if you need to pay people
-   outside IXO; that needs a small payouts service we set up together in your Cloudflare account
+   **On chain** in IXO: nothing to set up. To pay in dollars, pick **USDC on Base** or **Card**; that needs a small payouts service we set up together in your Cloudflare account
    (about 15 minutes)." They pick **one**:
-   - **A. On chain** (the default). Your company's account pays each approved answer. Then ask:
-     "Pay people in **IXO** or **USDC**?" USDC is live only (mainnet); a test run uses IXO.
+   - **A. On chain** (the default). Your company's account pays each approved answer, in IXO. If they
+     ask for USDC on IXO, **Say:** "USDC on the IXO network is moving to a new route and isn't
+     offered for new setups right now. To pay in dollars, pick USDC on Base or Card."
    - **B. USDC on Base.** A payouts service sends USDC from a wallet the company controls.
    - **C. Card (Stripe).** A payouts service sends money from the company's Stripe balance.
 4. **Say:** "Who should check the answers? IXO's ready-made reviewer, or one built for your own
    rules?" (Step 4 helps them decide.)
-5. **Say:** "Is this a test run, a trial with play money, or live with real money?" Unsure → test run
-   (devnet).
+5. **Say:** "Is this live, with real money, or a trial with play money first?" Unsure → live (the
+   default).
 6. **Say:** "Which email should we use to reach the company? It must be an inbox you read." Read it
    back.
 7. Way C only: the country of their Stripe account (two letters, like `US` or `DE`).
@@ -127,16 +127,18 @@ Ask one at a time; write the answers in the notes.
 **Do:** the Openhands tools run on `OPENHANDS_NETWORK` (the fix is a restart with it set; that's for
 IXO or the admin, never said to the person). If `my_status` shows another network, **Say:** "I'm set
 to a different network than the one you chose. IXO or your admin needs to restart me on the
-<test run / trial / live> network; then say 'carry on'."
+<trial / live> network; then say 'carry on'."
 
 ### 2. Sign in to IXO
 
 **Do (check):** `~/.ixo/publish-session-<network>.json` exists and its address matches the notes (or
-the person confirms it is theirs). Never print the key. If it isn't clearly theirs (someone else's,
+the person confirms it is theirs). **Never open, read or print this file**: it holds the keys that sign for the
+person. Read only its address, with exactly:
+`node -e 'try{console.log(JSON.parse(require("fs").readFileSync(require("os").homedir()+"/.ixo/publish-session-<network>.json","utf8")).address)}catch{console.log("no sign-in")}'` If it isn't clearly theirs (someone else's,
 or they're "not sure"), don't use it and don't delete it: on a shared computer it is someone else's
 sign-in. **Say:** "This computer is signed in as someone else. Ask them first, or use a different
-computer user." Run `eval-oracle logout --network <network>` only after an explicit "yes, remove it".
-**Do:** `eval-oracle login --network <network>`. Note in the notes that **this run created the
+computer user." Run `decision-oracle logout --network <network>` only after an explicit "yes, remove it".
+**Do:** `decision-oracle login --network <network>`. Note in the notes that **this run created the
 sign-in** (`"signedInByThisRun": true`). If the page doesn't open by itself (blocked, headless or
 remote), print the sign-in link it shows on its own line.
 **Say:** "Open this link to sign in: <link>. Sign in with your email, then type your PIN. When the
@@ -145,7 +147,7 @@ page says you can close it, tell me." (Or, if it opened: "A sign-in page has ope
 
 ### 3. Create the company
 
-**Do:** `eval-oracle org create --network <network> --name "<name>" [--logo <url>]` (preview), then
+**Do:** `decision-oracle org create --network <network> --name "<name>" [--logo <url>]` (preview), then
 the same with `--yes`. It returns the existing one if it already exists. Write `entityDid` in the notes
 as the org DID. Check: it starts with `did:ixo:entity:`.
 **Say:** "Your company is on Openhands."
@@ -174,12 +176,12 @@ as the org DID. Check: it starts with `did:ixo:entity:`.
    spec (checks, pass/review/reject lines, limits, price) and pause here until IXO says it exists.
    Ask IXO whether it's ready to link; don't guess.
 3. **Link it** (`<kit>` = the reviewer's URL):
-   - Check: `eval-oracle api sources --entity <org DID> --kit <kit> --network <network> --json`.
+   - Check: `decision-oracle api sources --entity <org DID> --kit <kit> --network <network> --json`.
      `active` → done; `pending-link` → go to the link command with its id.
-   - `eval-oracle api source create --name "<exact company name>" --contact <email> --entity <org DID> --kit <kit> --network <network> --yes --json`.
+   - `decision-oracle api source create --name "<exact company name>" --contact <email> --entity <org DID> --kit <kit> --network <network> --yes --json`.
      It prints a one-time secret: never show or note it. **Say:** "A one-time code was shown on
      screen. You won't need it for Openhands; you can make a new one in the Decision Console later."
-   - `eval-oracle api source link <source id> --kit <kit> --network <network> --yes` → `active`.
+   - `decision-oracle api source link <source id> --kit <kit> --network <network> --yes` → `active`.
 4. Write the reviewer's DID (its `entityDid` from `<kit>/v1/info` for IXO's) in the notes.
 
 **Say** if they open the Decision Console: "Ignore its 'Get started' list; Openhands doesn't need it."
@@ -195,10 +197,10 @@ Shall I set it up here, or would you rather click it on the website?" If they al
 amount and said to set it up here (e.g. "set it up here, 50 PAY is fine"), don't ask again: show the
 preview in one line and run it with `--yes`. Three places do the same thing:
 
-- **Here:** `eval-oracle api review-billing enable --source <source id> --kit <kit> --network <network> --cap 50`
+- **Here:** `decision-oracle api review-billing enable --source <source id> --kit <kit> --network <network> --cap 50`
   (or the amount they chose; the tool's own default is 1,000)
   (preview: show budget, reviewer, payer), then with `--yes`. Check:
-  `eval-oracle api review-billing status --source <source id> --kit <kit> --network <network>` says `active`.
+  `decision-oracle api review-billing status --source <source id> --kit <kit> --network <network>` says `active`.
 - **Openhands website:** `<site>/org/<org DID>/settings#pay-for-reviews`, signed in with their IXO
   account (not a passkey). **Say:** "Change the budget to 50, then click **Allow reviews to be paid
   from my credits**."
@@ -210,7 +212,7 @@ starts again from zero; it lasts about 100 years unless you turn it off." Note "
 <N> PAY". Top up credits: `<console>/billing/credits?topup=1&from=openhands`.
 
 Later: a bigger budget = run `enable` again with `--cap` (or **Sign a new budget** on the website);
-turn off = `eval-oracle api review-billing disable …` (preview, then `--yes`) or **Turn off**.
+turn off = `decision-oracle api review-billing disable …` (preview, then `--yes`) or **Turn off**.
 
 ### 5b. Answers a person checks
 
@@ -230,20 +232,19 @@ Note "review emails: on".
 
 ### 6. Money in the company's account
 
-**Do:** `eval-oracle org balance --entity <org DID> --network <network>` → `{ adminAddress, balances }`.
+**Do:** `decision-oracle org balance --entity <org DID> --network <network>` → `{ adminAddress, balances }`.
 
 What the company's account needs:
 
 - **Rewards, way A only** (ask what the first task will pay and for how many answers; default 1):
-  reward × answers, in the coin from step 1 (IXO, or USDC
-  on mainnet). Never PAY. Ways B and C pay rewards outside, so nothing here.
+  reward × answers, in IXO. Never PAY. Ways B and C pay rewards outside, so nothing here.
 - **Review fees:** usually nothing here. IXO's reviewers bill each review (in PAY) to the company
   owner's review credits through the review budget (step 5). If `post_ask` says the company needs PAY
   for reviews, that reviewer takes its fee with the task: add price × answers in PAY.
 
 If nothing is needed, say so and move on. Otherwise add ~0.1 IXO for posting fees (they come from this
 account too) and offer to move it from their own account:
-**Do:** `eval-oracle org fund --entity <org DID> --amount <amount> --network <network>` (dry run: it says
+**Do:** `decision-oracle org fund --entity <org DID> --amount <amount> --network <network>` (IXO) (dry run: it says
 what it would send, or why it can't, e.g. their wallet holds too little).
 **Say:** "Your company's account needs <amount> <coin> before the first task. Shall I move it from
 your own account to <company>'s account? The network fee is about 0.02 IXO." On yes:
@@ -320,7 +321,7 @@ the first task's rewards and `eth.amount` > 0. Then `installer trust-check … -
 The sign-in file can sign anything and never expires; the rest uses the Openhands connection instead.
 - **This run created it** (`signedInByThisRun` in the notes): **Say:** "The setup is done with the
   sign-in on this computer. Shall I remove it, for safety? You can sign in again any time." Only on yes:
-  `eval-oracle logout --network <network>`, then check the file is gone.
+  `decision-oracle logout --network <network>`, then check the file is gone.
 - **It was there before this run:** leave it and say nothing about it. Never offer to remove it.
 
 ### 11. Connect Openhands to your account
@@ -331,15 +332,15 @@ The sign-in file can sign anything and never expires; the rest uses the Openhand
 **Approve**. Then tell me."
 **Do:** `connect_account` with `principal` = the address from step 2 (in the notes) and
 `wait_seconds: 45`; repeat until connected. No address in the notes: call it with `wait_seconds: 45`
-alone, and pin the one account it reports only after **Say:** "Your approval shows an account ending
-in …<last 4>; is that you?" **Never ask the person for an address.**
+alone until it reports a connection, then **Say:** "Open IXO mobile, copy your account address and
+paste it here." and call it with `principal` = exactly what they gave. Never pick one from a list the
+tool printed.
 
 ### 12. Company payout settings
 
 **Do:** if `set_payout_settings` isn't a tool, see the command table (newer package). Call it without
 `confirm`: `orgDid`; `facilitator` (B, C); `rails`: one of `["chain"]`, `["usdc_base"]`, `["stripe"]`;
-`oracles`: the reviewer(s) from step 4, default first (DIDs only); `currency`: A + USDC → `USDC`
-(else leave out), B → `USDC`, C → `USD`.
+`oracles`: the reviewer(s) from step 4, default first (DIDs only); `currency`: A → leave out, B → `USDC`, C → `USD`.
 **Say** the preview in plain words ("You pay people on chain in IXO; answers are checked by <reviewer
 name>. OK?"), then call again with `confirm: true`. It says **Set** after reading it back.
 "Reconnect needed" → redo step 11. Other refusals → fix the step it names.
@@ -356,7 +357,7 @@ your company's **Payouts** page."
    `campaign` on each `post_ask`.
 3. `post_ask` without `confirm`: `title` (a short phrase for the card, at most 80 characters), `task`, `pay`, `quota`, `days`, `near` ("lat,lon"), `place`, `image`,
    `org` = org DID, `oracle` = `{ did: <reviewer DID>, url: <kit> }` (no `url` for the company's own
-   reviewer), way A `currency` = `IXO` or `USDC`. Ways B/C: `pay: 0` and
+   reviewer), way A: no `currency` (it pays in IXO). Ways B/C: `pay: 0` and
    `payout: { rail, amount, currency, facilitator: <url> }` — never a reward on chain too (paid twice).
    **Say** the preview plainly: "This task pays <reward> to each of <n> people, from your company's
    account. Reviews come from your review budget. Post it?"
@@ -373,8 +374,6 @@ your review budget."
 
 - **Review credits:** buy by card in the Decision Console: `<console>/billing/credits?topup=1&from=openhands`.
 - **IXO:** buy it on an exchange that lists IXO, then send it to the company's account address.
-- **USDC on IXO (live only):** move USDC to IXO over IBC, for example with Keplr or Skip Go. Look up
-  the current steps on the web if they ask.
 - **Test run or trial:** it's test money; IXO hands it out on request. Ask IXO and wait.
 
 ## If something goes wrong (for you, Claude)
@@ -384,11 +383,11 @@ your review budget."
 - **`post_ask` refusals:**
   - "<Company> needs N IXO for rewards and M PAY for reviews" → fund as step 6, preview again.
   - "the oracle's signing wallet could not be confirmed" → wait and retry; don't work around it.
-  - "PAY is no longer a reward" → use IXO or USDC.
+  - "PAY is no longer a reward" → use IXO.
   - "USDC isn't available on <network>" → use IXO.
 - **After posting:** "<Company>'s owner needs to turn on Pay for reviews" or "Reviews paused … renew"
   → step 5 (a bigger budget); "top up … credits" → the owner buys credits. "It will retry on its own"
   → nothing to do.
 - **`set_payout_settings` "Not confirmed":** note the transaction hash and check the company's
   Payouts page on the website before trying again.
-- **`eval-oracle <command> --help`** lists every flag.
+- **`decision-oracle <command> --help`** lists every flag.
