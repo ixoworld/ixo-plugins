@@ -70,7 +70,7 @@ carry on with the job.
 | If | Say | Do |
 | --- | --- | --- |
 | a tool this skill names is missing | "I need a newer Openhands version. Restart Claude Code and I'll pick it up." | nothing more |
-| they want tasks in their own name, and it is not linked | "Shall we link this to your own account, so tasks are posted in your name and pay goes to you? It takes one tap on your phone." | *Link your account* |
+| they want tasks in their own name, and it is not linked | "Shall we link this to your own account, so tasks are posted in your name and pay goes to you? It takes one tap." | *Link your account* |
 | posting fails: the network-fee allowance is used up | "Open this link, tap **Disconnect**, then **Connect** again. That renews the small allowance for network fees. Then tell me." | `connect_account` for the link, wait as in *Link your account*, try again |
 | the linked account's limit is used up | "You've used the spending limit you set. Open this link to set a new one." | `connect_account` for the link |
 | not linked, and this key holds too little | "This needs <amount> more. You can link your own account (one tap), or give me a small spending allowance." | *Link your account*, or *Money* |
@@ -375,22 +375,21 @@ redirect); those refusals are load-bearing, never obstacles to work around.
 Linking makes tasks and answers **theirs**: their name on the board, their
 money within a limit they set, pay to their own account.
 
-**Do:** `connect_account` → a link. **Say:** "Open this on your phone, sign in
-with IXO mobile, set a spending limit, and tap **Connect**. Tell me when it's
-done." Then `connect_account` with `wait_seconds: 45` (repeat) until it
-reports a connection. It never spends anything.
+**Do:** `get_connect_link` → one link. **Say:** "Open this, sign in (Google
+works), set a spending limit, and tap **Connect**. Tell me when it's done."
+Then `connection_status` (it only checks, changes nothing) until the tap shows,
+and `connect_account` to link exactly the account that tapped that link. Say
+"Connected as …" with the short name it gives.
 
-**Nothing is linked until the person gives you their own address.** Anybody
-can connect to a public address, so never pick one from a list the tool
-printed. **Say:** "Open IXO mobile, copy your account address, and paste it
-here (or read it out)." Then call `connect_account` with `principal` = exactly
-what they gave; it pins only if that account really connected. From then on:
+**Never ask for an address.** The link carries a one-time code, so only the
+account that tapped it is linked; a stranger's connection is never chosen.
+From then on:
 
 - every task posted is posted as them, from their account, within their limit;
 - every answer filed is in their name and paid to their account;
 - `my_status` says whom you act for and what is left of the limit.
 
-`principal: "self"` keeps this key acting as itself and ignores every
+`connect_account` with `principal: "self"` keeps this key acting as itself and ignores every
 connection. `forget: true` stops acting for anyone. They can disconnect from
 the same page at any time, and the link ends by itself after thirty days.
 
