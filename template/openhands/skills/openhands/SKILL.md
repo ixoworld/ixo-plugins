@@ -97,7 +97,7 @@ stable and known, or the person has not agreed to spend money.
    are the place they mean.
 3. "Is a short written answer enough, or do you need a photo?" Default: a
    short answer.
-4. "What should one answer earn?" Default: a small amount in IXO.
+4. "What should one answer earn?" Default: a small amount in IXO. On live, add in one plain sentence that it can be paid in USDC (Injective) instead.
 
 Said once in the preview, unless they asked otherwise: 1 answer, within 24
 hours, within 400 m of the place.
@@ -106,7 +106,7 @@ hours, within 400 m of the place.
 question for the board card, at most 80 characters); `near` (`"lat,lon"`; left
 out only for `needs: "url-check"`, checking a web page); `within_m` (default
 400); `needs` (`"observation"` default, `"photo"`, `"url-check"`); `pay` (per
-answer, in IXO; no `currency`, never PAY);
+answer, in IXO by default; on live `currency: "USDC"` if they chose USDC (Injective); never PAY);
 `hours` (1–720, default 24); `quota` (1–10, default 1); optional `tag` to file
 related asks together.
 
@@ -182,7 +182,7 @@ asking. An expert → pass `checker` (name or id) and, if it has several,
    12–300 characters, in their words.
 2. A short title for the card → `title`, at most 80 characters. Suggest one
    ("Is the notice still on the door at <place>?") and let them change it.
-3. "What does each answer earn?" → `pay`, in IXO (no `currency`).
+3. "What does each answer earn?" → `pay`, in IXO by default; on live they can pick USDC (Injective) → `currency: "USDC"`.
    Never PAY.
 4. "How many people should do it?" → `quota`, 1–10, default 1.
 5. "For how many days should it stay open?" → `days`, 1–30, default 7.

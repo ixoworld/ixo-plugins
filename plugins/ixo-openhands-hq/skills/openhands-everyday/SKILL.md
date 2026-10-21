@@ -74,10 +74,10 @@ their company's **Payouts** page on the Openhands website and read you the revie
 
 ### Post a task
 
-**Ask:** "What should people do?" · "What does each answer earn?" (in IXO; never PAY. For dollars, a company pays by USDC on Base or card) · "Does it have to be done in a particular place?" (if yes, get the place; turn it into
+**Ask:** "What should people do?" · "What does each answer earn?" (IXO by default; on live, one plain sentence offering USDC (Injective) instead. Never PAY) · "Does it have to be done in a particular place?" (if yes, get the place; turn it into
 `"lat,lon"` and read the place back to check).
 **Do:** `post_ask` without `confirm`: `title` = a short question or phrase for the card, at most
-80 characters (e.g. "Is <their brand> on the shelf at <their store>?"), `task` = everything the person must do, `pay` (in IXO; no `currency`),
+80 characters (e.g. "Is <their brand> on the shelf at <their store>?"), `task` = everything the person must do, `pay` (in IXO by default; `currency: "USDC"` for USDC (Injective) on live),
 `quota` 1, `days` (what they said, else 7), `near`/`place` when it's somewhere, optional `image`, a `series` name when it's
 the same task at many addresses.
 As themselves, pass no `org` and no `oracle`: the Ask the World reviewer checks it. As a company, add `org` and `oracle: { did: <reviewer>, url: <reviewer URL> }` (no `url` for a
