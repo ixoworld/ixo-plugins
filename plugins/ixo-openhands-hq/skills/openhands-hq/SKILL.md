@@ -69,6 +69,10 @@ review budgets happen here in Claude Code, on the person's computer, so their ke
 If they mention the web connector, **Say:** "That one can only look. To set things up, post tasks or
 pay people, we do it here: it runs on your computer, so your keys stay with you."
 
+**Two Openhands plugins installed?** One may be the trial one (its tools come from the `openhands-test`
+server; the usual ones from `openhands-network`). When the person says "testnet", "test" or "play
+money", use the `openhands-test` tools; otherwise use the usual ones. Never mix the two in one job.
+
 ## Commands (the one place to change them)
 
 | Name here | What runs |
@@ -329,14 +333,12 @@ The sign-in file can sign anything and never expires; the rest uses the Openhand
 ### 11. Connect Openhands to your account
 
 **Do (check):** `my_status` shows the person's account connected → skip.
-**Do:** `connect_account` → a link; open it (or print it if it doesn't open).
+**Do:** `get_connect_link` → one link; open it (or print it if it doesn't open).
 **Say:** "Open this link, sign in, check it says up to 30 days and the spending cap, and tap
-**Approve**. Then tell me."
-**Do:** `connect_account` with `principal` = the address from step 2 (in the notes) and
-`wait_seconds: 45`; repeat until connected. No address in the notes: call it with `wait_seconds: 45`
-alone until it reports a connection, then **Say:** "Open IXO mobile, copy your account address and
-paste it here." and call it with `principal` = exactly what they gave. Never pick one from a list the
-tool printed.
+**Connect**. Then tell me."
+**Do:** `connection_status` until the tap shows (it only checks), then `connect_account` to link the
+account that tapped. Never ask for an address: the link's one-time code means only that account is
+linked.
 
 ### 12. Company payout settings
 

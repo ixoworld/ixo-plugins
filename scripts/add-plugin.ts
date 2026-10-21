@@ -30,6 +30,7 @@
  *   - `README.md`: the plugin README; its first line must be `# {{TITLE}}` (CI reads the title back
  *     from it).
  *   - `skills/`: the plugin's skills.
+ * Text templates may wrap text in {{#PINNED}}…{{/PINNED}} (kept only with --pinned true) or {{^PINNED}}…{{/PINNED}} (kept only without it).
  * Text templates take {{NAME}} (the plugin's name), {{TITLE}}, {{SERVER}}, {{DESCRIPTION}} and the placeholders above that the kind's
  * `mcp` block uses; any other `{{…}}` fails.
  *
@@ -59,6 +60,10 @@ type McpEntry = Record<string, unknown>;
 /** The generation flags a kind's `mcp` block can ask for; each is a {{PLACEHOLDER}} too. */
 const PARAMS = ["url", "package", "major", "network"] as const;
 type Param = (typeof PARAMS)[number];
+/** Optional flags any kind takes, recorded in the catalog like the others: --server overrides the kind's
+ *  serverName; --pinned true writes the literal (codex) entry to `.mcp.json` too, so no ${VAR} can change
+ *  the version or network (the "always testnet, always @dev" test plugins). */
+const OPTIONAL = ["server", "pinned"] as const;
 
 const DEFAULT_MCP = {
   claude: { type: "http", url: "{{URL}}" },
@@ -211,7 +216,7 @@ export const pluginInputs = (
 ): { kind: string; flags: Record<string, string> } => {
   const { kind = DEFAULT_KIND, ...rest } = metadata;
   const flags: Record<string, string> = {};
-  for (const p of PARAMS) if (typeof rest[p] === "string") flags[p] = rest[p] as string;
+  for (const p of [...PARAMS, ...OPTIONAL]) if (typeof rest[p] === "string") flags[p] = rest[p] as string;
   if (loadKind(String(kind)).needs.includes("url") && flags.url === undefined) {
     const path = join(root, "plugins", name, ".mcp.json");
     const servers = Object.values((JSON.parse(readFileSync(path, "utf8")).mcpServers ?? {}) as Record<string, McpEntry>);
@@ -225,7 +230,11 @@ export const pluginInputs = (
 
 /** Replace the known placeholders in one pass (so a value is never itself expanded). */
 const render = (text: string, vars: Record<string, string>, where: string) => {
-  const out = text.replace(/\{\{([A-Z_]+)\}\}/g, (m, key: string) => vars[key] ?? m);
+  // {{#PINNED}}…{{/PINNED}} stays only for a --pinned plugin, {{^PINNED}}…{{/PINNED}} only for the others (no nesting).
+  const kept = text.replace(/\{\{([#^])PINNED\}\}([\s\S]*?)\{\{\/PINNED\}\}/g, (_m, k: string, body: string) =>
+    (k === "#") === Boolean(vars.PINNED) ? body : "",
+  );
+  const out = kept.replace(/\{\{([A-Z_]+)\}\}/g, (m, key: string) => vars[key] ?? m);
   const left = out.match(/\{\{[A-Z_]+\}\}/);
   if (left) throw new Error(`${where}: unknown placeholder ${left[0]}`);
   return out;
@@ -258,8 +267,8 @@ export function main(argv: string[], opts: MainOptions = {}): void {
   const kinds = listKinds();
   const flags = "(--url https://<host><path> | --package <npm-name> --major <n> --network <name>, as the kind needs)";
   const usage = opts.fixedKind
-    ? `usage: ${command} --name <plugin-name> --title <title> ${flags} [--description <text>] [--version x.y.z]`
-    : `usage: ${command} [--kind <${kinds.join("|")}>] --name <plugin-name> --title <title> ${flags} [--description <text>] [--version x.y.z]`;
+    ? `usage: ${command} --name <plugin-name> --title <title> ${flags} [--server <name>] [--pinned true] [--description <text>] [--version x.y.z]`
+    : `usage: ${command} [--kind <${kinds.join("|")}>] --name <plugin-name> --title <title> ${flags} [--server <name>] [--pinned true] [--description <text>] [--version x.y.z]`;
 
   let values: Record<string, string | undefined>;
   try {
@@ -273,6 +282,8 @@ export function main(argv: string[], opts: MainOptions = {}): void {
         package: { type: "string" },
         major: { type: "string" },
         network: { type: "string" },
+        server: { type: "string" },
+        pinned: { type: "string" },
         description: { type: "string" },
         version: { type: "string" },
       },
@@ -341,9 +352,17 @@ export function main(argv: string[], opts: MainOptions = {}): void {
   if (given.package !== undefined && !/^(@[a-z0-9][a-z0-9._-]*\/)?[a-z0-9][a-z0-9._-]*$/.test(given.package)) {
     return usageError("--package must be an npm package name, e.g. @scope/name", usage);
   }
-  if (given.major !== undefined && !/^(0|[1-9]\d*)$/.test(given.major)) {
-    return usageError("--major must be a major version number, e.g. 1", usage);
+  // A major number, or an npm dist-tag such as dev (the newest build).
+  if (given.major !== undefined && !/^(0|[1-9]\d*|[a-z][a-z0-9-]*)$/.test(given.major)) {
+    return usageError("--major must be a major version number (e.g. 1) or an npm dist-tag (e.g. dev)", usage);
   }
+  const optional: Partial<Record<(typeof OPTIONAL)[number], string>> = {};
+  for (const o of OPTIONAL) if (values[o] !== undefined) optional[o] = values[o];
+  if (optional.pinned !== undefined && optional.pinned !== "true") return usageError("--pinned must be true", usage);
+  if (optional.server !== undefined && !/^[a-z0-9]+(-[a-z0-9]+)*$/.test(optional.server)) {
+    return usageError("--server must be kebab-case", usage);
+  }
+  if (optional.pinned && !kind.mcp) return usageError(`kind "${kind.name}" has no MCP server to pin`, usage);
   if (given.network !== undefined) {
     if (!/^[a-z][a-z0-9-]*$/.test(given.network)) return usageError("--network must be lowercase, e.g. mainnet", usage);
     if (kind.networks && !kind.networks.includes(given.network)) {
@@ -371,9 +390,9 @@ export function main(argv: string[], opts: MainOptions = {}): void {
     serverVars.HOST_LABEL = hostLabel;
   }
   // A skills-only kind has no server: {{SERVER}} is then the plugin's name.
-  const server = kind.serverName
+  const server = optional.server ?? (kind.serverName
     ? render(kind.serverName, serverVars, `template/${kind.name}/kind.json serverName`)
-    : name;
+    : name);
   if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(server)) {
     throw new Error(`MCP server name "${server}" (from template/${kind.name}/kind.json) must be kebab-case`);
   }
@@ -385,7 +404,7 @@ export function main(argv: string[], opts: MainOptions = {}): void {
     values.description ??
     listed?.description ??
     render(kind.description, { NAME: name, TITLE: title, SERVER: server, ...flagVars }, `template/${kind.name}/kind.json description`);
-  const vars = { NAME: name, TITLE: title, SERVER: server, DESCRIPTION: description, ...flagVars };
+  const vars = { NAME: name, TITLE: title, SERVER: server, DESCRIPTION: description, PINNED: optional.pinned ?? "", ...flagVars };
 
   const out = join(root, "plugins", name);
   const write = (path: string, data: unknown) => {
@@ -418,7 +437,7 @@ export function main(argv: string[], opts: MainOptions = {}): void {
   // portable Agent Plugins pair (plugin.json + mcp.json) when present.
   write(join(out, ".claude-plugin", "plugin.json"), meta);
   const mcpWhere = `template/${kind.name}/kind.json mcp`;
-  if (kind.mcp) write(join(out, ".mcp.json"), { mcpServers: { [server]: renderDeep(kind.mcp.claude, vars, mcpWhere) } });
+  if (kind.mcp) write(join(out, ".mcp.json"), { mcpServers: { [server]: renderDeep(optional.pinned ? kind.mcp.codex : kind.mcp.claude, vars, mcpWhere) } });
   write(join(out, "plugin.json"), {
     $schema: "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
     ...meta,
@@ -432,7 +451,8 @@ export function main(argv: string[], opts: MainOptions = {}): void {
   write(join(out, "README.md"), render(kind.readme, vars, `template/${kind.name}/README.md`));
 
   // Both catalogs: Claude Code's, and Codex's native one (Codex also reads Claude Code's).
-  const { url: _url, ...recorded } = given;
+  const { url: _url, ...rest } = given;
+  const recorded = { ...rest, ...optional };
   const catalog =(path: string, base: Record<string, unknown>, extra: Record<string, unknown> = {}) => {
     const doc: { plugins: Entry[] } & Record<string, unknown> = readJson(path) ?? { ...base, plugins: [] };
     const previous = doc.plugins.find((p) => p.name === name);

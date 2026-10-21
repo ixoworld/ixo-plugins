@@ -69,22 +69,26 @@ review budgets happen here in Claude Code, on the person's computer, so their ke
 If they mention the web connector, **Say:** "That one can only look. To set things up, post tasks or
 pay people, we do it here: it runs on your computer, so your keys stay with you."
 
+**Two Openhands plugins installed?** One may be the trial one (its tools come from the `openhands-test`
+server; the usual ones from `openhands-network`). When the person says "testnet", "test" or "play
+money", use the `openhands-test` tools; otherwise use the usual ones. Never mix the two in one job.
+
 ## Commands (the one place to change them)
 
 | Name here | What runs |
 | --- | --- |
 | `decision-oracle` | `npx -y @ixo/decision-oracle@0.2`. Always pass `--network <network>`: its own default is devnet, so never leave it out. |
 | `installer` | `npx -y @ixo/payouts-facilitator@0.1`. Ways B and C only. Prints its JSON result on the last line; never prints a secret. |
-| Openhands tools | the plugin's `openhands-network` server (`@ixo/openhands-mcp@1`). If a tool this skill names is missing, Openhands needs updating: restart Claude Code so it picks up the newest version. |
+| Openhands tools | the plugin's `{{SERVER}}` server (`{{PACKAGE}}@{{MAJOR}}`). If a tool this skill names is missing, Openhands needs updating: restart Claude Code so it picks up the newest version. |
 | `wrangler` | `npx -y wrangler` (Cloudflare's CLI). Ways B and C only. |
 | `stripe` | the Stripe CLI (`brew install stripe/stripe-cli/stripe`; ask before installing). Way C only. |
 | Reviewers | Step 4 lists them from the Openhands website. |
 | Openhands website (`<site>`) | the site `connect_account` links to: mainnet `https://openhands.network`, testnet `https://test.openhands.network` |
 | Decision Console | devnet `https://decision-console.devnet.ixo.earth`, testnet `https://decision-console.testnet.ixo.earth`, mainnet `https://decision-console.ixo.earth` |
 
-**`<network>`** is the network the Openhands tools run on (`my_status` shows it): `mainnet` (live,
+**`<network>`** is the network the Openhands tools run on (`my_status` shows it): {{#PINNED}}always `testnet` (a trial with play money).{{/PINNED}}{{^PINNED}}`mainnet` (live,
 real money) by default, or `testnet` (a trial with play money) when Claude Code was started with
-`OPENHANDS_NETWORK=testnet`. Pass that same `--network` to every `decision-oracle` and `installer`
+`OPENHANDS_NETWORK=testnet`.{{/PINNED}} Pass that same `--network` to every `decision-oracle` and `installer`
 command.
 
 The computer needs Node.js 22.6 or newer (`node --version`); if not, help them install it from
@@ -126,10 +130,10 @@ Ask one at a time; write the answers in the notes.
    back.
 7. Way C only: the country of their Stripe account (two letters, like `US` or `DE`).
 
-**Do:** the Openhands tools run on `OPENHANDS_NETWORK` (the fix is a restart with it set; that's for
+**Do:** {{#PINNED}}the Openhands tools here always run on the trial network. If the person wants live (real money), **Say:** "This plugin is the trial one. For real money, install the usual Openhands HQ plugin." and stop.{{/PINNED}}{{^PINNED}}the Openhands tools run on `OPENHANDS_NETWORK` (the fix is a restart with it set; that's for
 IXO or the admin, never said to the person). If `my_status` shows another network, **Say:** "I'm set
 to a different network than the one you chose. IXO or your admin needs to restart me on the
-<trial / live> network; then say 'carry on'."
+<trial / live> network; then say 'carry on'."{{/PINNED}}
 
 ### 2. Sign in to IXO
 
@@ -329,14 +333,12 @@ The sign-in file can sign anything and never expires; the rest uses the Openhand
 ### 11. Connect Openhands to your account
 
 **Do (check):** `my_status` shows the person's account connected → skip.
-**Do:** `connect_account` → a link; open it (or print it if it doesn't open).
+**Do:** `get_connect_link` → one link; open it (or print it if it doesn't open).
 **Say:** "Open this link, sign in, check it says up to 30 days and the spending cap, and tap
-**Approve**. Then tell me."
-**Do:** `connect_account` with `principal` = the address from step 2 (in the notes) and
-`wait_seconds: 45`; repeat until connected. No address in the notes: call it with `wait_seconds: 45`
-alone until it reports a connection, then **Say:** "Open IXO mobile, copy your account address and
-paste it here." and call it with `principal` = exactly what they gave. Never pick one from a list the
-tool printed.
+**Connect**. Then tell me."
+**Do:** `connection_status` until the tap shows (it only checks), then `connect_account` to link the
+account that tapped. Never ask for an address: the link's one-time code means only that account is
+linked.
 
 ### 12. Company payout settings
 
