@@ -20,6 +20,11 @@ installs into their project; you hand off to those by name and follow them.
 - **Before a click**, open the page for them and say exactly what to click, with the button's
   words in **bold**.
 - No long IDs or addresses unless they ask, or they must send money to one.
+- **You run every command; the person never types or reads one.** Don't show them commands, command
+  output, version numbers, file or folder names, or setting names. Say what happened in one plain
+  sentence ("Your rules are checked and ready") and the one thing they must do next, if any.
+- Keep the technical words to the few the person needs (oracle, rubric, protocol, claim), each
+  explained once in plain words the first time; never use others (DID, denom, escrow, handler).
 
 ## Safety rules (never bend these)
 
@@ -71,8 +76,9 @@ Then say back the plan in three or four plain sentences, and the path below, bef
 
 Check and fix, one by one:
 
-- **A terminal you can run.** If you can't run commands here (a chat-only app), say they need
-  Claude Code, Cowork or Codex for this, and stop.
+- **A terminal you can run.** If you can't run commands here (a chat-only app), **Say:** "This needs
+  Claude Code (the Code tab in the Claude app, or the terminal) or Codex. Open one of those and ask
+  me again there." and stop.
 - **bun** (`bun --version`, needs 1.3 or newer). If missing or older, **Say:** "We need a free
   program called bun. Shall I install it?" On a yes, run the official installer:
   `curl -fsSL https://bun.sh/install | bash` (Windows: `powershell -c "irm bun.sh/install.ps1 | iex"`),
