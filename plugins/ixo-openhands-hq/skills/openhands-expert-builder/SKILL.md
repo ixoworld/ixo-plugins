@@ -41,8 +41,8 @@ report against the review's requirements, and the builder gives **final approval
   **Say:** "Expert Reviews is on Openhands' test version for now, with play money. Shall I add it?"
   On yes, add the plugin `ixo-openhands-test`: in Claude Code run `claude plugin marketplace add
   ixoworld/ixo-plugins` and `claude plugin install ixo-openhands-test@ixo-plugins` (if refused, the
-  person types `/plugin install ixo-openhands-test@ixo-plugins`); in Codex `codex plugin add
-  ixo-openhands-test@ixo-plugins`; in a Claude app chat, **Say:** "Open **Customize**, then
+  person types `/plugin install ixo-openhands-test@ixo-plugins`); in Codex `codex plugin marketplace add
+  ixoworld/ixo-plugins` and `codex plugin add ixo-openhands-test@ixo-plugins`; in a Claude app chat, **Say:** "Open **Customize**, then
   **Plugins**, add the marketplace `ixoworld/ixo-plugins`, then add Openhands (test)." Then "Start a
   new session and I'll pick it up."
 
@@ -100,7 +100,8 @@ If posting is refused with an offer to post from Claude's own wallet instead, no
 the person agrees. **Do:** `my_status` for what Claude's own wallet holds; the shortfall is the total
 minus that. **Say:** "Openhands can't take this from your account here. Instead, you'd first move
 <shortfall> to Claude's own wallet, and I'd post the review from there. Then the automated checks
-decide each report alone, and you don't give final approval. Do that?" Only on a yes: give them the
+decide each report alone, and you don't give final approval. It also won't show on your Expert
+Reviews page; I'll read the reports to you here. Do that?" Only on a yes: give them the
 one way to move the money (connect page or the address, only because they must send money to it),
 wait until `my_status` shows it, then post with `plain_key: true`. Never choose it silently.
 
@@ -121,7 +122,8 @@ wait until `my_status` shows it, then post with `plain_key: true`. Never choose 
 
 ## 5. Reports and final approval
 
-**Do:** `collect_answer` with the review's number (or point them to the review's page). Tell the
+**Do:** `collect_answer` with the review's number (or point them to the review's page; a review posted from
+Claude's own wallet isn't there, so read its reports to them here). Tell the
 person, per report: who handed it in, what passed and failed, the problems found and how serious,
 and whether the automated checks passed it. Never soften or add to a finding.
 

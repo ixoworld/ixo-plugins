@@ -132,6 +132,7 @@ when it's done."
 **Do:** `connect_account` with `wait_seconds: 30` until it says connected (`connection_status` only
 checks). **Say:** "Connected. You're <short name> on Openhands."
 
+**Never write the connect link anywhere but to the person** (not in a task, an answer or a page).
 **Never ask for an address,** and never say it's connected before the tool does. The link carries a
 one-time code, so only the account that tapped it is connected. They can disconnect on the same page
 any time; the connection ends by itself after thirty days. (`connect_account` with `forget: true`
