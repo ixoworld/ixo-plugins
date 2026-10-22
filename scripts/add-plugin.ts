@@ -30,7 +30,8 @@
  *   - `README.md`: the plugin README; its first line must be `# {{TITLE}}` (CI reads the title back
  *     from it).
  *   - `skills/`: the plugin's skills.
- * Text templates may wrap text in {{#PINNED}}…{{/PINNED}} (kept only with --pinned true) or {{^PINNED}}…{{/PINNED}} (kept only without it).
+ * Text templates may wrap text in {{#PINNED}}…{{/PINNED}} (kept only with --pinned true) or {{^PINNED}}…{{/PINNED}} (kept only without it),
+ * and likewise {{#TESTNET}}…{{/TESTNET}} / {{^TESTNET}}…{{/TESTNET}} (testnet: --network testnet, or a --url whose host has a `test.` or `testnet.` label).
  * Text templates take {{NAME}} (the plugin's name), {{TITLE}}, {{SERVER}}, {{DESCRIPTION}} and the placeholders above that the kind's
  * `mcp` block uses; any other `{{…}}` fails.
  *
@@ -230,9 +231,9 @@ export const pluginInputs = (
 
 /** Replace the known placeholders in one pass (so a value is never itself expanded). */
 const render = (text: string, vars: Record<string, string>, where: string) => {
-  // {{#PINNED}}…{{/PINNED}} stays only for a --pinned plugin, {{^PINNED}}…{{/PINNED}} only for the others (no nesting).
-  const kept = text.replace(/\{\{([#^])PINNED\}\}([\s\S]*?)\{\{\/PINNED\}\}/g, (_m, k: string, body: string) =>
-    (k === "#") === Boolean(vars.PINNED) ? body : "",
+  // {{#FLAG}}…{{/FLAG}} stays only when vars.FLAG is set, {{^FLAG}}…{{/FLAG}} only when not (FLAG: PINNED, TESTNET; no nesting).
+  const kept = text.replace(/\{\{([#^])(PINNED|TESTNET)\}\}([\s\S]*?)\{\{\/\2\}\}/g, (_m, k: string, flag: string, body: string) =>
+    (k === "#") === Boolean(vars[flag]) ? body : "",
   );
   const out = kept.replace(/\{\{([A-Z_]+)\}\}/g, (m, key: string) => vars[key] ?? m);
   const left = out.match(/\{\{[A-Z_]+\}\}/);
@@ -404,7 +405,9 @@ export function main(argv: string[], opts: MainOptions = {}): void {
     values.description ??
     listed?.description ??
     render(kind.description, { NAME: name, TITLE: title, SERVER: server, ...flagVars }, `template/${kind.name}/kind.json description`);
-  const vars = { NAME: name, TITLE: title, SERVER: server, DESCRIPTION: description, PINNED: optional.pinned ?? "", ...flagVars };
+  // Play-money plugins hand people only to other play-money plugins ({{#TESTNET}}).
+  const testnet = given.network === "testnet" || /(^|\.)test(net)?\./.test(mcpUrl?.host ?? "");
+  const vars = { NAME: name, TITLE: title, SERVER: server, DESCRIPTION: description, PINNED: optional.pinned ?? "", TESTNET: testnet ? "true" : "", ...flagVars };
 
   const out = join(root, "plugins", name);
   const write = (path: string, data: unknown) => {

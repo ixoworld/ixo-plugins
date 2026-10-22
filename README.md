@@ -83,7 +83,15 @@ Plugins that sign in with IXO ask you to sign in when you install. If they don't
 list` and `codex mcp login` with the plugin's server name (for example `ixo-shipment-delivery` or
 `ixo-memory`; the memory plugins' server names match their plugin names).
 
-**Claude.ai, Claude Desktop, ChatGPT**
+**Claude app (Claude Desktop), on a paid plan**
+
+Add the marketplace: *Customize → Plugins → Add → Add marketplace → Add from a repository* →
+`ixoworld/ixo-plugins`. Then *Discover*, pick a plugin and *Add*. Plugins sync to your account.
+A plugin that runs a local command (`ixo-openhands`, `ixo-openhands-hq` and their `-test` versions)
+works where Claude can run things on your computer: the Code tab, and a chat with a folder connected
+<!-- unconfirmed: verify in the app -->; not a plain chat with no folder.
+
+**Claude.ai on the web, ChatGPT**
 
 You don't need a plugin there. Add a hosted plugin's MCP URL as a custom connector. In Claude it's
 *Settings → Connectors → Add custom connector*; in ChatGPT it's *Settings → Apps & Connectors* in
@@ -97,8 +105,8 @@ https://memory-engine.devnet.ixo.earth/v1/mcp
 https://openhands.network/v1/mcp
 ```
 
-Plugins that run a local command (`ixo-openhands`) can't run in those apps; use their hosted
-read-only connector there. See [docs/clients.md](docs/clients.md) for what each app supports.
+Plugins that run a local command (`ixo-openhands`) can't run there; use their hosted read-only
+connector. See [docs/clients.md](docs/clients.md) for what each app supports.
 
 ## Update
 

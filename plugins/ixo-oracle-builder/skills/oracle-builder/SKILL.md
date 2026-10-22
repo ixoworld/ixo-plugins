@@ -1,6 +1,6 @@
 ---
 name: oracle-builder
-description: Guide a non-technical person through building their own IXO evaluation oracle from nothing with @ixo/decision-oracle — interview them about what they want checked, explain each term on first use, check the prerequisites (bun, a terminal, Cloudflare with their domain, an IXO login, gas, a subscription), run `bunx @ixo/decision-oracle init`, then hand off in order to the package's own skills (create-rubric, publish-protocol, write-facts, create-oracle, create-collection, and optionally decision-api-oracle and add-openhands-support), confirming before every chain write. Use when someone says "I want to build an oracle", "make my own evaluation oracle", "how do I start with IXO oracles", or picks up a half-finished oracle setup.
+description: Guide a non-technical person through building their own IXO evaluation oracle from nothing with @ixo/decision-oracle — interview them about what they want checked, explain each term on first use, check the prerequisites (bun, Node.js, a terminal, a free Cloudflare account, an IXO login, gas, a subscription), build on testnet unless asked otherwise, run `bunx @ixo/decision-oracle init`, then hand off in order to the package's own skills (create-rubric, publish-protocol, write-facts, create-oracle, create-collection, and optionally decision-api-oracle and add-openhands-support), confirming before every chain write. Use when someone says "I want to build an oracle", "make my own evaluation oracle", "how do I start with IXO oracles", or picks up a half-finished oracle setup.
 ---
 
 # Build an IXO oracle with a non-technical person
@@ -23,8 +23,10 @@ installs into their project; you hand off to those by name and follow them.
 
 ## Safety rules (never bend these)
 
-- **Start on devnet** (practice, play money). Testnet and mainnet only when the person asks for
-  them by name, after devnet works end to end. Say "real money" out loud before any mainnet step.
+- **Build on testnet** (play money). At the start, say plainly: "We're building on testnet: play
+  money, nothing real is spent. Mainnet (real money) only when you ask for it." Devnet only if they
+  ask for it by name; mainnet only when they ask, after testnet works end to end. Say "real money"
+  out loud before any mainnet step.
 - **Dry-run, explain, ask, then sign.** Every chain write in the `decision-oracle` tool signs
   nothing without `--yes`. Run it without `--yes` first, tell the person in plain words what it
   will do (what gets created, which network, what it costs), get a clear yes, then run the same
@@ -43,6 +45,9 @@ installs into their project; you hand off to those by name and follow them.
   missing.
 
 ## Step 0: what do you want checked?
+
+**Say** first: "We're building on testnet: play money, nothing real is spent. Mainnet (real money)
+only when you ask for it."
 
 Ask, one at a time, and write the answers down (you'll need them in step 3):
 
@@ -68,11 +73,20 @@ Check and fix, one by one:
 
 - **A terminal you can run.** If you can't run commands here (a chat-only app), say they need
   Claude Code, Cowork or Codex for this, and stop.
-- **bun** (`bun --version`, needs 1.3 or newer). If missing, offer to install it from
-  https://bun.sh and do so after a yes.
-- **A Cloudflare account that owns their domain.** Ask. The oracle runs on Cloudflare Workers at
-  an address on their domain (for example `oracle.theircompany.com`). If they don't have one, open
-  https://dash.cloudflare.com/sign-up and walk them through it; adding the domain is their call.
+- **bun** (`bun --version`, needs 1.3 or newer). If missing or older, **Say:** "We need a free
+  program called bun. Shall I install it?" On a yes, run the official installer:
+  `curl -fsSL https://bun.sh/install | bash` (Windows: `powershell -c "irm bun.sh/install.ps1 | iex"`),
+  then check `bun --version` again.
+- **Node.js** (`node --version`, needs 22 or newer; Cloudflare's `wrangler` tool runs on it). If
+  missing or older, **Say:** "We also need a free program called Node.js. Shall I install it?" On
+  with a yes: macOS with Homebrew `brew install node@22` (then `brew link --overwrite node@22` if
+`node` still isn't found); otherwise nvm,
+`curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash`, then `nvm install 22`;
+Windows `winget install OpenJS.NodeJS.LTS`. Then check `node --version` again.
+- **A free Cloudflare account.** Ask. The oracle runs on Cloudflare Workers, at a free address
+  Cloudflare gives it: `<worker>.<account>.workers.dev`. No web address (domain) of their own is
+  needed; one is optional, only if they want it. If they have no account, open
+  https://dash.cloudflare.com/sign-up and walk them through it.
 - **An IXO login, a little IXO for gas, and an IXO subscription.** Explained and handled in step 2
   and step 6; just mention them now.
 
@@ -99,12 +113,13 @@ refreshes those skills.
 **Say:** "Now you sign in to IXO. A browser page will open; sign in there and come back."
 
 ```bash
-bunx decision-oracle login --network devnet
+bunx decision-oracle login --network testnet
 ```
 
 The session is saved on their computer. Never open or show it. Explain **gas** (a few cents of
-IXO per chain write; play IXO on devnet) and check their wallet can pay it as the package skills
-describe.
+IXO per chain write; play IXO on testnet, free from https://faucet.testnet.ixo.earth: enter
+their testnet address) and check their wallet can pay it as the package skills describe.
+Use `--network testnet` in every command from here on (or the network they chose).
 
 ## Steps 3 to 7: hand off in order
 
@@ -117,7 +132,7 @@ on top of whatever the package skill says.
 | 3 | Design the **claim form** and the **rubric** (the rules) from their answers, and check the rules with the engine. | `create-rubric` |
 | 4 | Publish them on chain as a **protocol**, so claims and oracles can point at it. Chain write. | `publish-protocol` |
 | 5 | Write the **checks** (handlers) the rules need that no ready-made check answers. Skip if every fact is stock. Test them on a sample claim. | `write-facts` |
-| 6 | Put the **oracle** online on Cloudflare at their address, give it its IXO identity, and register it with the **decision engine**. Chain writes and a deploy. The engine needs the owner's IXO **subscription**: if it answers "payment required" (402), open the page it names so they can add credits, then try again. Ask first whether they will also **review** claims themselves: the login that registers an oracle can never review that oracle's claims, so if yes, register it with a separate company login. | `create-oracle` |
+| 6 | Put the **oracle** online on Cloudflare at its free `workers.dev` address (or their own domain, if they chose one): on `workers.dev`, `ORACLE_HOSTNAME` is that `<worker>.<account>.workers.dev` host and no custom-domain route is set, even where the package skill says Custom Domain. Then give it its IXO identity, and register it with the **decision engine**. Chain writes and a deploy. The engine needs the owner's IXO **subscription**: if it answers "payment required" (402), open the page it names so they can add credits, then try again. Ask first whether they will also **review** claims themselves: the login that registers an oracle can never review that oracle's claims, so if yes, register it with a separate company login. | `create-oracle` |
 | 7 | Create the company's **deed** and **collection**, hire the oracle on it, and send a **test claim**. Then show them the verdict and its **receipt**. Chain writes. | `create-collection` |
 
 After step 7, celebrate briefly, then say what they now have in two sentences.
@@ -130,8 +145,8 @@ After step 7, celebrate briefly, then say what they now have in two sentences.
   --openhands` already did the code; `add-openhands-support` covers who pays for the checks and how
   the oracle shows up in the app's list. Otherwise it also shows how to add it to an existing
   oracle.
-- **Move to testnet or mainnet**: repeat steps 2 to 7 with `--network testnet` or
-  `--network mainnet`, as a separate, explicit decision, with "real money" said out loud for
+- **Move to mainnet** (or devnet): repeat steps 2 to 7 with `--network mainnet` (or
+  `--network devnet`), as a separate, explicit decision, with "real money" said out loud for
   mainnet.
 
 ## If they stop part way
