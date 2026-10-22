@@ -74,6 +74,7 @@ carry on with the job.
 
 | If | Say | Do |
 | --- | --- | --- |
+| no Openhands tools at all | "Openhands needs a free program called Node.js (version 22.6 or newer). Shall I install it?" | `node --version`; if missing or older, install it only after a yes (see *Installing Node.js*), then "Restart Claude Code and I'll pick it up." |
 | a tool this skill names is missing | "I need a newer Openhands version. Restart Claude Code and I'll pick it up." | nothing more |
 | they want tasks in their own name, and it is not linked | "Shall we link this to your own account, so tasks are posted in your name and pay goes to you? It takes one tap." | *Link your account* |
 | posting fails: the network-fee allowance is used up | "Open this link, tap **Disconnect**, then **Connect** again. That renews the small allowance for network fees. Then tell me." | `connect_account` for the link, wait as in *Link your account*, try again |
@@ -82,6 +83,11 @@ carry on with the job.
 | reviews are paused: review credits ran out | "Reviews are paid from your review credits, and they've run out. Top them up where the message says, then tell me." | pass on the place the tool names |
 | a review fee set aside with the task, and no PAY | "This reviewer takes its small fee when you post. Shall I get you a card payment link for review credits?" | `top_up` |
 | anything for a company (campaigns with its own rules, payout settings, a review budget, posting as the company) | "That's a company job. Install the Openhands HQ plugin (`ixo-openhands-hq`) and I'll walk you through it." | stop here |
+
+**Installing Node.js**, with a yes: macOS with Homebrew `brew install node@22` (then `brew link --overwrite node@22` if
+`node` still isn't found); otherwise nvm,
+`curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash`, then `nvm install 22`;
+Windows `winget install OpenJS.NodeJS.LTS`. Then check `node --version` again.
 
 # Hiring the world
 

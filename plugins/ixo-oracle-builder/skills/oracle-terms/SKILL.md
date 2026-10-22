@@ -19,7 +19,7 @@ records that signed verdict on the IXO chain, so anyone can check it later.
 
 | Term | In plain words |
 | --- | --- |
-| **Oracle** | Your service that checks claims and records a signed verdict for each one. It runs on Cloudflare at your own web address. It gathers facts; it never decides by itself. |
+| **Oracle** | Your service that checks claims and records a signed verdict for each one. It runs on Cloudflare, at a free `workers.dev` address or your own web address. It gathers facts; it never decides by itself. |
 | **Claim** | One person's submission: a form they filled in, maybe with photos or files. (A courier says "parcel 123 delivered", with a photo.) |
 | **Protocol** | The published recipe for a kind of claim: the **claim form** (what people fill in) plus the **rubric** (the rules). Anyone can read it on chain. |
 | **Claim form** | The questions a claim must answer and the files it may carry. |
@@ -42,18 +42,18 @@ records that signed verdict on the IXO chain, so anyone can check it later.
 | **Payouts** | Paying people after their claim is approved. It goes through the company's own payouts service, not through your oracle's fee. |
 | **Openhands checker** | An oracle people can pick in the Openhands app when they post a task. It sets itself up on each task that picks it and checks the answers. `init --openhands` makes one. |
 | **Decision API** | Another way to send claims: over the web (HTTPS) straight to your oracle, instead of on chain. Useful for a business that wants to plug in its own app. |
-| **Cloudflare Workers** | Where your oracle runs. Cloudflare hosts it at your domain; you pay Cloudflare for hosting, often nothing at small sizes. |
+| **Cloudflare Workers** | Where your oracle runs. Cloudflare hosts it at a free `<worker>.<account>.workers.dev` address (your own domain is optional); you pay Cloudflare for hosting, often nothing at small sizes. |
 
 ## Devnet, testnet, mainnet
 
 | Network | What it is | Money |
 | --- | --- | --- |
-| **devnet** | IXO's practice network. Start here, break things, try again. | Play money. |
-| **testnet** | The dress rehearsal, set up like the real thing. | Play money. |
+| **devnet** | IXO's practice network. Only if you ask for it. | Play money. |
+| **testnet** | The dress rehearsal, set up like the real thing. Start here. | Play money (free from https://faucet.testnet.ixo.earth). |
 | **mainnet** | The real network. Verdicts here count. | Real money. |
 
-Everything starts on devnet. Moving to testnet or mainnet is a separate decision the person makes
-out loud, after devnet works end to end.
+Everything starts on testnet: play money, nothing real is spent. Moving to mainnet (real money) is
+a separate decision the person makes out loud, after testnet works end to end.
 
 ## What costs money
 
@@ -62,7 +62,7 @@ out loud, after devnet works end to end.
 - **Engine credits** (PAY) for each decision, billed to the oracle owner's subscription.
 - **Cloudflare** hosting and, if the rubric uses AI checks, the AI calls (from your Cloudflare
   credits, or an AI provider you choose).
-- **Your domain**, if you don't have one yet.
+- **Your own domain**, only if you want one; the free `workers.dev` address works.
 
 What your oracle earns: the **evaluation fee** each collection pays per claim checked.
 

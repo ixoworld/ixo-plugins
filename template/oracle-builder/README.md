@@ -18,7 +18,8 @@ it tells you. The agent does the typing.
   and send a first test claim.
 - Skill `oracle-terms`: the glossary, in plain words. What an oracle, a protocol, a rubric, a claim
   or a collection is, what is practice and what is real money, and what costs money.
-- It starts on **devnet**, IXO's practice network. Nothing is signed on chain until you say yes,
+- It builds on **testnet**: play money, nothing real is spent. Mainnet (real money) only when you
+  ask for it. Nothing is signed on chain until you say yes,
   and the agent never shows your keys or recovery phrase.
 - There is no server in this plugin. The agent runs IXO's `decision-oracle` tool in a terminal on
   your computer, and the package brings its own detailed skills for each step.
@@ -26,8 +27,10 @@ it tells you. The agent does the typing.
 ## What you need
 
 - A computer where your agent can use a terminal (Claude Code, Cowork or Codex), with
-  [bun](https://bun.sh) installed (the agent can install it for you).
-- A Cloudflare account that owns the web address (domain) your oracle will live at.
+  [bun](https://bun.sh) and [Node.js](https://nodejs.org) 22 or newer (the agent offers to install
+  them for you).
+- A free Cloudflare account. Your oracle gets a free `workers.dev` address; your own domain is
+  optional.
 - An IXO login (the agent opens the sign-in page in your browser), a little IXO for fees, and an
   IXO subscription so the decision engine can bill you for decisions.
 

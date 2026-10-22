@@ -61,6 +61,7 @@ Check quietly, fix inline with one sentence and the next action, then carry on w
 
 | If | Say | Do |
 | --- | --- | --- |
+| no Openhands tools at all | "Openhands needs a free program called Node.js (version 22.6 or newer). Shall I install it?" | `node --version`; if missing or older, install it as the openhands-hq skill says, only after a yes, then "Restart Claude Code and I'll pick it up." |
 | a tool this skill names is missing | "I need a newer Openhands version. Restart Claude Code and I'll pick it up." | nothing more; the plugin runs the newest `@ixo/openhands-mcp@dev` |
 | not connected (`my_status`) | "First, let's link this to your account so tasks are posted in your name. Open this, sign in, and tap **Connect**." | `get_connect_link` → give the link. Then `connection_status` (it only checks) until the tap shows, and `connect_account` to link the account that tapped. **Say** "Connected as …". Never ask for an address: the link's one-time code means only the account that tapped is linked. |
 | they ask on behalf of a group, club, company or association | "Post this as yourself, or set <group> up so the checks come from it?" (ask once) | as yourself → carry on; set it up → switch to the openhands-hq skill |
