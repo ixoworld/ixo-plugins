@@ -32,8 +32,10 @@ report against the review's rules, and the builder gives the **OK** that pays it
   what was observed against what was expected, and say how to reproduce every blocker). A report that
   passes waits for the builder's OK, and the OK pays it. A report that fails the lines is not paid.
   There is no "needs changes" step and no payment in stages.
-- Reports and their screenshots can be read by anyone with the link once handed in. Test accounts and
-  passwords go only in the private invitation note, never in the review itself.
+- **Who sees what:** On a private review (or any private task), only the builder, the specialist who wrote
+  a report and the checker can read it on the site; anyone can see that it was handed in and how the
+  check went. The report and its screenshots are still kept on a public file store, reachable by exact
+  link, so never put secrets in them: logins and private details go only in the private invitation note. Never in the review itself either.
 - This is the test version: the money is play money. Say it once.
 
 ## 1. Connected?

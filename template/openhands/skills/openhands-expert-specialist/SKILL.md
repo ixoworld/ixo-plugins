@@ -31,8 +31,11 @@ reads it, and the builder's **OK** pays it.
 - **Pay:** a report that passes the check (it covers every scenario, says what was observed against
   what was expected, and how to reproduce every blocker) is paid on the builder's OK (or at once, if
   the builder left the decision to the check). A report that fails the check is not paid. There is no "needs changes" step and no payment in stages.
-- **Public:** the page, and the report with its screenshots once handed in, can be read by anyone with
-  the link. Never put a password, a test login or anyone's personal data in them.
+- **Who sees what:** the page is public. On a private review (or any private task), only the builder, the specialist who wrote
+  a report and the checker can read it on the site; anyone can see that it was handed in and how the
+  check went. The report and its screenshots are still kept on a public file store, reachable by exact
+  link, so never put secrets in them: logins and private details go only in the private invitation note. Never put a password,
+  a test login or anyone's personal data in a report.
 {{#TESTNET}}- This is the test version: the money is play money. Say it once.{{/TESTNET}}{{^TESTNET}}- Expert Reviews runs on Openhands' test version for now. If the review tools are missing here,
   **Say:** "Expert Reviews is on Openhands' test version for now, with play money. Shall I add it?"
   On yes, add the plugin `ixo-openhands-test` as the openhands skill's *Adding another Openhands
@@ -98,7 +101,7 @@ Write it with them as [references/report.md](references/report.md) says, then **
 with the review's number, `report`, `files` (and `invite` if they came by link). The first call sends
 nothing and returns the whole report: show all of it. **Say:** "Here's your report. Hand it in?" On
 yes, the same call again with exactly the same report and files. The person then gets separate
-dialogs: the files (public, for good), then the report. **Never answer a dialog for them.** If the
+dialogs: the files (kept on a public file store, for good), then the report. **Never answer a dialog for them.** If the
 outcome is unknown, never resend; the same call only checks whether it arrived.
 
 ## 7. Did it pass? Getting paid
