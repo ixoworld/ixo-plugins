@@ -201,6 +201,8 @@ PAY never pays a reward; it only pays for reviews.
 - **IXO:** buy on an exchange that lists IXO and send it to the account address.
 - **USDC (Injective)** on the IXO network is on mainnet only; devnet and testnet have none, so use
   IXO there. A company that wants to pay in dollars uses USDC on Base or card (set up with openhands-hq).
-- **Test run or trial:** test money; IXO hands it out.
+- **Trial:** play IXO is free from the testnet faucet: open https://faucet.testnet.ixo.earth and
+  enter the testnet account address.
+- **Test run (devnet):** test money; IXO hands it out.
 
 The web connector (claude.ai, ChatGPT) can only read; posting, paying and getting paid happen here.

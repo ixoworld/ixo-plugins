@@ -387,7 +387,9 @@ your review budget."
 
 - **Review credits:** buy by card in the Decision Console: `<console>/billing/credits?topup=1&from=openhands`.
 - **IXO:** buy it on an exchange that lists IXO, then send it to the company's account address.
-- **Test run or trial:** it's test money; IXO hands it out on request. Ask IXO and wait.
+- **Trial:** play IXO is free from the testnet faucet: open https://faucet.testnet.ixo.earth and
+  enter the company's testnet account address.
+- **Test run (devnet):** it's test money; IXO hands it out on request. Ask IXO and wait.
 
 ## If something goes wrong (for you, Claude)
 

@@ -124,13 +124,13 @@ Ask one at a time; write the answers in the notes.
    - **C. Card (Stripe).** A payouts service sends money from the company's Stripe balance.
 4. **Say:** "Who should check the answers? IXO's ready-made reviewer, or one built for your own
    rules?" (Step 4 helps them decide.)
-5. **Say:** "Is this live, with real money, or a trial with play money first?" Unsure → live (the
-   default).
+5. {{#TESTNET}}Network: this plugin is always the trial with play money; don't ask. Unsure → trial.{{/TESTNET}}{{^TESTNET}}**Say:** "Is this live, with real money, or a trial with play money first?" Unsure → live (the
+   default).{{/TESTNET}}
 6. **Say:** "Which email should we use to reach the company? It must be an inbox you read." Read it
    back.
 7. Way C only: the country of their Stripe account (two letters, like `US` or `DE`).
 
-**Do:** {{#PINNED}}the Openhands tools here always run on the trial network. If the person wants live (real money), **Say:** "This plugin is the trial one. For real money, install the usual Openhands HQ plugin." and stop.{{/PINNED}}{{^PINNED}}the Openhands tools run on `OPENHANDS_NETWORK` (the fix is a restart with it set; that's for
+**Do:** {{#PINNED}}the Openhands tools here always run on the trial network. If the person wants live (real money), **Say:** "This plugin is the trial one, with play money only, so it can't set up live." and stop.{{/PINNED}}{{^PINNED}}the Openhands tools run on `OPENHANDS_NETWORK` (the fix is a restart with it set; that's for
 IXO or the admin, never said to the person). If `my_status` shows another network, **Say:** "I'm set
 to a different network than the one you chose. IXO or your admin needs to restart me on the
 <trial / live> network; then say 'carry on'."{{/PINNED}}
@@ -387,7 +387,9 @@ your review budget."
 
 - **Review credits:** buy by card in the Decision Console: `<console>/billing/credits?topup=1&from=openhands`.
 - **IXO:** buy it on an exchange that lists IXO, then send it to the company's account address.
-- **Test run or trial:** it's test money; IXO hands it out on request. Ask IXO and wait.
+- **Trial:** play IXO is free from the testnet faucet: open https://faucet.testnet.ixo.earth and
+  enter the company's testnet account address.
+- **Test run (devnet):** it's test money; IXO hands it out on request. Ask IXO and wait.
 
 ## If something goes wrong (for you, Claude)
 

@@ -18,7 +18,7 @@ This server is the hosted, unauthenticated, read-only view of the Openhands Netw
 - "What is open?" or "what pays?": `list_asks`, then `read_ask` for the terms of any that matter.
 - "Did anyone answer?": `collect_answer`. Report the evidence and what was not checked; never round the confidence up to "verified".
 - "How was my answer judged, was I paid?": `check_verdict` with the user's address.
-- Anything that **posts** an ask, **submits** work, **connects** an account, **funds** a key or **moves money**: this server cannot do it. Call `where_to_act` and give the user the page and the install lines it returns. The full tool set (posting, submitting, connecting, sweeping earnings) is in the local `ixo-openhands` plugin, which runs on the user's own machine and holds their own key.
+- Anything that **posts** an ask, **submits** work, **connects** an account, **funds** a key or **moves money**: this server cannot do it. Call `where_to_act` and give the user the page and the install lines it returns. The full tool set (posting, submitting, connecting, sweeping earnings) is in the local {{#TESTNET}}`ixo-openhands-test` plugin (for a company: `ixo-openhands-hq-test`), which runs on the user's own machine, holds their own key and is always this test network with play money. Give those names even if `where_to_act` names another plugin; never send someone from here to a real-money plugin.{{/TESTNET}}{{^TESTNET}}`ixo-openhands` plugin, which runs on the user's own machine and holds their own key.{{/TESTNET}}
 
 ## Rules
 

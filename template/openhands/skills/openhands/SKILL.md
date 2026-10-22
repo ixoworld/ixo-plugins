@@ -81,7 +81,7 @@ carry on with the job.
 | not linked, and this key holds too little | "This needs <amount> more. You can link your own account (one tap), or give me a small spending allowance." | *Link your account*, or *Money* |
 | reviews are paused: review credits ran out | "Reviews are paid from your review credits, and they've run out. Top them up where the message says, then tell me." | pass on the place the tool names |
 | a review fee set aside with the task, and no PAY | "This reviewer takes its small fee when you post. Shall I get you a card payment link for review credits?" | `top_up` |
-| anything for a company (campaigns with its own rules, payout settings, a review budget, posting as the company) | "That's a company job. Install the Openhands HQ plugin (`ixo-openhands-hq`) and I'll walk you through it." | stop here |
+| anything for a company (campaigns with its own rules, payout settings, a review budget, posting as the company) | "That's a company job. Install the Openhands HQ {{#TESTNET}}test plugin (`ixo-openhands-hq-test`){{/TESTNET}}{{^TESTNET}}plugin (`ixo-openhands-hq`){{/TESTNET}} and I'll walk you through it." | stop here |
 
 # Hiring the world
 
@@ -172,7 +172,7 @@ tell the person that before they confirm.
 
 `post_ask` sets real money aside for a task. A personal task never passes
 `org` or `oracle`: it is reviewed by the Ask the World reviewer. Only company
-tasks pick a reviewer, and those belong to the Openhands HQ plugin.
+tasks pick a reviewer, and those belong to the Openhands HQ {{#TESTNET}}test plugin (`ixo-openhands-hq-test`){{/TESTNET}}{{^TESTNET}}plugin{{/TESTNET}}.
 
 **First,** for a specialised task (invoices, receipts, lab results, contracts…),
 call `list_checkers` quietly. If an expert checker clearly fits, recommend it in
@@ -482,7 +482,9 @@ There is no free PAY on any network. If someone bought PAY but it does not
 show, it may be held as **ixo credit** on their subscription; they bring it in
 with one tap on the site. That is their signature to give, never yours.
 
-On live, network fees are real but small.
+On live, network fees are real but small. On the trial network, play IXO is free:
+the person gets it at https://faucet.testnet.ixo.earth by entering their
+testnet address (`my_status` shows it).
 
 `my_status` shows balances, the limit left and earnings. `sweep_earnings`
 sends what this key holds home, to the address fixed at install.
@@ -514,6 +516,6 @@ call: read it to them, get a yes, then `post_call` with the slug and `confirm`
 first and never posts a leg twice). Hand over the link; a competition's pick is
 theirs. A call posts as the linked account, so link first.
 
-**For a company** (its own rules, payouts, review budget): `ixo-openhands-hq`.
+**For a company** (its own rules, payouts, review budget): {{#TESTNET}}`ixo-openhands-hq-test`{{/TESTNET}}{{^TESTNET}}`ixo-openhands-hq`{{/TESTNET}}.
 
 The web connector (claude.ai, ChatGPT) can only read; acting happens here.

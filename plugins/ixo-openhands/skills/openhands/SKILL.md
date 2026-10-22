@@ -482,7 +482,9 @@ There is no free PAY on any network. If someone bought PAY but it does not
 show, it may be held as **ixo credit** on their subscription; they bring it in
 with one tap on the site. That is their signature to give, never yours.
 
-On live, network fees are real but small.
+On live, network fees are real but small. On the trial network, play IXO is free:
+the person gets it at https://faucet.testnet.ixo.earth by entering their
+testnet address (`my_status` shows it).
 
 `my_status` shows balances, the limit left and earnings. `sweep_earnings`
 sends what this key holds home, to the address fixed at install.

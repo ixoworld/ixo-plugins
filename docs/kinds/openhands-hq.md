@@ -5,11 +5,14 @@ company on Openhands, one way to pay workers, a reviewer for answers, and a firs
 
 - **Kind:** `openhands-hq` (local). For Claude Code and Cowork, because Claude runs the setup as
   terminal commands on the person's computer.
-- **Today:** [`ixo-openhands-hq`](../../plugins/ixo-openhands-hq/README.md).
+- **Today:** [`ixo-openhands-hq`](../../plugins/ixo-openhands-hq/README.md) and
+  [`ixo-openhands-hq-test`](../../plugins/ixo-openhands-hq-test/README.md) (testnet).
 - **What is in it:** two skills, `openhands-hq` (setup) and `openhands-everyday` (everything after),
   and the same Openhands tools as [`ixo-openhands`](openhands.md) (`npx -y @ixo/openhands-mcp@1`).
-- **Network:** mainnet (real money) by default. To try it with play money, start Claude Code with
-  `OPENHANDS_NETWORK=testnet`; every setup step then runs on testnet.
+- **Network:** mainnet (real money) by default. The easy way to try it with play money is
+  `ixo-openhands-hq-test`: always testnet, nothing to set, the newest build (`@dev`); its worker side is
+  `ixo-openhands-test`. Play IXO is free from the testnet faucet, https://faucet.testnet.ixo.earth.
+  Or start Claude Code with `OPENHANDS_NETWORK=testnet`; every setup step then runs on testnet.
 
 ## What it uses
 
