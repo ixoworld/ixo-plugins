@@ -142,7 +142,7 @@ Only when the person says they want real money, **Say:** "For real money there's
 version. Nothing you did here carries over. Shall I add it?" On yes, add the plugin
 `ixo-openhands-hq` yourself: Claude Code (the terminal or the Code tab in the Claude app)
 `claude plugin marketplace add ixoworld/ixo-plugins` and `claude plugin install ixo-openhands-hq@ixo-plugins`
-(if refused, the person types `/plugin install ixo-openhands-hq@ixo-plugins`); Codex
+(if refused, the one exception to *never ask the person to type a command*: they type `/plugin install ixo-openhands-hq@ixo-plugins`); Codex
 `codex plugin marketplace add ixoworld/ixo-plugins` and `codex plugin add ixo-openhands-hq@ixo-plugins`;
 a chat in the Claude app: **Say:** "Open **Customize**, then **Plugins**, add the marketplace
 `ixoworld/ixo-plugins`, then add Openhands HQ." Then "Start a new session and I'll pick it up." Never
