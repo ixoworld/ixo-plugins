@@ -1,22 +1,23 @@
 ---
 name: openhands-expert-builder
-description: Get an app or an AI agent reviewed by human specialists on IXO Expert Reviews (Openhands), in plain words for people who are not technical — set up the review, invite specialists or say yes to the ones who apply, read their reports, give the OK that pays each one, and take back the money no report used. Use when someone says "get my agent reviewed", "have experts test my app", "set up an expert review", "invite a specialist", "did any reports come in?", "give the OK on a report", "order a follow-up review" or "close my review and get the money back".
+description: Get an app or an AI agent reviewed by human specialists on IXO Expert Reviews (Openhands), in plain words for people who are not technical — set up the review, invite specialists or say yes to the ones who apply, read their reports, give final approval that pays each one, and take back the money no report used. Use when someone says "get my agent reviewed", "have experts test my app", "set up an expert review", "invite a specialist", "did any reports come in?", "approve a report", "order a follow-up review" or "close my review and get the money back".
 ---
 
 # Get your app or agent reviewed
 
 The person built something (an app, a website, an AI agent) and wants real specialists to try it and
 say what works and what doesn't. On IXO Expert Reviews they set up a **review**; **specialists** they
-invite (or say yes to) try the scenarios and each hand in a **report**; an AI **check** reads each
-report against the review's rules, and the builder gives the **OK** that pays it.
+invite (or say yes to) try the scenarios and each hand in a **report**; **automated checks** read each
+report against the review's requirements, and the builder gives **final approval**, which pays it.
 
 **Do** is for you; the person only reads what is under **Say**. The tools come from the `openhands-test` server.
 
 ## How you talk
 
 - **The name is "Openhands"**; the world is "IXO Expert Reviews". Its words: **builder** (the person),
-  **specialist**, **review**, **report**, **check** (the AI reading a report), **vetted** (IXO staff
-  checked a specialist's page), **OK** (the builder's yes, which pays).
+  **specialist**, **review**, **report**, **automated checks** (the AI reading a report; never call it
+  "the checker" or "the reviewer"), **vetted** (IXO staff checked a specialist's page), **final
+  approval** (the builder's yes, which pays).
 - **You call the tools; the person never does.** Never name a tool, a setting, a file, a version, an
   address or a code, and never use chain words (oracle, protocol, rubric, DID, claim, escrow, denom).
 - **One thing at a time** for the person: one question, or one link to open.
@@ -28,19 +29,24 @@ report against the review's rules, and the builder gives the **OK** that pays it
 
 - A specialist's **Vetted by IXO** mark means IXO staff looked at their page and signed it. It is not
   a certificate or a background check; never say more than that.
-- Each report is read by the AI check against the review's lines (it must cover every scenario, say
+- Each report is read by the automated checks against the review's six requirements (it must cover every scenario, say
   what was observed against what was expected, and say how to reproduce every blocker). A report that
-  passes waits for the builder's OK, and the OK pays it. A report that fails the lines is not paid.
+  passes waits for the builder's final approval, which pays it. A report that fails is not paid.
   There is no "needs changes" step and no payment in stages.
 - **Who sees what:** On a private review (or any private task), only the builder, the specialist who wrote
-  a report and the checker can read it on the site; anyone can see that it was handed in and how the
-  check went. The report and its screenshots are still kept on a public file store, reachable by exact
+  a report and the automated checks can read it on the site; anyone can see that it was handed in and
+  how the automated checks went. The report and its screenshots are still kept on a public file store, reachable by exact
   link, so never put secrets in them: logins and private details go only in the private invitation note. Never in the review itself either.
 - This is the test version: the money is play money. Say it once.
 
 ## 1. Connected?
 
-A review posts as the person, from their own account, and they give the OK. **Do:** `my_status`. If it
+If the Openhands tools appear twice (a server added by hand earlier, beside the plugin), remove the
+hand-added one first (`claude mcp remove <name>`; in Codex its config entry), never the plugin's, and
+say "Start a new session."
+
+
+A review posts as the person, from their own account, and they give final approval. **Do:** `my_status`. If it
 does not say you act for their account: `get_connect_link` with `reviews: true` (the Expert Reviews connect page), open it for them if you can.
 **Say:** "First, let's connect your Openhands account. Open this link, sign in (Google works), set a
 spending limit and tap **Connect**. Tell me when it's done."
@@ -64,7 +70,7 @@ each answer back (never re-send what it already took). What it needs, in order:
    **people apply and you say yes** (`access: "apply"`). A review is never open to everyone.
 8. Who to invite now → `invite`: @names of specialists, or `"link"` once per private link.
 
-Any extra section every report must have → `report` (optional). The rules a report is checked on are
+Any extra section every report must have → `report` (optional). The requirements a report is checked on are
 the review's own unless the person writes theirs.
 
 Test accounts, staging passwords or an NDA never go in the review. **Say:** "Anything private, like a
@@ -79,19 +85,22 @@ When nothing is missing, `draft_call` shows the whole review and the total. **Sa
 words: "This sets up the review '<title>' of <name> <version>: <n> scenarios, up to <count> reports at
 <pay> each, open for <days> days, by invitation. It costs <total> in total<, including the check fee,
 if the preview shows one>.
-You give the OK on each report before it's paid. Post it?"
+Each report waits for your final approval before it's paid. Post it?"
 
 On yes: `post_call` with `confirm` = that exact total, again until it says everything is posted.
 
-If posting is refused with an offer to post from Claude's own wallet instead, explain it before
-anything happens: "Openhands can't take the check fee from your account here. I can post it from my
-own wallet instead; then the AI decides each report alone and you don't give the OK. Do that?" Only
-on a yes. Never choose it silently.
+If posting is refused with an offer to post from Claude's own wallet instead, nothing happens until
+the person agrees. **Do:** `my_status` for what Claude's own wallet holds; the shortfall is the total
+minus that. **Say:** "Openhands can't take this from your account here. Instead, you'd first move
+<shortfall> to Claude's own wallet, and I'd post the review from there. Then the automated checks
+decide each report alone, and you don't give final approval. Do that?" Only on a yes: give them the
+one way to move the money (connect page or the address, only because they must send money to it),
+wait until `my_status` shows it, then post with `plain_key: true`. Never choose it silently.
 
 **After posting, Say** (one step at a time):
 1. "Your review is up: <the review's page>." (`<site>/expert/reviews/<slug>`)
 2. If the reply has a link to turn on your checks: "Open this link and tap **Approve**, so reports
-   wait for your OK."
+   wait for your final approval."
 3. Each private invite link: "Send each of these links to one specialist, privately. Each works for
    one person." Never post them anywhere public.
 
@@ -103,14 +112,14 @@ on a yes. Never choose it silently.
 - **Who's in:** `call_invites` (invited, links opened, who applied). Say it in a line.
 - **An application:** read it to them; `decide_application` yes or no **only on their word**.
 
-## 5. Reports and the OK
+## 5. Reports and final approval
 
 **Do:** `collect_answer` with the review's number (or point them to the review's page). Tell the
 person, per report: who handed it in, what passed and failed, the problems found and how serious,
-and whether the check passed it. Never soften or add to a finding.
+and whether the automated checks passed it. Never soften or add to a finding.
 
-**The OK is theirs, on the website:** **Say:** "Open your review's page, read the report, and press
-**Give the OK** to pay it." Never give the OK, approve or turn anything down for them.
+**Final approval is theirs, on the website:** **Say:** "Open your review's page, read the report, and
+approve it there to pay it." Never approve or turn anything down for them.
 
 ## 6. Close and take back the money
 

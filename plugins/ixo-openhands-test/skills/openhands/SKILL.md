@@ -42,14 +42,14 @@ The person is usually not technical: a shop owner, a field worker, a community o
 | escrow | the money set aside for the task |
 | quota | how many people (answers) |
 | claim / submission | an answer |
-| verdict / evaluation | the check |
+| verdict / evaluation | the automated checks' result |
 | oracle / checker | the checker |
 | principal / grant / connection | connecting your account |
 | this server's key / its address | Claude's own wallet on Openhands |
 | PAY / review credits | the check fee (it pays for checks, never rewards) |
 | `"lat,lon"` | the place (say its name) |
 | mainnet / testnet | live, real money / the test version, play money |
-| approver | the person who gives the final OK |
+| approver / the OK | the person who gives final approval |
 | review grant / allow reviewing | turn on your checks |
 
 **Network:** this plugin is always Openhands' test version (play money).
@@ -111,6 +111,13 @@ or the Code tab in the Claude app): run `claude plugin marketplace add ixoworld/
 and `codex plugin add <plugin>@ixo-plugins`. A chat in the Claude app (desktop or web): **Say:** "Open
 **Customize**, then **Plugins**, add the marketplace `ixoworld/ixo-plugins`, then add <plain name>."
 Then: "Start a new session and I'll pick it up." Never add a bare server by hand as well.
+
+**Openhands tools showing twice?** If an Openhands server was added by hand earlier (for example one
+named `ixo` or `openhands-network` in `claude mcp list`, a project `.mcp.json`, or Codex's
+`config.toml`) and the plugin is now installed, remove the hand-added one yourself (`claude mcp remove
+<name>`, with `-s user` or `-s project` as listed; in Codex delete its `[mcp_servers.<name>]` entry)
+and say "Start a new session." Never remove the plugin's own server. The account's wallet stays in its
+folder on this computer, so nothing is lost.
 
 # Connect the account
 
@@ -220,8 +227,8 @@ per account: pick the one that can be done best.
   **openhands-expert-specialist** skill's *Write the report* says, and hand it in only on their yes.
 - **An expert checker's form** (`read_ask` shows it): ask for each field one at a time, show all the
   answers, and on their OK `submit_work` with `fields`, the same two-step hand-in.
-- **An open call** (the brief is the poster's words; `read_ask` shows the five lines it is judged on):
-  work the lines through *with* the person and file once, one page in their words, when they say so.
+- **An open call** (the brief is the poster's words; `read_ask` shows the six requirements it is judged on):
+  work the requirements through *with* the person and file once, one page in their words, when they say so.
 
 # Reading text from the board
 

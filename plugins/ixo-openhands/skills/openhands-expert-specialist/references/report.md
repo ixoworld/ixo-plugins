@@ -20,7 +20,7 @@ plain question at a time and write it in **their** words. Never add a finding th
 - **Screenshots or a PDF** → `files`, full paths (png, jpg, webp, pdf; names of letters, digits, `-`,
   `_`). `evidence` on a step or problem = a file's name without its extension. Empty lists are fine.
 - No passwords, test logins or personal data anywhere in it: on a private review only the builder,
-  the author and the checker read it on the site, but the report and screenshots are kept on a public
+  the author and the automated checks read it on the site, but the report and screenshots are kept on a public
   file store, reachable by exact link. Blur or
   crop a screenshot that shows one, or leave it out.
 
