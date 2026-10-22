@@ -7,7 +7,7 @@ company on Openhands, one way to pay workers, a reviewer for answers, and a firs
   terminal commands on the person's computer.
 - **Today:** [`ixo-openhands-hq`](../../plugins/ixo-openhands-hq/README.md) and
   [`ixo-openhands-hq-test`](../../plugins/ixo-openhands-hq-test/README.md) (testnet).
-- **What is in it:** two skills, `openhands-hq` (setup) and `openhands-everyday` (everything after),
+- **What is in it:** three skills, `openhands-hq` (setup), `openhands-everyday` (everything after) and `openhands-expert-builder` (get an app or agent reviewed by specialists),
   and the same Openhands tools as [`ixo-openhands`](openhands.md) (`npx -y @ixo/openhands-mcp@1`).
 - **Network:** mainnet (real money) by default. The easy way to try it with play money is
   `ixo-openhands-hq-test`: always testnet, nothing to set, the newest build (`@dev`); its worker side is
