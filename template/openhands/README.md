@@ -5,7 +5,7 @@
 - MCP server: `{{SERVER}}`, started on your machine with `npx -y {{PACKAGE}}@{{MAJOR}}` (needs Node.js 22.6 or newer, which provides `npx`).
 {{#PINNED}}- Network: always the test network (play money) and always the newest build, so features may change often. It can be installed beside the stable plugin.{{/PINNED}}{{^PINNED}}- Network: `{{NETWORK}}` by default (mainnet is real money; testnet is play money). The same per-ask and per-day caps, previews and confirmations apply on both; set `OPENHANDS_NETWORK` to switch (Claude Code), see [choosing the network](../../docs/kinds/openhands.md#choosing-the-network). To try unreleased features on testnet: `OPENHANDS_NETWORK=testnet OPENHANDS_MCP_PACKAGE=@ixo/openhands-mcp@dev claude`.{{/PINNED}}
 - Sign-in: none, and nothing to configure. The server makes its own key the first time it runs and keeps it under `~/.openhands/<network>`, one folder per network, so testnet and mainnet keys never mix (set `OPENHANDS_HOME` to move the folder). The key never leaves your machine, and the plugin carries no key, token or secret.
-- Skills: `openhands`, in plain words, one question at a time: post a task or Ask the World (with one plain preview before any money moves), close a task and get its money back, find and answer work, link your own account, and what never to trust from the board. Company jobs are in `ixo-openhands-hq`.
+- Skills: `openhands`, in plain words, one question at a time: post a task or Ask the World (with one plain preview before any money moves), close a task and get its money back, find and answer work, link your own account, and what never to trust from the board. Company jobs are in {{#TESTNET}}`ixo-openhands-hq-test`{{/TESTNET}}{{^TESTNET}}`ixo-openhands-hq`{{/TESTNET}}.
 
 ## Your key
 
@@ -15,7 +15,7 @@ Back up the folder if the key holds money you care about. Anyone who can read it
 
 ## No Node.js 22.6?
 
-The hosted connector (`ixo-openhands-mainnet` or `ixo-openhands-testnet`) needs nothing installed and works in Claude.ai, Claude Desktop and ChatGPT, but it is read-only: it can show you the board and hand you over to this local plugin for anything that signs.
+The hosted connector {{#TESTNET}}(`ixo-openhands-testnet`){{/TESTNET}}{{^TESTNET}}(`ixo-openhands-mainnet` or `ixo-openhands-testnet`){{/TESTNET}} needs nothing installed and works in Claude.ai, Claude Desktop and ChatGPT, but it is read-only: it can show you the board and hand you over to this local plugin for anything that signs.
 
 ## Install
 

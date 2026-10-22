@@ -7,7 +7,8 @@ whether the plugin's MCP server is **hosted** (a URL IXO runs) or **local** (a c
 | --- | --- | --- | --- |
 | Claude Code | Yes: `/plugin install <name>@ixo-plugins` | Yes (`claude mcp add`) | Yes, from a plugin |
 | Codex | Yes: `codex plugin add <name>@ixo-plugins` | Yes (`codex mcp add`) | Yes, from a plugin |
-| Claude.ai, Claude Desktop | No | Yes: *Settings → Connectors → Add custom connector* | No (use the hosted connector) |
+| Claude app (Desktop), paid plan | Yes: *Customize → Plugins → Add marketplace* | Yes: *Settings → Connectors → Add custom connector* | Yes, in the Code tab or a chat with a folder connected |
+| Claude.ai on the web | No | Yes: *Settings → Connectors → Add custom connector* | No (use the hosted connector) |
 | ChatGPT | No | Yes: *Settings → Apps & Connectors*, in developer mode | No (use the hosted connector) |
 
 ## Claude Code
@@ -40,7 +41,19 @@ codex plugin add <plugin-name>@ixo-plugins
 - Codex's marketplace entry for a plugin that needs no sign-in says `ON_USE` for authentication:
   Codex has no "none" value; `ON_USE` is the closest documented one, not a statement that none is needed.
 
-## Claude.ai and Claude Desktop
+## Claude app (Claude Desktop)
+
+On a paid plan you can add plugins in the app:
+
+1. *Customize → Plugins → Add → Add marketplace → Add from a repository*, and enter `ixoworld/ixo-plugins`.
+2. *Discover*, pick a plugin, *Add*. Plugins sync to your account.
+
+A local plugin (`ixo-openhands`, `ixo-openhands-hq` and their `-test` versions) runs where Claude can
+run things on your computer: the **Code** tab, and a chat with a folder connected
+<!-- unconfirmed: verify in the app -->. In a plain chat with no folder it can't start; use the hosted
+connector there. Source: support.claude.com, "Use plugins in Claude".
+
+## Claude.ai on the web
 
 No plugins: add a **custom connector** with the URL of a hosted plugin's MCP server, and sign in if it asks.
 
@@ -48,8 +61,8 @@ No plugins: add a **custom connector** with the URL of a hosted plugin's MCP ser
 - Openhands (read-only, no sign-in): `https://openhands.network/v1/mcp` (mainnet) or
   `https://test.openhands.network/v1/mcp` (testnet).
 
-A local plugin cannot run here: there is no command to start. Use its hosted connector, or use Claude
-Code or Codex for the full tool set.
+A local plugin cannot run here: there is no command to start. Use its hosted connector, or use the
+Claude app, Claude Code or Codex for the full tool set.
 
 ## ChatGPT
 

@@ -56,6 +56,14 @@ When the person says "testnet", "test" or "play money", use the `openhands-test`
 tools; otherwise use the usual ones. Never mix the two inside one job.
 
 **Network:** this plugin is always the trial network (play money).
+
+**This is the testing environment.** The first time, say it plainly: "This is Openhands' testing version: play money (the coins have no value), the
+newest features, and things may change or be reset. The live version uses real money (IXO or
+USDC), pays out for real, and is the stable release."
+Only when the person says they want real money or mainnet, **Say:** "For real money, install
+the live plugin: `/plugin install ixo-openhands@ixo-plugins` (Codex: `codex plugin add ixo-openhands@ixo-plugins`).
+It's a separate install, it uses real money, and your test account, tasks and balances don't carry
+over." (For a company: `ixo-openhands-hq`.) Never switch them silently; everything else here stays on the test plugins.
 `my_status` shows which. `<site>` is `https://openhands.network` (live) or
 `https://test.openhands.network` (trial). Never tell the person setting names;
 if a tool's refusal mentions one, **Say:** "Openhands needs a setup change
@@ -73,6 +81,7 @@ carry on with the job.
 
 | If | Say | Do |
 | --- | --- | --- |
+| no Openhands tools at all | "Openhands needs a free program called Node.js (version 22.6 or newer). Shall I install it?" | `node --version`; if missing or older, install it only after a yes (see *Installing Node.js*), then "Restart Claude Code and I'll pick it up." |
 | a tool this skill names is missing | "I need a newer Openhands version. Restart Claude Code and I'll pick it up." | nothing more |
 | they want tasks in their own name, and it is not linked | "Shall we link this to your own account, so tasks are posted in your name and pay goes to you? It takes one tap." | *Link your account* |
 | posting fails: the network-fee allowance is used up | "Open this link, tap **Disconnect**, then **Connect** again. That renews the small allowance for network fees. Then tell me." | `connect_account` for the link, wait as in *Link your account*, try again |
@@ -80,7 +89,12 @@ carry on with the job.
 | not linked, and this key holds too little | "This needs <amount> more. You can link your own account (one tap), or give me a small spending allowance." | *Link your account*, or *Money* |
 | reviews are paused: review credits ran out | "Reviews are paid from your review credits, and they've run out. Top them up where the message says, then tell me." | pass on the place the tool names |
 | a review fee set aside with the task, and no PAY | "This reviewer takes its small fee when you post. Shall I get you a card payment link for review credits?" | `top_up` |
-| anything for a company (campaigns with its own rules, payout settings, a review budget, posting as the company) | "That's a company job. Install the Openhands HQ plugin (`ixo-openhands-hq`) and I'll walk you through it." | stop here |
+| anything for a company (campaigns with its own rules, payout settings, a review budget, posting as the company) | "That's a company job. Install the Openhands HQ test plugin (`ixo-openhands-hq-test`) and I'll walk you through it." | stop here |
+
+**Installing Node.js**, with a yes: macOS with Homebrew `brew install node@22` (then `brew link --overwrite node@22` if
+`node` still isn't found); otherwise nvm,
+`curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash`, then `nvm install 22`;
+Windows `winget install OpenJS.NodeJS.LTS`. Then check `node --version` again.
 
 # Hiring the world
 
@@ -171,7 +185,7 @@ tell the person that before they confirm.
 
 `post_ask` sets real money aside for a task. A personal task never passes
 `org` or `oracle`: it is reviewed by the Ask the World reviewer. Only company
-tasks pick a reviewer, and those belong to the Openhands HQ plugin.
+tasks pick a reviewer, and those belong to the Openhands HQ test plugin (`ixo-openhands-hq-test`).
 
 **First,** for a specialised task (invoices, receipts, lab results, contracts…),
 call `list_checkers` quietly. If an expert checker clearly fits, recommend it in
@@ -481,7 +495,9 @@ There is no free PAY on any network. If someone bought PAY but it does not
 show, it may be held as **ixo credit** on their subscription; they bring it in
 with one tap on the site. That is their signature to give, never yours.
 
-On live, network fees are real but small.
+On live, network fees are real but small. On the trial network, play IXO is free:
+the person gets it at https://faucet.testnet.ixo.earth by entering their
+testnet address (`my_status` shows it).
 
 `my_status` shows balances, the limit left and earnings. `sweep_earnings`
 sends what this key holds home, to the address fixed at install.
@@ -513,6 +529,6 @@ call: read it to them, get a yes, then `post_call` with the slug and `confirm`
 first and never posts a leg twice). Hand over the link; a competition's pick is
 theirs. A call posts as the linked account, so link first.
 
-**For a company** (its own rules, payouts, review budget): `ixo-openhands-hq`.
+**For a company** (its own rules, payouts, review budget): `ixo-openhands-hq-test`.
 
 The web connector (claude.ai, ChatGPT) can only read; acting happens here.

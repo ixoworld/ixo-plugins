@@ -91,8 +91,11 @@ real money) by default, or `testnet` (a trial with play money) when Claude Code 
 `OPENHANDS_NETWORK=testnet`. Pass that same `--network` to every `decision-oracle` and `installer`
 command.
 
-The computer needs Node.js 22.6 or newer (`node --version`); if not, help them install it from
-`https://nodejs.org` first.
+The computer needs Node.js 22.6 or newer (`node --version`). If it's missing or older, **Say:**
+"Openhands needs a free program called Node.js. Shall I install it?" and install it only with a yes: macOS with Homebrew `brew install node@22` (then `brew link --overwrite node@22` if
+`node` still isn't found); otherwise nvm,
+`curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash`, then `nvm install 22`;
+Windows `winget install OpenJS.NodeJS.LTS`. Then check `node --version` again.
 
 **Notes.** Keep answers and the ids commands print (never secrets) in
 `~/.ixo/openhands-hq-<network>.json`. Read it at the start. The checks, not the notes, decide what is
@@ -387,7 +390,9 @@ your review budget."
 
 - **Review credits:** buy by card in the Decision Console: `<console>/billing/credits?topup=1&from=openhands`.
 - **IXO:** buy it on an exchange that lists IXO, then send it to the company's account address.
-- **Test run or trial:** it's test money; IXO hands it out on request. Ask IXO and wait.
+- **Trial:** play IXO is free from the testnet faucet: open https://faucet.testnet.ixo.earth and
+  enter the company's testnet account address.
+- **Test run (devnet):** it's test money; IXO hands it out on request. Ask IXO and wait.
 
 ## If something goes wrong (for you, Claude)
 

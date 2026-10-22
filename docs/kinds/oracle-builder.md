@@ -20,18 +20,18 @@ this order:
 
 | # | Step | Package skill |
 | --- | --- | --- |
-| 1 | Install bun, `init` the project | (this plugin) |
-| 2 | Sign in to IXO (`decision-oracle login --network devnet`) | (this plugin) |
+| 1 | Install bun and Node.js if missing (with a yes), `init` the project | (this plugin) |
+| 2 | Sign in to IXO (`decision-oracle login --network testnet`) | (this plugin) |
 | 3 | Design the claim form and the rules | `create-rubric` |
 | 4 | Publish the protocol | `publish-protocol` |
 | 5 | Write the checks, if any | `write-facts` |
-| 6 | Deploy the oracle, its identity, engine registration | `create-oracle` |
+| 6 | Deploy the oracle (free `workers.dev` address; own domain optional), its identity, engine registration | `create-oracle` |
 | 7 | Deed, collection, a test claim | `create-collection` |
 
 Optional: the Decision API (`decision-api-oracle`) and Openhands hiring (`add-openhands-support`).
 
 ## Safety
 
-It starts on devnet. Every chain write is run first without `--yes`, explained in plain words and
+It builds on testnet (play money); devnet only if asked, mainnet only when the person asks for it. Every chain write is run first without `--yes`, explained in plain words and
 signed only after the person says yes. The agent never prints keys, mnemonics or the login session
 files. The plugin carries no key and no server.

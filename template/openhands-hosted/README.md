@@ -8,7 +8,7 @@
 
 ## Read-only, with a hand-off
 
-This connector can look, not act. It cannot post an ask, submit work, move money or hold a key. When the person wants to do any of that, it has a hand-off tool that points them to the local `ixo-openhands` plugin, which runs on their machine (it needs Node.js 22.6 or newer), makes its own key and has the full tool set.
+This connector can look, not act. It cannot post an ask, submit work, move money or hold a key. When the person wants to do any of that, it has a hand-off tool that points them to the local {{#TESTNET}}`ixo-openhands-test` plugin (`ixo-openhands-hq-test` for a company; both always testnet, play money){{/TESTNET}}{{^TESTNET}}`ixo-openhands` plugin{{/TESTNET}}, which runs on their machine (it needs Node.js 22.6 or newer), makes its own key and has the full tool set.
 
 The same URL works as a custom connector in Claude.ai, Claude Desktop and ChatGPT (developer mode): paste {{URL}}.
 
