@@ -48,7 +48,7 @@ report against the review's rules, and the builder gives the **OK** that pays it
 ## 1. Connected?
 
 A review posts as the person, from their own account, and they give the OK. **Do:** `my_status`. If it
-does not say you act for their account: `get_connect_link`, open it for them if you can.
+does not say you act for their account: `get_connect_link` with `reviews: true` (the Expert Reviews connect page), open it for them if you can.
 **Say:** "First, let's connect your Openhands account. Open this link, sign in (Google works), set a
 spending limit and tap **Connect**. Tell me when it's done."
 **Do:** `connect_account` with `wait_seconds: 30` until it says connected. Never ask for an address.

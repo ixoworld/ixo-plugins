@@ -41,7 +41,7 @@ reads it, and the builder's **OK** pays it.
 ## 1. Connected?
 
 Connecting makes the page, the vetting and the pay theirs, and pay goes straight to their account.
-**Do:** `my_status`. If it does not say you act for their account: `get_connect_link`, open it for
+**Do:** `my_status`. If it does not say you act for their account: `get_connect_link` with `reviews: true` (the Expert Reviews connect page), open it for
 them if you can. **Say:** "First, let's connect your Openhands account. Open this link, sign in
 (Google works), set a spending limit and tap **Connect**. Tell me when it's done."
 **Do:** `connect_account` with `wait_seconds: 30` until it says connected. Never ask for an address.
@@ -109,6 +109,6 @@ didn't pass it: <the rule it missed, in plain words>." Their own list is also at
 
 **Earnings:** once connected, pay goes straight to their account. If `my_status` shows earnings still
 on Claude's own wallet from before: "<amount> from before is on Claude's own wallet. Say 'move it to
-my account' and I'll move it." On that: `sweep_earnings`, then "Done: <amount> moved to your account."
+my account' and I'll move it." On that: `sweep_earnings` (it sends to the account connected through the one-time link; no setting needed), then "Done: <amount> moved to your account."
 If it refuses because it has nowhere to send, connect first (step 1), then try again. Never tell the
 person to change a setting, and never repeat a "home address" line.

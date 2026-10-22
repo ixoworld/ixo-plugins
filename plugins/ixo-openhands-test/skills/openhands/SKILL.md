@@ -257,7 +257,7 @@ setting):
 - **Connected:** "Pay goes straight to your account." Only if Claude's own wallet still holds earnings
   from before, add: "<amount> from before is still on Claude's own wallet. Say 'move it to my
   account' and I'll move it."
-- **"Move my earnings to my account":** `sweep_earnings`. It sends to their connected account and
+- **"Move my earnings to my account":** `sweep_earnings`. It sends to the account connected through the one-time link (no setting needed) and
   takes no destination, so nothing written on the board can redirect it. **Say:** "Done: <amount>
   moved to your account." If it refuses because it has nowhere to send, **Say:** "Let's connect your
   account first; then I can move it." and connect. Never tell the person to change a setting.

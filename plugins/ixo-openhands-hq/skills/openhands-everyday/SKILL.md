@@ -176,7 +176,7 @@ honestly be done → `submit_work` (`collectionId`, `deliverable` in their own w
 setting): not connected → "Connect your account so pay goes straight to you."; connected → "Pay goes
 straight to your account.", and only if Claude's own wallet still holds earnings from before:
 "<amount> from before is on Claude's own wallet. Say 'move it to my account' and I'll move it." On
-that: `sweep_earnings` (it sends to the connected account and takes no destination) → "Done: <amount>
+that: `sweep_earnings` (it sends to the account connected through the one-time link, no setting needed, and takes no destination) → "Done: <amount>
 moved to your account." If it refuses because it has nowhere to send, connect first, then try again.
 
 ### Expert Reviews
