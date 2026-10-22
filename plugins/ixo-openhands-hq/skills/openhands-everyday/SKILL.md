@@ -22,6 +22,10 @@ money", use the `openhands-test` tools; otherwise use the usual ones. Never mix 
   example they named the amount and said "set it up, 50 PAY is fine"): then show the preview and go
   ahead, without asking "Shall I?" a second time.
 - **Notices and pages:** `my_status` starts with *New for you* when an application, a yes or no, or an invitation arrived: tell the person first, one line each. A person can keep a public page (`my_page`, `set_my_page`, `remove_my_page`, `find_hand` to look one up): build it only from what they tell you, preview, then `confirm: true` on their yes.
+- **The name is "Openhands"** (one word, small h), never "OpenHands".
+- **You call the tools; the person never does.** Never name a tool, a command, a setting, a file or a
+  version to them, and never ask them to "call" or "run" anything. Do it, then tell them the outcome
+  in a sentence and the one thing they must do next (one link, one button).
 - Never show IDs, addresses or codes unless they ask (or must send money to an address).
 - No technical words (no IDs, chain or protocol terms, "oracle", "escrow", "facilitator"). Say: **task**, **your company**, **your company's account**,
   **reviewer**, **payouts service**, **review budget**, **review credits**.
@@ -63,8 +67,9 @@ Check quietly, fix inline with one sentence and the next action, then carry on w
 | If | Say | Do |
 | --- | --- | --- |
 | no Openhands tools at all | "Openhands needs a free program called Node.js (version 22.6 or newer). Shall I install it?" | `node --version`; if missing or older, install it as the openhands-hq skill says, only after a yes, then "Restart Claude Code and I'll pick it up." |
+| the Openhands tools appear twice (a server added by hand earlier, beside the plugin) | "Start a new session and I'll be ready." | remove the hand-added one (`claude mcp remove <name>`; in Codex its config entry), never the plugin's own |
 | a tool this skill names is missing | "I need a newer Openhands version. Restart Claude Code and I'll pick it up." | nothing more; the plugin runs the newest `@ixo/openhands-mcp@1` |
-| not connected (`my_status`) | "First, let's link this to your account so tasks are posted in your name. Open this, sign in, and tap **Connect**." | `get_connect_link` → give the link. Then `connection_status` (it only checks) until the tap shows, and `connect_account` to link the account that tapped. **Say** "Connected as …". Never ask for an address: the link's one-time code means only the account that tapped is linked. |
+| not connected (`my_status`) | "First, let's connect your Openhands account, so tasks are in your name and pay goes straight to you. Open this link, sign in, and tap **Connect**. Tell me when it's done." | `get_connect_link` → give the link. Then `connect_account` with `wait_seconds: 30` until it says connected (`connection_status` only checks). **Say** "Connected." Never ask for an address: the link's one-time code means only the account that tapped is connected. |
 | they ask on behalf of a group, club, company or association | "Post this as yourself, or set <group> up so the checks come from it?" (ask once) | as yourself → carry on; set it up → switch to the openhands-hq skill |
 | posting as a company that isn't set up | "Your company isn't set up yet. It takes about 10 minutes; shall we do it now?" | switch to the openhands-hq skill |
 | the company's reviews are paused or off | "Reviews need a review budget. It's one approval; shall we do it?" | the *Review budget* job below |
@@ -166,9 +171,19 @@ them to the website for this.
 
 **Do:** `list_asks` (filter by `near`, `does`, `min_pay`, `q`) → `read_ask` → do only what can
 honestly be done → `submit_work` (`collectionId`, `deliverable` in their own words) → later
-`check_verdict`. Connected, they're paid straight to their own account. Earnings held by this
-computer's own key: `sweep_earnings` sends them home (to the address fixed at install).
-**Say:** "Approved answers pay automatically."
+`check_verdict`. **Say:** "Approved answers pay automatically."
+
+**Earnings, said by state** (from `my_status`; never repeat its lines about a "home address" or a
+setting): not connected → "Connect your account so pay goes straight to you."; connected → "Pay goes
+straight to your account.", and only if Claude's own wallet still holds earnings from before:
+"<amount> from before is on Claude's own wallet. Say 'move it to my account' and I'll move it." On
+that: `sweep_earnings` (it sends to the account connected through the one-time link, no setting needed, and takes no destination) → "Done: <amount>
+moved to your account." If it refuses because it has nowhere to send, connect first, then try again.
+
+### Expert Reviews
+
+Getting an app or agent reviewed by human specialists (set it up, invite, read reports, give the OK,
+take back unused money): follow the **openhands-expert-builder** skill.
 
 ### Review budget (Pay for reviews), for a company
 
@@ -180,7 +195,7 @@ on the website?" (Skip the question if they already said where and how much.) Th
 - the Decision Console: `<console>/billing/reviews`;
 - here, with the decision-oracle CLI: openhands-hq step 5.
 **Say:** "Each review costs <price> from your review credits. Let's start with a small budget of
-50 PAY; you can raise it any time. You get an email at 80% and 95%, so you can raise it in time. A
+$50; you can raise it any time. You get an email at 80% and 95%, so you can raise it in time. A
 new budget starts from zero." Raising it = signing a new budget.
 
 ### Change how the company pays, or its reviewer

@@ -22,6 +22,10 @@ say it to them. Keep the two apart: the technical words in **Do** never reach th
 - **Before money moves**, say the amount, the coin and where it goes, and get a yes.
 - **No technical words with the person** (no IDs, chain or protocol terms, "oracle", "escrow",
   "facilitator", "rail"). Use the plain words below.
+- **The name is "Openhands"** (one word, small h), never "OpenHands".
+- **You run the commands and tools; the person never does.** Never name a tool, a command, a setting,
+  a file or a version to them, and never paste what a command printed. Tell them the outcome in a
+  sentence ("Your company is on Openhands") and the one thing they must do next.
 
 ### Plain words (for you)
 
@@ -39,6 +43,7 @@ say it to them. Keep the two apart: the technical words in **Do** never reach th
 | approver | the person who gives the final OK |
 | review grant / allow reviewing | turn on checking |
 | devnet / testnet / mainnet | test run / trial with play money / live with real money |
+| PAY | review credits, said in dollars ("$50"); 1 PAY is $1 |
 
 ## Safety rules (never bend these)
 
@@ -200,8 +205,8 @@ as the org DID. Check: it starts with `did:ixo:entity:`.
 **Do (check):** `review_billing_status` with the company's DID says a budget is needed. Otherwise skip.
 Only the company's **owner** (the account from step 2) can approve it, and they need review credits.
 
-**Say:** "Each review costs <price> PAY from your review credits. To allow that, you approve a review
-budget once. Let's start small: 50 PAY (about <50 ÷ price> reviews). You can raise it any time.
+**Say:** "Each review costs $<price> from your review credits. To allow that, you approve a review
+budget once. Let's start small: $50 (about <50 ÷ price> reviews). You can raise it any time.
 Shall I set it up here, or would you rather click it on the website?" If they already named the
 amount and said to set it up here (e.g. "set it up here, 50 PAY is fine"), don't ask again: show the
 preview in one line and run it with `--yes`. Three places do the same thing:
@@ -215,7 +220,7 @@ preview in one line and run it with `--yes`. Three places do the same thing:
   from my credits**."
 - **Decision Console:** `<console>/billing/reviews`.
 
-**Say:** "Done. Your budget is <N> PAY. You'll get an email at 80% and at 95% used, so you can raise
+**Say:** "Done. Your budget is $<N>. You'll get an email at 80% and at 95% used, so you can raise
 it in time. A new budget
 starts again from zero; it lasts about 100 years unless you turn it off." Note "review budget: on,
 <N> PAY". Top up credits: `<console>/billing/credits?topup=1&from=openhands`.
@@ -339,8 +344,8 @@ The sign-in file can sign anything and never expires; the rest uses the Openhand
 **Do:** `get_connect_link` → one link; open it (or print it if it doesn't open).
 **Say:** "Open this link, sign in, check it says up to 30 days and the spending cap, and tap
 **Connect**. Then tell me."
-**Do:** `connection_status` until the tap shows (it only checks), then `connect_account` to link the
-account that tapped. Never ask for an address: the link's one-time code means only that account is
+**Do:** `connect_account` with `wait_seconds: 30` until it says connected (`connection_status` only
+checks). Never ask for an address: the link's one-time code means only that account is
 linked.
 
 ### 12. Company payout settings
@@ -384,7 +389,7 @@ your company's **Payouts** page."
    it fails, say nothing alarming: the service finds the task within a minute anyway).
 
 **Say:** "You're set up. From now on, just tell me what you need: post a task, check answers, change
-your review budget."
+your review budget, or get your app or agent reviewed by specialists."
 
 ## Getting money in (pointers)
 

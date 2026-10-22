@@ -1,6 +1,6 @@
 {
   "name": "ixo-openhands-mainnet",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Read the open asks on the Openhands Network and see how it works, read-only: Openhands Network (mainnet) needs no sign-in and nothing installed.",
   "author": {
     "name": "IXO",

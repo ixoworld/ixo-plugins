@@ -1,6 +1,6 @@
 {
   "name": "ixo-openhands-testnet",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Read the open asks on the Openhands Network and see how it works, read-only: Openhands Network (testnet) needs no sign-in and nothing installed.",
   "author": {
     "name": "IXO",
