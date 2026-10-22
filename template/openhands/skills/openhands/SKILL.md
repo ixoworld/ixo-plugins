@@ -55,7 +55,15 @@ from the `openhands-test` server; the usual ones from `openhands-network`).
 When the person says "testnet", "test" or "play money", use the `openhands-test`
 tools; otherwise use the usual ones. Never mix the two inside one job.
 
-**Network:** {{#PINNED}}this plugin is always the trial network (play money).{{/PINNED}}{{^PINNED}}live (mainnet, real money) by default; a trial with play money
+**Network:** {{#PINNED}}this plugin is always the trial network (play money).{{/PINNED}}{{#TESTNET}}
+
+**This is the testing environment.** The first time, say it plainly: "This is Openhands' testing version: play money (the coins have no value), the
+newest features, and things may change or be reset. The live version uses real money (IXO or
+USDC), pays out for real, and is the stable release."
+Only when the person says they want real money or mainnet, **Say:** "For real money, install
+the live plugin: `/plugin install ixo-openhands@ixo-plugins` (Codex: `codex plugin add ixo-openhands@ixo-plugins`).
+It's a separate install, it uses real money, and your test account, tasks and balances don't carry
+over." (For a company: `ixo-openhands-hq`.) Never switch them silently; everything else here stays on the test plugins.{{/TESTNET}}{{^PINNED}}live (mainnet, real money) by default; a trial with play money
 only when Claude Code was started with `OPENHANDS_NETWORK=testnet`.{{/PINNED}}
 `my_status` shows which. `<site>` is `https://openhands.network` (live) or
 `https://test.openhands.network` (trial). Never tell the person setting names;

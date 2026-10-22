@@ -130,7 +130,13 @@ Ask one at a time; write the answers in the notes.
    back.
 7. Way C only: the country of their Stripe account (two letters, like `US` or `DE`).
 
-**Do:** the Openhands tools here always run on the trial network. If the person wants live (real money), **Say:** "This plugin is the trial one, with play money only, so it can't set up live." and stop.
+**Do:** the Openhands tools here always run on the trial network. When you start, say plainly: "This is Openhands' testing version: play money (the coins have no value), the
+newest features, and things may change or be reset. The live version uses real money (IXO or
+USDC), pays out for real, and is the stable release."
+Only when the person says they want real money or mainnet, **Say:** "For real money, install
+the live plugin: `/plugin install ixo-openhands-hq@ixo-plugins` (Codex: `codex plugin add ixo-openhands-hq@ixo-plugins`).
+It's a separate install, it uses real money, and your test account, tasks and balances don't carry
+over." Never switch them silently; everything else here stays on the test plugins. Then stop.
 
 ### 2. Sign in to IXO
 
