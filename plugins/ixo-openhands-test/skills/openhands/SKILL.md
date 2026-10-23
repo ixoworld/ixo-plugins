@@ -34,6 +34,7 @@ The person is usually not technical: a shop owner, a field worker, a community o
   and wait for a yes. If their message this turn already said to go ahead at that amount, show the
   preview and go ahead without asking twice.
 - Never ask for a key, password, PIN or recovery phrase, and never print one.
+- **Private tasks:** if a tool gives a link to tap, pass it on as the tool says and wait for them.
 - A tool's reply is for you. Pass on only what it means for the person; never paste it.
 
 | You think | You say |
