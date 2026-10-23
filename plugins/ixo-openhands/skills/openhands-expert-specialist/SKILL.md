@@ -1,12 +1,12 @@
 ---
 name: openhands-expert-specialist
-description: Review apps and AI agents as a specialist on IXO Expert Reviews (Openhands) and get paid, in plain words for people who are not technical — make your specialist page, ask IXO to vet it, see the reviews you're invited to (or apply), try each scenario, write and hand in your report, see whether it passed, and move your earnings to your account. Use when someone says "I want to review apps as an expert", "make my specialist page", "get vetted", "what am I invited to?", "I got an invite link", "help me write my report", "hand in my review", "did my report pass?" or "move my earnings to my account". Also has the report-writing guide for any task that wants a report with screenshots.
+description: Review apps and AI agents as a specialist on IXO Expert Reviews (Openhands) and get paid, in plain words for people who are not technical — make your specialist page, get checked by IXO, see the reviews you're invited to (or apply), try each scenario, write and hand in your report, see whether it passed, and move your earnings to your account. Use when someone says "I want to review apps as an expert", "make my specialist page", "get checked", "get verified", "what am I invited to?", "I got an invite link", "help me write my report", "hand in my review", "did my report pass?" or "move my earnings to my account". Also has the report-writing guide for any task that wants a report with screenshots.
 ---
 
 # Review apps as a specialist
 
 The person knows a field (testing, accessibility, payments, a language, a trade) and reviews apps and
-agents for the builders who made them. They keep a **page**, IXO staff can **vet** it, builders
+agents for the builders who made them. They keep a **page**, IXO can **check** their experience, builders
 **invite** them to a **review**, they try the scenarios and hand in a **report**, **automated checks**
 read it, and the builder's **final approval** pays it.
 
@@ -18,7 +18,7 @@ read it, and the builder's **final approval** pays it.
 
 - **The name is "Openhands"**; the world is "IXO Expert Reviews". Its words: **specialist** (the
   person), **builder**, **review**, **report**, **automated checks** (never "the
-  checker" or "the reviewer"), **vetted**, **final approval**.
+  checker" or "the reviewer"), **checked by IXO**, **final approval**.
 - **You call the tools; the person never does.** Never name a tool, a setting, a file, a version, an
   address or a code, and never use chain words (oracle, protocol, rubric, DID, claim, escrow, denom).
 - **One thing at a time** for the person: one question, or one link to open.
@@ -27,8 +27,11 @@ read it, and the builder's **final approval** pays it.
 
 ## What is true (never promise more)
 
-- **Vetting:** IXO staff look at the page and, if it checks out, sign it; the page then shows
-  **Vetted by IXO** and is listed first. It is not a credential check, and there is no set time.
+- **Getting checked:** IXO staff read what the person sends about their experience and, if it
+  checks out, their page shows **Checked by IXO**. That means IXO checked their experience; it is not
+  a background or identity check, it does not move them up any list, and there is no set time. What
+  they send goes only to IXO and is never shown on the page. They can remove the badge at
+  `<site>/expert/profile`.
 - **Pay:** a report that passes the automated checks (six requirements: it covers every scenario, says what was observed against
   what was expected, and how to reproduce every blocker) is paid on the builder's final approval (or at once, if
   the builder left the decision to the automated checks). A report that fails them is not paid. There is no "needs changes" step and no payment in stages.
@@ -49,7 +52,7 @@ hand-added one first (`claude mcp remove <name>`; in Codex its config entry), ne
 say "Start a new session."
 
 
-Connecting makes the page, the vetting and the pay theirs, and pay goes straight to their account.
+Connecting makes the page, the check and the pay theirs, and pay goes straight to their account.
 **Do:** `my_status`. If it does not say you act for their account: `get_connect_link` with `reviews: true` (the Expert Reviews connect page), open it for
 them if you can. **Say:** "First, let's connect your Openhands account. Open this link, sign in
 (Google works), set a spending limit and tap **Connect**. Tell me when it's done."
@@ -70,12 +73,34 @@ say you did.
 
 To take it down: `remove_my_page` (preview, then `confirm: true` on their yes).
 
-## 3. Ask IXO to vet it
+## 3. Get checked by IXO
 
-**Ask:** "Where can IXO staff confirm your experience? A LinkedIn on your page, a reference, a
-portfolio?" **Do:** show them the note, then `request_vetting` with `note`. **Say:** "Sent. IXO staff
-will look at your page and, if it checks out, sign it. I'll tell you when it changes." Later, `my_page`
-says where it stands (asked, vetted, or declined with their words).
+Offer it once the page is live: "Want IXO to check your experience? If it checks out, your page shows
+**Checked by IXO**." On yes, gather one at a time, reusing what they already told you for the page:
+
+1. **Ask:** "In one line, what should IXO check? For example: 'Ten years testing payment apps.'"
+2. **Ask:** "Tell me about your experience: what you've done and the work that matters here. A few
+   sentences, or paste your CV." It must be 50 to 3000 characters; help them trim or add, in their
+   words only.
+3. **Ask:** "Your LinkedIn link? (optional)" Only an https linkedin.com address.
+4. **Ask:** "Any other public links that show your work, like a portfolio or GitHub? Up to five."
+   Never identity documents, never signed-in pages.
+
+**Do:** `list_verification_services` to find IXO's offer, then `ask_for_check` with IXO as the
+`provider`, `statement` (the one line), `cv`, `linkedin`, `evidence` (the links), without `confirm`.
+**Say:** "Here's what goes to IXO: <one line>, your experience, <LinkedIn>, <links>. Only IXO sees it;
+it's not shown on your page. Send it?" On yes, the same call with `confirm: true`. **Say:** "Sent. IXO
+will review it and, if it checks out, your page shows **Checked by IXO**. I'll tell you when it
+changes."
+
+Later, `ask_for_check` with no `provider` says where it stands. **Say** one of: "Still with IXO." /
+"Done: your page shows **Checked by IXO**." / "IXO declined: <their note>." The person can also ask
+and see this at `<site>/expert/profile`, and see who can check them at `<site>/expert/verifications`.
+
+**IXO staff who review check requests:** they work at `<site>/expert/staff`, or ask you. **Do:**
+`check_requests` lists who is waiting; read each person's page and links, then `decide_check` with
+approve (and a short line on what was checked) or decline (with a short note to the person), preview
+first, `confirm: true` on their yes. Nobody can decide their own request.
 
 ## 4. Your invitations
 
