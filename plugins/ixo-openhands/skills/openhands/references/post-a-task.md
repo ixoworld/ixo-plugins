@@ -38,8 +38,7 @@ several); its own rules and form apply. `ask_the_world` takes both too.
     people you invite?" → `access`: `"public"` (default), `"apply"` or `"invite"`, with `invite`: a
     list of @names or addresses, and `"link"` once for each private link wanted.
     Say once, for a private task: "Only you, whoever answers and the checker can read the answers on
-    the site; anyone can see that one came in and how the check went. Files are still kept on a
-    public file store, reachable by exact link, so private details go only in the invitation note."
+    the site; anyone can see that one came in and how the check went."
 
 The same job at many places? Give each the same `series` name (lowercase letters, digits, dashes);
 the board shows them as one card and each pays on its own.

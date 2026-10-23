@@ -34,9 +34,8 @@ read it, and the builder's **final approval** pays it.
   the builder left the decision to the automated checks). A report that fails them is not paid. There is no "needs changes" step and no payment in stages.
 - **Who sees what:** the page is public. On a private review (or any private task), only the builder, the specialist who wrote
   a report and the automated checks can read it on the site; anyone can see that it was handed in and
-  how the automated checks went. The report and its screenshots are still kept on a public file store, reachable by exact
-  link, so never put secrets in them: logins and private details go only in the private invitation note. Never put a password,
-  a test login or anyone's personal data in a report.
+  how the automated checks went. Still, never put a password, a test login or anyone's personal data in a report.
+- **Private tasks:** if a tool gives a link to tap, pass it on as the tool says and wait for them.
 {{#TESTNET}}- This is the test version: the money is play money. Say it once.{{/TESTNET}}{{^TESTNET}}- Expert Reviews runs on Openhands' test version for now. If the review tools are missing here,
   **Say:** "Expert Reviews is on Openhands' test version for now, with play money. Shall I add it?"
   On yes, add the plugin `ixo-openhands-test` as the openhands skill's *Adding another Openhands
@@ -107,7 +106,7 @@ Write it with them as [references/report.md](references/report.md) says, then **
 with the review's number, `report`, `files` (and `invite` if they came by link). The first call sends
 nothing and returns the whole report: show all of it. **Say:** "Here's your report. Hand it in?" On
 yes, the same call again with exactly the same report and files. The person then gets separate
-dialogs: the files (kept on a public file store, for good), then the report. **Never answer a dialog for them.** If the
+dialogs: the files, then the report. **Never answer a dialog for them.** If the
 outcome is unknown, never resend; the same call only checks whether it arrived.
 
 ## 7. Did it pass? Getting paid
