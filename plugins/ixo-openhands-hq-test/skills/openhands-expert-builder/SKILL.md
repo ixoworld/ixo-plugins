@@ -99,8 +99,26 @@ Reviews page; I'll read the reports to you here. Do that?" Only on a yes: give t
 one way to move the money (connect page or the address, only because they must send money to it),
 wait until `my_status` shows it, then post with `plain_key: true`. Never choose it silently.
 
-**After posting, Say** (one step at a time):
-1. "Your review is up: <the review's page>." (`<site>/expert/reviews/<slug>`)
+**After posting, Do:** Keep the returned ask number as the review's identity. A short name such
+as `call-1` is not unique across accounts or computers, and a completed review can already use it.
+
+1. `read_ask` with that exact number: check the title, posting account, reward, report limit,
+   deadline and private access against the approved preview.
+2. Open the returned numbered review page (`<site>/expert/reviews/<collectionId>`). Verify it
+   shows the same ask number, title, posting account and reward. Do not construct a page from the
+   short name or treat a page that loads as proof of identity.
+3. `call_invites` with `collectionId` = that exact number: check the intended number of invitations
+   and the private note. Inspect the invitation destinations without redeeming links, submitting
+   reports or binding an invitation to yourself. Each must continue to the same numbered review.
+
+If the index or page is unavailable, say the review posted but its page is not verified yet.
+If any identity or destination mismatches, say so and withhold the invitation links until fixed.
+Give the exact `<site>/t/<collectionId>` ask link as a fallback after reading that ask back.
+Never repost, close the ask, move more money or revoke/recreate invitations to repair a link
+without the person's explicit approval. Existing ask numbers and invitation tokens stay intact.
+
+**Only after those checks, Say** (one step at a time):
+1. "Your review is up: <the verified numbered review page>."
 2. If the reply has a link to turn on your checks: "Open this link and tap **Approve**, so reports
    wait for your final approval."
 3. Each private invite link: "Send each of these links to one specialist, privately. Each works for
