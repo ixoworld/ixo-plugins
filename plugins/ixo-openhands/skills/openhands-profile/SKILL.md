@@ -9,8 +9,15 @@ Use the same Openhands server and network throughout. For a company plugin this 
 person's page; a company profile is a different job. Speak in plain words and give one next step
 at a time. The person never handles a key or token.
 
-1. **Connect.** Read `my_status`. If the person's account is not connected, use the existing
-   account-connection flow before importing. Read `my_page` and retain the existing fields.
+1. **Connect.** Read `my_status`. If the person's account is not connected, call `connect_account`
+   and give them the site's connection link it returns. They open it, sign in and approve the
+   connection; then call `connect_account` with `wait_seconds: 30`. On a newer server that offers
+   `get_connect_link`, use its one-time pairing flow instead. If the main-branch server requires
+   an explicit account choice, ask them to copy their own public account address from the signed-in
+   connection page and pass exactly what they provide as `principal`. This public address is not
+   a key or secret. Never choose an account from a candidate list without their confirmation.
+   Continue only when the tool confirms whose account is connected. Read `my_page` and retain
+   the existing fields.
 2. **Choose a source.** If they asked for LinkedIn, call `import_linkedin_profile`. Share its private
    link only with the person. **Say:** "Open this on this computer, sign in with the same IXO
    account, and choose which LinkedIn details to share with me. Nothing is published yet."
