@@ -49,7 +49,7 @@
  * not recorded, because it is the `url` of the plugin's own `.mcp.json` server (so an oracle or
  * memory entry stays `metadata: { kind }`, exactly as those kinds always wrote it).
  */
-import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
+import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { parseArgs } from "node:util";
 
@@ -426,6 +426,11 @@ export function main(argv: string[], opts: MainOptions = {}): void {
     }
   };
   copySkills(kind.skillsDir, join(out, "skills"));
+  // Runtime components are copied verbatim: JavaScript and hook commands are not text templates.
+  for (const component of ["hooks", "scripts"]) {
+    const from = join(templates, kind.name, component);
+    if (existsSync(from)) cpSync(from, join(out, component), { recursive: true });
+  }
 
   const meta = {
     name,

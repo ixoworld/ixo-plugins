@@ -105,6 +105,14 @@
       }
     },
     {
+      "name": "ixo-plugin-updates",
+      "source": "./plugins/ixo-plugin-updates",
+      "description": "Automatically check for IXO plugin releases once a day when a session starts and refresh installed plugins through Claude Code or Codex.",
+      "metadata": {
+        "kind": "plugin-updates"
+      }
+    },
+    {
       "name": "ixo-swiftdrop-devnet",
       "source": "./plugins/ixo-swiftdrop-devnet",
       "description": "Proof of delivery for SwiftDrop Express couriers, decided by IXO's independent engine — devnet (test network).",

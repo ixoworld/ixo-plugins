@@ -4,7 +4,7 @@
  * `<!-- plugins:start -->` and `<!-- plugins:end -->` markers. The README table is generated:
  * edit the catalog (via `bun run add-plugin`), not the table. `--check` only reports drift.
  */
-import { readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { loadKind, pluginInputs } from "./add-plugin.ts";
 
@@ -23,6 +23,7 @@ const runs = (p: Entry) => {
   const m = pluginInputs(p.name, p.metadata).flags;
   if (m.url) return `hosted, ${new URL(m.url).host}`;
   if (m.package) return `local, \`npx ${m.package}@${m.major}\` (${m.network})`;
+  if (existsSync(join(root, "plugins", p.name, "hooks", "hooks.json"))) return "local, session hook";
   return loadKind(String(p.metadata?.kind ?? "oracle")).mcp ? "" : "skills only";
 };
 

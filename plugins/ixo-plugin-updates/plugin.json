@@ -1,0 +1,18 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "ixo-plugin-updates",
+  "version": "0.1.0",
+  "description": "Automatically check for IXO plugin releases once a day when a session starts and refresh installed plugins through Claude Code or Codex.",
+  "author": {
+    "name": "IXO",
+    "url": "https://ixo.world"
+  },
+  "homepage": "https://github.com/ixoworld/ixo-plugins/tree/main/plugins/ixo-plugin-updates",
+  "repository": "https://github.com/ixoworld/ixo-plugins",
+  "keywords": [
+    "ixo",
+    "plugins",
+    "updates",
+    "maintenance"
+  ]
+}

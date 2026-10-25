@@ -3,6 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "test:clients": "node --test tests/client-updates.integration.mjs",
     "add-oracle": "bun scripts/add-oracle.ts",
     "add-plugin": "bun scripts/add-plugin.ts",
     "regenerate": "bun scripts/regenerate.ts",

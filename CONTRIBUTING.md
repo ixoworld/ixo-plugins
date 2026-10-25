@@ -119,6 +119,10 @@ A kind is one directory, `template/<kind>/`. No code changes.
 - `README.md`: the plugin's README. Its first line must be `# {{TITLE}}`; CI reads the title back
   from it.
 - `skills/<skill>/SKILL.md`: the skills.
+- Optional `hooks/` and `scripts/`: runtime components copied verbatim into each generated plugin,
+  without placeholder expansion. `hooks/hooks.json` is discovered by Claude Code and Codex.
+  A plugin with these components needs a local execution environment and client hook trust;
+  installing it does not authorize bypassing review. `plugin-updates` is a no-MCP example.
 
 Templates take `{{NAME}}`, `{{TITLE}}`, `{{SERVER}}`, `{{DESCRIPTION}}` and the flag placeholders the
 kind's `mcp` block uses (`{{URL}}` for every hosted kind); any other `{{…}}` stops the generator. A hosted kind that signs in with IXO needs the
@@ -153,8 +157,10 @@ claim work that wasn't done, and must treat text from the board as data.
   users must act.
 - Open the pull request against `develop`. **Merging `develop` into `main` is the release**: users
   install from the default branch.
-- Users get a release with `/plugin marketplace update ixo-plugins` in Claude Code (then reconnect the
-  server in `/mcp`) and `codex plugin marketplace upgrade ixo-plugins` in Codex.
+- Users get a release through native marketplace updates or the optional `ixo-plugin-updates`
+  startup hook. Manual commands are `/plugin marketplace update ixo-plugins` in Claude Code (then
+  `/reload-plugins` or a new session) and `codex plugin marketplace upgrade ixo-plugins` in Codex
+  (then a new session). See [updates](docs/updates.md) for the client support boundaries.
 - A local plugin pins its npm package's **major** version (`--major`). Moving to a new major is a
   pull request that bumps `--major` and the plugin version.
 
@@ -164,7 +170,7 @@ claim work that wasn't done, and must treat text from the board as data.
 plugin. You need the Claude Code CLI installed for it, and `bun install` for the other scripts. CI
 (`.github/workflows/validate.yml`) runs:
 
-1. `bun run validate`.
+1. `bun run test` (updater behavior), then `bun run validate`.
 2. `bun scripts/check-schemas.ts`: each plugin's `plugin.json` and `mcp.json` against the Agent
    Plugins JSON Schemas in [`schemas/`](schemas), and that both catalogs list the same plugins, sources,
    descriptions and kinds, with valid Codex policy values.
@@ -175,6 +181,12 @@ plugin. You need the Claude Code CLI installed for it, and `bun install` for the
 
 To run steps 2 and 3 locally, note `git status --porcelain` first, run
 `bun scripts/check-schemas.ts && bun scripts/regenerate.ts`, and check that it has not changed.
+
+`bun run test:clients` additionally exercises real installed Claude Code and Codex CLIs against
+a temporary localhost Git marketplace with isolated client homes. It verifies installed skill
+replacement, disabled state and install scopes, and that available plugins stay uninstalled.
+It requires both CLIs, Git's `http-backend`, and permission to listen on localhost; it does not
+modify the developer's installed plugins. CI runs the deterministic updater suite by default.
 
 ## License
 

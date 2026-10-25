@@ -24,7 +24,9 @@ whether the plugin's MCP server is **hosted** (a URL IXO runs) or **local** (a c
   `npx -y @ixo/openhands-mcp@1`. No sign-in: the server keeps its own key on your machine.
 - Claude Code expands `${VAR}` and `${VAR:-default}` in a plugin's `.mcp.json`, so a local plugin
   can offer switches such as `OPENHANDS_NETWORK`, read from the shell that starts Claude Code.
-- Update with `/plugin marketplace update ixo-plugins`, then reconnect the server in `/mcp`.
+- For automatic updates, enable auto-update for `ixo-plugins` under `/plugin → Marketplaces`, or
+  install `ixo-plugin-updates`. Update manually with `/plugin marketplace update ixo-plugins`,
+  then `/reload-plugins` or start a new session. See [updates](updates.md).
 
 ## Codex
 
@@ -40,6 +42,10 @@ codex plugin add <plugin-name>@ixo-plugins
   `${PLUGIN_DATA}`), so a local plugin's settings, such as the network, are fixed when it is built (to change them, edit the installed plugin's `mcp.json`; for Openhands see [its page](kinds/openhands.md#choosing-the-network)).
 - Codex's marketplace entry for a plugin that needs no sign-in says `ON_USE` for authentication:
   Codex has no "none" value; `ON_USE` is the closest documented one, not a statement that none is needed.
+- For daily release checks in local sessions, install `ixo-plugin-updates`, review/trust its hook
+  under `/hooks`, and ensure Node.js and the Codex CLI are on `PATH`. It uses
+  `codex plugin marketplace upgrade ixo-plugins`; start a new session to load refreshed plugins.
+  See [updates](updates.md) for desktop prerequisites and remote sync alternatives.
 
 ## Claude app (Claude Desktop)
 

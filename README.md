@@ -49,6 +49,7 @@ There are three kinds, and more will come:
 | [`ixo-openhands-test`](plugins/ixo-openhands-test/README.md) | openhands | local, `npx @ixo/openhands-mcp@dev` (testnet) | Openhands Network on testnet, the newest build: play money, the newest features, may change often. Find paid work, post asks and hire people and agents, with your own key held on your machine. |
 | [`ixo-openhands-testnet`](plugins/ixo-openhands-testnet/README.md) | openhands-hosted | hosted, test.openhands.network | Read the open asks on the Openhands Network and see how it works, read-only: Openhands Network (testnet) needs no sign-in and nothing installed. |
 | [`ixo-oracle-builder`](plugins/ixo-oracle-builder/README.md) | oracle-builder | skills only | IXO Oracle Builder: build your own IXO evaluation oracle with your AI agent, no coding background needed. It explains every term in plain words, checks what you need, installs the package and walks you through each step in order, asking before anything is signed. |
+| [`ixo-plugin-updates`](plugins/ixo-plugin-updates/README.md) | plugin-updates | local, session hook | Automatically check for IXO plugin releases once a day when a session starts and refresh installed plugins through Claude Code or Codex. |
 | [`ixo-swiftdrop-devnet`](plugins/ixo-swiftdrop-devnet/README.md) | oracle | hosted, shipment-delivery-oracle.devnet.ixo.earth | Proof of delivery for SwiftDrop Express couriers, decided by IXO's independent engine — devnet (test network). |
 <!-- plugins:end -->
 
@@ -110,13 +111,22 @@ connector. See [docs/clients.md](docs/clients.md) for what each app supports.
 
 ## Update
 
-When we ship a new version, update the marketplace and reconnect:
+For automatic release checks in local Claude Code or Codex sessions, install
+[`ixo-plugin-updates`](plugins/ixo-plugin-updates/README.md) in each client. After you trust its
+startup hook, it checks once a day in the background and refreshes installed IXO plugins through
+the client. It needs Node.js 22+ and the matching CLI on `PATH`. Ask your assistant to check status,
+update now, pause or resume updates.
 
-- **Claude Code:** `/plugin marketplace update ixo-plugins`, then reconnect the server in `/mcp`.
+Claude Code also offers native auto-update: `/plugin → Marketplaces → ixo-plugins → Enable
+auto-update`. Use either that or the updater plugin. For manual updates:
+
+- **Claude Code:** `/plugin marketplace update ixo-plugins`, then `/reload-plugins` or a new session.
 - **Codex:** `codex plugin marketplace upgrade ixo-plugins`, then start a new session.
 - **Connectors:** nothing to update. The service itself changes.
 
 Releases are the merge of `develop` into `main`; every changed plugin carries a new version.
+Pinned marketplace refs stay pinned. Web/account-managed installations use their client's sync
+controls. See [update support and troubleshooting](docs/updates.md).
 
 ## How it works
 
@@ -139,6 +149,7 @@ CI rebuilds every plugin to check nothing drifted. To add one, see
 - [Openhands HQ](docs/kinds/openhands-hq.md): company onboarding, the three ways to pay, secrets.
 - [Oracle Builder](docs/kinds/oracle-builder.md): build your own oracle, step by step, no code background.
 - [Clients](docs/clients.md): plugin, connector or local command, per app.
+- [Updates](docs/updates.md): automatic release checks, client support, pause and manual updates.
 - [Signing in](docs/sign-in.md): IXO sign-in for hosted plugins, a key for local ones.
 - [Contributing](CONTRIBUTING.md): add a plugin or a kind, versioning, CI.
 

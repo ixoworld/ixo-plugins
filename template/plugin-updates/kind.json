@@ -1,0 +1,9 @@
+{
+  "description": "Automatically check for IXO plugin releases once a day when a session starts and refresh installed plugins through Claude Code or Codex.",
+  "keywords": ["ixo", "plugins", "updates", "maintenance"],
+  "mcp": null,
+  "codex": {
+    "policy": { "installation": "AVAILABLE", "authentication": "ON_USE" },
+    "category": "Productivity"
+  }
+}
