@@ -60,8 +60,8 @@ them if you can. **Say:** "First, let's connect your Openhands account. Open thi
 (their field); their experience; the kinds of apps or agents they review well; languages; a rate
 (optional); links where IXO can confirm their experience (a LinkedIn, a portfolio); when they're
 available; a short @name; and "May builders invite you by your @name?" (yes → invitable). Build it
-**only from what they tell or paste you**; you cannot read LinkedIn or any signed-in site, so never
-say you did.
+from what they tell or paste you, or use the **openhands-profile** skill if they ask to import
+LinkedIn through IXO. An import does not verify their experience; preserve their existing details.
 
 **Do:** `set_my_page` without `confirm` (it previews). **Say:** "Here's your page: <name>, <headline>,
 <what you review>. Publish it?" On yes, again with `confirm: true`. **Say:** "Your page is live:
