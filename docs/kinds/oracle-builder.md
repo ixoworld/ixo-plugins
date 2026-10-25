@@ -5,7 +5,8 @@ plugin, say *I want to build my own IXO oracle*, and their AI agent explains the
 they need, installs IXO's oracle package and takes them through the steps in order.
 
 - **Kind:** `oracle-builder` (skills only: no MCP server). For Claude Code, Cowork and Codex,
-  because the agent runs IXO's `decision-oracle` tool in a terminal on the person's computer.
+  for deployment. Cloud clients can complete the professional authoring route before handing off
+  to a coding agent. Hosted upload requires a separately configured Domain Runtime.
 - **Today:** [`ixo-oracle-builder`](../../plugins/ixo-oracle-builder/README.md).
 - **What is in it:** two skills, `oracle-builder` (the guided setup) and `oracle-terms` (the
   glossary, the networks and what costs money).
@@ -35,3 +36,15 @@ Optional: the Decision API (`decision-api-oracle`) and Openhands hiring (`add-op
 It builds on testnet (play money); devnet only if asked, mainnet only when the person asks for it. Every chain write is run first without `--yes`, explained in plain words and
 signed only after the person says yes. The agent never prints keys, mnemonics or the login session
 files. The plugin carries no key and no server.
+
+## Professional governance
+
+The builder composes the separately installed `domain-author-pro-oracle` and `domain-author` skills.
+It reuses durable draft sessions and deployment receipts for new or existing domains, supports either
+runtime or both, and applies the applicable founding or incumbent governance procedure. Independent
+review is conditional on that procedure. New constitutional observations remain advisory and cannot
+change authoritative decisions, introduce mandatory review, or block effects.
+
+A handoff records references and completed work, never credentials. Document adoption, runtime loading,
+discovery and commercial readiness remain distinct evidence. This plugin bundles no hosted server;
+local fixtures and tests do not establish authenticated cloud or testnet acceptance.
