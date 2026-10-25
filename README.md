@@ -155,3 +155,5 @@ Found something? Please report it privately — see [SECURITY.md](SECURITY.md).
 ---
 
 <p align="center"><sub>Made by <a href="https://ixo.world">IXO</a>. Oracles don't decide anything themselves — IXO's decision engine does, against each protocol's published rules, and signs every result.</sub></p>
+
+For personal pages from LinkedIn through IXO, see [LinkedIn profiles](docs/linkedin-profiles.md).

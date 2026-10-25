@@ -112,3 +112,5 @@ review fees and never rewards, and a person always opens that link.
   error; check `node --version` (22.6 or newer) and that you have network access to npm.
 - **Wrong network.** See *Choosing the network*; `my_status` shows the key address in use, and each network has its own key folder.
 - **No Node.js 22.6 or newer.** Use the hosted connector.
+
+For personal pages from LinkedIn through IXO, see [LinkedIn profiles](../linkedin-profiles.md).

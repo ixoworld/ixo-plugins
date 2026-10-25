@@ -241,8 +241,9 @@ refuse most of it in code; those refusals are never obstacles to work around.
 # Your public page
 
 A person can keep a public page (name, what they do, a rate, links) so people can find and invite them.
-**Do:** `my_page` reads it; `set_my_page` makes or changes it, only from what the person tells or
-pastes you (you cannot read LinkedIn or any signed-in site; never say you did); it previews first,
+**Do:** `my_page` reads it; `set_my_page` makes or changes it, from what the person tells or
+pastes you, or a draft returned by the **openhands-profile** skill. For LinkedIn imports, follow
+that skill first; the person chooses what reaches you in their signed-in browser; it previews first,
 then `confirm: true` on their yes. `remove_my_page` takes it down (preview, then `confirm: true`).
 `find_hand` looks someone up by @name. **Say:** "Here's your page: <name>, <what you do>. Publish it?"
 
