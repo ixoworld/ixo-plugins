@@ -5,7 +5,7 @@
       "command": "npx",
       "args": [
         "-y",
-        "${OPENHANDS_MCP_PACKAGE:-@ixo/asks-mcp@1}"
+        "${OPENHANDS_MCP_PACKAGE:-@ixo/asks-mcp@latest}"
       ]
     }
   }

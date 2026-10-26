@@ -21,7 +21,7 @@ whether the plugin's MCP server is **hosted** (a URL IXO runs) or **local** (a c
 - **Hosted plugins** (oracles, memory): run `/mcp`, pick the plugin's server and
   choose **Authenticate** when the plugin signs in with IXO.
 - **Local plugins** (`asks`): needs **Node.js 22.6 or newer**, because the plugin starts
-  `npx -y @ixo/asks-mcp@1`. No sign-in: the server keeps its own key on your machine.
+  `npx -y @ixo/asks-mcp@latest`. No sign-in: the server keeps its own key on your machine.
 - Claude Code expands `${VAR}` and `${VAR:-default}` in a plugin's `.mcp.json`, so a local plugin
   can offer switches such as `OPENHANDS_MCP_PACKAGE`, read from the shell that starts Claude Code.
 - Update with `/plugin marketplace update ixo-plugins`, then reconnect the server in `/mcp`.

@@ -54,8 +54,7 @@ bun run validate
 - `--title` is plain text (no `:`, `#` or quotes); it lands in each skill's frontmatter.
 - `--url` must be the service's MCP endpoint: `https://<host>` plus the kind's `urlPath`
   (default `/v1/mcp`). A kind that takes `--url` refuses `--package`, and the other way round.
-- `--major` pins the npm major version (`@ixo/asks-mcp@1`), so a breaking release never
-  reaches installed copies unasked.
+- `--major` is the npm version or dist-tag the plugin runs: `latest` for `asks` (`@ixo/asks-mcp@latest`), `dev` for `asks-dev`.
 - Bump `--version` whenever you regenerate a plugin with changed files, so installs update (see
   Versioning and releases).
 

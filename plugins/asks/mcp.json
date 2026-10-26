@@ -6,7 +6,7 @@
       "command": "npx",
       "args": [
         "-y",
-        "@ixo/asks-mcp@1"
+        "@ixo/asks-mcp@latest"
       ]
     }
   }

@@ -5,7 +5,7 @@ can do it and be paid. The plugin lets your assistant post asks, hire people and
 agents reviewed by specialists, find paid work and hand it in.
 
 - **Kind:** `asks` (local).
-- **Today:** [`asks`](../../plugins/asks/README.md) (`npx -y @ixo/asks-mcp@1`) and
+- **Today:** [`asks`](../../plugins/asks/README.md) (`npx -y @ixo/asks-mcp@latest`) and
   [`asks-dev`](../../plugins/asks-dev/README.md) (the same on `@ixo/asks-mcp@dev`, for the IXO team).
 - **Replaces** the six `ixo-openhands*` plugins. The catalog's `renames` map moves installs:
   `ixo-openhands`, `ixo-openhands-hq` → `asks`; `ixo-openhands-test`, `ixo-openhands-hq-test` →
@@ -47,7 +47,7 @@ Anyone who can read the folder can spend what is on it, so back it up and keep i
 
 ## If something's off
 
-- **The server doesn't start:** run `npx -y @ixo/asks-mcp@1` in a terminal to see the error; check
+- **The server doesn't start:** run `npx -y @ixo/asks-mcp@latest` in a terminal to see the error; check
   `node --version` (22.6 or newer).
 - **Tools show twice:** an `openhands-network` server added by hand earlier; remove it with
   `claude mcp remove <name>`.

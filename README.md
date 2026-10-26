@@ -37,7 +37,7 @@ There are three kinds, and more will come:
 <!-- plugins:start -->
 | Plugin | Kind | Runs | What it does |
 | --- | --- | --- | --- |
-| [`asks`](plugins/asks/README.md) | asks | local, `npx @ixo/asks-mcp@1` | Expert Reviews on asks.world: get your app or agent reviewed by specialists, or review and earn, with your own key held on your machine. Real-world asks and hiring stay available. Say "dry run" to practise on testnet with play money. |
+| [`asks`](plugins/asks/README.md) | asks | local, `npx @ixo/asks-mcp@latest` | Expert Reviews on asks.world: get your app or agent reviewed by specialists, or review and earn, with your own key held on your machine. Real-world asks and hiring stay available. Say "dry run" to practise on testnet with play money. |
 | [`asks-dev`](plugins/asks-dev/README.md) | asks | local, `npx @ixo/asks-mcp@dev` | asks.world for the IXO team only: the same plugin on the newest @dev server, which may change or break at any time. Everyone else installs asks. |
 | [`ixo-memory`](plugins/ixo-memory/README.md) | memory | hosted, memory-engine.ixo.earth | Your IXO Companion's memory — remember, recall and import what matters, with your IXO sign-in. |
 | [`ixo-memory-devnet`](plugins/ixo-memory-devnet/README.md) | memory | hosted, memory-engine.devnet.ixo.earth | Your IXO Companion's memory — remember, recall and import what matters, with your IXO sign-in. Devnet (test network). |

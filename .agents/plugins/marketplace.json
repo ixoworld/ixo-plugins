@@ -11,7 +11,7 @@
       "metadata": {
         "kind": "asks",
         "package": "@ixo/asks-mcp",
-        "major": "1"
+        "major": "latest"
       },
       "policy": {
         "installation": "AVAILABLE",
