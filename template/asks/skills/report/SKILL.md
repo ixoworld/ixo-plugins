@@ -5,8 +5,8 @@ description: Write and hand in a report on asks.world, as a specialist reviewing
 
 # Write and hand in a report
 
-Follow the `asks` skill's way of talking. **Every tool call passes `network`:** the one the review was
-posted on (mainnet real money, testnet play money).
+Follow the `asks` skill's way of talking. **Every tool call passes `network`:** mainnet unless this was a dry run;
+if the ask isn't found there, look on testnet and say so.
 
 **The specialist does the review. You organise their evidence and never invent a finding.** Their
 words: **specialist**, **builder**, **review**, **report**, **automated checks** (never "the checker"
@@ -34,10 +34,10 @@ Ask one plain question at a time; fill these fields:
 - **Summary:** `product`, `date`, `scope` (in and out), `outcome`; if known `build`, `environment`, `target`.
 - **Steps**, one per scenario: `id` (s1…), `what`, `expected`, `observed`, `result` (`passed`, `failed`,
   `blocked`, `not_tested`, `excluded`).
-- **Problems:** `id` (f1…), `title`, `steps`, `observed`, `expected`, `impact`, `severity` (`blocker`,
+- **Problems** (`findings`): `id` (f1…), `title`, `steps`, `observed`, `expected`, `impact`, `severity` (`blocker`,
   `major`, `minor`) and `severity_why`. A major needs `how_to_reproduce`; a blocker that or
   `cannot_reproduce`. How sure → `uncertainty`.
-- **What to do:** `text`, `priority` (`high`, `medium`, `low`), `findings`, `target`, `done_when`.
+- **What to do** (`recommendations`): `text`, `priority` (`high`, `medium`, `low`), `findings`, `target`, `done_when`.
 - `limitations` (what couldn't be checked); `sections` (`{ heading: text }`) for each extra section.
 - Screenshots or a PDF → `files`, full paths (png, jpg, webp, pdf; names of letters, digits, `-`, `_`).
   `evidence` on a step or problem = a file's name without its extension.

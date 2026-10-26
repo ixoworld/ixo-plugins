@@ -5,8 +5,8 @@ description: Invite people to an ask, open call or review job on asks.world, mak
 
 # Invite people and answer applications
 
-Follow the `asks` skill's way of talking. **Every tool call passes `network`:** the one the ask was
-posted on (mainnet for real work, testnet for a dry run). Never switch without saying so.
+Follow the `asks` skill's way of talking. **Every tool call passes `network`:** mainnet unless this was a dry run;
+if the ask isn't found there, look on testnet and say so. Never switch without saying so.
 
 - **Invite:** `invite_to_call` with the ask's number and @names or addresses, or `"link"` once per
   private link wanted, and an optional `note` (private details such as a test login; only the invited

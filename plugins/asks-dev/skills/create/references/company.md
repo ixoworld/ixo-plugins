@@ -33,7 +33,7 @@ questions, signs in, clicks and sends money. Claude Code or Cowork only (it runs
 | `installer` | `npx -y @ixo/payouts-facilitator@0.1`. Ways B and C only. Prints its JSON result on the last line. |
 | `wrangler` | `npx -y wrangler`. Ways B and C only. |
 | `stripe` | the Stripe CLI (`brew install stripe/stripe-cli/stripe`; ask first). Way C only. |
-| `<site>` | the asks.world website the tools' links point to |
+| `<site>` | the website in the links the tools return; never guess a domain |
 | `<console>` | Decision Console: testnet `https://decision-console.testnet.ixo.earth`, mainnet `https://decision-console.ixo.earth` |
 
 `<network>` is the network chosen for this task (`mainnet` or `testnet`): pass it as `network` to every
@@ -65,7 +65,7 @@ Always: 1, 2, 3, 4, 5b, 6, 10, 11, 12, 13. Step 5 when the reviewer bills per re
 **Check:** `~/.ixo/publish-session-<network>.json` exists and its address matches the notes (or the
 person confirms it's theirs). **Never open, read or print this file.** Read only its address, exactly:
 `node -e 'try{console.log(JSON.parse(require("fs").readFileSync(require("os").homedir()+"/.ixo/publish-session-<network>.json","utf8")).address)}catch{console.log("no sign-in")}'`
-If it isn't clearly theirs, don't use it or delete it. **Say:** "This computer is signed in as someone
+If it isn't clearly theirs, don't use it and don't delete it. **Say:** "This computer is signed in as someone
 else. Ask them first, or use a different computer user." Log out only after an explicit "yes, remove it".
 **Do:** `decision-oracle login --network <network>`; note `"signedInByThisRun": true`. If no page
 opens, give the sign-in link on its own line. **Say:** "Open this link to sign in with your email, then

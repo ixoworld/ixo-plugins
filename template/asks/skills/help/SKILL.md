@@ -21,16 +21,18 @@ Every payment is previewed and waits for your yes."
 
 | Command | For |
 | --- | --- |
-| `/{{NAME}}` | start here: tell me what you want |
-| `/{{NAME}}:jobs` | find paid work, apply, hand in an answer |
-| `/{{NAME}}:create` | post an ask, ask someone to look, a campaign, an open call, a review job, set up your company |
-| `/{{NAME}}:invite` | invite people, answer applications |
-| `/{{NAME}}:manage` | your open asks: answers, approvals, closing, money back |
-| `/{{NAME}}:report` | write and hand in a review report |
-| `/{{NAME}}:profile` | your public page, getting checked by IXO |
-| `/{{NAME}}:account` | balance, earnings, top up, review credits |
-| `/{{NAME}}:connect` | link Claude to your IXO account |
-| `/{{NAME}}:help` | this |
+| `/asks` | start here: tell me what you want |
+| `/asks:jobs` | find paid work, apply, hand in an answer |
+| `/asks:create` | post an ask, ask someone to look, a campaign, an open call, a review job, set up your company |
+| `/asks:invite` | invite people, answer applications |
+| `/asks:manage` | your open asks: answers, approvals, closing, money back |
+| `/asks:report` | write and hand in a review report |
+| `/asks:profile` | your public page, getting checked by IXO |
+| `/asks:account` | balance, earnings, top up, review credits |
+| `/asks:connect` | link Claude to your IXO account |
+| `/asks:help` | this |
+
+{{#PINNED}}In asks-dev these are the same commands under asks-dev.{{/PINNED}}
 
 **Testnet. Say:** "Say 'try', 'test' or 'dry run' and I'll use testnet: play money, nothing real
 moves. The same steps work for real when you're ready." Play IXO is free at

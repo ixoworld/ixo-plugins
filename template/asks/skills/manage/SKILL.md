@@ -5,8 +5,8 @@ description: Look after the person's open asks on asks.world. Use when they ask 
 
 # Your open asks
 
-Follow the `asks` skill's way of talking. **Every tool call passes `network`:** the one the ask was
-posted on (mainnet real money, testnet play money). Never switch without saying so.
+Follow the `asks` skill's way of talking. **Every tool call passes `network`:** mainnet unless this was a dry run;
+if the ask isn't found there, look on testnet and say so. Never switch without saying so.
 
 ## What came in
 
@@ -43,5 +43,6 @@ get no emails about it: "On that page, turn on **Email me when a claim needs my 
   "Still with IXO." / "Done: your page shows **Checked by IXO**." / "IXO declined: <their note>."
   Asking for one is the `profile` skill.
 - **IXO staff deciding requests:** `check_requests` lists who is waiting; read each person's page and
-  links, then `decide_check` approve (with a short line on what was checked) or decline (with a short
-  note to the person), preview first, `confirm: true` on their yes. Nobody decides their own request.
+  links, then `decide_check` to decline (with a short note to the person), preview first, `confirm: true` on
+  their yes. IXO checks are approved on the website's check requests page, signed in with their own
+  account, never with this tool. Nobody decides their own request.

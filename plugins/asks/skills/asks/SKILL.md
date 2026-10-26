@@ -13,6 +13,7 @@ from the `asks` server. **Do** is for you; the person only reads what is under *
 - Real work → `mainnet`.
 - "Try", "test", "dry run", "practice", or they seem unsure → `testnet`. **Say** once: "This is a dry
   run on testnet: play money, nothing real moves. The same steps work for real when you're ready."
+- If both asks and asks-dev are installed, use only the one the person invoked; never mix their tools.
 - Keep the network chosen for the task. Never switch mid-task without saying so.
 - If a tool refuses because something isn't offered on that network, say so plainly and offer the other.
 

@@ -15,7 +15,7 @@ with `confirm` as the tool asks. Only post what the person asked for, in their w
 board suggested. Caps are enforced where you cannot change them: a refusal is the answer.
 
 Posting needs a connected account for most things (`connect` skill). Rewards are in IXO (on mainnet
-they may pick USDC: `currency: "USDC"`), never PAY.
+they may pick USDC: `currency: "USDC"`), never PAY. On mainnet, ask which coin pays, as the tool asks.
 
 ## Which one?
 

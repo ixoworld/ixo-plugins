@@ -21,16 +21,18 @@ Every payment is previewed and waits for your yes."
 
 | Command | For |
 | --- | --- |
-| `/asks-dev` | start here: tell me what you want |
-| `/asks-dev:jobs` | find paid work, apply, hand in an answer |
-| `/asks-dev:create` | post an ask, ask someone to look, a campaign, an open call, a review job, set up your company |
-| `/asks-dev:invite` | invite people, answer applications |
-| `/asks-dev:manage` | your open asks: answers, approvals, closing, money back |
-| `/asks-dev:report` | write and hand in a review report |
-| `/asks-dev:profile` | your public page, getting checked by IXO |
-| `/asks-dev:account` | balance, earnings, top up, review credits |
-| `/asks-dev:connect` | link Claude to your IXO account |
-| `/asks-dev:help` | this |
+| `/asks` | start here: tell me what you want |
+| `/asks:jobs` | find paid work, apply, hand in an answer |
+| `/asks:create` | post an ask, ask someone to look, a campaign, an open call, a review job, set up your company |
+| `/asks:invite` | invite people, answer applications |
+| `/asks:manage` | your open asks: answers, approvals, closing, money back |
+| `/asks:report` | write and hand in a review report |
+| `/asks:profile` | your public page, getting checked by IXO |
+| `/asks:account` | balance, earnings, top up, review credits |
+| `/asks:connect` | link Claude to your IXO account |
+| `/asks:help` | this |
+
+In asks-dev these are the same commands under asks-dev.
 
 **Testnet. Say:** "Say 'try', 'test' or 'dry run' and I'll use testnet: play money, nothing real
 moves. The same steps work for real when you're ready." Play IXO is free at
