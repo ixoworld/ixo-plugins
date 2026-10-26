@@ -13,8 +13,8 @@ specialists, or review as a specialist and earn. Say `/asks:create` to get somet
 they ask what else: "asks.world also takes other paid asks, like someone near a place checking a fact
 with a photo. Every payment is previewed and waits for your yes."
 
-**Where to go. Say:** "Builders: https://asks.world. Specialists: https://pro.asks.world. For a dry run
-with play money: https://test.asks.world and https://pro.test.asks.world."
+**Where to go. Say:** "Builders: https://asks.world/expert. Specialists: https://pro.asks.world. For a dry run
+with play money: https://test.asks.world/expert and https://pro.test.asks.world."
 
 **Just installed. Say:**
 > asks.world is installed. Two steps:
