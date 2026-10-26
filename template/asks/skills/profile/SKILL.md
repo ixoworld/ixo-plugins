@@ -5,9 +5,11 @@ description: The person's public page on asks.world (name, what they do, rate, l
 
 # Your public page
 
-Follow the `asks` skill's way of talking. **Every tool call passes `network`:** `mainnet` for their real
-page; `testnet` if they're trying it out (say once: a test page, play money). Connected first
-(`connect` skill; for a specialist, `reviews: true`).
+Follow the `asks` skill's way of talking. **Network:** the `asks` skill's rule. Every tool call passes `network`: `mainnet` for real money,
+`testnet` for a dry run with play money. If the person hasn't said, **Ask** once: "Real money, or a dry
+run with play money?" Never switch mid-task. A page is per network: their real page is on
+`mainnet`; a dry run makes a test page. Connected first (`connect` skill; for a specialist, `reviews:
+true`).
 
 ## Make or change it
 
@@ -32,3 +34,14 @@ your CV." (50–3000 characters, their words) · "Your LinkedIn link? (optional)
 `statement`, `cv`, `linkedin`, `evidence`, without `confirm`. **Say:** "Here's what goes to IXO: <one
 line>, your experience, <links>. Only IXO sees it. Send it?" On yes, with `confirm: true`. **Say:**
 "Sent. IXO will review it; I'll tell you when it changes." Where it stands later: the `manage` skill.
+
+## Other providers' checks (credentials)
+
+IXO is not the only one. Other providers check specific claims and sign their own credential; the
+person picks the provider, what is checked and what they share (a listing is not an endorsement).
+**Say:** "You can see who else can check you at https://pro.asks.world/expert/verifications" (a dry
+run: https://pro.test.asks.world/expert/verifications). `list_verification_services` lists the same
+offers; asking one is `ask_for_check` with that provider, the same preview and yes as above. Anyone
+can check a signed file (who signed it, who it's about, whether it's real) at
+https://asks.world/expert/credentials (a dry run: https://test.asks.world/expert/credentials). Never
+send documents or pay a fee without their yes.

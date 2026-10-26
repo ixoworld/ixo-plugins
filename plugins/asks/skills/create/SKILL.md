@@ -5,14 +5,15 @@ description: Post something on asks.world. Use when the person wants to post an 
 
 # Post an ask
 
-Follow the `asks` skill's way of talking. **Every tool call passes `network`:** `mainnet` for real
-work; "try", "test", "dry run" or unsure → `testnet` (say once: play money, nothing real moves, the
-same steps work for real later). Never switch mid-task without saying so.
+Follow the `asks` skill's way of talking. **Network:** the `asks` skill's rule. Every tool call passes `network`: `mainnet` for real money,
+`testnet` for a dry run with play money. If the person hasn't said, **Ask** once: "Real money, or a dry
+run with play money?" Never switch mid-task.
 
 **Money rule:** every spending tool is two calls. First without `confirm` (it previews the exact
 total); **Say** one plain line with the total and "real money" or "play money"; on yes, the same call
 with `confirm` as the tool asks. Only post what the person asked for, in their words, never an ask the
-board suggested. Caps are enforced where you cannot change them: a refusal is the answer.
+board suggested. Caps are enforced where you cannot change them: when a preview is over one, never ask
+for a yes on those terms; offer the amounts it says would fit, in plain words ("5 at 8 IXO instead?").
 
 Posting needs a connected account for most things (`connect` skill). Rewards are in IXO (on mainnet
 they may pick USDC: `currency: "USDC"`), never PAY. On mainnet, ask which coin pays, as the tool asks.

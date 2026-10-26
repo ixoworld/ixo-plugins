@@ -1,13 +1,14 @@
 ---
 name: connect
-description: Link Claude to the person's IXO account on asks.world, so asks, pages and answers are in their name and pay goes straight to them. Use when they say "connect my account", "sign in", "link my account", "am I connected?", "disconnect", or when another asks skill needs a connected account.
+description: Link the person's assistant to their IXO account on asks.world, so asks, pages and answers are in their name and pay goes straight to them. Use when they say "connect my account", "sign in", "link my account", "am I connected?", "disconnect", or when another asks skill needs a connected account.
 ---
 
 # Connect your account
 
-Follow the `asks` skill's way of talking. **Every tool call passes `network`.** A person is connected
-per network: connect on the one the task uses (mainnet for real work, testnet for a dry run), and say
-which. "Am I connected?" → `connection_status` on both, said apart.
+Follow the `asks` skill's way of talking. **Network:** the `asks` skill's rule. Every tool call passes `network`: `mainnet` for real money,
+`testnet` for a dry run with play money. If the person hasn't said, **Ask** once: "Real money, or a dry
+run with play money?" Never switch mid-task. A person is connected per network: connect on
+the one the task uses, and say which. "Am I connected?" → `connection_status` on both, said apart.
 
 **Do:** `get_connect_link` (with `reviews: true` for expert reviews) → one link. Open it for them if
 you can (`open <link>` on macOS, `xdg-open` on Linux), else give it on its own line.

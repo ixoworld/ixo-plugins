@@ -5,8 +5,11 @@ description: Write and hand in a report on asks.world, as a specialist reviewing
 
 # Write and hand in a report
 
-Follow the `asks` skill's way of talking. **Every tool call passes `network`:** mainnet unless this was a dry run (an expert review is always `testnet` for now: **Say** once that it is play money while Expert Reviews is in its test phase);
-if the ask isn't found there, look on testnet and say so.
+Follow the `asks` skill's way of talking. **Network:** the `asks` skill's rule. Every tool call passes `network`: `mainnet` for real money,
+`testnet` for a dry run with play money. If the person hasn't said, **Ask** once: "Real money, or a dry
+run with play money?" Never switch mid-task. A review is on the network it was posted on:
+if the person names one and it isn't found there, look on the other and say so ("real money" / "play
+money").
 
 **The specialist does the review. You organise their evidence and never invent a finding.** Their
 words: **specialist**, **builder**, **review**, **report**, **automated checks** (never "the checker"

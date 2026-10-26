@@ -14,8 +14,8 @@ Expert Reviews on asks.world: get your app or agent reviewed by specialists, or 
   - `report`: write and hand in an expert review report.
   - `profile`: your public page, and getting checked by IXO.
   - `account`: balance, earnings, payouts, top up, review credits.
-  - `connect`: link Claude to your IXO account.
-  - `help`: what asks.world is, the commands, testnet.
+  - `connect`: link your assistant to your IXO account.
+  - `help`: what asks.world is, the commands, where to go, testnet, updates.
 
 ## Your key
 

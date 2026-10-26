@@ -5,8 +5,10 @@ description: Find paid work on asks.world and get paid. Use when the person asks
 
 # Find and answer work
 
-Follow the `asks` skill's way of talking. **Every tool call passes `network`:** `mainnet` for real
-work, `testnet` if they said try, test or dry run (play money; say so once). Keep it for the whole job.
+Follow the `asks` skill's way of talking. **Network:** the `asks` skill's rule. Every tool call passes `network`: `mainnet` for real money,
+`testnet` for a dry run with play money. If the person hasn't said, **Ask** once: "Real money, or a dry
+run with play money?" Never switch mid-task. Looking for work: `my_invitations` on both
+networks first, said apart, so no invitation is missed.
 
 ## The one rule
 
@@ -20,7 +22,7 @@ receipt in their name, and an approved one moves money.
 ## Find
 
 **Ask:** "Any kind of work, or something near you?" (if near, get the place).
-**Do:** `my_invitations` first (invites are never listed), then `list_asks` (filters: `does` = `look`,
+**Do:** `my_invitations` first, on both networks (invites are never listed), then `list_asks` (filters: `does` = `look`,
 `spot`, `clean`, `answer`, `check`, `make`; `near` `{ lat, lon, km }`; `min_pay`; `q`; `poster`;
 `series`). `find_hand` looks up a poster by @name.
 **Say** a short list: "3 asks near you: check a café's opening hours, 2 IXO; …". One answer per ask
@@ -40,7 +42,8 @@ per account: pick the one that can be done best.
 `spot`, `clean`) → `submit_work` with the ask's number and `deliverable` (what was done, in your or
 their words, never the ask's text back).
 
-- **A report with screenshots** (`read_ask` says so, or an expert review): use the `report` skill. Expert reviews are on `testnet` for now; **Say** once that it is play money while Expert Reviews is in its test phase.
+- **A report with screenshots** (`read_ask` says so, or an expert review): use the `report` skill, on
+  the network the review is on.
 - **An expert checker's form** (`read_ask` shows it): ask each field one at a time, show all the
   answers, and on their OK `submit_work` with `fields`.
 - **An open call** (`read_ask` shows the requirements it is judged on): work them through *with* the

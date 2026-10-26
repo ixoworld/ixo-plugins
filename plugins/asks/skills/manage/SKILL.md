@@ -5,8 +5,10 @@ description: Look after the person's open asks on asks.world. Use when they ask 
 
 # Your open asks
 
-Follow the `asks` skill's way of talking. **Every tool call passes `network`:** mainnet unless this was a dry run;
-if the ask isn't found there, look on testnet and say so. Never switch without saying so.
+Follow the `asks` skill's way of talking. **Network:** the `asks` skill's rule. Every tool call passes `network`: `mainnet` for real money,
+`testnet` for a dry run with play money. If the person hasn't said, **Ask** once: "Real money, or a dry
+run with play money?" Never switch mid-task. An ask is on the network it was posted on: if
+it isn't found there, look on the other and say so.
 
 ## What came in
 
@@ -21,8 +23,12 @@ if the ask isn't found there, look on testnet and say so. Never switch without s
 
 Answers they chose to approve wait on the website, never here. **Say:** "Open <the link>, under
 **Waiting for you to check**, read each and press **Send decision**." For a review job: "Open your
-review's page, read the report, and approve it there to pay it." Never approve or turn anything down
-for them.
+review's page (https://asks.world/expert/reviews/<number>; a dry run:
+https://test.asks.world/expert/reviews/<number>),
+read the report and tap **Review for approval**: approve it there to pay it." To turn a report down,
+the same place: answer **No** to what it doesn't meet and press **Send decision**; a turned-down report
+is not paid, and one the automated checks failed is already not paid. No tool approves or turns down;
+never do either for them.
 
 Some company answers wait for a person in the Decision Console: **Say:** "Answers that need a person
 wait under **Claims › Review queue**. If nobody answers within 48 hours they're turned down." If they
