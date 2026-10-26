@@ -12,8 +12,9 @@ if the ask isn't found there, look on testnet and say so.
 words: **specialist**, **builder**, **review**, **report**, **automated checks** (never "the checker"
 or "the reviewer"), **final approval**.
 
-What is true: a report that passes the automated checks (it covers every scenario, says what was
-observed against what was expected, and how to reproduce every blocker) is paid on the builder's final
+What is true: a report that passes the automated checks (every scenario covered; every problem has a
+screenshot or recording, how to reproduce it, and a severity with its reason; every recommendation says
+what to change; limitations stated) is paid on the builder's final
 approval, or at once if the builder left it to the checks. One that fails is not paid. There is no
 "needs changes" step and no payment in stages.
 
@@ -22,8 +23,8 @@ approval, or at once if the builder left it to the checks. One that fails is not
 Connected first (`connect` skill, `reviews: true`). Invitations and applying: the `jobs` skill.
 **Do:** `read_ask` with the review's number: what is reviewed, the version, where to find it, the
 scenarios, extra sections, pay, deadline. Tell them in plain words. Then one scenario at a time:
-**Say:** "Scenario 1: <what>. Try it and tell me what happened. Take a screenshot of anything that
-matters and tell me where you saved it." Note what they did, what should happen, what did, and the
+**Say:** "Scenario 1: <what>. Try it and tell me what happened. Take a screenshot of every problem you
+find (and of anything else that matters) and tell me where you saved it." Note what they did, what should happen, what did, and the
 result. For each problem: what, which scenario, who it hurts and how badly, the exact steps to see it
 again. In **their** words; never mark something tested that wasn't.
 
@@ -34,11 +35,15 @@ Ask one plain question at a time; fill these fields:
 - **Summary:** `product`, `date`, `scope` (in and out), `outcome`; if known `build`, `environment`, `target`.
 - **Steps**, one per scenario: `id` (s1…), `what`, `expected`, `observed`, `result` (`passed`, `failed`,
   `blocked`, `not_tested`, `excluded`).
-- **Problems** (`findings`): `id` (f1…), `title`, `steps`, `observed`, `expected`, `impact`, `severity` (`blocker`,
-  `major`, `minor`) and `severity_why`. A major needs `how_to_reproduce`; a blocker that or
-  `cannot_reproduce`. How sure → `uncertainty`.
-- **What to do** (`recommendations`): `text`, `priority` (`high`, `medium`, `low`), `findings`, `target`, `done_when`.
-- `limitations` (what couldn't be checked); `sections` (`{ heading: text }`) for each extra section.
+- **Problems** (`findings`): `id` (f1…), `title`, `steps`, `observed`, `expected`, `impact`, and for **every** one,
+  whatever its severity: `evidence` (its screenshot's file id), `how_to_reproduce` (the exact steps), `severity`
+  (`blocker`, `major`, `minor`) and `severity_why` (the reason in a sentence). A blocker you can't reproduce
+  gives `cannot_reproduce` (what is missing) as well. How sure → `uncertainty`. A problem without a
+  screenshot: ask for one before writing it.
+- **What to do** (`recommendations`): `text` (the change to make, not "improve X"), `priority` (`high`,
+  `medium`, `low`), `findings`, `target`, and `done_when` (how to tell it is fixed).
+- `limitations`: never empty. Say what wasn't tested and why (devices, accounts, scenarios skipped), or that
+  everything was covered and on what; `sections` (`{ heading: text }`) for each extra section.
 - Screenshots or a PDF → `files`, full paths (png, jpg, webp, pdf; names of letters, digits, `-`, `_`).
   `evidence` on a step or problem = a file's name without its extension.
 - No passwords, test logins or personal data anywhere; blur, crop or leave out a screenshot that shows
