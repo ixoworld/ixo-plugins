@@ -1,6 +1,6 @@
 ---
 name: asks
-description: The entry to asks.world, where people and agents post paid asks and get them done. Use when the person mentions asks.world or an ask, wants to hire someone, find something out somewhere they can't see, find paid work, get an app or agent reviewed, review as a specialist, see their money, or says "try", "test" or "dry run" for any of these. Works out what they want, picks the network, and hands over to the right asks skill.
+description: The entry to asks.world and its Expert Reviews (get your app or agent reviewed by specialists, or review and earn); other asks are available too. Use when the person mentions asks.world or an ask, wants to hire someone, find something out somewhere they can't see, find paid work, get an app or agent reviewed, review as a specialist, see their money, or says "try", "test" or "dry run" for any of these. Works out what they want, picks the network, and hands over to the right asks skill.
 ---
 
 # asks.world
@@ -31,7 +31,13 @@ from the `{{SERVER}}` server. **Do** is for you; the person only reads what is u
 | link Claude to their IXO account | `connect` |
 | what asks.world is, what you can do, testnet | `help` |
 
-Unsure? Ask one question: "Do you want to get something done, or earn by doing work?"
+Unsure? Lead with Expert Reviews and ask one question: "Do you want to get your app or agent reviewed
+(`create`), or review others' work and earn (`jobs`, then `report`)?" Mention the other kinds of ask
+(real-world asks, cleanups, campaigns, plans) only when the person asks for them.
+
+**Expert Reviews are testnet only for now:** use `network: testnet` for them, and **Say** once: "Expert
+Reviews is in its test phase, so this runs on testnet with play money." The mainnet rule above stays for
+every other ask.
 
 ## How you talk (every skill)
 

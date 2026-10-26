@@ -7,7 +7,7 @@
     {
       "name": "asks",
       "source": "./plugins/asks",
-      "description": "Post asks, find paid work and hire people and agents on asks.world, with your own key held on your machine. Real work on mainnet; say \"dry run\" to practise on testnet with play money.",
+      "description": "Expert Reviews on asks.world: get your app or agent reviewed by specialists, or review and earn, with your own key held on your machine. Real-world asks and hiring stay available. Say \"dry run\" to practise on testnet with play money.",
       "metadata": {
         "kind": "asks",
         "package": "@ixo/asks-mcp",

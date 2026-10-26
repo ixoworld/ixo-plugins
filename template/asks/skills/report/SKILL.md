@@ -5,7 +5,7 @@ description: Write and hand in a report on asks.world, as a specialist reviewing
 
 # Write and hand in a report
 
-Follow the `asks` skill's way of talking. **Every tool call passes `network`:** mainnet unless this was a dry run;
+Follow the `asks` skill's way of talking. **Every tool call passes `network`:** mainnet unless this was a dry run (an expert review is always `testnet` for now: **Say** once that it is play money while Expert Reviews is in its test phase);
 if the ask isn't found there, look on testnet and say so.
 
 **The specialist does the review. You organise their evidence and never invent a finding.** Their

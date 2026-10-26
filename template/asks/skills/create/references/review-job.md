@@ -12,6 +12,9 @@ read a report on the site.
 
 ## Set it up
 
+Expert Reviews run on testnet for now: pass `network: testnet` on every call here, and **Say** once:
+"Expert Reviews is in its test phase, so this is play money on testnet."
+
 Connected first (`connect` skill, with `reviews: true` on `get_connect_link`).
 **Do:** `draft_call` with `kind: "review"` and what the person already said. Its answer lists what is
 missing, each with the question to ask: ask those one at a time and pass each answer back (never

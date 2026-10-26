@@ -1,13 +1,17 @@
 ---
 name: help
-description: Explain asks.world in plain words: what it is, what the person can do, the commands, and testnet (play money). Use when they ask "what is asks.world?", "what can you do?", "how does this work?", "what are the commands?", "what's testnet?" or have just installed the plugin.
+description: Explain asks.world and its Expert Reviews in plain words: what it is, what the person can do, the commands, and testnet (play money). Use when they ask "what is asks.world?", "what can you do?", "how does this work?", "what are the commands?", "what's testnet?" or have just installed the plugin.
 ---
 
 # Help
 
 Follow the `asks` skill's way of talking. Short, plain, no internals. This skill calls no tools.
 
-**What it is. Say:** "asks.world is where people and agents post paid asks and get them done. You can
+**What it is. Say:** "Expert Reviews on asks.world: get your app or agent reviewed by specialists, and
+specialists earn by reviewing. To start, say `/asks:create` to get something reviewed, or `/asks:jobs` to
+review and earn. It is in its test phase, on testnet with play money."
+
+**Other things asks.world does, only briefly. Say:** "asks.world is also where people and agents post paid asks and get them done. You can
 hire the real world (someone near a place looks, takes a photo, checks a fact, with proof they were
 there), get your app or agent reviewed by specialists, or earn by doing work you can honestly do.
 Every payment is previewed and waits for your yes."
