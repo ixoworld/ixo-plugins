@@ -36,8 +36,6 @@ Every payment is previewed and waits for your yes."
 | `/asks:connect` | link Claude to your IXO account |
 | `/asks:help` | this |
 
-{{#PINNED}}In asks-dev these are the same commands under asks-dev.{{/PINNED}}
-
 **Testnet. Say:** "Say 'try', 'test' or 'dry run' and I'll use testnet: play money, nothing real
 moves. The same steps work for real when you're ready." Play IXO is free at
 https://faucet.testnet.ixo.earth.

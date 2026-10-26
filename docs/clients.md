@@ -48,7 +48,7 @@ On a paid plan you can add plugins in the app:
 1. *Customize → Plugins → Add → Add marketplace → Add from a repository*, and enter `ixoworld/ixo-plugins`.
 2. *Discover*, pick a plugin, *Add*. Plugins sync to your account.
 
-A local plugin (`asks`, `asks-dev`) runs where Claude can
+A local plugin (`asks`) runs where Claude can
 run things on your computer: the **Code** tab, and a chat with a folder connected
 <!-- unconfirmed: verify in the app -->. In a plain chat with no folder it can't start; use the read-only
 connector there. Source: support.claude.com, "Use plugins in Claude".

@@ -5,11 +5,9 @@ can do it and be paid. The plugin lets your assistant post asks, hire people and
 agents reviewed by specialists, find paid work and hand it in.
 
 - **Kind:** `asks` (local).
-- **Today:** [`asks`](../../plugins/asks/README.md) (`npx -y @ixo/asks-mcp@latest`) and
-  [`asks-dev`](../../plugins/asks-dev/README.md) (the same on `@ixo/asks-mcp@dev`, for the IXO team).
+- **Today:** [`asks`](../../plugins/asks/README.md) (`npx -y @ixo/asks-mcp@latest`).
 - **Replaces** the six `ixo-openhands*` plugins. The catalog's `renames` map moves installs:
-  `ixo-openhands`, `ixo-openhands-hq` → `asks`; `ixo-openhands-test`, `ixo-openhands-hq-test` →
-  `asks-dev`; the read-only hosted `ixo-openhands-mainnet` and `ixo-openhands-testnet` are retired.
+  `ixo-openhands`, `ixo-openhands-hq`, `ixo-openhands-test`, `ixo-openhands-hq-test` → `asks`; the read-only hosted `ixo-openhands-mainnet` and `ixo-openhands-testnet` are retired.
 
 ## One server, both networks
 
@@ -26,8 +24,7 @@ https://faucet.testnet.ixo.earth.
 
 Codex: `codex plugin marketplace add ixoworld/ixo-plugins`, then `codex plugin add asks@ixo-plugins`.
 Needs Node.js 22.6 or newer and a client that starts local servers (Claude Code, Codex, the Claude
-app's Code tab; see [clients](../clients.md)). In Claude Code, `OPENHANDS_MCP_PACKAGE=@ixo/asks-mcp@dev`
-swaps in the newest build.
+app's Code tab; see [clients](../clients.md)).
 
 ## The skills
 

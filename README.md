@@ -38,7 +38,6 @@ There are three kinds, and more will come:
 | Plugin | Kind | Runs | What it does |
 | --- | --- | --- | --- |
 | [`asks`](plugins/asks/README.md) | asks | local, `npx @ixo/asks-mcp@latest` | Expert Reviews on asks.world: get your app or agent reviewed by specialists, or review and earn, with your own key held on your machine. Real-world asks and hiring stay available. Say "dry run" to practise on testnet with play money. |
-| [`asks-dev`](plugins/asks-dev/README.md) | asks | local, `npx @ixo/asks-mcp@dev` | asks.world for the IXO team only: the same plugin on the newest @dev server, which may change or break at any time. Everyone else installs asks. |
 | [`ixo-memory`](plugins/ixo-memory/README.md) | memory | hosted, memory-engine.ixo.earth | Your IXO Companion's memory — remember, recall and import what matters, with your IXO sign-in. |
 | [`ixo-memory-devnet`](plugins/ixo-memory-devnet/README.md) | memory | hosted, memory-engine.devnet.ixo.earth | Your IXO Companion's memory — remember, recall and import what matters, with your IXO sign-in. Devnet (test network). |
 | [`ixo-memory-testnet`](plugins/ixo-memory-testnet/README.md) | memory | hosted, memory-engine.testnet.ixo.earth | Your IXO Companion's memory — remember, recall and import what matters, with your IXO sign-in. Testnet (test network). |
@@ -81,7 +80,7 @@ list` and `codex mcp login` with the plugin's server name (for example `ixo-ship
 
 Add the marketplace: *Customize → Plugins → Add → Add marketplace → Add from a repository* →
 `ixoworld/ixo-plugins`. Then *Discover*, pick a plugin and *Add*. Plugins sync to your account.
-A plugin that runs a local command (`asks`, `asks-dev`)
+A plugin that runs a local command (`asks`)
 works where Claude can run things on your computer: the Code tab, and a chat with a folder connected
 <!-- unconfirmed: verify in the app -->; not a plain chat with no folder.
 

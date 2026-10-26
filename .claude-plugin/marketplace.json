@@ -19,17 +19,6 @@
       }
     },
     {
-      "name": "asks-dev",
-      "source": "./plugins/asks-dev",
-      "description": "asks.world for the IXO team only: the same plugin on the newest @dev server, which may change or break at any time. Everyone else installs asks.",
-      "metadata": {
-        "kind": "asks",
-        "package": "@ixo/asks-mcp",
-        "major": "dev",
-        "pinned": "true"
-      }
-    },
-    {
       "name": "ixo-memory",
       "source": "./plugins/ixo-memory",
       "description": "Your IXO Companion's memory — remember, recall and import what matters, with your IXO sign-in.",
@@ -73,8 +62,8 @@
   "renames": {
     "ixo-openhands": "asks",
     "ixo-openhands-hq": "asks",
-    "ixo-openhands-test": "asks-dev",
-    "ixo-openhands-hq-test": "asks-dev",
+    "ixo-openhands-test": "asks",
+    "ixo-openhands-hq-test": "asks",
     "ixo-openhands-mainnet": null,
     "ixo-openhands-testnet": null
   }

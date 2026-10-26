@@ -54,7 +54,10 @@ bun run validate
 - `--title` is plain text (no `:`, `#` or quotes); it lands in each skill's frontmatter.
 - `--url` must be the service's MCP endpoint: `https://<host>` plus the kind's `urlPath`
   (default `/v1/mcp`). A kind that takes `--url` refuses `--package`, and the other way round.
-- `--major` is the npm version or dist-tag the plugin runs: `latest` for `asks` (`@ixo/asks-mcp@latest`), `dev` for `asks-dev`.
+- `--major` is the npm version or dist-tag the plugin runs: `latest` for `asks` (`@ixo/asks-mcp@latest`).
+- IXO team only: to run `asks` on the dev build, start Claude Code with
+  `OPENHANDS_MCP_PACKAGE=@ixo/asks-mcp@dev` (the plugin's `.mcp.json` reads
+  `${OPENHANDS_MCP_PACKAGE:-@ixo/asks-mcp@latest}`). Codex has no such switch.
 - Bump `--version` whenever you regenerate a plugin with changed files, so installs update (see
   Versioning and releases).
 

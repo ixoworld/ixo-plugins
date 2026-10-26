@@ -20,22 +20,6 @@
       "category": "Productivity"
     },
     {
-      "name": "asks-dev",
-      "source": "./plugins/asks-dev",
-      "description": "asks.world for the IXO team only: the same plugin on the newest @dev server, which may change or break at any time. Everyone else installs asks.",
-      "metadata": {
-        "kind": "asks",
-        "package": "@ixo/asks-mcp",
-        "major": "dev",
-        "pinned": "true"
-      },
-      "policy": {
-        "installation": "AVAILABLE",
-        "authentication": "ON_USE"
-      },
-      "category": "Productivity"
-    },
-    {
       "name": "ixo-memory",
       "source": "./plugins/ixo-memory",
       "description": "Your IXO Companion's memory — remember, recall and import what matters, with your IXO sign-in.",
