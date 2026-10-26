@@ -9,8 +9,8 @@
  *     --url https://shipment-delivery-oracle.devnet.ixo.earth/v1/mcp \
  *     --description "Proof of delivery for SwiftDrop couriers — devnet"
  *   # a local plugin: the client starts the MCP server as a command
- *   bun run add-plugin --kind openhands --name ixo-openhands --title "Openhands Network" \
- *     --package @ixo/openhands-mcp --major 1 --network testnet
+ *   bun run add-plugin --kind asks --name asks --title "asks.world" \
+ *     --package @ixo/asks-mcp --major latest
  *
  * A KIND is a directory `template/<kind>/` holding everything kind-specific — no code per kind:
  *   - `kind.json`: `description` (default plugin description), `keywords`, `serverName` (the MCP
@@ -30,6 +30,7 @@
  *   - `README.md`: the plugin README; its first line must be `# {{TITLE}}` (CI reads the title back
  *     from it).
  *   - `skills/`: the plugin's skills.
+ *   - `hooks/` (optional): copied as is (`hooks/hooks.json` and the scripts it runs).
  * Text templates may wrap text in {{#PINNED}}…{{/PINNED}} (kept only with --pinned true) or {{^PINNED}}…{{/PINNED}} (kept only without it),
  * and likewise {{#TESTNET}}…{{/TESTNET}} / {{^TESTNET}}…{{/TESTNET}} (testnet: --network testnet, or a --url whose host has a `test.` or `testnet.` label).
  * Text templates take {{NAME}} (the plugin's name), {{TITLE}}, {{SERVER}}, {{DESCRIPTION}} and the placeholders above that the kind's
@@ -49,7 +50,7 @@
  * not recorded, because it is the `url` of the plugin's own `.mcp.json` server (so an oracle or
  * memory entry stays `metadata: { kind }`, exactly as those kinds always wrote it).
  */
-import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
+import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { parseArgs } from "node:util";
 
@@ -426,6 +427,9 @@ export function main(argv: string[], opts: MainOptions = {}): void {
     }
   };
   copySkills(kind.skillsDir, join(out, "skills"));
+  // Hooks are copied verbatim: hook commands and their scripts are not text templates.
+  const hooks = join(kind.skillsDir, "..", "hooks");
+  if (existsSync(hooks)) cpSync(hooks, join(out, "hooks"), { recursive: true });
 
   const meta = {
     name,
@@ -478,7 +482,7 @@ export function main(argv: string[], opts: MainOptions = {}): void {
     name: "ixo-plugins",
     owner: { name: "IXO", url: "https://ixo.world" },
     metadata: {
-      description: "IXO's plugins for AI assistants: signed decisions on claims, your IXO memory, and the Openhands Network.",
+      description: "IXO's plugins for AI assistants: signed decisions on claims, your IXO memory, and asks.world.",
     },
   });
   catalog(
@@ -487,7 +491,7 @@ export function main(argv: string[], opts: MainOptions = {}): void {
     { policy: kind.codex.policy, category: kind.codex.category },
   );
 
-  const target = !kind.mcp ? "skills only" : `${given.url ?? `${given.package}@${given.major} (${given.network})`} (server "${server}")`;
+  const target = !kind.mcp ? "skills only" : `${given.url ?? `${given.package}@${given.major}${given.network ? ` (${given.network})` : ""}`} (server "${server}")`;
   console.log(`✓ plugins/${name} (${kind.name}) → ${target}`);
 }
 

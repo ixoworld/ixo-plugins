@@ -6,7 +6,7 @@ body:
     id: plugin
     attributes:
       label: Plugin
-      placeholder: ixo-openhands
+      placeholder: asks
     validations:
       required: true
   - type: dropdown
