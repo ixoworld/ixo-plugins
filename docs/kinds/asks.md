@@ -5,15 +5,20 @@ can do it and be paid. The plugin lets your assistant post asks, hire people and
 agents reviewed by specialists, find paid work and hand it in.
 
 - **Kind:** `asks` (local).
-- **Today:** [`asks`](../../plugins/asks/README.md) (`npx -y @ixo/asks-mcp@latest`).
+- **Today:** [`asks`](../../plugins/asks/README.md) (`npx -y @ixo/asks-mcp@latest`; `latest` moves with
+  each release of the server from `main`). It updates itself once a day (pause with
+  `IXO_PLUGIN_AUTO_UPDATE=0`).
 - **Replaces** the six `ixo-openhands*` plugins. The catalog's `renames` map moves installs:
-  `ixo-openhands`, `ixo-openhands-hq`, `ixo-openhands-test`, `ixo-openhands-hq-test` → `asks`; the read-only hosted `ixo-openhands-mainnet` and `ixo-openhands-testnet` are retired.
+  `ixo-openhands`, `ixo-openhands-hq`, `ixo-openhands-test`, `ixo-openhands-hq-test` → `asks`; the read-only hosted `ixo-openhands-mainnet` and `ixo-openhands-testnet` are retired. Codex has
+  no `renames`: there, remove the old plugin and install `asks`.
 
 ## One server, both networks
 
-Every tool takes `network: "mainnet" | "testnet"`, and the skills choose it: real work on mainnet;
-"try", "test", "dry run", or anyone unsure, on testnet (play money, nothing real moves). One session can
-read mainnet and practise on testnet. There is no network setting in the plugin. Play IXO is free from
+Every tool takes `network: "mainnet" | "testnet"`, and the skills choose it: real money on mainnet;
+"try", "test" or "dry run" on testnet (play money, nothing real moves); when the person hasn't said,
+every skill asks once and never switches mid-task. IXO Expert Reviews runs on both. Builders go to
+https://asks.world (dry run https://test.asks.world), specialists to https://pro.asks.world (dry run
+https://pro.test.asks.world). There is no network setting in the plugin. Play IXO is free from
 https://faucet.testnet.ixo.earth.
 
 ## Install

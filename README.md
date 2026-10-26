@@ -106,9 +106,16 @@ When we ship a new version, update the marketplace and reconnect:
 
 - **Claude Code:** `/plugin marketplace update ixo-plugins`, then reconnect the server in `/mcp`.
 - **Codex:** `codex plugin marketplace upgrade ixo-plugins`, then start a new session.
+- **`asks` updates itself** once a day when a session starts (Claude Code and Codex). Pause it with
+  `IXO_PLUGIN_AUTO_UPDATE=0`. In Claude Code, `/plugin` → **Marketplaces** → ixo-plugins →
+  **Enable auto-update** does the same for every plugin here.
+- **Codex: reinstall as `asks`.** The six `ixo-openhands*` plugins became `asks`. Claude Code moves
+  you over by itself (the catalog's `renames`); Codex's catalog has no renames, so remove the old one
+  (`codex plugin remove ixo-openhands@ixo-plugins`) and run `codex plugin add asks@ixo-plugins`.
 - **Connectors:** nothing to update. The service itself changes.
 
-Releases are the merge of `develop` into `main`; every changed plugin carries a new version.
+Releases are the merge of `develop` into `main`; every changed plugin carries a new version. `asks`
+runs `@ixo/asks-mcp@latest`, which moves with each release of the server from its `main`.
 
 ## How it works
 

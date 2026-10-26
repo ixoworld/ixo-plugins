@@ -24,7 +24,10 @@ whether the plugin's MCP server is **hosted** (a URL IXO runs) or **local** (a c
   `npx -y @ixo/asks-mcp@latest`. No sign-in: the server keeps its own key on your machine.
 - Claude Code expands `${VAR}` and `${VAR:-default}` in a plugin's `.mcp.json`, so a local plugin
   can offer switches such as `OPENHANDS_MCP_PACKAGE`, read from the shell that starts Claude Code.
-- Update with `/plugin marketplace update ixo-plugins`, then reconnect the server in `/mcp`.
+- Update with `/plugin marketplace update ixo-plugins`, then reconnect the server in `/mcp`. `asks`
+  does this by itself once a day (pause with `IXO_PLUGIN_AUTO_UPDATE=0`), as does `/plugin` →
+  **Marketplaces** → ixo-plugins → **Enable auto-update**.
+- Moving from an `ixo-openhands*` plugin: nothing to do; the catalog's `renames` moves it to `asks`.
 
 ## Codex
 
@@ -38,6 +41,12 @@ codex plugin add <plugin-name>@ixo-plugins
 - **Local plugins**: need **Node.js 22.6 or newer** too. Codex reads the portable `mcp.json`, which supports
   `stdio` servers but does **not** expand environment variables (only `${PLUGIN_ROOT}` and
   `${PLUGIN_DATA}`), so a local plugin's settings, such as the package version, are fixed when it is built (to change them, edit the installed plugin's `mcp.json`). asks.world needs no network setting: every tool takes the network.
+- **Reinstall as `asks`.** Codex's catalog has no `renames` (its marketplace format reads only
+  `name`, `interface` and `plugins`), so an old `ixo-openhands*` plugin is not moved: run
+  `codex plugin remove ixo-openhands@ixo-plugins` (or whichever you had), then
+  `codex plugin add asks@ixo-plugins`.
+- `asks` upgrades the marketplace once a day when a session starts (pause with
+  `IXO_PLUGIN_AUTO_UPDATE=0`).
 - Codex's marketplace entry for a plugin that needs no sign-in says `ON_USE` for authentication:
   Codex has no "none" value; `ON_USE` is the closest documented one, not a statement that none is needed.
 

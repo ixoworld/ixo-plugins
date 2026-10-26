@@ -2,7 +2,8 @@
 
 {{DESCRIPTION}}
 
-- MCP server: `{{SERVER}}`, started on your machine with `npx -y {{PACKAGE}}@{{MAJOR}}` (needs Node.js 22.6 or newer, which provides `npx`).
+- MCP server: `{{SERVER}}`, started on your machine with `npx -y {{PACKAGE}}@{{MAJOR}}` (needs Node.js 22.6 or newer, which provides `npx`). `@latest` is the newest release: it moves each time IXO releases from `main`.
+- Updates: once a day, when a session starts, the plugin quietly updates itself (`claude plugin marketplace update ixo-plugins` and `claude plugin update`; in Codex `codex plugin marketplace upgrade ixo-plugins`). Pause it by starting your assistant with `IXO_PLUGIN_AUTO_UPDATE=0`. In Claude Code, `/plugin` → **Marketplaces** → ixo-plugins → **Enable auto-update** does the same.
 - Networks: one server for both. Real work runs on mainnet (real money); say "try", "test" or "dry run" and it runs on testnet (play money, nothing real moves). The same caps, previews and confirmations apply on both.
 - Sign-in: none, and nothing to configure. The server makes its own key the first time it runs and keeps it under `~/.openhands/<network>`, one folder per network, so testnet and mainnet keys never mix (set `OPENHANDS_HOME` to move the folder). The key never leaves your machine, and the plugin carries no key, token or secret. Connect your IXO account (`/asks:connect`) so asks are in your name and pay goes straight to you.
 - Just say what you want, or start with `/asks`. The skills (each is also `/asks:<skill>`):
@@ -39,5 +40,9 @@ Codex:
 codex plugin marketplace add ixoworld/ixo-plugins
 codex plugin add {{NAME}}@ixo-plugins
 ```
+
+**Moving from an `ixo-openhands*` plugin:** Claude Code moves you to `{{NAME}}` by itself. Codex does
+not: remove the old one (`codex plugin remove ixo-openhands@ixo-plugins`, or whichever you had) and
+install `{{NAME}}` as above. Your keys stay in `~/.openhands`, so nothing is lost.
 
 More: see [docs/kinds/asks.md](../../docs/kinds/asks.md).
