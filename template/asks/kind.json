@@ -1,0 +1,22 @@
+{
+  "$comment": "Kind-level defaults for `bun run add-plugin --kind asks`: a LOCAL kind, the client starts the asks.world MCP server (npx) and it holds the person's key. One server for both networks: every tool takes `network` (mainnet | testnet), so there is no network env. Claude Code expands ${VAR:-default}, so OPENHANDS_MCP_PACKAGE can swap the package (the team's dev build; see CONTRIBUTING); the portable mcp.json (Codex) has no env expansion, so its value is literal. Placeholders: {{TITLE}} {{SERVER}} {{DESCRIPTION}} {{PACKAGE}} {{MAJOR}}.",
+  "description": "Expert Reviews on {{TITLE}}: get your app or agent reviewed by specialists, or review and earn, with your own key held on your machine. Real-world asks and hiring stay available. Say \"dry run\" to practise on testnet with play money.",
+  "keywords": ["ixo", "asks", "asks-world", "marketplace", "tasks", "agents", "mcp"],
+  "serverName": "{{NAME}}",
+  "mcp": {
+    "claude": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "${OPENHANDS_MCP_PACKAGE:-{{PACKAGE}}@{{MAJOR}}}"]
+    },
+    "codex": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "{{PACKAGE}}@{{MAJOR}}"]
+    }
+  },
+  "codex": {
+    "policy": { "installation": "AVAILABLE", "authentication": "ON_USE" },
+    "category": "Productivity"
+  }
+}

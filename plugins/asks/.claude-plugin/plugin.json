@@ -1,0 +1,20 @@
+{
+  "name": "asks",
+  "version": "2.1.0",
+  "description": "Expert Reviews on asks.world: get your app or agent reviewed by specialists, or review and earn, with your own key held on your machine. Real-world asks and hiring stay available. Say \"dry run\" to practise on testnet with play money.",
+  "author": {
+    "name": "IXO",
+    "url": "https://ixo.world"
+  },
+  "homepage": "https://github.com/ixoworld/ixo-plugins/tree/main/plugins/asks",
+  "repository": "https://github.com/ixoworld/ixo-plugins",
+  "keywords": [
+    "ixo",
+    "asks",
+    "asks-world",
+    "marketplace",
+    "tasks",
+    "agents",
+    "mcp"
+  ]
+}

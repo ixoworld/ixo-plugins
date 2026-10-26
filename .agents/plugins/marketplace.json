@@ -5,6 +5,21 @@
   },
   "plugins": [
     {
+      "name": "asks",
+      "source": "./plugins/asks",
+      "description": "Expert Reviews on asks.world: get your app or agent reviewed by specialists, or review and earn, with your own key held on your machine. Real-world asks and hiring stay available. Say \"dry run\" to practise on testnet with play money.",
+      "metadata": {
+        "kind": "asks",
+        "package": "@ixo/asks-mcp",
+        "major": "latest"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      },
+      "category": "Productivity"
+    },
+    {
       "name": "ixo-memory",
       "source": "./plugins/ixo-memory",
       "description": "Your IXO Companion's memory — remember, recall and import what matters, with your IXO sign-in.",
@@ -40,100 +55,6 @@
       "policy": {
         "installation": "AVAILABLE",
         "authentication": "ON_INSTALL"
-      },
-      "category": "Productivity"
-    },
-    {
-      "name": "ixo-openhands",
-      "source": "./plugins/ixo-openhands",
-      "description": "Find paid work, post asks and hire people and agents on Openhands Network, with your own key held on your machine.",
-      "metadata": {
-        "kind": "openhands",
-        "package": "@ixo/openhands-mcp",
-        "major": "1",
-        "network": "mainnet"
-      },
-      "policy": {
-        "installation": "AVAILABLE",
-        "authentication": "ON_USE"
-      },
-      "category": "Productivity"
-    },
-    {
-      "name": "ixo-openhands-hq",
-      "source": "./plugins/ixo-openhands-hq",
-      "description": "Openhands HQ: set up your company on Openhands — an organisation on chain, a way to pay workers, an oracle and a first ask, with Claude doing every step and telling you exactly what to click.",
-      "metadata": {
-        "kind": "openhands-hq",
-        "package": "@ixo/openhands-mcp",
-        "major": "1",
-        "network": "mainnet"
-      },
-      "policy": {
-        "installation": "AVAILABLE",
-        "authentication": "ON_USE"
-      },
-      "category": "Productivity"
-    },
-    {
-      "name": "ixo-openhands-hq-test",
-      "source": "./plugins/ixo-openhands-hq-test",
-      "description": "Openhands HQ on testnet, the newest build: play money, the newest features, may change often. Set up your company on Openhands with Claude doing every step.",
-      "metadata": {
-        "kind": "openhands-hq",
-        "package": "@ixo/openhands-mcp",
-        "major": "dev",
-        "network": "testnet",
-        "server": "openhands-test",
-        "pinned": "true"
-      },
-      "policy": {
-        "installation": "AVAILABLE",
-        "authentication": "ON_USE"
-      },
-      "category": "Productivity"
-    },
-    {
-      "name": "ixo-openhands-mainnet",
-      "source": "./plugins/ixo-openhands-mainnet",
-      "description": "Read the open asks on the Openhands Network and see how it works, read-only: Openhands Network (mainnet) needs no sign-in and nothing installed.",
-      "metadata": {
-        "kind": "openhands-hosted"
-      },
-      "policy": {
-        "installation": "AVAILABLE",
-        "authentication": "ON_USE"
-      },
-      "category": "Productivity"
-    },
-    {
-      "name": "ixo-openhands-test",
-      "source": "./plugins/ixo-openhands-test",
-      "description": "Openhands Network on testnet, the newest build: play money, the newest features, may change often. Find paid work, post asks and hire people and agents, with your own key held on your machine.",
-      "metadata": {
-        "kind": "openhands",
-        "package": "@ixo/openhands-mcp",
-        "major": "dev",
-        "network": "testnet",
-        "server": "openhands-test",
-        "pinned": "true"
-      },
-      "policy": {
-        "installation": "AVAILABLE",
-        "authentication": "ON_USE"
-      },
-      "category": "Productivity"
-    },
-    {
-      "name": "ixo-openhands-testnet",
-      "source": "./plugins/ixo-openhands-testnet",
-      "description": "Read the open asks on the Openhands Network and see how it works, read-only: Openhands Network (testnet) needs no sign-in and nothing installed.",
-      "metadata": {
-        "kind": "openhands-hosted"
-      },
-      "policy": {
-        "installation": "AVAILABLE",
-        "authentication": "ON_USE"
       },
       "category": "Productivity"
     },
