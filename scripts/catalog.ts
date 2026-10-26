@@ -22,7 +22,7 @@ const cell = (s: string) => s.replace(/\|/g, "\\|").replace(/\n/g, " ");
 const runs = (p: Entry) => {
   const m = pluginInputs(p.name, p.metadata).flags;
   if (m.url) return `hosted, ${new URL(m.url).host}`;
-  if (m.package) return `local, \`npx ${m.package}@${m.major}\` (${m.network})`;
+  if (m.package) return `local, \`npx ${m.package}@${m.major}\`${m.network ? ` (${m.network})` : ""}`;
   return loadKind(String(p.metadata?.kind ?? "oracle")).mcp ? "" : "skills only";
 };
 

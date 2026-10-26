@@ -5,9 +5,30 @@
     "url": "https://ixo.world"
   },
   "metadata": {
-    "description": "IXO's plugins for AI assistants: signed decisions on claims, your IXO memory, and the Openhands Network."
+    "description": "IXO's plugins for AI assistants: signed decisions on claims, your IXO memory, and asks.world."
   },
   "plugins": [
+    {
+      "name": "asks",
+      "source": "./plugins/asks",
+      "description": "Post asks, find paid work and hire people and agents on asks.world, with your own key held on your machine. Real work on mainnet; say \"dry run\" to practise on testnet with play money.",
+      "metadata": {
+        "kind": "asks",
+        "package": "@ixo/asks-mcp",
+        "major": "1"
+      }
+    },
+    {
+      "name": "asks-dev",
+      "source": "./plugins/asks-dev",
+      "description": "asks.world for the IXO team only: the same plugin on the newest @dev server, which may change or break at any time. Everyone else installs asks.",
+      "metadata": {
+        "kind": "asks",
+        "package": "@ixo/asks-mcp",
+        "major": "dev",
+        "pinned": "true"
+      }
+    },
     {
       "name": "ixo-memory",
       "source": "./plugins/ixo-memory",
@@ -33,70 +54,6 @@
       }
     },
     {
-      "name": "ixo-openhands",
-      "source": "./plugins/ixo-openhands",
-      "description": "Find paid work, post asks and hire people and agents on Openhands Network, with your own key held on your machine.",
-      "metadata": {
-        "kind": "openhands",
-        "package": "@ixo/openhands-mcp",
-        "major": "1",
-        "network": "mainnet"
-      }
-    },
-    {
-      "name": "ixo-openhands-hq",
-      "source": "./plugins/ixo-openhands-hq",
-      "description": "Openhands HQ: set up your company on Openhands — an organisation on chain, a way to pay workers, an oracle and a first ask, with Claude doing every step and telling you exactly what to click.",
-      "metadata": {
-        "kind": "openhands-hq",
-        "package": "@ixo/openhands-mcp",
-        "major": "1",
-        "network": "mainnet"
-      }
-    },
-    {
-      "name": "ixo-openhands-hq-test",
-      "source": "./plugins/ixo-openhands-hq-test",
-      "description": "Openhands HQ on testnet, the newest build: play money, the newest features, may change often. Set up your company on Openhands with Claude doing every step.",
-      "metadata": {
-        "kind": "openhands-hq",
-        "package": "@ixo/openhands-mcp",
-        "major": "dev",
-        "network": "testnet",
-        "server": "openhands-test",
-        "pinned": "true"
-      }
-    },
-    {
-      "name": "ixo-openhands-mainnet",
-      "source": "./plugins/ixo-openhands-mainnet",
-      "description": "Read the open asks on the Openhands Network and see how it works, read-only: Openhands Network (mainnet) needs no sign-in and nothing installed.",
-      "metadata": {
-        "kind": "openhands-hosted"
-      }
-    },
-    {
-      "name": "ixo-openhands-test",
-      "source": "./plugins/ixo-openhands-test",
-      "description": "Openhands Network on testnet, the newest build: play money, the newest features, may change often. Find paid work, post asks and hire people and agents, with your own key held on your machine.",
-      "metadata": {
-        "kind": "openhands",
-        "package": "@ixo/openhands-mcp",
-        "major": "dev",
-        "network": "testnet",
-        "server": "openhands-test",
-        "pinned": "true"
-      }
-    },
-    {
-      "name": "ixo-openhands-testnet",
-      "source": "./plugins/ixo-openhands-testnet",
-      "description": "Read the open asks on the Openhands Network and see how it works, read-only: Openhands Network (testnet) needs no sign-in and nothing installed.",
-      "metadata": {
-        "kind": "openhands-hosted"
-      }
-    },
-    {
       "name": "ixo-oracle-builder",
       "source": "./plugins/ixo-oracle-builder",
       "description": "IXO Oracle Builder: build your own IXO evaluation oracle with your AI agent, no coding background needed. It explains every term in plain words, checks what you need, installs the package and walks you through each step in order, asking before anything is signed.",
@@ -112,5 +69,13 @@
         "kind": "oracle"
       }
     }
-  ]
+  ],
+  "renames": {
+    "ixo-openhands": "asks",
+    "ixo-openhands-hq": "asks",
+    "ixo-openhands-test": "asks-dev",
+    "ixo-openhands-hq-test": "asks-dev",
+    "ixo-openhands-mainnet": null,
+    "ixo-openhands-testnet": null
+  }
 }

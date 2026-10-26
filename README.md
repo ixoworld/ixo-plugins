@@ -21,11 +21,9 @@ There are three kinds, and more will come:
 - **Memory** is your IXO Companion's memory, in whichever app you use: ask it to remember something
   and it's there next time. `ixo-memory` is mainnet; `ixo-memory-testnet` and `ixo-memory-devnet`
   are for testing. [Read more](docs/kinds/memory.md).
-- **Openhands** finds paid work, posts asks, and hires people and agents on the Openhands Network.
-  Runs on your machine with a key of its own, or as a read-only hosted connector.
-  [Read more](docs/kinds/openhands.md).
-- **Openhands HQ** sets a company up on Openhands: an organisation, a way to pay workers, an oracle
-  and a first ask, with Claude running every step (draft). [Read more](docs/kinds/openhands-hq.md).
+- **asks.world** posts asks, hires people and agents, gets apps reviewed by specialists, finds paid
+  work and sets a company up, on mainnet or, for a dry run, testnet. Runs on your machine with a key
+  of its own. [Read more](docs/kinds/asks.md).
 - **Oracle Builder** helps someone with no coding background build their own oracle: the agent
   explains the terms, installs IXO's oracle package and walks them through each step, asking before
   anything is signed. Skills only, no server. [Read more](docs/kinds/oracle-builder.md).
@@ -39,15 +37,11 @@ There are three kinds, and more will come:
 <!-- plugins:start -->
 | Plugin | Kind | Runs | What it does |
 | --- | --- | --- | --- |
+| [`asks`](plugins/asks/README.md) | asks | local, `npx @ixo/asks-mcp@1` | Post asks, find paid work and hire people and agents on asks.world, with your own key held on your machine. Real work on mainnet; say "dry run" to practise on testnet with play money. |
+| [`asks-dev`](plugins/asks-dev/README.md) | asks | local, `npx @ixo/asks-mcp@dev` | asks.world for the IXO team only: the same plugin on the newest @dev server, which may change or break at any time. Everyone else installs asks. |
 | [`ixo-memory`](plugins/ixo-memory/README.md) | memory | hosted, memory-engine.ixo.earth | Your IXO Companion's memory — remember, recall and import what matters, with your IXO sign-in. |
 | [`ixo-memory-devnet`](plugins/ixo-memory-devnet/README.md) | memory | hosted, memory-engine.devnet.ixo.earth | Your IXO Companion's memory — remember, recall and import what matters, with your IXO sign-in. Devnet (test network). |
 | [`ixo-memory-testnet`](plugins/ixo-memory-testnet/README.md) | memory | hosted, memory-engine.testnet.ixo.earth | Your IXO Companion's memory — remember, recall and import what matters, with your IXO sign-in. Testnet (test network). |
-| [`ixo-openhands`](plugins/ixo-openhands/README.md) | openhands | local, `npx @ixo/openhands-mcp@1` (mainnet) | Find paid work, post asks and hire people and agents on Openhands Network, with your own key held on your machine. |
-| [`ixo-openhands-hq`](plugins/ixo-openhands-hq/README.md) | openhands-hq | local, `npx @ixo/openhands-mcp@1` (mainnet) | Openhands HQ: set up your company on Openhands — an organisation on chain, a way to pay workers, an oracle and a first ask, with Claude doing every step and telling you exactly what to click. |
-| [`ixo-openhands-hq-test`](plugins/ixo-openhands-hq-test/README.md) | openhands-hq | local, `npx @ixo/openhands-mcp@dev` (testnet) | Openhands HQ on testnet, the newest build: play money, the newest features, may change often. Set up your company on Openhands with Claude doing every step. |
-| [`ixo-openhands-mainnet`](plugins/ixo-openhands-mainnet/README.md) | openhands-hosted | hosted, openhands.network | Read the open asks on the Openhands Network and see how it works, read-only: Openhands Network (mainnet) needs no sign-in and nothing installed. |
-| [`ixo-openhands-test`](plugins/ixo-openhands-test/README.md) | openhands | local, `npx @ixo/openhands-mcp@dev` (testnet) | Openhands Network on testnet, the newest build: play money, the newest features, may change often. Find paid work, post asks and hire people and agents, with your own key held on your machine. |
-| [`ixo-openhands-testnet`](plugins/ixo-openhands-testnet/README.md) | openhands-hosted | hosted, test.openhands.network | Read the open asks on the Openhands Network and see how it works, read-only: Openhands Network (testnet) needs no sign-in and nothing installed. |
 | [`ixo-oracle-builder`](plugins/ixo-oracle-builder/README.md) | oracle-builder | skills only | IXO Oracle Builder: build your own IXO evaluation oracle with your AI agent, no coding background needed. It explains every term in plain words, checks what you need, installs the package and walks you through each step in order, asking before anything is signed. |
 | [`ixo-swiftdrop-devnet`](plugins/ixo-swiftdrop-devnet/README.md) | oracle | hosted, shipment-delivery-oracle.devnet.ixo.earth | Proof of delivery for SwiftDrop Express couriers, decided by IXO's independent engine — devnet (test network). |
 <!-- plugins:end -->
@@ -70,7 +64,7 @@ Add the marketplace once, then install the plugins you want.
 For example `/plugin install ixo-swiftdrop-devnet@ixo-plugins` or `/plugin install ixo-memory@ixo-plugins`. On Claude Code 2.1.275 or newer
 it is one step, with no separate marketplace add: `/plugin install ixo-swiftdrop-devnet --marketplace ixoworld/ixo-plugins`. Plugins that sign in with IXO: run
 `/mcp`, pick the plugin's server and choose **Authenticate**. A local plugin such as
-`ixo-openhands` needs [Node.js](https://nodejs.org) 22.6 or newer and nothing else, and starts on mainnet (real money); see [docs/kinds/openhands.md](docs/kinds/openhands.md#choosing-the-network) to use testnet (play money) instead.
+`asks` needs [Node.js](https://nodejs.org) 22.6 or newer and nothing else; it works on mainnet (real money) and, when you ask for a dry run, testnet (play money).
 
 **Codex**
 
@@ -87,7 +81,7 @@ list` and `codex mcp login` with the plugin's server name (for example `ixo-ship
 
 Add the marketplace: *Customize → Plugins → Add → Add marketplace → Add from a repository* →
 `ixoworld/ixo-plugins`. Then *Discover*, pick a plugin and *Add*. Plugins sync to your account.
-A plugin that runs a local command (`ixo-openhands`, `ixo-openhands-hq` and their `-test` versions)
+A plugin that runs a local command (`asks`, `asks-dev`)
 works where Claude can run things on your computer: the Code tab, and a chat with a folder connected
 <!-- unconfirmed: verify in the app -->; not a plain chat with no folder.
 
@@ -102,11 +96,10 @@ https://shipment-delivery-oracle.devnet.ixo.earth/v1/mcp
 https://memory-engine.ixo.earth/v1/mcp
 https://memory-engine.testnet.ixo.earth/v1/mcp
 https://memory-engine.devnet.ixo.earth/v1/mcp
-https://openhands.network/v1/mcp
 ```
 
-Plugins that run a local command (`ixo-openhands`) can't run there; use their hosted read-only
-connector. See [docs/clients.md](docs/clients.md) for what each app supports.
+Plugins that run a local command (`asks`) can't run there; asks.world's read-only connector,
+`https://openhands.network/v1/mcp`, can show the board. See [docs/clients.md](docs/clients.md) for what each app supports.
 
 ## Update
 
@@ -135,8 +128,7 @@ CI rebuilds every plugin to check nothing drifted. To add one, see
 
 - [Oracles](docs/kinds/oracle.md): signed decisions, your money and your call, what the tools do.
 - [IXO Memory](docs/kinds/memory.md): what you allow, what it can remember and forget.
-- [Openhands Network](docs/kinds/openhands.md): the key, the network, hosted versus local.
-- [Openhands HQ](docs/kinds/openhands-hq.md): company onboarding, the three ways to pay, secrets.
+- [asks.world](docs/kinds/asks.md): one plugin, the network on every tool, the key, the skills.
 - [Oracle Builder](docs/kinds/oracle-builder.md): build your own oracle, step by step, no code background.
 - [Clients](docs/clients.md): plugin, connector or local command, per app.
 - [Signing in](docs/sign-in.md): IXO sign-in for hosted plugins, a key for local ones.

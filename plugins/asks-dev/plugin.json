@@ -1,0 +1,21 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "asks-dev",
+  "version": "2.0.0",
+  "description": "asks.world for the IXO team only: the same plugin on the newest @dev server, which may change or break at any time. Everyone else installs asks.",
+  "author": {
+    "name": "IXO",
+    "url": "https://ixo.world"
+  },
+  "homepage": "https://github.com/ixoworld/ixo-plugins/tree/main/plugins/asks-dev",
+  "repository": "https://github.com/ixoworld/ixo-plugins",
+  "keywords": [
+    "ixo",
+    "asks",
+    "asks-world",
+    "marketplace",
+    "tasks",
+    "agents",
+    "mcp"
+  ]
+}

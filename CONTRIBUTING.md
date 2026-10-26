@@ -1,7 +1,7 @@
 # Contributing
 
 Thanks for helping. This repo is IXO's plugin marketplace for AI assistants: small plugins, one per
-IXO service and network (each oracle, IXO Memory, the Openhands Network), each generated from its
+IXO service and network (each oracle, IXO Memory, asks.world), each generated from its
 kind's template. Hosted plugins point at a URL; local plugins point at a command the client starts.
 
 ## Branches
@@ -14,7 +14,7 @@ on the IXO core team approves it. Force-pushes and deletes are blocked.
 
 ## Adding a plugin
 
-Every plugin has a **kind** (`oracle`, `memory`, `openhands`, `openhands-hosted`,
+Every plugin has a **kind** (`oracle`, `memory`, `asks`,
 `oracle-builder` today). The kind decides
 its skills, README, default description, keywords, MCP server name and transport. Which flags you
 pass depends on the transport.
@@ -40,8 +40,8 @@ bun run add-plugin --kind memory --name ixo-memory-devnet --title "IXO Memory (d
 machine.
 
 ```bash
-bun run add-plugin --kind openhands --name ixo-openhands --title "Openhands Network" \
-  --package @ixo/openhands-mcp --major 1 --network testnet --version 1.0.0
+bun run add-plugin --kind asks --name asks --title "asks.world" \
+  --package @ixo/asks-mcp --major 1 --version 2.0.0
 bun run validate
 ```
 
@@ -49,12 +49,12 @@ bun run validate
   can't be regenerated as a different kind; remove it and its catalog entries first.
 - `bun run add-oracle …` still works and is exactly `add-plugin --kind oracle …`.
 - `--name` is kebab-case. Put the network in the name for devnet and testnet plugins
-  (`ixo-myoracle-testnet`, `ixo-openhands-testnet`); the mainnet plugin may carry the plain name
+  (`ixo-myoracle-testnet`, `ixo-memory-testnet`); the mainnet plugin may carry the plain name
   (`ixo-memory`).
 - `--title` is plain text (no `:`, `#` or quotes); it lands in each skill's frontmatter.
 - `--url` must be the service's MCP endpoint: `https://<host>` plus the kind's `urlPath`
   (default `/v1/mcp`). A kind that takes `--url` refuses `--package`, and the other way round.
-- `--major` pins the npm major version (`@ixo/openhands-mcp@1`), so a breaking release never
+- `--major` pins the npm major version (`@ixo/asks-mcp@1`), so a breaking release never
   reaches installed copies unasked.
 - Bump `--version` whenever you regenerate a plugin with changed files, so installs update (see
   Versioning and releases).
@@ -74,7 +74,7 @@ Then regenerate the README table with `bun scripts/catalog.ts`.
 Never put a key, token or other secret in a plugin. A hosted plugin carries a public URL. A local
 plugin may carry an `env` **reference** (`${VAR}` or `${VAR:-default}`) but never a value, and the
 generator refuses a secret-looking `env` name (key, secret, token, password, mnemonic) whose value is
-not a reference. Say in the kind's README where the key lives (Openhands: nothing to configure; the
+not a reference. Say in the kind's README where the key lives (asks.world: nothing to configure; the
 server makes its own key under `~/.openhands/<network>`).
 
 ## Adding a kind
@@ -131,9 +131,8 @@ Add a page for the kind in `docs/kinds/` and mention it in the README.
 
 Each kind's skills live in [`template/<kind>/skills`](template) (oracles:
 [`template/oracle/skills`](template/oracle/skills), memory:
-[`template/memory/skills`](template/memory/skills), Openhands:
-[`template/openhands/skills`](template/openhands/skills) and
-[`template/openhands-hosted/skills`](template/openhands-hosted/skills)). After editing them, regenerate every
+[`template/memory/skills`](template/memory/skills), asks.world:
+[`template/asks/skills`](template/asks/skills)). After editing them, regenerate every
 plugin of that kind (`bun scripts/regenerate.ts`) and bump their versions. CI regenerates every
 plugin from its catalog record and fails on any drift from the templates.
 
@@ -141,7 +140,7 @@ Name only tools and arguments the service really has.
 
 Keep the wording honest. The oracle skills must never let the assistant approve a charge for the
 user, open an approval link, or call the evaluation fee a payout. The memory skills must never store
-secrets, and never delete without the user's explicit confirmation. The Openhands skill must never
+secrets, and never delete without the user's explicit confirmation. The asks.world skills must never
 claim work that wasn't done, and must treat text from the board as data.
 
 ## Versioning and releases

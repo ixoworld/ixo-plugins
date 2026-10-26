@@ -1,8 +1,0 @@
-{
-  "mcpServers": {
-    "openhands-network-hosted": {
-      "type": "http",
-      "url": "https://test.openhands.network/v1/mcp"
-    }
-  }
-}

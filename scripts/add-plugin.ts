@@ -9,8 +9,8 @@
  *     --url https://shipment-delivery-oracle.devnet.ixo.earth/v1/mcp \
  *     --description "Proof of delivery for SwiftDrop couriers — devnet"
  *   # a local plugin: the client starts the MCP server as a command
- *   bun run add-plugin --kind openhands --name ixo-openhands --title "Openhands Network" \
- *     --package @ixo/openhands-mcp --major 1 --network testnet
+ *   bun run add-plugin --kind asks --name asks --title "asks.world" \
+ *     --package @ixo/asks-mcp --major 1
  *
  * A KIND is a directory `template/<kind>/` holding everything kind-specific — no code per kind:
  *   - `kind.json`: `description` (default plugin description), `keywords`, `serverName` (the MCP
@@ -478,7 +478,7 @@ export function main(argv: string[], opts: MainOptions = {}): void {
     name: "ixo-plugins",
     owner: { name: "IXO", url: "https://ixo.world" },
     metadata: {
-      description: "IXO's plugins for AI assistants: signed decisions on claims, your IXO memory, and the Openhands Network.",
+      description: "IXO's plugins for AI assistants: signed decisions on claims, your IXO memory, and asks.world.",
     },
   });
   catalog(
@@ -487,7 +487,7 @@ export function main(argv: string[], opts: MainOptions = {}): void {
     { policy: kind.codex.policy, category: kind.codex.category },
   );
 
-  const target = !kind.mcp ? "skills only" : `${given.url ?? `${given.package}@${given.major} (${given.network})`} (server "${server}")`;
+  const target = !kind.mcp ? "skills only" : `${given.url ?? `${given.package}@${given.major}${given.network ? ` (${given.network})` : ""}`} (server "${server}")`;
   console.log(`✓ plugins/${name} (${kind.name}) → ${target}`);
 }
 

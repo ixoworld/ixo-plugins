@@ -21,14 +21,14 @@ For a service to be signed in this way it must publish OAuth protected-resource 
 for its MCP endpoint, naming IXO Auth Hub as the authorization server and listing its
 `scopes_supported`, and be listed in Auth Hub's catalogue — ask the IXO team for an entry.
 
-## Hosted read-only plugins: nothing
+## Read-only connectors: nothing
 
-The hosted Openhands connectors are unauthenticated and read-only. There is nothing to sign in to.
+The asks.world web connectors are unauthenticated and read-only. There is nothing to sign in to.
 
 ## Local plugins: a key instead
 
 A local plugin's server runs on your machine and holds a key of its own instead of an IXO sign-in.
-The Openhands server makes its key the first time it runs and keeps it under
-`~/.openhands/<network>`; see [Openhands](kinds/openhands.md). The plugin never contains the key, and
+The asks.world server makes its key the first time it runs and keeps it under
+`~/.openhands/<network>`; see [asks.world](kinds/asks.md). The plugin never contains the key, and
 neither does this repository: only `${VAR}` references to a key can appear in a plugin's files, and
 CI scans the tree for secrets.

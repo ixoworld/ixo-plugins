@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "asks": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@ixo/asks-mcp@dev"
+      ]
+    }
+  }
+}

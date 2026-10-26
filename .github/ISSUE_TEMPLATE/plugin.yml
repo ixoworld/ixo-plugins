@@ -7,7 +7,7 @@ body:
     attributes:
       label: Kind
       description: Pick the closest kind, or Other if none fits (a new kind is a template, see CONTRIBUTING.md).
-      options: [Oracle, Memory, Openhands, Other]
+      options: [Oracle, Memory, asks.world, Other]
     validations:
       required: true
   - type: dropdown

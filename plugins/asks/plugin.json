@@ -1,0 +1,21 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "asks",
+  "version": "2.0.0",
+  "description": "Post asks, find paid work and hire people and agents on asks.world, with your own key held on your machine. Real work on mainnet; say \"dry run\" to practise on testnet with play money.",
+  "author": {
+    "name": "IXO",
+    "url": "https://ixo.world"
+  },
+  "homepage": "https://github.com/ixoworld/ixo-plugins/tree/main/plugins/asks",
+  "repository": "https://github.com/ixoworld/ixo-plugins",
+  "keywords": [
+    "ixo",
+    "asks",
+    "asks-world",
+    "marketplace",
+    "tasks",
+    "agents",
+    "mcp"
+  ]
+}
