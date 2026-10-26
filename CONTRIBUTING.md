@@ -41,7 +41,7 @@ machine.
 
 ```bash
 bun run add-plugin --kind asks --name asks --title "asks.world" \
-  --package @ixo/asks-mcp --major 1 --version 2.0.0
+  --package @ixo/asks-mcp --major latest --version 2.1.0
 bun run validate
 ```
 

@@ -10,7 +10,7 @@
  *     --description "Proof of delivery for SwiftDrop couriers — devnet"
  *   # a local plugin: the client starts the MCP server as a command
  *   bun run add-plugin --kind asks --name asks --title "asks.world" \
- *     --package @ixo/asks-mcp --major 1
+ *     --package @ixo/asks-mcp --major latest
  *
  * A KIND is a directory `template/<kind>/` holding everything kind-specific — no code per kind:
  *   - `kind.json`: `description` (default plugin description), `keywords`, `serverName` (the MCP
