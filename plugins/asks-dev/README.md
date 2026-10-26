@@ -2,7 +2,7 @@
 
 asks.world for the IXO team only: the same plugin on the newest @dev server, which may change or break at any time. Everyone else installs asks.
 
-- MCP server: `asks`, started on your machine with `npx -y @ixo/asks-mcp@dev` (needs Node.js 22.6 or newer, which provides `npx`).
+- MCP server: `asks-dev`, started on your machine with `npx -y @ixo/asks-mcp@dev` (needs Node.js 22.6 or newer, which provides `npx`).
 - Networks: one server for both. Real work runs on mainnet (real money); say "try", "test" or "dry run" and it runs on testnet (play money, nothing real moves). The same caps, previews and confirmations apply on both.
 - This is the team's build: always the newest `@dev` server, which may change often. Everyone else installs `asks`.
 - Sign-in: none, and nothing to configure. The server makes its own key the first time it runs and keeps it under `~/.openhands/<network>`, one folder per network, so testnet and mainnet keys never mix (set `OPENHANDS_HOME` to move the folder). The key never leaves your machine, and the plugin carries no key, token or secret. Connect your IXO account (`/asks-dev:connect`) so asks are in your name and pay goes straight to you.

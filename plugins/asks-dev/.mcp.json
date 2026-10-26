@@ -1,6 +1,6 @@
 {
   "mcpServers": {
-    "asks": {
+    "asks-dev": {
       "type": "stdio",
       "command": "npx",
       "args": [
