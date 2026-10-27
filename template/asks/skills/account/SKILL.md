@@ -50,6 +50,6 @@ On testnet, play IXO is free: open https://faucet.testnet.ixo.earth and paste th
 ## A company's payouts
 
 `set_payout_settings`: how the company pays people and who checks answers (preview, then
-`confirm: true`; the reviewer list replaces the old one). Details: the `create` skill
+`confirm: true`; the verifier list replaces the old one). Details: the `create` skill
 (references/company.md, step 12). Or **Say:** "Open your company's **Payouts** page on the website and
 change it there."

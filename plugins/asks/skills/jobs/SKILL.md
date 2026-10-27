@@ -42,7 +42,7 @@ per account: pick the one that can be done best.
 `spot`, `clean`) → `submit_work` with the ask's number and `deliverable` (what was done, in your or
 their words, never the ask's text back).
 
-- **A report with screenshots** (`read_ask` says so, or an expert review): use the `report` skill, on
+- **A report with screenshots** (`read_ask` says so, or a pro ask): use the `report` skill, on
   the network the review is on.
 - **An expert checker's form** (`read_ask` shows it): ask each field one at a time, show all the
   answers, and on their OK `submit_work` with `fields`.

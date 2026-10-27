@@ -1,6 +1,6 @@
 ---
 name: asks
-description: The entry to asks.world and its Expert Reviews (get your app or agent reviewed by specialists, or review and earn); other asks are available too. Use when the person mentions asks.world or an ask, wants to hire someone, find something out somewhere they can't see, find paid work, get an app or agent reviewed, review as a specialist, see their money, or says "try", "test" or "dry run" for any of these. Works out what they want, picks the network, and hands over to the right asks skill.
+description: The entry to asks.world and its Expert Reviews (get your app or agent reviewed by verified pros, or review and earn); other asks are available too. Use when the person mentions asks.world or an ask, wants to hire someone, find something out somewhere they can't see, find paid work, get an app or agent reviewed, review as a pro or specialist, see their money, or says "try", "test" or "dry run" for any of these. Works out what they want, picks the network, and hands over to the right asks skill.
 ---
 
 # asks.world
@@ -15,12 +15,12 @@ Every asks skill follows this, also when the person starts it directly (`/asks:j
 Expert Reviews and every other ask run on both networks.
 
 - They said real money, or "for real" → `mainnet`.
-- They said "try", "test", "dry run" or "practice" → `testnet`. **Say** once: "This is a dry run on
-  testnet: play money, nothing real moves. The same steps work for real when you're ready."
+- They said "try", "test", "dry run" or "practice" → `testnet`. **Say** once: "This is a dry run in
+  the sandbox: play money, nothing real moves. The same steps work for real when you're ready."
 - They haven't said → **Ask** once, before the first call: "Real money, or a dry run with play money?"
 - Keep the network for the whole task. Never switch mid-task; if they want the other one, start that
   task again on it.
-- A specialist looking for work or invitations: `my_invitations` on `mainnet` **and** on `testnet`,
+- A pro looking for work or invitations: `my_invitations` on `mainnet` **and** on `testnet`,
   said apart ("real money" / "play money"), so no invitation is missed. Then carry on with the network
   of the one they pick.
 - If a tool refuses because something isn't offered on that network, say so plainly and offer the other.
@@ -30,14 +30,14 @@ Expert Reviews and every other ask run on both networks.
 | They want to | Skill |
 | --- | --- |
 | find paid work, apply, hand in an answer, see invitations | `jobs` |
-| post an ask, find something out somewhere, run a campaign or a cleanup, post an open call or a review job, set up their company | `create` |
+| post an ask, find something out somewhere, run a campaign or a cleanup, post an open call or a pro ask (a review), set up their company | `create` |
 | invite people to an ask, answer applications | `invite` |
 | see answers on their asks, approve, check requests, close an ask, get money back | `manage` |
 | write or hand in an expert review report | `report` |
-| make or change their public page, get checked by IXO | `profile` |
+| make or change their pro page, get verified by a marketplace | `profile` |
 | balance, earnings, move earnings, top up, review credits, company payouts | `account` |
 | link their assistant to their IXO account | `connect` |
-| what asks.world is, what you can do, where to go, testnet, updates | `help` |
+| what asks.world is, what you can do, where to go, the sandbox, updates | `help` |
 
 Unsure? Lead with Expert Reviews and ask one question: "Do you want to get your app or agent reviewed
 (`create`), or review others' work and earn (`jobs`, then `report`)?" Mention the other kinds of ask
@@ -52,9 +52,9 @@ Unsure? Lead with Expert Reviews and ask one question: "Do you want to get your 
   they can accept with "yes". Show only what the current choice needs.
 - **Before money moves:** one plain preview (what, for whom, the total, and "real money" or "play
   money"), then wait for a yes. Repeat the tool's own numbers; never work an amount out yourself. For
-  a review or a private call the tool names each part: **Say** "Each specialist receives <X>; the
-  network's share, <Y>, is added on top; the review checks cost <Z>; <total> in all." (leaving out a
-  part the tool doesn't name). If their message
+  a pro ask, read the preview's one money sentence as it is. For a private call the tool names each
+  part: **Say** "Each person receives <X>; the network's share, <Y>, is added on top; the checks cost
+  <Z>; <total> in all." (leaving out a part the tool doesn't name). If their message
   this turn already said to go ahead at that amount, show the preview and go ahead without asking twice.
 - **Private tasks:** if a tool gives a link to tap, pass it on as the tool says and wait for them.
 - Never ask for a key, password, PIN or recovery phrase, and never print one.
