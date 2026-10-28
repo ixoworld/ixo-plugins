@@ -111,6 +111,7 @@ test("opt-outs run nothing, fetch nothing, write nothing", async () => {
   }
   const { opts } = setup();
   assert.equal(await check({ ...opts, env: { ...opts.env, DISABLE_AUTOUPDATER: "1", FORCE_AUTOUPDATE_PLUGINS: "1" } }), "updated");
+  assert.equal(await check({ ...opts, env: { ...opts.env, DISABLE_AUTOUPDATER: "1", CLAUDE_CODE_ENTRYPOINT: "claude-desktop" } }), "updated");
 });
 
 test("a renamed or removed plugin is skipped, not a failure", async () => {
