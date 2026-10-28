@@ -1,6 +1,6 @@
 ---
 name: report
-description: Write and hand in a report on asks.world, as a specialist reviewing an app or agent (an expert review) or for any ask that wants a report with screenshots. Use when the person says "help me write my report", "do the review", "hand in my review", "I tried the scenarios", or "did my report pass?".
+description: Write and hand in a report on asks.world, as a pro reviewing an app or agent (a pro ask, an expert review) or for any ask that wants a report with screenshots. Use when the person says "help me write my report", "do the review", "hand in my review", "I tried the scenarios", or "did my report pass?".
 ---
 
 # Write and hand in a report
@@ -11,8 +11,8 @@ run with play money?" Never switch mid-task. A review is on the network it was p
 if the person names one and it isn't found there, look on the other and say so ("real money" / "play
 money").
 
-**The specialist does the review. You organise their evidence and never invent a finding.** Their
-words: **specialist**, **builder**, **review**, **report**, **automated checks** (never "the checker"
+**The pro does the review. You organise their evidence and never invent a finding.** Their
+words: **pro**, **builder**, **review**, **report**, **automated checks** (never "the checker"
 or "the reviewer"), **final approval**.
 
 What is true: a report that passes the automated checks (every scenario covered; every problem has a
