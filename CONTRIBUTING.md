@@ -122,7 +122,7 @@ A kind is one directory, `template/<kind>/`. No code changes.
   from it.
 - `skills/<skill>/SKILL.md`: the skills.
 - `hooks/` (optional): copied into the plugin as is, not rendered (`hooks/hooks.json` and the
-  scripts it runs). `asks` uses it for its daily auto-update; its test is `bun run test`.
+  scripts it runs). `asks` uses it for its auto-update; its test is `bun run test`.
 
 Templates take `{{NAME}}`, `{{TITLE}}`, `{{SERVER}}`, `{{DESCRIPTION}}` and the flag placeholders the
 kind's `mcp` block uses (`{{URL}}` for every hosted kind); any other `{{…}}` stops the generator. A hosted kind that signs in with IXO needs the

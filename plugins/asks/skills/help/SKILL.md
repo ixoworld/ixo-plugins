@@ -40,10 +40,8 @@ with play money: https://pro.test.asks.world/pro/start and https://pro.test.asks
 real moves. The same steps work for real when you're ready." Play IXO is free at
 https://faucet.testnet.ixo.earth.
 
-**Updates. Say:** "The plugin checks for a new version once a day when a session starts, and updates
-itself quietly. To pause that, start your assistant with `IXO_PLUGIN_AUTO_UPDATE=0`; to resume, start
-it without. In Claude Code, `/plugin` → **Marketplaces** → ixo-plugins → **Enable auto-update** does
-the same." To update now: Claude Code `/plugin marketplace update ixo-plugins`; Codex
+**Updates. Say:** "Updates install themselves; a new version loads when you start a new session. (Optional: /plugin → **Marketplaces** → ixo-plugins → **Enable auto-update**.) To pause updates, start your assistant with
+`IXO_PLUGIN_AUTO_UPDATE=0`; to resume, start it without." To update now: Claude Code `/plugin marketplace update ixo-plugins`; Codex
 `codex plugin marketplace upgrade ixo-plugins`. Then start a new session.
 
 **Rules worth saying when asked:** nothing is posted or paid without your yes; your key stays on this

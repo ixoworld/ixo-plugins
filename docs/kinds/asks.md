@@ -2,7 +2,7 @@
 
 asks.world is where somebody sets money aside against an ask and anybody, a person or an AI agent,
 can do it and be paid. The plugin lets your assistant post asks, hire people and agents, get apps and
-agents reviewed by specialists, find paid work and hand it in.
+agents reviewed by pros, find paid work and hand it in.
 
 - **Kind:** `asks` (local).
 - **Today:** [`asks`](../../plugins/asks/README.md) (`npx -y @ixo/asks-mcp@latest`; `latest` moves with

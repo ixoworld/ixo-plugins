@@ -21,7 +21,7 @@ There are three kinds, and more will come:
 - **Memory** is your IXO Companion's memory, in whichever app you use: ask it to remember something
   and it's there next time. `ixo-memory` is mainnet; `ixo-memory-testnet` and `ixo-memory-devnet`
   are for testing. [Read more](docs/kinds/memory.md).
-- **asks.world** posts asks, hires people and agents, gets apps reviewed by specialists, finds paid
+- **asks.world** posts asks, hires people and agents, gets apps reviewed by pros, finds paid
   work and sets a company up, on mainnet or, for a dry run, testnet. Runs on your machine with a key
   of its own. [Read more](docs/kinds/asks.md).
 - **Oracle Builder** helps someone with no coding background build their own oracle: the agent
@@ -37,7 +37,7 @@ There are three kinds, and more will come:
 <!-- plugins:start -->
 | Plugin | Kind | Runs | What it does |
 | --- | --- | --- | --- |
-| [`asks`](plugins/asks/README.md) | asks | local, `npx @ixo/asks-mcp@latest` | Expert Reviews on asks.world: get your app or agent reviewed by specialists, or review and earn, with your own key held on your machine. Real-world asks and hiring stay available. Say "dry run" to practise on testnet with play money. |
+| [`asks`](plugins/asks/README.md) | asks | local, `npx @ixo/asks-mcp@latest` | Expert Reviews on asks.world: get your app or agent reviewed by pros, or review and earn, with your own key held on your machine. Real-world asks and hiring stay available. Say "dry run" to practise on testnet with play money. |
 | [`ixo-memory`](plugins/ixo-memory/README.md) | memory | hosted, memory-engine.ixo.earth | Your IXO Companion's memory — remember, recall and import what matters, with your IXO sign-in. |
 | [`ixo-memory-devnet`](plugins/ixo-memory-devnet/README.md) | memory | hosted, memory-engine.devnet.ixo.earth | Your IXO Companion's memory — remember, recall and import what matters, with your IXO sign-in. Devnet (test network). |
 | [`ixo-memory-testnet`](plugins/ixo-memory-testnet/README.md) | memory | hosted, memory-engine.testnet.ixo.earth | Your IXO Companion's memory — remember, recall and import what matters, with your IXO sign-in. Testnet (test network). |
@@ -106,9 +106,8 @@ When we ship a new version, update the marketplace and reconnect:
 
 - **Claude Code:** `/plugin marketplace update ixo-plugins`, then reconnect the server in `/mcp`.
 - **Codex:** `codex plugin marketplace upgrade ixo-plugins`, then start a new session.
-- **`asks` updates itself** once a day when a session starts (Claude Code and Codex). Pause it with
-  `IXO_PLUGIN_AUTO_UPDATE=0`. In Claude Code, `/plugin` → **Marketplaces** → ixo-plugins →
-  **Enable auto-update** does the same for every plugin here.
+- **`asks`:** Updates install themselves; a new version loads when you start a new session. (Optional: `/plugin` → **Marketplaces** → ixo-plugins → **Enable auto-update**.)
+  Pause it with `IXO_PLUGIN_AUTO_UPDATE=0`.
 - **Codex: reinstall as `asks`.** The six `ixo-openhands*` plugins became `asks`. Claude Code moves
   you over by itself (the catalog's `renames`); Codex's catalog has no renames, so remove the old one
   (`codex plugin remove ixo-openhands@ixo-plugins`) and run `codex plugin add asks@ixo-plugins`.
