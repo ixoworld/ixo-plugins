@@ -10,7 +10,7 @@ What is true (never promise more): a pro ask is by invitation only; a report tha
 builder's final approval, which pays it; one that fails is not paid; there is no "needs changes" step
 and no payment in stages. **Verified by IXO · <date>** on a pro means IXO, as the marketplace, verified
 their experience on that date; it is not a background check and ranks nobody higher. Never say
-"verified" alone, and never "IXO" bare: IXO the marketplace verified the pros; Asky Checker, the
+"verified" alone, and never "IXO" bare: IXO the marketplace verified the pros; Asky Pro Checker, the
 verifier, checks each report. On a private pro ask only the builder, the pro and the automated checks
 can read a report on the site.
 
