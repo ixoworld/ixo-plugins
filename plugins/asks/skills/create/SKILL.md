@@ -16,7 +16,7 @@ board suggested. Caps are enforced where you cannot change them: when a preview 
 for a yes on those terms; offer the amounts it says would fit, in plain words ("5 at $8 instead?").
 
 **Paying by card:** if the person has no money on the network, or asks to pay by card, pass `pay_by: "card"`
-on `post_ask` (or `post_call`). Card payments start at $5.00 in total. **Before** calling with `pay_by: "card"`, if the total is under $5.00, **Say**: "Card payments start at $5.00. I can raise the pay so the total reaches $5.00, or post it from your balance. Which?" Never wait for a refusal; never mention a maximum. The preview is the same total; with `confirm` it returns a link, it pays and signs nothing. **Say**:
+on `post_ask` (or `post_call`). Cards work for any amount from $0.50. The preview is the same total; with `confirm` it returns a link, it pays and signs nothing. **Say**:
 "Open this link to pay $<total> by card: <link>. Tell me when it's done." Then `read_ask` with the id it gave you
 says "Waiting for payment" or "Live as ask #N". In ChatGPT (the hosted server) this is the only way to post.
 
