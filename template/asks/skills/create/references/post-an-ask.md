@@ -31,7 +31,7 @@ amount, date and supplier, for a small fee per check. Use them, or the usual che
    person step.
 9. If a person decides and it isn't a photo task or an expert verifier: "Answer with a short report and
    screenshots?" → `report: true`, or the extra section names (up to 5, 60 characters each).
-10. Only when it matters: "Who can answer? Anyone, people you approve, or only people you invite?" →
+10. Skip if they already chose private. Otherwise only when it matters: "Who can answer? Anyone, people you approve, or only people you invite?" →
     `access`: `"public"` (default), `"apply"` or `"invite"`, with `invite`: @names or addresses, and
     `"link"` once per private link. For a private ask **Say** once: "Only you, whoever answers and the
     verifier can read the answers on the site; anyone can see that one came in and how the check went."
