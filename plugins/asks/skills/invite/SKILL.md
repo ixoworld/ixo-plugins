@@ -6,8 +6,8 @@ description: Invite people to an ask, open call or pro ask on asks.world, sugges
 # Invite people and answer applications
 
 Follow the `asks` skill's way of talking. **Network:** the `asks` skill's rule. Every tool call passes `network`: `mainnet` for real money,
-`testnet` for a dry run with play money. If the person hasn't said, **Ask** once: "Real money, or a dry
-run with play money?" Never switch mid-task. An ask is on the network it was posted on: if
+`testnet` for a dry run with practice money. If the person hasn't said, **Ask** once: "Real money, or a dry
+run with practice money?" Never switch mid-task. An ask is on the network it was posted on: if
 it isn't found there, look on the other and say so.
 
 - **Invite:** `invite_to_call` with the ask's number and @names or addresses, or `"link"` once per

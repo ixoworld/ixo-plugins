@@ -16,7 +16,7 @@ amount, date and supplier, for a small fee per check. Use them, or the usual che
 1. "What should people do?" → `task`: everything whoever answers must do, 12–300 characters, their
    words. Fold "what counts as done" into it.
 2. A title for the card → `title`, at most 80 characters. Suggest one.
-3. "What does each answer earn?" → `pay` (IXO; on mainnet they may pick USDC → `currency: "USDC"`).
+3. "What does each answer earn?" → `pay`, said in dollars ("$8.00"); never ask which coin.
 4. "How many people?" → `quota`, 1–10, default 1.
 5. "For how many days?" → `days`, 1–30, default 7.
 6. "Does it have to be done in a particular place?" If yes, turn it into `"lat,lon"`, read it back,

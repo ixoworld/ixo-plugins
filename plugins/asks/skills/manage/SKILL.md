@@ -6,8 +6,8 @@ description: Look after the person's open asks on asks.world. Use when they ask 
 # Your open asks
 
 Follow the `asks` skill's way of talking. **Network:** the `asks` skill's rule. Every tool call passes `network`: `mainnet` for real money,
-`testnet` for a dry run with play money. If the person hasn't said, **Ask** once: "Real money, or a dry
-run with play money?" Never switch mid-task. An ask is on the network it was posted on: if
+`testnet` for a dry run with practice money. If the person hasn't said, **Ask** once: "Real money, or a dry
+run with practice money?" Never switch mid-task. An ask is on the network it was posted on: if
 it isn't found there, look on the other and say so.
 
 ## What came in
@@ -44,7 +44,7 @@ details (a test account) go here, never in the pro ask itself. A closed ask's ro
 
 ## Close and get money back
 
-**Money moves back:** preview first, then confirm, and name the network ("real money" / "play money").
+**Money moves back:** preview first, then confirm, and name the network ("real money" / "practice money").
 
 - **An ask:** `close_ask` with its number, without `confirm`. **Say:** "This closes '<title>' to new
   answers and sends <amount> back to your account. <What stays, and why.> OK?" → again with

@@ -5,9 +5,10 @@ questions, signs in, clicks and sends money. Claude Code or Cowork only (it runs
 
 ## Rules for this part
 
+- Money to the person is only ever dollars; the coin names in commands and tool output below are for you, never said aloud.
 - Plain words: organisation → **your company**; its admin address → **your company's account**;
   oracle → **the verifier**; facilitator → **your payouts service**; review billing → **your review
-  budget**; PAY / Console credits → **review credits**, in dollars (1 PAY = $1); rails → **how you pay
+  budget**; PAY / Console credits → **review credits**, in dollars; rails → **how you pay
   people**.
 - Before each click, open the page yourself (`open <url>` on macOS, `xdg-open <url>` on Linux) and say
   exactly what to click, the button's words in **bold**.
@@ -52,10 +53,10 @@ Always: 1, 2, 3, 4, 5b, 6, 10, 11, 12, 13. Step 5 when the verifier bills per re
 1. "What's your company's name? Pick the final one: it can't be changed later." Read it back. A logo
    link (optional).
 2. "In a sentence or two, what work do you want people to do?"
-3. "How do you want to pay people? With nothing to run yourselves, pick **On chain** in IXO. To pay in
-   dollars, pick **USDC on Base** or **Card**: that needs a small payouts service we set up together in
-   your Cloudflare account (about 15 minutes)." One of: **A. On chain** (default, IXO from the
-   company's account), **B. USDC on Base**, **C. Card (Stripe)**.
+3. "How do you want to pay people? With nothing to run yourselves, pick **Through IXO**. To pay
+   from your own dollars, pick **Bank-style dollars** or **Card**: that needs a small payouts service we set up together in
+   your Cloudflare account (about 15 minutes)." One of: **A. Through IXO** (default, from the
+   company's account), **B. Bank-style dollars**, **C. Card**.
 4. "Who should check the answers? IXO's ready-made verifier, or one built for your own rules?"
 5. "Which email should we use to reach the company? It must be an inbox you read." Read it back.
 6. Way C only: the country of their Stripe account (two letters).
@@ -120,11 +121,11 @@ review**. Then tell me."
 ### 6. Money in the company's account
 
 `decision-oracle org balance --entity <org DID> --network <network>`. Way A needs reward × answers in
-IXO (never PAY) plus ~0.1 IXO for fees; B and C pay rewards outside. If `post_ask` says the verifier
-takes its fee with the task, add price × answers in PAY.
+the reward total in dollars plus a small fee on top; B and C pay rewards outside. If `post_ask` says the verifier
+takes its fee with the task, add price × answers in dollars.
 **Do:** `decision-oracle org fund --entity <org DID> --amount <amount> --network <network>` (dry run).
-**Say:** "Your company's account needs <amount> <coin> before the first task. Shall I move it from your
-own account? The network fee is about 0.02 IXO." On yes, the same with `--yes --json`. If their own
+**Say:** "Your company's account needs $<amount> before the first task. Shall I move it from your
+own account? There is a small fee on top." On yes, the same with `--yes --json`. If their own
 account is short, give the company's address (they must send money to it) and point to the `account`
 skill. Check the balance again until it covers it.
 
@@ -165,8 +166,7 @@ about 15 minutes." `<worker>` = `<company>-payouts`; `<rails>` = `usdc_base` (B)
 ### 9. Payout wallet and limits (ways B and C)
 
 Way B: `installer payout-wallet --name <worker> --network <network> --check --json` → **Say:** "Send
-USDC for the rewards, plus a little ETH for fees, to this address on Base: <address>." (testnet: Base
-Sepolia). Check until both are there, then `installer trust-check ... --name <worker>` exits 0.
+dollars for the rewards, plus a little extra for fees, to this address: <address>." (Name no coin to the person; the tool's output says which.) Check until both are there, then `installer trust-check ... --name <worker>` exits 0.
 Limits, `<admin>` = `--url <url> --session ~/.ixo/publish-session-<network>.json --network <network>`:
 `installer admin oracles list <admin>`; add each chosen verifier missing (`installer admin oracles add <verifier DID> <admin>`).
 **Say:** "What's the most one payout can be? And above what amount do you want to approve each payout
@@ -207,7 +207,7 @@ account. Reviews come from your review budget. Post it?" Then for B and C:
   <group> up so the checks come from it?"
 - **Short for a task:** step 6. **Reviews paused or off:** step 5.
 - **Change how it pays, or its verifier:** step 12, or the company's **Payouts** page.
-- **Refusals:** "the oracle's signing wallet could not be confirmed" → wait and retry; "USDC isn't
-  available on <network>" → use IXO; "It will retry on its own" → nothing to do.
+- **Refusals:** "the oracle's signing wallet could not be confirmed" → wait and retry; "that way of paying isn't
+  available on <network>" → use Through IXO; "It will retry on its own" → nothing to do.
 - No notes on this computer: ask them to open their company's **Payouts** page and read you the
   verifier's name.

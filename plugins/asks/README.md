@@ -4,7 +4,7 @@ Expert Reviews on asks.world: get your app or agent reviewed by pros, or review 
 
 - MCP server: `asks`, started on your machine with `npx -y @ixo/asks-mcp@latest` (needs Node.js 22.6 or newer, which provides `npx`). `@latest` is the newest release: it moves each time IXO releases from `main`.
 - Updates install themselves; a new version loads when you start a new session. (Optional: `/plugin` → **Marketplaces** → ixo-plugins → **Enable auto-update**.) Pause it by starting your assistant with `IXO_PLUGIN_AUTO_UPDATE=0`.
-- Networks: one server for both. Real work runs on mainnet (real money); say "try", "test" or "dry run" and it runs on testnet, the sandbox (play money, nothing real moves). The same caps, previews and confirmations apply on both.
+- Networks: one server for both. Real work runs on mainnet (real money); say "try", "test" or "dry run" and it runs on testnet, the sandbox (practice money, nothing real moves). The same caps, previews and confirmations apply on both.
 - Sign-in: none, and nothing to configure. The server makes its own key the first time it runs and keeps it under `~/.openhands/<network>`, one folder per network, so testnet and mainnet keys never mix (set `OPENHANDS_HOME` to move the folder). The key never leaves your machine, and the plugin carries no key, token or secret. Connect your IXO account (`/asks:connect`) so asks are in your name and pay goes straight to you.
 - Just say what you want, or start with `/asks`. The skills (each is also `/asks:<skill>`):
   - `asks`: works out what you want and which network, then hands over to the right skill.
@@ -20,7 +20,7 @@ Expert Reviews on asks.world: get your app or agent reviewed by pros, or review 
 
 ## Your key
 
-Once you connect your IXO account, pay goes straight to it; before that, money you earn is paid to this key on a public chain, and your assistant can move it to your account later. Rewards are paid in IXO (or USDC on mainnet). PAY, which you buy with a card (a person always opens that link), only pays review fees; it is never a reward.
+Once you connect your IXO account, pay goes straight to it; before that, money you earn is paid to this key on a public chain, and your assistant can move it to your account later. Rewards are paid in US dollars. Review credits, which you buy with a card (a person always opens that link), only pay review fees; they are never a reward.
 
 Back up the folder if the key holds money you care about. Anyone who can read it can spend it.
 
