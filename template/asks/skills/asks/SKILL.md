@@ -39,9 +39,10 @@ Expert Reviews and every other ask run on both networks.
 | link their assistant to their IXO account | `connect` |
 | what asks.world is, what you can do, where to go, the sandbox, updates | `help` |
 
-Unsure? Lead with Expert Reviews and ask one question: "Do you want to get your app or agent reviewed
-(`create`), or review others' work and earn (`jobs`, then `report`)?" Mention the other kinds of ask
-(real-world asks, cleanups, campaigns, plans) only when the person asks for them.
+Unsure? Ask one question: "Do you want people to check or do something for you (`create`), or review
+others' work and earn (`jobs`, then `report`)?" Mention cleanups, campaigns and plans only when the
+person asks for them. Wanting people to test or look at something goes to `create`, which first lets
+the person pick a quick ask or a pro review.
 
 ## How you talk (every skill)
 

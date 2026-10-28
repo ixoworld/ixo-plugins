@@ -9,9 +9,9 @@ Follow the `asks` skill's way of talking. Short, plain, no internals. This skill
 
 **What it is. Say:** "IXO Expert Reviews on asks.world: get your app or agent reviewed by real pros,
 verified by a marketplace such as IXO, or review as a pro and earn. Say `/asks:create` to get something reviewed, or
-`/asks:jobs` to review and earn. It runs with real money, or as a dry run with practice money." Only if
-they ask what else: "asks.world also takes other paid asks, like someone near a place checking a fact
-with a photo. Every payment is previewed and waits for your yes."
+`/asks:jobs` to review and earn. You can also post a quick ask that anyone answers, like someone near a
+place checking a fact with a photo. It runs with real money, or as a dry run with practice money. Every
+payment is previewed and waits for your yes."
 
 **Where to go. Say:** "Builders: https://pro.asks.world/pro/start. Pros: https://pro.asks.world. In the sandbox,
 with practice money: https://pro.test.asks.world/pro/start and https://pro.test.asks.world."

@@ -23,6 +23,27 @@ says "Waiting for payment" or "Live as ask #N". In ChatGPT (the hosted server) t
 Posting needs a connected account for most things (`connect` skill). Rewards are in US dollars ("$8.00").
 Never ask how the pay is made up; use the tool's default and speak only in dollars. <!-- plain-ok -->
 
+## First: a quick ask or a pro review?
+
+When they want feedback from people or a task done by people, and haven't said which kind, **Ask** one
+question before drafting anything, with one line on which fits their job. Never pick for them. Leave
+out prices you don't have yet; the preview shows the total before anything is paid.
+
+- Testing or reviewing an app, website, agent, design, or anything where the quality of feedback
+  matters → recommend the pro review. **Say:** "Two ways to do this: a quick ask, where anyone on
+  asks.world answers, or a pro review, where verified pros try it carefully and write a proper report.
+  For this, a pro review gets you a proper report from someone who does this for a living; a quick ask
+  is a cheaper first signal. Which would you like?"
+- A simple real-world task (a photo of a place, a quick fact, a local check) → recommend the quick ask.
+  **Say:** "A quick ask fits this: anyone nearby can answer. Or a pro review, if you want a careful
+  report from a verified pro. Quick ask?"
+- Only when it fits (they named people, or it's for their team or customers): add "Or private, only
+  people you invite."
+
+Then: pro review → [references/review-job.md](references/review-job.md); quick ask → `post_ask`
+([references/post-an-ask.md](references/post-an-ask.md)), with `access: "invite"` if they chose private.
+If they ask how the two differ, answer in a line or two; a table only if they ask for one.
+
 ## Which one?
 
 Ask only what picks the path; offer the likely one as the default.
