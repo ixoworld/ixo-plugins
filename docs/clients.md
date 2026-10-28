@@ -25,8 +25,8 @@ whether the plugin's MCP server is **hosted** (a URL IXO runs) or **local** (a c
 - Claude Code expands `${VAR}` and `${VAR:-default}` in a plugin's `.mcp.json`, so a local plugin
   can offer switches such as `OPENHANDS_MCP_PACKAGE`, read from the shell that starts Claude Code.
 - Update with `/plugin marketplace update ixo-plugins`, then reconnect the server in `/mcp`. `asks`
-  does this by itself once a day (pause with `IXO_PLUGIN_AUTO_UPDATE=0`), as does `/plugin` →
-  **Marketplaces** → ixo-plugins → **Enable auto-update**.
+  does this by itself whenever main has a new version (pause with `IXO_PLUGIN_AUTO_UPDATE=0`); the new
+  version loads in the next session.
 - Moving from an `ixo-openhands*` plugin: nothing to do; the catalog's `renames` moves it to `asks`.
 
 ## Codex

@@ -1,9 +1,9 @@
 # asks.world
 
-Expert Reviews on asks.world: get your app or agent reviewed by specialists, or review and earn, with your own key held on your machine. Real-world asks and hiring stay available. Say "dry run" to practise on testnet with play money.
+Expert Reviews on asks.world: get your app or agent reviewed by pros, or review and earn, with your own key held on your machine. Real-world asks and hiring stay available. Say "dry run" to practise on testnet with play money.
 
 - MCP server: `asks`, started on your machine with `npx -y @ixo/asks-mcp@latest` (needs Node.js 22.6 or newer, which provides `npx`). `@latest` is the newest release: it moves each time IXO releases from `main`.
-- Updates: once a day, when a session starts, the plugin quietly updates itself (`claude plugin marketplace update ixo-plugins` and `claude plugin update`; in Codex `codex plugin marketplace upgrade ixo-plugins`). Pause it by starting your assistant with `IXO_PLUGIN_AUTO_UPDATE=0`. In Claude Code, `/plugin` → **Marketplaces** → ixo-plugins → **Enable auto-update** does the same.
+- Updates install themselves; a new version loads when you start a new session. (Optional: `/plugin` → **Marketplaces** → ixo-plugins → **Enable auto-update**.) Pause it by starting your assistant with `IXO_PLUGIN_AUTO_UPDATE=0`.
 - Networks: one server for both. Real work runs on mainnet (real money); say "try", "test" or "dry run" and it runs on testnet, the sandbox (play money, nothing real moves). The same caps, previews and confirmations apply on both.
 - Sign-in: none, and nothing to configure. The server makes its own key the first time it runs and keeps it under `~/.openhands/<network>`, one folder per network, so testnet and mainnet keys never mix (set `OPENHANDS_HOME` to move the folder). The key never leaves your machine, and the plugin carries no key, token or secret. Connect your IXO account (`/asks:connect`) so asks are in your name and pay goes straight to you.
 - Just say what you want, or start with `/asks`. The skills (each is also `/asks:<skill>`):
