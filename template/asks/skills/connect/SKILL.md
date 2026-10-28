@@ -6,8 +6,8 @@ description: Link the person's assistant to their IXO account on asks.world, so 
 # Connect your account
 
 Follow the `asks` skill's way of talking. **Network:** the `asks` skill's rule. Every tool call passes `network`: `mainnet` for real money,
-`testnet` for a dry run with play money. If the person hasn't said, **Ask** once: "Real money, or a dry
-run with play money?" Never switch mid-task. A person is connected per network: connect on
+`testnet` for a dry run with practice money. If the person hasn't said, **Ask** once: "Real money, or a dry
+run with practice money?" Never switch mid-task. A person is connected per network: connect on
 the one the task uses, and say which. "Am I connected?" → `connection_status` on both, said apart.
 
 **Do:** `get_connect_link` (with `reviews: true` for expert reviews) → one link. Open it for them if

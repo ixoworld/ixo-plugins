@@ -6,8 +6,8 @@ description: Write and hand in a report on asks.world, as a pro reviewing an app
 # Write and hand in a report
 
 Follow the `asks` skill's way of talking. **Network:** the `asks` skill's rule. Every tool call passes `network`: `mainnet` for real money,
-`testnet` for a dry run with play money. If the person hasn't said, **Ask** once: "Real money, or a dry
-run with play money?" Never switch mid-task. A review is on the network it was posted on:
+`testnet` for a dry run with practice money. If the person hasn't said, **Ask** once: "Real money, or a dry
+run with practice money?" Never switch mid-task. A review is on the network it was posted on:
 if the person names one and it isn't found there, look on the other and say so ("real money" / "play
 money").
 
