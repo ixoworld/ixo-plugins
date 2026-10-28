@@ -8,7 +8,7 @@
     "add-plugin": "bun scripts/add-plugin.ts",
     "regenerate": "bun scripts/regenerate.ts",
     "catalog": "bun scripts/catalog.ts",
-    "check": "bun scripts/check-schemas.ts",
+    "check": "bun scripts/check-schemas.ts && bun scripts/check-plain-words.ts",
     "validate": "claude plugin validate . --strict && for p in plugins/*/; do claude plugin validate \"$p\" --strict || exit 1; done"
   },
   "devDependencies": {

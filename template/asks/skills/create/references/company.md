@@ -5,10 +5,10 @@ questions, signs in, clicks and sends money. Claude Code or Cowork only (it runs
 
 ## Rules for this part
 
-- Money to the person is only ever dollars; the coin names in commands and tool output below are for you, never said aloud.
+- Money to the person is only ever dollars; the coin names in commands and tool output below are for you, never said aloud. <!-- plain-ok -->
 - Plain words: organisation → **your company**; its admin address → **your company's account**;
-  oracle → **the verifier**; facilitator → **your payouts service**; review billing → **your review
-  budget**; PAY / Console credits → **review credits**, in dollars; rails → **how you pay
+  oracle → **the verifier**; facilitator → **your payouts service**; review billing → **your review <!-- plain-ok -->
+  budget**; PAY / Console credits → **review credits**, in dollars; rails → **how you pay <!-- plain-ok -->
   people**.
 - Before each click, open the page yourself (`open <url>` on macOS, `xdg-open <url>` on Linux) and say
   exactly what to click, the button's words in **bold**.
@@ -30,12 +30,12 @@ questions, signs in, clicks and sends money. Claude Code or Cowork only (it runs
 
 | Name here | What runs |
 | --- | --- |
-| `decision-oracle` | `npx -y @ixo/decision-oracle@0.2`. Always pass `--network <network>` (its own default is devnet). |
+| `decision-oracle` | `npx -y @ixo/decision-oracle@0.2`. Always pass `--network <network>` (its own default is devnet). | <!-- plain-ok -->
 | `installer` | `npx -y @ixo/payouts-facilitator@0.1`. Ways B and C only. Prints its JSON result on the last line. |
 | `wrangler` | `npx -y wrangler`. Ways B and C only. |
 | `stripe` | the Stripe CLI (`brew install stripe/stripe-cli/stripe`; ask first). Way C only. |
 | `<site>` | the website in the links the tools return; never guess a domain |
-| `<console>` | Decision Console: testnet `https://decision-console.testnet.ixo.earth`, mainnet `https://decision-console.ixo.earth` |
+| `<console>` | Decision Console: testnet `https://decision-console.testnet.ixo.earth`, mainnet `https://decision-console.ixo.earth` | <!-- plain-ok -->
 
 `<network>` is the network chosen for this task (`mainnet` or `testnet`): pass it as `network` to every
 tool and as `--network` to every command. The computer needs Node.js 22.6 or newer.
@@ -70,7 +70,7 @@ If it isn't clearly theirs, don't use it and don't delete it. **Say:** "This com
 else. Ask them first, or use a different computer user." Log out only after an explicit "yes, remove it".
 **Do:** `decision-oracle login --network <network>`; note `"signedInByThisRun": true`. If no page
 opens, give the sign-in link on its own line. **Say:** "Open this link to sign in with your email, then
-type your PIN. When the page says you can close it, tell me." Note the printed address and did.
+type your PIN. When the page says you can close it, tell me." Note the printed address and did. <!-- plain-ok -->
 
 ### 3. Create the company
 
@@ -79,11 +79,11 @@ type your PIN. When the page says you can close it, tell me." Note the printed a
 
 ### 4. Verifier
 
-1. List the verifiers with one read: `curl -s <site>/api/oracles` → `{oracles:[{value, name, what,
+1. List the verifiers with one read: `curl -s <site>/api/oracles` → `{oracles:[{value, name, what, <!-- plain-ok -->
    priceBase, perReview}]}` (`value` is the verifier's DID). A verifier's address (`<kit>`): read
    `<kit>/v1/info`. Never from memory, no scripts. For each that could fit, one line: what it checks
-   for *their* work, what it can't, the price. Recommend IXO's Ask the World checker by default; the
-   network's cleanup checker only for cleanups or work campaigns; their own verifier when they have
+   for *their* work, what it can't, the price. Recommend IXO's Ask the World checker by default; the <!-- plain-ok -->
+   network's cleanup checker only for cleanups or work campaigns; their own verifier when they have <!-- plain-ok -->
    their own business rules (never a generic one as a stand-in).
 2. **Their own verifier:** **Say:** "IXO builds that for you. I'll send them your rules." Write a short
    spec (checks, pass/review/reject lines, limits, price) and pause until IXO says it's ready.
@@ -92,11 +92,11 @@ type your PIN. When the page says you can close it, tell me." Note the printed a
    `decision-oracle api source create --name "<company name>" --contact <email> --entity <org DID> --kit <kit> --network <network> --yes --json`
    (it prints a one-time secret: never show or note it; **Say:** "A one-time code was shown on screen.
    You won't need it."), then `decision-oracle api source link <source id> --kit <kit> --network <network> --yes`.
-4. Note the verifier's DID.
+4. Note the verifier's DID. <!-- plain-ok -->
 
 ### 5. Review budget
 
-**Check:** `review_billing_status` with the company's DID says a budget is needed. Only the company's
+**Check:** `review_billing_status` with the company's DID says a budget is needed. Only the company's <!-- plain-ok -->
 owner can approve it. **Say:** "Each review costs $<price> from your review credits. You approve a
 review budget once. Let's start with $50 (about <50 ÷ price> reviews); you can raise it any time.
 Shall I set it up here, or would you rather click it on the website?" (Skip the question if they
@@ -114,8 +114,8 @@ Credits: `<console>/billing/credits?topup=1&from=openhands`.
 
 **Say:** "Now and then an answer needs a person to look at it. It waits in the Decision Console, and if
 nobody answers within 48 hours it's turned down. Let's make sure you hear about it."
-**Do:** open `<console>/claims/review`. **Say:** "Sign in. In **Reviewer key and emails**, click
-**Create and register a reviewer key** if it's there, and turn on **Email me when a claim needs my
+**Do:** open `<console>/claims/review`. **Say:** "Sign in. In **Reviewer key and emails**, click <!-- plain-ok -->
+**Create and register a reviewer key** if it's there, and turn on **Email me when a claim needs my <!-- plain-ok -->
 review**. Then tell me."
 
 ### 6. Money in the company's account
@@ -149,7 +149,7 @@ about 15 minutes." `<worker>` = `<company>-payouts`; `<rails>` = `usdc_base` (B)
 ### 8. Stripe (way C)
 
 1. `stripe config --list` shows an account, else `stripe login --non-interactive` and open its link
-   (**Say:** "Click **Allow access**."). Mainnet: add `--live` to every `stripe` command.
+   (**Say:** "Click **Allow access**."). Mainnet: add `--live` to every `stripe` command. <!-- plain-ok -->
 2. `stripe get /v1/account` shows `"details_submitted": true`, else open
    `https://dashboard.stripe.com/connect`. **Say:** "Click **Get started** and fill in Stripe's form
    about your business. Only you can do this part."
@@ -157,16 +157,16 @@ about 15 minutes." `<worker>` = `<company>-payouts`; `<rails>` = `usdc_base` (B)
    `https://dashboard.stripe.com/apikeys/create`. **Say:** "Check the switch at the top: **Test mode**
    for a trial, **live** for real money. Choose **Building your own integration**, name it `asks.world
    payouts`. Set Transfers **Write**, Balance **Read**, Connected accounts **Write**, Account links
-   **Write**, Payouts **Read**, Balance transactions **Read**, everything else **None**. Click **Create
+   **Write**, Payouts **Read**, Balance transactions **Read**, everything else **None**. Click **Create <!-- plain-ok -->
    key**, then click the key to copy it. Don't paste it anywhere. Tell me when it's copied."
 4. After step 7: `stripe webhook_endpoints list` shows `<url>/webhooks/stripe-connect`, else
    `stripe webhook_endpoints create --url <url>/webhooks/stripe-connect --connect=true --enabled-events account.updated --enabled-events payout.failed --confirm | jq -r .secret | npx -y wrangler secret put STRIPE_CONNECT_WEBHOOK_SECRET --name <worker>`.
 5. **Say:** "Your Stripe balance pays people. Top it up in your Stripe dashboard."
 
-### 9. Payout wallet and limits (ways B and C)
+### 9. Payout wallet and limits (ways B and C) <!-- plain-ok -->
 
 Way B: `installer payout-wallet --name <worker> --network <network> --check --json` → **Say:** "Send
-dollars for the rewards, plus a little extra for fees, to this address: <address>." (Name no coin to the person; the tool's output says which.) Check until both are there, then `installer trust-check ... --name <worker>` exits 0.
+dollars for the rewards, plus a little extra for fees, to this address: <address>." (Name no coin to the person; the tool's output says which.) Check until both are there, then `installer trust-check ... --name <worker>` exits 0. <!-- plain-ok -->
 Limits, `<admin>` = `--url <url> --session ~/.ixo/publish-session-<network>.json --network <network>`:
 `installer admin oracles list <admin>`; add each chosen verifier missing (`installer admin oracles add <verifier DID> <admin>`).
 **Say:** "What's the most one payout can be? And above what amount do you want to approve each payout
@@ -192,10 +192,10 @@ before trying again. **Say:** "You can change this any time on your company's **
 
 ### 13. First task
 
-As [post-an-ask.md](post-an-ask.md), plus: `org` = the org DID; `oracle` = `{ did, url: <kit> }` (no
+As [post-an-ask.md](post-an-ask.md), plus: `org` = the org DID; `oracle` = `{ did, url: <kit> }` (no <!-- plain-ok -->
 `url` for their own verifier); their own rules → `create_campaign` first and pass `campaign`. Way A: no
 `currency`. Ways B and C: `pay: 0` and `payout: { rail, amount, currency, facilitator: <url> }`, never
-a reward on chain too. **Say:** "This task pays <reward> to each of <n> people, from your company's
+a reward on chain too. **Say:** "This task pays <reward> to each of <n> people, from your company's <!-- plain-ok -->
 account. Reviews come from your review budget. Post it?" Then for B and C:
 `installer asks register <collectionId> --url <url> --network <network>` (best effort).
 **Say:** "You're set up. From now on, just tell me what you need."
@@ -207,7 +207,7 @@ account. Reviews come from your review budget. Post it?" Then for B and C:
   <group> up so the checks come from it?"
 - **Short for a task:** step 6. **Reviews paused or off:** step 5.
 - **Change how it pays, or its verifier:** step 12, or the company's **Payouts** page.
-- **Refusals:** "the oracle's signing wallet could not be confirmed" → wait and retry; "that way of paying isn't
+- **Refusals:** "the oracle's signing wallet could not be confirmed" → wait and retry; "that way of paying isn't <!-- plain-ok -->
   available on <network>" → use Through IXO; "It will retry on its own" → nothing to do.
 - No notes on this computer: ask them to open their company's **Payouts** page and read you the
   verifier's name.

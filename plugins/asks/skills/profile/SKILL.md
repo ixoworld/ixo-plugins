@@ -48,6 +48,6 @@ the person picks the marketplace, what is checked and what they share (a listing
 endorsement). **Say:** "You can see who else can verify you at https://pro.asks.world/pro/marketplaces"
 (in the sandbox: https://pro.test.asks.world/pro/marketplaces). `list_marketplaces` lists the same ones;
 asking one is `ask_for_check` with its account, the same preview and yes as above. Anyone can check a
-signed file (who signed it, who it's about, whether it's real) at https://pro.asks.world/pro/credentials
+signed record (who signed it, who it's about, whether it's real) at https://pro.asks.world/pro/credentials
 (in the sandbox: https://pro.test.asks.world/pro/credentials). Never send documents or pay a fee without
 their yes.
