@@ -6,7 +6,7 @@ questions, signs in, clicks and sends money. Claude Code or Cowork only (it runs
 ## Rules for this part
 
 - Plain words: organisation → **your company**; its admin address → **your company's account**;
-  oracle → **the reviewer**; facilitator → **your payouts service**; review billing → **your review
+  oracle → **the verifier**; facilitator → **your payouts service**; review billing → **your review
   budget**; PAY / Console credits → **review credits**, in dollars (1 PAY = $1); rails → **how you pay
   people**.
 - Before each click, open the page yourself (`open <url>` on macOS, `xdg-open <url>` on Linux) and say
@@ -23,7 +23,7 @@ questions, signs in, clicks and sends money. Claude Code or Cowork only (it runs
   missing in one plain sentence and stop. Never ask the person to type a command.
 - Files: read only `~/.ixo/openhands-hq-<network>.json`. Never list, search or read anything else under
   `~/.ixo` or `~/.openhands`.
-- Describe a reviewer only with what its card says. Examples use only the person's own brand and places.
+- Describe a verifier only with what its card says. Examples use only the person's own brand and places.
 
 ## Commands
 
@@ -44,7 +44,7 @@ at the start. The checks, not the notes, decide what is done.
 
 ## The steps
 
-Always: 1, 2, 3, 4, 5b, 6, 10, 11, 12, 13. Step 5 when the reviewer bills per review (IXO's do). Steps
+Always: 1, 2, 3, 4, 5b, 6, 10, 11, 12, 13. Step 5 when the verifier bills per review (IXO's do). Steps
 7 and 9 for ways B and C; step 8 for way C.
 
 ### 1. Questions (one at a time; write the answers in the notes)
@@ -56,7 +56,7 @@ Always: 1, 2, 3, 4, 5b, 6, 10, 11, 12, 13. Step 5 when the reviewer bills per re
    dollars, pick **USDC on Base** or **Card**: that needs a small payouts service we set up together in
    your Cloudflare account (about 15 minutes)." One of: **A. On chain** (default, IXO from the
    company's account), **B. USDC on Base**, **C. Card (Stripe)**.
-4. "Who should check the answers? IXO's ready-made reviewer, or one built for your own rules?"
+4. "Who should check the answers? IXO's ready-made verifier, or one built for your own rules?"
 5. "Which email should we use to reach the company? It must be an inbox you read." Read it back.
 6. Way C only: the country of their Stripe account (two letters).
 
@@ -76,22 +76,22 @@ type your PIN. When the page says you can close it, tell me." Note the printed a
 `decision-oracle org create --network <network> --name "<name>" [--logo <url>]` (preview), then with
 `--yes`. Note `entityDid` (starts with `did:ixo:entity:`). **Say:** "Your company is on asks.world."
 
-### 4. Reviewer
+### 4. Verifier
 
-1. List the reviewers with one read: `curl -s <site>/api/oracles` → `{oracles:[{value, name, what,
-   priceBase, perReview}]}` (`value` is the reviewer's DID). A reviewer's address (`<kit>`): read
+1. List the verifiers with one read: `curl -s <site>/api/oracles` → `{oracles:[{value, name, what,
+   priceBase, perReview}]}` (`value` is the verifier's DID). A verifier's address (`<kit>`): read
    `<kit>/v1/info`. Never from memory, no scripts. For each that could fit, one line: what it checks
    for *their* work, what it can't, the price. Recommend IXO's Ask the World checker by default; the
-   network's cleanup checker only for cleanups or work campaigns; their own reviewer when they have
+   network's cleanup checker only for cleanups or work campaigns; their own verifier when they have
    their own business rules (never a generic one as a stand-in).
-2. **Their own reviewer:** **Say:** "IXO builds that for you. I'll send them your rules." Write a short
+2. **Their own verifier:** **Say:** "IXO builds that for you. I'll send them your rules." Write a short
    spec (checks, pass/review/reject lines, limits, price) and pause until IXO says it's ready.
 3. **Link it:** check `decision-oracle api sources --entity <org DID> --kit <kit> --network <network> --json`
    (`active` → done; `pending-link` → link with its id). Else
    `decision-oracle api source create --name "<company name>" --contact <email> --entity <org DID> --kit <kit> --network <network> --yes --json`
    (it prints a one-time secret: never show or note it; **Say:** "A one-time code was shown on screen.
    You won't need it."), then `decision-oracle api source link <source id> --kit <kit> --network <network> --yes`.
-4. Note the reviewer's DID.
+4. Note the verifier's DID.
 
 ### 5. Review budget
 
@@ -120,7 +120,7 @@ review**. Then tell me."
 ### 6. Money in the company's account
 
 `decision-oracle org balance --entity <org DID> --network <network>`. Way A needs reward × answers in
-IXO (never PAY) plus ~0.1 IXO for fees; B and C pay rewards outside. If `post_ask` says the reviewer
+IXO (never PAY) plus ~0.1 IXO for fees; B and C pay rewards outside. If `post_ask` says the verifier
 takes its fee with the task, add price × answers in PAY.
 **Do:** `decision-oracle org fund --entity <org DID> --amount <amount> --network <network>` (dry run).
 **Say:** "Your company's account needs <amount> <coin> before the first task. Shall I move it from your
@@ -168,7 +168,7 @@ Way B: `installer payout-wallet --name <worker> --network <network> --check --js
 USDC for the rewards, plus a little ETH for fees, to this address on Base: <address>." (testnet: Base
 Sepolia). Check until both are there, then `installer trust-check ... --name <worker>` exits 0.
 Limits, `<admin>` = `--url <url> --session ~/.ixo/publish-session-<network>.json --network <network>`:
-`installer admin oracles list <admin>`; add each chosen reviewer missing (`installer admin oracles add <reviewer DID> <admin>`).
+`installer admin oracles list <admin>`; add each chosen verifier missing (`installer admin oracles add <verifier DID> <admin>`).
 **Say:** "What's the most one payout can be? And above what amount do you want to approve each payout
 yourself?" → `installer admin defaults set --max <n> --currency <USDC|USD> --approval-over <n> --rails <rails> <admin>`.
 
@@ -185,15 +185,15 @@ Otherwise say nothing about it.
 ### 12. Company payout settings
 
 `set_payout_settings` without `confirm`: `orgDid`; `facilitator` (B, C); `rails` `["chain"]`,
-`["usdc_base"]` or `["stripe"]`; `oracles`: the reviewer(s), default first; `currency`: A none, B
-`USDC`, C `USD`. **Say:** "You pay people <how>; answers are checked by <reviewer>. OK?" → `confirm:
+`["usdc_base"]` or `["stripe"]`; `oracles`: the verifier(s), default first; `currency`: A none, B
+`USDC`, C `USD`. **Say:** "You pay people <how>; answers are checked by <verifier>. OK?" → `confirm:
 true`. "Reconnect needed" → step 11. "Not confirmed" → note it and check the company's **Payouts** page
 before trying again. **Say:** "You can change this any time on your company's **Payouts** page."
 
 ### 13. First task
 
 As [post-an-ask.md](post-an-ask.md), plus: `org` = the org DID; `oracle` = `{ did, url: <kit> }` (no
-`url` for their own reviewer); their own rules → `create_campaign` first and pass `campaign`. Way A: no
+`url` for their own verifier); their own rules → `create_campaign` first and pass `campaign`. Way A: no
 `currency`. Ways B and C: `pay: 0` and `payout: { rail, amount, currency, facilitator: <url> }`, never
 a reward on chain too. **Say:** "This task pays <reward> to each of <n> people, from your company's
 account. Reviews come from your review budget. Post it?" Then for B and C:
@@ -206,8 +206,8 @@ account. Reviews come from your review budget. Post it?" Then for B and C:
   minutes; shall we do it now?" Asked on behalf of a group → ask once: "Post this as yourself, or set
   <group> up so the checks come from it?"
 - **Short for a task:** step 6. **Reviews paused or off:** step 5.
-- **Change how it pays, or its reviewer:** step 12, or the company's **Payouts** page.
+- **Change how it pays, or its verifier:** step 12, or the company's **Payouts** page.
 - **Refusals:** "the oracle's signing wallet could not be confirmed" → wait and retry; "USDC isn't
   available on <network>" → use IXO; "It will retry on its own" → nothing to do.
 - No notes on this computer: ask them to open their company's **Payouts** page and read you the
-  reviewer's name.
+  verifier's name.

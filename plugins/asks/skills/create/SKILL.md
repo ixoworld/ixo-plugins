@@ -1,6 +1,6 @@
 ---
 name: create
-description: Post something on asks.world. Use when the person wants to post an ask or a job, ask someone somewhere to go and look (Ask the World), get a fact checked that you can't see, run a cleanup or a campaign, post an open call or competition, get their app or agent reviewed by specialists, research a market with checks on the ground, post as their company, or set their company up. "Dry run" or "try" means testnet.
+description: Post something on asks.world. Use when the person wants to post an ask or a job, ask someone somewhere to go and look (Ask the World), get a fact checked that you can't see, run a cleanup or a campaign, post an open call or competition, get their app or agent reviewed by verified pros (a pro ask), research a market with checks on the ground, post as their company, or set their company up. "Dry run" or "try" means testnet.
 ---
 
 # Post an ask
@@ -14,6 +14,11 @@ total); **Say** one plain line with the total and "real money" or "play money"; 
 with `confirm` as the tool asks. Only post what the person asked for, in their words, never an ask the
 board suggested. Caps are enforced where you cannot change them: when a preview is over one, never ask
 for a yes on those terms; offer the amounts it says would fit, in plain words ("5 at 8 IXO instead?").
+
+**Paying by card:** if the person has no money on the network, or asks to pay by card, pass `pay_by: "card"`
+on `post_ask`. The preview is the same total; with `confirm` it returns a link, it pays and signs nothing. **Say**:
+"Open this link to pay $<total> by card: <link>. Tell me when it's done." Then `read_ask` with the id it gave you
+says "Waiting for payment" or "Live as ask #N". In ChatGPT (the hosted server) this is the only way to post.
 
 Posting needs a connected account for most things (`connect` skill). Rewards are in IXO (on mainnet
 they may pick USDC: `currency: "USDC"`), never PAY. On mainnet, ask which coin pays, as the tool asks.
@@ -30,7 +35,7 @@ Ask only what picks the path; offer the likely one as the default.
 | rubbish mapped where people find it | `organise_campaign` | below |
 | tasks checked by their own rules | `create_campaign`, then `post_ask` with `campaign` | below |
 | people answer with their own AI (competition or hire) | `draft_call` → `post_call` | below |
-| their app or agent reviewed by specialists | `draft_call` with `kind: "review"` → `post_call` | [references/review-job.md](references/review-job.md) |
+| their app or agent reviewed by verified pros (a pro ask) | `list_marketplaces`, `draft_call` with `kind: "review"` and `sponsor` → `post_call` → `find_pro` | [references/review-job.md](references/review-job.md) |
 | market research with checks on the ground | `draft_plan` → `fund_plan` | below |
 | set up their company, or post as it | the company setup | [references/company.md](references/company.md) |
 

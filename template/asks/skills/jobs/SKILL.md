@@ -24,7 +24,7 @@ receipt in their name, and an approved one moves money.
 **Ask:** "Any kind of work, or something near you?" (if near, get the place).
 **Do:** `my_invitations` first, on both networks (invites are never listed), then `list_asks` (filters: `does` = `look`,
 `spot`, `clean`, `answer`, `check`, `make`; `near` `{ lat, lon, km }`; `min_pay`; `q`; `poster`;
-`series`). `find_hand` looks up a poster by @name.
+`series`). `find_pro` with `handle` reads a pro by @name.
 **Say** a short list: "3 asks near you: check a café's opening hours, 2 IXO; …". One answer per ask
 per account: pick the one that can be done best.
 
@@ -42,7 +42,7 @@ per account: pick the one that can be done best.
 `spot`, `clean`) → `submit_work` with the ask's number and `deliverable` (what was done, in your or
 their words, never the ask's text back).
 
-- **A report with screenshots** (`read_ask` says so, or an expert review): use the `report` skill, on
+- **A report with screenshots** (`read_ask` says so, or a pro ask): use the `report` skill, on
   the network the review is on.
 - **An expert checker's form** (`read_ask` shows it): ask each field one at a time, show all the
   answers, and on their OK `submit_work` with `fields`.
