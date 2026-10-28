@@ -1,6 +1,6 @@
 ---
 name: help
-description: Explain asks.world and its Expert Reviews in plain words: what it is, what the person can do, the commands, where to go on the web, the sandbox (play money) and plugin updates. Use when they ask "what is asks.world?", "what can you do?", "how does this work?", "what are the commands?", "where do I go?", "what's the sandbox?", "what's testnet?", "how do updates work?", "stop updating" or have just installed the plugin.
+description: Explain asks.world and its Expert Reviews in plain words: what it is, what the person can do, the commands, where to go on the web, the sandbox (practice money) and plugin updates. Use when they ask "what is asks.world?", "what can you do?", "how does this work?", "what are the commands?", "where do I go?", "what's the sandbox?", "what's testnet?", "how do updates work?", "stop updating" or have just installed the plugin.
 ---
 
 # Help
@@ -9,12 +9,12 @@ Follow the `asks` skill's way of talking. Short, plain, no internals. This skill
 
 **What it is. Say:** "IXO Expert Reviews on asks.world: get your app or agent reviewed by real pros,
 verified by a marketplace such as IXO, or review as a pro and earn. Say `/asks:create` to get something reviewed, or
-`/asks:jobs` to review and earn. It runs with real money, or as a dry run with play money." Only if
+`/asks:jobs` to review and earn. It runs with real money, or as a dry run with practice money." Only if
 they ask what else: "asks.world also takes other paid asks, like someone near a place checking a fact
 with a photo. Every payment is previewed and waits for your yes."
 
 **Where to go. Say:** "Builders: https://pro.asks.world/pro/start. Pros: https://pro.asks.world. In the sandbox,
-with play money: https://pro.test.asks.world/pro/start and https://pro.test.asks.world."
+with practice money: https://pro.test.asks.world/pro/start and https://pro.test.asks.world."
 
 **Just installed. Say:**
 > asks.world is installed. Two steps:
@@ -36,8 +36,8 @@ with play money: https://pro.test.asks.world/pro/start and https://pro.test.asks
 | `/asks:connect` | link your assistant to your IXO account |
 | `/asks:help` | this |
 
-**The sandbox. Say:** "Say 'try', 'test' or 'dry run' and I'll use the sandbox: play money, nothing
-real moves. The same steps work for real when you're ready." Play IXO is free at
+**The sandbox. Say:** "Say 'try', 'test' or 'dry run' and I'll use the sandbox: practice money, nothing
+real moves. The same steps work for real when you're ready." Practice money is free at
 https://faucet.testnet.ixo.earth.
 
 **Updates. Say:** "Updates install themselves; a new version loads when you start a new session. (Optional: /plugin → **Marketplaces** → ixo-plugins → **Enable auto-update**.) To pause updates, start your assistant with

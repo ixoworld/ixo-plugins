@@ -17,7 +17,7 @@ can read a report on the site.
 ## Set it up
 
 Pro asks run on both networks: `mainnet` for real money, `testnet` (the sandbox) for a dry run with
-play money. Use the network the person picked (the `asks` skill's rule: ask once if they haven't said)
+practice money. Use the network the person picked (the `asks` skill's rule: ask once if they haven't said)
 on every call here.
 
 Connected first (`connect` skill, with `reviews: true` on `get_connect_link`).
@@ -47,13 +47,13 @@ login, goes in the private note with each invitation. Only the invited pro sees 
 When nothing is missing, `draft_call` shows the whole pro ask and one sentence for its money. Read that
 sentence as it is and repeat its numbers exactly; never work one out yourself. **Say:** "This sets up
 the pro ask '<title>' of <name> <version> through <marketplace>: <n> scenarios, up to <count> reports,
-open for <days> days, by invitation. <the money sentence> <total> in all (<real / play> money). Each
+open for <days> days, by invitation. <the money sentence> <total> in all (<real / practice> money). Each
 report waits for your final approval before it's paid. Post it?" On yes: `post_call` with `confirm` =
 that total, again until it says everything is posted.
 
 Over the limit one ask can hold? `draft_call` says so and names what fits. Never ask for a yes on those
-terms. **Say:** "That's more than one pro ask can hold. I can make it <what fits, e.g. 5 reports at 8
-IXO> instead. Which?" and draft again with their choice.
+terms. **Say:** "That's more than one pro ask can hold. I can make it <what fits, e.g. 5 reports at $8
+each> instead. Which?" and draft again with their choice.
 
 If the marketplace is refused (paused, or it can't take pro asks here yet), nothing was posted: say why
 in the tool's plain words and offer another marketplace from `list_marketplaces`.

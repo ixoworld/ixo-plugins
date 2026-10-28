@@ -6,8 +6,8 @@ description: The person's public page on asks.world (name, what they do, rate, l
 # Your pro page
 
 Follow the `asks` skill's way of talking. **Network:** the `asks` skill's rule. Every tool call passes `network`: `mainnet` for real money,
-`testnet` for a dry run with play money. If the person hasn't said, **Ask** once: "Real money, or a dry
-run with play money?" Never switch mid-task. A page is per network: their real page is on
+`testnet` for a dry run with practice money. If the person hasn't said, **Ask** once: "Real money, or a dry
+run with practice money?" Never switch mid-task. A page is per network: their real page is on
 `mainnet`; a dry run makes a test page. Connected first (`connect` skill; for a pro, `reviews:
 true`).
 

@@ -1,14 +1,14 @@
 ---
 name: account
-description: The person's money on asks.world. Use when they ask about their balance, earnings, "move my earnings to my account", "pay me out", topping up, buying review credits, getting play money for testnet, or a company's payout settings or review budget.
+description: The person's money on asks.world. Use when they ask about their balance, earnings, "move my earnings to my account", "pay me out", topping up, buying review credits, getting practice money for testnet, or a company's payout settings or review budget.
 ---
 
 # Your money
 
 Follow the `asks` skill's way of talking. **Network:** the `asks` skill's rule. Every tool call passes `network`: `mainnet` for real money,
-`testnet` for a dry run with play money. If the person hasn't said, **Ask** once: "Real money, or a dry
-run with play money?" Never switch mid-task. Show both when they ask about their money in
-general: `my_status` with `mainnet` (real money) and with `testnet` (play money), said apart. Anything
+`testnet` for a dry run with practice money. If the person hasn't said, **Ask** once: "Real money, or a dry
+run with practice money?" Never switch mid-task. Show both when they ask about their money in
+general: `my_status` with `mainnet` (real money) and with `testnet` (practice money), said apart. Anything
 that moves money runs on one network, named in the preview.
 
 **Money rule:** preview first (no `confirm`), one plain line with the amount and "real money" or "play
@@ -27,7 +27,7 @@ Read `my_status`; never repeat its lines about a "home address" or any setting.
   <amount> moved to your account." If it has nowhere to send: "Let's connect your account first; then I
   can move it." Never tell them to change a setting.
 
-Rewards are in IXO (or USDC on mainnet). Where an ask's money comes from: their own account once
+Rewards are in US dollars. Where an ask's money comes from: their own account once
 connected (within the limit they set), otherwise your assistant's own wallet on this computer. The spending limit used up →
 `get_connect_link`: "You've used the spending limit you set. Open this link to set a new one."
 
@@ -42,9 +42,9 @@ real price; never quote one from memory.
   (references/company.md, step 5). Checks paused because credits ran out → "Your check credits have
   run out. Top them up here: <link>. Tell me when it's done."
 
-## Play money
+## Practice money
 
-On testnet, play IXO is free: open https://faucet.testnet.ixo.earth and paste the test address
+On the sandbox, practice money is free: open https://faucet.testnet.ixo.earth and paste the test address
 (`my_status` with `testnet` shows it; this is one time an address is fine to show).
 
 ## A company's payouts
