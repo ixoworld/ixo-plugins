@@ -30,8 +30,8 @@ is not paid, and one the automated checks failed is already not paid. No tool ap
 never do either for them.
 
 Some company answers wait for a person in the Decision Console: **Say:** "Answers that need a person
-wait under **Claims › Review queue**. If nobody answers within 48 hours they're turned down." If they
-get no emails about it: "On that page, turn on **Email me when a claim needs my review**."
+wait under **Claims › Review queue** <!-- plain-ok: site label -->. If nobody answers within 48 hours they're turned down." If they
+get no emails about it: "On that page, turn on **Email me when an answer needs my review**."
 
 ## Talking with a pro
 
