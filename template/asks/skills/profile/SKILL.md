@@ -22,6 +22,10 @@ cannot read LinkedIn or any signed-in site, so never say you did.
 Publish it?" On yes, again with `confirm: true`, and give them its link.
 **Take it down:** `remove_my_page`, preview, then `confirm: true` on their yes.
 
+**A marketplace's own staff:** `set_marketplace_page` writes the marketplace's page on pro.asks.world
+(deck line, story, how it verifies). It previews the page as text; show it, and publish with
+`confirm: true` only on their yes. Only an approved marketplace's account can.
+
 ## Get verified by a marketplace
 
 A marketplace verifies pros and stands behind them; builders invite the pros of the marketplace they
@@ -41,9 +45,9 @@ line>, your experience, <links>. Only IXO sees it. Send it?" On yes, with `confi
 
 IXO is not the only one. Each marketplace checks what it is asked to and signs its own dated statement;
 the person picks the marketplace, what is checked and what they share (a listing is not an
-endorsement). **Say:** "You can see who else can verify you at https://pro.asks.world/marketplaces"
-(in the sandbox: https://pro.test.asks.world/marketplaces). `list_marketplaces` lists the same ones;
+endorsement). **Say:** "You can see who else can verify you at https://pro.asks.world/pro/marketplaces"
+(in the sandbox: https://pro.test.asks.world/pro/marketplaces). `list_marketplaces` lists the same ones;
 asking one is `ask_for_check` with its account, the same preview and yes as above. Anyone can check a
-signed file (who signed it, who it's about, whether it's real) at https://pro.asks.world/credentials
-(in the sandbox: https://pro.test.asks.world/credentials). Never send documents or pay a fee without
+signed file (who signed it, who it's about, whether it's real) at https://pro.asks.world/pro/credentials
+(in the sandbox: https://pro.test.asks.world/pro/credentials). Never send documents or pay a fee without
 their yes.

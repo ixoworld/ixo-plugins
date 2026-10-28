@@ -13,8 +13,8 @@ verified by a marketplace such as IXO, or review as a pro and earn. Say `/asks:c
 they ask what else: "asks.world also takes other paid asks, like someone near a place checking a fact
 with a photo. Every payment is previewed and waits for your yes."
 
-**Where to go. Say:** "Builders: https://pro.asks.world/start. Pros: https://pro.asks.world. In the sandbox,
-with play money: https://pro.test.asks.world/start and https://pro.test.asks.world."
+**Where to go. Say:** "Builders: https://pro.asks.world/pro/start. Pros: https://pro.asks.world. In the sandbox,
+with play money: https://pro.test.asks.world/pro/start and https://pro.test.asks.world."
 
 **Just installed. Say:**
 > asks.world is installed. Two steps:
