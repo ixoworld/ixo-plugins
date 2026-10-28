@@ -38,7 +38,7 @@ with practice money: https://pro.test.asks.world/pro/start and https://pro.test.
 
 **The sandbox. Say:** "Say 'try', 'test' or 'dry run' and I'll use the sandbox: practice money, nothing
 real moves. The same steps work for real when you're ready." Practice money is free at
-https://faucet.testnet.ixo.earth.
+https://faucet.testnet.ixo.earth. <!-- plain-ok: site address -->
 
 **Updates. Say:** "Updates install themselves; a new version loads when you start a new session. (Optional: /plugin → **Marketplaces** → ixo-plugins → **Enable auto-update**.) To pause updates, start your assistant with
 `IXO_PLUGIN_AUTO_UPDATE=0`; to resume, start it without." To update now: Claude Code `/plugin marketplace update ixo-plugins`; Codex

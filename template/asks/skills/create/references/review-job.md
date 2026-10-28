@@ -4,7 +4,7 @@ The person (the **builder**) wants real **pros** to try their app, website or ag
 verified those pros and stands behind them; the builder picks the marketplace first, and the pros
 invited come from its roster. Each pro hands in a **report**; **automated checks** read it against the
 pro ask's requirements; the builder's **final approval** pays it. Say "automated checks", never "the
-checker" or "the reviewer".
+checker" or "the reviewer". <!-- plain-ok -->
 
 What is true (never promise more): a pro ask is by invitation only; a report that passes waits for the
 builder's final approval, which pays it; one that fails is not paid; there is no "needs changes" step
