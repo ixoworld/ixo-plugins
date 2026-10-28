@@ -5,6 +5,7 @@
 // Codex: `codex plugin marketplace upgrade ixo-plugins`. A failed attempt waits 15 minutes.
 // Never prints, always exits 0.
 // Off with IXO_PLUGIN_AUTO_UPDATE=0, or Claude Code's DISABLE_AUTOUPDATER (unless FORCE_AUTOUPDATE_PLUGINS).
+// The Claude desktop app always sets DISABLE_AUTOUPDATER (it updates the CLI itself), so it is ignored there.
 import { spawnSync } from "node:child_process";
 import { accessSync, constants, mkdirSync, readFileSync, renameSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { homedir } from "node:os";
@@ -23,7 +24,7 @@ export const clientOf = (env) => (env.PLUGIN_ROOT ? "codex" : env.CLAUDE_PLUGIN_
 
 export function disabled(client, env) {
   if (env.IXO_PLUGIN_AUTO_UPDATE === "0" || env.IXO_PLUGIN_AUTO_UPDATE === "false") return true;
-  return client === "claude" && truthy(env.DISABLE_AUTOUPDATER) && !truthy(env.FORCE_AUTOUPDATE_PLUGINS);
+  return client === "claude" && env.CLAUDE_CODE_ENTRYPOINT !== "claude-desktop" && truthy(env.DISABLE_AUTOUPDATER) && !truthy(env.FORCE_AUTOUPDATE_PLUGINS);
 }
 
 export const configDir = (client, env) =>
