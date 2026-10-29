@@ -1,16 +1,18 @@
 ---
 name: manage
-description: Look after the person's open asks on asks.world. Use when they ask "did anyone answer?", "is anything waiting for me?", want to read answers or reports, give the final OK, see a plan's progress, close an ask or plan and get the money back, see where a check request stands, or (IXO staff) decide check requests.
+description: Look after the person's open asks on asks.world. Use when they ask "did anyone answer?", "is anything waiting for me?", want to read answers or reports, give the final OK, see a plan's progress, or close an ask or plan and get the money back.
 ---
 
 # Your open asks
 
-Follow the `asks` skill's way of talking. **Network:** the `asks` skill's rule. Every tool call passes `network`: `mainnet` for real money,
-`testnet` for a dry run with practice money. If the person hasn't said, **Ask** once: "Real money, or a dry
-run with practice money?" Never switch mid-task. An ask is on the network it was posted on: if
+Follow the `asks` skill's way of talking and lead the way. **Network:** the `asks` skill's rule (ask
+once: "Real money, or a dry run with practice money?"; never switch mid-task). An ask is on the network it was posted on: if
 it isn't found there, look on the other and say so.
 
 ## What came in
+
+Lead with what's new: "<n> answers came in on '<title>'. Shall I read them to you?" With nothing
+waiting, say so and offer the next step ("Nothing yet. Want me to invite more people?").
 
 - **My asks:** `list_asks` with `poster` = their account; `collect_answer` for one ask's answers or
   reports (`wait_seconds` to wait); `check_verdict` for how an answer's checks went. **Say** it in a
@@ -51,12 +53,3 @@ details (a test account) go here, never in the pro ask itself. A closed ask's ro
   `confirm: true`. Only whoever posted it can close it.
 - **A plan:** `close_plan`, the same two steps.
 
-## Verification by a Zone
-
-- **Their own request:** `ask_for_check` with no `provider` says where it stands. **Say** one of:
-  "Still with IXO." / "Done: your page shows **Verified by IXO** with the date." / "IXO declined: <their note>."
-  Asking for one is the `profile` skill.
-- **IXO staff deciding requests:** `check_requests` lists who is waiting; read each person's page and
-  links, then `decide_check` to decline (with a short note to the person), preview first, `confirm: true` on
-  their yes. IXO checks are approved on the website's check requests page, signed in with their own
-  account, never with this tool. Nobody decides their own request.

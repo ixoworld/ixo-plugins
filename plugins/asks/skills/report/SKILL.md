@@ -5,9 +5,8 @@ description: Write and hand in a report on asks.world, as a pro reviewing an app
 
 # Write and hand in a report
 
-Follow the `asks` skill's way of talking. **Network:** the `asks` skill's rule. Every tool call passes `network`: `mainnet` for real money,
-`testnet` for a dry run with practice money. If the person hasn't said, **Ask** once: "Real money, or a dry
-run with practice money?" Never switch mid-task. A review is on the network it was posted on:
+Follow the `asks` skill's way of talking and lead the way. **Network:** the `asks` skill's rule (ask
+once: "Real money, or a dry run with practice money?"; never switch mid-task). A review is on the network it was posted on:
 if the person names one and it isn't found there, look on the other and say so ("real money" / "play
 money").
 
@@ -24,6 +23,8 @@ approval, or at once if the builder left it to the checks. One that fails is not
 ## 1. Do the review
 
 Connected first (`connect` skill, `reviews: true`). Invitations and applying: the `jobs` skill.
+**Lead:** "Let's do your review of <title> together: you try each scenario, I write it up. Ready for the
+first one?"
 **Do:** `read_ask` with the review's number: what is reviewed, the version, where to find it, the
 scenarios, extra sections, pay, deadline. Tell them in plain words. Then one scenario at a time:
 **Say:** "Scenario 1: <what>. Try it and tell me what happened. Take a screenshot of every problem you

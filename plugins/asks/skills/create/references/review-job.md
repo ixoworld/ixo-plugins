@@ -1,16 +1,14 @@
-# A pro ask: get an app or agent reviewed by verified pros
+# A pro ask: get an app or agent reviewed by LinkedIn-verified pros
 
-The person (the **builder**) wants real **pros** to try their app, website or agent. A **Zone**
-verified those pros and stands behind them; the builder picks the Zone first, and the pros
-invited come from its roster. Each pro hands in a **report**; **automated checks** read it against the
+The person (the **builder**) wants real **pros** to try their app, website or agent. The builder
+picks a **Zone** to run it first; any pro with a LinkedIn-verified page can be invited. Each pro hands in a **report**; **automated checks** read it against the
 pro ask's requirements; the builder's **final approval** pays it. Say "automated checks", never "the
 checker" or "the reviewer". <!-- plain-ok -->
 
 What is true (never promise more): a pro ask is by invitation only; a report that passes waits for the
 builder's final approval, which pays it; one that fails is not paid; there is no "needs changes" step
-and no payment in stages. **Verified by IXO · <date>** on a pro means IXO, as the Zone, verified
-their experience on that date; it is not a background check and ranks nobody higher. Never say
-"verified" alone, and never "IXO" bare: IXO the Zone verified the pros; Asky Pro Checker, the
+and no payment in stages. **LinkedIn verified** on a pro means only that they logged in to that
+LinkedIn account; it is not a background check and ranks nobody higher. Asky Pro Checker, the
 verifier, checks each report. On a private pro ask only the builder, the pro and the automated checks
 can read a report on the site.
 
@@ -23,8 +21,7 @@ on every call here.
 Connected first (`connect` skill, with `reviews: true` on `get_connect_link`).
 
 **The marketplace first. Do:** `list_marketplaces`. **Ask**, even when there is only one: "Which
-Zone should verify the pros? <each by name: what it verifies, how many pros it has>." The
-choice is who can be invited.
+Zone should run it? <each by name, in a line>."
 
 **Do:** `draft_call` with `kind: "review"`, `sponsor` (the chosen Zone's slug) and what the
 person already said. Its answer lists what is missing, each with the question to ask: ask those one at
@@ -70,7 +67,7 @@ checks, "Open this link and tap **Approve**, so reports wait for your final appr
 ## Invite pros
 
 **Do:** `find_pro` with the same `sponsor` (and `q` for what the pro ask needs, e.g. Android,
-payments). **Say** the three to five it suggests, each with "Verified by <Zone> · <date>", their
+payments). **Say** the three to five it suggests, each with "LinkedIn verified", their
 rate and their page; nothing ranks them, the person chooses. Want to browse? "All the pros are at
 https://pro.asks.world/pro/pros" (in the sandbox: https://pro.test.asks.world/pro/pros). `find_pro` with `handle` reads a pro
 they name by @name. Then the `invite` skill: `invite_to_call` with the chosen @names (or `"link"` once
