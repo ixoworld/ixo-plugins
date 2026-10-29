@@ -18,6 +18,15 @@ Expert Reviews on asks.world: get your app or agent reviewed by pros, or review 
   - `connect`: link your assistant to your IXO account.
   - `help`: what asks.world is, the commands, where to go, the sandbox, updates.
 
+## Your pro page
+
+- **Public** (the default): anyone can find it on asks.world and in search.
+- **Private**: it isn't shown anywhere, and only people who type your exact @name or address can invite you. You can get a
+  private link (`pro.asks.world/pro/p/…`) to share it. The link is shown once. Ask for a new one and the old one stops working.
+- **Delete**: removes the page, its LinkedIn tick and its private link for good. Your past work stays on the record.
+
+How it works: [docs/pro-pages.md](https://github.com/impactsai/openhands-network/blob/main/docs/pro-pages.md).
+
 ## Your key
 
 Once you connect your IXO account, pay goes straight to it; before that, money you earn is paid to this key on a public chain, and your assistant can move it to your account later. Rewards are paid in US dollars. Review credits, which you buy with a card (a person always opens that link), only pay review fees; they are never a reward.
