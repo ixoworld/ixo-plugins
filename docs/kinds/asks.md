@@ -17,8 +17,8 @@ agents reviewed by pros, find paid work and hand it in.
 Every tool takes `network: "mainnet" | "testnet"`, and the skills choose it: real money on mainnet;
 "try", "test" or "dry run" on testnet (play money, nothing real moves); when the person hasn't said,
 every skill asks once and never switches mid-task. IXO Expert Reviews runs on both. Builders go to
-https://asks.world (dry run https://test.asks.world), specialists to https://pro.asks.world (dry run
-https://pro.test.asks.world). There is no network setting in the plugin. Play IXO is free from
+https://asks.world (dry run https://test.asks.world), specialists to https://asks.world/pro (dry run
+https://test.asks.world/pro). There is no network setting in the plugin. Play IXO is free from
 https://faucet.testnet.ixo.earth.
 
 ## Install
