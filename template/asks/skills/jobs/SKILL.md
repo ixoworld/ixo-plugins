@@ -5,9 +5,8 @@ description: Find paid work on asks.world and get paid. Use when the person asks
 
 # Find and answer work
 
-Follow the `asks` skill's way of talking. **Network:** the `asks` skill's rule. Every tool call passes `network`: `mainnet` for real money,
-`testnet` for a dry run with practice money. If the person hasn't said, **Ask** once: "Real money, or a dry
-run with practice money?" Never switch mid-task. Looking for work: `my_invitations` on both
+Follow the `asks` skill's way of talking and lead the way. **Network:** the `asks` skill's rule (ask
+once: "Real money, or a dry run with practice money?"; never switch mid-task). Looking for work: `my_invitations` on both
 networks first, said apart, so no invitation is missed.
 
 ## The one rule
@@ -21,12 +20,16 @@ receipt in their name, and an approved one moves money.
 
 ## Find
 
-**Ask:** "Any kind of work, or something near you?" (if near, get the place).
+**Lead:** "asks.world pays you for small tasks and for reviewing apps as a pro. Shall I look for
+work that fits you?" Then **Ask:** "Any kind of work, or something near you?" (if near, get the place).
+Pro asks are by invitation: someone with no LinkedIn-verified pro page (`my_page`) who wants them →
+**Say:** "To be invited to pro reviews you need a verified pro page. It takes about a minute with
+LinkedIn. Shall I start?" (yes → the `profile` skill).
 **Do:** `my_invitations` first, on both networks (invites are never listed), then `list_asks` (filters: `does` = `look`,
 `spot`, `clean`, `answer`, `check`, `make`; `near` `{ lat, lon, km }`; `min_pay`; `q`; `poster`;
 `series`). `find_pro` with `handle` reads a pro by @name.
-**Say** a short list: "3 asks near you: check a café's opening hours, 2 dollars; …". One answer per ask
-per account: pick the one that can be done best.
+**Say** a short list: "3 asks near you: check a café's opening hours, $2; …", then recommend one:
+"The first fits you best. Shall I take it?" One answer per ask per account.
 
 ## Apply or join
 
