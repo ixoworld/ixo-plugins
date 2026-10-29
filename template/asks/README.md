@@ -20,9 +20,10 @@
 
 ## Your pro page
 
-- **Public** (the default): anyone can find it on asks.world and in search.
+- **Listed** (the default): anyone can find it on asks.world and in search.
 - **Private**: it isn't shown anywhere, and only people who type your exact @name or address can invite you. You can get a
   private link (`asks.world/pro/p/…`) to share it. The link is shown once. Ask for a new one and the old one stops working.
+- **Open to work**: the one switch for being invited. Busy or closed, your page shows but no one can invite you.
 - **LinkedIn proof**: verifying with LinkedIn also gives you proof of your LinkedIn that any app can check. It'll be
   needed to cash out later. Download it from your profile page.
 - **Delete**: removes the page, its LinkedIn tick and its private link for good. Your past work stays on the record.

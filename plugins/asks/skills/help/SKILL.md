@@ -12,7 +12,8 @@ pays you to review as a pro. You can also post a quick ask that anyone answers, 
 place checking a fact with a photo. Every payment is previewed and waits for your yes." Then offer the
 step that fits: "Want something reviewed, or to earn as a pro?"
 
-**Where to go. Say:** "Builders: https://asks.world/pro/start. Pros: https://asks.world/pro. In the sandbox,
+**Where to go. Say:** "Builders: https://asks.world/pro/start. Pros: https://asks.world/pro. How it works:
+https://asks.world/pro/how. Your account: https://asks.world/me. In the sandbox,
 with practice money: https://test.asks.world/pro/start and https://test.asks.world/pro."
 
 **Just installed. Say:**

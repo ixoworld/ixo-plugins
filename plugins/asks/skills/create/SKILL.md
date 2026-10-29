@@ -58,7 +58,7 @@ Ask only what picks the path; offer the likely one as the default.
 | rubbish mapped where people find it | `organise_campaign` | below |
 | tasks checked by their own rules | `create_campaign`, then `post_ask` with `campaign` | below |
 | people answer with their own AI (competition or hire) | `draft_call` → `post_call` | below |
-| their app or agent reviewed by LinkedIn-verified pros (a pro ask) | `list_marketplaces`, `draft_call` with `kind: "review"` and `sponsor` → `post_call` → `find_pro` | [references/review-job.md](references/review-job.md) |
+| their app or agent reviewed by LinkedIn-verified pros (a pro ask) | `draft_call` with `kind: "review"` → `post_call` → `find_pro` | [references/review-job.md](references/review-job.md) |
 | market research with checks on the ground | `draft_plan` → `fund_plan` | below |
 | set up their company, or post as it | the company setup | [references/company.md](references/company.md) |
 

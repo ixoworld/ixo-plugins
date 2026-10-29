@@ -21,7 +21,7 @@ Shall I start?").
 - Never write the connect link anywhere but to the person (not in an ask, an answer or a page).
 - Never ask for an address, and never say it's connected before the tool does. The link's one-time code
   means only the account that tapped it is connected.
-- They can disconnect on the same page any time; it ends by itself after thirty days. To stop acting
+- They can disconnect under Agents (https://asks.world/me/agents) any time; it ends by itself after thirty days. To stop acting
   for anyone: `connect_account` with `forget: true`, only if they ask.
 - Posting fails because the small allowance for network fees is used up → "Open this link, tap
   **Disconnect**, then **Connect** again. That renews it. Tell me when it's done."

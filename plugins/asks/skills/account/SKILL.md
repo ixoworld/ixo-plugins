@@ -16,7 +16,7 @@ money", wait for a yes, then the same call with `confirm` as the tool asks.
 ## Balance and earnings
 
 Read `my_status`; never repeat its lines about a "home address" or any setting. Say the balance in a
-line, then the one next step that fits, offered with a yes.
+line (they see it in Money: https://asks.world/me/money), then the one next step that fits, offered with a yes.
 
 - **Not connected:** "Connect your account so pay goes straight to you." (`connect` skill)
 - **Connected:** "Pay goes straight to your account." Only if your assistant's own account on this computer still holds

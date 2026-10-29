@@ -20,8 +20,8 @@ it isn't found there, look on the other and say so.
 - **An application:** read it to them in plain words; `decide_application` yes or no **only on their
   word**. Never decide for them.
 - To find someone: `find_pro` with `handle` (an @name or ixo1 address: what they do, their rate, whether they're LinkedIn verified). For a pro ask,
-  `find_pro` with its Zone (`sponsor`) suggests three to five LinkedIn-verified pros; the person
-  chooses. Don't know whom? **Say:** "Browse the pros at https://asks.world/pro/pros and tell me who
+  `find_pro` suggests three to five LinkedIn-verified pros; the person chooses. A refusal (not verified, not open to
+  work): say it in its words and offer someone else. Don't know whom? **Say:** "Browse the pros at https://asks.world/pro/pros and tell me who
   you'd like." (in the sandbox: https://test.asks.world/pro/pros).
 
 Once a pro is invited, talk with them in the ask's room: the `manage` skill, "Talking with a pro".
