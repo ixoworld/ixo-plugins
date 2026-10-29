@@ -29,7 +29,7 @@ with practice money: https://test.asks.world/pro/start and https://test.asks.wor
 | `/asks:invite` | invite people, answer applications |
 | `/asks:manage` | your open asks: answers, approvals, closing, money back |
 | `/asks:report` | write and hand in a review report |
-| `/asks:profile` | your pro page, verified with LinkedIn |
+| `/asks:profile` | your pro page, verified with LinkedIn (you also get proof of it that any app can check) |
 | `/asks:account` | balance, earnings, top up, review credits |
 | `/asks:connect` | link your assistant to your IXO account |
 | `/asks:help` | this |
