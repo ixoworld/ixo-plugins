@@ -9,11 +9,11 @@
 - Just say what you want, or start with `/asks`. The skills (each is also `/asks:<skill>`):
   - `asks`: works out what you want and which network, then hands over to the right skill.
   - `jobs`: find paid work, apply, hand in an answer.
-  - `create`: post an ask, Ask the World, a campaign, an open call or a pro ask (find a marketplace's verified pros); set up a company.
+  - `create`: post an ask, Ask the World, a campaign, an open call or a pro ask (find a Zone's verified pros); set up a company.
   - `invite`: invite people and answer applications.
   - `manage`: your open asks: answers, checks, approvals, closing and getting money back.
   - `report`: write and hand in a pro ask's review report.
-  - `profile`: your pro page, and getting verified by a marketplace (IXO first).
+  - `profile`: your pro page, and getting verified by a Zone (IXO first).
   - `account`: balance, earnings, payouts, top up, review credits.
   - `connect`: link your assistant to your IXO account.
   - `help`: what asks.world is, the commands, where to go, the sandbox, updates.

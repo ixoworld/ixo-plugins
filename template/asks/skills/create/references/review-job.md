@@ -1,16 +1,16 @@
 # A pro ask: get an app or agent reviewed by verified pros
 
-The person (the **builder**) wants real **pros** to try their app, website or agent. A **marketplace**
-verified those pros and stands behind them; the builder picks the marketplace first, and the pros
+The person (the **builder**) wants real **pros** to try their app, website or agent. A **Zone**
+verified those pros and stands behind them; the builder picks the Zone first, and the pros
 invited come from its roster. Each pro hands in a **report**; **automated checks** read it against the
 pro ask's requirements; the builder's **final approval** pays it. Say "automated checks", never "the
 checker" or "the reviewer". <!-- plain-ok -->
 
 What is true (never promise more): a pro ask is by invitation only; a report that passes waits for the
 builder's final approval, which pays it; one that fails is not paid; there is no "needs changes" step
-and no payment in stages. **Verified by IXO · <date>** on a pro means IXO, as the marketplace, verified
+and no payment in stages. **Verified by IXO · <date>** on a pro means IXO, as the Zone, verified
 their experience on that date; it is not a background check and ranks nobody higher. Never say
-"verified" alone, and never "IXO" bare: IXO the marketplace verified the pros; Asky Pro Checker, the
+"verified" alone, and never "IXO" bare: IXO the Zone verified the pros; Asky Pro Checker, the
 verifier, checks each report. On a private pro ask only the builder, the pro and the automated checks
 can read a report on the site.
 
@@ -23,10 +23,10 @@ on every call here.
 Connected first (`connect` skill, with `reviews: true` on `get_connect_link`).
 
 **The marketplace first. Do:** `list_marketplaces`. **Ask**, even when there is only one: "Which
-marketplace should verify the pros? <each by name: what it verifies, how many pros it has>." The
+Zone should verify the pros? <each by name: what it verifies, how many pros it has>." The
 choice is who can be invited.
 
-**Do:** `draft_call` with `kind: "review"`, `sponsor` (the chosen marketplace's slug) and what the
+**Do:** `draft_call` with `kind: "review"`, `sponsor` (the chosen Zone's slug) and what the
 person already said. Its answer lists what is missing, each with the question to ask: ask those one at
 a time and pass each answer back (never re-send what it took). Usually:
 
@@ -46,7 +46,7 @@ login, goes in the private note with each invitation. Only the invited pro sees 
 
 When nothing is missing, `draft_call` shows the whole pro ask and one sentence for its money. Read that
 sentence as it is and repeat its numbers exactly; never work one out yourself. **Say:** "This sets up
-the pro ask '<title>' of <name> <version> through <marketplace>: <n> scenarios, up to <count> reports,
+the pro ask '<title>' of <name> <version> through <Zone>: <n> scenarios, up to <count> reports,
 open for <days> days, by invitation. <the money sentence> <total> in all (<real / practice> money). Each
 report waits for your final approval before it's paid. Post it?" On yes: `post_call` with `confirm` =
 that total, again until it says everything is posted.
@@ -55,8 +55,8 @@ Over the limit one ask can hold? `draft_call` says so and names what fits. Never
 terms. **Say:** "That's more than one pro ask can hold. I can make it <what fits, e.g. 5 reports at $8
 each> instead. Which?" and draft again with their choice.
 
-If the marketplace is refused (paused, or it can't take pro asks here yet), nothing was posted: say why
-in the tool's plain words and offer another marketplace from `list_marketplaces`.
+If the Zone is refused (paused, or it can't take pro asks here yet), nothing was posted: say why
+in the tool's plain words and offer another Zone from `list_marketplaces`.
 
 If posting is refused with an offer to post from your assistant's own key instead, nothing happens
 until they agree. **Say:** "asks.world can't take this from your account here. Instead you'd first move
@@ -70,7 +70,7 @@ checks, "Open this link and tap **Approve**, so reports wait for your final appr
 ## Invite pros
 
 **Do:** `find_pro` with the same `sponsor` (and `q` for what the pro ask needs, e.g. Android,
-payments). **Say** the three to five it suggests, each with "Verified by <marketplace> · <date>", their
+payments). **Say** the three to five it suggests, each with "Verified by <Zone> · <date>", their
 rate and their page; nothing ranks them, the person chooses. Want to browse? "All the pros are at
 https://pro.asks.world/pro/pros" (in the sandbox: https://pro.test.asks.world/pro/pros). `find_pro` with `handle` reads a pro
 they name by @name. Then the `invite` skill: `invite_to_call` with the chosen @names (or `"link"` once
@@ -79,7 +79,7 @@ per private link) and the private note. **Say** for links: "Send each of these t
 ## A follow-up pro ask
 
 `read_ask` and `call_invites` on the old one, then `draft_call` with `kind: "review"`, the same
-marketplace, the same (or the failed) scenarios, the same pay, and the new version and link; invite the
+Zone, the same (or the failed) scenarios, the same pay, and the new version and link; invite the
 same pros after it posts.
 
 A follow-up stays on the network the first pro ask was on.
