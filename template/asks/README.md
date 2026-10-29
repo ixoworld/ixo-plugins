@@ -22,7 +22,7 @@
 
 - **Public** (the default): anyone can find it on asks.world and in search.
 - **Private**: it isn't shown anywhere, and only people who type your exact @name or address can invite you. You can get a
-  private link (`pro.asks.world/pro/p/…`) to share it. The link is shown once. Ask for a new one and the old one stops working.
+  private link (`asks.world/pro/p/…`) to share it. The link is shown once. Ask for a new one and the old one stops working.
 - **Delete**: removes the page, its LinkedIn tick and its private link for good. Your past work stays on the record.
 
 How it works: [docs/pro-pages.md](https://github.com/impactsai/openhands-network/blob/main/docs/pro-pages.md).

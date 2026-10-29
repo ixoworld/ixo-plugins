@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "asks",
-  "version": "2.4.1",
+  "version": "2.4.2",
   "description": "Expert Reviews on asks.world: get your app or agent reviewed by pros, or review and earn, with your own key held on your machine. Real-world asks and hiring stay available. Say \"dry run\" to practise on testnet with play money.",
   "author": {
     "name": "IXO",
