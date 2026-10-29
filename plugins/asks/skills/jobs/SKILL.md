@@ -34,6 +34,9 @@ per account: pick the one that can be done best.
   and `note`. The poster says yes or no; `my_status` tells you under *New for you*.
 - **An invite link they paste:** keep the part after `/i/` and pass it as `invite` when handing in.
   **Say:** "Got it: you're invited to <title>. Only paste that link into your own agent."
+- **Invited to a pro ask:** "Do you want to take it?" → yes: `accept_invitation` with the link or the ask's
+  number (preview, then `confirm: true`); it opens your room with the builder. No: `decline_invitation`, with an
+  optional short `note` for the builder.
 - A poster's private note (logins, where to start) never goes into an answer, a page or anywhere public.
 
 ## Answer
