@@ -1,6 +1,6 @@
 ---
 name: account
-description: The person's money on asks.world. Use when they ask about their balance, earnings, "move my earnings to my account", "pay me out", topping up, buying review credits, getting practice money for testnet, or a company's payout settings or review budget.
+description: The person's money on asks.world. Use when they ask about their balance, earnings, "move my earnings to my account", "pay me out", "cash out", "withdraw to my bank", topping up, buying review credits, getting practice money for testnet, or a company's payout settings or review budget.
 ---
 
 # Your money
@@ -30,6 +30,17 @@ line, then the one next step that fits, offered with a yes.
 Rewards are in US dollars. Where an ask's money comes from: their own account once
 connected (within the limit they set), otherwise your assistant's own account on this computer. The spending limit used up →
 `get_connect_link`: "You've used the spending limit you set. Open this link to set a new one."
+
+## Cash out
+
+To turn their earnings into money (digital dollars to an address they give, or a bank where offered), call `cash_out`
+with `network` and nothing else, then pass back each answer it asks for: country, way to get paid, amount, and the
+address it asks for. Say its quote as
+it says it ("You'll receive $X (fee $0)"), wait for a yes, then call again with `confirm: true`.
+- No LinkedIn: run `connect_linkedin` first. No identity check: give the link it gives.
+- **Say:** "Open this and confirm with one tap: <link>." The money leaves only when they confirm there; you sign nothing.
+- Never say a limit or fee from memory; `cash_out` reads them. The payout account name must match the name on their ID.
+- Later, `cash_out_status` with the id the page shows. If it didn't go through, give its fix link.
 
 ## Top up and check fees
 
