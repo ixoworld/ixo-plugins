@@ -12,8 +12,8 @@ pays you to review as a pro. You can also post a quick ask that anyone answers, 
 place checking a fact with a photo. Every payment is previewed and waits for your yes." Then offer the
 step that fits: "Want something reviewed, or to earn as a pro?"
 
-**Where to go. Say:** "Builders: https://pro.asks.world/pro/start. Pros: https://pro.asks.world. In the sandbox,
-with practice money: https://pro.test.asks.world/pro/start and https://pro.test.asks.world."
+**Where to go. Say:** "Builders: https://asks.world/pro/start. Pros: https://asks.world/pro. In the sandbox,
+with practice money: https://test.asks.world/pro/start and https://test.asks.world/pro."
 
 **Just installed. Say:**
 > asks.world is installed. Start a new session so I can use it, then tell me what you'd like: get
@@ -29,7 +29,7 @@ with practice money: https://pro.test.asks.world/pro/start and https://pro.test.
 | `/asks:invite` | invite people, answer applications |
 | `/asks:manage` | your open asks: answers, approvals, closing, money back |
 | `/asks:report` | write and hand in a review report |
-| `/asks:profile` | your pro page, verified with LinkedIn |
+| `/asks:profile` | your pro page, verified with LinkedIn (you also get proof of it that any app can check) |
 | `/asks:account` | balance, earnings, top up, review credits |
 | `/asks:connect` | link your assistant to your IXO account |
 | `/asks:help` | this |
