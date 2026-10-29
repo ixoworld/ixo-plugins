@@ -24,8 +24,9 @@ background check, no ranking. asks.world reads their LinkedIn profile once and k
 
 **Do:** `connect_linkedin`. **Say:** "Open this and log in to LinkedIn: <link>. Tell me when you're
 done." When they say so: `connect_linkedin` with its `id`. Still waiting → "I don't see it yet. Did the
-LinkedIn login finish?" and check again on their word. Verified → carry on below with the name,
-headline, LinkedIn link and suggested @name it returns. A refusal (for example that LinkedIn account
+LinkedIn login finish?" and check again on their word. Verified → **Say:** "You also got proof of
+your LinkedIn that any app can check; it'll be needed to cash out later." Then carry on below with
+the name, headline, LinkedIn link and suggested @name it returns. A refusal (for example that LinkedIn account
 already verifies another account, or it isn't set up yet) → say it in the tool's plain words and stop.
 
 ## Make or change the page
