@@ -1,13 +1,12 @@
 ---
 name: create
-description: Post something on asks.world. Use when the person wants to post an ask or a job, ask someone somewhere to go and look (Ask the World), get a fact checked that you can't see, run a cleanup or a campaign, post an open call or competition, get their app or agent reviewed by verified pros (a pro ask), research a market with checks on the ground, post as their company, or set their company up. "Dry run" or "try" means testnet.
+description: Post something on asks.world. Use when the person wants to post an ask or a job, ask someone somewhere to go and look (Ask the World), get a fact checked that you can't see, run a cleanup or a campaign, post an open call or competition, get their app or agent reviewed by LinkedIn-verified pros (a pro ask), research a market with checks on the ground, post as their company, or set their company up. "Dry run" or "try" means testnet.
 ---
 
 # Post an ask
 
-Follow the `asks` skill's way of talking. **Network:** the `asks` skill's rule. Every tool call passes `network`: `mainnet` for real money,
-`testnet` for a dry run with practice money. If the person hasn't said, **Ask** once: "Real money, or a dry
-run with practice money?" Never switch mid-task.
+Follow the `asks` skill's way of talking and lead the way. **Network:** the `asks` skill's rule (ask
+once: "Real money, or a dry run with practice money?"; never switch mid-task).
 
 **Money rule:** every spending tool is two calls. First without `confirm` (it previews the exact
 total); **Say** one plain line with the total and "real money" or "practice money"; on yes, the same call
@@ -23,6 +22,9 @@ says "Waiting for payment" or "Live as ask #N". In ChatGPT (the hosted server) t
 Posting needs a connected account for most things (`connect` skill). Rewards are in US dollars ("$8.00").
 Never ask how the pay is made up; use the tool's default and speak only in dollars. <!-- plain-ok -->
 
+**Lead:** if they haven't said what they want, **Say:** "asks.world gets real people to check, find
+out or review things for you. What would you like done?"
+
 ## First: a quick ask or a pro review?
 
 When they want feedback from people or a task done by people, and haven't said which kind, **Ask** one
@@ -31,12 +33,12 @@ out prices you don't have yet; the preview shows the total before anything is pa
 
 - Testing or reviewing an app, website, agent, design, or anything where the quality of feedback
   matters → recommend the pro review. **Say:** "Two ways to do this: a quick ask, where anyone on
-  asks.world answers, or a pro review, where verified pros try it carefully and write a proper report.
+  asks.world answers, or a pro review, where LinkedIn-verified pros try it carefully and write a proper report.
   For this, a pro review gets you a proper report from someone who does this for a living; a quick ask
   is a cheaper first signal. Which would you like?"
 - A simple real-world task (a photo of a place, a quick fact, a local check) → recommend the quick ask.
   **Say:** "A quick ask fits this: anyone nearby can answer. Or a pro review, if you want a careful
-  report from a verified pro. Quick ask?"
+  report from a LinkedIn-verified pro. Quick ask?"
 - Only when it fits (they named people, or it's for their team or customers): add "Or private, only
   people you invite."
 
@@ -56,7 +58,7 @@ Ask only what picks the path; offer the likely one as the default.
 | rubbish mapped where people find it | `organise_campaign` | below |
 | tasks checked by their own rules | `create_campaign`, then `post_ask` with `campaign` | below |
 | people answer with their own AI (competition or hire) | `draft_call` → `post_call` | below |
-| their app or agent reviewed by verified pros (a pro ask) | `list_marketplaces`, `draft_call` with `kind: "review"` and `sponsor` → `post_call` → `find_pro` | [references/review-job.md](references/review-job.md) |
+| their app or agent reviewed by LinkedIn-verified pros (a pro ask) | `list_marketplaces`, `draft_call` with `kind: "review"` and `sponsor` → `post_call` → `find_pro` | [references/review-job.md](references/review-job.md) |
 | market research with checks on the ground | `draft_plan` → `fund_plan` | below |
 | set up their company, or post as it | the company setup | [references/company.md](references/company.md) |
 

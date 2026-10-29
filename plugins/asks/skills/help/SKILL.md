@@ -7,21 +7,19 @@ description: Explain asks.world and its Expert Reviews in plain words: what it i
 
 Follow the `asks` skill's way of talking. Short, plain, no internals. This skill calls no tools.
 
-**What it is. Say:** "IXO Expert Reviews on asks.world: get your app or agent reviewed by real pros,
-verified by a Zone such as IXO, or review as a pro and earn. Say `/asks:create` to get something reviewed, or
-`/asks:jobs` to review and earn. You can also post a quick ask that anyone answers, like someone near a
-place checking a fact with a photo. It runs with real money, or as a dry run with practice money. Every
-payment is previewed and waits for your yes."
+**What it is. Say:** "asks.world gets your app or agent reviewed by real, LinkedIn-verified pros, or
+pays you to review as a pro. You can also post a quick ask that anyone answers, like someone near a
+place checking a fact with a photo. Every payment is previewed and waits for your yes." Then offer the
+step that fits: "Want something reviewed, or to earn as a pro?"
 
 **Where to go. Say:** "Builders: https://pro.asks.world/pro/start. Pros: https://pro.asks.world. In the sandbox,
 with practice money: https://pro.test.asks.world/pro/start and https://pro.test.asks.world."
 
 **Just installed. Say:**
-> asks.world is installed. Two steps:
-> 1. Start a new session, so I can use it.
-> 2. Say "connect my account", open the link I give you, sign in and tap **Connect**.
+> asks.world is installed. Start a new session so I can use it, then tell me what you'd like: get
+> something reviewed, or earn as a pro. I'll take it from there.
 
-**The commands** (they can also just say what they want):
+**The commands**, only when they ask for them (they can always just say what they want):
 
 | Command | For |
 | --- | --- |
@@ -31,7 +29,7 @@ with practice money: https://pro.test.asks.world/pro/start and https://pro.test.
 | `/asks:invite` | invite people, answer applications |
 | `/asks:manage` | your open asks: answers, approvals, closing, money back |
 | `/asks:report` | write and hand in a review report |
-| `/asks:profile` | your pro page, getting verified |
+| `/asks:profile` | your pro page, verified with LinkedIn |
 | `/asks:account` | balance, earnings, top up, review credits |
 | `/asks:connect` | link your assistant to your IXO account |
 | `/asks:help` | this |

@@ -5,9 +5,8 @@ description: The person's money on asks.world. Use when they ask about their bal
 
 # Your money
 
-Follow the `asks` skill's way of talking. **Network:** the `asks` skill's rule. Every tool call passes `network`: `mainnet` for real money,
-`testnet` for a dry run with practice money. If the person hasn't said, **Ask** once: "Real money, or a dry
-run with practice money?" Never switch mid-task. Show both when they ask about their money in
+Follow the `asks` skill's way of talking and lead the way. **Network:** the `asks` skill's rule (ask
+once: "Real money, or a dry run with practice money?"; never switch mid-task). Show both when they ask about their money in
 general: `my_status` with `mainnet` (real money) and with `testnet` (practice money), said apart. Anything
 that moves money runs on one network, named in the preview.
 
@@ -16,7 +15,8 @@ money", wait for a yes, then the same call with `confirm` as the tool asks.
 
 ## Balance and earnings
 
-Read `my_status`; never repeat its lines about a "home address" or any setting.
+Read `my_status`; never repeat its lines about a "home address" or any setting. Say the balance in a
+line, then the one next step that fits, offered with a yes.
 
 - **Not connected:** "Connect your account so pay goes straight to you." (`connect` skill)
 - **Connected:** "Pay goes straight to your account." Only if your assistant's own account on this computer still holds
