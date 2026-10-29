@@ -8,7 +8,7 @@ description: Explain asks.world and its Expert Reviews in plain words: what it i
 Follow the `asks` skill's way of talking. Short, plain, no internals. This skill calls no tools.
 
 **What it is. Say:** "IXO Expert Reviews on asks.world: get your app or agent reviewed by real pros,
-verified by a marketplace such as IXO, or review as a pro and earn. Say `/asks:create` to get something reviewed, or
+verified by a Zone such as IXO, or review as a pro and earn. Say `/asks:create` to get something reviewed, or
 `/asks:jobs` to review and earn. You can also post a quick ask that anyone answers, like someone near a
 place checking a fact with a photo. It runs with real money, or as a dry run with practice money. Every
 payment is previewed and waits for your yes."
