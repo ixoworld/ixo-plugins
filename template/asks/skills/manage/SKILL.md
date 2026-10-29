@@ -25,7 +25,7 @@ waiting, say so and offer the next step ("Nothing yet. Want me to invite more pe
 
 Answers they chose to approve wait on the website, never here. **Say:** "Open <the link>, under
 **Waiting for you to check**, read each and press **Send decision**." For a pro ask: "Open its page
-(https://pro.asks.world/pro/reviews/<number>; in the sandbox: https://pro.test.asks.world/pro/reviews/<number>),
+(https://asks.world/pro/reviews/<number>; in the sandbox: https://test.asks.world/pro/reviews/<number>),
 read the report and tap **Review for approval**: approve it there to pay it." To turn a report down,
 the same place: answer **No** to what it doesn't meet and press **Send decision**; a turned-down report
 is not paid, and one the automated checks failed is already not paid. No tool approves or turns down;

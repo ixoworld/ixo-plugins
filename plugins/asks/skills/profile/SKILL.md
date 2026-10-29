@@ -55,6 +55,6 @@ you when an invitation comes in. Want me to look for open work now?" (yes → th
 it can't be undone, and their past work stays on the record). **Ask:** "Delete your page? This can't be
 undone." Then `confirm: true` only on their yes.
 
-**A Zone's own staff:** `set_marketplace_page` writes the Zone's page on pro.asks.world (deck line,
+**A Zone's own staff:** `set_marketplace_page` writes the Zone's page on asks.world/pro (deck line,
 story). It previews the page as text; show it, and publish with `confirm: true` only on their yes. Only
 an approved Zone's account can.
