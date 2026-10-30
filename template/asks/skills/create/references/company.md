@@ -161,7 +161,7 @@ about 15 minutes." `<worker>` = `<company>-payouts`; `<rails>` = `usdc_base` (B)
    key**, then click the key to copy it. Don't paste it anywhere. Tell me when it's copied."
 4. After step 7: `stripe webhook_endpoints list` shows `<url>/webhooks/stripe-connect`, else
    `stripe webhook_endpoints create --url <url>/webhooks/stripe-connect --connect=true --enabled-events account.updated --enabled-events payout.failed --confirm | jq -r .secret | npx -y wrangler secret put STRIPE_CONNECT_WEBHOOK_SECRET --name <worker>`.
-5. **Say:** "Your Stripe balance pays people. Top it up in your Stripe dashboard."
+5. **Say:** "The money in your Stripe account pays people. Add to it in your Stripe dashboard."
 
 ### 9. Payout wallet and limits (ways B and C) <!-- plain-ok -->
 

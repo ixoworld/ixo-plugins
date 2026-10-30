@@ -24,8 +24,8 @@ background check, no ranking. asks.world reads their LinkedIn profile once and k
 
 **Do:** `connect_linkedin`. **Say:** "Open this and log in to LinkedIn: <link>. Tell me when you're
 done." When they say so: `connect_linkedin` with its `id`. Still waiting → "I don't see it yet. Did the
-LinkedIn login finish?" and check again on their word. Verified → **Say:** "You also got proof of
-your LinkedIn that any app can check; it'll be needed to cash out later." Then carry on below with
+LinkedIn login finish?" and check again on their word. Verified → **Say:** "You're verified. That's also
+what lets you cash out." Then carry on below with
 the name, headline, LinkedIn link and suggested @name it returns. A refusal (for example that LinkedIn account
 already verifies another account, or it isn't set up yet) → say it in the tool's plain words and stop.
 
@@ -35,7 +35,8 @@ Pre-fill from LinkedIn and what they already said; never ask for what you have. 
 I have <name>, <headline>. A few things LinkedIn doesn't say:" then **Ask** one at a time:
 1. What work do you take? (for a pro, the kinds of apps or agents they review)
 2. Your rate? (optional)
-3. Open to work now? Only an open page can be invited; busy or closed is shown, not invited.
+3. "Open to work now?" It's the one switch for being invited; otherwise the page shows but nobody can
+   invite them.
 4. One line about you. Offer: "Shall I write one from your headline?"
 5. Ask once, plainly: "Listed, so people can find you, or Private (only people you share it with can
    invite you)?" Listed is the default (`listed` left out or `true`); Private is `listed: false`. If they pick private, offer the link in one line: "Want a private link to share it?"
@@ -44,15 +45,14 @@ I have <name>, <headline>. A few things LinkedIn doesn't say:" then **Ask** one 
 Use the suggested @name unless they want another. Build it only from LinkedIn and their words; you
 cannot read LinkedIn or any signed-in site yourself, so never say you did.
 **Do:** `set_my_page` without `confirm` (it previews). **Say:** "Here's your page: <name>, <headline>,
-<what they take>, <rate>, <open to work or not>, <Listed or Private>. Publish it?" On yes, again with `confirm: true`. A private
-page: say "Your page is private: it isn't shown on asks.world, and only people who type your @name or
-address can invite you. Preview it at https://asks.world/me/page/preview (only you can see
-it), or ask me for your private link." If a link came back, give it in the tool's words, once (it can't be shown again;
-`share_link: "replace"` makes a new one and switches the old one off). A Listed page: **Say:** "You're verified and
-listed: <link>. Here's what happens next: builders can find you and invite you to pro asks, and I'll tell
-you when an invitation comes in. Want me to look for open work now?" (yes → the `jobs` skill).
+<what they take>, <rate>, <open to work or not>, <Listed or Private>. Publish it?" On yes, again with `confirm: true`. A Private
+page: **Say:** "Your page is private: only people you share it with can find you. See it as they will:
+https://asks.world/me/page/preview." If a private link (`asks.world/pro/p/…`) came back, give it once:
+it can't be shown again (`share_link: "replace"` makes a new one and switches the old one off). A Listed page: **Say:** "You're live: <link>.
+Builders can now invite you, and I'll tell you when they do. Want me to look for work now?" (yes → `jobs`).
+
 **Delete the page:** `remove_my_page` previews what goes (the page, its LinkedIn tick, its private link;
 it can't be undone, and their past work stays on the record). **Ask:** "Delete your page? This can't be
 undone." Then `confirm: true` only on their yes.
 
-Both switches are later on https://asks.world/me/page.
+They can change any of it later at https://asks.world/me/page/edit (LinkedIn's **Verify** is there too).

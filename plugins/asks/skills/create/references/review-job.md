@@ -54,7 +54,8 @@ until they agree. **Say:** "asks.world can't take this from your account here. I
 alone and you don't give final approval. Do that?" Only on yes: give the one way to move the money,
 wait until `my_status` shows it, then post with `plain_key: true`. Never choose it silently.
 
-**After posting, Say**, one step at a time: the pro ask's page link; if there's a link to turn on their
+**After posting, Say**, one step at a time: its page, only theirs
+(https://asks.world/me/pro-asks/<number>), where reports come in and are approved; if there's a link to turn on their
 checks, "Open this link and tap **Approve**, so reports wait for your final approval."
 
 ## Invite pros

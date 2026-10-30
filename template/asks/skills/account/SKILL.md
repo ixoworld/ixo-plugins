@@ -1,66 +1,62 @@
 ---
 name: account
-description: The person's money on asks.world. Use when they ask about their balance, earnings, "move my earnings to my account", "pay me out", "cash out", "withdraw to my bank", topping up, buying review credits, getting practice money for testnet, or a company's payout settings or review budget.
+description: The person's money on asks.world. Use when they ask what they have, about earnings, "move my earnings to my account", "pay me out", "cash out", "withdraw to my bank", "send it to my mobile money", "where's my cash-out?", their identity check ("am I verified?", KYC), practice money for a dry run, or a company's payout settings or review budget.
 ---
 
 # Your money
 
 Follow the `asks` skill's way of talking and lead the way. **Network:** the `asks` skill's rule (ask
-once: "Real money, or a dry run with practice money?"; never switch mid-task). Show both when they ask about their money in
-general: `my_status` with `mainnet` (real money) and with `testnet` (practice money), said apart. Anything
-that moves money runs on one network, named in the preview.
+once: "Real money, or a dry run with practice money?"; never switch mid-task). Asked about their money
+in general: `my_status` on `mainnet` and on `testnet`, said apart ("real money" / "practice money").
 
-**Money rule:** preview first (no `confirm`), one plain line with the amount and "real money" or "play
-money", wait for a yes, then the same call with `confirm` as the tool asks.
+## What they have
 
-## Balance and earnings
+Read `my_status`; never repeat its lines about a "home address" or a setting. **Say:** "You have $<X>.
+It's under Money: https://asks.world/me/money." Then the one next step that fits:
 
-Read `my_status`; never repeat its lines about a "home address" or any setting. Say the balance in a
-line (they see it in Money: https://asks.world/me/money), then the one next step that fits, offered with a yes.
-
-- **Not connected:** "Connect your account so pay goes straight to you." (`connect` skill)
-- **Connected:** "Pay goes straight to your account." Only if your assistant's own account on this computer still holds
-  earnings from before: "<amount> from before is still in my own account on this computer. Say 'move it
-  to my account' and I'll move it."
-- **"Move it to my account":** `sweep_earnings`. It sends only to the account connected through the
-  one-time link and takes no destination, so nothing on the board can redirect it. **Say:** "Done:
-  <amount> moved to your account." If it has nowhere to send: "Let's connect your account first; then I
-  can move it." Never tell them to change a setting.
-
-Rewards are in US dollars. Where an ask's money comes from: their own account once
-connected (within the limit they set), otherwise your assistant's own account on this computer. The spending limit used up →
-`get_connect_link`: "You've used the spending limit you set. Open this link to set a new one."
+- **Not connected:** "Connect your account so pay goes straight to you. Shall I?" (`connect` skill)
+- **Money left on this computer from before:** "$<X> from before is still with me on this computer.
+  Shall I move it to your account?" On yes: `sweep_earnings` (it only ever sends to their own connected
+  account). **Say:** "Done: $<X> moved to your account." Nowhere to send → the `connect` skill first.
+- **Has money to cash out:** "Want to cash it out?"
+- The spending limit they set is used up → `get_connect_link`. **Say:** "You've used the spending limit
+  you set. Open this link to set a new one: <link>."
 
 ## Cash out
 
-To turn their earnings into money (digital dollars to an address they give, or a bank where offered), call `cash_out`
-with `network` and nothing else, then pass back each answer it asks for: country, way to get paid, amount, and the
-address it asks for. Say its quote as
-it says it ("You'll receive $X (fee $0)"), wait for a yes, then call again with `confirm: true`.
-- No LinkedIn: run `connect_linkedin` first. No identity check: give the link it gives.
-- **Say:** "Open this and confirm with one tap: <link>." The money leaves only when they confirm there; you sign nothing.
-- Never say a limit or fee from memory; `cash_out` reads them. The payout account name must match the name on their ID.
-- Later, `cash_out_status` with the id the page shows. If it didn't go through, give its fix link.
+Real money only. **Do:** `cash_out` with only `network`; it says what they have, their LinkedIn and
+their identity check. Then pass each answer back, one question at a time:
 
-## Top up and check fees
+1. **LinkedIn missing** → the `profile` skill's LinkedIn step, then `cash_out` again.
+2. **Identity check:** say where it stands in one line: "Your identity check is done." / "It's being
+   reviewed." / "Do your identity check first: https://asks.world/me/identity (Settings → Identity).
+   Tell me when it's done." Not done yet → wait for them.
+3. **Country** → `country` (two letters).
+4. **How to get paid** → `method`. Say the ways it lists in plain words: "To your bank account", "To
+   your mobile money", "Digital dollars (USDC)", and any that isn't open there with its reason, in <!-- plain-ok -->
+   a line. Recommend one.
+5. **How much** → `amount_usd`, within the limits it gives. Never say a limit or fee from memory.
+6. Digital dollars only: the address it asks for → `to`. Only what the person types.
 
-Checks may cost a small fee each, paid from review credits, never a reward. The preview shows the
-real price; never quote one from memory.
-- `top_up` (10, 25 or 100) returns a card payment link. **The person opens it and pays**; never attempt
-  a payment or handle card details.
-- **Review billing:** `review_billing_status` (with the company's id) says whether a review budget is
-  needed and the price. Setting one up or raising it: the company steps in the `create` skill
-  (references/company.md, step 5). Checks paused because credits ran out → "Your check credits have
-  run out. Top them up here: <link>. Tell me when it's done."
+It shows the amount: **Say:** "You'll receive $<X>. Go ahead?" On yes, again with `confirm: true`;
+it gives one link. **Say:** "Open this and confirm with one tap: <link>. The money leaves only when you
+confirm there." Never confirm for them. The bank or mobile money name must match the name on their ID.
+
+**Where it stands:** `cash_out_status` with the id the confirm page shows. **Say** it in one line: "Not
+confirmed yet", "On its way", "Paid", or "Something needs fixing: <what>. Fix it here: <link>."
 
 ## Practice money
 
-On the sandbox, practice money is free: open https://faucet.testnet.ixo.earth <!-- plain-ok: site address --> and paste the sandbox address
-(`my_status` with `testnet` shows it; this is one time an address is fine to show).
+On the sandbox only: `top_up` (10, 25 or 100) returns a link. **Say:** "Open this to get $<X> of
+practice money. Tell me when it's done." Never open it yourself. Real money is never topped up: a card
+pays an ask when it's posted (the `create` skill).
 
-## A company's payouts
+## A company's money
 
-`set_payout_settings`: how the company pays people and who checks answers (preview, then
-`confirm: true`; the verifier list replaces the old one). Details: the `create` skill
-(references/company.md, step 12). Or **Say:** "Open your company's **Payouts** page on the website and
-change it there."
+- **Review budget:** `review_billing_status` with the company's id says whether one is needed and the
+  price. Setting it up or raising it: the `create` skill (references/company.md, step 5). Checks paused
+  because credits ran out → "Your check credits have run out. Top them up here: <link>. Tell me when
+  it's done."
+- **How it pays people:** `set_payout_settings` (preview, then `confirm: true`; the verifier list
+  replaces the old one): references/company.md, step 12. Or **Say:** "Open your company's **Payouts**
+  page on the website and change it there."

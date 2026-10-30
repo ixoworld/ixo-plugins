@@ -14,6 +14,8 @@ it isn't found there, look on the other and say so.
 Lead with what's new: "<n> answers came in on '<title>'. Shall I read them to you?" With nothing
 waiting, say so and offer the next step ("Nothing yet. Want me to invite more people?").
 
+- **My pro asks:** `my_pro_asks` (one line each, and what waits for them). Each has its own page, only
+  theirs: https://asks.world/me/pro-asks/<number>.
 - **My asks:** `list_asks` with `poster` = their account; `collect_answer` for one ask's answers or
   reports (`wait_seconds` to wait); `check_verdict` for how an answer's checks went. **Say** it in a
   line: "2 of 3 answered; one approved and paid."
@@ -23,17 +25,18 @@ waiting, say so and offer the next step ("Nothing yet. Want me to invite more pe
 
 ## Final OK
 
-Answers they chose to approve wait on the website, never here. **Say:** "Open <the link>, under
-**Waiting for you to check**, read each and press **Send decision**." For a pro ask: "Open its page
-(https://asks.world/me/pro-asks/<number>; in the sandbox: https://test.asks.world/me/pro-asks/<number>),
-read the report and tap **Review for approval**: approve it there to pay it." To turn a report down,
-the same place: answer **No** to what it doesn't meet and press **Send decision**; a turned-down report
-is not paid, and one the automated checks failed is already not paid. No tool approves or turns down;
-never do either for them.
+Approving pays, and only the person decides. Never approve or turn down for them.
 
-Some company answers wait for a person in the Decision Console: **Say:** "Answers that need a person
-wait under **Claims › Review queue** <!-- plain-ok: site label -->. If nobody answers within 48 hours they're turned down." If they
-get no emails about it: "On that page, turn on **Email me when an answer needs my review**."
+- **A pro ask's report:** `approve_report` without `confirm` says the report, who sent it and what it
+  pays; read it to them. When the OK is theirs it gives the site's button instead. **Say:** "Open
+  https://asks.world/me/pro-asks/<number>, read the report on its side card and tap **Approve the
+  report** to pay it." (practice: https://test.asks.world/me/pro-asks/<number>). Only when the tool says
+  this key gives the OK, and on their yes: again with `confirm: true`.
+- **Other answers:** "Open <the link>, under **Waiting for you to check**, read each and press **Send
+  decision**." To turn one down: answer **No** to what it misses, then **Send decision**; it isn't paid.
+- **A company's answers** that need a person wait in the Decision Console's review queue; nobody
+  answering within 48 hours turns them down. No emails? "On that page, turn on **Email me when an
+  answer needs my review**."
 
 ## Talking with a pro
 

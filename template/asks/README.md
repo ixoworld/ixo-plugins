@@ -13,8 +13,8 @@
   - `invite`: invite people and answer applications.
   - `manage`: your open asks: answers, approvals, closing and getting money back.
   - `report`: write and hand in a pro ask's review report.
-  - `profile`: your pro page, verified with LinkedIn.
-  - `account`: balance, earnings, payouts, top up, review credits.
+  - `profile`: your pro page: LinkedIn-verified, Listed or Private, preview, delete.
+  - `account`: your money, cash out (bank, mobile money or digital dollars, confirmed in your browser), the identity check, practice money.
   - `connect`: link your assistant to your IXO account.
   - `help`: what asks.world is, the commands, where to go, the sandbox, updates.
 
@@ -24,8 +24,8 @@
 - **Private**: it isn't shown anywhere, and only people who type your exact @name or address can invite you. You can get a
   private link (`asks.world/pro/p/…`) to share it. The link is shown once. Ask for a new one and the old one stops working.
 - **Open to work**: the one switch for being invited. Busy or closed, your page shows but no one can invite you.
-- **LinkedIn proof**: verifying with LinkedIn also gives you proof of your LinkedIn that any app can check. It'll be
-  needed to cash out later. Download it from your profile page.
+- **LinkedIn proof**: verifying with LinkedIn also gives you proof of your LinkedIn that any app can check. It's
+  needed to cash out. Download it from your profile page.
 - **Delete**: removes the page, its LinkedIn tick and its private link for good. Your past work stays on the record.
 
 How it works: [docs/pro-pages.md](https://github.com/impactsai/openhands-network/blob/main/docs/pro-pages.md).
