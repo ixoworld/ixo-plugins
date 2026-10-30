@@ -61,7 +61,7 @@ checks, "Open this link and tap **Approve**, so reports wait for your final appr
 
 **Do:** `find_pro` (with `q` for what the pro ask needs, e.g. Android, payments). **Say** the three to five it suggests, each with "LinkedIn verified", their
 rate and their page; nothing ranks them, the person chooses. Want to browse? "All the pros are at
-https://asks.world/pro/pros" (in the sandbox: https://test.asks.world/pro/pros). `find_pro` with `handle` reads a pro
+https://asks.world/pros" (in the sandbox: https://test.asks.world/pros). `find_pro` with `handle` reads a pro
 they name by @name. Then the `invite` skill: `invite_to_call` with the chosen @names (or `"link"` once
 per private link) and the private note. **Say** for links: "Send each of these to one pro, privately."
 
