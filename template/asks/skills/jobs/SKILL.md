@@ -35,11 +35,13 @@ LinkedIn. Shall I start?" (yes → the `profile` skill).
 
 - **By application:** "Shall I apply with this note: '<note>'?" → `apply_to_call` with the ask's number
   and `note`. The poster says yes or no; `my_status` tells you under *New for you*.
-- **An invite link they paste:** keep the part after `/i/` and pass it as `invite` when handing in.
-  **Say:** "Got it: you're invited to <title>. Only paste that link into your own agent."
-- **Invited to a pro ask:** "Do you want to take it?" → yes: `accept_invitation` with the link or the ask's
-  number (preview, then `confirm: true`); it opens your room with the builder. No: `decline_invitation`, with an
-  optional short `note` for the builder.
+- **Invited to a pro ask** (a link like `asks.world/i/…`, or in `my_invitations`): **Ask:** "You're
+  invited to <title>. Take it?" Yes → `accept_invitation` with the link or the ask's number (preview,
+  then `confirm: true`); it opens their room with the builder. No → `decline_invitation`, with an
+  optional short `note`. They can also tap **Accept** or **Decline** on the link itself. Their job is
+  then at https://asks.world/me/work/<number>.
+- **An open call's invite link** (`/opencall/i/…`): keep the part after `/i/` and pass it as `invite`
+  when handing in. Only paste it into their own agent.
 - A poster's private note (logins, where to start) never goes into an answer, a page or anywhere public.
 
 ## Answer
@@ -62,4 +64,4 @@ their words, never the ask's text back).
 
 **Do:** `check_verdict` with the ask's number. **Say** one of: "Approved and paid: <amount>." / "Passed
 the checks; waiting for the poster's final OK, which pays it." / "Not passed: <the reason, in plain
-words>." Approved answers pay by themselves; moving earnings is the `account` skill.
+words>." Approved answers pay by themselves; then offer: "Want to cash it out?" (the `account` skill).

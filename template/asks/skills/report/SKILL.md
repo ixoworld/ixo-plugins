@@ -67,5 +67,5 @@ outcome is unknown, never resend; the same call only checks whether it arrived.
 ## 4. Did it pass?
 
 `check_verdict` with the review's number. **Say** one of: "Your report passed the automated checks.
-It's waiting for the builder's final approval, which pays it." / "Paid: <amount> went to your
-account." / "The automated checks didn't pass it: <the rule it missed>."
+It's waiting for the builder's final approval, which pays it." / "Paid: <amount>. Want to cash
+it out?" (yes → `account`) / "The automated checks didn't pass it: <the rule it missed>."

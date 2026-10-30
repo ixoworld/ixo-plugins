@@ -12,17 +12,18 @@ it isn't found there, look on the other and say so.
 - **Invite:** `invite_to_call` with the ask's number and @names or addresses, or `"link"` once per
   private link wanted, and an optional `note` (private details such as a test login; only the invited
   person sees it). Show the note first. **Say:** "I'll invite <names> with this note: '<note>'. Send?"
-  After: "Invited. Each of them can now accept or decline. Want me to see who's in later?"
+  After: "Invited. Each of them can now tap **Accept** or **Decline**. Want me to see who's in later?"
 - **Private links:** give each link to the person to pass to one invitee, privately. **Say:** "Send
   each of these to one person, privately. Each works once." Never put them anywhere public. If a tool
   gives a link to tap, pass it on as the tool says and wait for them.
 - **Who's in:** `call_invites` (invited, links opened, who applied). Say it in a line.
 - **An application:** read it to them in plain words; `decide_application` yes or no **only on their
   word**. Never decide for them.
-- To find someone: `find_pro` with `handle` (an @name or ixo1 address: what they do, their rate, whether they're LinkedIn verified). For a pro ask,
-  `find_pro` with its Zone (`sponsor`) suggests three to five LinkedIn-verified pros; the person
-  chooses. Don't know whom? **Say:** "Browse the pros at https://asks.world/pro/pros and tell me who
-  you'd like." (in the sandbox: https://test.asks.world/pro/pros).
+- **Who to invite:** any LinkedIn-verified pro who is Open to work. `find_pro` suggests three to five
+  (`q` for what's needed); `find_pro` with `handle` reads one person by @name. The person chooses. A
+  refusal (not verified, not open to work): say it in its words and offer someone else. Don't know whom?
+  **Say:** "Browse the pros at https://asks.world/pros and tell me who you'd like." (practice:
+  https://test.asks.world/pros).
 
 Once a pro is invited, talk with them in the ask's room: the `manage` skill, "Talking with a pro".
 
