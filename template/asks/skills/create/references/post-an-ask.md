@@ -49,7 +49,7 @@ it's paid.> OK?" On yes, again with `confirm` = that exact total. Give them the 
 on your checks." Answers then wait on the website under **Waiting for you to check**. Never sign,
 approve or turn down anything for them.
 
-**Refusals:** "needs <amount> more" → the `account` skill (or connect first); "the small allowance for
+**Refusals:** "needs <amount> more" → offer to pay by card (`pay_by: "card"`), or connect first; "the small allowance for
 network fees is used up" → **Say:** "Open this link, tap **Disconnect**, then **Connect** again. That
 renews it. Tell me when it's done." (`get_connect_link`, then wait as the `connect` skill says, then try
-again). A verifier that takes its fee when you post, with no credits → `top_up` (the `account` skill).
+again). A verifier that takes its fee when you post, with no credits → the review budget ([company.md](company.md), step 5).
