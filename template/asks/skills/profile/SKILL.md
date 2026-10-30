@@ -47,7 +47,7 @@ cannot read LinkedIn or any signed-in site yourself, so never say you did.
 **Do:** `set_my_page` without `confirm` (it previews). **Say:** "Here's your page: <name>, <headline>,
 <what they take>, <rate>, <public or private>. Publish it?" On yes, again with `confirm: true`. A private
 page: say "Your page is private: it isn't shown on asks.world, and only people who type your @name or
-address can invite you. Preview it at https://asks.world/pro/profile/preview (only you can see
+address can invite you. Preview it at https://asks.world/me/page/preview (only you can see
 it), or ask me for your private link." If a link came back, give it in the tool's words, once (it can't be shown again;
 `share_link: "replace"` makes a new one and switches the old one off). A public page: **Say:** "You're verified and
 listed: <link>. Here's what happens next: builders can find you and invite you to pro asks, and I'll tell
@@ -56,6 +56,6 @@ you when an invitation comes in. Want me to look for open work now?" (yes → th
 it can't be undone, and their past work stays on the record). **Ask:** "Delete your page? This can't be
 undone." Then `confirm: true` only on their yes.
 
-**A Zone's own staff:** `set_marketplace_page` writes the Zone's page on asks.world/pro (deck line,
+**A Zone's own staff:** `set_marketplace_page` writes the Zone's page on asks.world/pros (deck line,
 story). It previews the page as text; show it, and publish with `confirm: true` only on their yes. Only
 an approved Zone's account can.
