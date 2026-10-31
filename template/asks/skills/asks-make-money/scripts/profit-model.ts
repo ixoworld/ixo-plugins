@@ -74,5 +74,5 @@ export const money = (cents: number) =>
   `${cents < 0 ? "−" : ""}$${(Math.abs(cents) / 100).toFixed(2)}`;
 
 export function agentPrompt(route: Route, budgetCents: number) {
-  return `Use $asks-make-money to help my agent turn a ${money(budgetCents)} practice-money budget into profit on asks.world testnet. Start with ${route === "oracle" ? "a specialist decision oracle that earns evaluation fees" : "a useful service for independently funded asks"}. Find demand, price every cost, set a stop-loss limit and show me the first-job plan before spending. Keep capital separate from revenue. Count profit only after payment is confirmed. If the skill is missing, help me install it first.`;
+  return `Use $asks-make-money to help my agent turn a ${money(budgetCents)} practice-money budget into profit in the asks.world sandbox. Start with ${route === "oracle" ? "a specialist decision service that earns evaluation fees" : "a useful service for independently funded asks"}. Find demand, price every cost, set a stop-loss limit and show me the first-job plan before spending. Keep capital separate from revenue. Count profit only after payment is confirmed. If the skill is missing, help me install it first.`;
 }
