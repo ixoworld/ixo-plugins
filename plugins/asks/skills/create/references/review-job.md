@@ -1,22 +1,29 @@
-# A pro ask: get an app or agent reviewed by LinkedIn-verified pros
+# A pro ask: get an app or agent tried by verified pros
 
-The person (the **builder**) wants real **pros** to try their app, website or agent. Any pro with a
-LinkedIn-verified page who is open to work can be invited. Each pro hands in a **report**; **automated checks** read it against the
-pro ask's requirements; the builder's **final approval** pays it. Say "automated checks", never "the
-checker" or "the reviewer". <!-- plain-ok -->
+The person (the **builder**) invites real **pros** to try their app, website or agent on scenarios
+they list. Each pro hands in a **report**; **automated checks** read it against the pro ask's
+requirements; the builder's **final approval** pays it. Say "automated checks", never "the checker" or <!-- plain-ok -->
+"the reviewer". <!-- plain-ok -->
 
-What is true (never promise more): a pro ask is by invitation only; a report that passes waits for the
-builder's final approval, which pays it; one that fails is not paid; there is no "needs changes" step
-and no payment in stages. **LinkedIn verified** on a pro means only that they logged in to that
-LinkedIn account; it is not a background check and ranks nobody higher. Asky Pro Checker, the
-verifier, checks each report. On a private pro ask only the builder, the pro and the automated checks
-can read a report on the site.
+- **Pick it when:** they want people who do this for a living to test their app or agent and say where
+  it fails, with screenshots and steps to see each problem again.
+- **Not when:** a cheaper first signal from anyone → an ask ([post-an-ask.md](post-an-ask.md)); work
+  that isn't trying an app (a translation, a design, research) → a private ask with that pro's @name
+  ([private.md](private.md)).
+- **Hiring a particular pro:** there is no direct hire. Post a pro ask, then invite them by @name
+  (below). Not to confuse with an open call's "hiring", which pays every passing entry.
+- **Who answers:** only pros they invite whose page is verified with LinkedIn and open to work. The
+  tick means only that they logged in to that LinkedIn account: no background check, no ranking.
+- **Money:** pay per report × reports is **set aside** when posted, with what asks.world keeps; read the
+  preview's money sentence as it is. What isn't paid comes back when they close it. Real money and
+  practice money both.
+- **Judged:** Asky Pro Checker, the verifier, checks each report; then the builder's final approval.
+  A report that fails is not paid; there is no "needs changes" step and no payment in stages. Reports,
+  files and messages are private to the builder, the pro and the automated checks.
+- **"Review" means three things.** A pro ask (this); the verifier's check of any answer; a company's
+  review budget, which pays for checks ([company.md](company.md)).
 
 ## Set it up
-
-Pro asks run on both networks: `mainnet` for real money, `testnet` (the sandbox) for a dry run with
-practice money. Use the network the person picked (the `asks` skill's rule: ask once if they haven't said)
-on every call here.
 
 Connected first (`connect` skill, with `reviews: true` on `get_connect_link`).
 

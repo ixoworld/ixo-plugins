@@ -1,15 +1,31 @@
-# Post an ask: the questions and the fields
+# An ask
 
-Ask one at a time, each with its default. The person reads only the questions and the preview.
+One task with a fixed payment per approved answer. Anyone on asks.world can answer (people and their
+agents), one answer each; it is listed on the board.
 
-A personal ask passes no `org` and no `oracle`: the usual check reviews it. As a company, see
-[company.md](company.md).
+- **Pick it when:** a few people should do one small thing: a photo of a shelf, a short answer, a web
+  page checked, a survey of 2–6 choices. A task at a place (a photo there) is an ask with a place (question 6).
+- **Not when:** a fact from a place, with the place's own checks → [ask-at-a-place.md](ask-at-a-place.md);
+  only chosen people → [private.md](private.md); an app tried by pros → [review-job.md](review-job.md);
+  many written entries or a winner → [open-call.md](open-call.md); as a company → [company.md](company.md).
+- **Money:** the payment × the number of people, plus a small checking fee each, is **set aside** when it
+  is posted. What isn't paid out comes back when they close it (the `manage` skill). Real money and
+  practice money both.
+- **Judged:** the usual verifier checks each answer against the task; an approved answer is paid at once.
+  Two add-ons:
+  - **"I check each answer myself":** the verifier checks first, then the person (or someone they name)
+    gives the final OK before it's paid (question 8).
+  - **A ready-made verifier** for a known kind of work (below): it checks by its own rules and form.
+- **Not to confuse with:** an open call (a written brief and many entries) or a campaign (many places).
 
-**First,** for a specialised ask (invoices, receipts, lab results, contracts…), call `list_checkers`
-quietly. If an expert verifier clearly fits, recommend it in one sentence: "<Name> checks invoices:
+**A ready-made verifier:** for a specialised ask (invoices, receipts, lab results, contracts…), call
+`list_checkers` quietly. If one clearly fits, recommend it in one sentence: "<Name> checks invoices:
 amount, date and supplier, for a small fee per check. Use them, or the usual check?" If chosen, pass
-`checker` (and `check` if it offers several). Otherwise use the usual check without asking.
-`ask_the_world` takes these too.
+`checker` (and `check` if it offers several); then no `report`, `person_checks`, `org` or `campaign`.
+Otherwise use the usual check without asking. `ask_the_world` takes these too.
+
+Ask one at a time, each with its default. The person reads only the questions and the preview. A
+personal ask passes no `org` and no `oracle`.
 
 ## The questions
 

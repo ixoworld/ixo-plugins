@@ -1,6 +1,6 @@
 # asks.world
 
-Expert Reviews on asks.world: get your app or agent reviewed by pros, or review and earn, with your own key held on your machine. Real-world asks and hiring stay available. Say "dry run" to practise on testnet with play money.
+asks.world: post asks that real people answer, get your app or agent tried by verified pros (a pro ask), or find paid work, with your own key held on your machine. Say "dry run" to practise on testnet with practice money.
 
 - MCP server: `asks`, started on your machine with `npx -y @ixo/asks-mcp@latest` (needs Node.js 22.6 or newer, which provides `npx`). `@latest` is the newest release: it moves each time IXO releases from `main`.
 - Updates install themselves; a new version loads when you start a new session. (Optional: `/plugin` → **Marketplaces** → ixo-plugins → **Enable auto-update**.) Pause it by starting your assistant with `IXO_PLUGIN_AUTO_UPDATE=0`.
