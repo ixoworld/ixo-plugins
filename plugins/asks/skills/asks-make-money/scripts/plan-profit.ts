@@ -15,7 +15,7 @@ const options = new Map<string, string>();
 for (let i = 0; i < args.length; i += 2) {
   const key = args[i]?.replace(/^--/, "");
   const value = args[i + 1];
-  if (!key || !allowed.has(key) || value === undefined || options.has(key))
+  if (!args[i]?.startsWith("--") || !key || !allowed.has(key) || value === undefined || options.has(key))
     throw new Error("Use each supported --option once, followed by a value.");
   options.set(key, value);
 }
@@ -40,6 +40,9 @@ function cents(key: string, fallback?: number) {
 const route = options.get("route");
 if (route !== "service" && route !== "oracle")
   throw new Error("--route must be service or oracle.");
+const sharePercent = numeric("share-percent", 0);
+if (sharePercent > 100 || Math.abs(sharePercent * 100 - Math.round(sharePercent * 100)) > 1e-7)
+  throw new Error("--share-percent must be between 0 and 100 with at most two decimal places.");
 const input: Scenario = {
   route,
   budgetCents: cents("budget"),
@@ -48,7 +51,7 @@ const input: Scenario = {
   unitCostCents: cents("unit-cost"),
   setupCents: cents("setup", 0),
   evaluationFeeCents: cents("evaluation-fee", 0),
-  shareBps: Math.round(numeric("share-percent", 0) * 100),
+  shareBps: Math.round(sharePercent * 100),
 };
 const result = forecast(input);
 process.stdout.write(

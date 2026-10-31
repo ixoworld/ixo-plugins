@@ -43,3 +43,8 @@ test('negative contribution is not ready', () => {
 for (const [name, overrides] of Object.entries({ 'unknown route': { route: 'other' }, 'fractional order count': { orders: '1.5' }, 'malformed price': { price: 'oops' }, 'excess fee share': { ...oracle, 'share-percent': '101' }, 'evaluation above price': { 'evaluation-fee': '6' } })) {
   test(`planner rejects ${name}`, () => assert.notEqual(plan(overrides).status, 0));
 }
+
+test('fee shares reject excess precision instead of silently rounding', () => {
+  for (const share of ['100.004', '0.001']) assert.notEqual(plan({ ...oracle, 'share-percent': share }).status, 0);
+  assert.equal(result({ ...oracle, 'share-percent': '12.34' }).input.shareBps, 1234);
+});
