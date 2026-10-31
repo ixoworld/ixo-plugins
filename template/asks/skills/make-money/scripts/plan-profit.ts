@@ -1,5 +1,11 @@
 import { forecast, money, type Scenario } from "./profit-model.ts";
 
+// Print a bad option as one line, not a stack trace.
+process.on("uncaughtException", (error) => {
+  console.error(error.message);
+  process.exit(1);
+});
+
 const args = process.argv.slice(2);
 const allowed = new Set([
   "route",
@@ -22,12 +28,7 @@ for (let i = 0; i < args.length; i += 2) {
 function numeric(key: string, fallback?: number) {
   const raw = options.get(key);
   if (raw === undefined && fallback !== undefined) return fallback;
-  if (
-    raw === undefined ||
-    raw.trim() === "" ||
-    !Number.isFinite(Number(raw)) ||
-    Number(raw) < 0
-  )
+  if (raw === undefined || !/^\d+(\.\d+)?$/.test(raw))
     throw new Error(`--${key} requires a nonnegative number.`);
   return Number(raw);
 }

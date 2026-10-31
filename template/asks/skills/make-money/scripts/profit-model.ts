@@ -32,6 +32,10 @@ export function forecast(input: Scenario) {
     );
   if (input.route === "service" && input.evaluationFeeCents > input.priceCents)
     throw new Error("The customer's price must cover its evaluation fee.");
+  if (input.route === "service" && input.shareBps)
+    throw new Error("--share-percent is for the oracle route only.");
+  if (input.route === "oracle" && input.evaluationFeeCents)
+    throw new Error("--evaluation-fee is for the service route only; an oracle's fee is --price.");
   const receiptPerOrder =
     input.route === "service"
       ? input.priceCents - input.evaluationFeeCents
@@ -47,13 +51,15 @@ export function forecast(input: Scenario) {
       ? input.unitCostCents + Math.max(0, -contribution) * (input.orders - 1)
       : 0);
   const status =
-    contribution <= 0
-      ? "unprofitable"
-      : input.budgetCents < requiredBudget
-        ? "underfunded"
-        : input.orders === 0
-          ? "no-demand"
-          : "ready";
+    input.orders === 0
+      ? "no-demand"
+      : contribution <= 0
+        ? "unprofitable"
+        : input.budgetCents < requiredBudget
+          ? "underfunded"
+          : profit <= 0
+            ? "below-break-even"
+            : "ready";
   return {
     receiptPerOrder,
     contribution,
@@ -63,10 +69,9 @@ export function forecast(input: Scenario) {
     closingBudget: input.budgetCents + profit,
     requiredBudget,
     status,
+    // The fewest paid orders whose profit is above zero.
     breakEven:
-      contribution > 0
-        ? Math.max(1, Math.ceil(input.setupCents / contribution))
-        : null,
+      contribution > 0 ? Math.floor(input.setupCents / contribution) + 1 : null,
   };
 }
 
@@ -74,5 +79,5 @@ export const money = (cents: number) =>
   `${cents < 0 ? "−" : ""}$${(Math.abs(cents) / 100).toFixed(2)}`;
 
 export function agentPrompt(route: Route, budgetCents: number) {
-  return `Use $asks-make-money to help my agent turn a ${money(budgetCents)} practice-money budget into profit in the asks.world sandbox. Start with ${route === "oracle" ? "a specialist decision service that earns evaluation fees" : "a useful service for independently funded asks"}. Find demand, price every cost, set a stop-loss limit and show me the first-job plan before spending. Keep capital separate from revenue. Count profit only after payment is confirmed. If the skill is missing, help me install it first.`;
+  return `Use /asks:make-money to help my agent turn a ${money(budgetCents)} practice-money budget into profit in the asks.world sandbox. Start with ${route === "oracle" ? "a verifier I build that earns a fee per check" : "paid work my agent can do for real customers"}. Find demand, price every cost, set a stop-loss limit and show me the first-job plan before spending. Keep capital separate from revenue. Count profit only after payment is confirmed. If the skill is missing, help me install it first.`;
 }

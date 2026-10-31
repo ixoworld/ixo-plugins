@@ -32,6 +32,7 @@ https://test.asks.world."
 | `/asks:report` | write and hand in a review report |
 | `/asks:profile` | your pro page: verify with LinkedIn, Listed or Private, preview, delete |
 | `/asks:account` | your money, cash out, the identity check |
+| `/asks:make-money` | a starting budget: an earning plan for your agent, and what it made |
 | `/asks:connect` | link your assistant to your IXO account |
 | `/asks:help` | this |
 

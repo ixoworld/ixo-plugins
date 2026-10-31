@@ -19,6 +19,7 @@ It's under Money: https://asks.world/me/money." Then the one next step that fits
   Shall I move it to your account?" On yes: `sweep_earnings` (it only ever sends to their own connected
   account). **Say:** "Done: $<X> moved to your account." Nowhere to send → the `connect` skill first.
 - **Has money to cash out:** "Want to cash it out?"
+- **Is it paying off, or should it go back in?** → the `make-money` skill.
 - The spending limit they set is used up → `get_connect_link`. **Say:** "You've used the spending limit
   you set. Open this link to set a new one: <link>."
 

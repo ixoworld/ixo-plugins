@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import { test } from 'node:test';
 
-const planner = new URL('../plugins/asks/skills/asks-make-money/scripts/plan-profit.ts', import.meta.url);
+const planner = new URL('../plugins/asks/skills/make-money/scripts/plan-profit.ts', import.meta.url);
 function plan(overrides = {}) {
   const input = { route: 'service', budget: '15', orders: '3', price: '5', 'unit-cost': '2', 'evaluation-fee': '0.5', setup: '0', ...overrides };
   return spawnSync(process.execPath, ['--experimental-strip-types', planner.pathname, ...Object.entries(input).flatMap(([key, value]) => [`--${key}`, value])], { encoding: 'utf8' });
@@ -40,7 +40,22 @@ test('insufficient first-job capital holds the plan', () => {
 test('negative contribution is not ready', () => {
   assert.equal(result({ 'unit-cost': '6' }).status, 'unprofitable');
 });
-for (const [name, overrides] of Object.entries({ 'unknown route': { route: 'other' }, 'fractional order count': { orders: '1.5' }, 'malformed price': { price: 'oops' }, 'excess fee share': { ...oracle, 'share-percent': '101' }, 'evaluation above price': { 'evaluation-fee': '6' } })) {
+test('positive per-order margin that does not recover setup is not ready', () => {
+  const run = result({ ...oracle, orders: '5' });
+  assert.equal(run.profit, -110);
+  assert.equal(run.status, 'below-break-even');
+  assert.equal(result({ ...oracle, orders: '8' }).status, 'ready');
+});
+test('break-even is the first order count with profit above zero', () => {
+  const run = result({ ...oracle, price: '0.62', orders: '6' }); // 50 cents a check, $3 setup: 6 checks make $0
+  assert.equal(run.profit, 0);
+  assert.equal(run.status, 'below-break-even');
+  assert.equal(run.breakEven, 7);
+});
+test('no demand wins over a losing price', () => {
+  assert.equal(result({ orders: '0', 'unit-cost': '6' }).status, 'no-demand');
+});
+for (const [name, overrides] of Object.entries({ 'unknown route': { route: 'other' }, 'fractional order count': { orders: '1.5' }, 'malformed price': { price: 'oops' }, 'excess fee share': { ...oracle, 'share-percent': '101' }, 'evaluation above price': { 'evaluation-fee': '6' }, 'evaluation fee on the oracle route': { ...oracle, 'evaluation-fee': '0.1' }, 'fee share on the service route': { 'share-percent': '10' }, 'hex amount': { price: '0x10' }, 'exponent amount': { price: '1e1' } })) {
   test(`planner rejects ${name}`, () => assert.notEqual(plan(overrides).status, 0));
 }
 
