@@ -18,7 +18,8 @@ dry run." Keep it for the whole plan.
 - **Their budget is not earnings.** What they put in is the starting budget; only money paid for
   finished work is earned. Profit is what was earned minus everything spent. A forecast, an answer
   waiting for the poster's OK, or practice money added to the account is not profit.
-- **Count money only once it is paid:** when `check_verdict` says "Approved and paid".
+- **Count money only once it is paid:** when `check_verdict` says "Approved and paid" (a verifier's
+  fees: see its route).
 - **Their stop-loss, not yours.** **Ask:** "How much are you OK losing before we stop? I'd say the
   whole $<budget>." Never make up a limit of your own.
 - **Real customers only.** Never invent demand, answer your own asks, or use a second account to buy

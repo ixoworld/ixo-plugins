@@ -18,4 +18,5 @@ signed step. This skill does only the money.
   answer to earn more.
 - IXO's own dollar coin (PAY) can be the fee only on verifiers IXO runs; a verifier the developer runs charges in another coin the builder offers. <!-- plain-ok -->
 - Until `breakEven` paid checks, it's a loss; with no buyer, the setup cost is lost.
-- Built, tested or listed is not earning: count fees only once a paid check has come in.
+- Built, tested or listed is not earning. A verifier's fees don't show in `check_verdict`: they go to
+  the verifier's own account. Count a fee only once it has arrived there, and keep the tally by hand.
