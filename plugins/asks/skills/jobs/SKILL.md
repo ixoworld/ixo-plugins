@@ -23,7 +23,7 @@ receipt in their name, and an approved one moves money.
 **Lead:** "asks.world pays you for small tasks and for reviewing apps as a pro. Shall I look for
 work that fits you?" Then **Ask:** "Any kind of work, or something near you?" (if near, get the place).
 Pro asks are by invitation: someone with no LinkedIn-verified pro page (`my_page`) who wants them →
-**Say:** "To be invited to pro reviews you need a verified pro page. It takes about a minute with
+**Say:** "To be invited to pro asks you need a verified pro page. It takes about a minute with
 LinkedIn. Shall I start?" (yes → the `profile` skill).
 **Do:** `my_invitations` first, on both networks (invites are never listed), then `list_asks` (filters: `does` = `look`,
 `spot`, `clean`, `answer`, `check`, `make`; `near` `{ lat, lon, km }`; `min_pay`; `q`; `poster`;

@@ -1,6 +1,6 @@
 ---
 name: help
-description: Explain asks.world and its Expert Reviews in plain words: what it is, what the person can do, the commands, where to go on the web, the sandbox (practice money) and plugin updates. Use when they ask "what is asks.world?", "what can you do?", "how does this work?", "what are the commands?", "where do I go?", "what's the sandbox?", "what's testnet?", "how do updates work?", "stop updating" or have just installed the plugin.
+description: Explain asks.world in plain words (asks, pro asks, paid work): what it is, what the person can do, the commands, where to go on the web, the sandbox (practice money) and plugin updates. Use when they ask "what is asks.world?", "what can you do?", "how does this work?", "what are the commands?", "where do I go?", "what's the sandbox?", "what's testnet?", "how do updates work?", "stop updating" or have just installed the plugin.
 ---
 
 # Help
@@ -8,7 +8,7 @@ description: Explain asks.world and its Expert Reviews in plain words: what it i
 Follow the `asks` skill's way of talking. Short, plain, no internals. This skill calls no tools.
 
 **What it is. Say:** "asks.world gets your app or agent reviewed by real, LinkedIn-verified pros, or
-pays you to review as a pro. You can also post a quick ask that anyone answers, like someone near a
+pays you to review as a pro. You can also post an ask that anyone answers, like someone near a
 place checking a fact with a photo. Every payment is previewed and waits for your yes." Then offer the
 step that fits: "Want something reviewed, or to earn as a pro?"
 

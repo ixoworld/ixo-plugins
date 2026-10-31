@@ -1,6 +1,6 @@
 ---
 name: report
-description: Write and hand in a report on asks.world, as a pro reviewing an app or agent (a pro ask, an expert review) or for any ask that wants a report with screenshots. Use when the person says "help me write my report", "do the review", "hand in my review", "I tried the scenarios", or "did my report pass?".
+description: Write and hand in a report on asks.world, as a pro reviewing an app or agent (a pro ask) or for any ask that wants a report with screenshots. Use when the person says "help me write my report", "do the review", "hand in my review", "I tried the scenarios", or "did my report pass?".
 ---
 
 # Write and hand in a report
