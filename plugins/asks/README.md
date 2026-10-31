@@ -9,6 +9,7 @@ Expert Reviews on asks.world: get your app or agent reviewed by pros, or review 
 - Just say what you want, or start with `/asks`. The skills (each is also `/asks:<skill>`):
   - `asks`: works out what you want and which network, then hands over to the right skill.
   - `jobs`: find paid work, apply, hand in an answer.
+  - `make-money`: turn a starting budget into an earning plan (paid work, or a verifier you build), show it before anything is spent, then keep the tally of what was paid in and spent.
   - `create`: post an ask, Ask the World, a campaign, an open call or a pro ask (LinkedIn-verified pros); set up a company.
   - `invite`: invite people and answer applications.
   - `manage`: your open asks: answers, approvals, closing and getting money back.

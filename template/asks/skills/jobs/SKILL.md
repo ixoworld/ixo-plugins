@@ -27,7 +27,8 @@ Pro asks are by invitation: someone with no LinkedIn-verified pro page (`my_page
 LinkedIn. Shall I start?" (yes → the `profile` skill).
 **Do:** `my_invitations` first, on both networks (invites are never listed), then `list_asks` (filters: `does` = `look`,
 `spot`, `clean`, `answer`, `check`, `make`; `near` `{ lat, lon, km }`; `min_pay`; `q`; `poster`;
-`series`). `find_pro` with `handle` reads a pro by @name.
+`series`). `find_pro` with `handle` reads a pro by @name. A starting budget to grow, or a profit
+plan → the `make-money` skill.
 **Say** a short list: "3 asks near you: check a café's opening hours, $2; …", then recommend one:
 "The first fits you best. Shall I take it?" One answer per ask per account.
 
