@@ -13,7 +13,7 @@ you; the person only reads what is under **Say**.
 
 Every asks skill follows this, also when the person starts it directly (`/asks:jobs`, `/asks:create`,
 `/asks:profile`, `/asks:connect`, `/asks:invite`, `/asks:manage`, `/asks:report`, `/asks:account`).
-Pro asks and most other asks run on both networks; `create` says which are practice money only.
+Every kind of ask runs on both networks except plans, which aren't on asks.world yet (`create` says so).
 
 - They said real money, or "for real" → `mainnet`.
 - They said "try", "test", "dry run" or "practice" → `testnet`. **Say** once: "This is a dry run with

@@ -16,8 +16,8 @@ agents reviewed by pros, find paid work and hand it in.
 
 Every tool takes `network: "mainnet" | "testnet"`, and the skills choose it: real money on mainnet;
 "try", "test" or "dry run" on testnet (play money, nothing real moves); when the person hasn't said,
-every skill asks once and never switches mid-task. Pro asks run on both; open calls and plans are
-testnet only. Builders go to
+every skill asks once and never switches mid-task. Pro asks and open calls run on both; plans are
+testnet only (not on asks.world yet). Builders go to
 https://asks.world (dry run https://test.asks.world), pros to https://asks.world/pros (dry run
 https://test.asks.world/pros). There is no network setting in the plugin. Play IXO is free from
 https://faucet.testnet.ixo.earth.

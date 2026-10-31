@@ -7,14 +7,14 @@ requirements the brief states; an entry that misses one isn't paid. Two kinds:
   entry that passes. The pick is theirs, a few days after entries close.
 - **Hiring:** no winner. Every entry that passes is paid the same, up to a number they set.
 
-- **Practice money only.** Never offer one on `mainnet`. Asked there → **Say:** "Open calls are only in
-  the sandbox for now, with practice money. Try it there, or post an ask instead?"
+- **Real money too:** it runs on `mainnet` like any ask: show the preview, post only on their yes.
 - **Pick it when:** ideas, proposals, designs or written work from many people, judged against a brief.
 - **Not when:** one short task → an ask ([post-an-ask.md](post-an-ask.md)); an app tried by verified
   pros → a pro ask ([review-job.md](review-job.md)); photos at places → a campaign ([campaign.md](campaign.md)).
 - **"Hiring" means two things.** This kind of open call; and hiring a particular pro, which is a pro
   ask plus an invitation.
-- **Who answers:** anyone (default), people they approve, or only people they invite (`access`).
+- **Who answers:** anyone (default), or it can be private: "by application" (people they approve) or "by
+  invitation" (only people they invite) (`access`: `apply` / `invite`).
 - **Money:** everything (prize, runners-up, every entry's payment) is **set aside** when posted; what
   isn't paid comes back when they close it. By invitation or approval, the preview may name a share
   asks.world keeps: say it as the tool does.

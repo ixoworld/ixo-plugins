@@ -47,9 +47,9 @@ them when two fit. Say the kind's name as written here.
 
 Open only the reference for the kind you pick.
 
-**Real money:** open calls and plans are practice money only. Never offer them on `mainnet`; asked for one
-there → **Say:** "That's only in the sandbox for now, with practice money. Try it there, or post an ask
-instead?" Everything else in the table runs on both.
+**Real money:** plans aren't on asks.world yet, only in the sandbox: never offer one on `mainnet`
+([plan.md](references/plan.md) says what to say). Everything else in the table, open calls too, runs on
+both, and spends only after the preview and their yes.
 
 ## After posting
 
