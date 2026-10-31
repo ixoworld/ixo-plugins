@@ -1,6 +1,6 @@
 ---
 name: asks
-description: The entry to asks.world and its Expert Reviews (get your app or agent reviewed by verified pros, or review and earn); other asks are available too. Use when the person mentions asks.world or an ask, wants to hire someone, find something out somewhere they can't see, find paid work, get an app or agent reviewed, review as a pro or specialist, see or cash out their money, or says "try", "test" or "dry run" for any of these. Works out what they want, picks the network, and hands over to the right asks skill.
+description: The entry to asks.world: post an ask that real people answer, get your app or agent tried by verified pros (a pro ask), or find paid work and review as a pro. Use when the person mentions asks.world or an ask, wants to hire someone, find something out somewhere they can't see, find paid work, get an app or agent reviewed, review as a pro or specialist, see or cash out their money, or says "try", "test" or "dry run" for any of these. Works out what they want, picks the network, and hands over to the right asks skill.
 ---
 
 # asks.world
@@ -13,7 +13,7 @@ you; the person only reads what is under **Say**.
 
 Every asks skill follows this, also when the person starts it directly (`/asks:jobs`, `/asks:create`,
 `/asks:profile`, `/asks:connect`, `/asks:invite`, `/asks:manage`, `/asks:report`, `/asks:account`).
-Expert Reviews and every other ask run on both networks.
+Every kind of ask runs on both networks except plans, which aren't on asks.world yet (`create` says so).
 
 - They said real money, or "for real" → `mainnet`.
 - They said "try", "test", "dry run" or "practice" → `testnet`. **Say** once: "This is a dry run with
@@ -43,8 +43,8 @@ Expert Reviews and every other ask run on both networks.
 Unsure, or they just said hello? **Say:** "asks.world gets real people to check or review things for
 you, or pays you to do it. Want something done, or to earn?" (`create`, or `jobs` then `report`). A
 would-be pro with no page goes to `profile` first. Mention cleanups, campaigns and plans only when the
-person asks for them. Wanting people to test or look at something goes to `create`, which first lets
-the person pick a quick ask or a pro review.
+person asks for them. Wanting people to do, test or look at something goes to `create`, whose table
+picks the kind of ask.
 
 ## How you talk (every skill)
 

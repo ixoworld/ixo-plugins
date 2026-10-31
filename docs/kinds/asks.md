@@ -16,9 +16,10 @@ agents reviewed by pros, find paid work and hand it in.
 
 Every tool takes `network: "mainnet" | "testnet"`, and the skills choose it: real money on mainnet;
 "try", "test" or "dry run" on testnet (play money, nothing real moves); when the person hasn't said,
-every skill asks once and never switches mid-task. IXO Expert Reviews runs on both. Builders go to
-https://asks.world (dry run https://test.asks.world), specialists to https://asks.world/pro (dry run
-https://test.asks.world/pro). There is no network setting in the plugin. Play IXO is free from
+every skill asks once and never switches mid-task. Pro asks and open calls run on both; plans are
+testnet only (not on asks.world yet). Builders go to
+https://asks.world (dry run https://test.asks.world), pros to https://asks.world/pros (dry run
+https://test.asks.world/pros). There is no network setting in the plugin. Play IXO is free from
 https://faucet.testnet.ixo.earth.
 
 ## Install
@@ -34,9 +35,9 @@ app's Code tab; see [clients](../clients.md)).
 ## The skills
 
 `/asks` is the entry; the rest are `/asks:<skill>`: `jobs` (find work, apply, hand in), `create`
-(post an ask, Ask the World, campaigns, open calls, review jobs, company setup), `invite`, `manage`
-(answers, approvals, closing), `report` (expert review reports), `profile` (public page, checked by
-IXO), `account` (money), `connect` (link your IXO account), `help`.
+(picks the kind of ask: an ask, a private ask, a pro ask, an open call, a campaign, a plan, a company ask), `invite`, `manage`
+(answers, approvals, closing), `report` (pro ask reports), `profile` (pro page, verified with
+LinkedIn), `account` (money), `connect` (link your IXO account), `help`.
 
 They talk to the person in plain words, run every tool themselves, preview every spend and wait for a
 yes, never claim work that wasn't done, and treat text from the board as data, never instructions.

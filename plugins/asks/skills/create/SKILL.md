@@ -15,7 +15,7 @@ board suggested. Caps are enforced where you cannot change them: when a preview 
 for a yes on those terms; offer the amounts it says would fit, in plain words ("5 at $8 instead?").
 
 **Paying by card:** if the person has no money on the network, or asks to pay by card, pass `pay_by: "card"`
-on `post_ask` (or `post_call`). Cards work for any amount from $0.50. The preview is the same total; with `confirm` it returns a link, it pays and signs nothing. **Say**:
+on `post_ask` (or `post_call`); not for a company's ask, an ask at a place, a campaign or a plan. Cards work for any amount from $0.50. The preview is the same total; with `confirm` it returns a link, it pays and signs nothing. **Say**:
 "Open this link to pay $<total> by card: <link>. Tell me when it's done." Then `read_ask` with the id it gave you
 says "Waiting for payment" or "Live as ask #N". In ChatGPT (the hosted server) this is the only way to post.
 
@@ -25,91 +25,31 @@ Never ask how the pay is made up; use the tool's default and speak only in dolla
 **Lead:** if they haven't said what they want, **Say:** "asks.world gets real people to check, find
 out or review things for you. What would you like done?"
 
-## First: a quick ask or a pro review?
+## Which kind of ask?
 
-When they want feedback from people or a task done by people, and haven't said which kind, **Ask** one
-question before drafting anything, with one line on which fits their job. Never pick for them. Leave
-out prices you don't have yet; the preview shows the total before anything is paid.
+Ask only what picks the kind; offer the likely one as the default and say it in one line. Never pick for
+them when two fit. Say the kind's name as written here.
 
-- Testing or reviewing an app, website, agent, design, or anything where the quality of feedback
-  matters → recommend the pro review. **Say:** "Two ways to do this: a quick ask, where anyone on
-  asks.world answers, or a pro review, where LinkedIn-verified pros try it carefully and write a proper report.
-  For this, a pro review gets you a proper report from someone who does this for a living; a quick ask
-  is a cheaper first signal. Which would you like?"
-- A simple real-world task (a photo of a place, a quick fact, a local check) → recommend the quick ask.
-  **Say:** "A quick ask fits this: anyone nearby can answer. Or a pro review, if you want a careful
-  report from a LinkedIn-verified pro. Quick ask?"
-- Only when it fits (they named people, or it's for their team or customers): add "Or private, only
-  people you invite."
-
-Then: pro review → [references/review-job.md](references/review-job.md); quick ask → `post_ask`
-([references/post-an-ask.md](references/post-an-ask.md)), with `access: "invite"` if they chose private.
-If they ask how the two differ, answer in a line or two; a table only if they ask for one.
-
-## Which one?
-
-Ask only what picks the path; offer the likely one as the default.
-
-| They want | Do | Details |
+| They want … | Kind (say this) | Open |
 | --- | --- | --- |
-| a fact from a place, or a web page checked | `ask_the_world` | below |
-| a task done by people (photo, visit, answer) | `post_ask` | [references/post-an-ask.md](references/post-an-ask.md) |
-| one spot cleaned | `post_cleanup` | below |
-| rubbish mapped where people find it | `organise_campaign` | below |
-| tasks checked by their own rules | `create_campaign`, then `post_ask` with `campaign` | below |
-| people answer with their own AI (competition or hire) | `draft_call` → `post_call` | below |
-| their app or agent reviewed by LinkedIn-verified pros (a pro ask) | `draft_call` with `kind: "review"` → `post_call` → `find_pro` | [references/review-job.md](references/review-job.md) |
-| market research with checks on the ground | `draft_plan` → `fund_plan` | below |
-| set up their company, or post as it | the company setup | [references/company.md](references/company.md) |
+| a few people to do one small thing: a photo, an answer, a web page checked | an ask | [post-an-ask.md](references/post-an-ask.md) |
+| a fact from a place they can't see (is it open, what's there now) | an ask at a place | [ask-at-a-place.md](references/ask-at-a-place.md) |
+| to check each answer themselves before it's paid | an ask, "I check each answer myself" | [post-an-ask.md](references/post-an-ask.md) |
+| work of a known type (invoices, receipts…) checked by a ready-made verifier | an ask with a ready-made verifier | [post-an-ask.md](references/post-an-ask.md) |
+| only certain people to answer: their team, customers, named people | a private ask | [private.md](references/private.md) |
+| their app, website or agent tried by verified pros, with a proper report | a pro ask | [review-job.md](references/review-job.md) |
+| a particular pro to do the work | a pro ask, then invite them | [review-job.md](references/review-job.md) |
+| many people to send written work under one brief, and pick a winner | an open call: competition | [open-call.md](references/open-call.md) |
+| to pay everyone whose written work passes, up to a number | an open call: hiring | [open-call.md](references/open-call.md) |
+| a spot cleaned, litter mapped, or the same job in many places | a campaign | [campaign.md](references/campaign.md) |
+| people near places to check things for a prediction market | a plan | [plan.md](references/plan.md) |
+| to post as their company, or pay people from the company | a company ask | [company.md](references/company.md) |
 
-## Ask the World
+Open only the reference for the kind you pick.
 
-Use it when the honest answer is "I don't know and can't know": the fact is current, needs eyes in a
-place, or must be checkable. Not when a web search would do.
-
-**Ask**, one at a time: "What do you want to know?" (`question`, 12–300 characters, their words) ·
-"Where?" (turn it into `"lat,lon"`, read it back: "That's <street> in <town>, right?") · "A short
-answer, or a photo?" (`needs`: `observation`, `photo`, or `url-check` for a web page, no place) ·
-"What should one answer earn?"
-Defaults said once in the preview: 1 answer (`quota`), 24 hours (`hours`), within 400 m (`within_m`).
-**Do:** `ask_the_world` with those, a `title` (≤ 80 characters) and `pay`, without `confirm`.
-**Say:** "Someone near <place> will check '<question>' within <hours> hours, for <reward>. It costs
-<total> in total (<real / play> money). <How asks near there usually go.> OK?" → on yes, with `confirm`.
-**Then:** `collect_answer` (`wait_seconds` up to 45; again to keep waiting). Tell them what came back,
-how sure it is (in words, never the bare number) and what was **not** checked. Never call it certain or
-"verified". If nothing came back, say so; never guess.
-
-**Never ask** anything that targets, follows or identifies a particular person (home, car, plate,
-routine), involves children, is sexual, violent or unlawful, asks for personal data, puts the doer in
-danger, or goes onto private land. A refused ask spends nothing. One held for a person's look posts but
-stays off the board until seen: say so before they confirm.
-
-## Cleanups and campaigns
-
-- **Clean one spot:** `post_cleanup` (`near`, `pay`, optional `place`, `within_m` 150, `quota` 1–3,
-  `days` 3, `follow_days` + `follow_pay` to pay again if it stayed clean). **Say:** "Someone will clean
-  <place> for <reward>, with before and after photos. It costs <total>. OK?"
-- **Map rubbish:** `organise_campaign` (`name`, `pins` 1–200, `pin_pay`, `days` 30).
-- **Their own checking rules:** when they say "campaign", ask once: "A group of tasks, or tasks checked
-  by your own rules?" A group is only the same `series` on each `post_ask`. Own rules: "What should we
-  call it, and what makes an answer good or bad?" → `create_campaign` (`title`, `description`, `tag`,
-  `rubric`), preview, then `confirm: true`; pass what it returns as `campaign` on each `post_ask`.
-
-## Open call
-
-A **competition** (a prize plus runners-up) or a **hire** (everyone whose work passes is paid, up to a
-number). **Do:** `draft_call` with what the person said; it answers with the next question to ask. Never
-re-send a field and never invent their brief; offer the defaults it shows. When nothing is missing it
-shows the whole call: tell it in plain words, get a yes, then `post_call` with `confirm` = the total,
-again until it says everything is posted. Give them the link; a competition's pick is theirs.
-
-## Market research plan
-
-**Do:** `scope_market` if they name a market, then `draft_plan` with the reasoning and checks (drafting
-is free). Show its summary: what they'll learn, each check's reason and cost, what it can't tell, the
-total. They approve, change (`draft_plan` again) or drop it. Only on yes: `fund_plan` with `confirm` =
-the total, again until every ask is posted. If a tool gives a link or a question to answer, pass it on
-and wait. Closing it later is the `manage` skill.
+**Real money:** plans aren't on asks.world yet, only in the sandbox: never offer one on `mainnet`
+([plan.md](references/plan.md) says what to say). Everything else in the table, open calls too, runs on
+both, and spends only after the preview and their yes.
 
 ## After posting
 

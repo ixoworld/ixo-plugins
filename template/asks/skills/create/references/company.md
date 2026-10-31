@@ -1,7 +1,19 @@
-# Set up a company, or post as one
+# A company ask: set up a company, or post as one
+
+- **Pick it when:** the asks should be in their company's name and paid from the company: from its own
+  account, or to people by bank-style dollars or card through its own payouts service.
+- **Not when:** a person posting for themselves → an ask ([post-an-ask.md](post-an-ask.md)); one expert
+  for one job → a pro ask ([review-job.md](review-job.md)).
+- **Paying by card:** a company's ask can't be paid by card when it's posted. "Card" here means the
+  company pays people through its own Stripe (way C below). Say this if they ask to pay by card.
+- **Who answers:** as any ask: anyone, people they approve, or only people they invite.
+- **Money:** the company's account sets aside each ask's money when it is posted (ways B and C pay the
+  people outside); checks may come from its review budget. What isn't paid comes back when they close it.
+- **Judged:** by a verifier the company allows (step 4).
+- Set up once (about 10 minutes, Claude Code or Cowork only), then step 13 for each ask.
 
 You set the company up yourself, running each step as a terminal command. The person only answers
-questions, signs in, clicks and sends money. Claude Code or Cowork only (it runs on their computer).
+questions, signs in, clicks and sends money.
 
 ## Rules for this part
 
