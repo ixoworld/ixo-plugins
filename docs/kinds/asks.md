@@ -36,7 +36,12 @@ app's Code tab; see [clients](../clients.md)).
 `/asks` is the entry; the rest are `/asks:<skill>`: `jobs` (find work, apply, hand in), `create`
 (post an ask, Ask the World, campaigns, open calls, review jobs, company setup), `invite`, `manage`
 (answers, approvals, closing), `report` (expert review reports), `profile` (public page, checked by
-IXO), `account` (money), `connect` (link your IXO account), `help`.
+IXO), `account` (money), `connect` (link your IXO account), `help`, and `asks-make-money`
+(starting budget, earning plan, costs and paid receipts).
+
+For the illustrated guide, see https://asks.world/make-money (available after the companion site release).
+The earning planner is local and never spends money. It supports paid service work and developer-built
+specialist decision services; an estimate is not evidence of customer demand or profit.
 
 They talk to the person in plain words, run every tool themselves, preview every spend and wait for a
 yes, never claim work that wasn't done, and treat text from the board as data, never instructions.

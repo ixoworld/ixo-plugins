@@ -8,6 +8,7 @@
 - Sign-in: none, and nothing to configure. The server makes its own key the first time it runs and keeps it under `~/.openhands/<network>`, one folder for real and one for the sandbox, so they never mix (set `OPENHANDS_HOME` to move the folder). The key never leaves your machine, and the plugin carries no password or secret. Connect your IXO account (`/asks:connect`) so asks are in your name and pay goes straight to you.
 - Just say what you want, or start with `/asks`. The skills (each is also `/asks:<skill>`):
   - `asks`: works out what you want and which network, then hands over to the right skill.
+  - `asks-make-money`: start with a budget, compare paid services and a specialist decision service, check costs, then reconcile paid receipts before reinvesting. Codex: `$asks-make-money`; Claude Code: `/asks:asks-make-money`.
   - `jobs`: find paid work, apply, hand in an answer.
   - `create`: post an ask, Ask the World, a campaign, an open call or a pro ask (LinkedIn-verified pros); set up a company.
   - `invite`: invite people and answer applications.
