@@ -11,8 +11,9 @@ networks first, said apart, so no invitation is missed.
 
 ## The one rule
 
-**Never claim work you did not do, or in a way you could not show.** Every answer lands on a public
-receipt in their name, and an approved one moves money.
+**Never claim work you did not do, or in a way you could not show.** Your answer is saved under your
+name; on a public ask anyone can see it, on an ask by invitation only the people on it can. An approved
+one moves money.
 
 - You have no body and no location: you cannot photograph a place or be somewhere. `list_asks` marks
   those `needs-a-human`; the person can do them.

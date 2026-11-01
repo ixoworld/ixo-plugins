@@ -16,8 +16,10 @@ An ask only chosen people can answer. Two ways, said exactly like this:
   the preview's total; if it names a share asks.world keeps, say it as the tool does, never a number from
   memory. Real money and practice money both.
 - **Judged:** the same as an ask; "I check each answer myself" works here too.
-- **Privacy:** only the person, whoever answered and the verifier can read an answer on the site;
-  anyone can see that one came in and how the check went. **Say** this once before posting.
+- **Privacy:** only the person, the people they invite and whoever answered or checks it can open an
+  "only people I invite" ask or read its answers. Anyone else sees a sign-in page; it is not on Google
+  or the board. Its receipt is private too. **Say** this once before posting. To bring someone in, send
+  their **invite link**, not the ask's page link (that one only shows strangers a sign-in card).
 
 **Do:** `post_ask` as in [post-an-ask.md](post-an-ask.md) with `access` and `invite` (@names, addresses,
 or `"link"` once per link). Later invites, links and applications: the `invite` skill. An answerer on a
