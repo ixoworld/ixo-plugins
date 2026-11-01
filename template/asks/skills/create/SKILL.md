@@ -53,5 +53,6 @@ both, and spends only after the preview and their yes.
 
 ## After posting
 
-Give them the ask's link. Private links, invites and applications: the `invite` skill. Answers,
+Public ask: give them the ask's link. Private (by invitation): send each person their invite link, never
+the page link. Private links, invites and applications: the `invite` skill. Answers,
 approvals and closing: the `manage` skill.

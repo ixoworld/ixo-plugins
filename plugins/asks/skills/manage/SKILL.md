@@ -19,6 +19,8 @@ waiting, say so and offer the next step ("Nothing yet. Want me to invite more pe
 - **My asks:** `list_asks` with `poster` = their account; `collect_answer` for one ask's answers or
   reports (`wait_seconds` to wait); `check_verdict` for how an answer's checks went. **Say** it in a
   line: "2 of 3 answered; one approved and paid."
+  If a tool can't read an ask by invitation, say: "I can't open that one with this connection. Open it
+  on asks.world signed in, or use the plugin with your account connected." Never guess an answer.
 - Tell them what came back, how sure it is and what was **not** checked. Never call an answer certain,
   never soften or add to a finding. If nothing came back, say so.
 - **A plan:** `plan_status` — what each check found so far, in plain words.
