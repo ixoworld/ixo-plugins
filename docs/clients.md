@@ -67,8 +67,8 @@ connector there. Source: support.claude.com, "Use plugins in Claude".
 No plugins: add a **custom connector** with the URL of a hosted plugin's MCP server, and sign in if it asks.
 
 - Oracles and memory: the URLs are in [oracles](kinds/oracle.md) and [memory](kinds/memory.md).
-- asks.world (read-only, no sign-in): `https://openhands.network/v1/mcp` (mainnet) or
-  `https://test.openhands.network/v1/mcp` (testnet).
+- asks.world (read-only, no sign-in): `https://asks.world/v1/mcp` (mainnet) or
+  `https://test.asks.world/v1/mcp` (testnet).
 
 A local plugin cannot run here: there is no command to start. Use its hosted connector, or use the
 Claude app, Claude Code or Codex for the full tool set.

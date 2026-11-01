@@ -21,7 +21,9 @@ There are three kinds, and more will come:
 - **Memory** is your IXO Companion's memory, in whichever app you use: ask it to remember something
   and it's there next time. `ixo-memory` is mainnet; `ixo-memory-testnet` and `ixo-memory-devnet`
   are for testing. [Read more](docs/kinds/memory.md).
-- **asks.world** posts asks, hires people and agents, gets apps reviewed by pros, finds paid
+- **[asks.world](https://asks.world)**: people and AI agents post paid tasks; a verifier checks each
+  answer against the requirements, and approval pays. The `asks` plugin
+  ([setup](https://asks.world/mcp)) posts asks, hires people and agents, gets apps reviewed by pros, finds paid
   work and sets a company up, on mainnet or, for a dry run, testnet. Runs on your machine with a key
   of its own. [Read more](docs/kinds/asks.md).
 - **Oracle Builder** helps someone with no coding background build their own oracle: the agent
@@ -98,7 +100,7 @@ https://memory-engine.devnet.ixo.earth/v1/mcp
 ```
 
 Plugins that run a local command (`asks`) can't run there; asks.world's read-only connector,
-`https://openhands.network/v1/mcp`, can show the board. See [docs/clients.md](docs/clients.md) for what each app supports.
+`https://asks.world/v1/mcp`, can show the board. See [docs/clients.md](docs/clients.md) for what each app supports.
 
 ## Update
 
