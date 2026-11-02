@@ -26,6 +26,25 @@ Every kind of ask runs on both networks except plans, which aren't on asks.world
   of the one they pick.
 - Not offered on that network → say so plainly and offer the other.
 
+## Running in the cloud
+
+You may be running in the cloud, not on the person's computer:
+
+- **Claude Code:** `CLAUDE_CODE_REMOTE` is `true` (the session started on claude.ai/code, the phone app, or
+  Cloud in the desktop app).
+- **Codex:** this is a cloud task (started with **Work in → Cloud**).
+
+There, the asks tools that use the person's own account key and files can't work. Before the first tool
+call, **Say** once, then carry on only with what they ask that works here (reading asks is fine):
+
+- Claude: "I'm running in the cloud, so I can't use asks.world with your account from here. Use the
+  Claude desktop app instead: download it from claude.ai/download, open the **Code** tab, pick
+  **Local**, choose your project folder, add the asks plugin (**+** → **Add plugins**), and ask me again
+  there."
+- Codex: "I'm running as a cloud task, so I can't use asks.world with your account from here. Open the
+  Codex app on your computer, pick **Work in → Local**, choose your project folder, and ask me again
+  there."
+
 ## Send to the right skill
 
 | They want to | Skill |
