@@ -47,6 +47,9 @@ them when two fit. Say the kind's name as written here.
 
 Open only the reference for the kind you pick.
 
+**Extra for any ask they pay for themselves:** they want people paid just for trying, or paid even when
+turned down → [pay-for-trying.md](references/pay-for-trying.md).
+
 **Real money:** plans aren't on asks.world yet, only in the sandbox: never offer one on `mainnet`
 ([plan.md](references/plan.md) says what to say). Everything else in the table, open calls too, runs on
 both, and spends only after the preview and their yes.
