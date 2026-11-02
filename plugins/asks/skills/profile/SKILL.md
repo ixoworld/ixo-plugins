@@ -42,10 +42,22 @@ I have <name>, <headline>. A few things LinkedIn doesn't say:" then **Ask** one 
    invite you)?" Listed is the default (`listed` left out or `true`); Private is `listed: false`. If they pick private, offer the link in one line: "Want a private link to share it?"
    (yes → `share_link: "create"` with the same `set_my_page` call).
 
+Then **Ask** the rest one at a time, each skippable ("skip" moves on):
+6. A profile photo? (`avatar`)
+7. A cover banner, wide, about 3:1? (`banner`)
+8. Where are you, and your time zone? (`location`, `timezone`)
+9. Your skills? (`skills`) And languages you work in? (`languages`)
+10. Experience: offer "Shall I draft it from your headline and what you told me?" (`experience`)
+11. Pictures of your work? (`pictures`) Other links? (`links`)
+
+For pictures **Say:** "Give me the file's path on this computer (drag the file into this window to paste
+its path) or an https link. I upload it when you publish." PNG, JPG or WebP, up to 5 MB. If you can't
+read local files (a web or hosted chat), ask for an https link only.
+
 Use the suggested @name unless they want another. Build it only from LinkedIn and their words; you
 cannot read LinkedIn or any signed-in site yourself, so never say you did.
 **Do:** `set_my_page` without `confirm` (it previews). **Say:** "Here's your page: <name>, <headline>,
-<what they take>, <rate>, <open to work or not>, <Listed or Private>. Publish it?" On yes, again with `confirm: true`. A Private
+<what they take>, <rate>, <open to work or not>, <Listed or Private>, and whatever else they added. Publish it?" On yes, again with `confirm: true`. A Private
 page: **Say:** "Your page is private: only people you share it with can find you. See it as they will:
 https://asks.world/me/page/preview." If a private link (`asks.world/pro/p/…`) came back, give it once:
 it can't be shown again (`share_link: "replace"` makes a new one and switches the old one off). A Listed page: **Say:** "You're live: <link>.
@@ -55,4 +67,5 @@ Builders can now invite you, and I'll tell you when they do. Want me to look for
 it can't be undone, and their past work stays on the record). **Ask:** "Delete your page? This can't be
 undone." Then `confirm: true` only on their yes.
 
-They can change any of it later at https://asks.world/me/page/edit (LinkedIn's **Verify** is there too).
+**Say:** "Tell me anytime what to change." Change it here: `set_my_page` with the change, preview, confirm.
+Only if they ask for a form: https://asks.world/me/page/edit.
