@@ -11,6 +11,16 @@
             "timeout": 60
           }
         ]
+      },
+      {
+        "matcher": "startup|resume",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ \"$CLAUDE_CODE_REMOTE\" = \"true\" ] && echo \"asks: this is a Claude Code cloud session (CLAUDE_CODE_REMOTE=true). The asks tools that sign with the person's own key and read their files only work on their computer. Before the first asks tool call, follow the asks skill's 'Running in the cloud' section.\"; exit 0",
+            "timeout": 5
+          }
+        ]
       }
     ]
   }
