@@ -58,7 +58,7 @@ Your advice: <text>."
 
 ## 3. Hand it in
 
-**Do:** `submit_work` with the review's number, `report`, `files` (and `invite` if they came by link).
+**Do:** **New pro asks use Asky Pro Checker's report form:** `read_ask` lists its questions. Fill them with `submit_work` `fields`, never `report`: the summary, one step row per scenario, each finding with a severity and its evidence named by file name without the extension (login-error for /path/login-error.png), recommendations, limitations, and every screenshot's full path in `evidence`. Meet any rules the poster added too. Older pro asks without that form: `submit_work` with the review's number, `report`, `files` (and `invite` if they came by link).
 The first call sends nothing and returns the whole report: show all of it. **Say:** "Here's your report.
 Hand it in?" On yes, the same call again with exactly the same report and files. If a tool gives a link
 to tap or a dialog, pass it on as the tool says and wait; **never answer a dialog for them**. If the
