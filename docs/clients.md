@@ -57,7 +57,7 @@ No plugins: add a **custom connector** with the URL of a hosted plugin's MCP ser
 
 - Oracles and memory: the URLs are in [oracles](kinds/oracle.md) and [memory](kinds/memory.md).
 - asks.world: `https://asks.world/v1/mcp` (mainnet) or `https://test.asks.world/v1/mcp` (testnet).
-  Sign in with Google when you connect it (without `/me` it never asks, and only reads the board). Anything that
+  Sign in with Google when you connect it: it asks before anything else. Anything that
   moves money is a link to tap on asks.world, which works the same on a phone. See
   [asks.world](kinds/asks.md).
 

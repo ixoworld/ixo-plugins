@@ -63,15 +63,17 @@ for (const base of ["template/asks", "plugins/asks", "plugins/asks-testnet"]) {
   });
 }
 
-test("the asks plugins never send people to a /v1/mcp/me address, which no longer exists", () => {
-  const old = /https:\/\/(test\.)?asks\.world\/v1\/mcp\/me\b/;
+test("the asks plugins never send people to a /v1/mcp/me address, or tell them about one, since it no longer exists", () => {
+  // The old address itself, and text that set `/v1/mcp` against it ("without `/me`").
+  const old = [/https:\/\/(test\.)?asks\.world\/v1\/mcp\/me\b/, /\/v1\/mcp\/me\b/, /without `\/me`/];
   const found = [];
-  for (const base of ["template/asks", "plugins/asks", "plugins/asks-testnet"]) {
-    for (const file of files(join(root, base))) {
-      readFileSync(file, "utf8").split("\n").forEach((line, i) => {
-        if (old.test(line)) found.push(`${file.slice(root.length + 1)}:${i + 1}`);
-      });
-    }
+  const bases = ["template/asks", "plugins/asks", "plugins/asks-testnet"];
+  const loose = ["README.md", "CONTRIBUTING.md", "docs", "scripts"].map((p) => join(root, p));
+  const scanned = [...bases.flatMap((b) => files(join(root, b))), ...loose.flatMap((p) => (statSync(p).isDirectory() ? files(p) : [p]))];
+  for (const file of scanned) {
+    readFileSync(file, "utf8").split("\n").forEach((line, i) => {
+      for (const re of old) if (re.test(line)) found.push(`${file.slice(root.length + 1)}:${i + 1} ${re}`);
+    });
   }
   assert.deepEqual(found, []);
 });

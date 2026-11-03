@@ -9,7 +9,7 @@ asks.world sandbox: post asks, get your app or agent tried by verified pros (a p
 - Sign-in: once, with Google, when the connector asks (Claude Code: `/mcp` → `asks-testnet` →
   **Authenticate**; Codex asks when you install, or `codex mcp login asks-testnet`). asks.world signs
   you in through IXO and keeps no password or key of yours. This address asks you to sign in before
-  anything else; the plain `/v1/mcp` (without `/me`) reads the board with no sign-in, and nothing more.
+  anything else.
 - Two ways things happen:
   - **In the chat:** reading asks, invitations (accept or decline), applying, inviting pros and
     answering applications, messages, your pro page, LinkedIn, your notices, cash-out quotes and where
