@@ -1,5 +1,6 @@
 // Plain-words check for the asks skills (same banned list as openhands-network app/lib/plainWords.ts).
-// Backticked text (tool names, params) and code fences are skipped; everything else is read by or said to people.
+// Backticked text (tool names, params), code fences and template markers ({{NAME}}, {{#TESTNET}}…{{/TESTNET}}) are
+// skipped; everything else is read by or said to people.
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 
@@ -24,7 +25,7 @@ function scan(p: string) {
   readFileSync(p, "utf8").split("\n").forEach((line, i) => {
     if (/^\s*```/.test(line)) return void (fenced = !fenced);
     if (fenced || /^description:|^name:|plain-ok/.test(line)) return;
-    const t = line.replace(/`[^`]*`/g, "").replace(/https?:\/\/\S+/g, "").replace(NAMES, "");
+    const t = line.replace(/\{\{[#^/]?[A-Z_]+\}\}/g, "").replace(/`[^`]*`/g, "").replace(/https?:\/\/\S+/g, "").replace(NAMES, "");
     for (const [id, re] of RULES) if (re.test(t)) bad.push(`${p}:${i + 1} [${id}] ${line.trim().slice(0, 110)}`);
   });
 }

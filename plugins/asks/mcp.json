@@ -2,12 +2,8 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
   "mcpServers": {
     "asks": {
-      "type": "stdio",
-      "command": "npx",
-      "args": [
-        "-y",
-        "@ixo/asks-mcp@latest"
-      ]
+      "type": "streamable-http",
+      "url": "https://asks.world/v1/mcp"
     }
   }
 }

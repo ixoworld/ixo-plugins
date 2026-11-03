@@ -25,7 +25,7 @@ jobs:
           node-version: 22
       - name: Install dependencies
         run: bun install --frozen-lockfile
-      - name: Test the asks plugin's auto-update
+      - name: Tests (asks skills' links, the asks plugins' hosted connector)
         run: bun run test
       - name: Install the Claude Code CLI (for its plugin validator)
         run: npm install -g @anthropic-ai/claude-code

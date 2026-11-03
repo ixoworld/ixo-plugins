@@ -5,10 +5,10 @@ description: The person's pro page on asks.world (name, what they do, rate, link
 
 # Your pro page
 
-Follow the `asks` skill's way of talking and lead the way. **Network:** the `asks` skill's rule (ask
-once: "Real money, or a dry run with practice money?"; never switch mid-task). A page is per network:
-their real page is on `mainnet`; a dry run makes a test page. Connected first (`connect` skill; for a
-pro, `reviews: true`).
+Follow the `asks` skill's way of talking and lead the way. **Real or practice money:** the `asks`
+skill's rule. This is their real page; the sandbox has its own test
+pages. Signed in first (`connect` skill). Everything here happens in the chat and nothing
+here spends; LinkedIn is the one link they open, to log in there.
 
 **Do:** `my_page` first, quietly. Then lead with one line:
 - No page yet → **Say:** "A pro page lets people find you and invite you to paid reviews. It takes
@@ -50,9 +50,9 @@ Then **Ask** the rest one at a time, each skippable ("skip" moves on):
 10. Experience: offer "Shall I draft it from your headline and what you told me?" (`experience`)
 11. Pictures of your work? (`pictures`) Other links? (`links`)
 
-For pictures **Say:** "Give me the file's path on this computer (drag the file into this window to paste
-its path) or an https link. I upload it when you publish." PNG, JPG or WebP, up to 5 MB. If you can't
-read local files (a web or hosted chat), ask for an https link only.
+For pictures **Say:** "Paste a link to the picture (one that starts with https), or skip it and add
+pictures from your phone on your page's edit form after: https://asks.world/me/page/edit."
+PNG, JPG or WebP, up to 5 MB. Never ask for a file on their computer.
 
 Use the suggested @name unless they want another. Build it only from LinkedIn and their words; you
 cannot read LinkedIn or any signed-in site yourself, so never say you did.
@@ -68,4 +68,4 @@ it can't be undone, and their past work stays on the record). **Ask:** "Delete y
 undone." Then `confirm: true` only on their yes.
 
 **Say:** "Tell me anytime what to change." Change it here: `set_my_page` with the change, preview, confirm.
-Only if they ask for a form: https://asks.world/me/page/edit.
+Only if they ask for a form, or to add pictures from their phone: https://asks.world/me/page/edit.

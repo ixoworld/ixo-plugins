@@ -25,7 +25,7 @@ requirements; the builder's **final approval** pays it. Say "automated checks", 
 
 ## Set it up
 
-Connected first (`connect` skill, with `reviews: true` on `get_connect_link`).
+Signed in first (`connect` skill).
 
 **Do:** `draft_call` with `kind: "review"` and what the person already said. Its answer lists what is missing, each with the question to ask: ask those one at
 a time and pass each answer back (never re-send what it took). Usually:
@@ -49,27 +49,22 @@ sentence as it is and repeat its numbers exactly; never work one out yourself. *
 the pro ask '<title>' of <name> <version>: <n> scenarios, up to <count> reports,
 open for <days> days, by invitation. <the money sentence> <total> in all (<real / practice> money). Each
 report waits for your final approval before it's paid. Post it?" On yes: `post_call` with `confirm` =
-that total, again until it says everything is posted.
+that total. It gives one link to tap (the `create` skill's money rule); the page posts everything in a
+row after that one tap. Then `read_ask` says it's live.
 
 Over the limit one ask can hold? `draft_call` says so and names what fits. Never ask for a yes on those
 terms. **Say:** "That's more than one pro ask can hold. I can make it <what fits, e.g. 5 reports at $8
 each> instead. Which?" and draft again with their choice.
 
-If posting is refused with an offer to post from your assistant's own key instead, nothing happens
-until they agree. **Say:** "asks.world can't take this from your account here. Instead you'd first move
-<shortfall> to my own account on this computer and I'd post from there. Then the automated checks decide each report
-alone and you don't give final approval. Do that?" Only on yes: give the one way to move the money,
-wait until `my_status` shows it, then post with `plain_key: true`. Never choose it silently.
-
 **After posting, Say**, one step at a time: its page, only theirs
-(https://asks.world/me/pro-asks/<number>), where reports come in and are approved; if there's a link to turn on their
+(https://{{#TESTNET}}test.{{/TESTNET}}asks.world/me/pro-asks/<number>), where reports come in and are approved; if there's a link to turn on their
 checks, "Open this link and tap **Approve**, so reports wait for your final approval."
 
 ## Invite pros
 
 **Do:** `find_pro` (with `q` for what the pro ask needs, e.g. Android, payments). **Say** the three to five it suggests, each with "LinkedIn verified", their
 rate and their page; nothing ranks them, the person chooses. Want to browse? "All the pros are at
-https://asks.world/pros" (in the sandbox: https://test.asks.world/pros). `find_pro` with `handle` reads a pro
+https://{{#TESTNET}}test.{{/TESTNET}}asks.world/pros" `find_pro` with `handle` reads a pro
 they name by @name. Then the `invite` skill: `invite_to_call` with the chosen @names (or `"link"` once
 per private link) and the private note. **Say** for links: "Send each of these to one pro, privately."
 
@@ -78,4 +73,4 @@ per private link) and the private note. **Say** for links: "Send each of these t
 `read_ask` and `call_invites` on the old one, then `draft_call` with `kind: "review"`, the same (or the failed) scenarios, the same pay, and the new version and link; invite the
 same pros after it posts.
 
-A follow-up stays on the network the first pro ask was on.
+A follow-up stays where the first pro ask was: real money or practice money.

@@ -5,9 +5,11 @@ description: Invite people to an ask, open call or pro ask on asks.world, sugges
 
 # Invite people and answer applications
 
-Follow the `asks` skill's way of talking and lead the way. **Network:** the `asks` skill's rule (ask
-once: "Real money, or a dry run with practice money?"; never switch mid-task). An ask is on the network it was posted on: if
-it isn't found there, look on the other and say so.
+Follow the `asks` skill's way of talking and lead the way. **Real or practice money:** the `asks`
+skill's rule (this connector is real money;
+never switch mid-task). An ask is where it was posted: if it isn't found here, say it may be on the
+sandbox connector. Signed in first (`connect`
+skill). This all happens in the chat, and nothing here spends.
 
 - **Invite:** `invite_to_call` with the ask's number and @names or addresses, or `"link"` once per
   private link wanted, and an optional `note` (private details such as a test login; only the invited
@@ -23,8 +25,8 @@ it isn't found there, look on the other and say so.
 - **Who to invite:** any LinkedIn-verified pro who is Open to work. `find_pro` suggests three to five
   (`q` for what's needed); `find_pro` with `handle` reads one person by @name. The person chooses. A
   refusal (not verified, not open to work): say it in its words and offer someone else. Don't know whom?
-  **Say:** "Browse the pros at https://asks.world/pros and tell me who you'd like." (practice:
-  https://test.asks.world/pros).
+  **Say:** "Browse the pros at https://asks.world/pros and tell me who
+  you'd like."
 
 Once a pro is invited, talk with them in the ask's room: the `manage` skill, "Talking with a pro".
 

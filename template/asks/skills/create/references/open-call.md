@@ -7,7 +7,7 @@ requirements the brief states; an entry that misses one isn't paid. Two kinds:
   entry that passes. The pick is theirs, a few days after entries close.
 - **Hiring:** no winner. Every entry that passes is paid the same, up to a number they set.
 
-- **Real money too:** it runs on `mainnet` like any ask: show the preview, post only on their yes.
+- **Real money too:** it works with real money like any ask: show the preview, post only on their yes and their tap.
 - **Pick it when:** ideas, proposals, designs or written work from many people, judged against a brief.
 - **Not when:** one short task → an ask ([post-an-ask.md](post-an-ask.md)); an app tried by verified
   pros → a pro ask ([review-job.md](review-job.md)); photos at places → a campaign ([campaign.md](campaign.md)).
@@ -25,4 +25,5 @@ requirements the brief states; an entry that misses one isn't paid. Two kinds:
 **Do:** `draft_call` with `mode` (`competition` or `hire`) and what the person said; it answers with the
 next question to ask. Never re-send a field and never invent their brief; offer the defaults it shows.
 When nothing is missing it shows the whole call: tell it in plain words, get a yes, then `post_call` with
-`confirm` = the total, again until it says everything is posted. Give them the link.
+`confirm` = the total. It gives one link to tap (the `create` skill's money rule); the page posts every
+part of the call in a row after that one tap. Then `read_ask` says it's live: give them its link.

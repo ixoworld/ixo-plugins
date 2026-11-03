@@ -11,11 +11,17 @@
     {
       "name": "asks",
       "source": "./plugins/asks",
-      "description": "asks.world: post asks that real people answer, get your app or agent tried by verified pros (a pro ask), or find paid work, with your own key held on your machine. Say \"dry run\" to practise on testnet with practice money.",
+      "description": "asks.world: post asks that real people answer, get your app or agent tried by verified pros (a pro ask), or find paid work. Sign in once with Google; anything that pays or needs your signature is one tap on asks.world. Real money; for practice, add asks-testnet.",
       "metadata": {
-        "kind": "asks",
-        "package": "@ixo/asks-mcp",
-        "major": "latest"
+        "kind": "asks"
+      }
+    },
+    {
+      "name": "asks-testnet",
+      "source": "./plugins/asks-testnet",
+      "description": "asks.world sandbox: post asks, get your app or agent tried by verified pros (a pro ask), or find paid work, with practice money. Nothing real moves. Sign in once with Google; anything that pays is one tap on test.asks.world.",
+      "metadata": {
+        "kind": "asks"
       }
     },
     {

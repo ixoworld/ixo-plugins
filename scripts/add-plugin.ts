@@ -8,9 +8,10 @@
  *   bun run add-plugin --kind oracle --name ixo-swiftdrop-devnet --title "SwiftDrop Express (devnet)" \
  *     --url https://shipment-delivery-oracle.devnet.ixo.earth/v1/mcp \
  *     --description "Proof of delivery for SwiftDrop couriers — devnet"
- *   # a local plugin: the client starts the MCP server as a command
- *   bun run add-plugin --kind asks --name asks --title "asks.world" \
- *     --package @ixo/asks-mcp --major latest
+ *   # asks.world: hosted, one plugin per network (asks-testnet: https://test.asks.world/v1/mcp)
+ *   bun run add-plugin --kind asks --name asks --title "asks.world" --url https://asks.world/v1/mcp
+ *   # a local plugin (a kind whose `mcp` block uses {{PACKAGE}}/{{MAJOR}}): the client starts a command
+ *   bun run add-plugin --kind <kind> --name <name> --title "<title>" --package @scope/name --major 1
  *
  * A KIND is a directory `template/<kind>/` holding everything kind-specific — no code per kind:
  *   - `kind.json`: `description` (default plugin description), `keywords`, `serverName` (the MCP

@@ -10,10 +10,13 @@
 - **Money:** the company's account sets aside each ask's money when it is posted (ways B and C pay the
   people outside); checks may come from its review budget. What isn't paid comes back when they close it.
 - **Judged:** by a verifier the company allows (step 4).
-- Set up once (about 10 minutes, Claude Code or Cowork only), then step 13 for each ask.
+- Set up once (about 10 minutes), then step 13 for each ask, from any chat.
 
-You set the company up yourself, running each step as a terminal command. The person only answers
-questions, signs in, clicks and sends money.
+You set the company up yourself, running each step as a terminal command, so the set-up needs you on
+their computer: Claude Code, Codex, or the Claude app's Code tab. In claude.ai, the phone app or
+ChatGPT, **Say:** "Setting up a company needs me on your computer, in Claude Code or Codex. Once it's
+set up, you can post as the company from anywhere." The person only answers questions, signs in,
+clicks and sends money.
 
 ## Rules for this part
 
@@ -35,7 +38,7 @@ questions, signs in, clicks and sends money.
 - **No workarounds.** Run only the commands written here. If one is missing or fails, say what is
   missing in one plain sentence and stop. Never ask the person to type a command.
 - Files: read only `~/.ixo/openhands-hq-<network>.json`. Never list, search or read anything else under
-  `~/.ixo` or `~/.openhands`.
+  `~/.ixo`.
 - Describe a verifier only with what its card says. Examples use only the person's own brand and places.
 
 ## Commands
@@ -49,8 +52,8 @@ questions, signs in, clicks and sends money.
 | `<site>` | the website in the links the tools return; never guess a domain |
 | `<console>` | Decision Console: testnet `https://decision-console.testnet.ixo.earth`, mainnet `https://decision-console.ixo.earth` | <!-- plain-ok -->
 
-`<network>` is the network chosen for this task (`mainnet` or `testnet`): pass it as `network` to every
-tool and as `--network` to every command. The computer needs Node.js 22.6 or newer.
+`<network>` is `mainnet`, the one this connector uses: pass it as `--network` to every command.
+The asks tools take none. The computer needs Node.js 22.6 or newer for the commands.
 
 **Notes:** keep answers and printed ids (never secrets) in `~/.ixo/openhands-hq-<network>.json`. Read it
 at the start. The checks, not the notes, decide what is done.
@@ -190,17 +193,17 @@ Only if this run created the sign-in: **Say:** "The setup is done. Shall I remov
 computer, for safety? You can sign in again any time." On yes `decision-oracle logout --network <network>`.
 Otherwise say nothing about it.
 
-### 11. Connect
+### 11. Signed in
 
-`my_status` shows their account connected, else the `connect` skill.
+`my_status` shows them signed in, else the `connect` skill.
 
 ### 12. Company payout settings
 
 `set_payout_settings` without `confirm`: `orgDid`; `facilitator` (B, C); `rails` `["chain"]`,
 `["usdc_base"]` or `["stripe"]`; `oracles`: the verifier(s), default first; `currency`: A none, B
 `USDC`, C `USD`. **Say:** "You pay people <how>; answers are checked by <verifier>. OK?" → `confirm:
-true`. "Reconnect needed" → step 11. "Not confirmed" → note it and check the company's **Payouts** page
-before trying again. **Say:** "You can change this any time on your company's **Payouts** page."
+true`; it gives a link they tap to sign it (the `asks` skill's link way). "Sign in again" → step 11.
+"Not confirmed" → note it and check the company's **Payouts** page before trying again. **Say:** "You can change this any time on your company's **Payouts** page."
 
 ### 13. First task
 
@@ -208,7 +211,8 @@ As [post-an-ask.md](post-an-ask.md), plus: `org` = the org DID; `oracle` = `{ di
 `url` for their own verifier); their own rules → `create_campaign` first and pass `campaign`. Way A: no
 `currency`. Ways B and C: `pay: 0` and `payout: { rail, amount, currency, facilitator: <url> }`, never
 a reward on chain too. **Say:** "This task pays <reward> to each of <n> people, from your company's <!-- plain-ok -->
-account. Reviews come from your review budget. Post it?" Then for B and C:
+account. Reviews come from your review budget. Post it?" On yes, the link to tap (the `create`
+skill's money rule). Then for B and C:
 `installer asks register <collectionId> --url <url> --network <network>` (best effort).
 **Say:** "You're set up. From now on, just tell me what you need."
 

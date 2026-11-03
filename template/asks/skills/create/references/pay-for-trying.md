@@ -18,4 +18,4 @@ An extra on an ask: people get some money just for trying, not only when they wi
   refuses those; say "Pay for trying only works on an ask you pay for yourself."
 
 **Do:** `post_ask` as in [post-an-ask.md](post-an-ask.md), plus `pay_on_submit` and/or `pay_on_reject`
-in dollars. Preview first, repeat the total, `confirm` on their yes.
+in dollars. Preview first, repeat the total, `confirm` on their yes, then the link to tap.
