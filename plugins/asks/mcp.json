@@ -3,7 +3,7 @@
   "mcpServers": {
     "asks": {
       "type": "streamable-http",
-      "url": "https://asks.world/v1/mcp/me"
+      "url": "https://asks.world/v1/mcp"
     }
   }
 }

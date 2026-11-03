@@ -40,9 +40,9 @@ asks.world is hosted too, one plugin per network:
 
 ```bash
 bun run add-plugin --kind asks --name asks --title "asks.world" \
-  --url https://asks.world/v1/mcp/me --version 3.0.0 --description "…"
+  --url https://asks.world/v1/mcp --version 3.0.0 --description "…"
 bun run add-plugin --kind asks --name asks-testnet --title "asks.world sandbox" \
-  --url https://test.asks.world/v1/mcp/me --version 3.0.0 --description "…"
+  --url https://test.asks.world/v1/mcp --version 3.0.0 --description "…"
 ```
 
 **A local plugin** (`--package`, `--major`, `--network`, for a kind whose `mcp` block uses them): the

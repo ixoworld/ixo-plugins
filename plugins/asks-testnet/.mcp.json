@@ -2,7 +2,7 @@
   "mcpServers": {
     "asks-testnet": {
       "type": "http",
-      "url": "https://test.asks.world/v1/mcp/me"
+      "url": "https://test.asks.world/v1/mcp"
     }
   }
 }

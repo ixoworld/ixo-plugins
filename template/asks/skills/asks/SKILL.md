@@ -20,14 +20,14 @@ Every asks skill follows this, also when the person starts it directly (`/{{NAME
   nothing real moves."
 - They want real money → that is the `asks` connector (https://asks.world). If its tools are here, use
   the `asks` skills for the whole task. If not, **Say:** "Real money uses asks.world's main
-  connector. Add the `asks` plugin (or the connector https://asks.world/v1/mcp/me in your app's
+  connector. Add the `asks` plugin (or the connector https://asks.world/v1/mcp in your app's
   connectors), sign in, and ask me again."
 {{/TESTNET}}{{^TESTNET}}**real money** (https://asks.world).
 
 - They said "try", "test", "dry run" or "practice" → that is the sandbox, a second connector
   (`asks-testnet`, https://test.asks.world). If its tools are here, use the `asks-testnet` skills for
   the whole task. If not, **Say:** "Practice runs use the asks.world sandbox, a second connector. Add
-  the `asks-testnet` plugin (or the connector https://test.asks.world/v1/mcp/me in your app's connectors),
+  the `asks-testnet` plugin (or the connector https://test.asks.world/v1/mcp in your app's connectors),
   sign in, and ask me again. Nothing real moves there." Never do a dry run with real money.
 - Otherwise it's real money: say "real money" in every preview.
 {{/TESTNET}}- Keep to one kind of money for the whole task. Never switch mid-task; if they want the other one,

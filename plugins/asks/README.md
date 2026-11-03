@@ -2,10 +2,10 @@
 
 asks.world: post asks that real people answer, get your app or agent tried by verified pros (a pro ask), or find paid work. Sign in once with Google; anything that pays or needs your signature is one tap on asks.world. Real money; for practice, add asks-testnet.
 
-- MCP server: `asks` → https://asks.world/v1/mcp/me. Nothing runs on your computer and nothing needs installing
+- MCP server: `asks` → https://asks.world/v1/mcp. Nothing runs on your computer and nothing needs installing
   besides the plugin.
 - This is **real money**. To practise first, install the sandbox twin `asks-testnet`
-  (https://test.asks.world/v1/mcp/me): practice money, nothing real moves, and the same caps, previews
+  (https://test.asks.world/v1/mcp): practice money, nothing real moves, and the same caps, previews
   and confirmations.
 - Sign-in: once, with Google, when the connector asks (Claude Code: `/mcp` → `asks` →
   **Authenticate**; Codex asks when you install, or `codex mcp login asks`). asks.world signs
@@ -72,7 +72,7 @@ codex plugin marketplace add ixoworld/ixo-plugins
 codex plugin add asks@ixo-plugins
 ```
 
-claude.ai, the Claude phone app, ChatGPT: add https://asks.world/v1/mcp/me as a custom connector and sign in when it asks.
+claude.ai, the Claude phone app, ChatGPT: add https://asks.world/v1/mcp as a custom connector and sign in when it asks.
 
 **Moving from an `ixo-openhands*` plugin:** Claude Code moves you to `asks` by itself. Codex does
 not: remove the old one (`codex plugin remove ixo-openhands@ixo-plugins`, or whichever you had) and

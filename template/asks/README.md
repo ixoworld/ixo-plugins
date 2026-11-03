@@ -5,9 +5,9 @@
 - MCP server: `{{SERVER}}` → {{URL}}. Nothing runs on your computer and nothing needs installing
   besides the plugin.
 {{#TESTNET}}- This is the **sandbox**: practice money, nothing real moves. The same caps, previews and
-  confirmations as real money. For real money, install `asks` (https://asks.world/v1/mcp/me).
+  confirmations as real money. For real money, install `asks` (https://asks.world/v1/mcp).
 {{/TESTNET}}{{^TESTNET}}- This is **real money**. To practise first, install the sandbox twin `asks-testnet`
-  (https://test.asks.world/v1/mcp/me): practice money, nothing real moves, and the same caps, previews
+  (https://test.asks.world/v1/mcp): practice money, nothing real moves, and the same caps, previews
   and confirmations.
 {{/TESTNET}}- Sign-in: once, with Google, when the connector asks (Claude Code: `/mcp` → `{{SERVER}}` →
   **Authenticate**; Codex asks when you install, or `codex mcp login {{SERVER}}`). asks.world signs

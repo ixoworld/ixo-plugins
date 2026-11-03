@@ -95,8 +95,8 @@ https://shipment-delivery-oracle.devnet.ixo.earth/v1/mcp
 https://memory-engine.ixo.earth/v1/mcp
 https://memory-engine.testnet.ixo.earth/v1/mcp
 https://memory-engine.devnet.ixo.earth/v1/mcp
-https://asks.world/v1/mcp/me
-https://test.asks.world/v1/mcp/me
+https://asks.world/v1/mcp
+https://test.asks.world/v1/mcp
 ```
 
 The same in the Claude phone app. asks.world's connector does everything the plugin does; the plugin

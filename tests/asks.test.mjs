@@ -13,11 +13,10 @@ const files = (dir) =>
     return statSync(p).isDirectory() ? files(p) : [p];
   });
 
-// `/v1/mcp/me`, not `/v1/mcp`: the same server, but it answers 401 without a token, which is what makes
-// Claude Code, Codex, claude.ai and ChatGPT open the sign-in. Plain `/v1/mcp` is read-only and never asks.
+// `/v1/mcp` answers 401 without a token, which is what makes Claude Code, Codex, claude.ai and ChatGPT open the sign-in.
 const PLUGINS = {
-  asks: "https://asks.world/v1/mcp/me",
-  "asks-testnet": "https://test.asks.world/v1/mcp/me",
+  asks: "https://asks.world/v1/mcp",
+  "asks-testnet": "https://test.asks.world/v1/mcp",
 };
 const SKILLS = ["account", "asks", "connect", "create", "help", "invite", "jobs", "manage", "profile", "report"];
 
@@ -64,13 +63,13 @@ for (const base of ["template/asks", "plugins/asks", "plugins/asks-testnet"]) {
   });
 }
 
-test("the asks plugins never send people to the read-only /v1/mcp, which never asks them to sign in", () => {
-  const bare = /https:\/\/(test\.)?asks\.world\/v1\/mcp(?!\/me)/;
+test("the asks plugins never send people to a /v1/mcp/me address, which no longer exists", () => {
+  const old = /https:\/\/(test\.)?asks\.world\/v1\/mcp\/me\b/;
   const found = [];
   for (const base of ["template/asks", "plugins/asks", "plugins/asks-testnet"]) {
     for (const file of files(join(root, base))) {
       readFileSync(file, "utf8").split("\n").forEach((line, i) => {
-        if (bare.test(line)) found.push(`${file.slice(root.length + 1)}:${i + 1}`);
+        if (old.test(line)) found.push(`${file.slice(root.length + 1)}:${i + 1}`);
       });
     }
   }
