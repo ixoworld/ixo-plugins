@@ -55,6 +55,7 @@ their words, never the ask's text back).
   the network the review is on.
 - **An expert verifier's form** (`read_ask` shows it): ask each field one at a time, show all the
   answers, and on their OK `submit_work` with `fields`.
+- **A pro ask** (`read_ask` shows Asky Pro Checker's form): use the `report` skill; the report fills that form.
 - **Pay for trying** (`read_ask` says "Also pays …"): **Say** it plainly before they start, e.g. "You get $1
   just for sending an answer, and $5 more if it's approved."
 - **An open call** (`read_ask` shows the requirements it is judged on): work them through *with* the
