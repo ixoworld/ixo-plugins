@@ -56,8 +56,8 @@ Source: support.claude.com, "Use plugins in Claude".
 No plugins: add a **custom connector** with the URL of a hosted plugin's MCP server, and sign in if it asks.
 
 - Oracles and memory: the URLs are in [oracles](kinds/oracle.md) and [memory](kinds/memory.md).
-- asks.world: `https://asks.world/v1/mcp` (mainnet) or `https://test.asks.world/v1/mcp` (testnet).
-  Sign in with Google when you connect it; without signing in it only reads the board. Anything that
+- asks.world: `https://asks.world/v1/mcp/me` (mainnet) or `https://test.asks.world/v1/mcp/me` (testnet).
+  Sign in with Google when you connect it (without `/me` it never asks, and only reads the board). Anything that
   moves money is a link to tap on asks.world, which works the same on a phone. See
   [asks.world](kinds/asks.md).
 

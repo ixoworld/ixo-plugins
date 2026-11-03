@@ -7,8 +7,7 @@ description: Find paid work on asks.world and get paid. Use when the person asks
 
 Follow the `asks` skill's way of talking and lead the way. **Real or practice money:** the `asks`
 skill's rule (this connector is practice money;
-never switch mid-task). Looking at the board needs no sign-in; invitations, applying and handing in
-do (`connect` skill).
+never switch mid-task). Signed in first (`connect` skill).
 
 ## The one rule
 

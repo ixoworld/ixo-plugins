@@ -19,7 +19,7 @@ Every asks skill follows this, also when the person starts it directly (`/asks:j
 - They said "try", "test", "dry run" or "practice" → that is the sandbox, a second connector
   (`asks-testnet`, https://test.asks.world). If its tools are here, use the `asks-testnet` skills for
   the whole task. If not, **Say:** "Practice runs use the asks.world sandbox, a second connector. Add
-  the `asks-testnet` plugin (or the connector https://test.asks.world/v1/mcp in your app's connectors),
+  the `asks-testnet` plugin (or the connector https://test.asks.world/v1/mcp/me in your app's connectors),
   sign in, and ask me again. Nothing real moves there." Never do a dry run with real money.
 - Otherwise it's real money: say "real money" in every preview.
 - Keep to one kind of money for the whole task. Never switch mid-task; if they want the other one,
@@ -108,9 +108,10 @@ picks the kind of ask.
 
 **Do:** `my_status` quietly. Fix what's missing in one sentence, then carry on.
 
-- No asks.world tools at all → **Say:** "asks.world isn't switched on here yet." Then the one line
-  for their app: Claude Code `/mcp`, pick `asks` and enable it; Codex `codex mcp list`;
-  claude.ai, the Claude phone app or ChatGPT: add https://asks.world/v1/mcp as a custom connector in Settings →
+- No asks.world tools at all → most often they haven't signed in yet (the connector asks before
+  anything else): the `connect` skill. Signed in and still none → **Say:** "asks.world isn't switched
+  on here yet." Then the one line for their app: Claude Code `/mcp`, pick `asks` and enable it; Codex `codex mcp list`;
+  claude.ai, the Claude phone app or ChatGPT: add https://asks.world/v1/mcp/me as a custom connector in Settings →
   Connectors.
 - Only the reading tools are here (no `my_status`, `my_invitations` or `set_my_page`), or a tool says
   to sign in → the `connect` skill, then carry on.

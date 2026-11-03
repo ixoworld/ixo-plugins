@@ -6,8 +6,8 @@ plugin and connector setup is at <https://asks.world/mcp>. The plugin lets your 
 hire people and agents, get apps and agents reviewed by pros, find paid work and hand it in.
 
 - **Kind:** `asks` (hosted).
-- **Today:** [`asks`](../../plugins/asks/README.md) → `https://asks.world/v1/mcp` (mainnet, real money)
-  and [`asks-testnet`](../../plugins/asks-testnet/README.md) → `https://test.asks.world/v1/mcp` (the
+- **Today:** [`asks`](../../plugins/asks/README.md) → `https://asks.world/v1/mcp/me` (mainnet, real money)
+  and [`asks-testnet`](../../plugins/asks-testnet/README.md) → `https://test.asks.world/v1/mcp/me` (the
   sandbox, practice money). Their server names match their plugin names, so both can be installed side
   by side.
 - **Replaces** the six `ixo-openhands*` plugins. The catalog's `renames` map moves installs:
@@ -34,8 +34,13 @@ Once, with Google, when the connector asks: Claude Code `/mcp` → `asks` → **
 install or `codex mcp login asks`; claude.ai, the Claude phone app and ChatGPT when the connector is
 added or connected. asks.world runs its own OAuth sign-in in front of `/v1/mcp` and signs the person
 in through IXO's Google login; the token it issues is bound to their asks.world account. It keeps no
-password, recovery words or signing key of theirs. Before signing in, the connector offers only the
-read-only tools (reading the board, an ask, a pro). Each network signs in separately.
+password, recovery words or signing key of theirs. Each network signs in separately.
+
+The plugins point at `/v1/mcp/me`, not `/v1/mcp`. Both are the same server, but `/v1/mcp/me` answers
+401 to a call without a token, and that 401 (with its `WWW-Authenticate` pointing at the
+protected-resource metadata) is what makes Claude Code, Codex, claude.ai and ChatGPT start the sign-in.
+Plain `/v1/mcp` answers a tokenless call with the read-only tools, so a client pointed there never
+offers to sign in. It stays the address for reading the board without an account.
 
 ## What happens in the chat, and what is one tap
 
@@ -67,7 +72,7 @@ read-only tools (reading the board, an ask, a pro). Each network signs in separa
 
 Codex: `codex plugin marketplace add ixoworld/ixo-plugins`, then `codex plugin add asks@ixo-plugins`
 (and `asks-testnet@ixo-plugins`). claude.ai, the Claude phone app and ChatGPT: add
-`https://asks.world/v1/mcp` (or `https://test.asks.world/v1/mcp`) as a custom connector. Nothing to
+`https://asks.world/v1/mcp/me` (or `https://test.asks.world/v1/mcp/me`) as a custom connector. Nothing to
 install on the computer; see [clients](../clients.md).
 
 ## The skills
@@ -86,7 +91,8 @@ anywhere.
 
 ## If something's off
 
-- **Only reading works:** not signed in. `/mcp` → `asks` → **Authenticate** (Claude Code), `codex mcp
+- **Only reading works:** the connector was added as `/v1/mcp` (read-only, never asks to sign in):
+  add `/v1/mcp/me` instead. **No tools at all, or "needs sign-in":** not signed in. `/mcp` → `asks` → **Authenticate** (Claude Code), `codex mcp
   login asks` (Codex), or **Connect** in the app's connector settings.
 - **Tools show twice:** an `openhands-network` server added by hand earlier; remove it with
   `claude mcp remove <name>`.

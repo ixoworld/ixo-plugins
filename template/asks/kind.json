@@ -1,8 +1,9 @@
 {
-  "$comment": "Kind-level defaults for `bun run add-plugin --kind asks`: a HOSTED kind. The plugin points at asks.world's own connector (`/v1/mcp` on the site), which signs the person in with Google through asks.world and holds no key of theirs. One plugin per network, because a connector is one deployment: `asks` is https://asks.world/v1/mcp (real money), `asks-testnet` is https://test.asks.world/v1/mcp (the sandbox, practice money). serverName is {{NAME}}, so both can be installed side by side. Text templates use {{#TESTNET}} for the sandbox's words. Placeholders: {{TITLE}} {{URL}} {{SERVER}} {{DESCRIPTION}} {{NAME}}.",
+  "$comment": "Kind-level defaults for `bun run add-plugin --kind asks`: a HOSTED kind. The plugin points at asks.world's own connector for a signed-in person (`/v1/mcp/me` on the site: the same server as `/v1/mcp`, but it answers 401 without a token, which is what makes Claude Code, Codex, claude.ai and ChatGPT open the sign-in; plain `/v1/mcp` answers tokenless calls read-only and so never prompts). It signs the person in with Google through asks.world and holds no key of theirs. One plugin per network, because a connector is one deployment: `asks` is https://asks.world/v1/mcp/me (real money), `asks-testnet` is https://test.asks.world/v1/mcp/me (the sandbox, practice money). serverName is {{NAME}}, so both can be installed side by side. Text templates use {{#TESTNET}} for the sandbox's words. Placeholders: {{TITLE}} {{URL}} {{SERVER}} {{DESCRIPTION}} {{NAME}}.",
   "description": "{{TITLE}}: post asks that real people answer, get your app or agent tried by verified pros (a pro ask), or find paid work. Sign in once with Google; anything that pays or needs your signature is one tap on asks.world.",
   "keywords": ["ixo", "asks", "asks-world", "tasks", "agents", "mcp"],
   "serverName": "{{NAME}}",
+  "urlPath": "/v1/mcp/me",
   "codex": {
     "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
     "category": "Productivity"

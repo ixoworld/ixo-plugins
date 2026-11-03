@@ -13,9 +13,11 @@ const files = (dir) =>
     return statSync(p).isDirectory() ? files(p) : [p];
   });
 
+// `/v1/mcp/me`, not `/v1/mcp`: the same server, but it answers 401 without a token, which is what makes
+// Claude Code, Codex, claude.ai and ChatGPT open the sign-in. Plain `/v1/mcp` is read-only and never asks.
 const PLUGINS = {
-  asks: "https://asks.world/v1/mcp",
-  "asks-testnet": "https://test.asks.world/v1/mcp",
+  asks: "https://asks.world/v1/mcp/me",
+  "asks-testnet": "https://test.asks.world/v1/mcp/me",
 };
 const SKILLS = ["account", "asks", "connect", "create", "help", "invite", "jobs", "manage", "profile", "report"];
 
@@ -61,6 +63,19 @@ for (const base of ["template/asks", "plugins/asks", "plugins/asks-testnet"]) {
     assert.deepEqual(found, []);
   });
 }
+
+test("the asks plugins never send people to the read-only /v1/mcp, which never asks them to sign in", () => {
+  const bare = /https:\/\/(test\.)?asks\.world\/v1\/mcp(?!\/me)/;
+  const found = [];
+  for (const base of ["template/asks", "plugins/asks", "plugins/asks-testnet"]) {
+    for (const file of files(join(root, base))) {
+      readFileSync(file, "utf8").split("\n").forEach((line, i) => {
+        if (bare.test(line)) found.push(`${file.slice(root.length + 1)}:${i + 1}`);
+      });
+    }
+  }
+  assert.deepEqual(found, []);
+});
 
 test("each plugin sends people to its own site's pages", () => {
   const pages = /https:\/\/(test\.)?asks\.world\/(me|pros)\b/g;

@@ -32,7 +32,8 @@ needs your signature is a link you tap on asks.world, signed in your browser.
 
 - Where: Claude Code `/mcp` → **Authenticate**; Codex at install or `codex mcp login asks`; claude.ai,
   the Claude phone app and ChatGPT when you add or connect the connector.
-- Without signing in the connector only reads (the board, an ask, a pro).
+- The plugins use `/v1/mcp/me`, which answers 401 until you sign in: that is what opens the sign-in.
+  Plain `/v1/mcp` never asks and only reads (the board, an ask, a pro).
 - Sign out from the same place (Claude Code `/mcp` → **Clear authentication**; `codex mcp logout`;
   the connector's **Disconnect**). See [asks.world](kinds/asks.md).
 

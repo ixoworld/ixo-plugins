@@ -5,14 +5,14 @@
 - MCP server: `{{SERVER}}` → {{URL}}. Nothing runs on your computer and nothing needs installing
   besides the plugin.
 {{#TESTNET}}- This is the **sandbox**: practice money, nothing real moves. The same caps, previews and
-  confirmations as real money. For real money, install `asks` (https://asks.world/v1/mcp).
+  confirmations as real money. For real money, install `asks` (https://asks.world/v1/mcp/me).
 {{/TESTNET}}{{^TESTNET}}- This is **real money**. To practise first, install the sandbox twin `asks-testnet`
-  (https://test.asks.world/v1/mcp): practice money, nothing real moves, and the same caps, previews
+  (https://test.asks.world/v1/mcp/me): practice money, nothing real moves, and the same caps, previews
   and confirmations.
 {{/TESTNET}}- Sign-in: once, with Google, when the connector asks (Claude Code: `/mcp` → `{{SERVER}}` →
   **Authenticate**; Codex asks when you install, or `codex mcp login {{SERVER}}`). asks.world signs
-  you in through IXO and keeps no password or key of yours. Before you sign in, the connector can only
-  read the board.
+  you in through IXO and keeps no password or key of yours. This address asks you to sign in before
+  anything else; the plain `/v1/mcp` (without `/me`) reads the board with no sign-in, and nothing more.
 - Two ways things happen:
   - **In the chat:** reading asks, invitations (accept or decline), applying, inviting pros and
     answering applications, messages, your pro page, LinkedIn, your notices, cash-out quotes and where

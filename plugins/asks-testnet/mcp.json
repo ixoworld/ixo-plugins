@@ -3,7 +3,7 @@
   "mcpServers": {
     "asks-testnet": {
       "type": "streamable-http",
-      "url": "https://test.asks.world/v1/mcp"
+      "url": "https://test.asks.world/v1/mcp/me"
     }
   }
 }

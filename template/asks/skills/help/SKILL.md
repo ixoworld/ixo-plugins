@@ -44,7 +44,7 @@ In claude.ai, the Claude phone app or ChatGPT there are no commands: just say wh
 **The sandbox.** {{#TESTNET}}**Say:** "This is the sandbox: practice money, nothing real moves. I can
 get you some for free. For real money, add asks.world's main connector."{{/TESTNET}}{{^TESTNET}}**Say:**
 "The sandbox is a second asks.world connector with practice money; nothing real moves there. Add it
-(the `asks-testnet` plugin, or https://test.asks.world/v1/mcp as a connector) and say 'dry run'."{{/TESTNET}}
+(the `asks-testnet` plugin, or https://test.asks.world/v1/mcp/me as a connector) and say 'dry run'."{{/TESTNET}}
 
 **Updates. Say:** "There's nothing to update on your computer: asks.world runs on its own side and
 changes there." Only if they ask about the plugin's own instructions: Claude Code `/plugin marketplace

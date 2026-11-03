@@ -2,14 +2,14 @@
 
 asks.world sandbox: post asks, get your app or agent tried by verified pros (a pro ask), or find paid work, with practice money. Nothing real moves. Sign in once with Google; anything that pays is one tap on test.asks.world.
 
-- MCP server: `asks-testnet` → https://test.asks.world/v1/mcp. Nothing runs on your computer and nothing needs installing
+- MCP server: `asks-testnet` → https://test.asks.world/v1/mcp/me. Nothing runs on your computer and nothing needs installing
   besides the plugin.
 - This is the **sandbox**: practice money, nothing real moves. The same caps, previews and
-  confirmations as real money. For real money, install `asks` (https://asks.world/v1/mcp).
+  confirmations as real money. For real money, install `asks` (https://asks.world/v1/mcp/me).
 - Sign-in: once, with Google, when the connector asks (Claude Code: `/mcp` → `asks-testnet` →
   **Authenticate**; Codex asks when you install, or `codex mcp login asks-testnet`). asks.world signs
-  you in through IXO and keeps no password or key of yours. Before you sign in, the connector can only
-  read the board.
+  you in through IXO and keeps no password or key of yours. This address asks you to sign in before
+  anything else; the plain `/v1/mcp` (without `/me`) reads the board with no sign-in, and nothing more.
 - Two ways things happen:
   - **In the chat:** reading asks, invitations (accept or decline), applying, inviting pros and
     answering applications, messages, your pro page, LinkedIn, your notices, cash-out quotes and where
@@ -71,7 +71,7 @@ codex plugin marketplace add ixoworld/ixo-plugins
 codex plugin add asks-testnet@ixo-plugins
 ```
 
-claude.ai, the Claude phone app, ChatGPT: add https://test.asks.world/v1/mcp as a custom connector and sign in when it asks.
+claude.ai, the Claude phone app, ChatGPT: add https://test.asks.world/v1/mcp/me as a custom connector and sign in when it asks.
 
 **Moving from an `ixo-openhands*` plugin:** Claude Code moves you to `asks` by itself. Codex does
 not: remove the old one (`codex plugin remove ixo-openhands@ixo-plugins`, or whichever you had) and
