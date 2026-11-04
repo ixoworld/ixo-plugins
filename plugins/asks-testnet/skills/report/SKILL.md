@@ -21,9 +21,9 @@ approval, or at once if the builder left it to the checks. One that fails is not
 "needs changes" step and no payment in stages.
 
 **How it's handed in:** you write the report with them here in the chat. Handing it in is one link:
-the report page on asks.world, made for phones. There they add the screenshots or a PDF (from their
-camera roll or their computer), check the report and tap to send it. The screenshots never go through
-the chat.
+the report page on asks.world, made for phones. There they check the report and its screenshots or
+PDF, add any that are missing (from their camera roll or their computer) and tap to send it. Where you
+can upload files (step 3), you put the screenshots they point you to on that page first.
 
 ## 1. Do the review
 
@@ -76,9 +76,15 @@ Hand it in?" On yes, the same call again with exactly the same report; it gives 
 **Say:** "Open this on your phone or computer: <link>. Add the screenshots it asks for, check the
 report and tap to send it. Tell me when it's done."
 
-- In Claude Code or Codex on their computer, with the screenshots on that computer: you may open the
-  link for them (`open <link>` on macOS, `xdg-open <link>` on Linux), and, if they ask and you can,
-  add the files they point you to through that page. The sending tap is still theirs.
+- **Their screenshots:** in Claude Code or Codex, or in claude.ai with code execution where test.asks.world
+  and test.api.asks.world are allowed domains, upload each file the person points you to through the
+  upload address `submit_work` gives, under the short name the report gives it (e.g.
+  `curl -T login-error.png <address>login-error.png`), before you give the link. Then **Say:** "Open
+  this on your phone or computer: <link>. Your screenshots are already on it. Check them and the
+  report, and tap to send it." Otherwise (no address, or you can't upload) give the link as above:
+  they add the files on the page. Upload only the files they point you to.
+- In Claude Code or Codex on their computer you may also open the link for them (`open <link>` on
+  macOS, `xdg-open <link>` on Linux). The sending tap is still theirs.
 - **Never answer a dialog or tap send for them.** If the outcome is unknown, never hand it in again;
   check first (below).
 - The page says a screenshot is missing → they add it there; nothing to change in the chat unless the

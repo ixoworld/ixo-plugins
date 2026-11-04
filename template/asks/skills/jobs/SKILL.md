@@ -72,6 +72,12 @@ again exactly the same; it gives a link. **Say:** "Open this, check it and tap t
 me when it's done." Then `read_ask` (or `check_verdict`) says it arrived. If the outcome is unknown,
 never resend; check first.
 
+- **A file with the answer** (the one picture or file a words answer takes, or a form's files): in
+  Claude Code or Codex, or in claude.ai with code execution where {{#TESTNET}}test.{{/TESTNET}}asks.world and {{#TESTNET}}test.{{/TESTNET}}api.asks.world are
+  allowed domains, upload the files the person points you to through the upload address `submit_work`
+  gives, before you give the link; the page shows them in place. Otherwise give the link and they add
+  them on the page. A photo taken at a place is never uploaded: they take it on the ask's page.
+
 ## Did it pass?
 
 **Do:** `check_verdict` with the ask's number. **Say** one of: "Approved and paid: <amount>." / "Passed
