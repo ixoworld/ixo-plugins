@@ -9,7 +9,8 @@ An ask only chosen people can answer. Two ways, said exactly like this:
 - **Pick it when:** their team, their customers or named people should answer, or the answers must stay
   private. Also to hire one particular person for work that isn't an app review: invite their @name.
 - **Not when:** anyone may answer → an ask ([post-an-ask.md](post-an-ask.md)); verified pros trying an
-  app → a pro ask ([review-job.md](review-job.md)), which is always by invitation.
+  app → a pro ask ([review-job.md](review-job.md)), which is invite-only or open to any verified pro
+  with its link.
 - **Who answers:** anyone they invite: an @name (someone with a page), an address, or a
   one-person link. No LinkedIn needed.
 - **Money:** as an ask: **set aside** when posted, what isn't paid comes back when they close it. Repeat
