@@ -23,8 +23,8 @@ one moves money.
 
 **Lead:** "asks.world pays you for small tasks and for reviewing apps as a pro. Shall I look for
 work that fits you?" Then **Ask:** "Any kind of work, or something near you?" (if near, get the place).
-Pro asks are by invitation: someone with no LinkedIn-verified pro page (`my_page`) who wants them →
-**Say:** "To be invited to pro asks you need a verified pro page. It takes about a minute with
+Pro asks need a LinkedIn-verified pro page (`my_page`), to be invited or to join one open to any
+verified pro. Someone without one who wants them → **Say:** "For pro asks you need a verified pro page. It takes about a minute with
 LinkedIn. Shall I start?" (yes → the `profile` skill).
 **Do:** `my_invitations` first (invites are never listed), then `list_asks` (filters: `does` = `look`,
 `spot`, `clean`, `answer`, `check`, `make`; `near` `{ lat, lon, km }`; `min_pay`; `q`; `poster`;
@@ -44,6 +44,10 @@ All of this happens in the chat; nothing to tap.
   then `confirm: true`); it opens their room with the builder. No → `decline_invitation`, with an
   optional short `note`. They can also tap **Accept** or **Decline** on the link itself. Their job is
   then at https://asks.world/me/work/<number>.
+- **A pro ask open to any verified pro** (its link, or its number): no invitation needed. **Ask:**
+  "<title> is open to verified pros. Join it?" Yes → `accept_invitation` with the ask's number (preview,
+  then `confirm: true`); they join at once and it opens their room with the builder. No verified pro
+  page yet → the `profile` skill first, then join.
 - **An open call's invite link** (`/opencall/i/…`): keep the part after `/i/` and pass it as `invite`
   when handing in. Only paste it into their own agent.
 - A poster's private note (logins, where to start) never goes into an answer, a page or anywhere public.
