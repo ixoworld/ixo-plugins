@@ -76,11 +76,17 @@ Hand it in?" On yes, the same call again with exactly the same report; it gives 
 **Say:** "Open this on your phone or computer: <link>. Add the screenshots it asks for, check the
 report and tap to send it. Tell me when it's done."
 
-- **Their screenshots:** in Claude Code or Codex, or in claude.ai with code execution where {{#TESTNET}}test.{{/TESTNET}}asks.world
-  and {{#TESTNET}}test.{{/TESTNET}}api.asks.world are allowed domains, upload each file the person points you to through the
-  upload address `submit_work` gives, under the short name the report gives it (e.g.
-  `curl -T login-error.png <address>login-error.png`), before you give the link. Then **Say:** "Open
-  this on your phone or computer: <link>. Your screenshots are already on it. Check them and the
+- **Their screenshots:** in Claude Code or Codex, or in claude.ai with code execution where {{#TESTNET}}test.{{/TESTNET}}asks.world,
+  {{#TESTNET}}test.{{/TESTNET}}api.asks.world and r2.cloudflarestorage.com are allowed domains, upload each file the person points
+  you to through the upload address `submit_work` gives, under the short name the report gives it,
+  before you give the link. PNG, JPG, WebP or PDF, 5 MB each, at most 10 and 25 MB together:
+  1. POST `{"files": [{"name": "login-error.png", "type": "image/png", "bytes": <exact size>}]}` to
+     the address; it gives a signed `url` and `headers` per file.
+  2. PUT each file to its url with exactly those headers, within 10 minutes:
+     `curl -X PUT -H 'content-type: image/png' --data-binary @login-error.png '<signed url>'`.
+  3. GET the address: it says which files were kept and why any was not. Fix and send those again.
+
+  Then **Say:** "Open this on your phone or computer: <link>. Your screenshots are already on it. Check them and the
   report, and tap to send it." Otherwise (no address, or you can't upload) give the link as above:
   they add the files on the page. Upload only the files they point you to.
 - In Claude Code or Codex on their computer you may also open the link for them (`open <link>` on

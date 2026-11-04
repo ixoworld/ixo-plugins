@@ -43,9 +43,9 @@ Every asks skill follows this, also when the person starts it directly (`/asks:j
      The page shows the same thing and the same total, in plain words. In Claude Code or Codex on
      their computer you may open it for them (`open <link>` on macOS, `xdg-open <link>` on Linux).
      Handing in work with files: in Claude Code or Codex, or in claude.ai with code execution where
-     asks.world and api.asks.world are allowed domains, upload the files the person points you to
-     through the upload address `submit_work` gives, before you give the link; otherwise they add them
-     on the page. **Never tap, approve or confirm for them.**
+     asks.world, api.asks.world and r2.cloudflarestorage.com are allowed domains, upload
+     the files the person points you to through the upload address `submit_work` gives (PNG, JPG, WebP
+     or PDF, 5 MB each), before you give the link; otherwise they add them on the page. **Never tap, approve or confirm for them.**
   4. When they say it's done, check with the tool the skill names (`read_ask`, `collect_answer`,
      `check_verdict`, `cash_out_status`, `my_status` …). Not there yet → "I don't see it yet. Did the
      page say it's done?" and check again on their word. Never call it done before the check does,
