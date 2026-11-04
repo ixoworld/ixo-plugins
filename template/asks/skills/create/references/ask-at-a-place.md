@@ -22,7 +22,8 @@ answer, or a photo?" (`needs`: `observation`, `photo`, or `url-check` for a web 
 Defaults said once in the preview: 1 answer (`quota`), 24 hours (`hours`), within 400 m (`within_m`).
 **Do:** `ask_the_world` with those, a `title` (≤ 80 characters) and `pay`, without `confirm`.
 **Say:** "Someone near <place> will check '<question>' within <hours> hours, for <reward>. It costs
-<total> in total (<real / practice> money). <How asks near there usually go.> OK?" → on yes, with `confirm`.
+<total> in total (<real / practice> money). <How asks near there usually go.> OK?" → on yes, with `confirm`;
+it gives the link to tap (the `create` skill's money rule). Once it's live (`read_ask`):
 **Then:** `collect_answer` (`wait_seconds` up to 45; again to keep waiting). Tell them what came back,
 how sure it is (in words, never the bare number) and what was **not** checked. Never call it certain or
 "verified". If nothing came back, say so; never guess.

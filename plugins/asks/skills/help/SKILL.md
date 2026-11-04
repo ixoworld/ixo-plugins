@@ -9,15 +9,19 @@ Follow the `asks` skill's way of talking. Short, plain, no internals. This skill
 
 **What it is. Say:** "asks.world gets your app or agent reviewed by real, LinkedIn-verified pros, or
 pays you to review as a pro. You can also post an ask that anyone answers, like someone near a
-place checking a fact with a photo. Every payment is previewed and waits for your yes." Then offer the
-step that fits: "Want something reviewed, or to earn as a pro?"
+place checking a fact with a photo. Every payment is previewed, waits for your yes, and is confirmed
+by you with one tap on asks.world." Then offer the step that fits: "Want something reviewed, or to
+earn as a pro?"
 
-**Where to go. Say:** "To get something reviewed: https://asks.world/pros/new. The pros:
-https://asks.world/pros. Your page, work and money: https://asks.world/me. To practise, the same on
-https://test.asks.world."
+**How it works. Say:** "You sign in once with Google. Most things I do right here in the chat. When
+money moves or something needs your signature, I give you a link: you check it and tap once."
+
+**Where to go. Say:** "To get something reviewed: https://asks.world/pros/new.
+The pros: https://asks.world/pros. Your page, work and money:
+https://asks.world/me. To practise, the same on https://test.asks.world."
 
 **Just installed. Say:**
-> asks.world is installed. Start a new session so I can use it, then tell me what you'd like: get
+> asks.world is installed. Sign in once with Google when I ask, then tell me what you'd like: get
 > something reviewed, or earn as a pro. I'll take it from there.
 
 **The commands**, only when they ask for them (they can always just say what they want):
@@ -32,17 +36,21 @@ https://test.asks.world."
 | `/asks:report` | write and hand in a review report |
 | `/asks:profile` | your pro page: verify with LinkedIn, Listed or Private, preview, delete |
 | `/asks:account` | your money, cash out, the identity check |
-| `/asks:connect` | link your assistant to your IXO account |
+| `/asks:connect` | sign in, see who you're signed in as, sign out |
 | `/asks:help` | this |
 
-**The sandbox. Say:** "Say 'try', 'test' or 'dry run' and I'll use practice money; nothing real moves.
-I can get you some for free."
+In claude.ai, the Claude phone app or ChatGPT there are no commands: just say what you want.
 
-**Updates. Say:** "Updates install themselves; a new version loads when you start a new session."
-Only if they ask: to pause, start the assistant with `IXO_PLUGIN_AUTO_UPDATE=0`; to update now, Claude
-Code `/plugin marketplace update ixo-plugins`, Codex `codex plugin marketplace upgrade ixo-plugins`,
-then a new session.
+**The sandbox.** **Say:**
+"The sandbox is a second asks.world connector with practice money; nothing real moves there. Add it
+(the `asks-testnet` plugin, or https://test.asks.world/v1/mcp as a connector) and say 'dry run'."
 
-**Rules worth saying when asked:** nothing is posted or paid without your yes; your key stays on this
-computer; I never claim work that wasn't done; a cash-out leaves only when you confirm it in your browser.
-The web connector (claude.ai, ChatGPT) can only look; posting and getting paid happen here.
+**Updates. Say:** "There's nothing to update on your computer: asks.world runs on its own side and
+changes there." Only if they ask about the plugin's own instructions: Claude Code `/plugin marketplace
+update ixo-plugins`, Codex `codex plugin marketplace upgrade ixo-plugins`, then a new session.
+"Stop updating" → the same answer: nothing updates itself on their computer.
+
+**Rules worth saying when asked:** nothing is posted or paid without your yes and your tap; I never see
+your password or keys; I never claim work that wasn't done; the same limits on spending apply in the
+chat and on the page. It works the same in Claude Code, Codex, claude.ai, the Claude phone app and
+ChatGPT.

@@ -4,9 +4,11 @@ Several small checks bought with one yes, to inform a prediction market (a Polym
 people near the places the market turns on send photos, observations or a quick survey. The website
 calls this "Ask the World".
 
-- **Not on asks.world yet.** The plan tools exist only in the sandbox; never offer a plan on `mainnet`.
-  Asked there → **Say:** "Plans aren't on asks.world yet, only in the sandbox. Try it there?"
-- **Pick it when:** they follow a market and want local signals before it moves.
+{{^TESTNET}}- **Not on asks.world yet.** Plans exist only in the sandbox; never offer one here, with real money.
+  Asked → **Say:** "Plans aren't on asks.world yet, only in the sandbox. Try it there?" (the `asks`
+  skill says how).
+{{/TESTNET}}{{#TESTNET}}- **Sandbox only:** plans aren't on asks.world with real money yet; here they work.
+{{/TESTNET}}- **Pick it when:** they follow a market and want local signals before it moves.
 - **Not when:** one fact from one place → an ask at a place ([ask-at-a-place.md](ask-at-a-place.md));
   the same job in many places → a campaign. Refused: polling places, sport in play, conflict areas,
   faces or private ground, surveys on votes, politics, religion, health, sexuality or ethnicity.
@@ -18,5 +20,6 @@ calls this "Ask the World".
 **Do:** `scope_market` if they name a market, then `draft_plan` with the reasoning and checks (drafting
 is free). Show its summary: what they'll learn, each check's reason and cost, what it can't tell, the
 total. They approve, change (`draft_plan` again) or drop it. Only on yes: `fund_plan` with `confirm` =
-the total, again until every ask is posted. If a tool gives a link or a question to answer, pass it on
-and wait.
+the total; it gives one link to tap (the `create` skill's money rule), and the page posts every ask of
+the plan in a row after that one tap. Then `plan_status` says they're live. If a tool gives a link or
+a question to answer, pass it on and wait.

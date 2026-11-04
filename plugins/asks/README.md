@@ -1,22 +1,39 @@
 # asks.world
 
-asks.world: post asks that real people answer, get your app or agent tried by verified pros (a pro ask), or find paid work, with your own key held on your machine. Say "dry run" to practise on testnet with practice money.
+asks.world: post asks that real people answer, get your app or agent tried by verified pros (a pro ask), or find paid work. Sign in once with Google; anything that pays or needs your signature is one tap on asks.world. Real money; for practice, add asks-testnet.
 
-- MCP server: `asks`, started on your machine with `npx -y @ixo/asks-mcp@latest` (needs Node.js 22.6 or newer, which provides `npx`). `@latest` is the newest release: it moves each time IXO releases from `main`.
-- Updates install themselves; a new version loads when you start a new session. (Optional: `/plugin` → **Marketplaces** → ixo-plugins → **Enable auto-update**.) Pause it by starting your assistant with `IXO_PLUGIN_AUTO_UPDATE=0`.
-- Networks: one server for both. Real work is for real money; say "try", "test" or "dry run" and it runs in the sandbox (practice money, nothing real moves). The same caps, previews and confirmations apply on both.
-- Sign-in: none, and nothing to configure. The server makes its own key the first time it runs and keeps it under `~/.openhands/<network>`, one folder for real and one for the sandbox, so they never mix (set `OPENHANDS_HOME` to move the folder). The key never leaves your machine, and the plugin carries no password or secret. Connect your IXO account (`/asks:connect`) so asks are in your name and pay goes straight to you.
+- MCP server: `asks` → https://asks.world/v1/mcp. Nothing runs on your computer and nothing needs installing
+  besides the plugin.
+- This is **real money**. To practise first, install the sandbox twin `asks-testnet`
+  (https://test.asks.world/v1/mcp): practice money, nothing real moves, and the same caps, previews
+  and confirmations.
+- Sign-in: once, with Google, when the connector asks (Claude Code: `/mcp` → `asks` →
+  **Authenticate**; Codex asks when you install, or `codex mcp login asks`). asks.world signs
+  you in through IXO and keeps no password or key of yours. This address asks you to sign in before
+  anything else.
+- Two ways things happen:
+  - **In the chat:** reading asks, invitations (accept or decline), applying, inviting pros and
+    answering applications, messages, your pro page, LinkedIn, your notices, cash-out quotes and where
+    a cash-out stands.
+  - **One tap on asks.world:** anything that moves money or needs your own signature: posting an ask,
+    a pro ask, a campaign or a plan, closing one, approving a report, confirming a cash-out, practice
+    money, a company's payout settings, and handing in work. The assistant shows the total first and
+    waits for your yes, then gives you a link. The page shows the same thing in plain words; one tap
+    and it's done. Your report's screenshots or PDF are added on that page, from your phone or
+    computer.
+- The same in Claude Code, Codex, claude.ai, the Claude phone app and ChatGPT: in the web and phone
+  apps, add the URL above as a custom connector instead of the plugin.
 - Just say what you want, or start with `/asks`. The skills (each is also `/asks:<skill>`):
-  - `asks`: works out what you want and which network, then hands over to the right skill.
+  - `asks`: works out what you want, then hands over to the right skill.
   - `jobs`: find paid work, apply, hand in an answer.
   - `create`: post an ask, Ask the World, a campaign, an open call or a pro ask (LinkedIn-verified pros); set up a company.
   - `invite`: invite people and answer applications.
   - `manage`: your open asks: answers, approvals, closing and getting money back.
   - `report`: write and hand in a pro ask's review report.
   - `profile`: your pro page: LinkedIn-verified, Listed or Private, preview, delete.
-  - `account`: your money, cash out (bank, mobile money or digital dollars, confirmed in your browser), the identity check, practice money.
-  - `connect`: link your assistant to your IXO account.
-  - `help`: what asks.world is, the commands, where to go, the sandbox, updates.
+  - `account`: your money, cash out (bank, mobile money or digital dollars, confirmed on asks.world), the identity check, practice money.
+  - `connect`: sign in, see who you're signed in as, sign out.
+  - `help`: what asks.world is, the commands, where to go, the sandbox.
 
 ## Your pro page
 
@@ -30,11 +47,13 @@ asks.world: post asks that real people answer, get your app or agent tried by ve
 
 How it works: [docs/pro-pages.md](https://github.com/impactsai/openhands-network/blob/main/docs/pro-pages.md).
 
-## Your key
+## Your money
 
-Once you connect your IXO account, pay goes straight to it; before that, money you earn is paid to this key on a public chain, and your assistant can move it to your account later. Rewards are paid in US dollars. Review credits, which you buy with a card (a person always opens that link), only pay review fees; they are never a reward.
-
-Back up the folder if the key holds money you care about. Anyone who can read it can spend it.
+Everything is in your own asks.world account, the one you sign in to with Google: what you earn is
+paid straight to it, and what you post is paid from it (or by card). Rewards are paid in US dollars.
+Review credits, which you buy with a card, only pay review fees; they are never a reward. Nothing is
+spent without a preview, your yes and your tap on asks.world, and the same per-ask and per-day caps
+apply in the chat and on the page.
 
 ## Install
 
@@ -53,8 +72,10 @@ codex plugin marketplace add ixoworld/ixo-plugins
 codex plugin add asks@ixo-plugins
 ```
 
+claude.ai, the Claude phone app, ChatGPT: add https://asks.world/v1/mcp as a custom connector and sign in when it asks.
+
 **Moving from an `ixo-openhands*` plugin:** Claude Code moves you to `asks` by itself. Codex does
 not: remove the old one (`codex plugin remove ixo-openhands@ixo-plugins`, or whichever you had) and
-install `asks` as above. Your keys stay in `~/.openhands`, so nothing is lost.
+install `asks` as above.
 
 More: see [docs/kinds/asks.md](../../docs/kinds/asks.md).

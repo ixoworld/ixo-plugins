@@ -1,12 +1,8 @@
 {
   "mcpServers": {
     "asks": {
-      "type": "stdio",
-      "command": "npx",
-      "args": [
-        "-y",
-        "${OPENHANDS_MCP_PACKAGE:-@ixo/asks-mcp@latest}"
-      ]
+      "type": "http",
+      "url": "https://asks.world/v1/mcp"
     }
   }
 }

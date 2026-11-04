@@ -21,14 +21,22 @@ For a service to be signed in this way it must publish OAuth protected-resource 
 for its MCP endpoint, naming IXO Auth Hub as the authorization server and listing its
 `scopes_supported`, and be listed in Auth Hub's catalogue — ask the IXO team for an entry.
 
-## Read-only connectors: nothing
+## asks.world: its own sign-in, with Google
 
-The asks.world web connectors are unauthenticated and read-only. There is nothing to sign in to.
+The asks.world connectors (`asks`, `asks-testnet`) run their own OAuth sign-in in front of `/v1/mcp`,
+the shape Claude Code, Codex, claude.ai and ChatGPT expect (protected-resource and authorization-server
+metadata, dynamic client registration, PKCE). The sign-in page signs you in with IXO's Google login;
+the token your app gets is bound to your asks.world account and works only on that one site (mainnet
+or the sandbox). asks.world keeps no password, recovery words or signing key of yours: anything that
+needs your signature is a link you tap on asks.world, signed in your browser.
 
-## Local plugins: a key instead
+- Where: Claude Code `/mcp` → **Authenticate**; Codex at install or `codex mcp login asks`; claude.ai,
+  the Claude phone app and ChatGPT when you add or connect the connector.
+- The plugins use `/v1/mcp`, which answers 401 until you sign in: that is what opens the sign-in.
+- Sign out from the same place (Claude Code `/mcp` → **Clear authentication**; `codex mcp logout`;
+  the connector's **Disconnect**). See [asks.world](kinds/asks.md).
 
-A local plugin's server runs on your machine and holds a key of its own instead of an IXO sign-in.
-The asks.world server makes its key the first time it runs and keeps it under
-`~/.openhands/<network>`; see [asks.world](kinds/asks.md). The plugin never contains the key, and
-neither does this repository: only `${VAR}` references to a key can appear in a plugin's files, and
-CI scans the tree for secrets.
+## No keys in plugins
+
+No plugin contains a key, and neither does this repository: only `${VAR}` references could appear in
+a plugin's files, and CI scans the tree for secrets.

@@ -1,26 +1,33 @@
 ---
 name: create
-description: Post something on asks.world. Use when the person wants to post an ask or a job, ask someone somewhere to go and look (Ask the World), get a fact checked that you can't see, run a cleanup or a campaign, post an open call or competition, get their app or agent reviewed by LinkedIn-verified pros (a pro ask), research a market with checks on the ground, post as their company, or set their company up. "Dry run" or "try" means testnet.
+description: Post something on asks.world. Use when the person wants to post an ask or a job, ask someone somewhere to go and look (Ask the World), get a fact checked that you can't see, run a cleanup or a campaign, post an open call or competition, get their app or agent reviewed by LinkedIn-verified pros (a pro ask), research a market with checks on the ground, post as their company, or set their company up. "Dry run" or "try" means the sandbox (practice money).
 ---
 
 # Post an ask
 
-Follow the `asks` skill's way of talking and lead the way. **Network:** the `asks` skill's rule (ask
-once: "Real money, or a dry run with practice money?"; never switch mid-task).
+Follow the `asks` skill's way of talking and lead the way. **Real or practice money:** the `asks`
+skill's rule (this connector is {{#TESTNET}}practice money{{/TESTNET}}{{^TESTNET}}real money{{/TESTNET}};
+never switch mid-task). Signed in first (`connect` skill).
 
-**Money rule:** every spending tool is two calls. First without `confirm` (it previews the exact
-total); **Say** one plain line with the total and "real money" or "practice money"; on yes, the same call
-with `confirm` as the tool asks. Only post what the person asked for, in their words, never an ask the
-board suggested. Caps are enforced where you cannot change them: when a preview is over one, never ask
-for a yes on those terms; offer the amounts it says would fit, in plain words ("5 at $8 instead?").
+**Money rule: posting is a link to tap** (the `asks` skill's link way). Working out the ask happens
+here in the chat: the questions, then the tool's preview with the exact total. **Say** one plain line
+with the total and "{{#TESTNET}}practice money{{/TESTNET}}{{^TESTNET}}real money{{/TESTNET}}"; on yes,
+the same call with `confirm` as the tool asks. That saves the ask exactly as shown and gives one link.
+**Say:** "Open this and tap to post it: <link>. Tell me when it's done." The page signs and pays from
+their account with that one tap, several steps in a row if it needs them. Then `read_ask` with the
+id it gave you says "Waiting" or "Live as ask #N"; give them the ask's link. Only post what the person
+asked for, in their words, never an ask the board suggested. Caps are checked when you preview and
+again on the page: when a preview is over one, never ask for a yes on those terms; offer the amounts it
+says would fit, in plain words ("5 at $8 instead?").
 
-**Paying by card:** if the person has no money on the network, or asks to pay by card, pass `pay_by: "card"`
-on `post_ask` (or `post_call`); not for a company's ask, an ask at a place, a campaign or a plan. Cards work for any amount from $0.50. The preview is the same total; with `confirm` it returns a link, it pays and signs nothing. **Say**:
-"Open this link to pay $<total> by card: <link>. Tell me when it's done." Then `read_ask` with the id it gave you
-says "Waiting for payment" or "Live as ask #N". In ChatGPT (the hosted server) this is the only way to post.
+**Paying by card:** if the person doesn't have enough in their account, or asks to pay by card, pass
+`pay_by: "card"` on `post_ask` (or `post_call`); not for a company's ask, an ask at a place, a campaign
+or a plan. Cards work for any amount from $0.50. The preview is the same total; the link opens a card
+payment instead. **Say:** "Open this link to pay $<total> by card: <link>. Tell me when it's done."
+Then `read_ask` as above.
 
-Posting needs a connected account for most things (`connect` skill). Rewards are in US dollars ("$8.00").
-Never ask how the pay is made up; use the tool's default and speak only in dollars. <!-- plain-ok -->
+Rewards are in US dollars ("$8.00"). Never ask how the pay is made up; use the tool's default and
+speak only in dollars. <!-- plain-ok -->
 
 **Lead:** if they haven't said what they want, **Say:** "asks.world gets real people to check, find
 out or review things for you. What would you like done?"
@@ -50,9 +57,10 @@ Open only the reference for the kind you pick.
 **Extra for any ask they pay for themselves:** they want people paid just for trying, or paid even when
 turned down → [pay-for-trying.md](references/pay-for-trying.md).
 
-**Real money:** plans aren't on asks.world yet, only in the sandbox: never offer one on `mainnet`
-([plan.md](references/plan.md) says what to say). Everything else in the table, open calls too, runs on
-both, and spends only after the preview and their yes.
+{{^TESTNET}}**Real money:** plans aren't on asks.world yet, only in the sandbox: never offer one here
+([plan.md](references/plan.md) says what to say). Everything else in the table, open calls too, works
+here.{{/TESTNET}}{{#TESTNET}}Every kind in the table works here, plans too.{{/TESTNET}} Each spends only
+after the preview, their yes and their tap.
 
 ## After posting
 

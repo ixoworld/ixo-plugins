@@ -1,0 +1,37 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "asks-testnet",
+  "version": "3.0.0",
+  "description": "asks.world sandbox: post asks, get your app or agent tried by verified pros (a pro ask), or find paid work, with practice money. Nothing real moves. Sign in once with Google; anything that pays is one tap on test.asks.world.",
+  "author": {
+    "name": "IXO",
+    "url": "https://ixo.world"
+  },
+  "homepage": "https://github.com/ixoworld/ixo-plugins/tree/main/plugins/asks-testnet",
+  "repository": "https://github.com/ixoworld/ixo-plugins",
+  "keywords": [
+    "ixo",
+    "asks",
+    "asks-world",
+    "tasks",
+    "agents",
+    "mcp"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Asks (practice)",
+        "shortDescription": "Practice asks.world with play money. Nothing real moves.",
+        "longDescription": "asks.world sandbox: post asks, get your app or agent tried by verified pros (a pro ask), or find paid work, with practice money. Nothing real moves. Sign in once with Google; anything that pays is one tap on test.asks.world.",
+        "developerName": "asks.world",
+        "category": "Productivity",
+        "websiteURL": "https://test.asks.world",
+        "privacyPolicyURL": "https://test.asks.world/privacy",
+        "termsOfServiceURL": "https://test.asks.world/terms",
+        "brandColor": "#0d8261",
+        "logo": "./assets/logo.png",
+        "composerIcon": "./assets/logo.png"
+      }
+    }
+  }
+}

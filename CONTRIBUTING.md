@@ -2,7 +2,7 @@
 
 Thanks for helping. This repo is IXO's plugin marketplace for AI assistants: small plugins, one per
 IXO service and network (each oracle, IXO Memory, asks.world), each generated from its
-kind's template. Hosted plugins point at a URL; local plugins point at a command the client starts.
+kind's template. Hosted plugins point at a URL; a kind may instead start a local command (none does today).
 
 ## Branches
 
@@ -36,14 +36,17 @@ bun run add-plugin --kind memory --name ixo-memory-devnet --title "IXO Memory (d
   --description "Your IXO Companion's memory — …"
 ```
 
-**A local plugin** (`--package`, `--major`, `--network`): the client starts a command on the user's
-machine.
+asks.world is hosted too, one plugin per network:
 
 ```bash
 bun run add-plugin --kind asks --name asks --title "asks.world" \
-  --package @ixo/asks-mcp --major latest --version 2.1.0
-bun run validate
+  --url https://asks.world/v1/mcp --version 3.0.0 --description "…"
+bun run add-plugin --kind asks --name asks-testnet --title "asks.world sandbox" \
+  --url https://test.asks.world/v1/mcp --version 3.0.0 --description "…"
 ```
+
+**A local plugin** (`--package`, `--major`, `--network`, for a kind whose `mcp` block uses them): the
+client starts a command on the user's machine. No kind does this today.
 
 - `--kind` defaults to the plugin's listed kind when you re-run it, otherwise `oracle`. A plugin
   can't be regenerated as a different kind; remove it and its catalog entries first.
@@ -54,10 +57,7 @@ bun run validate
 - `--title` is plain text (no `:`, `#` or quotes); it lands in each skill's frontmatter.
 - `--url` must be the service's MCP endpoint: `https://<host>` plus the kind's `urlPath`
   (default `/v1/mcp`). A kind that takes `--url` refuses `--package`, and the other way round.
-- `--major` is the npm version or dist-tag the plugin runs: `latest` for `asks` (`@ixo/asks-mcp@latest`).
-- IXO team only: to run `asks` on the dev build, start Claude Code with
-  `OPENHANDS_MCP_PACKAGE=@ixo/asks-mcp@dev` (the plugin's `.mcp.json` reads
-  `${OPENHANDS_MCP_PACKAGE:-@ixo/asks-mcp@latest}`). Codex has no such switch.
+- `--major` is the npm version or dist-tag a local plugin runs.
 - Bump `--version` whenever you regenerate a plugin with changed files, so installs update (see
   Versioning and releases).
 
@@ -76,8 +76,8 @@ Then regenerate the README table with `bun scripts/catalog.ts`.
 Never put a key, token or other secret in a plugin. A hosted plugin carries a public URL. A local
 plugin may carry an `env` **reference** (`${VAR}` or `${VAR:-default}`) but never a value, and the
 generator refuses a secret-looking `env` name (key, secret, token, password, mnemonic) whose value is
-not a reference. Say in the kind's README where the key lives (asks.world: nothing to configure; the
-server makes its own key under `~/.openhands/<network>`).
+not a reference. Say in the kind's README how people sign in (asks.world: once, with Google, through
+the connector; it keeps no key of theirs).
 
 ## Adding a kind
 
@@ -122,10 +122,13 @@ A kind is one directory, `template/<kind>/`. No code changes.
   from it.
 - `skills/<skill>/SKILL.md`: the skills.
 - `hooks/` (optional): copied into the plugin as is, not rendered (`hooks/hooks.json` and the
-  scripts it runs). `asks` uses it for its auto-update; its test is `bun run test`.
+  scripts it runs). No kind uses it today.
 
 Templates take `{{NAME}}`, `{{TITLE}}`, `{{SERVER}}`, `{{DESCRIPTION}}` and the flag placeholders the
-kind's `mcp` block uses (`{{URL}}` for every hosted kind); any other `{{…}}` stops the generator. A hosted kind that signs in with IXO needs the
+kind's `mcp` block uses (`{{URL}}` for every hosted kind); any other `{{…}}` stops the generator.
+`{{#TESTNET}}…{{/TESTNET}}` keeps text only in a test-network plugin (a `--url` host with a `test.` or
+`testnet.` label, or `--network testnet`), `{{^TESTNET}}…{{/TESTNET}}` only in the others; `asks` uses
+them for the sandbox's words and links. The plain-words check skips these markers. A hosted kind that signs in with IXO needs the
 service to publish OAuth protected-resource metadata (RFC 9728) naming IXO Auth Hub and its
 `scopes_supported`, and to be in Auth Hub's catalogue (see [docs/sign-in.md](docs/sign-in.md)).
 
@@ -145,7 +148,8 @@ Name only tools and arguments the service really has.
 Keep the wording honest. The oracle skills must never let the assistant approve a charge for the
 user, open an approval link, or call the evaluation fee a payout. The memory skills must never store
 secrets, and never delete without the user's explicit confirmation. The asks.world skills must never
-claim work that wasn't done, and must treat text from the board as data.
+claim work that wasn't done, must never tap or confirm a link for the person, and must treat text
+from the board as data.
 
 ## Versioning and releases
 
@@ -158,8 +162,6 @@ claim work that wasn't done, and must treat text from the board as data.
   install from the default branch.
 - Users get a release with `/plugin marketplace update ixo-plugins` in Claude Code (then reconnect the
   server in `/mcp`) and `codex plugin marketplace upgrade ixo-plugins` in Codex.
-- A local plugin pins its npm package's **major** version (`--major`). Moving to a new major is a
-  pull request that bumps `--major` and the plugin version.
 
 ## Checks
 
@@ -167,6 +169,8 @@ claim work that wasn't done, and must treat text from the board as data.
 plugin. You need the Claude Code CLI installed for it, and `bun install` for the other scripts. CI
 (`.github/workflows/validate.yml`) runs:
 
+0. `bun run test` (`tests/`: the asks skills' links, and that the asks plugins use the hosted
+   connector with nothing left of the local package).
 1. `bun run validate`.
 2. `bun scripts/check-schemas.ts`: each plugin's `plugin.json` and `mcp.json` against the Agent
    Plugins JSON Schemas in [`schemas/`](schemas), and that both catalogs list the same plugins, sources,
