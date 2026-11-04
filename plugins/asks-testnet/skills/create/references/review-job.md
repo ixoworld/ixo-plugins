@@ -12,8 +12,9 @@ requirements; the builder's **final approval** pays it. Say "automated checks", 
   ([private.md](private.md)).
 - **Hiring a particular pro:** there is no direct hire. Post a pro ask, then invite them by @name
   (below). Not to confuse with an open call's "hiring", which pays every passing entry.
-- **Who answers:** only pros they invite whose page is verified with LinkedIn and open to work. The
-  tick means only that they logged in to that LinkedIn account: no background check, no ranking.
+- **Who answers:** only pros whose page is verified with LinkedIn: just the ones they invite, or any
+  verified pro who has the link (they choose, below). The tick means only that they logged in to that
+  LinkedIn account: no background check, no ranking.
 - **Money:** pay per report × reports is **set aside** when posted, with what asks.world keeps; read the
   preview's money sentence as it is. What isn't paid comes back when they close it. Real money and
   practice money both.
@@ -34,10 +35,24 @@ a time and pass each answer back (never re-send what it took). Usually:
 2. What is reviewed → `subject { name, version, where }` (a public link).
 3. The scenarios to try, one line each, up to 8 → `scenarios`. Suggest some.
 4. A short intro and the story behind it → `lede`, `brief`, in their words.
-5. Pay → `money { entry_each, entry_up_to }`.
+5. Pay → `money { entry_each, wanted, extra }`: what each good report pays, how many good reports they
+   want, and how many extra in case some aren't good (below). `entry_up_to` is optional; if given, it
+   must be wanted + extra.
 6. Days open → `open_days`.
 
-Never pass `access`: a pro ask is by invitation only. Who to invite comes after posting.
+**Who may join. Ask:** "Only pros you invite, or any verified pro who has the link?"
+
+- **Only pros I invite** (the default): leave out `access`. Who to invite comes after posting.
+- **Any verified pro with the link:** `access: "apply"`. A pro with a LinkedIn-verified page joins at
+  once from the link, with no application; each report still waits for the person's final approval. It
+  is on no board: only its link brings pros to it, so they can share it anywhere.
+
+**Extra reports.** Every report that comes in counts in its "N of M reports", even one that isn't good,
+and it is Filled at M (wanted + extra). **Say:** "Some reports may not meet your requirements. You don't
+pay for those, but each one still counts. I suggest <wanted + 3> reports: your <wanted> plus 3 extra, so
+a few weak reports don't block good pros. You only pay for the reports you approve, and money for
+reports that never come in comes back when you close it. Or I can take exactly <wanted>, and you add
+more reports later if it fills. Which do you prefer?" → `extra` (3, or 0).
 
 Optional `report`: extra sections every report must have. **Say:** "Anything private, like a test
 login, goes in the private note with each invitation. Only the invited pro sees it."
@@ -46,8 +61,8 @@ login, goes in the private note with each invitation. Only the invited pro sees 
 
 When nothing is missing, `draft_call` shows the whole pro ask and one sentence for its money. Read that
 sentence as it is and repeat its numbers exactly; never work one out yourself. **Say:** "This sets up
-the pro ask '<title>' of <name> <version>: <n> scenarios, up to <count> reports,
-open for <days> days, by invitation. <the money sentence> <total> in all (<real / practice> money). Each
+the pro ask '<title>' of <name> <version>: <n> scenarios, <wanted> good reports wanted and up to
+<count> in all, open for <days> days, <by invitation | open to any verified pro with the link>. <the money sentence> <total> in all (<real / practice> money). Each
 report waits for your final approval before it's paid. Post it?" On yes: `post_call` with `confirm` =
 that total. It gives one link to tap (the `create` skill's money rule); the page posts everything in a
 row after that one tap. Then `read_ask` says it's live.
@@ -59,6 +74,8 @@ each> instead. Which?" and draft again with their choice.
 **After posting, Say**, one step at a time: its page, only theirs
 (https://test.asks.world/me/pro-asks/<number>), where reports come in and are approved; if there's a link to turn on their
 checks, "Open this link and tap **Approve**, so reports wait for your final approval."
+Open to any verified pro? **Say:** "Share this link anywhere: https://test.asks.world/t/<number>.
+Verified pros join from it."
 
 ## Invite pros
 
