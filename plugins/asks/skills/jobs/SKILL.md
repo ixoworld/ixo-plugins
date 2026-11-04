@@ -72,6 +72,13 @@ again exactly the same; it gives a link. **Say:** "Open this, check it and tap t
 me when it's done." Then `read_ask` (or `check_verdict`) says it arrived. If the outcome is unknown,
 never resend; check first.
 
+- **A file with the answer** (the one file a words answer takes when the ask's answer is a file, or a form's files): in
+  Claude Code or Codex, or in claude.ai with code execution where asks.world, api.asks.world and
+  r2.cloudflarestorage.com are allowed domains, upload the files the person points you to through the
+  upload address `submit_work` gives (its three steps: ask it for a signed URL per file, PUT each file
+  there, then GET the address to check), before you give the link; the page shows them in place. Otherwise give the link and they add
+  them on the page. A photo taken at a place is never uploaded: they take it on the ask's page.
+
 ## Did it pass?
 
 **Do:** `check_verdict` with the ask's number. **Say** one of: "Approved and paid: <amount>." / "Passed
