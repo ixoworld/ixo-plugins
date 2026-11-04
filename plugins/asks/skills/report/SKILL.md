@@ -81,7 +81,8 @@ report and tap to send it. Tell me when it's done."
   you to through the upload address `submit_work` gives, under the short name the report gives it,
   before you give the link. PNG, JPG, WebP or PDF, 5 MB each, at most 10 and 25 MB together:
   1. POST `{"files": [{"name": "login-error.png", "type": "image/png", "bytes": <exact size>}]}` to
-     the address; it gives a signed `url` and `headers` per file.
+     the address; it gives a signed `url` and `headers` per file, and lists under `refused` any file
+     it turned down before signing, and why.
   2. PUT each file to its url with exactly those headers, within 10 minutes:
      `curl -X PUT -H 'content-type: image/png' --data-binary @login-error.png '<signed url>'`.
   3. GET the address: it says which files were kept and why any was not. Fix and send those again.
