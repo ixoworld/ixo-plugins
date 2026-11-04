@@ -68,4 +68,4 @@ a second link, **Say:** "Open this link and tap **Approve** to turn on your chec
 on the website under **Waiting for you to check**. Never sign, approve or turn down anything for them.
 
 **Refusals:** "needs <amount> more" → offer to pay by card (`pay_by: "card"`), or to add money to their
-account first (https://asks.world/me/money). A verifier that takes its fee when you post, with no credits → the review budget ([company.md](company.md), step 5).
+account first (https://asks.world/me/money). A verifier that takes its fee when you post, with no credits → the review budget ([company.md](company.md), "Review budget").

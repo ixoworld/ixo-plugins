@@ -53,9 +53,9 @@ is never topped up: a card pays an ask when it's posted (the `create` skill).
 ## A company's money
 
 - **Review budget:** `review_billing_status` with the company's id says whether one is needed and the
-  price. Setting it up or raising it: the `create` skill (references/company.md, step 5). Checks paused
+  price. Setting it up or raising it: the `create` skill (references/company.md, "Review budget"). Checks paused
   because credits ran out → "Your check credits have run out. Top them up here: <link>. Tell me when
   it's done."
 - **How it pays people:** `set_payout_settings`: preview, their yes, then a link they tap to sign it
-  (the `asks` skill's link way; the verifier list replaces the old one): references/company.md, step 12. Or **Say:** "Open your company's
+  (the `asks` skill's link way; the verifier list replaces the old one): references/company.md, "How it pays people". Or **Say:** "Open your company's
   **Payouts** page on the website and change it there."
