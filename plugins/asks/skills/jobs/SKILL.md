@@ -5,13 +5,13 @@ description: Find paid work on asks.world and get paid. Use when the person asks
 
 # Find and answer work
 
-Follow the `asks` skill's way of talking and lead the way. **Network:** the `asks` skill's rule (ask
-once: "Real money, or a dry run with practice money?"; never switch mid-task). Looking for work: `my_invitations` on both
-networks first, said apart, so no invitation is missed.
+Follow the `asks` skill's way of talking and lead the way. **Real or practice money:** the `asks`
+skill's rule (this connector is real money;
+never switch mid-task). Signed in first (`connect` skill).
 
 ## The one rule
 
-**Never claim work you did not do, or in a way you could not show.** Your answer is saved under your
+**Never claim work you did not do, or in a way you could not show.** Your answer is saved under their
 name; on a public ask anyone can see it, on an ask by invitation only the people on it can. An approved
 one moves money.
 
@@ -26,13 +26,16 @@ work that fits you?" Then **Ask:** "Any kind of work, or something near you?" (i
 Pro asks are by invitation: someone with no LinkedIn-verified pro page (`my_page`) who wants them →
 **Say:** "To be invited to pro asks you need a verified pro page. It takes about a minute with
 LinkedIn. Shall I start?" (yes → the `profile` skill).
-**Do:** `my_invitations` first, on both networks (invites are never listed), then `list_asks` (filters: `does` = `look`,
+**Do:** `my_invitations` first (invites are never listed), then `list_asks` (filters: `does` = `look`,
 `spot`, `clean`, `answer`, `check`, `make`; `near` `{ lat, lon, km }`; `min_pay`; `q`; `poster`;
-`series`). `find_pro` with `handle` reads a pro by @name.
+`series`). `find_pro` with `handle` reads a pro by @name. Invitations in the sandbox are on
+the sandbox connector; mention it only if they use it.
 **Say** a short list: "3 asks near you: check a café's opening hours, $2; …", then recommend one:
 "The first fits you best. Shall I take it?" One answer per ask per account.
 
 ## Apply or join
+
+All of this happens in the chat; nothing to tap.
 
 - **By application:** "Shall I apply with this note: '<note>'?" → `apply_to_call` with the ask's number
   and `note`. The poster says yes or no; `my_status` tells you under *New for you*.
@@ -51,8 +54,10 @@ LinkedIn. Shall I start?" (yes → the `profile` skill).
 `spot`, `clean`) → `submit_work` with the ask's number and `deliverable` (what was done, in your or
 their words, never the ask's text back).
 
-- **A report with screenshots** (`read_ask` says so, or a pro ask): use the `report` skill, on
-  the network the review is on.
+- **A report with screenshots** (`read_ask` says so, or a pro ask): use the `report` skill.
+- **A photo at a place** (`look`, `spot`, `clean`): the person answers on the ask's own page, on
+  their phone, where they are: give them the ask's link. Never send a photo from the chat as the
+  answer.
 - **An expert verifier's form** (`read_ask` shows it): ask each field one at a time, show all the
   answers, and on their OK `submit_work` with `fields`.
 - **A pro ask** (`read_ask` shows Asky Pro Checker's form): use the `report` skill; the report fills that form.
@@ -60,12 +65,16 @@ their words, never the ask's text back).
   just for sending an answer, and $5 more if it's approved."
 - **An open call** (`read_ask` shows the requirements it is judged on): work them through *with* the
   person and hand in once, one page in their words, when they say so.
-- If `submit_work` sends nothing the first time and shows what it will send: show it, and on their yes
-  call it again exactly the same. If a tool gives a link to tap, pass it on and wait. If the outcome is
-  unknown, never resend; the same call only checks whether it arrived.
+
+**Hand it in** (a link to tap, the `asks` skill's way): the first `submit_work` sends nothing and
+shows what it will send: show it. **Say:** "Here's your answer. Hand it in?" On yes, the same call
+again exactly the same; it gives a link. **Say:** "Open this, check it and tap to send it: <link>. Tell
+me when it's done." Then `read_ask` (or `check_verdict`) says it arrived. If the outcome is unknown,
+never resend; check first.
 
 ## Did it pass?
 
 **Do:** `check_verdict` with the ask's number. **Say** one of: "Approved and paid: <amount>." / "Passed
 the checks; waiting for the poster's final OK, which pays it." / "Not passed: <the reason, in plain
-words>." Approved answers pay by themselves; then offer: "Want to cash it out?" (the `account` skill).
+words>." Approved answers pay by themselves, straight to their account; then offer: "Want to cash it
+out?" (the `account` skill).

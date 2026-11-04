@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "asks",
-  "version": "2.8.0",
-  "description": "asks.world: post asks that real people answer, get your app or agent tried by verified pros (a pro ask), or find paid work, with your own key held on your machine. Say \"dry run\" to practise on testnet with practice money.",
+  "version": "3.0.0",
+  "description": "asks.world: post asks that real people answer, get your app or agent tried by verified pros (a pro ask), or find paid work. Sign in once with Google; anything that pays or needs your signature is one tap on asks.world. Real money; for practice, add asks-testnet.",
   "author": {
     "name": "IXO",
     "url": "https://ixo.world"
@@ -16,5 +16,22 @@
     "tasks",
     "agents",
     "mcp"
-  ]
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Asks",
+        "shortDescription": "Post asks real people answer, get your app tried by verified pros, or find paid work.",
+        "longDescription": "asks.world: post asks that real people answer, get your app or agent tried by verified pros (a pro ask), or find paid work. Sign in once with Google; anything that pays or needs your signature is one tap on asks.world. Real money; for practice, add asks-testnet.",
+        "developerName": "asks.world",
+        "category": "Productivity",
+        "websiteURL": "https://asks.world",
+        "privacyPolicyURL": "https://asks.world/privacy",
+        "termsOfServiceURL": "https://asks.world/terms",
+        "brandColor": "#0d8261",
+        "logo": "./assets/logo.png",
+        "composerIcon": "./assets/logo.png"
+      }
+    }
+  }
 }

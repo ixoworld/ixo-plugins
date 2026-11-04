@@ -39,8 +39,8 @@ personal ask passes no `org` and no `oracle`.
    and pass `near`, `place` (the name people see) and `within_m` (20–20000, default 400). A photo of a
    named place without `near` is refused, and the refusal names where the map puts it: check it's the
    place they mean.
-7. "Do you have a picture for it?" Optional → `image` (png, jpg or webp, at most 5 MB; a path, an https
-   link or a data: URL).
+7. "Do you have a picture for it? Paste a link to it." Optional → `image` (png, jpg or webp, at most
+   5 MB; an https link). Never ask for a file on their computer.
 8. "Who gives the final OK: the AI, or you?" Default the AI (pass nothing). You → `approver: "me"`;
    someone they trust → that person's @name or address. Optional `person_checks`: up to 5 Yes/No
    questions (any No turns the answer down). With an expert verifier, "you" only if its check has a
@@ -59,14 +59,13 @@ shows them as one card.
 ## Preview and post
 
 **Do:** `post_ask` without `confirm`. **Say:** "This posts '<title>' for <n> people, paying <reward>
-each, for <days> days. It costs <total> in total (<real / play> money).< You check each answer before
-it's paid.> OK?" On yes, again with `confirm` = that exact total. Give them the link.
+each, for <days> days. It costs <total> in total (<real / practice> money).< You check each answer before
+it's paid.> OK?" On yes, again with `confirm` = that exact total; it gives the link to tap (the
+`create` skill's money rule). Once `read_ask` says it's live, give them the ask's link.
 
-**With an approver** the reply ends with one link. **Say:** "Open this link and tap **Approve** to turn
-on your checks." Answers then wait on the website under **Waiting for you to check**. Never sign,
-approve or turn down anything for them.
+**With an approver** turning on their checks is part of that same tap. If the reply or the page gives
+a second link, **Say:** "Open this link and tap **Approve** to turn on your checks." Answers then wait
+on the website under **Waiting for you to check**. Never sign, approve or turn down anything for them.
 
-**Refusals:** "needs <amount> more" → offer to pay by card (`pay_by: "card"`), or connect first; "the small allowance for
-network fees is used up" → **Say:** "Open this link, tap **Disconnect**, then **Connect** again. That
-renews it. Tell me when it's done." (`get_connect_link`, then wait as the `connect` skill says, then try
-again). A verifier that takes its fee when you post, with no credits → the review budget ([company.md](company.md), step 5).
+**Refusals:** "needs <amount> more" → offer to pay by card (`pay_by: "card"`), or to add money to their
+account first (https://{{#TESTNET}}test.{{/TESTNET}}asks.world/me/money). A verifier that takes its fee when you post, with no credits → the review budget ([company.md](company.md), "Review budget").

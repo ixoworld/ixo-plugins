@@ -12,7 +12,7 @@ const mdFiles = (dir) =>
     return statSync(p).isDirectory() ? mdFiles(p) : p.endsWith(".md") ? [p] : [];
   });
 
-for (const base of ["template/asks/skills", "plugins/asks/skills"]) {
+for (const base of ["template/asks/skills", "plugins/asks/skills", "plugins/asks-testnet/skills"]) {
   test(`${base}: relative links resolve`, () => {
     const broken = [];
     for (const file of mdFiles(join(root, base))) {

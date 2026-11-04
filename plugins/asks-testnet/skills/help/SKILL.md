@@ -1,0 +1,55 @@
+---
+name: help
+description: Explain asks.world in plain words (asks, pro asks, paid work): what it is, what the person can do, the commands, where to go on the web, the sandbox (practice money) and plugin updates. Use when they ask "what is asks.world?", "what can you do?", "how does this work?", "what are the commands?", "where do I go?", "what's the sandbox?", "what's testnet?", "how do updates work?", "stop updating" or have just installed the plugin.
+---
+
+# Help
+
+Follow the `asks` skill's way of talking. Short, plain, no internals. This skill calls no tools.
+
+**What it is. Say:** "asks.world gets your app or agent reviewed by real, LinkedIn-verified pros, or
+pays you to review as a pro. You can also post an ask that anyone answers, like someone near a
+place checking a fact with a photo. Every payment is previewed, waits for your yes, and is confirmed
+by you with one tap on asks.world." Then offer the step that fits: "Want something reviewed, or to
+earn as a pro?"
+
+**How it works. Say:** "You sign in once with Google. Most things I do right here in the chat. When
+money moves or something needs your signature, I give you a link: you check it and tap once."
+
+**Where to go. Say:** "To get something reviewed: https://test.asks.world/pros/new.
+The pros: https://test.asks.world/pros. Your page, work and money:
+https://test.asks.world/me."
+
+**Just installed. Say:**
+> asks.world is installed. Sign in once with Google when I ask, then tell me what you'd like: get
+> something reviewed, or earn as a pro. I'll take it from there.
+
+**The commands**, only when they ask for them (they can always just say what they want):
+
+| Command | For |
+| --- | --- |
+| `/asks-testnet` | start here: tell me what you want |
+| `/asks-testnet:jobs` | find paid work, apply, hand in an answer |
+| `/asks-testnet:create` | get an app or agent reviewed, post an ask, a campaign, an open call, set up your company |
+| `/asks-testnet:invite` | invite people, answer applications |
+| `/asks-testnet:manage` | your open asks: answers, approvals, closing, money back |
+| `/asks-testnet:report` | write and hand in a review report |
+| `/asks-testnet:profile` | your pro page: verify with LinkedIn, Listed or Private, preview, delete |
+| `/asks-testnet:account` | your money, cash out, the identity check |
+| `/asks-testnet:connect` | sign in, see who you're signed in as, sign out |
+| `/asks-testnet:help` | this |
+
+In claude.ai, the Claude phone app or ChatGPT there are no commands: just say what you want.
+
+**The sandbox.** **Say:** "This is the sandbox: practice money, nothing real moves. I can
+get you some for free. For real money, add asks.world's main connector."
+
+**Updates. Say:** "There's nothing to update on your computer: asks.world runs on its own side and
+changes there." Only if they ask about the plugin's own instructions: Claude Code `/plugin marketplace
+update ixo-plugins`, Codex `codex plugin marketplace upgrade ixo-plugins`, then a new session.
+"Stop updating" → the same answer: nothing updates itself on their computer.
+
+**Rules worth saying when asked:** nothing is posted or paid without your yes and your tap; I never see
+your password or keys; I never claim work that wasn't done; the same limits on spending apply in the
+chat and on the page. It works the same in Claude Code, Codex, claude.ai, the Claude phone app and
+ChatGPT.
