@@ -1,6 +1,6 @@
 ---
 name: invite
-description: Invite people to an ask, open call or pro ask on asks.world, suggest LinkedIn-verified pros, make private invite links, see who was invited or applied, and say yes or no to applicants. Use when the person says "invite <name>", "send me private links", "who applied?", "who's in?" or "accept/decline this applicant".
+description: Invite people to an ask, open call or pro ask on asks.world, suggest LinkedIn-verified pros, make private invite links, see who was invited or applied, and say yes or no to applicants. Use when the person says "invite NAME", "send me private links", "who applied?", "who's in?" or "accept/decline this applicant".
 ---
 
 # Invite people and answer applications

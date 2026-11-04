@@ -89,6 +89,8 @@ type Kind = {
   /** null: a skills-only kind (no MCP server, no transport flags). */
   mcp: { claude: McpEntry; codex: McpEntry } | null;
   codex: { policy: { installation: string; authentication: string }; category: string };
+  /** Codex's listing (name, logo, links): written to plugin.json's `extensions["com.openai"].interface`. */
+  codexInterface: Record<string, unknown> | null;
   /** Which of the generation flags this kind's `mcp` block needs. */
   needs: Param[];
   readme: string;
@@ -198,6 +200,7 @@ export const loadKind = (name: string): Kind => {
       policy: { installation: policy.installation, authentication: policy.authentication },
       category: codexRaw.category,
     },
+    codexInterface: codexRaw.interface === undefined ? null : obj(codexRaw.interface, '"codex.interface"'),
     needs,
     description: str("description")!,
     keywords,
@@ -431,6 +434,9 @@ export function main(argv: string[], opts: MainOptions = {}): void {
   // Hooks are copied verbatim: hook commands and their scripts are not text templates.
   const hooks = join(kind.skillsDir, "..", "hooks");
   if (existsSync(hooks)) cpSync(hooks, join(out, "hooks"), { recursive: true });
+  // Assets (the logo) are copied verbatim too.
+  const assets = join(kind.skillsDir, "..", "assets");
+  if (existsSync(assets)) cpSync(assets, join(out, "assets"), { recursive: true });
 
   const meta = {
     name,
@@ -449,6 +455,10 @@ export function main(argv: string[], opts: MainOptions = {}): void {
   write(join(out, "plugin.json"), {
     $schema: "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
     ...meta,
+    // Codex only: Claude Code's strict validator rejects `extensions`, so .claude-plugin/plugin.json leaves it out.
+    ...(kind.codexInterface
+      ? { extensions: { "com.openai": { interface: renderDeep(kind.codexInterface, vars, `template/${kind.name}/kind.json codex.interface`) } } }
+      : {}),
   });
   if (kind.mcp) {
     write(join(out, "mcp.json"), {
