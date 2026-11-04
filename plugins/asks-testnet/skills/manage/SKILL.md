@@ -18,6 +18,10 @@ waiting, say so and offer the next step ("Nothing yet. Want me to invite more pe
 
 - **My pro asks:** `my_pro_asks` (one line each, and what waits for them). Each has its own page, only
   theirs: https://test.asks.world/me/pro-asks/<number>.
+- **A Filled pro ask** (all its "N of M reports" came in) and they want more: `add_more_reports` with
+  its number (and `more`, if they said how many). It spends nothing and gives the page where they add
+  more reports and pay. **Say:** "Open <link>, add more reports and pay for them there. Tell me when
+  it's done."
 - **My asks:** `list_asks` with `poster` = their account; `collect_answer` for one ask's answers or
   reports (`wait_seconds` to wait); `check_verdict` for how an answer's checks went. **Say** it in a
   line: "2 of 3 answered; one approved and paid."
