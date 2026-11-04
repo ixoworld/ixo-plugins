@@ -11,7 +11,8 @@
  *      for either catalog: Claude Code's is checked by `claude plugin validate`; Codex's enums come
  *      from codex-rs `PluginInstallPolicy` / `PluginAuthPolicy`.)
  *   4. A plugin's Claude Code files (`.claude-plugin/plugin.json`, `.mcp.json`) agree with its
- *      portable ones (`plugin.json`, `mcp.json`): same manifest, same servers.
+ *      portable ones (`plugin.json`, `mcp.json`): same manifest, same servers. `extensions` (Codex's
+ *      icon and listing) stays out of Claude Code's copy, whose strict validator rejects it.
  */
 import Ajv2020 from "ajv/dist/2020.js";
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
@@ -81,7 +82,7 @@ for (const d of dirs) {
     }
   }
   if (existsSync(join(root, "plugins", d, "plugin.json")) && existsSync(join(root, "plugins", d, ".claude-plugin", "plugin.json"))) {
-    const { $schema: _s, ...portable } = readJson("plugins", d, "plugin.json");
+    const { $schema: _s, extensions: _e, ...portable } = readJson("plugins", d, "plugin.json");
     if (!isDeepStrictEqual(portable, readJson("plugins", d, ".claude-plugin", "plugin.json"))) bad(`plugins/${d}: plugin.json and .claude-plugin/plugin.json disagree`);
     if (portable.name !== d) bad(`plugins/${d}: plugin.json name is "${portable.name}"`);
   }
