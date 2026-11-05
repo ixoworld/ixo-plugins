@@ -11,9 +11,9 @@ never switch mid-task). Signed in first (`connect` skill).
 
 ## What they have
 
-Read `my_status`; never repeat its lines about a "home address" or a setting. **Say:** "You have $<X>.
-It's under Money: https://{{#TESTNET}}test.{{/TESTNET}}asks.world/me/money." Then the one next step
-that fits:
+Read `my_status`; never repeat its lines about a "home address" or a setting. **Say:** "Your Balance is $<X>.
+It's under Wallet: https://{{#TESTNET}}test.{{/TESTNET}}asks.world/me/money." If it also shows money set
+aside on their open asks, add: "$<Y> is Committed to your Asks." Then the one next step that fits:
 
 - **Has money to cash out:** "Want to cash it out?"
 - **"Move my earnings to my account":** it's already there. **Say:** "What you earn is paid straight
@@ -23,7 +23,7 @@ that fits:
 
 {{^TESTNET}}The questions happen here in the chat; the money leaves only when they confirm on asks.world.
 **Do:** `cash_out` with nothing else; it says what they have, their LinkedIn and their identity check.
-Then pass each answer back, one question at a time:
+Then pass each reply back, one question at a time:
 
 1. **LinkedIn missing** → the `profile` skill's LinkedIn step, then `cash_out` again.
 2. **Identity check:** say where it stands in one line: "Your identity check is done." / "It's being

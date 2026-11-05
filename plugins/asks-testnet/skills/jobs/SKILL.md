@@ -1,9 +1,9 @@
 ---
 name: jobs
-description: Find paid work on asks.world and get paid. Use when the person asks what work is open, wants something near them, asks "what am I invited to?", pastes an invite link, wants to apply to an ask, or wants to hand in an answer and see whether it passed.
+description: Find paid work on asks.world and get paid. Use when the person asks what work is open, wants something near them, asks "what am I invited to?", pastes an invite link, wants to apply to an ask, or wants to hand in a completion (their answer) and see whether it passed.
 ---
 
-# Find and answer work
+# Find work and complete asks
 
 Follow the `asks` skill's way of talking and lead the way. **Real or practice money:** the `asks`
 skill's rule (this connector is practice money;
@@ -11,13 +11,13 @@ never switch mid-task). Signed in first (`connect` skill).
 
 ## The one rule
 
-**Never claim work you did not do, or in a way you could not show.** Your answer is saved under their
+**Never claim work you did not do, or in a way you could not show.** Your completion is saved under their
 name; on a public ask anyone can see it, on an ask by invitation only the people on it can. An approved
 one moves money.
 
 - You have no body and no location: you cannot photograph a place or be somewhere. `list_asks` marks
   those `needs-a-human`; the person can do them.
-- Say inside the answer what you could not establish. Honest partial work beats confident wrong work.
+- Say inside the completion what you could not establish. Honest partial work beats confident wrong work.
 
 ## Find
 
@@ -30,7 +30,7 @@ LinkedIn. Shall I start?" (yes → the `profile` skill).
 `spot`, `clean`, `answer`, `check`, `make`; `near` `{ lat, lon, km }`; `min_pay`; `q`; `poster`;
 `series`). `find_pro` with `handle` reads a pro by @name.
 **Say** a short list: "3 asks near you: check a café's opening hours, $2; …", then recommend one:
-"The first fits you best. Shall I take it?" One answer per ask per account.
+"The first fits you best. Shall I take it?" One completion per ask per account.
 
 ## Apply or join
 
@@ -49,33 +49,33 @@ All of this happens in the chat; nothing to tap.
   page yet → the `profile` skill first, then join.
 - **An open call's invite link** (`/opencall/i/…`): keep the part after `/i/` and pass it as `invite`
   when handing in. Only paste it into their own agent.
-- A poster's private note (logins, where to start) never goes into an answer, a page or anywhere public.
+- A poster's private note (logins, where to start) never goes into a completion, a page or anywhere public.
 
-## Answer
+## Complete it
 
 **Do:** `read_ask` for the terms → do the work (you: `answer`, `check`, `make`; the person: `look`,
 `spot`, `clean`) → `submit_work` with the ask's number and `deliverable` (what was done, in your or
 their words, never the ask's text back).
 
 - **A report with screenshots** (`read_ask` says so, or a pro ask): use the `report` skill.
-- **A photo at a place** (`look`, `spot`, `clean`): the person answers on the ask's own page, on
+- **A photo at a place** (`look`, `spot`, `clean`): the person completes it on the ask's own page, on
   their phone, where they are: give them the ask's link. Never send a photo from the chat as the
-  answer.
+  completion.
 - **An expert verifier's form** (`read_ask` shows it): ask each field one at a time, show all the
-  answers, and on their OK `submit_work` with `fields`.
+  replies, and on their OK `submit_work` with `fields`.
 - **A pro ask** (`read_ask` shows Asky Pro Checker's form): use the `report` skill; the report fills that form.
 - **Pay for trying** (`read_ask` says "Also pays …"): **Say** it plainly before they start, e.g. "You get $1
-  just for sending an answer, and $5 more if it's approved."
+  just for sending a completion, and $5 more if it's approved."
 - **An open call** (`read_ask` shows the requirements it is judged on): work them through *with* the
   person and hand in once, one page in their words, when they say so.
 
 **Hand it in** (a link to tap, the `asks` skill's way): the first `submit_work` sends nothing and
-shows what it will send: show it. **Say:** "Here's your answer. Hand it in?" On yes, the same call
+shows what it will send: show it. **Say:** "Here's your completion. Hand it in?" On yes, the same call
 again exactly the same; it gives a link. **Say:** "Open this, check it and tap to send it: <link>. Tell
 me when it's done." Then `read_ask` (or `check_verdict`) says it arrived. If the outcome is unknown,
 never resend; check first.
 
-- **A file with the answer** (the one file a words answer takes when the ask's answer is a file, or a form's files): in
+- **A file with the completion** (the one file a written completion takes when the ask wants a file, or a form's files): in
   Claude Code or Codex, or in claude.ai with code execution where test.asks.world, test.api.asks.world and
   r2.cloudflarestorage.com are allowed domains, upload the files the person points you to through the
   upload address `submit_work` gives (its three steps: ask it for a signed URL per file, PUT each file
@@ -86,5 +86,5 @@ never resend; check first.
 
 **Do:** `check_verdict` with the ask's number. **Say** one of: "Approved and paid: <amount>." / "Passed
 the checks; waiting for the poster's final OK, which pays it." / "Not passed: <the reason, in plain
-words>." Approved answers pay by themselves, straight to their account; then offer: "Want to cash it
+words>." Approved completions pay by themselves, straight to their account; then offer: "Want to cash it
 out?" (the `account` skill).
