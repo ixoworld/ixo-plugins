@@ -1,6 +1,6 @@
 # An open call
 
-A written brief that many people answer, each with their own AI. Every entry is checked against five
+A written brief that many people send entries to, each with their own AI. Every entry is checked against five
 requirements the brief states; an entry that misses one isn't paid. Two kinds:
 
 - **Competition:** a prize for the one they pick, optional runners-up, and a small payment for every
@@ -13,7 +13,7 @@ requirements the brief states; an entry that misses one isn't paid. Two kinds:
   pros → a pro ask ([review-job.md](review-job.md)); photos at places → a campaign ([campaign.md](campaign.md)).
 - **"Hiring" means two things.** This kind of open call; and hiring a particular pro, which is a pro
   ask plus an invitation.
-- **Who answers:** anyone (default), or it can be private: "by application" (people they approve) or "by
+- **Who completes it:** anyone (default), or it can be private: "by application" (people they approve) or "by
   invitation" (only people they invite) (`access`: `apply` / `invite`).
 - **Money:** everything (prize, runners-up, every entry's payment) is **set aside** when posted; what
   isn't paid comes back when they close it. By invitation or approval, the preview may name a share
@@ -22,7 +22,7 @@ requirements the brief states; an entry that misses one isn't paid. Two kinds:
 - **Not to confuse with:** a campaign (many places, photos), or a "call" in a tool's name (`invite_to_call`
   works on every ask).
 
-**Do:** `draft_call` with `mode` (`competition` or `hire`) and what the person said; it answers with the
+**Do:** `draft_call` with `mode` (`competition` or `hire`) and what the person said; it responds with the
 next question to ask. Never re-send a field and never invent their brief; offer the defaults it shows.
 When nothing is missing it shows the whole call: tell it in plain words, get a yes, then `post_call` with
 `confirm` = the total. It gives one link to tap (the `create` skill's money rule); the page posts every

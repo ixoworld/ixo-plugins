@@ -6,7 +6,7 @@
   for one job → a pro ask ([review-job.md](review-job.md)).
 - **Paying by card:** a company's ask can't be paid by card when it's posted. "Card" here means the
   company pays people through its own Stripe. Say this if they ask to pay by card.
-- **Who answers:** as any ask: anyone, people they approve, or only people they invite.
+- **Who completes it:** as any ask: anyone, people they approve, or only people they invite.
 - **Money:** the company's account sets aside each ask's money when it is posted (a company paying
   through its own payouts service pays the people outside); checks may come from its review budget.
   What isn't paid comes back when they close it.
@@ -43,7 +43,7 @@ The form offers the verifiers your company allows." Offer to help write the task
 payouts service); `rails` `["chain"]`, `["usdc_base"]` or `["stripe"]`; `oracles`: the verifier(s),
 default first (the list replaces the old one, so pass the current list with the new one added);
 `currency`: none for paying from the company's account, `USDC` for bank-style dollars, `USD` for card.
-**Say:** "You pay people <how>; answers are checked by <verifier>. OK?" → `confirm: true`; it gives a
+**Say:** "You pay people <how>; completions are checked by <verifier>. OK?" → `confirm: true`; it gives a
 link they tap to sign it (the `asks` skill's link way). "Not confirmed" → check the company's
 **Payouts** page before trying again. **Say:** "You can change this any time on your company's
 **Payouts** page: <site>/org/<org>/settings."
@@ -57,10 +57,10 @@ set the budget, then click **Allow reviews to be paid from my credits**. Tell me
 Then `review_billing_status` again to see it's on. The Decision Console's **Billing › Pay for reviews**
 does the same.
 
-## Answers a person checks
+## Completions a person checks
 
-**Say:** "Now and then an answer needs a person to look at it. It waits in the Decision Console, and if
-nobody answers within 48 hours it's turned down. Open
+**Say:** "Now and then a completion needs a person to look at it. It waits in the Decision Console, and if
+nobody decides within 48 hours it's turned down. Open
 https://decision-console.ixo.earth/claims/review, <!-- plain-ok -->
 sign in, and turn on **Email me when a claim needs my review**." <!-- plain-ok -->
 

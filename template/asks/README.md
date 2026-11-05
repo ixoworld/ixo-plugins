@@ -15,8 +15,8 @@
   anything else.
 - Two ways things happen:
   - **In the chat:** reading asks, invitations (accept or decline), applying, inviting pros and
-    answering applications, messages, your pro page, LinkedIn, your notices, cash-out quotes and where
-    a cash-out stands.
+    replying to applications, messages, your pro page, LinkedIn, your notifications, cash-out quotes
+    and where a cash-out stands.
   - **One tap on asks.world:** anything that moves money or needs your own signature: posting an ask,
     a pro ask, a campaign or a plan, closing one, approving a report, confirming a cash-out, practice
     money, a company's payout settings, and handing in work. The assistant shows the total first and
@@ -27,10 +27,10 @@
   apps, add the URL above as a custom connector instead of the plugin.
 - Just say what you want, or start with `/{{NAME}}`. The skills (each is also `/{{NAME}}:<skill>`):
   - `asks`: works out what you want, then hands over to the right skill.
-  - `jobs`: find paid work, apply, hand in an answer.
+  - `jobs`: find paid work, apply, hand in a completion.
   - `create`: post an ask, Ask the World, a campaign, an open call or a pro ask (LinkedIn-verified pros); set up a company.
-  - `invite`: invite people and answer applications.
-  - `manage`: your open asks: answers, approvals, closing and getting money back.
+  - `invite`: invite people and reply to applications.
+  - `manage`: your open asks: completions, approvals, closing and getting money back.
   - `report`: write and hand in a pro ask's review report.
   - `profile`: your pro page: LinkedIn-verified, Listed or Private, preview, delete.
   - `account`: your money, cash out (bank, mobile money or digital dollars, confirmed on asks.world), the identity check, practice money.
@@ -44,7 +44,7 @@
   private link (`asks.world/pro/p/…`) to share it. The link is shown once. Ask for a new one and the old one stops working.
 - **Open to work**: the one switch for being invited. Busy or closed, your page shows but no one can invite you.
 - **LinkedIn proof**: verifying with LinkedIn also gives you proof of your LinkedIn that any app can check. It's
-  needed to cash out. Download it from your profile page.
+  needed to cash out. Download it from My Profile.
 - **Delete**: removes the page, its LinkedIn tick and its private link for good. Your past work stays on the record.
 
 How it works: [docs/pro-pages.md](https://github.com/impactsai/openhands-network/blob/main/docs/pro-pages.md).
@@ -55,7 +55,8 @@ Everything is in your own asks.world account, the one you sign in to with Google
 paid straight to it, and what you post is paid from it (or by card). Rewards are paid in US dollars.
 Review credits, which you buy with a card, only pay review fees; they are never a reward. Nothing is
 spent without a preview, your yes and your tap on asks.world, and the same per-ask and per-day caps
-apply in the chat and on the page.
+apply in the chat and on the page. On asks.world it's all under **Wallet**: your **Balance** (yours
+now) and what is **Committed to your Asks** (set aside until it's paid out or comes back).
 
 ## Install
 

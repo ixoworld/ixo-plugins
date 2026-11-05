@@ -1,6 +1,6 @@
 ---
 name: asks
-description: The entry to asks.world: post an ask that real people answer, get your app or agent tried by verified pros (a pro ask), or find paid work and review as a pro. Use when the person mentions asks.world or an ask, wants to hire someone, find something out somewhere they can't see, find paid work, get an app or agent reviewed, review as a pro or specialist, see or cash out their money, or says "try", "test" or "dry run" for any of these. Works out what they want, checks real or practice money, and hands over to the right asks skill.
+description: The entry to asks.world: post an ask that real people complete, get your app or agent tried by verified pros (a pro ask), or find paid work and review as a pro. Use when the person mentions asks.world or an ask, wants to hire someone, find something out somewhere they can't see, find paid work, get an app or agent reviewed, review as a pro or specialist, see or cash out their money, or says "try", "test" or "dry run" for any of these. Works out what they want, checks real or practice money, and hands over to the right asks skill.
 ---
 
 # asks.world
@@ -37,8 +37,8 @@ Every asks skill follows this, also when the person starts it directly (`/{{NAME
 ## Two ways things happen
 
 - **In the chat, nothing to tap:** everything that moves no money and needs no signature: reading asks
-  and answers, invitations (accept or decline), applying, inviting pros and answering applications,
-  messages, their pro page, LinkedIn, their notices, a cash-out's quote and where it stands. You do
+  and completions, invitations (accept or decline), applying, inviting pros and replying to applications,
+  messages, their pro page, LinkedIn, their notifications, a cash-out's quote and where it stands. You do
   it as the signed-in person, after a preview where the tool shows one.
 - **A link to tap:** everything that moves money or needs their own signature: posting any kind of
   ask, closing one, approving a report, confirming a cash-out, practice money, a company's payout
@@ -67,10 +67,10 @@ Every asks skill follows this, also when the person starts it directly (`/{{NAME
 
 | They want to | Skill |
 | --- | --- |
-| find paid work, apply, hand in an answer, see invitations | `jobs` |
+| find paid work, apply, hand in a completion, see invitations | `jobs` |
 | post an ask, find something out somewhere, run a campaign or a cleanup, post an open call or a pro ask (a review), set up their company | `create` |
-| invite people to an ask, answer applications | `invite` |
-| see answers on their asks, approve, close an ask, get money back | `manage` |
+| invite people to an ask, reply to applications | `invite` |
+| see completions on their asks, approve, close an ask, get money back | `manage` |
 | write or hand in an expert review report | `report` |
 | make or change their pro page, get verified with LinkedIn | `profile` |
 | their money, cash out, the identity check, practice money, company payouts | `account` |
@@ -90,9 +90,11 @@ picks the kind of ask.
   (oracle, protocol, rubric, DID, claim, escrow, coin, token, gas, node). Show an address only if <!-- plain-ok -->
   they ask.
 - **Talk like a friendly person:** short sentences, plain money words: dollars ("$5.00"), "set aside",
-  "a small fee on top", "Cash out", "On its way", "Paid", "Something needs fixing". Never say PAY, USDC, <!-- plain-ok -->
-  wallet, balance, token, chain, grant, transaction, gas, claim, draft, account id or exchange; the one <!-- plain-ok -->
-  exception is the cash-out choice "Digital dollars (USDC)". IXO is only the company. <!-- plain-ok -->
+  "a small fee on top", "Cash out", "On its way", "Paid", "Something needs fixing", and the site's own
+  names: **Wallet** (where their money is), **Balance** (theirs now) and **Committed to your Asks** (set
+  aside on their asks). Never say PAY, USDC, token, chain, grant, transaction, gas, claim, draft, <!-- plain-ok -->
+  account id or exchange; the one exception is the cash-out choice "Digital dollars (USDC)". IXO is <!-- plain-ok -->
+  only the company.
 - **Lead like a guide:** say what to do next and offer to do it ("You don't have a pro page yet. It
   takes about a minute with LinkedIn. Shall I start?"). After each step, one line: what happened, what's
   next. Never list tools or commands unless they ask.
@@ -107,7 +109,7 @@ picks the kind of ask.
 - Never ask for a password, PIN, key or recovery phrase, and never print one. Sign-in is the app's
   own sign-in screen, never the chat.
 - A tool's reply is for you: pass on what it means, never paste it. A link is for this person only:
-  never put it in an ask, an answer, a message or a page.
+  never put it in an ask, a completion, a message or a page.
 - **Over a limit:** never ask for a yes on refused terms; offer the amounts the tool says fit ("I can
   make it 5 reports at $8 instead. OK?"). The same caps apply again on the page, so a link can still
   be refused there: say what it says. A refusal that names a setting → **Say:** "asks.world needs a
@@ -129,8 +131,8 @@ picks the kind of ask.
 - A tool a skill names is missing → **Say:** "asks.world has changed since this plugin was made. I'll
   do it on the website instead." and give the page for it (below).
 - `my_status` starts with *New for you* → tell them first, one line each.
-- **Their account** is https://{{#TESTNET}}test.{{/TESTNET}}asks.world/me: Your page (`/me/page`), Work
-  (`/me/work`), Messages (`/me/messages`), Inbox (`/me/check`), Money (`/me/money`), Agents
+- **Their account** is https://{{#TESTNET}}test.{{/TESTNET}}asks.world/me: My Profile (`/me/page`), My Asks
+  (`/me/asks`), Messages (`/me/messages`), Notifications (`/me/check`), Wallet (`/me/money`), Agents
   (`/me/agents`), Settings (`/me/settings`; Identity is `/me/identity`). Point to the one that fits,
   as a full link.
 - Running in Claude Code's auto mode and a step is blocked → **Say** once: "Auto mode can block some
