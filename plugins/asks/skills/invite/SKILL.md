@@ -3,7 +3,7 @@ name: invite
 description: Invite people to an ask, open call or pro ask on asks.world, suggest LinkedIn-verified pros, make private invite links, see who was invited or applied, and say yes or no to applicants. Use when the person says "invite NAME", "send me private links", "who applied?", "who's in?" or "accept/decline this applicant".
 ---
 
-# Invite people and answer applications
+# Invite people and reply to applications
 
 Follow the `asks` skill's way of talking and lead the way. **Real or practice money:** the `asks`
 skill's rule (this connector is real money;

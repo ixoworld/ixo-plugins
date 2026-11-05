@@ -92,7 +92,7 @@ report and tap to send it. Tell me when it's done."
   they add the files on the page. Upload only the files they point you to.
 - In Claude Code or Codex on their computer you may also open the link for them (`open <link>` on
   macOS, `xdg-open <link>` on Linux). The sending tap is still theirs.
-- **Never answer a dialog or tap send for them.** If the outcome is unknown, never hand it in again;
+- **Never respond to a dialog or tap send for them.** If the outcome is unknown, never hand it in again;
   check first (below).
 - The page says a screenshot is missing → they add it there; nothing to change in the chat unless the
   report itself must change (then write it again and get a new link).

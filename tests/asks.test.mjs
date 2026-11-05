@@ -28,7 +28,14 @@ for (const [name, url] of Object.entries(PLUGINS)) {
 
   test(`${name}: no hooks, the same skills as the template`, () => {
     assert.equal(existsSync(join(root, "plugins", name, "hooks")), false);
-    assert.deepEqual(readdirSync(join(root, "plugins", name, "skills")).sort(), SKILLS);
+    const dir = join(root, "plugins", name, "skills");
+    assert.deepEqual(readdirSync(dir).filter((f) => statSync(join(dir, f)).isDirectory()).sort(), SKILLS);
+  });
+
+  // QiForge's asks oracle reads the skill names from this file on raw.githubusercontent.com (GitHub's API
+  // rate-limits Cloudflare): add a new skill's folder name to template/asks/skills/index.json too.
+  test(`${name}: skills/index.json lists every skill folder`, () => {
+    assert.deepEqual(json("plugins", name, "skills", "index.json"), SKILLS);
   });
 
   test(`${name}: listed in both catalogs as kind asks`, () => {
