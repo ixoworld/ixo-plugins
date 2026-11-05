@@ -52,7 +52,7 @@ Then **Ask** the rest one at a time, each skippable ("skip" moves on):
 11. Pictures of your work? (`pictures`) Other links? (`links`)
 
 For pictures **Say:** "Paste a link to the picture (one that starts with https), or skip it and add
-pictures from your phone on your page's edit form after: https://{{#TESTNET}}test.{{/TESTNET}}asks.world/me/page/edit."
+pictures from your phone on My Profile's edit form after: https://{{#TESTNET}}test.{{/TESTNET}}asks.world/me/page/edit."
 PNG, JPG or WebP, up to 5 MB. Never ask for a file on their computer.
 
 Use the suggested @name unless they want another. Build it only from LinkedIn and their words; you

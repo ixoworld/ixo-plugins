@@ -8,7 +8,7 @@ description: Explain asks.world in plain words (asks, pro asks, paid work): what
 Follow the `asks` skill's way of talking. Short, plain, no internals. This skill calls no tools.
 
 **What it is. Say:** "asks.world gets your app or agent reviewed by real, LinkedIn-verified pros, or
-pays you to review as a pro. You can also post an ask that anyone answers, like someone near a
+pays you to review as a pro. You can also post an ask that anyone can complete, like someone near a
 place checking a fact with a photo. Every payment is previewed, waits for your yes, and is confirmed
 by you with one tap on asks.world." Then offer the step that fits: "Want something reviewed, or to
 earn as a pro?"
@@ -17,7 +17,7 @@ earn as a pro?"
 money moves or something needs your signature, I give you a link: you check it and tap once."
 
 **Where to go. Say:** "To get something reviewed: https://test.asks.world/pros/new.
-The pros: https://test.asks.world/pros. Your page, work and money:
+The pros: https://test.asks.world/pros. My Profile, My Asks and Wallet:
 https://test.asks.world/me."
 
 **Just installed. Say:**
@@ -29,10 +29,10 @@ https://test.asks.world/me."
 | Command | For |
 | --- | --- |
 | `/asks-testnet` | start here: tell me what you want |
-| `/asks-testnet:jobs` | find paid work, apply, hand in an answer |
+| `/asks-testnet:jobs` | find paid work, apply, hand in a completion |
 | `/asks-testnet:create` | get an app or agent reviewed, post an ask, a campaign, an open call, set up your company |
-| `/asks-testnet:invite` | invite people, answer applications |
-| `/asks-testnet:manage` | your open asks: answers, approvals, closing, money back |
+| `/asks-testnet:invite` | invite people, reply to applications |
+| `/asks-testnet:manage` | your open asks: completions, approvals, closing, money back |
 | `/asks-testnet:report` | write and hand in a review report |
 | `/asks-testnet:profile` | your pro page: verify with LinkedIn, Listed or Private, preview, delete |
 | `/asks-testnet:account` | your money, cash out, the identity check |
@@ -47,7 +47,7 @@ get you some for free. For real money, add asks.world's main connector."
 **Updates. Say:** "There's nothing to update on your computer: asks.world runs on its own side and
 changes there." Only if they ask about the plugin's own instructions: Claude Code `/plugin marketplace
 update ixo-plugins`, Codex `codex plugin marketplace upgrade ixo-plugins`, then a new session.
-"Stop updating" → the same answer: nothing updates itself on their computer.
+"Stop updating" → the same reply: nothing updates itself on their computer.
 
 **Rules worth saying when asked:** nothing is posted or paid without your yes and your tap; I never see
 your password or keys; I never claim work that wasn't done; the same limits on spending apply in the

@@ -12,7 +12,7 @@ requirements; the builder's **final approval** pays it. Say "automated checks", 
   ([private.md](private.md)).
 - **Hiring a particular pro:** there is no direct hire. Post a pro ask, then invite them by @name
   (below). Not to confuse with an open call's "hiring", which pays every passing entry.
-- **Who answers:** only pros whose page is verified with LinkedIn: just the ones they invite, or any
+- **Who completes it:** only pros whose page is verified with LinkedIn: just the ones they invite, or any
   verified pro who has the link (they choose, below). The tick means only that they logged in to that
   LinkedIn account: no background check, no ranking.
 - **Money:** pay per report × reports is **set aside** when posted, with what asks.world keeps; read the
@@ -21,15 +21,15 @@ requirements; the builder's **final approval** pays it. Say "automated checks", 
 - **Judged:** Asky Pro Checker, the verifier, checks each report; then the builder's final approval.
   A report that fails is not paid; there is no "needs changes" step and no payment in stages. Reports,
   files and messages are private to the builder, the pro and the automated checks.
-- **"Review" means three things.** A pro ask (this); the verifier's check of any answer; a company's
+- **"Review" means three things.** A pro ask (this); the verifier's check of any completion; a company's
   review budget, which pays for checks ([company.md](company.md)).
 
 ## Set it up
 
 Signed in first (`connect` skill).
 
-**Do:** `draft_call` with `kind: "review"` and what the person already said. Its answer lists what is missing, each with the question to ask: ask those one at
-a time and pass each answer back (never re-send what it took). Usually:
+**Do:** `draft_call` with `kind: "review"` and what the person already said. Its response lists what is missing, each with the question to ask: ask those one at
+a time and pass each reply back (never re-send what it took). Usually:
 
 1. A title.
 2. What is reviewed → `subject { name, version, where }` (a public link).

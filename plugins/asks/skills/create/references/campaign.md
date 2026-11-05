@@ -17,15 +17,15 @@ over an area, or the same job in many places?"
    post tasks into a campaign with its own rules from here yet. I can post them now as a group, each
    checked by its own task, or you can post them on asks.world, where the ask form's **A campaign**
    block adds an ask to a campaign that already exists." If they still want the campaign made:
-   **Ask:** "What should we call it, and what makes an answer good or bad?" → `create_campaign`
+   **Ask:** "What should we call it, and what makes a completion good or bad?" → `create_campaign`
    (`title`, `description`, `tag`, `rubric`: the requirements' JSON itself), preview, then
    `confirm: true` and the link to tap. Never pass `campaign` on `post_ask`.
 
 - **Pick it when:** one budget over many spots or places, with photo proof.
 - **Not when:** one job at one place → an ask; written entries judged against a brief → an open call
   ([open-call.md](open-call.md)); checks for a prediction market → a plan ([plan.md](plan.md)).
-- **Who answers:** anyone at the place; the location is checked.
+- **Who completes it:** anyone at the place; the location is checked.
 - Every spend here is the `create` skill's money rule: preview, their yes, then one link to tap.
 - **Money:** each ask's money is **set aside** when posted; what isn't paid
   comes back when they close it. Real money and practice money both. No card.
-- **Judged:** location and time checks plus the verifier on the photos; an approved answer is paid at once.
+- **Judged:** location and time checks plus the verifier on the photos; an approved completion is paid at once.

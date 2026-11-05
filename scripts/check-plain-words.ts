@@ -1,4 +1,5 @@
-// Plain-words check for the asks skills (same banned list as openhands-network app/lib/plainWords.ts).
+// Plain-words check for the asks skills (same banned list as openhands-network app/lib/plainWords.ts; Wallet and
+// Balance are the site's own names now, 2026-11-05).
 // Backticked text (tool names, params), code fences and template markers ({{NAME}}, {{#TESTNET}}…{{/TESTNET}}) are
 // skipped; everything else is read by or said to people.
 import { readdirSync, readFileSync, statSync } from "node:fs";
@@ -8,7 +9,9 @@ const RULES: [string, RegExp][] = [
   ["verifier", /\b(?<!-)(?:reviewers?|checkers?|oracles?)\b(?!-)/i],
   ["network", /\b(?:testnet|mainnet|devnet|test network|main network)\b/i],
   ["chain", /\b(?:blockchain|on[- ]chain|off[- ]chain|the chain|a chain|crypto\w*|relayer)\b/i],
-  ["coin", /\b(?:wallets?|tokens?|coins?|PAY|USDC|uixo|upay|denom|gas|fee ?grants?|mnemonic|seed phrase|escrow)\b|(?:\b\d[\d.,]*|<[^>]+>)\s?IXO\b|\bin IXO\b|\bIXO coins?\b/],
+  ["coin", /\b(?:tokens?|coins?|PAY|USDC|uixo|upay|denom|gas|fee ?grants?|mnemonic|seed phrase|escrow)\b|(?:\b\d[\d.,]*|<[^>]+>)\s?IXO\b|\bin IXO\b|\bIXO coins?\b/],
+  // What someone sends to fill an Ask is a completion (Shaun, 2026-11-05); a server responds, a message gets a reply.
+  ["completion", /\banswer(?:s|ed|ing)?\b/i],
   ["jargon", /\bDID\b|\bdid:ixo\b|(?<![Nn]ever )(?<!not )\b[Cc]laims?\b(?! work)|\b(?:[Ee]ntity|[Cc]ollections?|[Rr]ubrics?|[Cc]redentials?|[Ii]ssuers?|Matrix|[Hh]omeservers?|tx|[Tt]ransactions?)\b/],
 ];
 const NAMES = /\bAsky (?:Pro )?Checker\b/g;

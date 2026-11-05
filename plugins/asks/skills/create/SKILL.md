@@ -39,11 +39,11 @@ them when two fit. Say the kind's name as written here.
 
 | They want … | Kind (say this) | Open |
 | --- | --- | --- |
-| a few people to do one small thing: a photo, an answer, a web page checked | an ask | [post-an-ask.md](references/post-an-ask.md) |
+| a few people to do one small thing: a photo, a few words, a web page checked | an ask | [post-an-ask.md](references/post-an-ask.md) |
 | a fact from a place they can't see (is it open, what's there now) | an ask at a place | [ask-at-a-place.md](references/ask-at-a-place.md) |
-| to check each answer themselves before it's paid | an ask, "I check each answer myself" | [post-an-ask.md](references/post-an-ask.md) |
+| to check each completion themselves before it's paid | an ask, "I check each completion myself" | [post-an-ask.md](references/post-an-ask.md) |
 | work of a known type (invoices, receipts…) checked by a ready-made verifier | an ask with a ready-made verifier | [post-an-ask.md](references/post-an-ask.md) |
-| only certain people to answer: their team, customers, named people | a private ask | [private.md](references/private.md) |
+| only certain people to complete it: their team, customers, named people | a private ask | [private.md](references/private.md) |
 | their app, website or agent tried by verified pros, with a proper report | a pro ask | [review-job.md](references/review-job.md) |
 | a particular pro to do the work | a pro ask, then invite them | [review-job.md](references/review-job.md) |
 | many people to send written work under one brief, and pick a winner | an open call: competition | [open-call.md](references/open-call.md) |
@@ -65,5 +65,5 @@ after the preview, their yes and their tap.
 ## After posting
 
 Public ask: give them the ask's link. Private (by invitation): send each person their invite link, never
-the page link. Private links, invites and applications: the `invite` skill. Answers,
+the page link. Private links, invites and applications: the `invite` skill. Completions,
 approvals and closing: the `manage` skill.
