@@ -7,11 +7,12 @@ description: The entry to asks.world: post an ask that real people complete, get
 
 ## Do this
 
-1. Call `my_status` quietly. No asks.world tools, or a tool says to sign in → the `connect` skill.
-2. Find what they want in the table below and open that one skill. Follow only that skill.
-3. Anything that costs money: call the tool without `confirm`, say the total, wait for "yes", call
+1. First call `my_status` (or `my_page`) to see what's already done: verified, page, balance. Never ask for a step that's already done; just call the tool, it checks itself.
+2. No asks.world tools, or a tool says to sign in → the `connect` skill.
+3. Find what they want in the table below and open that one skill. Follow only that skill.
+4. Anything that costs money: call the tool without `confirm`, say the total, wait for "yes", call
    again with `confirm`, give the link.
-4. They say they tapped it → call `link_status` with the link. Say "done" only when it says done.
+5. They say they tapped it → call `link_status` with the link. Say "done" only when it says done.
 
 The tools come from the `{{SERVER}}` connector. **Do** lines are for you; the person only hears the
 **Say** lines.
