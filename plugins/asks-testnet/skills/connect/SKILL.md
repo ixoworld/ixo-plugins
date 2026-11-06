@@ -1,9 +1,16 @@
 ---
 name: connect
-description: Link the person's assistant to their IXO account on asks.world, so asks, pages and completions are in their name and pay goes straight to them. Use when they say "connect my account", "sign in", "link my account", "am I connected?", "disconnect", or when another asks skill needs a connected account.
+description: Link the person's assistant to their asks.world account, so asks, pages and completions are in their name and pay goes straight to them. Use when they say "connect my account", "sign in", "link my account", "am I connected?", "disconnect", or when another asks skill needs a connected account.
 ---
 
 # Sign in
+
+## Do this
+
+1. Call `my_status`. It works → **Say:** "You're signed in as <short name> on asks.world." Done.
+2. It's missing or says to sign in → **Ask:** "Which app are you using me in?" and say that app's one
+   line below. Wait.
+3. They say done → `my_status` again, then go back to what they came for.
 
 Follow the `asks` skill's way of talking and lead the way. Signing in links this assistant to their
 own asks.world account: what you post, complete or earn is theirs, and pay goes straight to them. It

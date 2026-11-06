@@ -7,19 +7,24 @@ asks.world sandbox: post asks, get your app or agent tried by verified pros (a p
 - This is the **sandbox**: practice money, nothing real moves. The same caps, previews and
   confirmations as real money. For real money, install `asks` (https://asks.world/v1/mcp).
 - Sign-in: once, with Google, when the connector asks (Claude Code: `/mcp` → `asks-testnet` →
-  **Authenticate**; Codex asks when you install, or `codex mcp login asks-testnet`). asks.world signs
-  you in through IXO and keeps no password or key of yours. This address asks you to sign in before
+  **Authenticate**; Codex asks when you install, or `codex mcp login asks-testnet`). asks.world keeps
+  no password or key of yours. This address asks you to sign in before
   anything else.
 - Two ways things happen:
   - **In the chat:** reading asks, invitations (accept or decline), applying, inviting pros and
-    replying to applications, messages, your pro page, LinkedIn, your notifications, cash-out quotes
-    and where a cash-out stands.
+    replying to applications, messages, your pro page, LinkedIn, your notifications and emails,
+    cash-out quotes and where a cash-out stands. Also handing in work, once you've left "Let my
+    assistant send my completions for me" ticked the first time you send one: after that the
+    assistant sends your completions itself and tells you "Sent". Turn it off any time in Settings,
+    Agents. A private ask or work done at a place still goes through the link.
   - **One tap on asks.world:** anything that moves money or needs your own signature: posting an ask,
     a pro ask, a campaign or a plan, closing one, approving a report, confirming a cash-out, practice
-    money, a company's payout settings, and handing in work. The assistant shows the total first and
-    waits for your yes, then gives you a link. The page shows the same thing in plain words; one tap
-    and it's done. Your report's screenshots or PDF are added on that page, from your phone or
-    computer.
+    money, a company's payout settings, and your first completion. The assistant shows the total first
+    and waits for your yes, then gives you a link. The page shows the same thing in plain words; one
+    tap and it's done.
+  - **Screenshots and photos:** in ChatGPT, attach them in the chat. In Claude and other apps that
+    show an **Add screenshots** box, add them there. Claude Code and Codex upload the ones you point
+    to. Anywhere else, add them on the page the link opens, from your phone or computer.
 - The same in Claude Code, Codex, claude.ai, the Claude phone app and ChatGPT: in the web and phone
   apps, add the URL above as a custom connector instead of the plugin.
 - Just say what you want, or start with `/asks-testnet`. The skills (each is also `/asks-testnet:<skill>`):
@@ -50,6 +55,8 @@ How it works: [docs/pro-pages.md](https://github.com/impactsai/openhands-network
 
 Everything is in your own asks.world account, the one you sign in to with Google: what you earn is
 paid straight to it, and what you post is paid from it (or by card). Rewards are paid in US dollars.
+The AI check on your asks is free. On a pro ask a share for the network goes on top, so
+each pro gets exactly the pay you set.
 Review credits, which you buy with a card, only pay review fees; they are never a reward. Nothing is
 spent without a preview, your yes and your tap on asks.world, and the same per-ask and per-day caps
 apply in the chat and on the page. On asks.world it's all under **Wallet**: your **Balance** (yours

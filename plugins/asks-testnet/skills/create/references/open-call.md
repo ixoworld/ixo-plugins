@@ -1,29 +1,24 @@
 # An open call
 
-A written brief that many people send entries to, each with their own AI. Every entry is checked against five
-requirements the brief states; an entry that misses one isn't paid. Two kinds:
+## Do this
 
-- **Competition:** a prize for the one they pick, optional runners-up, and a small payment for every
-  entry that passes. The pick is theirs, a few days after entries close.
+1. **Ask:** "Pick one winner, or pay everyone whose work passes?" → `mode`: `competition` or `hire`.
+2. Call `draft_call` with `mode` and everything they said. It replies with the next question: ask it,
+   pass the reply back. Never re-send a field; never invent their brief; offer the defaults it shows.
+3. When nothing is missing, tell them the whole call in plain words with its total. Get "yes".
+4. Call `post_call` with `slug` and `confirm` = the total. Give the link. Then `link_status`, and give
+   them the call's link.
+
+A written brief that many people send entries to, each with their own AI. Each entry is checked
+against five requirements; one that misses any isn't paid.
+
+- **Competition:** a prize for the one they pick (a few days after entries close), optional
+  runners-up, and a small payment for every entry that passes.
 - **Hiring:** no winner. Every entry that passes is paid the same, up to a number they set.
-
-- **Real money too:** it works with real money like any ask: show the preview, post only on their yes and their tap.
-- **Pick it when:** ideas, proposals, designs or written work from many people, judged against a brief.
-- **Not when:** one short task → an ask ([post-an-ask.md](post-an-ask.md)); an app tried by verified
-  pros → a pro ask ([review-job.md](review-job.md)); photos at places → a campaign ([campaign.md](campaign.md)).
-- **"Hiring" means two things.** This kind of open call; and hiring a particular pro, which is a pro
-  ask plus an invitation.
-- **Who completes it:** anyone (default), or it can be private: "by application" (people they approve) or "by
-  invitation" (only people they invite) (`access`: `apply` / `invite`).
-- **Money:** everything (prize, runners-up, every entry's payment) is **set aside** when posted; what
-  isn't paid comes back when they close it. By invitation or approval, the preview may name a share
-  asks.world keeps: say it as the tool does.
-- **Judged:** the verifier checks each entry against the five requirements; the prize is the person's pick.
-- **Not to confuse with:** a campaign (many places, photos), or a "call" in a tool's name (`invite_to_call`
-  works on every ask).
-
-**Do:** `draft_call` with `mode` (`competition` or `hire`) and what the person said; it responds with the
-next question to ask. Never re-send a field and never invent their brief; offer the defaults it shows.
-When nothing is missing it shows the whole call: tell it in plain words, get a yes, then `post_call` with
-`confirm` = the total. It gives one link to tap (the `create` skill's money rule); the page posts every
-part of the call in a row after that one tap. Then `read_ask` says it's live: give them its link.
+- **Who can enter:** anyone (default), or `access` `"apply"` (people they approve) or `"invite"` (only
+  people they invite).
+- **Money:** everything is **set aside** when posted; what isn't paid comes back when they close it.
+  By invitation or approval, a share for the network goes on top: each person still gets the full pay.
+  Say it as the preview does.
+- **Not this kind:** one short task → [post-an-ask.md](post-an-ask.md); an app tried by verified pros →
+  [review-job.md](review-job.md); photos at places → [campaign.md](campaign.md).

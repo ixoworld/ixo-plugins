@@ -1,32 +1,27 @@
 # An ask at a place
 
-Someone near a place goes and looks, and reports what they see or sends a photo. Their phone's location
-is checked and the verifier checks the completion is on topic. It can also check one web page (no place).
+## Do this
 
-- **Pick it when:** the honest reply is "I don't know and can't know from here": the fact is current,
-  needs eyes in a place, or must be checkable (is the shop open, is the notice still up).
-- **Not when:** a web search would do; a task to *do* there, like a cleanup → [campaign.md](campaign.md);
-  only certain people → a private ask ([private.md](private.md)): this one can't be private, a company's
-  or paid by card.
-- **Who completes it:** anyone near the place.
-- **Money:** the payment × completions, plus a small checking fee, is **set aside** when posted; what isn't
-  paid comes back when they close it. Real money and practice money both.
-- **Judged:** location and time checks plus the verifier; no person looks unless they pass `approver`.
-- **Not to confuse with:** a plan (many checks for a prediction market, [plan.md](plan.md)), which the
-  website also calls "Ask the World".
+1. Ask, one at a time: "What do you want to know?" → `question` (12–300 characters, their words);
+   "Where?" → `near` as `"lat,lon"` (read it back: "That's <street> in <town>, right?"); "A few words,
+   or a photo?" → `needs` (`observation` or `photo`; `url-check` for one web page, no place); "What
+   should one completion earn?" → `pay`.
+2. Call `ask_the_world` with those and a `title` (at most 80 characters), without `confirm`.
+3. **Say:** "Someone near <place> will check '<question>' within <hours> hours, for <reward>. It costs
+   <total> in all (<real / practice> money). <How asks near there usually go.> OK?"
+4. On "yes": again with `confirm` = that total. Give the link. Then `link_status`.
+5. Once it's live: `collect_answer` (`wait_seconds` up to 45; call again to keep waiting). Tell them
+   what came back, how sure it is (in words) and what was **not** checked. Never call it certain.
+   Nothing came back → say so; never guess.
 
-**Ask**, one at a time: "What do you want to know?" (`question`, 12–300 characters, their words) ·
-"Where?" (turn it into `"lat,lon"`, read it back: "That's <street> in <town>, right?") · "A few
-words, or a photo?" (`needs`: `observation`, `photo`, or `url-check` for a web page, no place) ·
-"What should one completion earn?"
-Defaults said once in the preview: 1 completion (`quota`), 24 hours (`hours`), within 400 m (`within_m`).
-**Do:** `ask_the_world` with those, a `title` (≤ 80 characters) and `pay`, without `confirm`.
-**Say:** "Someone near <place> will check '<question>' within <hours> hours, for <reward>. It costs
-<total> in total (<real / practice> money). <How asks near there usually go.> OK?" → on yes, with `confirm`;
-it gives the link to tap (the `create` skill's money rule). Once it's live (`read_ask`):
-**Then:** `collect_answer` (`wait_seconds` up to 45; again to keep waiting). Tell them what came back,
-how sure it is (in words, never the bare number) and what was **not** checked. Never call it certain or
-"verified". If nothing came back, say so; never guess.
+Someone near the place goes and looks; their phone's location is checked and the AI checks the
+completion is on topic (free). Defaults, said once in the preview: 1 completion (`quota`), 24 hours
+(`hours`), within 400 m (`within_m`). The person gives the final OK by default, after the AI; the AI
+alone → `approver: "none"`. The money is **set aside** when posted; what isn't paid comes back when
+they close it. It can't be private, a company's, or paid by card.
+
+**Not this kind:** a web search would do → just search; a task to *do* there, like a cleanup →
+[campaign.md](campaign.md); only certain people → [private.md](private.md).
 
 **Never ask** anything that targets, follows or identifies a particular person (home, car, plate,
 routine), involves children, is sexual, violent or unlawful, asks for personal data, puts the doer in

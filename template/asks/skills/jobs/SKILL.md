@@ -1,9 +1,20 @@
 ---
 name: jobs
-description: Find paid work on asks.world and get paid. Use when the person asks what work is open, wants something near them, asks "what am I invited to?", pastes an invite link, wants to apply to an ask, or wants to hand in a completion (their answer) and see whether it passed.
+description: Find paid work on asks.world and get paid. Use when the person asks what work is open, wants something near them, asks "what am I invited to?", pastes an invite link, wants to apply to an ask, or wants to hand in a completion and see whether it passed.
 ---
 
 # Find work and complete asks
+
+## Do this
+
+1. First call `my_status` (or `my_page`) to see what's already done: verified, page, balance. Never ask for a step that's already done; just call the tool, it checks itself.
+2. Call `my_invitations`, then `list_asks` (with `near` if they want work nearby). Say a short list and
+   recommend one.
+3. Invited or a pro ask's link → `accept_invitation` (preview, "yes", `confirm: true`). It checks
+   LinkedIn itself. If the preview says they're already in → **Say:** "You're already in." No confirm.
+4. Do the work with them, show them the completion, and on "send it" call `submit_work` once (section
+   "Hand it in": files, then what to say). A pro ask's report → the `report` skill.
+5. "Did it pass?" → `check_verdict` with the ask's number.
 
 Follow the `asks` skill's way of talking and lead the way. **Real or practice money:** the `asks`
 skill's rule (this connector is {{#TESTNET}}practice money{{/TESTNET}}{{^TESTNET}}real money{{/TESTNET}};
@@ -65,23 +76,33 @@ their words, never the ask's text back).
 - **An expert verifier's form** (`read_ask` shows it): ask each field one at a time, show all the
   replies, and on their OK `submit_work` with `fields`.
 - **A pro ask** (`read_ask` shows Asky Pro Checker's form): use the `report` skill; the report fills that form.
-- **Pay for trying** (`read_ask` says "Also pays …"): **Say** it plainly before they start, e.g. "You get $1
-  just for sending a completion, and $5 more if it's approved."
+- **Pay for trying** (`read_ask` says "Also pays …"): **Say** it plainly before they start, e.g. "You get <X>
+  just for sending a completion, and <Y> more if it's approved." (the amounts `read_ask` gives)
 - **An open call** (`read_ask` shows the requirements it is judged on): work them through *with* the
   person and hand in once, one page in their words, when they say so.
 
-**Hand it in** (a link to tap, the `asks` skill's way): the first `submit_work` sends nothing and
-shows what it will send: show it. **Say:** "Here's your completion. Hand it in?" On yes, the same call
-again exactly the same; it gives a link. **Say:** "Open this, check it and tap to send it: <link>. Tell
-me when it's done." Then `read_ask` (or `check_verdict`) says it arrived. If the outcome is unknown,
-never resend; check first.
+**Hand it in.** `submit_work` has no preview: it sends or gives a link on the first call. So show
+them the completion first. **Say:** "Here's your completion: <it>. Send it?" On yes, call
+`submit_work` once with the ask's number and `deliverable` (or `fields`).
 
-- **A file with the completion** (the one file a written completion takes when the ask wants a file, or a form's files): in
-  Claude Code or Codex, or in claude.ai with code execution where {{#TESTNET}}test.{{/TESTNET}}asks.world, {{#TESTNET}}test.{{/TESTNET}}api.asks.world and
-  r2.cloudflarestorage.com are allowed domains, upload the files the person points you to through the
-  upload address `submit_work` gives (its three steps: ask it for a signed URL per file, PUT each file
-  there, then GET the address to check), before you give the link; the page shows them in place. Otherwise give the link and they add
-  them on the page. A photo taken at a place is never uploaded: they take it on the ask's page.
+- **A file with the completion** (screenshots, a PDF, a form's files):
+  - ChatGPT: put the files the person attached in this chat in `attachments`.
+  - Other apps: call `submit_work`; if an **Add screenshots** box appears under it, **Say:** "Add
+    your screenshots in the box below." Otherwise give the link: they add them there.
+  - Claude Code or Codex (you can make web requests): upload the files they point you to through the
+    upload address the reply gives (ask it for a signed URL per file, PUT each file, then GET the
+    address to check), before they open the link.
+  - A photo taken at a place is never sent from the chat: they take it on the ask's page, there.
+- **What came back:**
+  - "Sent, waiting for approval" (no link) → **Say:** "Sent. It's waiting for approval."
+  - A link → **Say:** "Tap this to send it. Leave the box ticked so next time I can send it for you:
+    <link>"
+  - An upload address and a `draft` id, with "Your assistant can send for you" on → once the files
+    are in (uploaded, or added in the box), call `submit_work` with `collectionId` and `draft`; it sends.
+- One completion per ask per person. Never call `submit_work` twice for one ask: if you're unsure it
+  went, `link_status` with the link (or `check_verdict`) first.
+- They want to stop the assistant sending → **Say:** "Turn it off in Settings, Agents:
+  https://{{#TESTNET}}test.{{/TESTNET}}asks.world/me/settings."
 
 ## Did it pass?
 

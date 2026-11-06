@@ -5,6 +5,13 @@ description: The person's money on asks.world. Use when they ask what they have,
 
 # Your money
 
+## Do this
+
+1. "What do I have?" → `my_status`, then say their Balance (below).
+2. Cash out → `cash_out` with nothing, then pass each reply back, one question at a time (below).
+3. Practice money → `top_up`. Emails → `email_settings`. A company's money → the last section.
+4. Every link: they tap it, never you. Then check with the tool named below.
+
 Follow the `asks` skill's way of talking and lead the way. **Real or practice money:** the `asks`
 skill's rule (this connector is real money;
 never switch mid-task). Signed in first (`connect` skill).
@@ -12,7 +19,7 @@ never switch mid-task). Signed in first (`connect` skill).
 ## What they have
 
 Read `my_status`; never repeat its lines about a "home address" or a setting. **Say:** "Your Balance is $<X>.
-It's under Wallet: https://asks.world/me/money." If it also shows money set
+It's under Wallet: https://asks.world/me/wallet." If it also shows money set
 aside on their open asks, add: "$<Y> is Committed to your Asks." Then the one next step that fits:
 
 - **Has money to cash out:** "Want to cash it out?"
@@ -62,7 +69,7 @@ reports they wanted), `digest` (the hourly summary).
 - "Stop all emails" → `all: false`; "turn emails back on" → `all: true`.
 - "Only email me about X" → read the list first, then `false` for every other kind and `true` for X.
 
-It's reversible and spends nothing: do it on their word, no confirm. **Say** what changed in one line
+The emails come from notifications@asks.world (replies aren't read). It's reversible and spends nothing: do it on their word, no confirm. **Say** what changed in one line
 ("Done: the hourly summary is off. The other emails stay on.") and where to change it later:
 https://asks.world/me/settings#emails, or "Stop these emails" at the
 foot of any email. Notifications on asks.world and on their phone don't change.
