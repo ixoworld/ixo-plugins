@@ -7,10 +7,11 @@ description: The person's pro page on asks.world (name, what they do, rate, link
 
 ## Do this
 
-1. Call `my_page`. Say the one line below that fits.
-2. Not verified → `connect_linkedin`, give the link, then `connect_linkedin` with its `id` when they're done.
-3. Fill the page from LinkedIn and their words → `set_my_page` (preview), "yes", `confirm: true`.
-4. Delete → `remove_my_page` (preview), "yes", `confirm: true`.
+1. First call `my_status` (or `my_page`) to see what's already done: verified, page, balance. Never ask for a step that's already done; just call the tool, it checks itself.
+2. Call `my_page`. Say the one line below that fits.
+3. Not verified → `connect_linkedin`, give the link, then `connect_linkedin` with its `id` when they're done.
+4. Fill the page from LinkedIn and their words → `set_my_page` (preview), "yes", `confirm: true`.
+5. Delete → `remove_my_page` (preview), "yes", `confirm: true`.
 
 Follow the `asks` skill's way of talking and lead the way. **Real or practice money:** the `asks`
 skill's rule. This is the sandbox: a page made here is a test page; their real page is on
@@ -57,9 +58,16 @@ Then **Ask** the rest one at a time, each skippable ("skip" moves on):
 10. Experience: offer "Shall I draft it from your headline and what you told me?" (`experience`)
 11. Pictures of your work? (`pictures`) Other links? (`links`)
 
-For pictures **Say:** "Paste a link to the picture (one that starts with https), or skip it and add
-pictures from your phone on My Profile's edit form after: https://test.asks.world/me/page/edit."
-PNG, JPG or WebP, up to 5 MB. Never ask for a file on their computer.
+**Their profile photo:** **Ask:** "Send me the photo here." Then `set_my_page` with `photo: true`
+(with `page` too if other things change):
+- ChatGPT: put the photo they attached in `attachments`.
+- Other apps: if an **Add your photo** box appears under it, **Say:** "Add your photo in the box
+  below." Claude Code or Codex: upload it to the address the reply gives.
+- Then give the one link it returns. **Say:** "Tap this to make it your profile picture: <link>."
+
+**Banner and pictures of their work:** a link that starts with https, or **Say:** "Skip it here and
+add them from your phone: https://test.asks.world/me/page/edit." PNG, JPG or WebP,
+up to 5 MB. Never ask for a link to a photo they sent you in the chat.
 
 Use the suggested @name unless they want another. Build it only from LinkedIn and their words; you
 cannot read LinkedIn or any signed-in site yourself, so never say you did.
