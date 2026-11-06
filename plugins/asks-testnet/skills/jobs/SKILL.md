@@ -7,12 +7,13 @@ description: Find paid work on asks.world and get paid. Use when the person asks
 
 ## Do this
 
-1. Call `my_invitations`, then `list_asks` (with `near` if they want work nearby). Say a short list and
+1. First call `my_status` (or `my_page`) to see what's already done: verified, page, balance. Never ask for a step that's already done; just call the tool, it checks itself.
+2. Call `my_invitations`, then `list_asks` (with `near` if they want work nearby). Say a short list and
    recommend one.
-2. Invited or a pro ask's link → `accept_invitation` (preview, "yes", `confirm: true`).
-3. Do the work with them → `submit_work` (it shows what it will send). On "yes", the same call again;
+3. Invited or a pro ask's link → `accept_invitation` (preview, "yes", `confirm: true`).
+4. Do the work with them → `submit_work` (it shows what it will send). On "yes", the same call again;
    give the link. A pro ask's report → the `report` skill.
-4. "Did it pass?" → `check_verdict` with the ask's number.
+5. "Did it pass?" → `check_verdict` with the ask's number.
 
 Follow the `asks` skill's way of talking and lead the way. **Real or practice money:** the `asks`
 skill's rule (this connector is practice money;

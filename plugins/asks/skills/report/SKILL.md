@@ -7,11 +7,12 @@ description: Write and hand in a report on asks.world, as a pro reviewing an app
 
 ## Do this
 
-1. `read_ask` with the pro ask's number. Go through each scenario with them, one at a time.
-2. Write the report from their words (section 2).
-3. `submit_work` with `fields` (it shows the report). On "yes", the same call again; give the link.
+1. First call `my_status` (or `my_page`) to see what's already done: verified, page, balance. Never ask for a step that's already done; just call the tool, it checks itself.
+2. `read_ask` with the pro ask's number. Go through each scenario with them, one at a time.
+3. Write the report from their words (section 2).
+4. `submit_work` with `fields` (it shows the report). On "yes", the same call again; give the link.
    Upload their screenshots first if you can (section 3).
-4. Then `check_verdict` with the number.
+5. Then `check_verdict` with the number.
 
 Follow the `asks` skill's way of talking and lead the way. **Real or practice money:** the `asks`
 skill's rule (this connector is real money).
