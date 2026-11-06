@@ -1,5 +1,10 @@
 # A plan
 
+## Do this
+
+1. {{^TESTNET}}Real money: plans aren't here. Say the line below and stop.{{/TESTNET}}{{#TESTNET}}`scope_market` if they name a market, then `draft_plan`. Show its summary; they approve, change or drop it.{{/TESTNET}}
+2. {{#TESTNET}}On "yes": `fund_plan` with `confirm` = the total. Give the link. Then `plan_status`.{{/TESTNET}}{{^TESTNET}}Offer the sandbox instead.{{/TESTNET}}
+
 Several small checks bought with one yes, to inform a prediction market (a Polymarket or Kalshi link):
 people near the places the market turns on send photos, observations or a quick survey. The website
 calls this "Ask the World".

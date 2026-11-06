@@ -1,5 +1,10 @@
 # A plan
 
+## Do this
+
+1. `scope_market` if they name a market, then `draft_plan`. Show its summary; they approve, change or drop it.
+2. On "yes": `fund_plan` with `confirm` = the total. Give the link. Then `plan_status`.
+
 Several small checks bought with one yes, to inform a prediction market (a Polymarket or Kalshi link):
 people near the places the market turns on send photos, observations or a quick survey. The website
 calls this "Ask the World".

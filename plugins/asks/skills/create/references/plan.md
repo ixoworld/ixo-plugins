@@ -1,5 +1,10 @@
 # A plan
 
+## Do this
+
+1. Real money: plans aren't here. Say the line below and stop.
+2. Offer the sandbox instead.
+
 Several small checks bought with one yes, to inform a prediction market (a Polymarket or Kalshi link):
 people near the places the market turns on send photos, observations or a quick survey. The website
 calls this "Ask the World".

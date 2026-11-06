@@ -1,9 +1,18 @@
 ---
 name: manage
-description: Look after the person's open asks on asks.world. Use when they ask "did anyone answer?", "did anyone complete my ask?", "is anything waiting for me?", want to read completions (answers) or reports, give the final OK, see a plan's progress, or close an ask or plan and get the money back.
+description: Look after the person's open asks on asks.world. Use when they ask "did anyone answer?", "did anyone complete my ask?", "is anything waiting for me?", want to read completions or reports, add more reports to a filled pro ask, give the final OK, see a plan's progress, or close an ask or plan and get the money back.
 ---
 
 # Your open asks
+
+## Do this
+
+1. "Anything new?" → `my_pro_asks` (their pro asks) and `list_asks` with `poster` (their other asks).
+   Say what's waiting in one line.
+2. Read completions or reports → `collect_answer` with the ask's number.
+3. Approve a report → `approve_report` (preview, "yes", `confirm: true`, the link).
+4. More reports on a Filled pro ask → `add_more_reports`. Close and get money back → `close_ask`
+   (preview, "yes", `confirm: true`, the link).
 
 Follow the `asks` skill's way of talking and lead the way. **Real or practice money:** the `asks`
 skill's rule (this connector is practice money;

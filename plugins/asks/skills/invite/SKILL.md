@@ -5,6 +5,14 @@ description: Invite people to an ask, open call or pro ask on asks.world, sugges
 
 # Invite people and reply to applications
 
+## Do this
+
+1. Invite → show the note, get "yes", call `invite_to_call` with the ask's number, the @names or
+   addresses (or `"link"` once per private link) and `note`.
+2. "Who's in?" → `call_invites`, say it in one line.
+3. An application → read it to them; `decide_application` only on their word.
+4. Need someone → `find_pro` with `q`; they choose.
+
 Follow the `asks` skill's way of talking and lead the way. **Real or practice money:** the `asks`
 skill's rule (this connector is real money;
 never switch mid-task). An ask is where it was posted: if it isn't found here, say it may be on the

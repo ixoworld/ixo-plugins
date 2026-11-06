@@ -1,9 +1,18 @@
 ---
 name: jobs
-description: Find paid work on asks.world and get paid. Use when the person asks what work is open, wants something near them, asks "what am I invited to?", pastes an invite link, wants to apply to an ask, or wants to hand in a completion (their answer) and see whether it passed.
+description: Find paid work on asks.world and get paid. Use when the person asks what work is open, wants something near them, asks "what am I invited to?", pastes an invite link, wants to apply to an ask, or wants to hand in a completion and see whether it passed.
 ---
 
 # Find work and complete asks
+
+## Do this
+
+1. Call `my_invitations`, then `list_asks` (with `near` if they want work nearby). Say a short list and
+   recommend one.
+2. Invited or a pro ask's link → `accept_invitation` (preview, "yes", `confirm: true`).
+3. Do the work with them → `submit_work` (it shows what it will send). On "yes", the same call again;
+   give the link. A pro ask's report → the `report` skill.
+4. "Did it pass?" → `check_verdict` with the ask's number.
 
 Follow the `asks` skill's way of talking and lead the way. **Real or practice money:** the `asks`
 skill's rule (this connector is real money;
@@ -65,8 +74,8 @@ their words, never the ask's text back).
 - **An expert verifier's form** (`read_ask` shows it): ask each field one at a time, show all the
   replies, and on their OK `submit_work` with `fields`.
 - **A pro ask** (`read_ask` shows Asky Pro Checker's form): use the `report` skill; the report fills that form.
-- **Pay for trying** (`read_ask` says "Also pays …"): **Say** it plainly before they start, e.g. "You get $1
-  just for sending a completion, and $5 more if it's approved."
+- **Pay for trying** (`read_ask` says "Also pays …"): **Say** it plainly before they start, e.g. "You get <X>
+  just for sending a completion, and <Y> more if it's approved." (the amounts `read_ask` gives)
 - **An open call** (`read_ask` shows the requirements it is judged on): work them through *with* the
   person and hand in once, one page in their words, when they say so.
 
