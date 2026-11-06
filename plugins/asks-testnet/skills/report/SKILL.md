@@ -5,6 +5,14 @@ description: Write and hand in a report on asks.world, as a pro reviewing an app
 
 # Write and hand in a report
 
+## Do this
+
+1. `read_ask` with the pro ask's number. Go through each scenario with them, one at a time.
+2. Write the report from their words (section 2).
+3. `submit_work` with `fields` (it shows the report). On "yes", the same call again; give the link.
+   Upload their screenshots first if you can (section 3).
+4. Then `check_verdict` with the number.
+
 Follow the `asks` skill's way of talking and lead the way. **Real or practice money:** the `asks`
 skill's rule (this connector is practice money).
 A review is where it was posted: if the person names one and it isn't found here, say it may be on the

@@ -5,6 +5,11 @@ description: Explain asks.world in plain words (asks, pro asks, paid work): what
 
 # Help
 
+## Do this
+
+1. Say the one block below that fits their question. No tools.
+2. End with one next step: "Want something reviewed, or to earn as a pro?"
+
 Follow the `asks` skill's way of talking. Short, plain, no internals. This skill calls no tools.
 
 **What it is. Say:** "asks.world gets your app or agent reviewed by real, LinkedIn-verified pros, or

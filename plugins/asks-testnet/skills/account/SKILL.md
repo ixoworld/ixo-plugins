@@ -5,6 +5,13 @@ description: The person's money on asks.world. Use when they ask what they have,
 
 # Your money
 
+## Do this
+
+1. "What do I have?" → `my_status`, then say their Balance (below).
+2. Cash out → `cash_out` with nothing, then pass each reply back, one question at a time (below).
+3. Practice money → `top_up`. Emails → `email_settings`. A company's money → the last section.
+4. Every link: they tap it, never you. Then check with the tool named below.
+
 Follow the `asks` skill's way of talking and lead the way. **Real or practice money:** the `asks`
 skill's rule (this connector is practice money;
 never switch mid-task). Signed in first (`connect` skill).
@@ -42,7 +49,7 @@ reports they wanted), `digest` (the hourly summary).
 - "Stop all emails" → `all: false`; "turn emails back on" → `all: true`.
 - "Only email me about X" → read the list first, then `false` for every other kind and `true` for X.
 
-It's reversible and spends nothing: do it on their word, no confirm. **Say** what changed in one line
+The emails come from notifications@asks.world (replies aren't read). It's reversible and spends nothing: do it on their word, no confirm. **Say** what changed in one line
 ("Done: the hourly summary is off. The other emails stay on.") and where to change it later:
 https://test.asks.world/me/settings#emails, or "Stop these emails" at the
 foot of any email. Notifications on asks.world and on their phone don't change.

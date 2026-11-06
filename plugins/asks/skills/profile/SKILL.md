@@ -5,6 +5,13 @@ description: The person's pro page on asks.world (name, what they do, rate, link
 
 # Your pro page
 
+## Do this
+
+1. Call `my_page`. Say the one line below that fits.
+2. Not verified → `connect_linkedin`, give the link, then `connect_linkedin` with its `id` when they're done.
+3. Fill the page from LinkedIn and their words → `set_my_page` (preview), "yes", `confirm: true`.
+4. Delete → `remove_my_page` (preview), "yes", `confirm: true`.
+
 Follow the `asks` skill's way of talking and lead the way. **Real or practice money:** the `asks`
 skill's rule. This is their real page; the sandbox has its own test
 pages. Signed in first (`connect` skill). Everything here happens in the chat and nothing

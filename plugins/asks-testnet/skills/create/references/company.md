@@ -1,5 +1,12 @@
 # A company ask: set up a company, or post as one
 
+## Do this
+
+1. Setting up a new company → say the "Setting up a new company" line below and stop.
+2. Posting as the company → say the "Posting as the company" line below.
+3. How it pays people → `set_payout_settings` (preview, "yes", `confirm: true`, the link).
+4. Its review budget → `review_billing_status` with the company's id, then the "Review budget" line.
+
 - **Pick it when:** the asks should be in their company's name and paid from the company: from its own
   account, or to people by bank-style dollars or card through its own payouts service.
 - **Not when:** a person posting for themselves → an ask ([post-an-ask.md](post-an-ask.md)); one expert

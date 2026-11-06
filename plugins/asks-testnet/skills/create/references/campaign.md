@@ -1,5 +1,11 @@
 # A campaign
 
+## Do this
+
+1. Unless they said, **Ask:** "One spot cleaned, litter mapped over an area, or the same job in many places?"
+2. Call the tool for that choice (below) without `confirm`, say the total, get "yes".
+3. Call it again with `confirm`. Give the link. Then `link_status`.
+
 **"Campaign" means three things.** Ask once which, unless they said: "One spot cleaned, litter mapped
 over an area, or the same job in many places?"
 
