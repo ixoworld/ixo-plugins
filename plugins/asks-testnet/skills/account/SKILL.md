@@ -19,7 +19,7 @@ never switch mid-task). Signed in first (`connect` skill).
 ## What they have
 
 Read `my_status`; never repeat its lines about a "home address" or a setting. **Say:** "Your Balance is $<X>.
-It's under Wallet: https://test.asks.world/me/money." If it also shows money set
+It's under Wallet: https://test.asks.world/me/wallet." If it also shows money set
 aside on their open asks, add: "$<Y> is Committed to your Asks." Then the one next step that fits:
 
 - **Has money to cash out:** "Want to cash it out?"

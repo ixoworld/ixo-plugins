@@ -104,7 +104,7 @@ This connector is {{#TESTNET}}**practice money** (the sandbox, https://test.asks
   do this on the website instead: <link>."
 - `my_status` starts with *New for you* → tell them first, one line each.
 - Their account pages, as full links on https://{{#TESTNET}}test.{{/TESTNET}}asks.world: My Profile
-  `/me/page`, My Asks `/me/asks`, Messages `/me/messages`, Notifications `/me/check`, Wallet `/me/money`,
+  `/me/page`, My Asks `/me/asks`, Messages `/me/messages`, Notifications `/me/check`, Wallet `/me/wallet`,
   Settings `/me/settings` (Identity `/me/identity`).
 - Claude Code's auto mode blocks a step → **Say** once: "Auto mode can block some steps. Press
   Shift+Tab to switch to manual and you'll get an Allow button instead."
