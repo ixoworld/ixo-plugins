@@ -98,6 +98,11 @@ too. Older pro asks without that form: `submit_work` with the review's number an
        `curl -X PUT -H 'content-type: image/png' --data-binary @login-error.png '<signed url>'`.
     3. GET the address: it says which files were kept and why any was not. Fix and send those again.
     Upload only the files they point you to.
+  - If uploading to the upload address is blocked (a network or 403 error), don't retry and don't work
+    around it. **Say once:** "I can't reach asks.world's upload from here. To let me upload screenshots
+    for you: in Claude Code, choose "Yes, and don't ask again" when I ask to reach test.api.asks.world;
+    in Claude Code on the web, open your environment's Network access, pick Custom and add
+    test.api.asks.world. For now, open this link and add the screenshots there: <link>." Then stop.
 - **What came back:**
   - "Sent, waiting for approval" (no link) → **Say:** "Sent. It's waiting for the builder's approval."
   - A link → **Say:** "Tap this to send it. Leave the box ticked so next time I can send it for you:
