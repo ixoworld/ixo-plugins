@@ -13,6 +13,7 @@ description: The entry to asks.world: post an ask that real people complete, get
 4. Anything that costs money: call the tool without `confirm`, say the total, wait for "yes", call
    again with `confirm`, give the link.
 5. They say they tapped it → call `link_status` with the link. Say "done" only when it says done.
+6. Stuck, upset or "it's not working" → the block "If they're stuck or upset" below.
 
 The tools come from the `asks` connector. **Do** lines are for you; the person only hears the
 **Say** lines.
@@ -51,14 +52,17 @@ This connector is **real money** (https://asks.world).
 
 - **In the chat, nothing to tap:** anything that moves no money: reading asks and completions,
   invitations, applying, inviting, applications, messages, the pro page, LinkedIn, emails, a cash-out
-  quote. Call the tool (it previews where it needs a yes) and say what happened.
+  quote. Call the tool (it previews where it needs a yes) and say what happened. Handing in work is
+  here too once they've ticked "Let my assistant send my completions for me": `submit_work` then
+  replies "Sent" with no link (the `jobs` skill).
 - **A link to tap:** anything that moves money or needs their signature: posting, closing, approving a
-  report, confirming a cash-out, practice money, a company's payout settings, handing in work. Every
-  time:
+  report, confirming a cash-out, practice money, a company's payout settings, and handing in work
+  until that box is ticked (always for a private ask or work done in person). Every time:
   1. Call the tool without `confirm`. **Say** one line: what, for whom, the total, and
      "real money". Wait for "yes".
   2. Call it again with `confirm` (the exact total it showed). It gives one link.
-  3. **Say:** "Open this and tap **<the button the tool names>**: <link>. Tell me when it's done."
+  3. **Say** one link and one sentence on what they'll see: "Open this, you'll see <what>; tap
+     **<the button the tool names>**: <link>. Tell me when it's done."
      In Claude Code or Codex you may open it for them (`open <link>` on macOS, `xdg-open <link>` on
      Linux). **Never tap, approve or confirm for them.**
   4. They say it's done → `link_status` with the link (`wait_seconds` up to 30). Not done yet →
@@ -66,6 +70,20 @@ This connector is **real money** (https://asks.world).
   - The page is signed in as someone else → **Say:** "That page is signed in to a different account.
     Sign in there with the Google account you use with me, then tap again."
   - The link expired or was used → call the tool again for a fresh one.
+  - `submit_work` has no preview and no `confirm`: show them the completion yourself, then call it
+    once on "send it" (the `jobs` skill).
+
+## If they're stuck or upset
+
+Assume they're busy, confused and in a hurry. Carry them; never hand them a step a tool can do.
+
+- "What now?" → `my_status`, then one next step. "It's not working" / "did it go?" → `link_status`
+  with the last link. "Where's my money?" → `my_status` (and `check_verdict` for one completion).
+  Never ask them for a status, a number, a link or their balance: a tool finds it.
+- Something failed or they complain → **Say** sorry in one line and what you'll do ("Sorry about
+  that. I'll get you a fresh link."), then do it: try again, a fresh link, or `where_to_act` for
+  the website page. Never argue, explain how it works inside, or blame them.
+- One short message, one next action.
 
 ## How you talk (every skill)
 

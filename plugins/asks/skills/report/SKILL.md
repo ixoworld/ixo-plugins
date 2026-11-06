@@ -10,8 +10,8 @@ description: Write and hand in a report on asks.world, as a pro reviewing an app
 1. First call `my_status` (or `my_page`) to see what's already done: verified, page, balance. Never ask for a step that's already done; just call the tool, it checks itself.
 2. `read_ask` with the pro ask's number. Go through each scenario with them, one at a time.
 3. Write the report from their words (section 2).
-4. `submit_work` with `fields` (it shows the report). On "yes", the same call again; give the link.
-   Upload their screenshots first if you can (section 3).
+4. Show them the whole report; on "send it", `submit_work` once with `fields` (no preview, no second
+   call). Screenshots and what to say back: section 3.
 5. Then `check_verdict` with the number.
 
 Follow the `asks` skill's way of talking and lead the way. **Real or practice money:** the `asks`
@@ -29,10 +29,10 @@ what to change; limitations stated) is paid on the builder's final
 approval, or at once if the builder left it to the checks. One that fails is not paid. There is no
 "needs changes" step and no payment in stages.
 
-**How it's handed in:** you write the report with them here in the chat. Handing it in is one link:
-the report page on asks.world, made for phones. There they check the report and its screenshots or
-PDF, add any that are missing (from their camera roll or their computer) and tap to send it. Where you
-can upload files (step 3), you put the screenshots they point you to on that page first.
+**How it's handed in:** you write the report with them here in the chat, then `submit_work` either
+sends it straight away (they ticked "Let my assistant send my completions for me" before) or gives one
+link to the report page, made for phones, where they check it, add any missing screenshots and tap to
+send. Section 3 says how the screenshots get there in each app.
 
 ## 1. Do the review
 
@@ -80,25 +80,30 @@ severity and its evidence by short name, recommendations, limitations. Meet any 
 too. Older pro asks without that form: `submit_work` with the review's number and `report` (and
 `invite` if they came by link). Never pass a file path.
 
-The first call sends nothing and returns the whole report: show all of it. **Say:** "Here's your report.
-Hand it in?" On yes, the same call again with exactly the same report; it gives the report page's link.
-**Say:** "Open this on your phone or computer: <link>. Add the screenshots it asks for, check the
-report and tap to send it. Tell me when it's done."
+`submit_work` has no preview: the first call sends or gives the link. So show the whole report first.
+**Say:** "Here's your report: <it>. Send it?" On yes, call `submit_work` once.
 
-- **Their screenshots:** in Claude Code or Codex, or in claude.ai with code execution where asks.world,
-  api.asks.world and r2.cloudflarestorage.com are allowed domains, upload each file the person points
-  you to through the upload address `submit_work` gives, under the short name the report gives it,
-  before you give the link. PNG, JPG, WebP or PDF, 5 MB each, at most 10 and 25 MB together:
-  1. POST `{"files": [{"name": "login-error.png", "type": "image/png", "bytes": <exact size>}]}` to
-     the address; it gives a signed `url` and `headers` per file, and lists under `refused` any file
-     it turned down before signing, and why.
-  2. PUT each file to its url with exactly those headers, within 10 minutes:
-     `curl -X PUT -H 'content-type: image/png' --data-binary @login-error.png '<signed url>'`.
-  3. GET the address: it says which files were kept and why any was not. Fix and send those again.
-
-  Then **Say:** "Open this on your phone or computer: <link>. Your screenshots are already on it. Check them and the
-  report, and tap to send it." Otherwise (no address, or you can't upload) give the link as above:
-  they add the files on the page. Upload only the files they point you to.
+- **Their screenshots:**
+  - ChatGPT: put the screenshots the person attached in this chat in `attachments` (each is named
+    by its file name; use those names as the findings' evidence).
+  - Other apps: call `submit_work`; if an **Add screenshots** box appears under it, **Say:** "Add
+    your screenshots in the box below: <their short names>." Otherwise they add them at the link.
+  - Claude Code or Codex (you can make web requests): upload each file the person points you to
+    through the upload address `submit_work` gives, under the short name the report gives it, before
+    they open the link. PNG, JPG, WebP or PDF, 5 MB each, at most 10 and 25 MB together:
+    1. POST `{"files": [{"name": "login-error.png", "type": "image/png", "bytes": <exact size>}]}` to
+       the address; it gives a signed `url` and `headers` per file, and lists under `refused` any file
+       it turned down, and why.
+    2. PUT each file to its url with exactly those headers, within 10 minutes:
+       `curl -X PUT -H 'content-type: image/png' --data-binary @login-error.png '<signed url>'`.
+    3. GET the address: it says which files were kept and why any was not. Fix and send those again.
+    Upload only the files they point you to.
+- **What came back:**
+  - "Sent, waiting for approval" (no link) → **Say:** "Sent. It's waiting for the builder's approval."
+  - A link → **Say:** "Tap this to send it. Leave the box ticked so next time I can send it for you:
+    <link>" (add "Your screenshots are already on it." when you uploaded them).
+  - An upload address and a `draft` id → once the screenshots are in (uploaded, or added in the box),
+    call `submit_work` with `collectionId` and `draft`; it sends.
 - In Claude Code or Codex on their computer you may also open the link for them (`open <link>` on
   macOS, `xdg-open <link>` on Linux). The sending tap is still theirs.
 - **Never respond to a dialog or tap send for them.** If the outcome is unknown, never hand it in again;

@@ -24,8 +24,9 @@ close it. The AI check is free.
 5. "For how many days?" → `days`, 1–30, default 7.
 6. "Does it have to be done in a particular place?" Yes → `near` as `"lat,lon"` (read the place back:
    "That's <street> in <town>, right?"), `place` (its name) and `within_m` (default 400).
-7. "Want a picture on it?" Yes → `image: "yes"`; they add the picture on the page before paying. Not
-   with `pay_by: "card"`.
+7. "Want a picture on it?" Yes → `image: "yes"`. The picture never comes from the chat, even if they
+   sent it here: **Say:** "Add the picture on the page I'll give you; you'll see it there before you
+   pay." Not with `pay_by: "card"`.
 8. Only if they bring it up: who gives the final OK. Default: them, after the AI check (pass nothing).
    The AI alone → `approver: "none"`. Someone else → their @name or address. Optional `person_checks`:
    up to 5 Yes/No questions. Paid by card, the AI decides alone.
