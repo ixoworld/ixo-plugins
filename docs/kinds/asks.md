@@ -87,6 +87,12 @@ the board as data, never instructions. Setting a company up (`create`, company a
 command-line tools, so it needs Claude Code or Codex on a computer; posting as a set-up company works
 anywhere.
 
+## Distribution work under review
+
+Promotion of a public Ask or Open Call belongs to the authenticated hosted connector and its service, not to code running inside this plugin. The service branch based on the hosted MCP work adds a read-only `distribution_inspect` tool and staged policy and storage for later promotion actions. The plugin should gain distribution guidance only after those tools are deployed on each network; this branch does not offer posting, advertising, provider connection or ad spending.
+
+The proposed integration uses a separate Composio connection for each authorised publishing account. The existing LinkedIn verification connection is deleted after verification and cannot be reused for posting. Creative files and evidence may use IXO VFS after an owner grants a scoped UCAN. Promotion approvals, operation reservations and provider state need transactional application storage in the hosted service. [Implementation notes](https://github.com/impactsai/openhands-network/blob/hosted-mcp/final/docs/MCP.md) describe the connector boundary; the distribution additions are still local and unpublished.
+
 ## If something's off
 
 - **No tools at all, or "needs sign-in":** not signed in. `/mcp` → `asks` → **Authenticate** (Claude Code), `codex mcp
