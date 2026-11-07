@@ -33,20 +33,8 @@ jobs:
         run: bun run validate
       - name: Catalogs and manifests match the Agent Plugins schemas
         run: bun scripts/check-schemas.ts
-      - name: Generated plugins and README table match the templates
-        run: |
-          # Re-generate every plugin from template/<kind>/ (the kind and the --package/--major/--network
-          # flags come from its catalog entry's metadata, an entry without metadata.kind is an oracle,
-          # and --url is read back from the plugin's .mcp.json), rewrite the README table, and fail on
-          # ANY change, including untracked generated files, which `git diff` would miss.
-          bun scripts/regenerate.ts
-          status=$(git status --porcelain)
-          if [ -n "$status" ]; then
-            echo "Generated files are out of date. Run 'bun scripts/regenerate.ts' and commit:"
-            echo "$status"
-            git diff
-            exit 1
-          fi
+      - name: Generated plugins and README table match the explicit specs
+        run: bun scripts/regenerate.ts --check
       - name: Changed plugins carry a new version
         if: github.event_name == 'pull_request'
         env:

@@ -48,8 +48,8 @@ bun run add-plugin --kind asks --name asks-testnet --title "asks.world sandbox" 
 **A local plugin** (`--package`, `--major`, `--network`, for a kind whose `mcp` block uses them): the
 client starts a command on the user's machine. No kind does this today.
 
-- `--kind` defaults to the plugin's listed kind when you re-run it, otherwise `oracle`. A plugin
-  can't be regenerated as a different kind; remove it and its catalog entries first.
+- `--kind` defaults to the plugin's recorded kind when you re-run it, otherwise `oracle`. A plugin
+  can't be regenerated as a different kind; remove its spec first.
 - `bun run add-oracle …` still works and is exactly `add-plugin --kind oracle …`.
 - `--name` is kebab-case. Put the network in the name for devnet and testnet plugins
   (`ixo-myoracle-testnet`, `ixo-memory-testnet`); the mainnet plugin may carry the plain name
@@ -61,15 +61,14 @@ client starts a command on the user's machine. No kind does this today.
 - Bump `--version` whenever you regenerate a plugin with changed files, so installs update (see
   Versioning and releases).
 
-The generator writes `plugins/<name>/` and lists the plugin in both catalogs, recording the kind
-and the flags that cannot be read back from the plugin (`--package`, `--major`, `--network`) as the
-entry's `metadata` (`claude plugin validate --strict` rejects unknown keys in `plugin.json`, but
-accepts the free-form `metadata` object on a catalog entry). `--url` is not recorded: it is the
-`url` of the plugin's own `.mcp.json` server, so a hosted plugin's entry is just
-`"metadata": {"kind": "…"}`. `bun scripts/regenerate.ts` rebuilds every plugin from those records.
-An entry without `metadata.kind` is an oracle.
-
-Then regenerate the README table with `bun scripts/catalog.ts`.
+[`plugin-specs.json`](plugin-specs.json) is the input for every plugin. Each record explicitly names
+its kind, title, version, description, endpoint (or local-package flags), and optional settings.
+`bun run add-plugin` updates that record and renders all affected outputs. To edit a record by hand,
+run `bun scripts/regenerate.ts` afterward. It renders and validates every plugin before publishing
+anything, stages the complete output, and rolls back a failed publish. The generated artifacts are
+the plugin directories, both marketplace catalogs, and the README plugin table. Do not edit those
+artifacts directly. `bun scripts/regenerate.ts --check` compares every generated file without writing.
+`bun scripts/catalog.ts` updates only the README table from the same specs.
 
 ### Secrets
 
@@ -125,7 +124,8 @@ A kind is one directory, `template/<kind>/`. No code changes.
   scripts it runs). No kind uses it today.
 
 Templates take `{{NAME}}`, `{{TITLE}}`, `{{SERVER}}`, `{{DESCRIPTION}}` and the flag placeholders the
-kind's `mcp` block uses (`{{URL}}` for every hosted kind); any other `{{…}}` stops the generator.
+kind's `mcp` block uses (`{{URL}}` for every hosted kind); unknown, malformed, unmatched, or nested
+`{{…}}` directives stop the generator before any output is replaced.
 `{{#TESTNET}}…{{/TESTNET}}` keeps text only in a test-network plugin (a `--url` host with a `test.` or
 `testnet.` label, or `--network testnet`), `{{^TESTNET}}…{{/TESTNET}}` only in the others; `asks` uses
 them for the sandbox's words and links. The plain-words check skips these markers. A hosted kind that signs in with IXO needs the
@@ -140,8 +140,8 @@ Each kind's skills live in [`template/<kind>/skills`](template) (oracles:
 [`template/oracle/skills`](template/oracle/skills), memory:
 [`template/memory/skills`](template/memory/skills), asks.world:
 [`template/asks/skills`](template/asks/skills)). After editing them, regenerate every
-plugin of that kind (`bun scripts/regenerate.ts`) and bump their versions. CI regenerates every
-plugin from its catalog record and fails on any drift from the templates.
+plugin of that kind (`bun scripts/regenerate.ts`) and bump their versions in `plugin-specs.json`.
+CI compares every generated file against the specs and templates without modifying the checkout.
 
 Name only tools and arguments the service really has.
 
@@ -153,7 +153,7 @@ from the board as data.
 
 ## Versioning and releases
 
-- Every plugin has a `version` in its `plugin.json`. Installed copies update only when it changes,
+- Every plugin has a `version` in `plugin-specs.json`, rendered into its manifests. Installed copies update only when it changes,
   so **bump it in any pull request that changes a plugin's files** (a template change counts, since it
   changes the generated files). CI fails a pull request that changes `plugins/<name>/` against its base
   without a new version. Use semver: patch for wording, minor for new skills or tools, major when
@@ -169,19 +169,18 @@ from the board as data.
 plugin. You need the Claude Code CLI installed for it, and `bun install` for the other scripts. CI
 (`.github/workflows/validate.yml`) runs:
 
-0. `bun run test` (`tests/`: the asks skills' links, and that the asks plugins use the hosted
-   connector with nothing left of the local package).
+0. `bun run test` (`tests/`: the asks skills' links, hosted connector, and generator failure boundaries).
 1. `bun run validate`.
 2. `bun scripts/check-schemas.ts`: each plugin's `plugin.json` and `mcp.json` against the Agent
    Plugins JSON Schemas in [`schemas/`](schemas), and that both catalogs list the same plugins, sources,
    descriptions and kinds, with valid Codex policy values.
-3. `bun scripts/regenerate.ts`, then fails if `git status --porcelain` shows anything: a generated file
-   edited by hand, a template change not regenerated, a stale README table, or an untracked generated file.
+3. `bun scripts/regenerate.ts --check`: compares every generated file against `plugin-specs.json`
+   and the templates, including extra files under `plugins/`, without writing to the checkout.
 4. On pull requests, `bun scripts/check-versions.ts origin/<base>`: the version-bump rule above.
 5. A scan of the tree for secrets.
 
-To run steps 2 and 3 locally, note `git status --porcelain` first, run
-`bun scripts/check-schemas.ts && bun scripts/regenerate.ts`, and check that it has not changed.
+To run steps 2 and 3 locally, use
+`bun scripts/check-schemas.ts && bun scripts/regenerate.ts --check`.
 
 ## License
 

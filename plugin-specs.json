@@ -1,0 +1,67 @@
+{
+  "renames": {
+    "ixo-openhands": "asks",
+    "ixo-openhands-hq": "asks",
+    "ixo-openhands-test": "asks",
+    "ixo-openhands-hq-test": "asks",
+    "ixo-openhands-mainnet": null,
+    "ixo-openhands-testnet": null
+  },
+  "plugins": [
+    {
+      "name": "asks",
+      "kind": "asks",
+      "title": "asks.world",
+      "version": "3.5.2",
+      "description": "asks.world: post asks that real people complete, get your app or agent tried by verified pros (a pro ask), or find paid work. Sign in once with Google; anything that pays or needs your signature is one tap on asks.world. Real money; for practice, add asks-testnet.",
+      "url": "https://asks.world/v1/mcp"
+    },
+    {
+      "name": "asks-testnet",
+      "kind": "asks",
+      "title": "asks.world sandbox",
+      "version": "3.5.2",
+      "description": "asks.world sandbox: post asks, get your app or agent tried by verified pros (a pro ask), or find paid work, with practice money. Nothing real moves. Sign in once with Google; anything that pays is one tap on test.asks.world.",
+      "url": "https://test.asks.world/v1/mcp"
+    },
+    {
+      "name": "ixo-memory",
+      "kind": "memory",
+      "title": "IXO Memory",
+      "version": "0.1.1",
+      "description": "Your IXO Companion's memory — remember, recall and import what matters, with your IXO sign-in.",
+      "url": "https://memory-engine.ixo.earth/v1/mcp"
+    },
+    {
+      "name": "ixo-memory-devnet",
+      "kind": "memory",
+      "title": "IXO Memory (devnet)",
+      "version": "0.1.1",
+      "description": "Your IXO Companion's memory — remember, recall and import what matters, with your IXO sign-in. Devnet (test network).",
+      "url": "https://memory-engine.devnet.ixo.earth/v1/mcp"
+    },
+    {
+      "name": "ixo-memory-testnet",
+      "kind": "memory",
+      "title": "IXO Memory (testnet)",
+      "version": "0.1.1",
+      "description": "Your IXO Companion's memory — remember, recall and import what matters, with your IXO sign-in. Testnet (test network).",
+      "url": "https://memory-engine.testnet.ixo.earth/v1/mcp"
+    },
+    {
+      "name": "ixo-oracle-builder",
+      "kind": "oracle-builder",
+      "title": "IXO Oracle Builder",
+      "version": "0.2.1",
+      "description": "IXO Oracle Builder: build your own IXO evaluation oracle with your AI agent, no coding background needed. It explains every term in plain words, checks what you need, installs the package and walks you through each step in order, asking before anything is signed."
+    },
+    {
+      "name": "ixo-swiftdrop-devnet",
+      "kind": "oracle",
+      "title": "SwiftDrop Express (devnet)",
+      "version": "0.3.3",
+      "description": "Proof of delivery for SwiftDrop Express couriers, decided by IXO's independent engine — devnet (test network).",
+      "url": "https://shipment-delivery-oracle.devnet.ixo.earth/v1/mcp"
+    }
+  ]
+}
