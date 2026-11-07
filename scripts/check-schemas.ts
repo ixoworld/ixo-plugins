@@ -18,7 +18,7 @@ import Ajv2020 from "ajv/dist/2020.js";
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { isDeepStrictEqual } from "node:util";
 import { join } from "node:path";
-import { loadKind } from "./add-plugin.ts";
+import { loadKind } from "./plugin-generation.ts";
 
 const root = join(import.meta.dir, "..");
 const readJson = (...p: string[]) => JSON.parse(readFileSync(join(root, ...p), "utf8"));
