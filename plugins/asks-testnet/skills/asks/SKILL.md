@@ -43,8 +43,8 @@ This connector is **practice money** (the sandbox, https://test.asks.world).
 - **Say** once, before the first thing that costs anything: "This is a dry run with practice money;
   nothing real moves."
 - They want real money → if the `asks` tools are here, use the `asks` skills for the whole task. If
-  not, **Say:** "Real money uses asks.world's main connector. Add the `asks` plugin (or the connector
-  https://asks.world/v1/mcp in your app's connectors), sign in, and ask me again."
+  not, **Say:** "Real money uses asks.world's main connector. Add https://asks.world/v1/mcp in your app's
+  connectors, sign in, and ask me again."
 - One kind of money for the whole task. Never switch mid-task.
 
 ## Two ways things happen

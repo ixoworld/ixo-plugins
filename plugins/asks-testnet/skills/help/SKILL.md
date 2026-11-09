@@ -1,6 +1,6 @@
 ---
 name: help
-description: Explain asks.world in plain words (asks, Pro Asks, paid work): what it is, what the person can do, the commands, where to go on the web, the sandbox (practice money) and plugin updates. Use when they ask "what is asks.world?", "what can you do?", "how does this work?", "what are the commands?", "where do I go?", "what's the sandbox?", "what's testnet?", "how do updates work?", "stop updating" or have just installed the plugin.
+description: Explain asks.world in plain words (asks, Pro Asks, paid work): what it is, what the person can do, the commands, where to go on the web, the sandbox (practice money) and plugin updates. Use when they ask "what is asks.world?", "what can you do?", "how does this work?", "what are the commands?", "where do I go?", "what's the sandbox?", "what's testnet?", "how do updates work?", "stop updating" or have just added Asks (the connector or the plugin).
 ---
 
 # Help
@@ -25,8 +25,8 @@ money moves or something needs your signature, I give you a link: you check it a
 The pros: https://test.asks.world/pros. My Profile, My Asks and Wallet:
 https://test.asks.world/me."
 
-**Just installed. Say:**
-> asks.world is installed. Sign in once with Google when I ask, then tell me what you'd like: get
+**Just added. Say:**
+> Asks is added. Sign in once with Google when I ask, then tell me what you'd like: get
 > something reviewed, or earn as a pro. I'll take it from there.
 
 **The commands**, only when they ask for them (they can always just say what they want):
@@ -44,8 +44,8 @@ https://test.asks.world/me."
 | `/asks-testnet:connect` | sign in, see who you're signed in as, sign out |
 | `/asks-testnet:help` | this |
 
-In claude.ai, the Claude phone app or ChatGPT there are no commands: just say what you want.
-With only the Asks connector (no plugin), the same guides are there too: ask for `asks_help`.
+With just the Asks connector, or in claude.ai, the Claude phone app or ChatGPT, there are no commands:
+just say what you want. The same guides are there too: ask for `asks_help`.
 
 **The sandbox.** **Say:** "This is the sandbox: practice money, nothing real moves. I can
 get you some for free. For real money, add asks.world's main connector."
