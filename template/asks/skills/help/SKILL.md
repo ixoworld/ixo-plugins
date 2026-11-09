@@ -1,6 +1,6 @@
 ---
 name: help
-description: Explain asks.world in plain words (asks, pro asks, paid work): what it is, what the person can do, the commands, where to go on the web, the sandbox (practice money) and plugin updates. Use when they ask "what is asks.world?", "what can you do?", "how does this work?", "what are the commands?", "where do I go?", "what's the sandbox?", "what's testnet?", "how do updates work?", "stop updating" or have just installed the plugin.
+description: Explain asks.world in plain words (asks, Pro Asks, paid work): what it is, what the person can do, the commands, where to go on the web, the sandbox (practice money) and plugin updates. Use when they ask "what is asks.world?", "what can you do?", "how does this work?", "what are the commands?", "where do I go?", "what's the sandbox?", "what's testnet?", "how do updates work?", "stop updating" or have just installed the plugin.
 ---
 
 # Help
@@ -45,6 +45,7 @@ https://{{#TESTNET}}test.{{/TESTNET}}asks.world/me.{{^TESTNET}} To practise, the
 | `/{{NAME}}:help` | this |
 
 In claude.ai, the Claude phone app or ChatGPT there are no commands: just say what you want.
+With only the Asks connector (no plugin), the same guides are there too: ask for `asks_help`.
 
 **The sandbox.** {{#TESTNET}}**Say:** "This is the sandbox: practice money, nothing real moves. I can
 get you some for free. For real money, add asks.world's main connector."{{/TESTNET}}{{^TESTNET}}**Say:**

@@ -1,6 +1,6 @@
 ---
 name: profile
-description: The person's pro page on asks.world (name, what they do, rate, links), listed or private, verified with their LinkedIn, so people can find and invite them to pro asks. Use when they say "make my page", "make my pro page", "make my specialist page", "update my profile", "make my page private", "share my private page", "delete my page", "take my page down", "get verified", "verify me" or "connect LinkedIn".
+description: The person's pro page on asks.world (name, what they do, rate, links), listed or private, verified with their LinkedIn, so people can find and invite them to Pro Asks. Use when they say "make my page", "make my pro page", "make my specialist page", "update my profile", "make my page private", "share my private page", "delete my page", "take my page down", "get verified", "verify me" or "connect LinkedIn".
 ---
 
 # Your pro page
@@ -19,10 +19,13 @@ the real-money connector. Signed in first (`connect` skill). Everything here hap
 here spends; LinkedIn is the one link they open, to log in there.
 
 **Do:** `my_page` first, quietly. Then lead with one line:
-- No page yet → **Say:** "A pro page lets people find you and invite you to paid reviews. It takes
+- No page yet, LinkedIn already verified (`my_page` says so) → **Say:** "You're verified. Let's make
+  your pro page so people can find you and invite you to paid reviews. Shall I start?" Never ask for
+  LinkedIn again.
+- No page yet, not verified → **Say:** "A pro page lets people find you and invite you to paid reviews. It takes
   about a minute with LinkedIn. Shall I start?"
 - A page, not LinkedIn verified → **Say:** "Your page is live but not verified yet. Verifying with
-  LinkedIn takes a minute, and it's what lets people invite you to pro asks. Shall I start?"
+  LinkedIn takes a minute, and it's what lets people invite you to Pro Asks. Shall I start?"
 - Verified → **Say** what's on it in a line, then: "Want to change anything?"
 
 ## Verify with LinkedIn

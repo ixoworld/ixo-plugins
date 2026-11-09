@@ -64,8 +64,8 @@ is never topped up: a card pays an ask when it's posted (the `create` skill).{{/
 
 `email_settings` with nothing lists the emails asks.world sends them, each on or off, with when it's
 sent. To change: `kinds` with each one's key set to `false` (stop) or `true` (back on), or `all`.
-Keys: `invited` (invited to a pro ask), `ok-waiting` (a report waits for their OK), `ok-reminder`
-(still waiting 3 days later), `full` (their pro ask is filled), `target-reached` (they have the
+Keys: `invited` (invited to a Pro Ask), `ok-waiting` (a report waits for their OK), `ok-reminder`
+(still waiting 3 days later), `full` (their Pro Ask is filled), `target-reached` (they have the
 reports they wanted), `digest` (the hourly summary).
 
 - "Stop the hourly summary" → `kinds: { digest: false }`.

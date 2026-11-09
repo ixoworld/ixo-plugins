@@ -21,7 +21,7 @@
     assistant sends your completions itself and tells you "Sent". Turn it off any time in Settings,
     Agents. A private ask or work done at a place still goes through the link.
   - **One tap on asks.world:** anything that moves money or needs your own signature: posting an ask,
-    a pro ask, a campaign or a plan, closing one, approving a report, confirming a cash-out, practice
+    a Pro Ask, a campaign or a plan, closing one, approving a report, confirming a cash-out, practice
     money, a company's payout settings, and your first completion. The assistant shows the total first
     and waits for your yes, then gives you a link. The page shows the same thing in plain words; one
     tap and it's done.
@@ -33,10 +33,10 @@
 - Just say what you want, or start with `/{{NAME}}`. The skills (each is also `/{{NAME}}:<skill>`):
   - `asks`: works out what you want, then hands over to the right skill.
   - `jobs`: find paid work, apply, hand in a completion.
-  - `create`: post an ask, Ask the World, a campaign, an open call or a pro ask (LinkedIn-verified pros); set up a company.
+  - `create`: post an ask, Ask the World, a campaign, an open call or a Pro Ask (LinkedIn-verified pros); set up a company.
   - `invite`: invite people and reply to applications.
   - `manage`: your open asks: completions, approvals, closing and getting money back.
-  - `report`: write and hand in a pro ask's review report.
+  - `report`: write and hand in a Pro Ask's review report.
   - `profile`: your pro page: LinkedIn-verified, Listed or Private, preview, delete.
   - `account`: your money, cash out (bank, mobile money or digital dollars, confirmed on asks.world), the identity check, practice money.
   - `connect`: sign in, see who you're signed in as, sign out.
@@ -58,7 +58,7 @@ How it works: [docs/pro-pages.md](https://github.com/impactsai/openhands-network
 
 Everything is in your own asks.world account, the one you sign in to with Google: what you earn is
 paid straight to it, and what you post is paid from it (or by card). Rewards are paid in US dollars.
-The AI check on your asks is free. On a pro ask a share for the network goes on top{{^TESTNET}} (20%){{/TESTNET}}, so
+The AI check on your asks is free. On a Pro Ask a share for the network goes on top{{^TESTNET}} (20%){{/TESTNET}}, so
 each pro gets exactly the pay you set.
 Review credits, which you buy with a card, only pay review fees; they are never a reward. Nothing is
 spent without a preview, your yes and your tap on asks.world, and the same per-ask and per-day caps

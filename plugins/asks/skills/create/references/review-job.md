@@ -1,4 +1,4 @@
-# A pro ask: get an app or agent tried by verified pros
+# A Pro Ask: get an app or agent tried by verified pros
 
 ## Do this
 
@@ -28,7 +28,7 @@ checks", never "the checker" or "the reviewer". A report that fails is not paid.
   Filled at wanted + extra. **Say:** "Some reports may not be good enough. You don't pay for those, but
   they still count. I suggest your <wanted> plus 3 extra. Money for reports that never come in comes
   back when you close it. Or take exactly <wanted> and add more later. Which?" → `extra` (3, or 0).
-- Private things like a test login go in the invitation's note, never in the pro ask.
+- Private things like a test login go in the invitation's note, never in the Pro Ask.
 
 ## The money
 
@@ -39,21 +39,21 @@ $3.75 in all. They pay only for reports they approve; what isn't paid comes back
 they close it. The limit is what one card payment can take ($999,999.99); `draft_call` says so if it is
 over.
 
-**Say:** "This sets up the pro ask '<title>' for <name> <version>: <n> scenarios, <wanted> good reports
+**Say:** "This sets up the Pro Ask '<title>' for <name> <version>: <n> scenarios, <wanted> good reports
 wanted, up to <count> in all, open <days> days, <only pros you invite | any verified pro with the
 link>. <the money sentence> Each report waits for your OK before it's paid. Post it?"
 
 ## After posting
 
-- **Say:** "Your pro ask's page: https://asks.world/me/pro-asks/<number>.
+- **Say:** "Your Pro Ask's page: https://asks.world/me/pro-asks/<number>.
   Reports come in there." If the reply gives a link to turn on their checks: "Open this and tap
   **Approve**, so reports wait for your OK."
 - Open to any verified pro → **Say:** "Share this link anywhere: https://asks.world/t/<number>.
   Verified pros join from it."
-- **Invite pros:** `find_pro` with `q` (what the pro ask needs). **Say** the three to five it gives,
+- **Invite pros:** `find_pro` with `q` (what the Pro Ask needs). **Say** the three to five it gives,
   each with "LinkedIn verified", their rate and their page; they choose. Then `invite_to_call` with the
   chosen @names and the private note (the `invite` skill).
-- **A follow-up pro ask:** `read_ask` and `call_invites` on the old one, then `draft_call` again with
+- **A follow-up Pro Ask:** `read_ask` and `call_invites` on the old one, then `draft_call` again with
   the same (or the failed) scenarios, the same pay and the new version. Same kind of money.
 - Work that isn't trying an app (a translation, a design) → a private ask with that pro's @name
   ([private.md](private.md)).

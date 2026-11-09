@@ -1,6 +1,6 @@
 ---
 name: create
-description: Post something on asks.world. Use when the person wants to post an ask or a job, ask someone somewhere to go and look (Ask the World), get a fact checked that you can't see, run a cleanup or a campaign, post an open call or competition, get their app or agent reviewed by LinkedIn-verified pros (a pro ask), research a market with checks on the ground, post as their company, or set their company up. "Dry run" or "try" means the sandbox (practice money).
+description: Post something on asks.world. Use when the person wants to post an ask or a job, ask someone somewhere to go and look (Ask the World), get a fact checked that you can't see, run a cleanup or a campaign, post an open call or competition, get their app or agent reviewed by LinkedIn-verified pros (a Pro Ask), research a market with checks on the ground, post as their company, or set their company up. "Dry run" or "try" means the sandbox (practice money).
 ---
 
 # Post an ask
@@ -24,8 +24,8 @@ mid-task. Post only what the person asked for, in their words. Money in dollars 
 | a few people to do one small thing: a photo, a few words, a web page checked | an ask | [post-an-ask.md](references/post-an-ask.md) |
 | a fact from a place they can't see (is it open, what's there now) | an ask at a place | [ask-at-a-place.md](references/ask-at-a-place.md) |
 | only certain people to complete it: their team, customers, named people | a private ask | [private.md](references/private.md) |
-| their app, website or agent tried by verified pros, with a proper report | a pro ask | [review-job.md](references/review-job.md) |
-| a particular pro to do the work | a pro ask, then invite them | [review-job.md](references/review-job.md) |
+| their app, website or agent tried by verified pros, with a proper report | a Pro Ask | [review-job.md](references/review-job.md) |
+| a particular pro to do the work | a Pro Ask, then invite them | [review-job.md](references/review-job.md) |
 | many people to send written work under one brief, and pick a winner | an open call: competition | [open-call.md](references/open-call.md) |
 | to pay everyone whose written work passes, up to a number | an open call: hiring | [open-call.md](references/open-call.md) |
 | a spot cleaned, litter mapped, or the same job in many places | a campaign | [campaign.md](references/campaign.md) |
@@ -39,13 +39,13 @@ Two kinds fit? Ask which, in one line. Plans are sandbox-only: never offer one h
 ## Money
 
 - **The AI check is free.** The total is the pay, plus a share on top only where the preview names one
-  (a pro ask, or an open call by invitation or application). Read the preview's numbers as they are.
+  (a Pro Ask, or an open call by invitation or application). Read the preview's numbers as they are.
 - **Over a limit:** never ask for a yes on those terms. Offer the amounts the tool says fit ("5 at $8
   instead?").
 - **Paying by card:** not enough in their Wallet, or they ask for card → pass `pay_by: "card"` on
   `post_ask`. **Say:** "Open this link to pay $<total> by card: <link>. Tell me when it's done." Then
   `read_ask` with the link's id says when it's live. A card pays from $0.50 up to $999,999.99. Not for an
-  ask with a picture, a company's ask, an ask at a place, a campaign or a plan. Open calls and pro asks
+  ask with a picture, a company's ask, an ask at a place, a campaign or a plan. Open calls and Pro Asks
   need nothing extra: their link lets them pay by card or from their Wallet.
 
 ## After posting

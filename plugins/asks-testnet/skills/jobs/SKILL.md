@@ -10,10 +10,10 @@ description: Find paid work on asks.world and get paid. Use when the person asks
 1. First call `my_status` (or `my_page`) to see what's already done: verified, page, balance. Never ask for a step that's already done; just call the tool, it checks itself.
 2. Call `my_invitations`, then `list_asks` (with `near` if they want work nearby). Say a short list and
    recommend one.
-3. Invited or a pro ask's link → `accept_invitation` (preview, "yes", `confirm: true`). It checks
+3. Invited or a Pro Ask's link → `accept_invitation` (preview, "yes", `confirm: true`). It checks
    LinkedIn itself. If the preview says they're already in → **Say:** "You're already in." No confirm.
 4. Do the work with them, show them the completion, and on "send it" call `submit_work` once (section
-   "Hand it in": files, then what to say). A pro ask's report → the `report` skill.
+   "Hand it in": files, then what to say). A Pro Ask's report → the `report` skill.
 5. "Did it pass?" → `check_verdict` with the ask's number.
 
 Follow the `asks` skill's way of talking and lead the way. **Real or practice money:** the `asks`
@@ -34,9 +34,10 @@ one moves money.
 
 **Lead:** "asks.world pays you for small tasks and for reviewing apps as a pro. Shall I look for
 work that fits you?" Then **Ask:** "Any kind of work, or something near you?" (if near, get the place).
-Pro asks need a LinkedIn-verified pro page (`my_page`), to be invited or to join one open to any
-verified pro. Someone without one who wants them → **Say:** "For pro asks you need a verified pro page. It takes about a minute with
-LinkedIn. Shall I start?" (yes → the `profile` skill).
+Pro Asks need a LinkedIn-verified pro page (`my_page`), to be invited or to join one open to any
+verified pro. Someone without one who wants them → if `my_page` says LinkedIn is already verified,
+**Say:** "You're verified. Let's make your pro page. Shall I start?"; otherwise **Say:** "For Pro Asks you
+need a verified pro page. It takes about a minute with LinkedIn. Shall I start?" (yes → the `profile` skill).
 **Do:** `my_invitations` first (invites are never listed), then `list_asks` (filters: `does` = `look`,
 `spot`, `clean`, `answer`, `check`, `make`; `near` `{ lat, lon, km }`; `min_pay`; `q`; `poster`;
 `series`). `find_pro` with `handle` reads a pro by @name.
@@ -49,12 +50,12 @@ All of this happens in the chat; nothing to tap.
 
 - **By application:** "Shall I apply with this note: '<note>'?" → `apply_to_call` with the ask's number
   and `note`. The poster says yes or no; `my_status` tells you under *New for you*.
-- **Invited to a pro ask** (a link like `asks.world/i/…`, or in `my_invitations`): **Ask:** "You're
+- **Invited to a Pro Ask** (a link like `asks.world/i/…`, or in `my_invitations`): **Ask:** "You're
   invited to <title>. Take it?" Yes → `accept_invitation` with the link or the ask's number (preview,
   then `confirm: true`); it opens their room with the builder. No → `decline_invitation`, with an
   optional short `note`. They can also tap **Accept** or **Decline** on the link itself. Their job is
   then at https://test.asks.world/me/work/<number>.
-- **A pro ask open to any verified pro** (its link, or its number): no invitation needed. **Ask:**
+- **A Pro Ask open to any verified pro** (its link, or its number): no invitation needed. **Ask:**
   "<title> is open to verified pros. Join it?" Yes → `accept_invitation` with the ask's number (preview,
   then `confirm: true`); they join at once and it opens their room with the builder. No verified pro
   page yet → the `profile` skill first, then join.
@@ -68,13 +69,13 @@ All of this happens in the chat; nothing to tap.
 `spot`, `clean`) → `submit_work` with the ask's number and `deliverable` (what was done, in your or
 their words, never the ask's text back).
 
-- **A report with screenshots** (`read_ask` says so, or a pro ask): use the `report` skill.
+- **A report with screenshots** (`read_ask` says so, or a Pro Ask): use the `report` skill.
 - **A photo at a place** (`look`, `spot`, `clean`): the person completes it on the ask's own page, on
   their phone, where they are: give them the ask's link. Never send a photo from the chat as the
   completion.
 - **An expert verifier's form** (`read_ask` shows it): ask each field one at a time, show all the
   replies, and on their OK `submit_work` with `fields`.
-- **A pro ask** (`read_ask` shows Asky Pro Checker's form): use the `report` skill; the report fills that form.
+- **A Pro Ask** (`read_ask` shows Asky Pro Checker's form): use the `report` skill; the report fills that form.
 - **Pay for trying** (`read_ask` says "Also pays …"): **Say** it plainly before they start, e.g. "You get <X>
   just for sending a completion, and <Y> more if it's approved." (the amounts `read_ask` gives)
 - **An open call** (`read_ask` shows the requirements it is judged on): work them through *with* the
@@ -96,9 +97,9 @@ them the completion first. **Say:** "Here's your completion: <it>. Send it?" On 
   - A photo taken at a place is never sent from the chat: they take it on the ask's page, there.
 - **What came back:**
   - "Sent, waiting for approval" (no link) → **Say:** "Sent. It's waiting for approval."
-  - A link → **Say:** "Tap this to send it: <link>" (add "If the page offers to let me send for you next time, leave
+  - A link → **Say:** "Tap this to send it: <link>" (add "If the page offers to let me submit for you next time, leave
     that ticked." only when the reply says that offer is on the page)
-  - An upload address and a `draft` id, with "Your assistant can send for you" on → once the files
+  - An upload address and a `draft` id, with "Your assistant can submit for you" on → once the files
     are in (uploaded, or added in the box), call `submit_work` with `collectionId` and `draft`; it sends.
 - One completion per ask per person. Never call `submit_work` twice for one ask: if you're unsure it
   went, `link_status` with the link (or `check_verdict`) first.

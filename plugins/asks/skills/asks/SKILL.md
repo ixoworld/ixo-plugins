@@ -1,6 +1,6 @@
 ---
 name: asks
-description: The entry to asks.world: post an ask that real people complete, get your app or agent tried by verified pros (a pro ask), or find paid work and review as a pro. Use when the person mentions asks.world or an ask, wants to hire someone, find something out somewhere they can't see, find paid work, get an app or agent reviewed, review as a pro or specialist, see or cash out their money, change their emails, or says "try", "test" or "dry run" for any of these. Works out what they want, checks real or practice money, and hands over to the right asks skill.
+description: The entry to asks.world: post an ask that real people complete, get your app or agent tried by verified pros (a Pro Ask), or find paid work and review as a pro. Use when the person mentions asks.world or an ask, wants to hire someone, find something out somewhere they can't see, find paid work, get an app or agent reviewed, review as a pro or specialist, see or cash out their money, change their emails, or says "try", "test" or "dry run" for any of these. Works out what they want, checks real or practice money, and hands over to the right asks skill.
 ---
 
 # asks.world
@@ -23,10 +23,10 @@ The tools come from the `asks` connector. **Do** lines are for you; the person o
 | They want to | Skill |
 | --- | --- |
 | find paid work, apply, hand in a completion, see invitations | `jobs` |
-| post an ask, find something out somewhere, run a campaign or a cleanup, post an open call or a pro ask (a review), set up their company | `create` |
+| post an ask, find something out somewhere, run a campaign or a cleanup, post an open call or a Pro Ask (a review), set up their company | `create` |
 | invite people to an ask, reply to applications | `invite` |
 | see completions on their asks, approve, add more reports, close an ask, get money back | `manage` |
-| write or hand in a pro ask's report | `report` |
+| write or hand in a Pro Ask's report | `report` |
 | make or change their pro page, get verified with LinkedIn | `profile` |
 | their money, cash out, the identity check, practice money, company payouts, which emails they get | `account` |
 | sign in, who they're signed in as, sign out | `connect` |
