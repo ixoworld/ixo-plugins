@@ -1,6 +1,6 @@
 ---
 name: report
-description: Write and hand in a report on asks.world, as a pro reviewing an app or agent (a pro ask) or for any ask that wants a report with screenshots. Use when the person says "help me write my report", "do the review", "hand in my review", "I tried the scenarios", or "did my report pass?".
+description: Write and hand in a report on asks.world, as a pro reviewing an app or agent (a Pro Ask) or for any ask that wants a report with screenshots. Use when the person says "help me write my report", "do the review", "hand in my review", "I tried the scenarios", or "did my report pass?".
 ---
 
 # Write and hand in a report
@@ -8,7 +8,7 @@ description: Write and hand in a report on asks.world, as a pro reviewing an app
 ## Do this
 
 1. First call `my_status` (or `my_page`) to see what's already done: verified, page, balance. Never ask for a step that's already done; just call the tool, it checks itself.
-2. `read_ask` with the pro ask's number. Go through each scenario with them, one at a time.
+2. `read_ask` with the Pro Ask's number. Go through each scenario with them, one at a time.
 3. Write the report from their words (section 2).
 4. Show them the whole report; on "send it", `submit_work` once with `fields` (no preview, no second
    call). Screenshots and what to say back: section 3.
@@ -74,10 +74,10 @@ Your advice: <text>. You'll add 2 screenshots: login-error and empty-cart."
 
 ## 3. Hand it in
 
-**Do:** **New pro asks use Asky Pro Checker's report form:** `read_ask` lists its questions. Fill them
+**Do:** **New Pro Asks use Asky Pro Checker's report form:** `read_ask` lists its questions. Fill them
 with `submit_work` `fields`, never `report`: the summary, one step row per scenario, each finding with a
 severity and its evidence by short name, recommendations, limitations. Meet any rules the poster added
-too. Older pro asks without that form: `submit_work` with the review's number and `report` (and
+too. Older Pro Asks without that form: `submit_work` with the review's number and `report` (and
 `invite` if they came by link). Never pass a file path.
 
 `submit_work` has no preview: the first call sends or gives the link. So show the whole report first.
@@ -102,7 +102,7 @@ too. Older pro asks without that form: `submit_work` with the review's number an
     identify the failed request and its host before suggesting a permission change or retry.
 - **What came back:**
   - "Sent, waiting for approval" (no link) → **Say:** "Sent. It's waiting for the builder's approval."
-  - A link → **Say:** "Tap this to send it: <link>" (add "If the page offers to let me send for you next time, leave
+  - A link → **Say:** "Tap this to send it: <link>" (add "If the page offers to let me submit for you next time, leave
     that ticked." only when the reply says that offer is on the page) (add "Your screenshots are already on it." when you uploaded them).
   - An upload address and a `draft` id → once the screenshots are in (uploaded, or added in the box),
     call `submit_work` with `collectionId` and `draft`; it sends.

@@ -16,7 +16,7 @@
 - Anyone can be invited: an @name, an address, or a one-person link. No LinkedIn needed.
 - Money is the same as an ask: the pay goes to the person in full, the AI check is free, and what
   isn't paid comes back when they close it. Repeat the preview's total.
-- App testing by verified pros → a pro ask ([review-job.md](review-job.md)) instead.
+- App testing by verified pros → a Pro Ask ([review-job.md](review-job.md)) instead.
 - Someone completing a private ask may get an Allow link first: pass it on and wait.
 
 "Private" means four things; say which: a private ask (this); a private pro page (the `profile`
