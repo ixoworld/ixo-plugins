@@ -102,8 +102,8 @@ too. Older pro asks without that form: `submit_work` with the review's number an
     identify the failed request and its host before suggesting a permission change or retry.
 - **What came back:**
   - "Sent, waiting for approval" (no link) → **Say:** "Sent. It's waiting for the builder's approval."
-  - A link → **Say:** "Tap this to send it. Leave the box ticked so next time I can send it for you:
-    <link>" (add "Your screenshots are already on it." when you uploaded them).
+  - A link → **Say:** "Tap this to send it: <link>" (add "If the page offers to let me send for you next time, leave
+    that ticked." only when the reply says that offer is on the page) (add "Your screenshots are already on it." when you uploaded them).
   - An upload address and a `draft` id → once the screenshots are in (uploaded, or added in the box),
     call `submit_work` with `collectionId` and `draft`; it sends.
 - In Claude Code or Codex on their computer you may also open the link for them (`open <link>` on

@@ -97,8 +97,8 @@ them the completion first. **Say:** "Here's your completion: <it>. Send it?" On 
   - A photo taken at a place is never sent from the chat: they take it on the ask's page, there.
 - **What came back:**
   - "Sent, waiting for approval" (no link) → **Say:** "Sent. It's waiting for approval."
-  - A link → **Say:** "Tap this to send it. Leave the box ticked so next time I can send it for you:
-    <link>"
+  - A link → **Say:** "Tap this to send it: <link>" (add "If the page offers to let me send for you next time, leave
+    that ticked." only when the reply says that offer is on the page)
   - An upload address and a `draft` id, with "Your assistant can send for you" on → once the files
     are in (uploaded, or added in the box), call `submit_work` with `collectionId` and `draft`; it sends.
 - One completion per ask per person. Never call `submit_work` twice for one ask: if you're unsure it
