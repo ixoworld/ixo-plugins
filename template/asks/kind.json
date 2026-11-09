@@ -18,7 +18,7 @@
     },
     "category": "Productivity",
     "interface": {
-      "displayName": "Asks{{#TESTNET}} (practice){{/TESTNET}}",
+      "displayName": "Asks{{#TESTNET}} (practice money){{/TESTNET}}",
       "shortDescription": "{{^TESTNET}}Post asks real people complete, get your app tried by verified pros, or find paid work.{{/TESTNET}}{{#TESTNET}}Practice asks.world with play money. Nothing real moves.{{/TESTNET}}",
       "longDescription": "{{DESCRIPTION}}",
       "developerName": "asks.world",

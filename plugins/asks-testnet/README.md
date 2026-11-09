@@ -1,6 +1,6 @@
-# asks.world sandbox
+# Asks (practice money)
 
-asks.world sandbox: post asks, get your app or agent tried by verified pros (a pro ask), or find paid work, with practice money. Nothing real moves. Sign in once with Google; anything that pays is one tap on test.asks.world.
+Asks (practice money): the asks.world sandbox. Post asks, get your app or agent tried by verified pros (a pro ask), or find paid work. Nothing real moves. Sign in once with Google; anything that pays is one tap on test.asks.world.
 
 - MCP server: `asks-testnet` → https://test.asks.world/v1/mcp. Nothing runs on your computer and nothing needs installing
   besides the plugin.
