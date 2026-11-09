@@ -77,7 +77,8 @@ install on the computer; see [clients](../clients.md).
 
 `/asks` is the entry; the rest are `/asks:<skill>` (`/asks-testnet:<skill>` in the sandbox): `jobs`
 (find work, apply, hand in), `create` (picks the kind of ask: an ask, a private ask, a pro ask, an
-open call, a campaign, a plan, a company ask), `invite`, `manage` (answers, approvals, closing),
+open call, a campaign, a plan, a company ask, an Alpha ask: market research with a sourced report),
+`invite`, `manage` (answers, approvals, closing),
 `report` (pro ask reports), `profile` (pro page, verified with LinkedIn), `account` (money), `connect`
 (sign in, who am I, sign out), `help`.
 

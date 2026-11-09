@@ -17,7 +17,9 @@ description: Write and hand in a report on asks.world, as a pro reviewing an app
 Follow the `asks` skill's way of talking and lead the way. **Real or practice money:** the `asks`
 skill's rule (this connector is practice money).
 A review is where it was posted: if the person names one and it isn't found here, say it may be on the
-real-money connector.
+real-money connector. A research report for an
+Alpha ask (`read_ask` shows **Research terms**, not scenarios) is not this skill:
+[alpha-research-report.md](../jobs/references/alpha-research-report.md).
 
 **The pro does the review. You organise their evidence and never invent a finding.** Their
 words: **pro**, **builder**, **review**, **report**, **automated checks** (never "the checker" <!-- plain-ok -->

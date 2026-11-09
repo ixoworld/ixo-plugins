@@ -1,6 +1,6 @@
 ---
 name: create
-description: Post something on asks.world. Use when the person wants to post an ask or a job, ask someone somewhere to go and look (Ask the World), get a fact checked that you can't see, run a cleanup or a campaign, post an open call or competition, get their app or agent reviewed by LinkedIn-verified pros (a Pro Ask), research a market with checks on the ground, post as their company, or set their company up. "Dry run" or "try" means the sandbox (practice money).
+description: Post something on asks.world. Use when the person wants to post an ask or a job, ask someone somewhere to go and look (Ask the World), get a fact checked that you can't see, run a cleanup or a campaign, post an open call or competition, get their app or agent reviewed by LinkedIn-verified pros (a Pro Ask), research a market with checks on the ground, get a market or company question researched with a sourced report (an Alpha ask), post as their company, or set their company up. "Dry run" or "try" means the sandbox (practice money).
 ---
 
 # Post an ask
@@ -30,6 +30,7 @@ mid-task. Post only what the person asked for, in their words. Money in dollars 
 | to pay everyone whose written work passes, up to a number | an open call: hiring | [open-call.md](references/open-call.md) |
 | a spot cleaned, litter mapped, or the same job in many places | a campaign | [campaign.md](references/campaign.md) |
 | people near places to check things for a prediction market | a plan | [plan.md](references/plan.md) |
+| a market or company question researched, with a sourced report (research only, not investment advice) | an Alpha ask | [alpha-research.md](references/alpha-research.md) |
 | to post as their company, or pay people from the company | a company ask | [company.md](references/company.md) |
 | people paid just for trying, or even when turned down | pay for trying | [pay-for-trying.md](references/pay-for-trying.md) |
 
