@@ -41,7 +41,7 @@ There are three kinds, and more will come:
 | Plugin | Kind | Runs | What it does |
 | --- | --- | --- | --- |
 | [`asks`](plugins/asks/README.md) | asks | hosted, asks.world | asks.world: post asks that real people complete, get your app or agent tried by verified pros (a pro ask), or find paid work. Sign in once with Google; anything that pays or needs your signature is one tap on asks.world. Real money; for practice, add asks-testnet. |
-| [`asks-testnet`](plugins/asks-testnet/README.md) | asks | hosted, test.asks.world | asks.world sandbox: post asks, get your app or agent tried by verified pros (a pro ask), or find paid work, with practice money. Nothing real moves. Sign in once with Google; anything that pays is one tap on test.asks.world. |
+| [`asks-testnet`](plugins/asks-testnet/README.md) | asks | hosted, test.asks.world | Asks (practice money): the asks.world sandbox. Post asks, get your app or agent tried by verified pros (a pro ask), or find paid work. Nothing real moves. Sign in once with Google; anything that pays is one tap on test.asks.world. |
 | [`ixo-memory`](plugins/ixo-memory/README.md) | memory | hosted, memory-engine.ixo.earth | Your IXO Companion's memory — remember, recall and import what matters, with your IXO sign-in. |
 | [`ixo-memory-devnet`](plugins/ixo-memory-devnet/README.md) | memory | hosted, memory-engine.devnet.ixo.earth | Your IXO Companion's memory — remember, recall and import what matters, with your IXO sign-in. Devnet (test network). |
 | [`ixo-memory-testnet`](plugins/ixo-memory-testnet/README.md) | memory | hosted, memory-engine.testnet.ixo.earth | Your IXO Companion's memory — remember, recall and import what matters, with your IXO sign-in. Testnet (test network). |
