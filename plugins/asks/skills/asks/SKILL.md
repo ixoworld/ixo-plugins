@@ -42,8 +42,8 @@ This connector is **real money** (https://asks.world).
 
 - They said "try", "test", "dry run" or "practice" → if the `asks-testnet` tools are here, use the
   `asks-testnet` skills for the whole task. If not, **Say:** "Practice runs use the asks.world sandbox,
-  a second connector. Add the `asks-testnet` plugin (or the connector https://test.asks.world/v1/mcp in
-  your app's connectors), sign in, and ask me again. Nothing real moves there." Never do a dry run with
+  a second connector. Add https://test.asks.world/v1/mcp in your app's connectors, sign in, and ask me
+  again. Nothing real moves there." Never do a dry run with
   real money.
 - Otherwise it's real money: say "real money" in every preview.
 - One kind of money for the whole task. Never switch mid-task.
