@@ -1,6 +1,6 @@
 # ixo-plugins
 
-See CONTRIBUTING.md for how plugins are built (`template/` → `scripts/regenerate.ts`), versioned and checked.
+See CONTRIBUTING.md for how plugins are built (`plugin-specs.json` + `template/` → `scripts/regenerate.ts`), versioned and checked.
 
 ## Adding or renaming an asks skill
 
@@ -14,5 +14,5 @@ So a new or renamed skill needs three things:
 2. its name in `template/asks/skills/index.json`;
 3. its name in `SKILLS` in `tests/asks.test.mjs`.
 
-Then run `bun scripts/regenerate.ts` and bump the plugin versions. CI (`validate`, `bun run test`) fails a PR when
+Then bump the versions in `plugin-specs.json` and run `bun scripts/regenerate.ts`. CI (`validate`, `bun run test`) fails a PR when
 the folders, `index.json` and `SKILLS` don't match. Companion only sees the change once it is merged to `main`.

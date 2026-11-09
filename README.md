@@ -49,7 +49,7 @@ There are three kinds, and more will come:
 | [`ixo-swiftdrop-devnet`](plugins/ixo-swiftdrop-devnet/README.md) | oracle | hosted, shipment-delivery-oracle.devnet.ixo.earth | Proof of delivery for SwiftDrop Express couriers, decided by IXO's independent engine — devnet (test network). |
 <!-- plugins:end -->
 
-The table is generated from the catalog. Each plugin has its own README under
+The table is generated from [`plugin-specs.json`](plugin-specs.json). Each plugin has its own README under
 [`plugins/`](plugins). One plugin per service and per network: a sign-in for one service only ever
 works at that service, so you install only the ones you use.
 
@@ -121,10 +121,11 @@ A plugin is a small package: skills that teach the assistant how to use a servic
 pointer to that service's MCP server. Nothing else, and never a key. Every plugin here with a server
 is **hosted**: it points at a URL and signs you in ([docs/sign-in.md](docs/sign-in.md)).
 
-The plugins are generated: each is built from its kind's template in [`template/`](template) and
+The plugins are generated: each record in [`plugin-specs.json`](plugin-specs.json) is built from its
+kind's template in [`template/`](template) and
 listed in both catalogs ([`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json) for
 Claude Code, [`.agents/plugins/marketplace.json`](.agents/plugins/marketplace.json) for Codex), and
-CI rebuilds every plugin to check nothing drifted. To add one, see
+CI compares every generated file without rewriting the checkout. To add one, see
 [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Docs

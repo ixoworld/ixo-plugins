@@ -98,15 +98,12 @@ too. Older pro asks without that form: `submit_work` with the review's number an
        `curl -X PUT -H 'content-type: image/png' --data-binary @login-error.png '<signed url>'`.
     3. GET the address: it says which files were kept and why any was not. Fix and send those again.
     Upload only the files they point you to.
-  - If uploading to the upload address is blocked (a network or 403 error), don't retry and don't work
-    around it. **Say once:** "I can't reach asks.world's upload from here. To let me upload screenshots
-    for you: in Claude Code, choose "Yes, and don't ask again" when I ask to reach {{#TESTNET}}test.{{/TESTNET}}api.asks.world;
-    in Claude Code on the web, open your environment's Network access, pick Custom and add
-    {{#TESTNET}}test.{{/TESTNET}}api.asks.world. For now, open this link and add the screenshots there: <link>." Then stop.
+  - If any upload step fails, use the [upload-failure guidance](../asks/references/upload-failures.md):
+    identify the failed request and its host before suggesting a permission change or retry.
 - **What came back:**
   - "Sent, waiting for approval" (no link) → **Say:** "Sent. It's waiting for the builder's approval."
-  - A link → **Say:** "Tap this to send it. Leave the box ticked so next time I can send it for you:
-    <link>" (add "Your screenshots are already on it." when you uploaded them).
+  - A link → **Say:** "Tap this to send it: <link>" (add "If the page offers to let me send for you next time, leave
+    that ticked." only when the reply says that offer is on the page) (add "Your screenshots are already on it." when you uploaded them).
   - An upload address and a `draft` id → once the screenshots are in (uploaded, or added in the box),
     call `submit_work` with `collectionId` and `draft`; it sends.
 - In Claude Code or Codex on their computer you may also open the link for them (`open <link>` on

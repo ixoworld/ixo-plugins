@@ -64,6 +64,8 @@ Then **Ask** the rest one at a time, each skippable ("skip" moves on):
 - ChatGPT: put the photo they attached in `attachments`.
 - Other apps: if an **Add your photo** box appears under it, **Say:** "Add your photo in the box
   below." Claude Code or Codex: upload it to the address the reply gives.
+- If an upload step fails, use the [upload-failure guidance](../asks/references/upload-failures.md)
+  for the failed request and current client. Do not claim the photo arrived until the address confirms it.
 - Then give the one link it returns. **Say:** "Tap this to make it your profile picture: <link>."
 
 **Banner and pictures of their work:** a link that starts with https, or **Say:** "Skip it here and
