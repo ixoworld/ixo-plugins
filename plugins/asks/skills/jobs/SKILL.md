@@ -81,8 +81,8 @@ their words, never the ask's text back).
   just for sending a completion, and <Y> more if it's approved." (the amounts `read_ask` gives)
 - **An open call** (`read_ask` shows the requirements it is judged on): work them through *with* the
   person and hand in once, one page in their words, when they say so.
-- **An Alpha research ask** (`read_ask` shows **Research terms** and a form of four codes): a sourced
-  research report, checked before it's handed in →
+- **An Alpha research ask** (`read_ask` shows **Research terms** and a form: `summary`, `packet`): a
+  sourced research report, checked when it arrives →
   [alpha-research-report.md](references/alpha-research-report.md). Never without the person's
   agreement to its four statements.
 

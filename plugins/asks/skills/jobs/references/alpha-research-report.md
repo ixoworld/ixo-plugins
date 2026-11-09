@@ -5,21 +5,19 @@
 1. `read_ask` with the ask's number. An Alpha ask shows **Research terms**: the question, the intended
    use, "No evidence after", "Reports due by", the independent sources wanted, the AI processors, who
    sees the reports, the final OK, the requirements (`[id] text`), the four statements everyone
-   confirms, and a form of four codes (`reportId`, `packetDigest`, `assessmentDigest`, `policyDigest`).
-   Tell the person all of it in plain words, and that it's research only, never investment advice.
+   confirms, and a form of two fields to fill: `summary` and `packet` (a third, `assessment`, is for
+   a specialist agent's signed check; leave it out). Tell the person all of it in plain words, and
+   that it's research only, never investment advice.
 2. Do the research with them (section 1) and build the report (section 2).
-3. Get the four codes from the Alpha verifier (section 3). This needs an assistant that can make web
-   requests (Claude Code or Codex); elsewhere **Say:** "This report has to be checked from a tool that
-   can make web requests, like Claude Code. Shall I write it up so you can hand it in from there?"
-4. Show them the whole report and the four statements. On "send it", `submit_work` once (section 4).
+3. Show them the whole report and the four statements. On "send it", `submit_work` once (section 3).
    They tick "I agree" on the page and send; it never goes straight from the chat.
-5. "Did it pass?" → `check_verdict` (section 5).
+4. "Did it pass?" → `check_verdict` (section 4).
 
 **You organise their evidence and never invent a source, a number or a quote.** Every quote in the
 report is copied word for word from evidence the report carries; every piece of evidence is a real
-page, file or dataset you or they read, saved as it was. A report that misses a requirement, uses
-anything after the cutoff, or leans on fewer separate sources than asked is not passed and not paid.
-Honest limitations beat confident gaps.
+page, file or dataset you or they read, saved as it was. The checks run when the report arrives: one
+that misses a requirement, uses anything after the cutoff, or leans on fewer separate sources than
+asked is not passed and not paid. Honest limitations beat confident gaps.
 
 ## 1. Do the research
 
@@ -38,15 +36,21 @@ one says, and write the report so every finding points at its evidence."
 - **Limitations** and **conflicts** (any interest the person has): never empty by accident.
 - No inside or confidential information, ever. If they have some, it stays out of the report.
 
-## 2. Build the report (the packet)
+## 2. Build the report
 
-One JSON document. The `brief` restates the ask's research terms **exactly** (the check refuses on one
-character's difference): `question` and `decision_use` word for word, `as_of` = the cutoff, `due_at` =
-the deadline, `requirements` the same ids and texts, `minimum_independent_sources`,
-`allowed_processors` the same list, `access` the same, `human_review_required` `true` when the final
-OK is the asker's. The other brief fields are yours. `report.respondent` is the person's own account
-address, as `my_status` shows it. Every `sha256` is the hex sha256 of that artifact's `content`
-exactly as saved; `brief_digest` is the sha256 of the brief as canonical JSON (keys sorted, no spaces).
+Two fields:
+
+- **`summary`**: the findings in plain words, for the asker to read; at most 4,000 characters. Lead
+  with the one-line verdict on the question, then a line per requirement, then what wasn't settled.
+- **`packet`**: the research packet, one JSON document as text, at most 200,000 characters. The
+  `brief` restates the ask's research terms **exactly** (the checks refuse on one character's
+  difference): `question` and `decision_use` word for word, `as_of` = the cutoff, `due_at` = the
+  deadline, `requirements` the same ids and texts, `minimum_independent_sources`,
+  `allowed_processors` the same list, `access` the same, `human_review_required` `true` when the
+  final OK is the asker's. The other brief fields are yours. `report.respondent` is the person's own
+  account address, as `my_status` shows it: the checks refuse a report signed by anyone else. Every
+  `sha256` is the hex sha256 of that artifact's `content` exactly as saved; `brief_digest` is the
+  sha256 of the brief as canonical JSON (keys sorted, no spaces).
 
 ```json
 {
@@ -98,53 +102,38 @@ exactly as saved; `brief_digest` is the sha256 of the brief as canonical JSON (k
 }
 ```
 
-Rules the check applies: every requirement covered by at least one finding; every finding has at
-least one supporting quote found word for word in its artifact; a forecast carries a probability and
-a resolution date; nothing dated after the cutoff; the independent sources counted by origin, not by
-copy; the whole document at most 256 KB. Keep each artifact's `content` to the passage that matters.
+What the checks look at when the report arrives: the packet is in shape; the brief restates the
+terms; the respondent is the person who sent it; every requirement is covered by at least one
+finding; every finding has at least one supporting quote found word for word in its artifact and its
+numbers agree with the source; a forecast carries a probability and a resolution date; nothing dated
+after the cutoff; the independent sources counted by origin, not by copy; contrary evidence was
+looked for; the method and limitations let someone retrace the work. Whatever the AI check cannot
+settle goes to the asker to look at, never a silent fail. Keep each artifact's `content` to the
+passage that matters: the summary and packet together must stay under about 250 kB.
 
-## 3. Get the four codes
-
-POST the packet as JSON, no sign-in, to
-https://alpha-oracle-mainnet.ixo-api.workers.dev/alpha/v1/evaluate:
-`{ "requestId": "<8 to 80 letters, digits or dashes, new each time>", "collectionId": "<the ask's
-number>", "packet": <the document> }`. The Alpha verifier reads the report with its AI and replies
-with `answers` (the four codes: `reportId`, `packetDigest`, `assessmentDigest`, `policyDigest`) and
-`issues` (what it found short, each with a code). Read the issues to the person in plain words. The
-codes are good for 24 hours and belong to this exact document: change one character and you need a
-new run. Three runs a day per caller, ten per ask; a run that failed on their side frees the document
-for another try. Refusals, in words:
-
-- `BRIEF_MISMATCH` (it lists the fields) → the brief doesn't restate the terms exactly; copy them again.
-- `INPUT_SCHEMA` → the document is out of shape (a missing field, an empty list, a bad date).
-- `RESPONDENT_NOT_CHAIN_ACCOUNT` → `report.respondent` isn't the person's account address.
-- `COLLECTION_NOT_HIRED` / `COLLECTION_INACTIVE` → this ask isn't an Alpha ask, or isn't open.
-- `PROCESSING_NOT_AUTHORIZED` → the brief's `allowed_processors` must match the terms' list.
-- `DUPLICATE_PACKET` → this exact document was already checked; use the codes it gave.
-- `ASK_DAILY_LIMIT` / `IP_DAILY_LIMIT` / `RATE_LIMITED` → **Say:** "The check has had its runs for
-  today. We can try again tomorrow." A 503 → try again in a minute.
-
-## 4. Hand it in
+## 3. Hand it in
 
 Show the report, then the four statements as `read_ask` lists them: research only, not investment
 advice; no inside or confidential information; the right to share the sources; the evidence may be
 read by the AI named. **Ask:** "Do you agree to these four, and shall I send your report?" Only on
-their yes, call `submit_work` once with the ask's number, `fields` = the four codes exactly as the
-reply gave them (`{ "reportId", "packetDigest", "assessmentDigest", "policyDigest" }`), and
-`agree_statements: true`. No `deliverable`, no `report`, no files.
+their yes, call `submit_work` once with the ask's number, `fields: { "summary": "<the summary>",
+"packet": "<the packet as JSON text>" }` and `agree_statements: true`. No `deliverable`, no `report`,
+no files, no `assessment`.
 
-- It gives a link, always. **Say:** "Open this, read the four statements, tick **I agree** and send:
-  <link>." On a research ask nothing is sent from the chat, even with "Your assistant can submit for
-  you" on. Hand in the same day the codes were made.
+- It gives a link, always. **Say:** "Open this, check your report, read the four statements, tick
+  **I agree** and send: <link>." On a research ask nothing is sent from the chat, even with "Your
+  assistant can submit for you" on.
 - **Refusals:** "everyone who hands in a report on this ask confirms four statements" → they haven't
-  agreed yet: show the statements, then call again with `agree_statements: true`. "the person ticks
-  its four statements on the page" → the page is the only way; give the link again. "this ask's
-  terms couldn't be read just now" → wait a minute and call again. "checks this ask by its own form.
-  Pass fields" → pass `fields` and nothing else.
+  agreed yet: show the statements, then call again with `agree_statements: true`. "on a research ask
+  the person ticks its four statements on the page" → the page is the only way; give the link again.
+  "this report comes to <n> kB, and a research report … can be at most <n> kB" → shorten the packet
+  (trim each artifact's `content` to the passage quoted) and call again. "this ask's terms couldn't
+  be read just now" → wait a minute and call again. "checks this ask by its own form. Pass fields" →
+  pass `fields` and nothing else.
 - One report per ask per person. Never call `submit_work` twice; unsure → `link_status`, or
   `check_verdict`.
 
-## 5. Did it pass?
+## 4. Did it pass?
 
 `check_verdict` with the ask's number. **Say** one of: "Passed the checks; waiting for the asker's
 final OK, which pays it." / "Approved and paid: <amount>." / "Not passed: <the reason, in plain

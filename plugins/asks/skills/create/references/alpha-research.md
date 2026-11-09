@@ -8,8 +8,8 @@
    an Alpha ask without it, and never guess its name: `checker` is its name exactly as listed.
 2. Gather the research terms (below), one question at a time, in plain words.
 3. **Ask:** "Only people you invite, or anyone who applies and you say yes?" → `access` `"invite"` or
-   `"apply"`, plus `invite` ([private.md](private.md)). An Alpha ask is always private: never post one
-   open to the board.
+   `"apply"`, plus `invite` ([private.md](private.md)). An Alpha ask is always private: `post_ask`
+   refuses one open to the board.
 4. Read the whole ask back (the preview block below). Get "yes".
 5. Call `post_ask` with `checker` (the Alpha verifier's listed name), `research` and the rest, without
    `confirm`; say the total; on "yes" call again with `confirm` = that exact total. Give the link,
@@ -17,8 +17,8 @@
 
 An Alpha ask is a paid question about a market or a company, such as "What share of its revenue did
 this company make outside the US last year, and from what?" Each person who takes it hands in a
-sourced report: every finding points at the evidence behind it. The Alpha verifier checks the report
-against the terms; the person gives the final OK, which pays it. The check is free. The pay × people
+sourced report: every finding points at the evidence behind it. The Alpha verifier runs its checks
+when a report arrives; the person gives the final OK, which pays it. The check is free. The pay × people
 is set aside when posted; what isn't paid comes back when they close it.
 
 ## The research terms (`research`)
@@ -88,6 +88,8 @@ which pays it. It costs <total> in all (<real / practice> money). OK?"
 - "the research terms are not complete: <field>: <why>" → fix that one field (a deadline before the
   cutoff, a repeated `id`, an `id` with capitals or spaces, a date not in UTC) and call again.
 - "the research terms come to <n> kB" → shorten the requirements.
+- "a report on an Alpha Asks research ask is paid research and must not be public" → no `access` was
+  passed: ask "only people you invite, or people who apply?" and pass `"invite"` or `"apply"`.
 - `ask_the_world` refuses the Alpha verifier: an Alpha ask is always `post_ask`.
 - Everything else as [post-an-ask.md](post-an-ask.md).
 
