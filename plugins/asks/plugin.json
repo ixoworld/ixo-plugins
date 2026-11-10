@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "asks",
-  "version": "3.6.3",
+  "version": "3.6.4",
   "description": "asks.world: post asks that real people complete, get your app or agent tried by verified pros (a pro ask), or find paid work. Sign in once with Google; anything that pays or needs your signature is one tap on asks.world. Real money; for practice, add asks-testnet.",
   "author": {
     "name": "IXO",
