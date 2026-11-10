@@ -80,7 +80,7 @@ Every text is at most 4,000 characters and the brief at most 32 kB.
 
 They don't know what to pay → a free estimate from their own numbers. Ask for the hours they think a
 report takes and an hourly rate with a public web page that backs it (`https://…`), then POST JSON to
-https://alpha-oracle-{{#TESTNET}}testnet{{/TESTNET}}{{^TESTNET}}mainnet{{/TESTNET}}.ixo-api.workers.dev/alpha/v2/advise
+https://alpha-oracle.{{#TESTNET}}testnet.{{/TESTNET}}asks.world/alpha/v2/advise
 (no sign-in): `{ "question", "approach", "sources": [], "criteria": [the requirements' texts],
 "estimatedHours", "hourlyRateCents", "rateSource" }`. It returns a short checklist and
 `pricing.estimate.cents` = hours × rate. **Say:** "From your own numbers, <hours> hours at $<rate> an
