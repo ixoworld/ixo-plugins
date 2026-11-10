@@ -10,12 +10,12 @@ report is seen only by the asker and the Alpha check, never on the public page.
 
 ## Do this
 
-1. `read_ask` with the ask's number. An Alpha ask shows **Research terms**: the question, the intended
-   use, "No evidence after", "Reports due by", the independent sources wanted, the AI processors, which
-   sources are allowed, the final OK, the requirements (`[id] text`), the four statements everyone
-   confirms, and a form of two fields to fill: `summary` and `packet` (a third, `assessment`, is
-   optional: a specialist's own assessment). Tell the person all of it in plain words, and
-   that it's research only, never investment advice.
+1. `read_ask` with the ask's number. An Alpha ask shows **Research terms**: the question (often the
+   ask's own text), the intended use, "No evidence after", "Reports due by", the sources wanted, the
+   AI that reads the evidence, which sources are allowed, the final OK, the lines each report must
+   cover (`[id] text`), the four statements, and a form: `summary` and `packet` (`assessment` is
+   optional, a specialist's own). Tell the person in plain words, in their local time, never "UTC",
+   and that it's research only, never investment advice.
 2. Do the research with them (section 1) and build the report (section 2).
 3. Show them the whole report and the four statements. On "send it", `submit_work` once (section 3).
    They tick "I agree" on the page and send; it never goes straight from the chat.
@@ -29,9 +29,13 @@ asked is not passed and not paid. Honest limitations beat confident gaps.
 
 ## 1. Do the research
 
-**Lead:** "Let's research <question> together. I'll find and read sources with you, note what each
-one says, and write the report so every finding points at its evidence."
+**Lead:** "Let's research <question> together. I'll find and read sources with you, and write the
+report so every finding points at its evidence."
 
+- **Where information may come from** (the terms' `access`; use nothing outside it):
+  - `public`, **Free websites only:** news, company sites, public data anyone can open.
+  - `private`, **Also their own research:** adds interviews, calls, photos and notes they can share.
+  - `licensed`, **Also paid reports:** adds paid databases or reports they're allowed to use.
 - **Sources:** at least the number of *independent* sources the terms ask for. Copies of one press
   release on five sites are one source; so are two reports built on the same dataset. Note each one's
   web address, who published it, when it was published and when you read it. Nothing published after
@@ -52,8 +56,8 @@ Two fields:
   with the one-line verdict on the question, then a line per requirement, then what wasn't settled.
 - **`packet`**: the research packet, one JSON document as text, at most 200,000 characters. The
   `brief` restates the ask's research terms **exactly** (the checks refuse on one character's
-  difference): `question` and `decision_use` word for word, `as_of` = the cutoff, `due_at` = the
-  deadline, `requirements` the same ids and texts, `minimum_independent_sources`,
+  difference): `question` (which may be the ask's text) and `decision_use` word for word, `as_of` and
+  `due_at` the exact cutoff and deadline date-times `read_ask` shows, `requirements` the same ids and texts, `minimum_independent_sources`,
   `allowed_processors` the same list, `access` the same, `human_review_required` `true` when the
   final OK is the asker's. The other brief fields are yours. `report.respondent` is the person's own
   account address, as `my_status` shows it: the checks refuse a report signed by anyone else. Every
@@ -73,7 +77,7 @@ Two fields:
     "respondent_criteria": ["<one line on who the person is>"],
     "requirements": [{ "id": "<id>", "text": "<text, exactly>" }],
     "as_of": "<cutoff>", "due_at": "<deadline>", "max_age_seconds": 0,
-    "minimum_independent_sources": 3,
+    "minimum_independent_sources": 1,
     "reward": { "amount": "<pay in dollars, e.g. 25.00>", "currency": "USD", "basis": "per-approved-completion" },
     "allowed_processors": ["openai"],
     "access": "private", "human_review_required": true,
@@ -110,20 +114,17 @@ Two fields:
 }
 ```
 
-What the checks look at when the report arrives: the packet is in shape; the brief restates the
-terms; the respondent is the person who sent it; every requirement is covered by at least one
-finding; every finding has at least one supporting quote found word for word in its artifact and its
-numbers agree with the source; a forecast carries a probability and a resolution date; nothing dated
-after the cutoff; the independent sources counted by origin, not by copy; contrary evidence was
-looked for; the method and limitations let someone retrace the work. Whatever the AI check cannot
-settle goes to the asker to look at, never a silent fail. Keep each artifact's `content` to the
-passage that matters: the summary and packet together must stay under about 250 kB.
+The checks look at: the packet's shape; the brief against the terms; the respondent; every
+requirement covered; every quote found word for word in its artifact, numbers matching; forecasts
+with a probability and date; nothing after the cutoff; sources counted by origin; contrary evidence
+sought; a method someone could retrace. What the AI can't settle goes to the asker, never a silent
+fail. Keep each artifact's `content` to the passage that matters (summary + packet under ~250 kB).
 
 ## 3. Hand it in
 
-Show the report, then the four statements as `read_ask` lists them: research only, not investment
-advice; no inside or confidential information; the right to share the sources; the evidence may be
-read by OpenAI's AI (or the AI the ask names). **Ask:** "Do you agree to these four, and shall I send your report?" Only on
+Show the report, then **Say:** "Before sending, you agree to 4 rules (not investment advice, no
+insider info, the right to share sources, OpenAI's AI may read the evidence)." Then the four in full,
+as `read_ask` lists them. **Ask:** "Do you agree to these four, and shall I send your report?" Only on
 their yes, call `submit_work` once with the ask's number, `fields: { "summary": "<the summary>",
 "packet": "<the packet as JSON text>" }` and `agree_statements: true`. No `deliverable`, no `report`,
 no files. Add `assessment` only when the person is a specialist and wrote one.
