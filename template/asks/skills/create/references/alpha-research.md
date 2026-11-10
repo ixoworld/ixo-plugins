@@ -18,8 +18,8 @@
 An Alpha ask is a paid question about a market or a company, such as "What share of its revenue did
 this company make outside the US last year, and from what?" Each person who takes it hands in a
 sourced report: every finding points at the evidence behind it. The Alpha verifier runs its checks
-when a report arrives; the person gives the final OK, which pays it. The check is free. The pay × people
-is set aside when posted; what isn't paid comes back when they close it.
+when a report arrives; the person gives the final OK, which pays it. The check costs $1 per report. The pay
+and the check, × people, are set aside when posted; what isn't paid comes back when they close it.
 
 ## The research terms (`research`)
 
@@ -77,7 +77,8 @@ Without hours and a rate it gives the checklist only. Never call it a quote.
 <days> days, <only people you invite | people you approve>. Question: <question>. Each report must
 cover: <the requirements, one line each>, on at least <n> separate sources, with nothing after
 <cutoff date>, due <deadline date>. Only you see the reports. You give the final OK on each report,
-which pays it. It costs <total> in all (<real / practice> money). OK?"
+which pays it. The Alpha check costs $1 per report, on top of the pay. It costs <total> in all
+(<real / practice> money). OK?"
 
 ## Refusals
 
