@@ -13,8 +13,8 @@ report is seen only by the asker and the Alpha check, never on the public page.
 1. `read_ask` with the ask's number. An Alpha ask shows **Research terms**: the question (often the
    ask's own text), the intended use, "No evidence after", "Reports due by", the sources wanted, the
    AI that reads the evidence, which sources are allowed, the final OK, the lines each report must
-   cover (`[id] text`), the four statements, and a form: `summary` and `packet` (`assessment` is
-   optional, a specialist's own). Tell the person in plain words, in their local time, never "UTC",
+   cover (`[id] text`), the four statements, and a form: `summary` and `packet` (`assessment` is for
+   enrolled specialists only, not available yet: leave it out). Tell the person in plain words, in their local time, never "UTC",
    and that it's research only, never investment advice.
 2. Do the research with them (section 1) and build the report (section 2).
 3. Show them the whole report and the four statements. On "send it", `submit_work` once (section 3).
@@ -76,7 +76,7 @@ Two fields:
     "route": "selected (invited) | open (applied or open to anyone)",
     "respondent_criteria": ["<one line on who the person is>"],
     "requirements": [{ "id": "<id>", "text": "<text, exactly>" }],
-    "as_of": "<cutoff>", "due_at": "<deadline>", "max_age_seconds": 0,
+    "as_of": "<cutoff>", "due_at": "<deadline>", "max_age_seconds": 315360000,
     "minimum_independent_sources": 1,
     "reward": { "amount": "<pay in dollars, e.g. 25.00>", "currency": "USD", "basis": "per-approved-completion" },
     "allowed_processors": ["openai"],
@@ -127,7 +127,7 @@ insider info, the right to share sources, OpenAI's AI may read the evidence)." T
 as `read_ask` lists them. **Ask:** "Do you agree to these four, and shall I send your report?" Only on
 their yes, call `submit_work` once with the ask's number, `fields: { "summary": "<the summary>",
 "packet": "<the packet as JSON text>" }` and `agree_statements: true`. No `deliverable`, no `report`,
-no files. Add `assessment` only when the person is a specialist and wrote one.
+no files, and no `assessment` (not available yet: a filled-in one is refused).
 
 - It gives a link, always. **Say:** "Open this, check your report, read the four statements, tick
   **I agree** and send: <link>." On a research ask nothing is sent from the chat, even with "Your
