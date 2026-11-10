@@ -51,6 +51,6 @@ Two kinds fit? Ask which, in one line. {{^TESTNET}}Plans are sandbox-only: never
 
 ## After posting
 
-Public ask: give them the ask's link. Private: send each person their own invite link, never the page
-link. More invites and applications: the `invite` skill. Completions, approvals and closing: the
+Public ask, or a Pro Ask open to any verified pro with the link: give them the ask's link to share.
+Private: send each person their own invite link, never the page link. More invites and applications: the `invite` skill. Completions, approvals and closing: the
 `manage` skill.

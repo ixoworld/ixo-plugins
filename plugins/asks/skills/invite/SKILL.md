@@ -27,6 +27,14 @@ skill). This all happens in the chat, and nothing here spends.
   each of these to one person, privately. Each works once." Never put them anywhere public. The ask's plain page link only shows them a sign-in
   page: send their own link, or have them sign in with the account you invited. If a tool
   gives a link to tap, pass it on as the tool says and wait for them.
+- **One link for many people** (a group chat, social media, "a master link", or asking for lots of
+  links): on a Pro Ask open to any verified pro with the link, that's the ask's link,
+  https://asks.world/t/<number>, with no invites needed. On a Pro Ask by
+  invitation each link works once, and who may join can't be changed after posting. **Say:** "This Pro
+  Ask is by invitation, so each link works for one person. If you'd rather share one link anywhere, I
+  can set up a new Pro Ask that any verified pro can join from that link, until it's full. Or I can
+  make <n> private links for this one. Which?" Never pick for them. A new one: the `create` skill's
+  Pro Ask, with the same scenarios and pay.
 - **Who's in:** `call_invites` (invited, links opened, who applied). Say it in a line.
 - **An application:** read it to them in plain words; `decide_application` yes or no **only on their
   word**. Never decide for them.

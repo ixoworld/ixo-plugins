@@ -20,10 +20,14 @@ checks", never "the checker" or "the reviewer". A report that fails is not paid.
 - **Pay** → `money { entry_each, wanted, extra }`: what each good report pays, how many good reports
   they want, and how many extra (below). There is no fixed limit on reports.
 - **Days open** → `open_days`, any number of days.
-- **Who may join** → `access`. **Ask:** "Only pros you invite, or any verified pro who has the link?"
-  - Only pros I invite → `access: "invite"`. Invite them after posting.
-  - Any verified pro with the link → `access: "apply"`. A LinkedIn-verified pro joins at once from the
-    link. It is never on the board: only its link brings pros in.
+- **Who may join** → `access`. Always ask, even when they say "invite" or "send it to people": it can't
+  be changed once posted. **Ask:** "One link you can share anywhere, like a WhatsApp group or social
+  media, or a private link for each person?"
+  - One link to share → `access: "apply"`. Any LinkedIn-verified pro who opens it joins at once, until
+    the Pro Ask is Filled, so the budget looks after itself. It is never on the board: only its link
+    brings pros in. People who aren't verified yet are shown how to verify first.
+  - A private link for each person → `access: "invite"`. Only the pros they invite join, each by name
+    or with their own link that works once. Invite them after posting.
 - **Extra reports.** Every report counts in "N of M reports", even one that isn't good, and it is
   Filled at wanted + extra. **Say:** "Some reports may not be good enough. You don't pay for those, but
   they still count. I suggest your <wanted> plus 3 extra. Money for reports that never come in comes
@@ -41,16 +45,17 @@ they close it. The limit is what one card payment can take ($999,999.99); `draft
 over.
 
 **Say:** "This sets up the Pro Ask '<title>' for <name> <version>: <n> scenarios, <wanted> good reports
-wanted, up to <count> in all, open <days> days, <only pros you invite | any verified pro with the
-link>. <the money sentence> Each report waits for your OK before it's paid. Post it?"
+wanted, up to <count> in all, open <days> days, <one link to share anywhere |
+only pros you invite>. <the money sentence> Each report waits for your OK before it's paid. Post it?"
 
 ## After posting
 
 - **Say:** "Your Pro Ask's page: https://{{#TESTNET}}test.{{/TESTNET}}asks.world/me/pro-asks/<number>.
   Reports come in there." If the reply gives a link to turn on their checks: "Open this and tap
   **Approve**, so reports wait for your OK."
-- Open to any verified pro → **Say:** "Share this link anywhere: https://{{#TESTNET}}test.{{/TESTNET}}asks.world/t/<number>.
-  Verified pros join from it."
+- Open to any verified pro → **Say:** "Share this one link anywhere, like a WhatsApp group or social
+  media: https://{{#TESTNET}}test.{{/TESTNET}}asks.world/t/<number>. Verified pros join from it until
+  it is Filled. No need to make a link for each person."
 - **Invite pros:** `find_pro` with `q` (what the Pro Ask needs). **Say** the three to five it gives,
   each with "LinkedIn verified", their rate and their page; they choose. Then `invite_to_call` with the
   chosen @names and the private note (the `invite` skill).
