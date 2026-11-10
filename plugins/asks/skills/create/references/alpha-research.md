@@ -7,9 +7,16 @@
    instead, with a report. Shall I?" (yes → [private.md](private.md) with `report: true`). Never post
    an Alpha ask without it, and never guess its name: `checker` is its name exactly as listed.
 2. Gather the research terms (below), one question at a time, in plain words.
-3. **Ask:** "Only people you invite, or anyone who applies and you say yes?" → `access` `"invite"` or
-   `"apply"`, plus `invite` ([private.md](private.md)). An Alpha ask is always private: `post_ask`
-   refuses one open to the board.
+3. **Ask** which of three ways, in these words:
+   - "Invite pros you choose (Market Pros)" → `access: "invite"`, plus `invite` ([private.md](private.md)).
+   - "Let people apply, you pick (Market Calls)" → `access: "apply"`; they may add `invite` for people
+     let in at once.
+   - "Open to anyone who meets your requirements (Ask the Market)" → no `access`. Anyone verified with
+     LinkedIn may send one report; it's listed on the board.
+
+   **Say** on every route: "Only you and the Alpha check see the reports, whichever way you pick." On
+   the open one also **Say:** "Each report checked costs $1, even one that's turned down, up to the
+   number of reports you pay for. Only people verified with LinkedIn can send one, one each."
 4. Read the whole ask back (the preview block below). Get "yes".
 5. Call `post_ask` with `checker` (the Alpha verifier's listed name), `research` and the rest, without
    `confirm`; say the total; on "yes" call again with `confirm` = that exact total. Give the link,
@@ -57,8 +64,8 @@ means shorter requirements.
 
 Before they confirm, **Say** once: "Everyone who hands in a report will confirm four things: it's
 research only, not investment advice; it holds no inside or confidential information; they have the
-right to share their sources; and the evidence may be read by OpenAI's AI. Only you, the people
-you invite and the verifier can open the ask or read its reports."
+right to share their sources; and the evidence may be read by OpenAI's AI. Only you and the
+verifier can read the reports, on every route."
 
 ## A price, if they ask
 
@@ -74,11 +81,12 @@ Without hours and a rate it gives the checklist only. Never call it a quote.
 ## The preview
 
 **Say:** "This posts '<title>' as an Alpha research ask for <n> reports, paying <pay> each, open
-<days> days, <only people you invite | people you approve>. Question: <question>. Each report must
+<days> days, <only pros you invite | people who apply and you pick | open to anyone verified with
+LinkedIn>. Question: <question>. Each report must
 cover: <the requirements, one line each>, on at least <n> separate sources, with nothing after
 <cutoff date>, due <deadline date>. Only you see the reports. You give the final OK on each report,
-which pays it. The Alpha check costs $1 per report, on top of the pay. It costs <total> in all
-(<real / practice> money). OK?"
+which pays it. The Alpha check costs $1 per report, on top of the pay<, even a report it turns down
+(open asks)>. It costs <total> in all (<real / practice> money). OK?"
 
 ## Refusals
 
@@ -89,8 +97,9 @@ which pays it. The Alpha check costs $1 per report, on top of the pay. It costs 
 - "the research terms are not complete: <field>: <why>" → fix that one field (a deadline before the
   cutoff, a repeated `id`, an `id` with capitals or spaces, a date not in UTC) and call again.
 - "the research terms come to <n> kB" → shorten the requirements.
-- "a report on an Alpha Asks research ask is paid research and must not be public" → no `access` was
-  passed: ask "only people you invite, or people who apply?" and pass `"invite"` or `"apply"`.
+- "a report on an Alpha Asks research ask is paid research and must not be public" → this site does
+  not take open Alpha asks yet: offer "Invite pros you choose" or "Let people apply, you pick" and
+  pass `"invite"` or `"apply"`.
 - `ask_the_world` refuses the Alpha verifier: an Alpha ask is always `post_ask`.
 - Everything else as [post-an-ask.md](post-an-ask.md).
 

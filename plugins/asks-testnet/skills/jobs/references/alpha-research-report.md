@@ -1,5 +1,13 @@
 # A research report for an Alpha ask
 
+## Finding one
+
+Alpha asks come three ways: by invitation (`my_invitations`), by application (`apply_to_call`, then
+the asker picks), or open to anyone (Ask the Market). An open one is on the board: `list_asks` shows
+it, and `read_ask` says "Open research". Anyone verified with LinkedIn may send one report to it; not
+verified yet → `connect_linkedin` first (the `profile` skill), then come back. On every route the
+report is seen only by the asker and the Alpha check, never on the public page.
+
 ## Do this
 
 1. `read_ask` with the ask's number. An Alpha ask shows **Research terms**: the question, the intended
@@ -61,7 +69,7 @@ Two fields:
     "asset_class": "equity | crypto | commodity | macro",
     "entities": ["<the companies or markets researched>"],
     "decision_use": "<the ask's intended use, exactly>",
-    "route": "selected (invited) | open (applied)",
+    "route": "selected (invited) | open (applied or open to anyone)",
     "respondent_criteria": ["<one line on who the person is>"],
     "requirements": [{ "id": "<id>", "text": "<text, exactly>" }],
     "as_of": "<cutoff>", "due_at": "<deadline>", "max_age_seconds": 0,
@@ -130,6 +138,8 @@ no files. Add `assessment` only when the person is a specialist and wrote one.
   (trim each artifact's `content` to the passage quoted) and call again. "this ask's terms couldn't
   be read just now" → wait a minute and call again. "checks this ask by its own form. Pass fields" →
   pass `fields` and nothing else.
+- "Only people verified with LinkedIn can send a report on this open research ask" → `connect_linkedin`,
+  then send it again from the same link.
 - One report per ask per person. Never call `submit_work` twice; unsure → `link_status`, or
   `check_verdict`.
 
