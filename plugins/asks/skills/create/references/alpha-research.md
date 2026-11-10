@@ -41,12 +41,12 @@ Ask only for what they haven't said. Suggest a default where one is shown.
 7. `processors`: which AI may read the evidence. Default `["cloudflare-workers-ai"]`, the one the
    Alpha verifier uses; without it, nothing can be checked. **Say:** "The evidence is read by an AI to
    check it. OK?"
-8. "Who may see the reports?" → `access`: `"private"` (only them; the default), `"public"` (anyone),
-   or `"licensed"` (shared under the sources' licences). Only with `"public"` can the check settle
-   the sources' rights by itself; otherwise their own OK settles it.
-9. `approval`: who accepts a report the check passes. Recommend `"asker"` (they read each report and
-   give the final OK, which pays it); `"automatic"` pays with no look from them. Pass `"asker"` unless
-   they say otherwise.
+8. "Which sources may a report use?" → `access` (the sources, not who reads the reports; that is the
+   ask's own `access` in step 3): `"private"` (private sources too; the default), `"public"` (only
+   sources anyone can open), or `"licensed"` (licensed or paid sources). Only with `"public"` can the
+   check settle the sources' rights by itself; otherwise their own OK settles it.
+9. `approval`: always `"asker"`: they read each report the check passes and give the final OK, which
+   pays it.
 
 Then the ask itself ([post-an-ask.md](post-an-ask.md)): `task` (the question plus what a report must
 contain, in their words), `title`, `pay` per approved report, `quota` (how many reports), `days`.

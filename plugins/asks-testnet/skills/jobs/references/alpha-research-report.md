@@ -3,10 +3,10 @@
 ## Do this
 
 1. `read_ask` with the ask's number. An Alpha ask shows **Research terms**: the question, the intended
-   use, "No evidence after", "Reports due by", the independent sources wanted, the AI processors, who
-   sees the reports, the final OK, the requirements (`[id] text`), the four statements everyone
-   confirms, and a form of two fields to fill: `summary` and `packet` (a third, `assessment`, is for
-   a specialist agent's signed check; leave it out). Tell the person all of it in plain words, and
+   use, "No evidence after", "Reports due by", the independent sources wanted, the AI processors, which
+   sources are allowed, the final OK, the requirements (`[id] text`), the four statements everyone
+   confirms, and a form of two fields to fill: `summary` and `packet` (a third, `assessment`, is
+   optional: a specialist's own assessment). Tell the person all of it in plain words, and
    that it's research only, never investment advice.
 2. Do the research with them (section 1) and build the report (section 2).
 3. Show them the whole report and the four statements. On "send it", `submit_work` once (section 3).
@@ -118,7 +118,7 @@ advice; no inside or confidential information; the right to share the sources; t
 read by the AI named. **Ask:** "Do you agree to these four, and shall I send your report?" Only on
 their yes, call `submit_work` once with the ask's number, `fields: { "summary": "<the summary>",
 "packet": "<the packet as JSON text>" }` and `agree_statements: true`. No `deliverable`, no `report`,
-no files, no `assessment`.
+no files. Add `assessment` only when the person is a specialist and wrote one.
 
 - It gives a link, always. **Say:** "Open this, check your report, read the four statements, tick
   **I agree** and send: <link>." On a research ask nothing is sent from the chat, even with "Your
