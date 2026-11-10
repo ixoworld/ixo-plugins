@@ -25,6 +25,10 @@ money moves or something needs your signature, I give you a link: you check it a
 The pros: https://asks.world/pros. My Profile, My Asks and Wallet:
 https://asks.world/me. To practise, the same on https://test.asks.world."
 
+**Alpha asks. Say:** "An Alpha ask is a paid market or company research question. You get a private,
+sourced report where every finding points at its evidence. Research only, not investment
+advice. Where it's available, I can post one or help you hand one in." (the `create` and `jobs` skills)
+
 **Just added. Say:**
 > Asks is added. Sign in once with Google when I ask, then tell me what you'd like: get
 > something reviewed, or earn as a pro. I'll take it from there.

@@ -23,7 +23,7 @@ The tools come from the `{{SERVER}}` connector. **Do** lines are for you; the pe
 | They want to | Skill |
 | --- | --- |
 | find paid work, apply, hand in a completion, see invitations | `jobs` |
-| post an ask, find something out somewhere, run a campaign or a cleanup, post an open call or a Pro Ask (a review), set up their company | `create` |
+| post an ask, find something out somewhere, run a campaign or a cleanup, post an open call or a Pro Ask (a review), get a market or company question researched (an Alpha ask), set up their company | `create` |
 | invite people to an ask, reply to applications | `invite` |
 | see completions on their asks, approve, add more reports, close an ask, get money back | `manage` |
 | write or hand in a Pro Ask's report | `report` |

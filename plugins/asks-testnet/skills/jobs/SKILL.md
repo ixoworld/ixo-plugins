@@ -1,6 +1,6 @@
 ---
 name: jobs
-description: Find paid work on asks.world and get paid. Use when the person asks what work is open, wants something near them, asks "what am I invited to?", pastes an invite link, wants to apply to an ask, or wants to hand in a completion and see whether it passed.
+description: Find paid work on asks.world and get paid. Use when the person asks what work is open, wants something near them, asks "what am I invited to?", pastes an invite link, wants to apply to an ask, or wants to hand in a completion (a research report for an Alpha ask included) and see whether it passed.
 ---
 
 # Find work and complete asks
@@ -80,6 +80,10 @@ their words, never the ask's text back).
   just for sending a completion, and <Y> more if it's approved." (the amounts `read_ask` gives)
 - **An open call** (`read_ask` shows the requirements it is judged on): work them through *with* the
   person and hand in once, one page in their words, when they say so.
+- **An Alpha research ask** (`read_ask` shows **Research terms** and a form: `summary`, `packet`): a
+  sourced research report, checked when it arrives →
+  [alpha-research-report.md](references/alpha-research-report.md). Never without the person's
+  agreement to its four statements.
 
 **Hand it in.** `submit_work` has no preview: it sends or gives a link on the first call. So show
 them the completion first. **Say:** "Here's your completion: <it>. Send it?" On yes, call

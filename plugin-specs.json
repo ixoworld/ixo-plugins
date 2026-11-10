@@ -12,7 +12,7 @@
       "name": "asks",
       "kind": "asks",
       "title": "asks.world",
-      "version": "3.5.4",
+      "version": "3.6.0",
       "description": "asks.world: post asks that real people complete, get your app or agent tried by verified pros (a pro ask), or find paid work. Sign in once with Google; anything that pays or needs your signature is one tap on asks.world. Real money; for practice, add asks-testnet.",
       "url": "https://asks.world/v1/mcp"
     },
@@ -20,7 +20,7 @@
       "name": "asks-testnet",
       "kind": "asks",
       "title": "Asks (practice money)",
-      "version": "3.5.5",
+      "version": "3.6.0",
       "description": "Asks (practice money): the asks.world sandbox. Post asks, get your app or agent tried by verified pros (a pro ask), or find paid work. Nothing real moves. Sign in once with Google; anything that pays is one tap on test.asks.world.",
       "url": "https://test.asks.world/v1/mcp"
     },
