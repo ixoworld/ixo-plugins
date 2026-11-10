@@ -67,7 +67,7 @@ Two fields:
     "as_of": "<cutoff>", "due_at": "<deadline>", "max_age_seconds": 0,
     "minimum_independent_sources": 3,
     "reward": { "amount": "<pay in dollars, e.g. 25.00>", "currency": "USD", "basis": "per-approved-completion" },
-    "allowed_processors": ["cloudflare-workers-ai"],
+    "allowed_processors": ["openai"],
     "access": "private", "human_review_required": true,
     "outcome_rule": "Accepted when every requirement is met with sourced evidence.",
     "jurisdictions": ["<country or region>"]
@@ -115,7 +115,7 @@ passage that matters: the summary and packet together must stay under about 250 
 
 Show the report, then the four statements as `read_ask` lists them: research only, not investment
 advice; no inside or confidential information; the right to share the sources; the evidence may be
-read by the AI named. **Ask:** "Do you agree to these four, and shall I send your report?" Only on
+read by OpenAI's AI (or the AI the ask names). **Ask:** "Do you agree to these four, and shall I send your report?" Only on
 their yes, call `submit_work` once with the ask's number, `fields: { "summary": "<the summary>",
 "packet": "<the packet as JSON text>" }` and `agree_statements: true`. No `deliverable`, no `report`,
 no files. Add `assessment` only when the person is a specialist and wrote one.

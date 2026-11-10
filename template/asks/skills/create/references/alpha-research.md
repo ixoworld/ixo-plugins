@@ -38,8 +38,8 @@ Ask only for what they haven't said. Suggest a default where one is shown.
    Suggest 3 to 6 from the question; read them back.
 6. "How many separate sources should each report stand on?" → `minIndependentSources`, 1 to 10.
    Default: 3. Copies of the same article count as one.
-7. `processors`: which AI may read the evidence. Default `["cloudflare-workers-ai"]`, the one the
-   Alpha verifier uses; without it, nothing can be checked. **Say:** "The evidence is read by an AI to
+7. `processors`: which AI may read the evidence. Default `["openai"]`, the one the Alpha verifier
+   uses; without it, the verifier refuses the ask. **Say:** "The evidence may be read by OpenAI's AI to
    check it. OK?"
 8. "Which sources may a report use?" → `access` (the sources, not who reads the reports; that is the
    ask's own `access` in step 3): `"private"` (private sources too; the default), `"public"` (only
@@ -57,7 +57,7 @@ means shorter requirements.
 
 Before they confirm, **Say** once: "Everyone who hands in a report will confirm four things: it's
 research only, not investment advice; it holds no inside or confidential information; they have the
-right to share their sources; and the evidence may be read by the AI we named. Only you, the people
+right to share their sources; and the evidence may be read by OpenAI's AI. Only you, the people
 you invite and the verifier can open the ask or read its reports."
 
 ## A price, if they ask
