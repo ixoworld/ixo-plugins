@@ -30,7 +30,8 @@ mid-task. Post only what the person asked for, in their words. Money in dollars 
 | to pay everyone whose written work passes, up to a number | an open call: hiring | [open-call.md](references/open-call.md) |
 | a spot cleaned, litter mapped, or the same job in many places | a campaign | [campaign.md](references/campaign.md) |
 | people near places to check things for a prediction market | a plan | [plan.md](references/plan.md) |
-| a market or company question researched, with a sourced report (research only, not investment advice) | an Alpha ask | [alpha-research.md](references/alpha-research.md) |
+| a market or company question researched, with a sourced report (research only, not investment advice), listed on the board | an Alpha ask | [alpha-research.md](references/alpha-research.md) |
+| market research by pros they invite, or by anyone verified who has the link, hidden from the board | an Alpha Pro Ask | [review-job.md](references/review-job.md), with `research` |
 | to post as their company, or pay people from the company | a company ask | [company.md](references/company.md) |
 | people paid just for trying, or even when turned down | pay for trying | [pay-for-trying.md](references/pay-for-trying.md) |
 

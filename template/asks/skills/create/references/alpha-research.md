@@ -1,7 +1,23 @@
 # An Alpha ask: market or company research with a sourced report
 
-**Say** first, in one line: "A researcher sends a report. Our AI checks it against your brief ($1 each).
-You read it, and your OK pays them."
+## Which route?
+
+Not clear from what they said → **Ask** in one line: "Listed on the board for anyone verified, or
+hidden, for pros you invite or anyone verified who has your link?"
+
+- **Public** (listed on the board, anyone verified with LinkedIn sends one report): $1 per report
+  checked, even one turned down; nothing else on top. → this page, `post_ask`.
+- **Hidden** (pros you invite, or anyone verified with LinkedIn who has the link joins at once; never
+  on the board): the check is free, and a 20% network share is added on each report you approve. →
+  an Alpha Pro Ask: [review-job.md](review-job.md), `draft_call` with `research`. The three
+  questions and the defaults below are the same there, except the due date: reports are due when the
+  Pro Ask closes.
+
+Inviting, or letting people apply and picking who takes it, still works on this page (step 3), at $1
+per report checked. Anyone who wants "hidden, anyone verified with the link joins" → the Alpha Pro Ask.
+
+**Say** first on this page, in one line: "A researcher sends a report. Our AI checks it against your
+brief ($1 each). You read it, and your OK pays them."
 
 ## Do this
 

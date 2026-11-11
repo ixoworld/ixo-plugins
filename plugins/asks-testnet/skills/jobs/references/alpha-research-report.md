@@ -8,6 +8,10 @@ it, and `read_ask` says "Open research". Anyone verified with LinkedIn may send 
 verified yet → `connect_linkedin` first (the `profile` skill), then come back. On every route the
 report is seen only by the asker and the Alpha check, never on the public page.
 
+An **Alpha Pro Ask** is a Pro Ask for market research: never on the board, reached by an invitation
+or its link (anyone verified with LinkedIn who has the link joins at once). A report on one is
+handed in the same way, below.
+
 ## Do this
 
 1. `read_ask` with the ask's number. An Alpha ask shows **Research terms**: the question (often the
