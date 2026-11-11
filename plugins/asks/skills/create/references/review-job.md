@@ -14,13 +14,13 @@
 4. Call `post_call` with `slug` and `confirm` = that total. Give the link. Then `link_status`.
 5. Then help them invite pros (below).
 
-The person is the **builder**. Verified **pros** try the app on the builder's scenarios and each hands
-in a **report**. **Automated checks** read it; the builder's **final approval** pays it. Say "automated
+The person is the **builder**. Verified **pros** do the work (for example, try an app on the builder's
+scenarios) and each hands in a **report**. **Automated checks** read it; the builder's **final approval** pays it. Say "automated
 checks", never "the checker" or "the reviewer". A report that fails is not paid. <!-- plain-ok -->
 
 ## What `draft_call` asks for
 
-- A title; what is reviewed → `subject { name, version, where }` (a public link); up to 8 scenarios,
+- A title; what the work is on (for example an app) → `subject { name, version, where }` (a public link); up to 8 scenarios,
   one line each (suggest some); a short intro → `lede`, `brief`.
 - **Pay** → `money { entry_each, wanted, extra }`: what each good report pays, how many good reports
   they want, and how many extra (below). There is no fixed limit on reports.
@@ -90,5 +90,3 @@ research, say the brief's lines (each report must cover …) in place of the nam
   chosen @names and the private note (the `invite` skill).
 - **A follow-up Pro Ask:** `read_ask` and `call_invites` on the old one, then `draft_call` again with
   the same (or the failed) scenarios, the same pay and the new version. Same kind of money.
-- Work that isn't trying an app (a translation, a design) → a private ask with that pro's @name
-  ([private.md](private.md)).

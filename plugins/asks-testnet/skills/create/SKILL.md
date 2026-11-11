@@ -1,6 +1,6 @@
 ---
 name: create
-description: Post something on asks.world. Use when the person wants to post an ask or a job, ask someone somewhere to go and look (Ask the World), get a fact checked that you can't see, run a cleanup or a campaign, post an open call or competition, get their app or agent reviewed by LinkedIn-verified pros (a Pro Ask), research a market with checks on the ground, get a market or company question researched with a sourced report (an Alpha ask), post as their company, or set their company up. "Dry run" or "try" means the sandbox (practice money).
+description: Post something on asks.world. Use when the person wants to post an ask or a job, ask someone somewhere to go and look (Ask the World), get a fact checked that you can't see, run a cleanup or a campaign, post an open call or competition, get any work done by LinkedIn-verified pros, such as their app or agent reviewed (a Pro Ask), research a market with checks on the ground, get a market or company question researched with a sourced report (an Alpha ask), post as their company, or set their company up. "Dry run" or "try" means the sandbox (practice money).
 ---
 
 # Post an ask
@@ -24,7 +24,7 @@ mid-task. Post only what the person asked for, in their words. Money in dollars 
 | a few people to do one small thing: a photo, a few words, a web page checked | an ask | [post-an-ask.md](references/post-an-ask.md) |
 | a fact from a place they can't see (is it open, what's there now) | an ask at a place | [ask-at-a-place.md](references/ask-at-a-place.md) |
 | only certain people to complete it: their team, customers, named people | a private ask | [private.md](references/private.md) |
-| their app, website or agent tried by verified pros, with a proper report | a Pro Ask | [review-job.md](references/review-job.md) |
+| any work done by verified pros, with a proper report (for example their app, website or agent tried) | a Pro Ask | [review-job.md](references/review-job.md) |
 | a particular pro to do the work | a Pro Ask, then invite them | [review-job.md](references/review-job.md) |
 | many people to send written work under one brief, and pick a winner | an open call: competition | [open-call.md](references/open-call.md) |
 | to pay everyone whose written work passes, up to a number | an open call: hiring | [open-call.md](references/open-call.md) |
