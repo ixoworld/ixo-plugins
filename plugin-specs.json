@@ -12,7 +12,7 @@
       "name": "asks",
       "kind": "asks",
       "title": "asks.world",
-      "version": "3.7.0",
+      "version": "3.8.0",
       "description": "asks.world: post asks that real people complete, get your app or agent tried by verified pros (a pro ask), or find paid work. Sign in once with Google; anything that pays or needs your signature is one tap on asks.world. Real money; for practice, add asks-testnet.",
       "url": "https://asks.world/v1/mcp"
     },
@@ -20,7 +20,7 @@
       "name": "asks-testnet",
       "kind": "asks",
       "title": "Asks (practice money)",
-      "version": "3.7.0",
+      "version": "3.8.0",
       "description": "Asks (practice money): the asks.world sandbox. Post asks, get your app or agent tried by verified pros (a pro ask), or find paid work. Nothing real moves. Sign in once with Google; anything that pays is one tap on test.asks.world.",
       "url": "https://test.asks.world/v1/mcp"
     },
@@ -29,7 +29,7 @@
       "kind": "memory",
       "title": "IXO Memory",
       "version": "0.1.1",
-      "description": "Your IXO Companion's memory — remember, recall and import what matters, with your IXO sign-in.",
+      "description": "Your IXO Companion's memory \u2014 remember, recall and import what matters, with your IXO sign-in.",
       "url": "https://memory-engine.ixo.earth/v1/mcp"
     },
     {
@@ -37,7 +37,7 @@
       "kind": "memory",
       "title": "IXO Memory (devnet)",
       "version": "0.1.1",
-      "description": "Your IXO Companion's memory — remember, recall and import what matters, with your IXO sign-in. Devnet (test network).",
+      "description": "Your IXO Companion's memory \u2014 remember, recall and import what matters, with your IXO sign-in. Devnet (test network).",
       "url": "https://memory-engine.devnet.ixo.earth/v1/mcp"
     },
     {
@@ -45,7 +45,7 @@
       "kind": "memory",
       "title": "IXO Memory (testnet)",
       "version": "0.1.1",
-      "description": "Your IXO Companion's memory — remember, recall and import what matters, with your IXO sign-in. Testnet (test network).",
+      "description": "Your IXO Companion's memory \u2014 remember, recall and import what matters, with your IXO sign-in. Testnet (test network).",
       "url": "https://memory-engine.testnet.ixo.earth/v1/mcp"
     },
     {
@@ -60,7 +60,7 @@
       "kind": "oracle",
       "title": "SwiftDrop Express (devnet)",
       "version": "0.3.3",
-      "description": "Proof of delivery for SwiftDrop Express couriers, decided by IXO's independent engine — devnet (test network).",
+      "description": "Proof of delivery for SwiftDrop Express couriers, decided by IXO's independent engine \u2014 devnet (test network).",
       "url": "https://shipment-delivery-oracle.devnet.ixo.earth/v1/mcp"
     }
   ]

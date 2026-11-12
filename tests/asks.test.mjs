@@ -18,7 +18,7 @@ const PLUGINS = {
   asks: "https://asks.world/v1/mcp",
   "asks-testnet": "https://test.asks.world/v1/mcp",
 };
-const SKILLS = ["account", "asks", "connect", "create", "help", "invite", "jobs", "manage", "profile", "report"];
+const SKILLS = ["account", "asks", "connect", "create", "help", "investor-demo", "invite", "jobs", "manage", "profile", "report"];
 
 for (const [name, url] of Object.entries(PLUGINS)) {
   test(`${name}: points at the hosted connector ${url}`, () => {
@@ -93,5 +93,28 @@ test("each plugin sends people to its own site's pages", () => {
         assert.equal(Boolean(m[1]), wantTest, `${file.slice(root.length + 1)}: ${m[0]}`);
       }
     }
+  }
+});
+
+test('investor journey is discoverable through both plugins and hosted asks_help references', () => {
+  for (const name of ['asks', 'asks-testnet']) {
+    const dir = join(root, 'plugins', name, 'skills', 'investor-demo');
+    const skill = readFileSync(join(dir, 'SKILL.md'), 'utf8');
+    const references = [...new Set([...skill.matchAll(/references\/([a-z0-9-]+)\.md/g)].map(m => m[1]))];
+    assert.deepEqual(references, ['connection', 'step-2', 'step-3', 'step-4', 'step-5', 'step-6', 'step-7']);
+    for (const reference of references) assert.ok(readFileSync(join(dir, 'references', reference + '.md'), 'utf8').length);
+    assert.ok(json('plugins', name, 'skills', 'index.json').includes('investor-demo'));
+    assert.match(skill, /topic: "investor-demo"/);
+    assert.match(skill, /Do not send the person to paste stage files/);
+    assert.match(skill, /Do not restart Step 1/);
+    assert.match(readFileSync(join(dir, 'references/step-2.md'), 'utf8'), /For youth livelihoods, prioritise/);
+    assert.match(readFileSync(join(dir, 'references/step-3.md'), 'utf8'), /`post_call` WITHOUT confirmation/);
+    assert.match(readFileSync(join(dir, 'references/step-4.md'), 'utf8'), /`link_status` then `read_ask`/);
+    assert.match(readFileSync(join(dir, 'references/step-5.md'), 'utf8'), /Do not fabricate testimony/);
+    assert.match(readFileSync(join(dir, 'references/step-6.md'), 'utf8'), /Report paid only from positive product evidence/);
+    if (name === 'asks') {
+      assert.match(skill, /Do not run the rehearsal here/);
+      for (const ref of references) assert.match(readFileSync(join(dir, 'references', ref + '.md'), 'utf8'), /Do not execute the rehearsal here/);
+    } else assert.match(skill, /practice-money connector at https:\/\/test\.asks\.world\/v1\/mcp/);
   }
 });
