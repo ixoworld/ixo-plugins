@@ -22,6 +22,7 @@ The tools come from the `asks-testnet` connector. **Do** lines are for you; the 
 
 | They want to | Skill |
 | --- | --- |
+| rehearse the IXO investor journey through actual practice-money research, decisions and payment | `investor-demo` |
 | find paid work, apply, hand in a completion, see invitations | `jobs` |
 | post an ask, find something out somewhere, run a campaign or a cleanup, post an open call or a Pro Ask (a review), get a market or company question researched (an Alpha ask), set up their company | `create` |
 | invite people to an ask, reply to applications | `invite` |
