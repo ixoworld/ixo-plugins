@@ -2,7 +2,11 @@
 
 
 
-On a real-money connection, stop the rehearsal and use the separate practice-money connection. Prefer the Asks practice-money plugin; use hosted MCP only if the client does not support plugins. Do not duplicate an existing compatible connection or replace the real-money one.
+On a real-money connection, stop the rehearsal and use the separate practice-money connection. Prefer the Asks practice-money plugin; use hosted MCP when this specific plugin is unavailable in the client. Do not duplicate an existing compatible connection or replace the real-money one.
+
+Before Step 1, check the tools and connection available in this conversation. Inspect available inventory once if needed, without keyword-filter retries or connector-directory searches. A custom URL needs no directory listing. Describe only what this session exposes; do not claim that an account inventory proves no local installation exists.
+
+If missing, give one setup handoff and wait: use the supported Asks practice-money plugin, or add the hosted URL below as a custom connector, complete OAuth and enable it in this chat. In Claude, Customize > Connectors > Add > Custom > Web is the current route; labels may vary. If workspace policy blocks it, ask the owner to enable it or use a supported client. Do not assume permission, create duplicates, or promise that installing elsewhere connects this session. Preserve the lens. After setup, verify access before opening or resuming the journey.
 
 Verify the actual selected connection is https://test.asks.world/v1/mcp, using client-exposed connection configuration and the practice-money plugin or authenticated connector's declared environment. A name alone is insufficient. Public web-fetch availability is not a prerequisite: the authenticated MCP configuration and playbooks may establish the environment. Conflicting or absent environment evidence blocks actions, not instruction delivery. Do not route a blocked web fetch through MCP as a generic proxy; use the connector's own supported tools.
 
