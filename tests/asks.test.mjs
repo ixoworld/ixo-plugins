@@ -18,7 +18,7 @@ const PLUGINS = {
   asks: "https://asks.world/v1/mcp",
   "asks-testnet": "https://test.asks.world/v1/mcp",
 };
-const SKILLS = ["account", "asks", "connect", "create", "help", "investor-demo", "invite", "jobs", "manage", "profile", "report"];
+const SKILLS = ["account", "asks", "bank-payouts", "connect", "create", "help", "investor-demo", "invite", "jobs", "manage", "profile", "report"];
 
 for (const [name, url] of Object.entries(PLUGINS)) {
   test(`${name}: points at the hosted connector ${url}`, () => {

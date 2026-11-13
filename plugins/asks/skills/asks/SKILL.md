@@ -30,6 +30,7 @@ The tools come from the `asks` connector. **Do** lines are for you; the person o
 | write or hand in a Pro Ask's report | `report` |
 | make or change their pro page, get verified with LinkedIn | `profile` |
 | their money, cash out, the identity check, practice money, company payouts, which emails they get | `account` |
+| their company to pay workers into bank accounts with its own Stripe ("set up bank payouts") | `bank-payouts` |
 | sign in, who they're signed in as, sign out | `connect` |
 | what asks.world is, what you can do, where to go, the sandbox | `help` |
 

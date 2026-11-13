@@ -86,3 +86,5 @@ foot of any email. Notifications on asks.world and on their phone don't change.
 - **How it pays people:** `set_payout_settings`: preview, their yes, then a link they tap to sign it
   (the `asks` skill's link way; the verifier list replaces the old one): references/company.md, "How it pays people". Or **Say:** "Open your company's
   **Payouts** page on the website and change it there."
+- **Paying workers into bank accounts:** the company's own payouts service with its own Stripe: the
+  `bank-payouts` skill.
