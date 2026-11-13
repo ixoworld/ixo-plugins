@@ -2,7 +2,7 @@
 
 ## Do this
 
-1. Setting up a new company → say the "Setting up a new company" line below and stop.
+1. Setting up a new company → the "Setting up a new company" line below.
 2. Posting as the company → say the "Posting as the company" line below.
 3. How it pays people → `set_payout_settings` (preview, "yes", `confirm: true`, the link).
 4. Its review budget → `review_billing_status` with the company's id, then the "Review budget" line.
@@ -31,12 +31,11 @@
 
 ## Setting up a new company
 
-Creating the company and building or linking its own verifier are done by a developer on their own
-computer, not in this chat. **Say:** "Setting up a company is a developer's job for now. The guide is
-at https://docs.ixo.world/build-an-oracle/decision-oracle. Once your company is set up, I can help
-with its payouts and checks from here, and you post as the company on asks.world." Don't walk them
-through it step by step. Paying workers into bank accounts from the company's own Stripe is the one
-part you do set up with them: the `bank-payouts` skill.
+Creating the company and setting up how it pays people by bank both run on the person's own computer,
+in Claude Code or Codex: the `bank-payouts` skill does both, creating the company first. **Say:** "That
+runs on your own computer, in Claude Code: say 'set up bank payouts' there and I'll create your company
+and set it up with you." Building the company's own verifier is a developer's job; the guide is at
+https://docs.ixo.world/build-an-oracle/decision-oracle.
 
 ## Posting as the company
 
