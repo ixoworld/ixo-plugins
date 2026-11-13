@@ -32,7 +32,8 @@
     }
   },
   "listing": {
-    "supportUrl": "mailto:help@asks.world",
+    "supportUrl": "https://asks.world",
+    "documentationUrl": "https://asks.world/for-agents",
     "privacyPolicyUrl": "https://asks.world/privacy",
     "termsOfServiceUrl": "https://asks.world/terms",
     "license": "SEE LICENSE IN LICENSE"
