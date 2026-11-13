@@ -30,5 +30,11 @@
       "logo": "./assets/logo.png",
       "composerIcon": "./assets/logo.png"
     }
+  },
+  "listing": {
+    "supportUrl": "https://asks.world/how",
+    "privacyPolicyUrl": "https://asks.world/privacy",
+    "termsOfServiceUrl": "https://asks.world/terms",
+    "license": "SEE LICENSE IN LICENSE"
   }
 }

@@ -39,6 +39,9 @@ export type Kind = {
   mcp: { claude: McpEntry; codex: McpEntry } | null;
   codex: { policy: { installation: string; authentication: string }; category: string };
   codexInterface: Record<string, unknown> | null;
+  /** Extra .claude-plugin/plugin.json fields the Claude plugin directory lists (supportUrl, privacyPolicyUrl,
+   * termsOfServiceUrl, license). Claude-only: the portable plugin.json schema allows no extra keys. */
+  listing: Record<string, string>;
   needs: Param[];
   readme: string;
   skillsDir: string;
@@ -135,6 +138,7 @@ export const loadKind = (name: string): Kind => {
     hostLabelStripSuffix: field("hostLabelStripSuffix", true), urlPath, networks: networks as string[] | undefined,
     mcp, codex: { policy: { installation: String(policy.installation), authentication: String(policy.authentication) }, category: string(codexRaw.category, `${file}: codex.category`) },
     codexInterface: codexRaw.interface === undefined ? null : object(codexRaw.interface, `${file}: codex.interface`),
+    listing: Object.fromEntries(Object.entries(raw.listing === undefined ? {} : object(raw.listing, `${file}: listing`)).map(([key, value]) => [key, string(value, `${file}: listing.${key}`)])),
     needs: PARAMS.filter((param) => used.has(param)), readme, skillsDir,
   };
 };
@@ -266,7 +270,7 @@ export const renderAll = (specs: SpecDocument): Map<string, Buffer> => {
       homepage: `https://github.com/ixoworld/ixo-plugins/tree/main/plugins/${spec.name}`,
       repository: "https://github.com/ixoworld/ixo-plugins", keywords: kind.keywords,
     };
-    write(".claude-plugin/plugin.json", meta);
+    write(".claude-plugin/plugin.json", { ...meta, ...kind.listing });
     const mcpWhere = `template/${kind.name}/kind.json mcp`;
     if (kind.mcp) write(".mcp.json", { mcpServers: { [server]: renderDeep(spec.pinned ? kind.mcp.codex : kind.mcp.claude, vars, mcpWhere) } });
     write("plugin.json", {

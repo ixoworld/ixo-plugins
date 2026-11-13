@@ -83,7 +83,9 @@ for (const d of dirs) {
   }
   if (existsSync(join(root, "plugins", d, "plugin.json")) && existsSync(join(root, "plugins", d, ".claude-plugin", "plugin.json"))) {
     const { $schema: _s, extensions: _e, ...portable } = readJson("plugins", d, "plugin.json");
-    if (!isDeepStrictEqual(portable, readJson("plugins", d, ".claude-plugin", "plugin.json"))) bad(`plugins/${d}: plugin.json and .claude-plugin/plugin.json disagree`);
+    /* The Claude directory's listing links live only in the Claude manifest (template/<kind>/kind.json listing). */
+    const { supportUrl: _su, privacyPolicyUrl: _pp, termsOfServiceUrl: _ts, license: _li, ...claude } = readJson("plugins", d, ".claude-plugin", "plugin.json");
+    if (!isDeepStrictEqual(portable, claude)) bad(`plugins/${d}: plugin.json and .claude-plugin/plugin.json disagree`);
     if (portable.name !== d) bad(`plugins/${d}: plugin.json name is "${portable.name}"`);
   }
   if (existsSync(join(root, "plugins", d, "mcp.json")) && existsSync(join(root, "plugins", d, ".mcp.json"))) {

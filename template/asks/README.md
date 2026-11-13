@@ -52,7 +52,7 @@
   needed to cash out. Download it from My Profile.
 - **Delete**: removes the page, its LinkedIn tick and its private link for good. Your past work stays on the record.
 
-How it works: [docs/pro-pages.md](https://github.com/impactsai/openhands-network/blob/main/docs/pro-pages.md).
+How it works: [asks.world/how](https://asks.world/how).
 
 ## Your money
 
