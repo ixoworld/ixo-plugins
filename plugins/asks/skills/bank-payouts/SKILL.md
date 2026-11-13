@@ -48,7 +48,7 @@ You do the setup in the terminal; the person only logs in, clicks and replies.
 
 ```sh
 # The two tools, pinned. Write each command out in full: a shell shorthand does not run in zsh.
-npx --yes @ixo/payouts-facilitator@0.1    # below: installer
+npx --yes @ixo/payouts-facilitator@0.2    # below: installer
 npx --yes @ixo/decision-oracle@0.2        # below: sign-in
 ```
 
@@ -102,8 +102,8 @@ Preview, then install with the key read straight from the clipboard (`pbpaste` o
 or `xclip -o` on Linux; `Get-Clipboard` in PowerShell), then clear the clipboard:
 
 ```sh
-npx --yes @ixo/payouts-facilitator@0.1 deploy --network mainnet --name <worker> --entity <org> --rails stripe --payee-origins <site>
-STRIPE_SECRET_KEY="$(pbpaste)" npx --yes @ixo/payouts-facilitator@0.1 deploy --network mainnet --name <worker> --entity <org> --rails stripe --payee-origins <site> --stripe-webhook --yes --json
+npx --yes @ixo/payouts-facilitator@0.2 deploy --network mainnet --name <worker> --entity <org> --rails stripe --payee-origins <site>
+STRIPE_SECRET_KEY="$(pbpaste)" npx --yes @ixo/payouts-facilitator@0.2 deploy --network mainnet --name <worker> --entity <org> --rails stripe --payee-origins <site> --stripe-webhook --yes --json
 pbcopy < /dev/null
 ```
 
@@ -115,9 +115,9 @@ Preview, then with `--yes`, then install once more (the same flags, no key) so t
 link:
 
 ```sh
-npx --yes @ixo/payouts-facilitator@0.1 anchor --network mainnet --org <org> --facilitator-url <url> --session ~/.ixo/publish-session-mainnet.json
-npx --yes @ixo/payouts-facilitator@0.1 anchor --network mainnet --org <org> --facilitator-url <url> --session ~/.ixo/publish-session-mainnet.json --yes
-npx --yes @ixo/payouts-facilitator@0.1 deploy --network mainnet --name <worker> --entity <org> --rails stripe --payee-origins <site> --yes --json
+npx --yes @ixo/payouts-facilitator@0.2 anchor --network mainnet --org <org> --facilitator-url <url> --session ~/.ixo/publish-session-mainnet.json
+npx --yes @ixo/payouts-facilitator@0.2 anchor --network mainnet --org <org> --facilitator-url <url> --session ~/.ixo/publish-session-mainnet.json --yes
+npx --yes @ixo/payouts-facilitator@0.2 deploy --network mainnet --name <worker> --entity <org> --rails stripe --payee-origins <site> --yes --json
 ```
 
 ### 7. The verifier and the payout limit (Stop)
@@ -126,14 +126,14 @@ npx --yes @ixo/payouts-facilitator@0.1 deploy --network mainnet --name <worker> 
 each payout yourself, or none?" Leave out `--approval-over` when they say none.
 
 ```sh
-npx --yes @ixo/payouts-facilitator@0.1 admin oracles add <verifier> --url <url> --session ~/.ixo/publish-session-mainnet.json --network mainnet
-npx --yes @ixo/payouts-facilitator@0.1 admin defaults set --max <most> --currency USD --approval-over <amount> --rails stripe --label "asks.world" --url <url> --session ~/.ixo/publish-session-mainnet.json --network mainnet
+npx --yes @ixo/payouts-facilitator@0.2 admin oracles add <verifier> --url <url> --session ~/.ixo/publish-session-mainnet.json --network mainnet
+npx --yes @ixo/payouts-facilitator@0.2 admin defaults set --max <most> --currency USD --approval-over <amount> --rails stripe --label "asks.world" --url <url> --session ~/.ixo/publish-session-mainnet.json --network mainnet
 ```
 
 ### 8. Check it
 
 ```sh
-npx --yes @ixo/payouts-facilitator@0.1 trust-check --url <url> --org <org> --network mainnet
+npx --yes @ixo/payouts-facilitator@0.2 trust-check --url <url> --org <org> --network mainnet
 ```
 
 It must end with `"ok":true`. If not, say each problem in plain words and stop.
