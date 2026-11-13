@@ -7,7 +7,8 @@ description: Set up bank payouts for the person's company on asks.world - the co
 
 The company pays workers into bank accounts from **its own payouts service**: it runs on the company's
 own Cloudflare account and pays from the company's own Stripe. asks.world and IXO never hold its keys.
-You do the setup in the terminal; the person only logs in, clicks and replies.
+You do the setup in the terminal; the person only logs in, clicks and replies. How it works, in plain
+words, for the person: `https://{{#TESTNET}}test.{{/TESTNET}}asks.world/payments`.
 
 ## Do this
 
@@ -60,7 +61,7 @@ npx --yes @ixo/decision-oracle@0.2        # below: sign-in
 node --version
 ```
 
-It must say v22.6 or newer; else they install Node.js from https://nodejs.org first.
+It must say v26 or newer; else they install the LTS version from https://nodejs.org first.
 
 ### 2. Cloudflare (Stop)
 
