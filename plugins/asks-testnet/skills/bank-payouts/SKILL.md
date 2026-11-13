@@ -7,15 +7,19 @@ description: Set up bank payouts for the person's company on asks.world - the co
 
 The company pays workers into bank accounts from **its own payouts service**: it runs on the company's
 own Cloudflare account and pays from the company's own Stripe. asks.world and IXO never hold its keys.
-You do the setup in the terminal; the person only logs in, clicks and replies. How it works, in plain
-words, for the person: `https://test.asks.world/payments`.
+You do the setup in the terminal; the person only logs in, clicks and replies.
+
+**Where to send the person, in this order:** their company's **Payouts** page,
+`https://test.asks.world/org/<org>/settings` (the setup prompt with the company's
+details, and the Ready check); then the full guide, `https://docs.ixo.world/payments/self-host-payouts`.
+Only to learn more: `https://test.asks.world/payments`.
 
 ## Do this
 
 1. No terminal here (a chat-only app) → **Say:** "This needs an assistant that can run commands on
    your computer, like Claude Code or Codex. Open your company's **Payouts** page on asks.world,
    choose **Bank payouts with your own Stripe** and press **Copy the setup prompt**, then paste it
-   there." and stop.
+   there. The full guide is at https://docs.ixo.world/payments/self-host-payouts." and stop.
 2. They pasted the setup prompt from the Payouts page → it already holds their details. Follow its
    steps, with the rules here.
 3. Otherwise get the details below, then run the steps in order.
@@ -61,7 +65,7 @@ npx --yes @ixo/decision-oracle@0.2        # below: sign-in
 node --version
 ```
 
-It must say v26 or newer; else they install the LTS version from https://nodejs.org first.
+It must say v24 or newer; else they install the LTS version from https://nodejs.org first.
 
 ### 2. Cloudflare (Stop)
 
