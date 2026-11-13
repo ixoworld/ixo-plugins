@@ -31,11 +31,12 @@
 
 ## Setting up a new company
 
-Creating the company, building or linking its own verifier, and running its own payouts service are
-done by a developer on their own computer, not in this chat. **Say:** "Setting up a company is a
-developer's job for now. The guide is at https://docs.ixo.world/build-an-oracle/decision-oracle. Once
-your company is set up, I can help with its payouts and checks from here, and you post as the company
-on asks.world." Don't walk them through it step by step.
+Creating the company and building or linking its own verifier are done by a developer on their own
+computer, not in this chat. **Say:** "Setting up a company is a developer's job for now. The guide is
+at https://docs.ixo.world/build-an-oracle/decision-oracle. Once your company is set up, I can help
+with its payouts and checks from here, and you post as the company on asks.world." Don't walk them
+through it step by step. Paying workers into bank accounts from the company's own Stripe is the one
+part you do set up with them: the `bank-payouts` skill.
 
 ## Posting as the company
 
