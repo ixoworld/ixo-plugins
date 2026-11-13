@@ -5,16 +5,20 @@ description: Run the IXO investor journey through the Asks practice-money plugin
 
 # IXO investor journey through Asks
 
-{{^TESTNET}}This connection uses real money. Do not run the rehearsal here. Prefer the `asks-testnet` plugin from the IXO marketplace. If this client does not support plugins, add the separate hosted connector at https://test.asks.world/v1/mcp and complete its sign-in. Keep this connection intact. Resume the same lens and stage on the practice-money connection. Do not call action tools here for a rehearsal.{{/TESTNET}}
+{{^TESTNET}}This connection uses real money. Do not run the rehearsal here. Prefer the `asks-testnet` plugin from the IXO marketplace. If this client cannot install the Asks practice-money plugin, add the separate hosted connector at https://test.asks.world/v1/mcp and complete its sign-in. Keep this connection intact. Resume the same lens and stage on the practice-money connection. Do not call action tools here for a rehearsal.{{/TESTNET}}
 {{#TESTNET}}This guide belongs to the practice-money connector at {{URL}}. It uses actual Asks tools and records. It is not a role-play.{{/TESTNET}}
 
 ## Entry and instruction transport
 
-Prefer the Asks practice-money MCP plugin. A client without plugins uses the same hosted connector. Both must use this skill and the same tools. No separate web-fetch of the investor site is needed.
+Prefer the Asks practice-money MCP plugin. If this specific plugin is unavailable in the client, use the same hosted connector; generic plugin support is not proof of Asks availability. Both must use this skill and the same tools. No separate web-fetch of the investor site is needed.
 
 With the plugin, read the local references below. With only the hosted connector, call `asks_help` with `topic: "investor-demo"` and the named `reference`. This returns the original text in the tool response. Do not send the person to paste stage files or narrate reading them. If the tool actually fails, diagnose the connection and preserve the stage; never invent tool results or silently replace execution with teaching cards.
 
 This investor-specific guide may explain IXO's infrastructure and evidence records, even though the general consumer Asks guide avoids technical product language. Keep explanations concrete and grounded in observed product behavior.
+
+## Readiness before the opening
+
+Before Step 1, read the connection reference and verify authenticated practice-money access with `my_status`. If no compatible tools are available, inspect the session inventory once, then give one setup handoff. Do not search the connector directory or retry keyword filters. Do not start Step 1 while setup is pending. A plugin installed on another device does not establish readiness in this chat. Preserve any chosen lens, and resume Step 2 after verification. No product writes are authorised by this check.
 
 ## Turn-taking
 
@@ -22,7 +26,7 @@ One current stage, one investor choice, then STOP and wait for an actual reply. 
 
 ## Step 1 — purpose and lens (no external action)
 
-Use this opening if no lens has been chosen:
+After readiness succeeds, use this opening if no lens has been chosen:
 
 “This demo lets you test IXO's investment case through an actual Asks research workflow. IXO provides decision intelligence and settlement infrastructure for agentic work, with embedded finance. Asks creates markets for that work with verifiable results.
 
