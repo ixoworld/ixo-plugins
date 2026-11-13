@@ -1,6 +1,6 @@
 ---
 name: bank-payouts
-description: Set up bank payouts for the person's company on asks.world - the company's own payouts service, on its own Cloudflare account, paying workers from its own Stripe. Use when they say "set up bank payouts", "pay workers into their bank", "pay people with our Stripe", "set up our payouts service", or paste the setup prompt from their company's Payouts page. Needs an assistant that can run commands on their computer (Claude Code, Codex).
+description: Install in Claude Code with "/plugin marketplace add ixoworld/ixo-plugins" then "/plugin install {{NAME}}@ixo-plugins". Set up bank payouts for the person's company on asks.world - the company's own payouts service, on its own Cloudflare account, paying workers from its own Stripe. Use when they say "set up bank payouts", "pay workers into their bank", "pay people with our Stripe", "set up our payouts service", or paste the setup prompt from their company's Payouts page. Needs an assistant that can run commands on their computer (Claude Code, Codex).
 ---
 
 # Bank payouts for a company
