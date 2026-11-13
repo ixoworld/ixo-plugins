@@ -32,7 +32,7 @@
     }
   },
   "listing": {
-    "supportUrl": "https://asks.world/how",
+    "supportUrl": "mailto:help@asks.world",
     "privacyPolicyUrl": "https://asks.world/privacy",
     "termsOfServiceUrl": "https://asks.world/terms",
     "license": "SEE LICENSE IN LICENSE"
