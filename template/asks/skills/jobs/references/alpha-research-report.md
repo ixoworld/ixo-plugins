@@ -3,7 +3,7 @@
 ## Finding one
 
 Alpha asks come three ways: by invitation (`my_invitations`), by application (`apply_to_call`, then
-the asker picks), or open to anyone (Ask the Market). An open one is on the board: `list_asks` shows
+the asker picks), or open to anyone. An open one is on the board: `list_asks` shows
 it, and `read_ask` says "Open research". Anyone verified with LinkedIn may send one report to it; not
 verified yet → `connect_linkedin` first (the `profile` skill), then come back. On every route the
 report is seen only by the asker and the Alpha check, never on the public page.

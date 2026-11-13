@@ -26,13 +26,11 @@ brief ($1 each). You read it, and your OK pays them."
    instead, with a report. Shall I?" (yes → [private.md](private.md) with `report: true`). Never post
    an Alpha ask without it, and never guess its name: `checker` is its name exactly as listed.
 2. Ask the three questions below, one at a time, then confirm the defaults in one line.
-3. **Ask** which of three ways:
-   - "Invite pros you choose (Market Pros)" → `access: "invite"`, plus `invite` ([private.md](private.md)).
-     If they ask: "You pick the researchers and invite them."
-   - "Let people apply, you pick (Market Calls)" → `access: "apply"`; they may add `invite` for people
-     let in at once. If they ask: "Researchers apply, and you choose who takes it."
-   - "Open to anyone who meets your requirements (Ask the Market)" → no `access`. If they ask: "It's
-     listed on the board, and anyone verified with LinkedIn can send one report."
+3. **Who does it:** they named people → invite them. They said "anyone" → open. Otherwise **ask** one
+   plain question: "Do you want to pick the researchers, or let anyone verified send a report?"
+   - Pick them → `access: "invite"`, plus `invite` ([private.md](private.md)). Want people to apply
+     first → `access: "apply"`; they may add `invite` for people let in at once.
+   - Anyone → no `access`. It's listed on the board, and anyone verified with LinkedIn can send one report.
 
    **Say** on every route: "Only you and the Alpha check see the reports. It's $1 per report checked,
    even one that's turned down, up to the number of reports you pay for."

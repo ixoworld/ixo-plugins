@@ -2,8 +2,9 @@
 
 ## Do this
 
-1. **Ask** which kind, unless they've said: "Is this any kind of work, or market research checked by
-   Alpha?"
+1. Pick the kind from what they said: a question about a market, a company or customers is market
+   research; anything else is any work. Only when you really can't tell, **ask:** "Is this research
+   into a market, or some other work?"
    - **Any work** (checked by Asky Pro Checker) → `draft_call` with `kind: "review"` and everything the
      person already said.
    - **Market research, checked by Alpha** → `draft_call` with `kind: "review"` and `research`
