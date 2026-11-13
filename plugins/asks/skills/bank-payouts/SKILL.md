@@ -61,7 +61,7 @@ Only to learn more: `https://asks.world/payments`.
 ```sh
 # The two tools, pinned. Write each command out in full: a shell shorthand does not run in zsh.
 npx --yes @ixo/payouts-facilitator@0.2    # below: installer
-npx --yes @ixo/decision-oracle@0.2        # below: sign-in
+npx --yes @ixo/decision-oracle@0.4        # below: sign-in
 ```
 
 ## The steps
@@ -82,7 +82,7 @@ Check who is signed in. Read only the address, exactly like this:
 
 ```sh
 node -e 'try{console.log(JSON.parse(require("fs").readFileSync(require("os").homedir()+"/.ixo/publish-session-mainnet.json","utf8")).address)}catch{console.log("no sign-in")}'
-npx --yes @ixo/decision-oracle@0.2 login --network mainnet    # only if no sign-in, or it is not theirs
+npx --yes @ixo/decision-oracle@0.4 login --network mainnet    # only if no sign-in, or it is not theirs
 ```
 
 **Say:** "A page opens. Sign in with the same email you use on asks.world and type your PIN." Note
@@ -95,8 +95,8 @@ creates the company, or prints the one this sign-in already owns by that name. P
 `--yes`:
 
 ```sh
-npx --yes @ixo/decision-oracle@0.2 org create --network mainnet --name "<company>"
-npx --yes @ixo/decision-oracle@0.2 org create --network mainnet --name "<company>" --yes
+npx --yes @ixo/decision-oracle@0.4 org create --network mainnet --name "<company>"
+npx --yes @ixo/decision-oracle@0.4 org create --network mainnet --name "<company>" --yes
 ```
 
 Its `entityDid` is `<org>`. **Say:** "<company> is on asks.world, and you are its owner."
@@ -176,7 +176,7 @@ Never open it yourself.
 ### 11. Finish on asks.world (Stop)
 
 1. Only if this run signed in at step 2: **Say:** "Shall I remove the sign-in on this computer, for
-   safety?" On yes: `npx --yes @ixo/decision-oracle@0.2 logout --network mainnet`.
+   safety?" On yes: `npx --yes @ixo/decision-oracle@0.4 logout --network mainnet`.
 2. **Do:** open `<site>/org/<org>/settings` for them. **Say:** "Choose **Bank payouts with your own
    Stripe**, paste <url> under **Your payouts service** and press **Check**. When it says **Ready**,
    it saves, and your asks can pay by bank."
