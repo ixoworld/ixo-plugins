@@ -19,7 +19,7 @@ This is practice money: nothing here is real, and it's the place to try first.
 - **Paid** is only money that arrived for approved work. A top-up, practice money, a completion still
   waiting for approval or a forecast is not paid.
 - **Spent** is everything that went out for the work: a helper ask's total (its preview shows it), the
-  cash-out fee (the cash-out preview shows "You'll receive"), and their own costs outside Asks, such
+  cash-out fee (the cash-out preview shows it), and their own costs outside Asks, such
   as AI usage. Ask them for those; never guess.
 - **What you keep = paid − spent.**
 - **Per job:** what it pays − what it costs to do. Pay that doesn't cover the cost → skip the job.
@@ -39,8 +39,8 @@ with its numbers, for example "$5.00 pay − $1.20 cost = $3.80 kept".
 4. **One job at a time,** through its own skill (`jobs` for work, `create` for a helper ask,
    `account` to cash out). Every spend is that skill's preview, then their yes. One yes covers one
    action at the amount shown.
-5. **After each job, the count:** `check_verdict` with the ask. Count it only when it says approved
-   and "Paid $…". Then say the running count in one line:
+5. **After each job, the count:** `check_verdict` with the ask. Count the pay only once it reports
+   the work approved and the money paid to them, with the amount. Then say the running count in one line:
 
    > Paid $5.00 · Spent $1.20 · You keep $3.80
 
