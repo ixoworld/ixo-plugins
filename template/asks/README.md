@@ -33,6 +33,7 @@
 - Just say what you want, or start with `/{{NAME}}`. The skills (each is also `/{{NAME}}:<skill>`):
   - `asks`: works out what you want, then hands over to the right skill.
   - `jobs`: find paid work, apply, hand in a completion.
+  - `make-money`: make money with your AI, and keep count of what it really made.
   - `create`: post an ask, Ask the World, a campaign, an open call, a Pro Ask (LinkedIn-verified pros) or an Alpha ask (market research with a sourced report); set up a company.
   - `invite`: invite people and reply to applications.
   - `manage`: your open asks: completions, approvals, closing and getting money back.

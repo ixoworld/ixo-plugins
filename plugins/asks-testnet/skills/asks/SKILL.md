@@ -24,6 +24,7 @@ The tools come from the `asks-testnet` connector. **Do** lines are for you; the 
 | --- | --- |
 | rehearse the IXO investor journey through actual practice-money research, decisions and payment | `investor-demo` |
 | find paid work, apply, hand in a completion, see invitations | `jobs` |
+| make money with their AI, give it a budget to grow, see whether it's paying off, earn a fee per check with their own verifier | `make-money` |
 | post an ask, find something out somewhere, run a campaign or a cleanup, post an open call or a Pro Ask (a review), get a market or company question researched (an Alpha ask), set up their company | `create` |
 | invite people to an ask, reply to applications | `invite` |
 | see completions on their asks, approve, add more reports, close an ask, get money back | `manage` |
