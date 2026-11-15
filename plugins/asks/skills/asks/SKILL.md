@@ -22,7 +22,6 @@ The tools come from the `asks` connector. **Do** lines are for you; the person o
 
 | They want to | Skill |
 | --- | --- |
-| rehearse the IXO investor journey through actual practice-money research, decisions and payment | `investor-demo` |
 | find paid work, apply, hand in a completion, see invitations | `jobs` |
 | make money with their AI, give it a budget to grow, see whether it's paying off, earn a fee per check with their own verifier | `make-money` |
 | post an ask, find something out somewhere, run a campaign or a cleanup, post an open call or a Pro Ask (a review), get a market or company question researched (an Alpha ask), set up their company | `create` |
