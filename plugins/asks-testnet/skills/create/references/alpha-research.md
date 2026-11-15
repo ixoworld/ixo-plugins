@@ -106,9 +106,13 @@ Without hours and a rate it gives the checklist only. Never call it a quote.
 <days> days, <only pros you invite | people who apply and you pick | open to anyone verified with
 LinkedIn>. Each report must cover: <the lines, one each>. Information: <Free websites only | Also
 their own research | Also paid reports>, at least <n> source(s), only info from before <cutoff, their
-local time>, due <deadline, their local time>. The question and brief are public on the ask page; only
-you and the Alpha check see the reports. You give the final OK on each report, which pays it. The
-check is $1 per report, on top of the pay, even one it turns down. It costs <total> in all (<real / practice> money). OK?"
+local time>, due <deadline, their local time>. <With invitation access: the brief is restricted and
+unlisted. Otherwise: the brief is public.> Reports are private: the asker, named final approver
+and the service checking the work may read them, and authors may read their own. Invitees cannot read each other's
+reports just by joining. Authorised services process reports for storage and checking; disclose
+the selected service's processing terms. Separate read permissions can add readers.
+You give the final OK on each report, which pays it. The
+check is $1 per report, on top of the pay, even one it turns down. The hold is <total> (<real / practice> money); show any additional network fee separately. OK?"
 
 ## Refusals
 
