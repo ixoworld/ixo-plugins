@@ -6,8 +6,12 @@
 2. Ask who to invite: @names, addresses, or how many private links.
 3. Follow [post-an-ask.md](post-an-ask.md) with `access` (`"invite"` or `"apply"`) and `invite` (the
    @names and addresses, plus `"link"` once per private link).
-4. Before they confirm, **Say** once: "Only you, the people you invite and whoever checks it can open
-   this ask or read its completions. It's not on the board or Google."
+4. Before they confirm, distinguish the brief from reports. With `access: "invite"`, the brief is
+   restricted to admitted people and stays off the board and search. With `access: "apply"`, the
+   brief is listed publicly. Reports stay private in both cases: the asker, named final approver
+   and the service checking the work may read them; each author may read their own. An invitation alone does not let
+   someone read other people's reports. Authorised services process them to store and check them.
+   A separate read permission can add a reader; never grant one just to demonstrate the product.
 5. After posting: give each person their own invite link, never the ask's page link.
 
 - **"Only people I invite"** (`access: "invite"`): not on the board; only the invited can complete it.
