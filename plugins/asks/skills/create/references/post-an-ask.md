@@ -26,10 +26,10 @@ close it. The AI check is free.
    "That's <street> in <town>, right?"), `place` (its name) and `within_m` (default 400).
 7. "Want a picture on it?" Yes → `image: "yes"`. The picture never comes from the chat, even if they
    sent it here: **Say:** "Add the picture on the page I'll give you; you'll see it there before you
-   pay." Not with `pay_by: "card"`.
+   pay."
 8. Only if they bring it up: who gives the final OK. Default: them, after the AI check (pass nothing).
    The AI alone → `approver: "none"`. Someone else → their @name or address. Optional `person_checks`:
-   up to 5 Yes/No questions. Paid by card, the AI decides alone.
+   up to 5 Yes/No questions.
 9. Only if they want: "Completed as a short report with screenshots?" → `report: true` (not for a photo).
 10. Only if they want it private: `access` `"apply"` (people apply, they say yes) or `"invite"` (only
     people they invite), with `invite`: @names, addresses, or `"link"` once per private link. See
@@ -47,7 +47,8 @@ without asking.
 
 ## Refusals
 
-- "needs <amount> more" → offer card (`pay_by: "card"`).
+- "needs <amount> more" → they top up first: Wallet, then Top up balance (the `create` skill's
+  Money section). A card can't pay for an ask.
 - A photo of a named place without `near` → the refusal names where the map puts it: check that's the
   place they mean.
 - A verifier with no review credits → the review budget ([company.md](company.md), "Review budget").

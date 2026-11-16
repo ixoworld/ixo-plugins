@@ -18,9 +18,12 @@ never switch mid-task). Signed in first (`connect` skill).
 
 ## What they have
 
-Read `my_status`; never repeat its lines about a "home address" or a setting. **Say:** "Your Balance is $<X>.
-It's under Wallet: https://asks.world/me/wallet." If it also shows money set
-aside on their open asks, add: "$<Y> is Committed to your Asks." Then the one next step that fits:
+Read `my_status`; never repeat its lines about a "home address" or a setting. Their Wallet holds two
+kinds of money: **digital dollars** (what open asks pay, and what they top up) and **Asks credit**
+(what Pro Asks pay; `my_status` shows it as money "set aside for checks"). **Say:** "Your Balance is
+$<X>." and, when they have both, which part is which. "It's under Wallet:
+https://asks.world/me/wallet." If it also shows money set aside on their open
+asks, add: "$<Y> is Committed to your Asks." Then the one next step that fits:
 
 - **Has money to cash out:** "Want to cash it out?"
 - **"Move my earnings to my account":** it's already there. **Say:** "What you earn is paid straight
@@ -28,8 +31,12 @@ aside on their open asks, add: "$<Y> is Committed to your Asks." Then the one ne
 
 ## Cash out
 
-The questions happen here in the chat; the money leaves only when they confirm on asks.world.
-**Do:** `cash_out` with nothing else; it says what they have, their LinkedIn and their identity check.
+**Digital dollars** are cashed out on asks.world, not here. **Say:** "Cash them out on
+asks.world, Cash out: https://asks.world/me/cash-out. They go to your own address on Base; the fee shows
+first. Cashing them out to a bank is coming soon."
+
+**Asks credit** (Pro Ask earnings) is cashed out here in the chat; the money leaves only when they
+confirm on asks.world. **Do:** `cash_out` with nothing else; it says what they have, their LinkedIn and their identity check.
 Then pass each reply back, one question at a time:
 
 1. **LinkedIn missing** → the `profile` skill's LinkedIn step, then `cash_out` again.
@@ -38,10 +45,10 @@ Then pass each reply back, one question at a time:
    Tell me when it's done." Not done yet → wait for them.
 3. **Country** → `country` (two letters).
 4. **How to get paid** → `method`. Say the ways it lists in plain words: "To your bank account", "To
-   your mobile money", "Digital dollars (USDC)", and any that isn't open there with its reason, in <!-- plain-ok -->
+   your mobile money", "My own wallet (USDC on Base)", and any that isn't open there with its reason, in <!-- plain-ok -->
    a line. Recommend one.
 5. **How much** → `amount_usd`, within the limits it gives. Never say a limit or fee from memory.
-6. Digital dollars only: the address it asks for → `to`. Only what the person types.
+6. Own wallet only: the address it asks for → `to`. Only what the person types.
 
 It shows the amount: **Say:** "You'll receive $<X>. Go ahead?" On yes, again with `confirm: true`;
 it gives one link, already filled in. **Say:** "Open this and confirm with one tap: <link>. The money
@@ -54,8 +61,14 @@ Fix it here: <link>."
 
 ## Practice money
 
-Only in the sandbox (the `asks` skill says how to switch). Real money
-is never topped up: a card pays an ask when it's posted (the `create` skill).
+Only in the sandbox (the `asks` skill says how to switch).
+
+## Top up real money
+
+**Say:** "Add money on asks.world: Wallet, then Top up balance: https://asks.world/me/wallet/add. Send
+digital dollars on Base to your own address shown there, then tap to move them into your wallet. The fee
+and time show first. It needs a Google or Apple sign-in." Never send or move it for them. Then
+`my_status` to see it arrived. A card pays only for a Pro Ask, on its pay page.
 
 ## Emails
 

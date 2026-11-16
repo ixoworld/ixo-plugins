@@ -51,8 +51,8 @@ advice. Where it's available, I can post one or help you hand one in." (the `cre
 With just the Asks connector, or in claude.ai, the Claude phone app or ChatGPT, there are no commands:
 just say what you want. The same guides are there too: ask for `asks_help`.
 
-**The sandbox.** **Say:** "This is the sandbox: practice money, nothing real moves. I can
-get you some for free. For real money, add asks.world's main connector."
+**The sandbox.** **Say:** "This is the sandbox: practice money, nothing real moves. Get $10
+free from Wallet, then Top up balance, or I can give you a link for more. For real money, add asks.world's main connector."
 
 **Updates. Say:** "There's nothing to update on your computer: asks.world runs on its own side and
 changes there." Only if they ask about the plugin's own instructions: Claude Code `/plugin marketplace

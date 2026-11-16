@@ -16,3 +16,9 @@ So a new or renamed skill needs three things:
 
 Then bump the versions in `plugin-specs.json` and run `bun scripts/regenerate.ts`. CI (`validate`, `bun run test`) fails a PR when
 the folders, `index.json` and `SKILLS` don't match. Companion only sees the change once it is merged to `main`.
+
+## Keep the skills true
+
+After every asks.world change or release, read every `asks` skill against what the product does now (the connector's
+tool texts in `impactsai/openhands-network` `services/openhands-mcp/src/`, and the site). Fix anything wrong or
+misleading in one PR: describe what exists now, never "it was X, now it's Y". Agents repeat the skills as fact.

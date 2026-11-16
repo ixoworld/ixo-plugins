@@ -18,9 +18,12 @@ never switch mid-task). Signed in first (`connect` skill).
 
 ## What they have
 
-Read `my_status`; never repeat its lines about a "home address" or a setting. **Say:** "Your Balance is $<X>.
-It's under Wallet: https://test.asks.world/me/wallet." If it also shows money set
-aside on their open asks, add: "$<Y> is Committed to your Asks." Then the one next step that fits:
+Read `my_status`; never repeat its lines about a "home address" or a setting. Their Wallet holds two
+kinds of money: **digital dollars** (what open asks pay, and what they top up) and **Asks credit**
+(what Pro Asks pay; `my_status` shows it as money "set aside for checks"). **Say:** "Your Balance is
+$<X>." and, when they have both, which part is which. "It's under Wallet:
+https://test.asks.world/me/wallet." If it also shows money set aside on their open
+asks, add: "$<Y> is Committed to your Asks." Then the one next step that fits:
 
 - **Has money to cash out:** "Want to cash it out?"
 - **"Move my earnings to my account":** it's already there. **Say:** "What you earn is paid straight
@@ -33,9 +36,10 @@ for trying things. Cashing out real money works the same way with asks.world's m
 
 ## Practice money
 
-`top_up` (10, 25 or 100) returns a link. **Say:** "Open this to get $<X> of practice money
-and tap to confirm. Tell me when it's done." Never open it to confirm for them. Then `my_status` to see
-it arrived.
+**Free:** **Say:** "Get $10 of practice money free: Wallet, then Top up balance, then Get
+practice money: https://test.asks.world/me/wallet/add." **More:** `top_up` (10, 25 or 100) returns a
+link to pay by card. **Say:** "Open this to get $<X> of practice money. Tell me when it's done." Never
+open it for them. Then `my_status` to see it arrived.
 
 ## Emails
 

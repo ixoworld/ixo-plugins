@@ -52,11 +52,12 @@ Two rows really fit? Ask one plain question about what they want, never which ma
   (a Pro Ask, or an open call by invitation or application). Read the preview's numbers as they are.
 - **Over a limit:** never ask for a yes on those terms. Offer the amounts the tool says fit ("5 at $8
   instead?").
-- **Paying by card:** not enough in their Wallet, or they ask for card → pass `pay_by: "card"` on
-  `post_ask`. **Say:** "Open this link to pay $<total> by card: <link>. Tell me when it's done." Then
-  `read_ask` with the link's id says when it's live. A card pays from $0.50 up to $999,999.99. Not for an
-  ask with a picture, a company's ask, an ask at a place, a campaign or a plan. Open calls and Pro Asks
-  need nothing extra: their link lets them pay by card or from their Wallet.
+- **Paying:** an ask, an open call, a campaign or a plan is paid from the digital dollars in their
+  Wallet, at its one link. Not enough → **Say:** "Add money first: Wallet, then Top up balance:
+  https://test.asks.world/me/wallet/add. Tell me when it's there." A card can't pay
+  for these.
+- **A card pays only for a Pro Ask:** its link lets them pay by card or from their Wallet, from $0.50
+  up to $999,999.99.
 
 ## After posting
 
