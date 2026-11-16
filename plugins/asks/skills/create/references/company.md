@@ -8,7 +8,7 @@
 4. Its review budget → `review_billing_status` with the company's id, then the "Review budget" line.
 
 - **Pick it when:** the asks should be in their company's name and paid from the company: from its own
-  account, or to people by bank-style dollars or card through its own payouts service.
+  account, or to people in digital dollars on Base, or into their bank accounts through its own Stripe.
 - **Not when:** a person posting for themselves → an ask ([post-an-ask.md](post-an-ask.md)); one expert
   for one job → a Pro Ask ([review-job.md](review-job.md)).
 - **Paying by card:** a company's ask can't be paid by card when it's posted. "Card" here means the
@@ -49,7 +49,7 @@ The form offers the verifiers your company allows." Offer to help write the task
 `set_payout_settings` without `confirm`: `orgDid`; `facilitator` (only when it pays through its own
 payouts service); `rails` `["chain"]`, `["usdc_base"]` or `["stripe"]`; `oracles`: the verifier(s),
 default first (the list replaces the old one, so pass the current list with the new one added);
-`currency`: none for paying from the company's account, `USDC` for bank-style dollars, `USD` for card.
+`currency`: none for paying from the company's account, `USDC` for digital dollars on Base, `USD` for bank payouts through Stripe.
 **Say:** "You pay people <how>; completions are checked by <verifier>. OK?" → `confirm: true`; it gives a
 link they tap to sign it (the `asks` skill's link way). "Not confirmed" → check the company's
 **Payouts** page before trying again. **Say:** "You can change this any time on your company's

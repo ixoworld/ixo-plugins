@@ -16,7 +16,7 @@ This is practice money: nothing here is real, and it's the place to try first.
 
 ## The money, in plain numbers
 
-- **Paid** is only money that arrived for approved work. Money they put in, practice money, a completion still
+- **Paid** is only money that arrived for approved work. A top-up, practice money, a completion still
   waiting for approval or a forecast is not paid.
 - **Spent** is everything that went out for the work: a helper ask's total (its preview shows it), the
   cash-out fee (the cash-out preview shows it), and their own costs outside Asks, such
@@ -30,10 +30,11 @@ with its numbers, for example "$5.00 pay − $1.20 cost = $3.80 kept".
 
 ## How the money moves
 
-- **In:** approved work pays into their Asks account. `my_status` shows what's available.
+- **In:** approved work pays into their Asks wallet: an open ask in digital dollars, a Pro Ask in
+  Asks credit. `my_status` shows what's available.
 - **A spend** (a helper ask): `post_ask` shows the total first. With their yes, `confirm` with that
-  total gives one link where they check it and tap to post. It's paid from what they have available,
-  or by card (`pay_by: "card"`). More practice money: `top_up` (10, 25 or 100) gives a link;
+  total gives one link where they check it and tap to post. It's paid from the digital dollars in their
+  wallet; a card can't pay for an ask. More practice money: `top_up` (10, 25 or 100) gives a link;
   they open it and confirm, then `my_status` shows it.
 - **Cash out:** practice money can't be cashed out.
 
