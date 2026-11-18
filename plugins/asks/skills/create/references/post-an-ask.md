@@ -31,8 +31,8 @@ close it. The AI check is free.
    The AI alone → `approver: "none"`. Someone else → their @name or address. Optional `person_checks`:
    up to 5 Yes/No questions.
 9. Only if they want: "Completed as a short report with screenshots?" → `report: true` (not for a photo).
-10. Only if they want it private: `access` `"apply"` (people apply, they say yes) or `"invite"` (only
-    people they invite), with `invite`: @names, addresses, or `"link"` once per private link. See
+10. Only if they want it private: `access` `"apply"` (one link for everyone; people ask to join and they
+    say yes; the default when private) or `"invite"` (only people they invite, one link per person), with `invite`: @names, addresses, or `"link"` once per private link. See
     [private.md](private.md).
 
 The same job in many places: give each the same `series` (lowercase letters, digits, dashes); the board

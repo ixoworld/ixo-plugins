@@ -24,7 +24,9 @@ skill). This all happens in the chat, and nothing here spends.
   person sees it). Show the note first. **Say:** "I'll invite <names> with this note: '<note>'. Send?"
   After: "Invited. Each of them can now tap **Accept** or **Decline**. Want me to see who's in later?"
 - **Private links:** give each link to the person to pass to one invitee, privately. **Say:** "Send
-  each of these to one person, privately. Each works once." Never put them anywhere public. The ask's plain page link only shows them a sign-in
+  each of these to one person, privately. Each works once." Never put them anywhere public. For a
+  whole group (a WhatsApp group), one link for everyone is the way: a Pro Ask posted for any
+  LinkedIn-checked pro (the default), shared by its `/t/<number>` link. An invite-only ask can't switch. The ask's plain page link only shows them a sign-in
   page: send their own link, or have them sign in with the account you invited. If a tool
   gives a link to tap, pass it on as the tool says and wait for them.
 - **Who's in:** `call_invites` (invited, links opened, who applied). Say it in a line.

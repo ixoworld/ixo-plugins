@@ -26,10 +26,13 @@ checks", never "the checker" or "the reviewer". A report that fails is not paid.
 - **Pay** → `money { entry_each, wanted, extra }`: what each good report pays, how many good reports
   they want, and how many extra (below). There is no fixed limit on reports.
 - **Days open** → `open_days`, any number of days.
-- **Who may join** → `access`. **Ask:** "Only pros you invite, or any verified pro who has the link?"
-  - Only pros I invite → `access: "invite"`. Invite them after posting.
-  - Any verified pro with the link → `access: "apply"`. A LinkedIn-verified pro joins at once from the
-    link. It is never on the board: only its link brings pros in.
+- **Who may join** → `access`. Default: one link for everyone, `access: "apply"`. Say it in the summary;
+  don't ask unless they bring it up.
+  - One link for everyone (default) → `access: "apply"`. They share one link anywhere, like a WhatsApp
+    group. A LinkedIn-verified pro joins at once from it. It is never on the board: only its link brings
+    pros in.
+  - Only if they want just people they pick → `access: "invite"`. Each invitation link works for one
+    person. Invite them after posting.
 - **Extra reports.** Every report counts in "N of M reports", even one that isn't good, and it is
   Filled at wanted + extra. **Say:** "Some reports may not be good enough. You don't pay for those, but
   they still count. I suggest your <wanted> plus 3 extra. Money for reports that never come in comes
@@ -72,8 +75,7 @@ over.
 paid without their OK.
 
 **Say:** "This sets up the Pro Ask '<title>' for <name> <version>: <n> scenarios, <wanted> good reports
-wanted, up to <count> in all, open <days> days, <only pros you invite | any verified pro with the
-link>. <the money sentence> Each report waits for your OK before it's paid. Post it?" For market
+wanted, up to <count> in all, open <days> days, <one link for everyone you share it with | only pros you invite>. <the money sentence> Each report waits for your OK before it's paid. Post it?" For market
 research, say the brief's lines (each report must cover …) in place of the name and scenarios.
 
 ## After posting
@@ -81,8 +83,10 @@ research, say the brief's lines (each report must cover …) in place of the nam
 - **Say:** "Your Pro Ask's page: https://test.asks.world/me/pro-asks/<number>.
   Reports come in there." If the reply gives a link to turn on their checks: "Open this and tap
   **Approve**, so reports wait for your OK."
-- Open to any verified pro → **Say:** "Share this link anywhere: https://test.asks.world/t/<number>.
-  Verified pros join from it."
+- One link for everyone → **Say:** "Share this one link with everyone, like a WhatsApp group:
+  https://test.asks.world/t/<number>. Anyone with a LinkedIn-checked pro page joins from it."
+- Invite-only → **Say:** "Only people you invite can join. Each invitation link works for one person.
+  For one link for a whole group, post your next Pro Ask for everyone." It can't be switched after posting.
 - **Invite pros:** `find_pro` with `q` (what the Pro Ask needs). **Say** the three to five it gives,
   each with "LinkedIn verified", their rate and their page; they choose. Then `invite_to_call` with the
   chosen @names and the private note (the `invite` skill).
