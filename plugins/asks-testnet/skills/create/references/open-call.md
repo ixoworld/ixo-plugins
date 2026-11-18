@@ -15,8 +15,8 @@ against five requirements; one that misses any isn't paid.
 - **Competition:** a prize for the one they pick (a few days after entries close), optional
   runners-up, and a small payment for every entry that passes.
 - **Hiring:** no winner. Every entry that passes is paid the same, up to a number they set.
-- **Who can enter:** anyone (default), or `access` `"apply"` (people they approve) or `"invite"` (only
-  people they invite).
+- **Who can enter:** anyone (default), or when private `access` `"apply"` (one link for everyone; people
+  they approve) or `"invite"` (only people they invite, one link per person).
 - **Money:** everything is **set aside** when posted; what isn't paid comes back when they close it.
   By invitation or approval, a share for the network goes on top: each person still gets the full pay.
   Say it as the preview does.
