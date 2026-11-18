@@ -11,8 +11,8 @@
   account, or to people in digital dollars on Base, or into their bank accounts through its own Stripe.
 - **Not when:** a person posting for themselves → an ask ([post-an-ask.md](post-an-ask.md)); one expert
   for one job → a Pro Ask ([review-job.md](review-job.md)).
-- **Paying by card:** a company's ask can't be paid by card when it's posted. "Card" here means the
-  company pays people through its own Stripe. Say this if they ask to pay by card.
+- **Funding and payouts:** use the methods and quote shown at checkout to fund the Ask. Payouts to
+  workers follow the company's payout settings, which can include bank payouts through its own Stripe.
 - **Who completes it:** as any ask: anyone, people they approve, or only people they invite.
 - **Money:** the company's account sets aside each ask's money when it is posted (a company paying
   through its own payouts service pays the people outside); checks may come from its review budget.

@@ -8,7 +8,7 @@ description: The person's money on asks.world. Use when they ask what they have,
 ## Do this
 
 1. "What do I have?" → `my_status`, then say their Balance (below).
-2. Cash out → `cash_out` with nothing, then pass each reply back, one question at a time (below).
+2. Cash out → check which balance they want to withdraw, then follow the steps below.
 3. Practice money → `top_up`. Emails → `email_settings`. A company's money → the last section.
 4. Every link: they tap it, never you. Then check with the tool named below.
 
@@ -18,12 +18,11 @@ never switch mid-task). Signed in first (`connect` skill).
 
 ## What they have
 
-Read `my_status`; never repeat its lines about a "home address" or a setting. Their Wallet holds two
-kinds of money: **digital dollars** (what open asks pay, and what they top up) and **Asks credit**
-(what Pro Asks pay; `my_status` shows it as money "set aside for checks"). **Say:** "Your Balance is
-$<X>." and, when they have both, which part is which. "It's under Wallet:
-https://test.asks.world/me/wallet." If it also shows money set aside on their open
-asks, add: "$<Y> is Committed to your Asks." Then the one next step that fits:
+Read `my_status` and show the available balances as labelled. Keep home address and settings lines
+private. **Say:** "Your Balance is <amount and
+currency>. It's under Wallet: https://test.asks.world/me/wallet." If the reply
+shows money set aside on their open Asks, say separately how much is **Committed to your Asks**.
+Then offer the next step that fits:
 
 - **Has money to cash out:** "Want to cash it out?"
 - **"Move my earnings to my account":** it's already there. **Say:** "What you earn is paid straight
@@ -36,10 +35,9 @@ for trying things. Cashing out real money works the same way with asks.world's m
 
 ## Practice money
 
-**Free:** **Say:** "Get $10 of practice money free: Wallet, then Top up balance, then Get
-practice money: https://test.asks.world/me/wallet/add." **More:** `top_up` (10, 25 or 100) returns a
-link to pay by card. **Say:** "Open this to get $<X> of practice money. Tell me when it's done." Never
-open it for them. Then `my_status` to see it arrived.
+**Say:** "Open Wallet, then Top up balance and Get practice money:
+https://test.asks.world/me/wallet/add." For a practice checkout link, use `top_up` and show the amount
+the tool quotes. They open it and confirm. Then check `my_status` to see it arrived.
 
 ## Emails
 

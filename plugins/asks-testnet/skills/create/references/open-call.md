@@ -17,8 +17,8 @@ against five requirements; one that misses any isn't paid.
 - **Hiring:** no winner. Every entry that passes is paid the same, up to a number they set.
 - **Who can enter:** anyone (default), or when private `access` `"apply"` (one link for everyone; people
   they approve) or `"invite"` (only people they invite, one link per person).
-- **Money:** everything is **set aside** when posted; what isn't paid comes back when they close it.
-  By invitation or approval, a share for the network goes on top: each person still gets the full pay.
-  Say it as the preview does.
+- **Money:** funds are set aside when the call is posted. Each approved participant receives the
+  full agreed reward. Show the rewards, fees and total from the preview and review the quote at
+  checkout. What isn't paid comes back when they close the call.
 - **Not this kind:** one short task → [post-an-ask.md](post-an-ask.md); an app tried by verified pros →
   [review-job.md](review-job.md); photos at places → [campaign.md](campaign.md).

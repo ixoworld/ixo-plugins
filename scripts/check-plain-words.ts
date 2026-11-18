@@ -14,7 +14,7 @@ const RULES: [string, RegExp][] = [
   ["completion", /\banswer(?:s|ed|ing)?\b/i],
   ["jargon", /\bDID\b|\bdid:ixo\b|(?<![Nn]ever )(?<!not )\b[Cc]laims?\b(?! work)|\b(?:[Ee]ntity|[Cc]ollections?|[Rr]ubrics?|[Cc]redentials?|[Ii]ssuers?|Matrix|[Hh]omeservers?|tx|[Tt]ransactions?)\b/],
 ];
-const NAMES = /\bAsky (?:Pro )?Checker\b/g;
+const NAMES = /\b(?:Asky (?:Pro )?Checker|Decision Oracles?|USDC on Base)\b/g;
 const bad: string[] = [];
 const walk = (d: string) => {
   for (const f of readdirSync(d)) {

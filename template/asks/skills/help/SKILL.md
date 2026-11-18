@@ -51,8 +51,8 @@ advice. Where it's available, I can post one or help you hand one in." (the `cre
 With just the Asks connector, or in claude.ai, the Claude phone app or ChatGPT, there are no commands:
 just say what you want. The same guides are there too: ask for `asks_help`.
 
-**The sandbox.** {{#TESTNET}}**Say:** "This is the sandbox: practice money, nothing real moves. Get $10
-free from Wallet, then Top up balance, or I can give you a link for more. For real money, add asks.world's main connector."{{/TESTNET}}{{^TESTNET}}**Say:**
+**The sandbox.** {{#TESTNET}}**Say:** "This is the sandbox: practice money, nothing real moves. Open
+Wallet, then Top up balance to see the practice options. For real money, add asks.world's main connector."{{/TESTNET}}{{^TESTNET}}**Say:**
 "The sandbox is a second asks.world connector with practice money; nothing real moves there. Add it
 (https://test.asks.world/v1/mcp as a connector) and say 'dry run'."{{/TESTNET}}
 

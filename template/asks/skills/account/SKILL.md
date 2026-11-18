@@ -8,7 +8,7 @@ description: The person's money on asks.world. Use when they ask what they have,
 ## Do this
 
 1. "What do I have?" → `my_status`, then say their Balance (below).
-2. Cash out → `cash_out` with nothing, then pass each reply back, one question at a time (below).
+2. Cash out → check which balance they want to withdraw, then follow the steps below.
 3. Practice money → `top_up`. Emails → `email_settings`. A company's money → the last section.
 4. Every link: they tap it, never you. Then check with the tool named below.
 
@@ -18,12 +18,11 @@ never switch mid-task). Signed in first (`connect` skill).
 
 ## What they have
 
-Read `my_status`; never repeat its lines about a "home address" or a setting. Their Wallet holds two
-kinds of money: **digital dollars** (what open asks pay, and what they top up) and **Asks credit**
-(what Pro Asks pay; `my_status` shows it as money "set aside for checks"). **Say:** "Your Balance is
-$<X>." and, when they have both, which part is which. "It's under Wallet:
-https://{{#TESTNET}}test.{{/TESTNET}}asks.world/me/wallet." If it also shows money set aside on their open
-asks, add: "$<Y> is Committed to your Asks." Then the one next step that fits:
+Read `my_status` and show the available balances as labelled. Keep home address and settings lines
+private. **Say:** "Your Balance is <amount and
+currency>. It's under Wallet: https://{{#TESTNET}}test.{{/TESTNET}}asks.world/me/wallet." If the reply
+shows money set aside on their open Asks, say separately how much is **Committed to your Asks**.
+Then offer the next step that fits:
 
 - **Has money to cash out:** "Want to cash it out?"
 - **"Move my earnings to my account":** it's already there. **Say:** "What you earn is paid straight
@@ -31,29 +30,29 @@ asks, add: "$<Y> is Committed to your Asks." Then the one next step that fits:
 
 ## Cash out
 
-{{^TESTNET}}**Digital dollars** are cashed out on asks.world, not here. **Say:** "Cash them out on
-asks.world, Cash out: https://asks.world/me/cash-out. They go to your own address on Base; the fee shows
-first. Cashing them out to a bank is coming soon."
+{{^TESTNET}}Approval sends the full Ask Reward to their wallet. They can request a withdrawal when it
+arrives. Methods include USDC on Base, a bank payout through their own Stripe account and other
+channels supported by the IXO Payments Facilitator. Offer only methods shown for their balance.
 
-**Asks credit** (Pro Ask earnings) is cashed out here in the chat; the money leaves only when they
-confirm on asks.world. **Do:** `cash_out` with nothing else; it says what they have, their LinkedIn and their identity check.
-Then pass each reply back, one question at a time:
+For their **Balance**, give the Wallet's Cash out page at https://asks.world/me/cash-out. Ask them to
+review the withdrawal quote there. For **Pro Ask earnings**, call `cash_out` with nothing else. It
+checks their available earnings, LinkedIn and identity check. Follow each reply, one question at a time:
 
 1. **LinkedIn missing** → the `profile` skill's LinkedIn step, then `cash_out` again.
 2. **Identity check:** say where it stands in one line: "Your identity check is done." / "It's being
    reviewed." / "Do your identity check first: https://asks.world/me/identity (Settings → Identity).
    Tell me when it's done." Not done yet → wait for them.
 3. **Country** → `country` (two letters).
-4. **How to get paid** → `method`. Say the ways it lists in plain words: "To your bank account", "To
-   your mobile money", "My own wallet (USDC on Base)", and any that isn't open there with its reason, in <!-- plain-ok -->
-   a line. Recommend one.
-5. **How much** → `amount_usd`, within the limits it gives. Never say a limit or fee from memory.
+4. **How to get paid** → `method`. Show the available methods from the reply and explain any
+   eligibility checks it names.
+5. **How much** → `amount_usd`, within the limits it gives for their chosen method.
 6. Own wallet only: the address it asks for → `to`. Only what the person types.
 
-It shows the amount: **Say:** "You'll receive $<X>. Go ahead?" On yes, again with `confirm: true`;
-it gives one link, already filled in. **Say:** "Open this and confirm with one tap: <link>. The money
-leaves only when you confirm there." Never confirm for them. The bank or mobile money name must match
-the name on their ID.
+Show the withdrawal quote, including the amount and currency they will receive, any fee and the
+destination. If the tool sends them to the Wallet for the quote, have them review it there. With their
+yes, call again with `confirm: true` and give them the confirmation link. If the quote changes, show
+the updated details and get a fresh yes. They confirm on the site. The bank or mobile money name must
+match the name on their ID.
 
 **Where it stands:** `cash_out_status` with the id the confirm page shows (or that they read you).
 **Say** it in one line: "Not confirmed yet", "On its way", "Paid", or "Something needs fixing: <what>.
@@ -62,17 +61,16 @@ for trying things. Cashing out real money works the same way with asks.world's m
 
 ## Practice money
 
-{{#TESTNET}}**Free:** **Say:** "Get $10 of practice money free: Wallet, then Top up balance, then Get
-practice money: https://test.asks.world/me/wallet/add." **More:** `top_up` (10, 25 or 100) returns a
-link to pay by card. **Say:** "Open this to get $<X> of practice money. Tell me when it's done." Never
-open it for them. Then `my_status` to see it arrived.{{/TESTNET}}{{^TESTNET}}Only in the sandbox (the `asks` skill says how to switch).
+{{#TESTNET}}**Say:** "Open Wallet, then Top up balance and Get practice money:
+https://test.asks.world/me/wallet/add." For a practice checkout link, use `top_up` and show the amount
+the tool quotes. They open it and confirm. Then check `my_status` to see it arrived.{{/TESTNET}}{{^TESTNET}}Only in the sandbox (the `asks` skill says how to switch).
 
 ## Top up real money
 
 **Say:** "Add money on asks.world: Wallet, then Top up balance: https://asks.world/me/wallet/add. Send
 digital dollars on Base to your own address shown there, then tap to move them into your wallet. The fee
-and time show first. It needs a Google or Apple sign-in." Never send or move it for them. Then
-`my_status` to see it arrived. A card pays only for a Pro Ask, on its pay page.{{/TESTNET}}
+and time show first. It needs a Google or Apple sign-in." Never send or move it for them. Then check
+`my_status` to see it arrived.{{/TESTNET}}
 
 ## Emails
 
