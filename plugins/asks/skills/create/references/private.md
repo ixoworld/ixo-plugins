@@ -2,9 +2,10 @@
 
 ## Do this
 
-1. **Ask:** "One link for everyone, where people ask to join and you say yes to each (good for a
-   WhatsApp group)? Or only people you invite, one link per person?" If they don't mind: one link for
-   everyone (`access: "apply"`).
+1. **Ask:** "One link for everyone (suggested): you share one link anywhere, like a WhatsApp group,
+   people ask to join and you say yes to each. Or only people you invite: each invitation link works for
+   one person. This can't be changed once it's posted. Which?" If they don't mind: one link for everyone
+   (`access: "apply"`). Repeat their choice in the summary before they confirm.
 2. Ask who to invite: @names, addresses, or how many private links.
 3. Follow [post-an-ask.md](post-an-ask.md) with `access` (`"apply"` or `"invite"`) and `invite` (the
    @names and addresses, plus `"link"` once per private link).
