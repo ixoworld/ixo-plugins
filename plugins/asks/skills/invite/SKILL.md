@@ -25,11 +25,20 @@ skill). This all happens in the chat, and nothing here spends.
   After: "Invited. Each of them can now tap **Accept** or **Decline**. Want me to see who's in later?"
 - **Private links:** give each link to the person to pass to one invitee, privately. **Say:** "Send
   each of these to one person, privately. Each works once." Never put them anywhere public. For a
-  whole group (a WhatsApp group), one secret link for everyone is the way: a Pro Ask posted for any
-  LinkedIn-checked pro (the default), shared by its `/j/…` link (`my_pro_asks` or `call_invites` shows
-  it), never `/t/<number>`. Single-use `/i/…` links are for one person. An invite-only ask can't switch. The ask's plain page link only shows them a sign-in
+  whole group (a WhatsApp group), one secret link for everyone is the way (below), never
+  `/t/<number>`. Single-use `/i/…` links are for one person. The ask's plain page link only shows them a sign-in
   page: send their own link, or have them sign in with the account you invited. If a tool
   gives a link to tap, pass it on as the tool says and wait for them.
+- **The secret link:** every private ask can have one secret `/j/…` link for everyone. One posted
+  for everyone gets it at once; an invite-only one gets it when they turn it on. On a Pro Ask,
+  LinkedIn-checked pros with a pro page join with it at once. On any other private ask or call, it shows
+  the brief and **Ask to join**, and the person says yes or no to each. `link_status`, `call_invites`,
+  `my_pro_asks` and `my_status` show it.
+  - Turn it on: `invite_to_call` with the ask's number and `group: "make"`; give them the link.
+  - Replace it (it got out) or turn it off: `invite_to_call` with `group: "replace"` or `"off"` first
+    shows what will happen and changes nothing. **Say:** "The old link stops working at once; people
+    already in stay in. Go ahead?" Only on their yes, the same call with `confirm: true`. After a
+    replace, give them the new link. They can also tap Replace link or Turn off link on the ask's page.
 - **Who's in:** `call_invites` (invited, links opened, who applied). Say it in a line.
 - **An application:** read it to them in plain words; `decide_application` yes or no **only on their
   word**. Never decide for them.

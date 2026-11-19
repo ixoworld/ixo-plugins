@@ -27,8 +27,9 @@ waiting, say so and offer the next step ("Nothing yet. Want me to invite more pe
 
 - **My Pro Asks:** `my_pro_asks` (one line each, what waits for them, and each open one's secret
   `/j/…` link). Each has its own page, only theirs: https://{{#TESTNET}}test.{{/TESTNET}}asks.world/me/pro-asks/<number>.
-- **A secret link got out, or they want a new one:** they replace it on that page. The old link stops
-  working at once; pros who already joined stay in.
+- **A secret link got out, they want a new one, or want it off:** the `invite` skill, "The secret
+  link" (in the chat), or Replace link / Turn off link on the ask's page. The old link stops working at
+  once; people already in stay in. `my_status` shows each open private ask's secret link.
 - **A Filled Pro Ask** (all its "N of M reports" came in) and they want more: `add_more_reports` with
   its number (and `more`, if they said how many). It spends nothing and gives the page where they add
   more reports and pay. **Say:** "Open <link>, add more reports and pay for them there. Tell me when
