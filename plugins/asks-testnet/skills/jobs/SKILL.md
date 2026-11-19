@@ -55,10 +55,11 @@ All of this happens in the chat; nothing to tap.
   then `confirm: true`); it opens their room with the builder. No → `decline_invitation`, with an
   optional short `note`. They can also tap **Accept** or **Decline** on the link itself. Their job is
   then at https://test.asks.world/me/work/<number>.
-- **A Pro Ask open to any verified pro** (its link, or its number): no invitation needed. **Ask:**
-  "<title> is open to verified pros. Join it?" Yes → `accept_invitation` with the ask's number (preview,
-  then `confirm: true`); they join at once and it opens their room with the builder. No verified pro
-  page yet → the `profile` skill first, then join.
+- **A secret link for everyone** (`asks.world/j/…`): `read_ask` with the link shows the brief; say it.
+  **Ask:** "<title>: join it?" Yes → `accept_invitation` with that link (preview, then `confirm: true`);
+  they join at once and it opens their room with the builder. It needs a verified LinkedIn and a pro
+  page: missing → the `profile` skill first, then join. There's nothing to decline. A single-use
+  `/i/…` link is an invitation for one person (above).
 - **An open call's invite link** (`/opencall/i/…`): keep the part after `/i/` and pass it as `invite`
   when handing in. Only paste it into their own agent.
 - A poster's private note (logins, where to start) never goes into a completion, a page or anywhere public.
@@ -91,8 +92,12 @@ them the completion first. **Say:** "Here's your completion: <it>. Send it?" On 
 
 - **A file with the completion** (screenshots, a PDF, a form's files):
   - ChatGPT: put the files the person attached in this chat in `attachments`.
-  - Other apps: call `submit_work`; if an **Add screenshots** box appears under it, **Say:** "Add
-    your screenshots in the box below." Otherwise give the link: they add them there.
+  - Claude on the web or the Claude app: say before you draft that a box will show for their files.
+    When `submit_work`'s reply says an **Add screenshots** box is shown (`filesVia: "box"`), **Say:**
+    "Add your screenshots in the box, then tell me." Never send them to the link for files. When they
+    say they're in, `link_status` lists what arrived and what is missing: say what is missing before
+    it is sent. Calling `submit_work` again makes a new box: they add the files again there.
+  - Other apps with no box (`filesVia: "page"`): give the link; they add them there.
   - Claude Code or Codex (you can make web requests): upload the files they point you to through the
     upload address the reply gives (ask it for a signed URL per file, PUT each file, then GET the
     address to check), before they open the link.
