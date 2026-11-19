@@ -26,14 +26,16 @@ checks", never "the checker" or "the reviewer". A report that fails is not paid.
 - **Pay** → `money { entry_each, wanted, extra }`: what each good report pays, how many good reports
   they want, and how many extra (below). There is no fixed limit on reports.
 - **Days open** → `open_days`, any number of days.
-- **Who may join** → `access`. Default: one link for everyone, `access: "apply"`. Always explain both and
-  get their yes before posting: it can't be changed after. **Say:** "Who can join? One link for everyone
-  (suggested): you share one link anywhere, like a WhatsApp group, and anyone with a LinkedIn-checked pro
-  page joins. Or only people you invite: each invitation link works for one person. This can't be changed
-  once it's posted. One link for everyone?"
-  - One link for everyone (default) → `access: "apply"`. They share one link anywhere, like a WhatsApp
-    group. A LinkedIn-verified pro joins at once from it. It is never on the board: only its link brings
+- **Who may join** → `access`. Default: one secret link for everyone, `access: "apply"`. Always explain
+  both and get their yes before posting: it can't be changed after. **Say:** "Who can join? One secret
+  link for everyone (suggested): you share it anywhere, like a WhatsApp group. Anyone who has the link
+  can join (LinkedIn-checked pros with a pro page). People without the link see nothing. Or only people
+  you invite: each invitation link works for one person. This can't be changed after posting. One
+  secret link for everyone?"
+  - One secret link for everyone (default) → `access: "apply"`. A LinkedIn-checked pro with a pro page
+    joins at once from it, and can read the brief first. It is never on the board: only its link brings
     pros in.
+  - Posting a private Pro Ask needs a Google or email sign-in on asks.world.
   - Only if they want just people they pick → `access: "invite"`. Each invitation link works for one
     person. Invite them after posting.
 - **Extra reports.** Every report counts in "N of M reports", even one that isn't good, and it is
@@ -78,7 +80,7 @@ over.
 paid without their OK.
 
 **Say:** "This sets up the Pro Ask '<title>' for <name> <version>: <n> scenarios, <wanted> good reports
-wanted, up to <count> in all, open <days> days, <one link for everyone you share it with | only pros you invite, one link per person>, which can't be
+wanted, up to <count> in all, open <days> days, <one secret link for everyone you share it with | only pros you invite, one link per person>, which can't be
 changed after posting. <the money sentence> Each report waits for your OK before it's paid. Post it?" For market
 research, say the brief's lines (each report must cover …) in place of the name and scenarios.
 
@@ -87,10 +89,13 @@ research, say the brief's lines (each report must cover …) in place of the nam
 - **Say:** "Your Pro Ask's page: https://test.asks.world/me/pro-asks/<number>.
   Reports come in there." If the reply gives a link to turn on their checks: "Open this and tap
   **Approve**, so reports wait for your OK."
-- One link for everyone → **Say:** "Share this one link with everyone, like a WhatsApp group:
-  https://test.asks.world/t/<number>. Anyone with a LinkedIn-checked pro page joins from it."
+- One secret link for everyone → hand over its `/j/…` link from `link_status`, `my_pro_asks` or
+  `call_invites`, never the `/t/<number>` page. **Say:** "Share this one link with everyone, like a
+  WhatsApp group: <the /j/ link>. Anyone who has it can join (LinkedIn-checked pros with a pro page);
+  people without it see nothing. It's emailed to you too." Not there yet: "It's being made; ask me
+  again in a minute."
 - Invite-only → **Say:** "Only people you invite can join. Each invitation link works for one person.
-  For one link for a whole group, post your next Pro Ask for everyone." It can't be switched after posting.
+  For one secret link for a whole group, post your next Pro Ask for everyone." It can't be switched after posting.
 - **Invite pros:** `find_pro` with `q` (what the Pro Ask needs). **Say** the three to five it gives,
   each with "LinkedIn verified", their rate and their page; they choose. Then `invite_to_call` with the
   chosen @names and the private note (the `invite` skill).
