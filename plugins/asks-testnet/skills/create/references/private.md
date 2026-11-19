@@ -15,12 +15,16 @@
    and the service checking the work may read them; each author may read their own. An invitation alone does not let
    someone read other people's reports. Authorised services process them to store and check them.
    A separate read permission can add a reader; never grant one just to demonstrate the product.
-5. After posting: one link for everyone → on a Pro Ask, its secret `/j/…` link (from `link_status`,
-   `my_pro_asks` or `call_invites`), never `/t/<number>`; on another ask, the ask's page link.
-   Invite-only → give each person their own invite link, never the ask's page link.
+5. After posting: one link for everyone → give its secret `/j/…` link (from `link_status`,
+   `call_invites` or `my_status`), never `/t/<number>` or the ask's page link. **Say:** "Share this one
+   link anywhere, like a WhatsApp group: <the /j/ link>. Anyone who has it reads the ask and taps **Ask
+   to join**; you say yes or no to each." Not there yet: "It's being made; ask me again in a minute."
+   Invite-only → give each person their own invite link, never the ask's page link. It can still get a
+   secret link later (the `invite` skill, "The secret link").
 
-- **"One link for everyone"** (`access: "apply"`, the default when private): on the board; one link to
-  share anywhere; people apply with a note and the person says yes or no to each (the `invite` skill).
+- **"One link for everyone"** (`access: "apply"`, the default when private): on the board; one secret
+  link to share anywhere; whoever opens it sees the brief and asks to join, and the person says yes or no
+  to each (the `invite` skill).
 - **"Only people I invite"** (`access: "invite"`): not on the board; only the invited can complete it.
   Each invitation link works for one person.
 - Anyone can be invited: an @name, an address, or a one-person link. No LinkedIn needed.

@@ -66,6 +66,6 @@ Two rows really fit? Ask one plain question about what they want, never which ma
 
 ## After posting
 
-Public ask: give them the ask's link. Private: send each person their own invite link, never the page
-link. More invites and applications: the `invite` skill. Completions, approvals and closing: the
+Public ask: give them the ask's link. Private with one link for everyone: its secret `/j/…` link, never
+`/t/<number>`. Invite-only: send each person their own invite link, never the page link. More invites and applications: the `invite` skill. Completions, approvals and closing: the
 `manage` skill.

@@ -88,13 +88,13 @@ research, say the brief's lines (each report must cover …) in place of the nam
 - **Say:** "Your Pro Ask's page: https://test.asks.world/me/pro-asks/<number>.
   Reports come in there." If the reply gives a link to turn on their checks: "Open this and tap
   **Approve**, so reports wait for your OK."
-- One secret link for everyone → hand over its `/j/…` link from `link_status`, `my_pro_asks` or
-  `call_invites`, never the `/t/<number>` page. **Say:** "Share this one link with everyone, like a
+- One secret link for everyone → hand over its `/j/…` link from `link_status`, `my_pro_asks`,
+  `call_invites` or `my_status`, never the `/t/<number>` page. **Say:** "Share this one link with everyone, like a
   WhatsApp group: <the /j/ link>. Anyone who has it can join (LinkedIn-checked pros with a pro page);
   people without it see nothing. It's emailed to you too." Not there yet: "It's being made; ask me
   again in a minute."
 - Invite-only → **Say:** "Only people you invite can join. Each invitation link works for one person.
-  For one secret link for a whole group, post your next Pro Ask for everyone." It can't be switched after posting.
+  I can also turn on one secret link for a whole group." On a yes: the `invite` skill, "The secret link".
 - **Invite pros:** `find_pro` with `q` (what the Pro Ask needs). **Say** the three to five it gives,
   each with "LinkedIn verified", their rate and their page; they choose. Then `invite_to_call` with the
   chosen @names and the private note (the `invite` skill).

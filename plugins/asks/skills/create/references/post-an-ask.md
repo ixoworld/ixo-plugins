@@ -7,7 +7,8 @@
 3. **Say:** "This posts '<title>' for <n> people, paying <reward> each, for <days> days. It costs
    <total> in all (<real / practice> money). You give the final OK on each completion. OK?"
 4. On "yes": `post_ask` again with `confirm` = that exact total. Give the link. Then `link_status`,
-   and give them the ask's link. If the reply also gives a link to turn on their checks → **Say:** "Open
+   and give them the ask's link (private with one link for everyone: its secret `/j/…` link, never
+   `/t/<number>`; [private.md](private.md)). If the reply also gives a link to turn on their checks → **Say:** "Open
    this and tap **Approve**, so completions wait for your OK." Completions then wait under **Waiting
    for you to check** (the `manage` skill).
 
