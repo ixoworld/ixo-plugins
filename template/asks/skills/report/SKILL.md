@@ -48,6 +48,9 @@ find (and of anything else that matters) and keep it on your phone or computer; 
 you hand in. Give each one a short name, like 'login error'." Note what they did, what should happen,
 what did, and the result. For each problem: what, which scenario, who it hurts and how badly, the
 exact steps to see it again. In **their** words; never mark something tested that wasn't.
+In Claude on the web or the Claude app (claude.ai) you can't take files from their computer, so say it
+now, not at the end. **Say:** "I can't attach files from your computer here. When the report is ready
+I'll give you a link, and you'll add your screenshots there in your browser."
 
 ## 2. Write it
 
@@ -88,8 +91,10 @@ too. Older Pro Asks without that form: `submit_work` with the review's number an
 - **Their screenshots:**
   - ChatGPT: put the screenshots the person attached in this chat in `attachments` (each is named
     by its file name; use those names as the findings' evidence).
-  - Other apps: call `submit_work`; if an **Add screenshots** box appears under it, **Say:** "Add
-    your screenshots in the box below: <their short names>." Otherwise they add them at the link.
+  - Claude on the web or the Claude app, and other chat apps: you can't reach their files. Call
+    `submit_work`; if an **Add screenshots** box appears under it, **Say:** "Add your screenshots in the
+    box below: <their short names>." Otherwise **Say:** "Open this link in your browser and add your
+    screenshots there: <their short names>." Never say you attached or uploaded them.
   - Claude Code or Codex (you can make web requests): upload each file the person points you to
     through the upload address `submit_work` gives, under the short name the report gives it, before
     they open the link. PNG, JPG, WebP or PDF, 5 MB each, at most 10 and 25 MB together:
