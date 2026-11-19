@@ -59,20 +59,22 @@ said out loud and confirmed, never hidden). The differences:
   advice, no insider info, the right to share sources, OpenAI's AI may read the evidence)." It's
   research only, never investment advice.
 - "Alpha Pro Asks aren't available on this network yet" → **Say:** "Hidden market research isn't open
-  here yet. I can show you a quote for a public Alpha ask listed on the board. Shall I?"
-  (yes → [alpha-research.md](alpha-research.md)).
-- To use the Pro Ask route, follow a refusal saying "draft it with `draft_call` and
+  here yet. I can post it as a public Alpha ask instead: listed on the board, with a check fee per report
+  checked. Shall I?" (yes → [alpha-research.md](alpha-research.md)).
+- The free Alpha check works only on a Pro Ask. A refusal saying "draft it with `draft_call` and
   research instead" → do that.
 
 ## The money
 
-For standard Pro Asks, the Pro Decision Oracle checks the Completion Report against the agreed
-requirements. For market research, Alpha checks it. The Asker pays the fee in addition to the
-reward. The pro receives the full agreed reward when the Asker approves the report.
+Read the preview's money sentence as it is. Never work a number out yourself.
 
-For either kind, show the reward per report, fees and total from the preview. Use the payment
-methods and limits shown at checkout. If checkout differs from the preview, review its quote and
-get a fresh yes. Unused funds return when the Asker closes the Ask.
+**Any work:** the AI check is free. The extra cost is a share for the network that runs Asks, on top, so
+each pro gets exactly the pay they were promised; the preview shows the share and the total before they
+pay. They pay only for reports they approve; what isn't paid comes back when they close it. If the
+total is more than one card payment can take, `draft_call` says so.
+
+**Market research, checked by Alpha:** the Alpha check is free too, and the same network share is
+added on each report they approve, so the researcher gets the full price. Nothing is paid without their OK.
 
 **Say:** "This sets up the Pro Ask '<title>' for <name> <version>: <n> scenarios, <wanted> good reports
 wanted, up to <count> in all, open <days> days, <one link for everyone you share it with | only pros you invite, one link per person>, which can't be

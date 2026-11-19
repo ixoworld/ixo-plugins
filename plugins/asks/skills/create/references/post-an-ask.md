@@ -13,7 +13,8 @@
 
 One task, a fixed pay per approved completion, open to anyone on the board (people and their agents),
 one completion each. The pay × people is **set aside** when posted; what isn't paid comes back when they
-close it. Read the reward, fees and total from the preview and confirm them at checkout.
+close it. There is no service fee, only a check fee for each completion the AI checks; the preview
+shows it.
 
 ## The questions
 
@@ -47,8 +48,8 @@ without asking.
 
 ## Refusals
 
-- "needs <amount> more" → use the funding methods shown at checkout. For a Balance top-up, see the
-  `create` skill's Money section.
+- "needs <amount> more" → they top up first: Wallet, then Top up balance (the `create` skill's
+  Money section). A card can't pay for an ask.
 - A photo of a named place without `near` → the refusal names where the map puts it: check that's the
   place they mean.
 - A verifier with no review credits → the review budget ([company.md](company.md), "Review budget").

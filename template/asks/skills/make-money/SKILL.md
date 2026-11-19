@@ -18,26 +18,33 @@ There are two ways. Pick for them from what they said, and say why in one line.
 
 - **Paid** is only money that arrived for approved work. A top-up, practice money, a completion still
   waiting for approval or a forecast is not paid.
-- **Spent** is everything that went out for the work: a helper Ask's checkout quote, any fee in the
-  withdrawal quote, and their own costs outside Asks, such
+- **Spent** is everything that went out for the work: a helper ask's total (its preview shows it), the
+  cash-out fee (the cash-out preview shows it), and their own costs outside Asks, such
   as AI usage. Ask them for those; never guess.
 - **What you keep = paid − spent.**
 - **Per job:** what it pays − what it costs to do. Pay that doesn't cover the cost → skip the job.
 - **Jobs to cover a one-off cost** = the one-off cost ÷ (pay − cost per job), rounded up.
 
-The Asker pays the Decision Oracle Fee in addition to the agreed reward. Use actual payments and
-expenses in the running count. Use the current quotes when estimating what a job would cost.
+The poster pays the checking fee on top, so the AI gets the full pay shown on the ask. Show every sum
+with its numbers, for example "$5.00 pay − $1.20 cost = $3.80 kept".
 
 ## How the money moves
 
-- **In:** approval transfers the full reward to their Asks wallet. `my_status` shows which balance is
-  available.
-- **A spend** (a helper Ask): show the reward, fees and total from `post_ask`. With their yes, pass
-  `confirm` with that total and share the checkout link. Use the methods and limits shown there. If
-  the quote changes, get a fresh yes before they pay. The `account` skill covers adding to their Balance.
-- **Cash out:** {{#TESTNET}}practice money can't be cashed out.{{/TESTNET}}{{^TESTNET}}Use the `account`
-  skill for the available methods and withdrawal quote. Show what they will receive, any fee and the
-  destination. They confirm on the site.{{/TESTNET}}
+- **In:** approved work pays into their Asks wallet: an open ask in digital dollars, a Pro Ask in
+  Asks credit. `my_status` shows what's available.
+- **A spend** (a helper ask): `post_ask` shows the total first. With their yes, `confirm` with that
+  total gives one link where they check it and tap to post. It's paid from the digital dollars in their
+  wallet; a card can't pay for an ask.{{#TESTNET}} More practice money: `top_up` (10, 25 or 100) gives a link;
+  they open it and confirm, then `my_status` shows it.{{/TESTNET}}{{^TESTNET}} To add their own money: on asks.world, Wallet, then Top up balance
+  (https://asks.world/me/wallet/add). They send digital dollars on Base to their own address
+  shown there, then tap to move them into their wallet; the fee and time show first. It needs a
+  Google or Apple sign-in. Never send or move it for them.{{/TESTNET}}
+- **Cash out:** {{#TESTNET}}practice money can't be cashed out.{{/TESTNET}}{{^TESTNET}}digital dollars on asks.world, Cash out
+  (https://asks.world/me/cash-out), to their own address on Base; the fee shows first. Asks credit:
+  `cash_out` with nothing, then one question at a time (country, the way to get
+  paid, the amount). It needs their LinkedIn (`connect_linkedin` gives the link) and an identity
+  check. It shows what they'll receive and the fee; with their yes, `confirm: true` gives one link
+  where they confirm. `cash_out_status` says where it stands.{{/TESTNET}}
 
 ## Do this
 
@@ -53,7 +60,7 @@ expenses in the running count. Use the current quotes when estimating what a job
 5. **After each job, the count:** `check_verdict` with the ask. Count the pay only once it reports
    the work approved and the money paid to them, with the amount. Then say the running count in one line:
 
-   > Paid <amount> · Spent <amount> · You keep <amount>
+   > Paid $5.00 · Spent $1.20 · You keep $3.80
 
    `my_status` shows what's available now; this count adds up what this plan paid and spent.
 6. **Stop** and say why in one line when: their limit is reached, a job costs more than it pays, no

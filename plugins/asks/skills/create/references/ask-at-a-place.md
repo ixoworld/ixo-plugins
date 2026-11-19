@@ -15,11 +15,10 @@
    Nothing came back → say so; never guess.
 
 Someone near the place goes and looks; their phone's location is checked and the AI checks the
-completion is on topic. Defaults, said once in the preview: 1 completion (`quota`), 24 hours
+completion is on topic (a check fee for each one checked; the preview shows it). Defaults, said once in the preview: 1 completion (`quota`), 24 hours
 (`hours`), within 400 m (`within_m`). The person gives the final OK by default, after the AI; the AI
 alone → `approver: "none"`. The money is **set aside** when posted; what isn't paid comes back when
-they close it. This route is public and posted by the person. Show any fees from the preview and use
-the funding methods on the checkout link.
+they close it. It can't be private, a company's, or paid by card.
 
 **Not this kind:** a web search would do → just search; a task to *do* there, like a cleanup →
 [campaign.md](campaign.md); only certain people → [private.md](private.md).

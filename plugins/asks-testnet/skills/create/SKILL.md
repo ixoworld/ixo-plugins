@@ -13,12 +13,12 @@ description: Post something on asks.world. Use when the person wants to post an 
    or ask "which market?": they don't know the difference and shouldn't have to. Say your pick in one
    line with the market's short line (below), then open only its reference. They say no → pick again.
 3. Ask only what the tool asks for and they haven't said, one question at a time.
-4. Call the tool without `confirm`. Show the reward, any fees and the total. Get "yes", call again
-   with `confirm` set to the exact total and give the checkout link.
+4. Call the tool without `confirm`, say the fees and the total from its preview, get "yes", call again
+   with `confirm` set to that exact total, give the link.
 5. They say it's done → `link_status` with the link, then give them the ask's link.
 
 This connector is practice money; never switch
-mid-task. Post only what the person asked for, in their words. Use the currency shown in the quote.
+mid-task. Post only what the person asked for, in their words. Money in dollars only.
 
 ## Pick the best fit for them
 
@@ -41,23 +41,28 @@ mid-task. Post only what the person asked for, in their words. Use the currency 
 **Say your pick** in one line, the market's short line filled in. For example: "Best fit: **Pro Asks**.
 Verified pros do it, you OK each report, and only you see the reports. OK?"
 
-- **Open Asks:** anyone can do it, and the Ask says how each completion is checked and approved.
-- **Pro Asks:** verified pros do the work, a Decision Oracle checks each report and you give final approval.
+- **Open Asks:** anyone can do it, an AI check approves each one, no service fee, and it's public.
+- **Pro Asks:** verified pros do it, you OK each report, only you see the reports, and Asks takes a share (the total shows it).
 - **Open Calls:** many people send entries, you pick the best, and entries stay sealed until it closes.
 
 Two rows really fit? Ask one plain question about what they want, never which market. Every kind works here, plans too.
 
 ## Money
 
-- **Funding:** the Asker pays the reward and the Decision Oracle Fee into the Ask contract in advance.
-  The operator sets the fee and the Asker agrees to it at setup. The Ask reserves the reward when
-  someone takes it. On approval the full reward goes straight to that person's, agent's or organisation's wallet.
-- **Quote:** show the reward, fees and total from the preview. The checkout link shows the methods and
-  limits for that Ask. If it shows a different total, review the new quote with the person before they pay.
-- **Paying:** use the practice payment options shown at checkout.
-  If checkout asks them to add to their Balance, send them to **Wallet** → **Top up balance** at
-  https://test.asks.world/me/wallet/add.
-- **Over a limit:** offer only the amounts the tool or checkout says fit. Get a new quote and a fresh yes.
+- **On a Pro Ask the AI check is free** (the Alpha check too); the extra cost is the network's share
+  on top, which the preview shows. An open call by invitation or application carries the same share.
+  An open ask has no service fee, only a check fee for each completion the AI checks. Read the
+  preview's numbers as they are; never work one out yourself.
+- **Set aside when posted:** the money is set aside on the ask when it's posted; a person is paid from
+  it only for approved work, and what isn't paid comes back when they close it.
+- **Over a limit:** never ask for a yes on those terms. Offer the amounts the tool says fit ("5 at $8
+  instead?").
+- **Paying:** an ask, an open call, a campaign or a plan is paid from the digital dollars in their
+  Wallet, at its one link. Not enough → **Say:** "Add money first: Wallet, then Top up balance:
+  https://test.asks.world/me/wallet/add. Tell me when it's there." A card can't pay
+  for these.
+- **A card pays only for a Pro Ask:** its link lets them pay by card or from their Wallet, and shows
+  what a card can take.
 
 ## After posting
 

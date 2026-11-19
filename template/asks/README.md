@@ -57,13 +57,17 @@ How it works: [asks.world/how](https://asks.world/how).
 
 ## Your money
 
-The Asker funds the reward and the Decision Oracle Fee in the Ask contract in advance. When someone
-takes an Ask, the contract reserves the reward for them. Approval sends the full reward to their wallet.
-
-Checkout shows the reward, fees and total. {{#TESTNET}}Use the practice payment options it offers.{{/TESTNET}}{{^TESTNET}}Use the card or USDC on Base options it offers.{{/TESTNET}}
-Review the quote and confirm on asks.world. {{^TESTNET}}You can request a withdrawal when the reward
-reaches your Wallet. The withdrawal quote shows what you will receive and any fees. Asks shows
-approximate amounts in your local currency or the currency you choose in Settings.{{/TESTNET}}{{#TESTNET}}Practice money stays in the sandbox.{{/TESTNET}}
+Everything is in your own asks.world account, the one you sign in to with Google: what you earn is
+paid straight to it, and what you post is paid from it (a Pro Ask can also be paid by card). Rewards
+are paid in US dollars. The money is set aside on an ask when you post it; what isn't paid comes back
+when you close it. An open ask has no service fee, only a check fee for each completion the AI checks.
+On a Pro Ask the AI check is free and a share for the network goes on top, so each pro gets exactly
+the pay you set. The preview shows every fee and the total before you pay; cashing out shows what
+you'll receive and the fee first.
+Review credits, which you buy with a card, only pay review fees; they are never a reward. Nothing is
+spent without a preview, your yes and your tap on asks.world, and the same per-ask and per-day caps
+apply in the chat and on the page. On asks.world it's all under **Wallet**: your **Balance** (yours
+now) and what is **Committed to your Asks** (set aside until it's paid out or comes back).
 
 ## Install
 
