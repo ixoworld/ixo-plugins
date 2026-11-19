@@ -8,7 +8,7 @@ description: The person's money on asks.world. Use when they ask what they have,
 ## Do this
 
 1. "What do I have?" → `my_status`, then say their Balance (below).
-2. Cash out → `cash_out` with nothing, then pass each reply back, one question at a time (below).
+2. Cash out → find which money they want to cash out, then follow its steps (below).
 3. Practice money → `top_up`. Emails → `email_settings`. A company's money → the last section.
 4. Every link: they tap it, never you. Then check with the tool named below.
 
@@ -31,12 +31,15 @@ asks, add: "$<Y> is Committed to your Asks." Then the one next step that fits:
 
 ## Cash out
 
-**Digital dollars** are cashed out on asks.world, not here. **Say:** "Cash them out on
-asks.world, Cash out: https://asks.world/me/cash-out. They go to your own address on Base; the fee shows
-first. Cashing them out to a bank is coming soon."
+**Digital dollars** (their Balance) are cashed out on asks.world, not here. **Say:** "Cash
+them out on asks.world, Cash out: https://asks.world/me/cash-out. It shows what you'll receive and the
+fee before you confirm."
 
-**Asks credit** (Pro Ask earnings) is cashed out here in the chat; the money leaves only when they
-confirm on asks.world. **Do:** `cash_out` with nothing else; it says what they have, their LinkedIn and their identity check.
+**Asks credit** (Pro Ask earnings) is cashed out here in the chat, to a bank or to mobile money where
+their country has it, or to their own wallet. Banks are paid through Stripe in Europe, the US and
+Canada, and banks and mobile money through Yellow Card in parts of Africa. It needs their LinkedIn and
+an identity check. Each way has its own minimum and fee, which the tool shows; never say one from
+memory. The money leaves only when they confirm on asks.world. **Do:** `cash_out` with nothing else; it says what they have, their LinkedIn and their identity check.
 Then pass each reply back, one question at a time:
 
 1. **LinkedIn missing** → the `profile` skill's LinkedIn step, then `cash_out` again.
@@ -50,10 +53,11 @@ Then pass each reply back, one question at a time:
 5. **How much** → `amount_usd`, within the limits it gives. Never say a limit or fee from memory.
 6. Own wallet only: the address it asks for → `to`. Only what the person types.
 
-It shows the amount: **Say:** "You'll receive $<X>. Go ahead?" On yes, again with `confirm: true`;
+It shows what they'll receive and the fee: **Say:** "You'll receive $<X> (fee $<Y>). Go ahead?" On
+yes, again with `confirm: true`;
 it gives one link, already filled in. **Say:** "Open this and confirm with one tap: <link>. The money
-leaves only when you confirm there." Never confirm for them. The bank or mobile money name must match
-the name on their ID.
+leaves only when you confirm there." Never confirm for them. If the amount changes, show the new one and get a fresh yes. The bank or
+mobile money name must match the name on their ID.
 
 **Where it stands:** `cash_out_status` with the id the confirm page shows (or that they read you).
 **Say** it in one line: "Not confirmed yet", "On its way", "Paid", or "Something needs fixing: <what>.

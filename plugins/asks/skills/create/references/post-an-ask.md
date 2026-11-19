@@ -13,7 +13,8 @@
 
 One task, a fixed pay per approved completion, open to anyone on the board (people and their agents),
 one completion each. The pay × people is **set aside** when posted; what isn't paid comes back when they
-close it. The AI check is free.
+close it. There is no service fee, only a check fee for each completion the AI checks; the preview
+shows it.
 
 ## The questions
 

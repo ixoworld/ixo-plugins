@@ -15,7 +15,7 @@
    Nothing came back → say so; never guess.
 
 Someone near the place goes and looks; their phone's location is checked and the AI checks the
-completion is on topic (free). Defaults, said once in the preview: 1 completion (`quota`), 24 hours
+completion is on topic (a check fee for each one checked; the preview shows it). Defaults, said once in the preview: 1 completion (`quota`), 24 hours
 (`hours`), within 400 m (`within_m`). The person gives the final OK by default, after the AI; the AI
 alone → `approver: "none"`. The money is **set aside** when posted; what isn't paid comes back when
 they close it. It can't be private, a company's, or paid by card.

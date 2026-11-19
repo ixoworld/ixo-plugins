@@ -8,7 +8,7 @@ description: The person's money on asks.world. Use when they ask what they have,
 ## Do this
 
 1. "What do I have?" → `my_status`, then say their Balance (below).
-2. Cash out → `cash_out` with nothing, then pass each reply back, one question at a time (below).
+2. Cash out → find which money they want to cash out, then follow its steps (below).
 3. Practice money → `top_up`. Emails → `email_settings`. A company's money → the last section.
 4. Every link: they tap it, never you. Then check with the tool named below.
 

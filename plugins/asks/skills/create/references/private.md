@@ -24,8 +24,8 @@
 - **"Only people I invite"** (`access: "invite"`): not on the board; only the invited can complete it.
   Each invitation link works for one person.
 - Anyone can be invited: an @name, an address, or a one-person link. No LinkedIn needed.
-- Money is the same as an ask: the pay goes to the person in full, the AI check is free, and what
-  isn't paid comes back when they close it. Repeat the preview's total.
+- Money is the same as an ask: the pay goes to the person in full, no service fee, a check fee for each
+  completion the AI checks, and what isn't paid comes back when they close it. Repeat the preview's total.
 - App testing by verified pros → a Pro Ask ([review-job.md](review-job.md)) instead.
 - Someone completing a private ask may get an Allow link first: pass it on and wait.
 

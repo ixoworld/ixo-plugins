@@ -61,8 +61,8 @@ said out loud and confirmed, never hidden). The differences:
   advice, no insider info, the right to share sources, OpenAI's AI may read the evidence)." It's
   research only, never investment advice.
 - "Alpha Pro Asks aren't available on this network yet" → **Say:** "Hidden market research isn't open
-  here yet. I can post it as a public Alpha ask instead: listed on the board, $1 per report checked.
-  Shall I?" (yes → [alpha-research.md](alpha-research.md)).
+  here yet. I can post it as a public Alpha ask instead: listed on the board, with a check fee per report
+  checked. Shall I?" (yes → [alpha-research.md](alpha-research.md)).
 - The free Alpha check works only on a Pro Ask. A refusal saying "draft it with `draft_call` and
   research instead" → do that.
 
@@ -70,14 +70,13 @@ said out loud and confirmed, never hidden). The differences:
 
 Read the preview's money sentence as it is. Never work a number out yourself.
 
-**Any work:**
-With practice money nothing is added on top: each pro gets the pay
-they were promised. They pay only for reports they approve; what isn't paid comes back when
-they close it. The limit is what one card payment can take ($999,999.99); `draft_call` says so if it is
-over.
+**Any work:** the AI check is free. The extra cost is a share for the network that runs Asks, on top, so
+each pro gets exactly the pay they were promised; the preview shows the share and the total before they
+pay. They pay only for reports they approve; what isn't paid comes back when they close it. If the
+total is more than one card payment can take, `draft_call` says so.
 
-**Market research, checked by Alpha:** the Alpha check is free. With practice money nothing is added on top. Nothing is
-paid without their OK.
+**Market research, checked by Alpha:** the Alpha check is free too, and the same network share is
+added on each report they approve, so the researcher gets the full price. Nothing is paid without their OK.
 
 **Say:** "This sets up the Pro Ask '<title>' for <name> <version>: <n> scenarios, <wanted> good reports
 wanted, up to <count> in all, open <days> days, <one secret link for everyone you share it with | only pros you invite, one link per person>, which can't be

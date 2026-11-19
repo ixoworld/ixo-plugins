@@ -5,19 +5,21 @@
 Not clear from what they said → **Ask** in one line: "Listed on the board for anyone verified, or
 hidden, for pros you invite or anyone verified who has your link?"
 
-- **Public** (listed on the board, anyone verified with LinkedIn sends one report): $1 per report
-  checked, even one turned down; nothing else on top. → this page, `post_ask`.
+- **Public** (listed on the board, anyone verified with LinkedIn sends one report): a check fee
+  for each report checked, even one turned down (the preview shows it); nothing else on top. → this
+  page, `post_ask`.
 - **Hidden** (pros you invite, or anyone verified with LinkedIn who has the link joins at once; never
-  on the board): the check is free, and a 20% network share is added on each report you approve. →
+  on the board): the check is free, and the network's share is added on each report you approve (the preview
+  shows it). →
   an Alpha Pro Ask: [review-job.md](review-job.md), `draft_call` with `research`. The three
   questions and the defaults below are the same there, except the due date: reports are due when the
   Pro Ask closes.
 
-Inviting, or letting people apply and picking who takes it, still works on this page (step 3), at $1
-per report checked. Anyone who wants "hidden, anyone verified with the link joins" → the Alpha Pro Ask.
+Inviting, or letting people apply and picking who takes it, still works on this page (step 3), with
+the same check fee per report checked. Anyone who wants "hidden, anyone verified with the link joins" → the Alpha Pro Ask.
 
 **Say** first on this page, in one line: "A researcher sends a report. Our AI checks it against your
-brief ($1 each). You read it, and your OK pays them."
+brief (a small fee each, shown before you pay). You read it, and your OK pays them."
 
 ## Do this
 
@@ -32,8 +34,8 @@ brief ($1 each). You read it, and your OK pays them."
      first → `access: "apply"`; they may add `invite` for people let in at once.
    - Anyone → no `access`. It's listed on the board, and anyone verified with LinkedIn can send one report.
 
-   **Say** on every route: "Only you and the Alpha check see the reports. It's $1 per report checked,
-   even one that's turned down, up to the number of reports you pay for."
+   **Say** on every route: "Only you and the Alpha check see the reports. Each report checked has a
+   check fee, even one that's turned down, up to the number of reports you pay for."
 4. Read the whole ask back (the preview below). Get "yes".
 5. Call `post_ask` with `checker` (the Alpha verifier's listed name), `research` and the rest, without
    `confirm`; say the total; on "yes" call again with `confirm` = that exact total. Give the link,
@@ -41,7 +43,7 @@ brief ($1 each). You read it, and your OK pays them."
 
 The ask's text is the question: put it in `task` (with `title`, `pay` per approved report, `quota`
 reports and `days`, as in [post-an-ask.md](post-an-ask.md)) and leave `question` out; the connector
-copies it from `task`. Never ask for the question separately. The pay and the $1 check, × reports, are
+copies it from `task`. Never ask for the question separately. The pay and the check fee, × reports, are
 set aside when posted; what isn't paid comes back when they close it.
 
 ## The three questions (`research`)
@@ -112,7 +114,7 @@ and the service checking the work may read them, and authors may read their own.
 reports just by joining. Authorised services process reports for storage and checking; disclose
 the selected service's processing terms. Separate read permissions can add readers.
 You give the final OK on each report, which pays it. The
-check is $1 per report, on top of the pay, even one it turns down. The hold is <total> (<real / practice> money); show any additional network fee separately. OK?"
+check fee is <the preview's fee> per report, on top of the pay, even one it turns down. The hold is <total> (<real / practice> money); show any additional network fee separately. OK?"
 
 ## Refusals
 

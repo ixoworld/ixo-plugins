@@ -13,7 +13,8 @@ description: Post something on asks.world. Use when the person wants to post an 
    or ask "which market?": they don't know the difference and shouldn't have to. Say your pick in one
    line with the market's short line (below), then open only its reference. They say no → pick again.
 3. Ask only what the tool asks for and they haven't said, one question at a time.
-4. Call the tool without `confirm`, say the total, get "yes", call again with `confirm`, give the link.
+4. Call the tool without `confirm`, say the fees and the total from its preview, get "yes", call again
+   with `confirm` set to that exact total, give the link.
 5. They say it's done → `link_status` with the link, then give them the ask's link.
 
 This connector is {{#TESTNET}}practice money{{/TESTNET}}{{^TESTNET}}real money{{/TESTNET}}; never switch
@@ -49,16 +50,20 @@ Two rows really fit? Ask one plain question about what they want, never which ma
 
 ## Money
 
-- **The AI check is free.** The total is the pay, plus a share on top only where the preview names one
-  (a Pro Ask, or an open call by invitation or application). Read the preview's numbers as they are.
+- **On a Pro Ask the AI check is free** (the Alpha check too); the extra cost is the network's share
+  on top, which the preview shows. An open call by invitation or application carries the same share.
+  An open ask has no service fee, only a check fee for each completion the AI checks. Read the
+  preview's numbers as they are; never work one out yourself.
+- **Set aside when posted:** the money is set aside on the ask when it's posted; a person is paid from
+  it only for approved work, and what isn't paid comes back when they close it.
 - **Over a limit:** never ask for a yes on those terms. Offer the amounts the tool says fit ("5 at $8
   instead?").
 - **Paying:** an ask, an open call, a campaign or a plan is paid from the digital dollars in their
   Wallet, at its one link. Not enough → **Say:** "Add money first: Wallet, then Top up balance:
   https://{{#TESTNET}}test.{{/TESTNET}}asks.world/me/wallet/add. Tell me when it's there." A card can't pay
   for these.
-- **A card pays only for a Pro Ask:** its link lets them pay by card or from their Wallet, from $0.50
-  up to $999,999.99.
+- **A card pays only for a Pro Ask:** its link lets them pay by card or from their Wallet, and shows
+  what a card can take.
 
 ## After posting
 
