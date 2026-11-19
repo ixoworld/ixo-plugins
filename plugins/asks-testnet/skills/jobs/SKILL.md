@@ -91,10 +91,12 @@ them the completion first. **Say:** "Here's your completion: <it>. Send it?" On 
 
 - **A file with the completion** (screenshots, a PDF, a form's files):
   - ChatGPT: put the files the person attached in this chat in `attachments`.
-  - Claude on the web or the Claude app, and other chat apps: you can't reach their files, so say so
-    before you draft ("I can't attach files from your computer here; you'll add them in your browser").
-    Call `submit_work`; if an **Add screenshots** box appears under it, **Say:** "Add your screenshots in
-    the box below." Otherwise give the link: they add them there in their browser.
+  - Claude on the web or the Claude app: say before you draft that a box will show for their files.
+    When `submit_work`'s reply says an **Add screenshots** box is shown (`filesVia: "box"`), **Say:**
+    "Add your screenshots in the box, then tell me." Never send them to the link for files. When they
+    say they're in, `link_status` lists what arrived and what is missing: say what is missing before
+    it is sent. Calling `submit_work` again makes a new box: they add the files again there.
+  - Other apps with no box (`filesVia: "page"`): give the link; they add them there.
   - Claude Code or Codex (you can make web requests): upload the files they point you to through the
     upload address the reply gives (ask it for a signed URL per file, PUT each file, then GET the
     address to check), before they open the link.
