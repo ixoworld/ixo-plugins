@@ -24,6 +24,19 @@ it tells you. The agent does the typing.
 - There is no server in this plugin. The agent runs IXO's `decision-oracle` tool in a terminal on
   your computer, and the package brings its own detailed skills for each step.
 
+## Professional services and cloud authoring
+
+The builder routes professional services through the separately installed `domain-author-pro-oracle`
+and canonical `domain-author` skills from `ixoworld/ixo-agent-skills`. They prepare governed
+documents for decision-oracle services, QiForge agents, or both. New constitutional checks remain
+advisory; existing permissions, human claim review and signing requirements remain in force.
+
+Cloud ChatGPT and Claude can prepare and review the documents. Upload and status tracking require
+an authenticated Domain Runtime connection with content-upload support; this skills-only plugin
+does not provide that server. Without it, keep a downloadable draft and mark upload pending.
+Deployment resumes in Codex or Claude Code using a handoff with references and receipts, never
+hosting credentials. Existing domains retain their identities and unrelated configuration.
+
 ## What you need
 
 - A computer where your agent can use a terminal (Claude Code, Cowork or Codex), with

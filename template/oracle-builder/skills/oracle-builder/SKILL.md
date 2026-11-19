@@ -1,6 +1,6 @@
 ---
 name: oracle-builder
-description: Guide a non-technical person through building their own IXO evaluation oracle from nothing with @ixo/decision-oracle — interview them about what they want checked, explain each term on first use, check the prerequisites (bun, Node.js, a terminal, a free Cloudflare account, an IXO login, gas, a subscription), build on testnet unless asked otherwise, run `bunx @ixo/decision-oracle init`, then hand off in order to the package's own skills (create-rubric, publish-protocol, write-facts, create-oracle, create-collection, and optionally decision-api-oracle and add-openhands-support), confirming before every chain write. Use when someone says "I want to build an oracle", "make my own evaluation oracle", "how do I start with IXO oracles", or picks up a half-finished oracle setup.
+description: Guide a non-technical person through authoring governance and building or updating an IXO evaluation oracle with @ixo/decision-oracle — interview them about what they want checked, explain each term on first use, check the prerequisites (bun, Node.js, a terminal, a free Cloudflare account, an IXO login, gas, a subscription), build on testnet unless asked otherwise, run `bunx @ixo/decision-oracle init`, then hand off in order to the package's own skills (create-rubric, publish-protocol, write-facts, create-oracle, create-collection, and optionally decision-api-oracle and add-openhands-support), confirming before every chain write. Use when someone says "I want to build an oracle", "make my own evaluation oracle", "how do I start with IXO oracles", or picks up a half-finished oracle setup.
 ---
 
 # Build an IXO oracle with a non-technical person
@@ -49,6 +49,57 @@ installs into their project; you hand off to those by name and follow them.
   and the package skill has no answer, stop and tell the person in one plain sentence what is
   missing.
 
+## Professional service: author first, then resume deployment
+
+Use this route for professionally operated services, whether starting a new domain or updating an
+existing oracle. Offer `decision-oracle`, QiForge, or both as runtime targets; a QiForge-only service
+uses its existing deployment tools instead of installing the decision-oracle package.
+
+1. Discover `domain-author-pro-oracle` and its canonical `domain-author` dependency in the client's
+   installed skills. Load both. The specialist lives in the `ixoworld/ixo-agent-skills` repository
+   at `skills/domain-author-pro-oracle/SKILL.md`; install it together with its sibling base skill
+   using the client's supported skill installation flow. This plugin does not bundle those skills
+   or an authenticated Domain Runtime. If unavailable, retain the interview and explain that
+   constitutional authoring cannot yet be validated; do not fabricate a substitute specification.
+2. Reuse an existing interview, session, package revision, oracle identity, hosting account and
+   deployment receipts. For an existing domain, read the current constitution and predecessor;
+   never run `init` over an existing project or replace unrelated configuration. Keep the governed
+   oracle entity, hosted service identity (`did:web`) and runtime signing account distinct.
+3. Let the specialist guide the mandate, methods, evidence policy, conflicts, human review,
+   appeals, privacy, incidents and amendment procedures. Keep professional source material
+   private by default. New constitutional findings remain advisory, including incomplete
+   implementation of a rule. Existing access, claim review and signing controls still apply.
+4. In cloud ChatGPT or Claude, continue authoring and reviewing. Discover the connected Domain
+   Runtime's content upload and status capabilities. Save through those tools when authorized,
+   retaining durable session/revision references, validation results and readback receipts.
+   When the runtime returns an authorization proposal, use its configured Portal review link. The
+   operator reviews the exact permission and signs through the existing PIN flow, then returns here
+   to retry with the same sign-in. OAuth alone grants no authoring rights. Keep private references
+   and credentials out of the handoff. Never use a customer claim-attachment upload tool for
+   governing documents. If hosted upload is unavailable, produce a downloadable draft and mark
+   upload as pending.
+5. Prepare a resumable handoff for Codex or Claude Code containing references, interview answers,
+   selected runtimes, existing identities, completed steps and remaining work. Include no login
+   tokens, hosting credentials or recovery material. A cloud client does not need a terminal
+   until deployment. An exported draft is not an adoption or publication receipt.
+6. In the coding agent, resume the relevant existing deployment tools against the operator's
+   hosting account. Resolve final identities and document references before final adoption.
+   Apply the current domain governance procedure, or independently verified founding authority.
+   Require independent review only where that procedure requires it; the proposed constitution
+   cannot authorize itself. Any later byte change creates another revision.
+7. Publish and verify the exact adopted package through Domain Runtime. Track adoption, actual
+   runtime loading, discovery, commercial registration, grants and test-claim receipts separately.
+   Reconcile an uncertain publication before any retry. Continue existing deployment steps below
+   where needed; no constitutional finding changes the engine verdict or adds a runtime gate.
+8. Review observations with the operator and propose amendments through the applicable procedure.
+   Never amend automatically, promote checks into blocking controls, or invoke new assessment
+   calls on replay. Successful observation does not establish constitutional compliance.
+
+Report each launch condition as verified, pending, failed or not run, with its evidence reference.
+Status evidence recorded through Domain Runtime remains operator-reported unless separately verified.
+A skill installation or local test does not establish a deployed hosted service. Mainnet promotion
+remains a separate operator-authorized step.
+
 ## Step 0: what do you want checked?
 
 **Say** first: "We're building on testnet: play money, nothing real is spent. Mainnet (real money)
@@ -78,7 +129,8 @@ Check and fix, one by one:
 
 - **A terminal you can run.** If you can't run commands here (a chat-only app), **Say:** "This needs
   Claude Code (the Code tab in the Claude app, or the terminal) or Codex. Open one of those and ask
-  me again there." and stop.
+  me there with the saved authoring handoff." Complete the cloud authoring route above first,
+  then pause only the deployment steps.
 - **bun** (`bun --version`, needs 1.3 or newer). If missing or older, **Say:** "We need a free
   program called bun. Shall I install it?" On a yes, run the official installer:
   `curl -fsSL https://bun.sh/install | bash` (Windows: `powershell -c "irm bun.sh/install.ps1 | iex"`),
@@ -96,7 +148,8 @@ Windows `winget install OpenJS.NodeJS.LTS`. Then check `node --version` again.
 - **An IXO login, a little IXO for gas, and an IXO subscription.** Explained and handled in step 2
   and step 6; just mention them now.
 
-Then create the project. Ask for a folder name (suggest `my-oracle`).
+For a new decision-oracle project, ask for a folder name (suggest `my-oracle`). If resuming an existing
+project, inspect its saved receipts and configuration and skip initialization.
 
 ```bash
 bunx @ixo/decision-oracle init my-oracle              # add --openhands if they said yes to question 6
