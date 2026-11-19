@@ -15,8 +15,9 @@
    and the service checking the work may read them; each author may read their own. An invitation alone does not let
    someone read other people's reports. Authorised services process them to store and check them.
    A separate read permission can add a reader; never grant one just to demonstrate the product.
-5. After posting: one link for everyone → give them the ask's page link to share. Invite-only → give each
-   person their own invite link, never the ask's page link.
+5. After posting: one link for everyone → on a Pro Ask, its secret `/j/…` link (from `link_status`,
+   `my_pro_asks` or `call_invites`), never `/t/<number>`; on another ask, the ask's page link.
+   Invite-only → give each person their own invite link, never the ask's page link.
 
 - **"One link for everyone"** (`access: "apply"`, the default when private): on the board; one link to
   share anywhere; people apply with a note and the person says yes or no to each (the `invite` skill).

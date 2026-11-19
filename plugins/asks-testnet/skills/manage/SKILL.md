@@ -25,8 +25,10 @@ skill): their private asks and reports open only for them.
 Lead with what's new: "<n> completions came in on '<title>'. Shall I read them to you?" With nothing
 waiting, say so and offer the next step ("Nothing yet. Want me to invite more people?").
 
-- **My Pro Asks:** `my_pro_asks` (one line each, and what waits for them). Each has its own page, only
-  theirs: https://test.asks.world/me/pro-asks/<number>.
+- **My Pro Asks:** `my_pro_asks` (one line each, what waits for them, and each open one's secret
+  `/j/…` link). Each has its own page, only theirs: https://test.asks.world/me/pro-asks/<number>.
+- **A secret link got out, or they want a new one:** they replace it on that page. The old link stops
+  working at once; pros who already joined stay in.
 - **A Filled Pro Ask** (all its "N of M reports" came in) and they want more: `add_more_reports` with
   its number (and `more`, if they said how many). It spends nothing and gives the page where they add
   more reports and pay. **Say:** "Open <link>, add more reports and pay for them there. Tell me when
