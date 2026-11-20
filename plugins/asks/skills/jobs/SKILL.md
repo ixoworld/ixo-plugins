@@ -97,7 +97,7 @@ them the completion first. **Say:** "Here's your completion: <it>. Send it?" On 
     When `submit_work`'s reply says an **Add screenshots** box is shown (`filesVia: "box"`), **Say:**
     "Add your screenshots in the box, then tell me." Never send them to the link for files. When they
     say they're in, `link_status` lists what arrived and what is missing: say what is missing before
-    it is sent. Calling `submit_work` again makes a new box: they add the files again there.
+    it is sent.
   - Other apps with no box (`filesVia: "page"`): give the link; they add them there.
   - Claude Code or Codex (you can make web requests): upload the files they point you to through the
     upload address the reply gives (ask it for a signed URL per file, PUT each file, then GET the
@@ -111,8 +111,11 @@ them the completion first. **Say:** "Here's your completion: <it>. Send it?" On 
     that ticked." only when the reply says that offer is on the page)
   - An upload address and a `draft` id, with "Your assistant can submit for you" on → once the files
     are in (uploaded, or added in the box), call `submit_work` with `collectionId` and `draft`; it sends.
-- One completion per ask per person. Never call `submit_work` twice for one ask: if you're unsure it
-  went, `link_status` with the link (or `check_verdict`) first.
+- One completion per ask per person. Never call `submit_work` twice for one ask (only to change its
+  draft, below): if you're unsure it went, `link_status` with the link (or `check_verdict`) first.
+- To change it after `submit_work` made its draft: `submit_work` with the change and `revise_draft`
+  set to that draft's id (the `ad_…` in its link). The same draft changes and files already added
+  stay. Never send them to the ask's /submit page to change it: that starts over, empty.
 - They want to stop the assistant sending → **Say:** "Turn it off in Settings, Agents:
   https://asks.world/me/settings."
 

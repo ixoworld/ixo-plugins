@@ -100,8 +100,10 @@ too. Older Pro Asks without that form: `submit_work` with the review's number an
     link lists what arrived and what is missing. **Say** what is missing ("login-error is still
     missing"). It is sent once all are in, or if they say send anyway: with "Your assistant can submit
     for you" on, `submit_work` with `draft`; otherwise they tap Send at the link.
-  - Files added in one box stay with that completion. If you call `submit_work` again, tell them to
-    add them again in the new box.
+  - To change the report after `submit_work` made its draft: call `submit_work` with the changed
+    report and `revise_draft` set to that draft's id (the `ad_…` in its link). The same draft changes,
+    the screenshots already added stay, and the box opens again for a new or renamed one. Never send
+    them to the ask's /submit page to change it: that starts an empty report.
   - No box (the reply says so, `filesVia: "page"`): **Say:** "Open this link and add your screenshots
     there: <their short names>." Never say you attached or uploaded them.
   - Claude Code or Codex (you can make web requests): upload each file the person points you to
