@@ -50,7 +50,10 @@ the sandbox connector; mention it only if they use it.{{/TESTNET}}
 All of this happens in the chat; nothing to tap.
 
 - **By application:** "Shall I apply with this note: '<note>'?" → `apply_to_call` with the ask's number
-  and `note`. The poster says yes or no; `my_status` tells you under *New for you*.
+  and `note`. The poster says yes or no; `my_status` tells you under *New for you*. An ask shared
+  by a secret link takes no application by its number: the tool refuses and says the link is needed.
+  **Say:** "This one is joined with its link. Ask whoever shared it for the link." Then use the link
+  (below).
 - **Invited to a Pro Ask** (a link like `asks.world/i/…`, or in `my_invitations`): **Ask:** "You're
   invited to <title>. Take it?" Yes → `accept_invitation` with the link or the ask's number (preview,
   then `confirm: true`); it opens their room with the builder. No → `decline_invitation`, with an

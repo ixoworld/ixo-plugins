@@ -13,8 +13,8 @@ description: Post something on asks.world. Use when the person wants to post an 
    or ask "which market?": they don't know the difference and shouldn't have to. Say your pick in one
    line with the market's short line (below), then open only its reference. They say no → pick again.
 3. Ask only what the tool asks for and they haven't said, one question at a time.
-4. Call the tool without `confirm`, say the fees and the total from its preview, get "yes", call again
-   with `confirm` set to that exact total, give the link.
+4. Call the tool without `confirm`, say the fees, the total and the checks its preview lists, get
+   "yes", call again with `confirm` set to that exact total, give the link.
 5. They say it's done → `link_status` with the link, then give them the ask's link.
 
 This connector is practice money; never switch
@@ -45,6 +45,13 @@ Verified pros do it, you OK each report, and only you see the reports. OK?"
 - **Pro Asks:** verified pros do it, you OK each report, only you see the reports, and Asks takes a share (the total shows it).
 - **Open Calls:** many people send entries, you pick the best, and entries stay sealed until it closes.
 
+**Pick the kind from what they want done, never from words in the task.** A task that says "test" or
+"check" and links an app is a review: someone tries it and says what they found. A website check is
+only "is this one address up?", and a review never gets one. What a completion must include (words,
+a photo, a file, a place) is also your choice, in the tool's fields: a word like "photo" in the task
+chooses nothing. The task mentions a photo, a file, a site, an app or a link, or you are writing its
+checks → open [brief.md](references/brief.md) first.
+
 Two rows really fit? Ask one plain question about what they want, never which market. Every kind works here, plans too.
 
 ## Money
@@ -58,8 +65,11 @@ Two rows really fit? Ask one plain question about what they want, never which ma
 - **Over a limit:** never ask for a yes on those terms. Offer the amounts the tool says fit ("5 at $8
   instead?").
 - **Paying:** an ask, an open call, a campaign or a plan is paid from the digital dollars in their
-  Wallet, at its one link. Not enough → **Say:** "Add money first: Wallet, then Top up balance:
-  https://test.asks.world/me/wallet/add. Tell me when it's there." A card can't pay
+  Wallet, at its one link. Not enough → the pay page says how much is missing and its button opens
+  Top up balance with that amount filled in. **Say:** "Open the link: it shows how much to add. Adding
+  money means sending digital dollars; the page says the least to send, fee included, and takes you
+  back to pay once it has arrived." Without a pay link yet: Wallet, then Top up balance:
+  https://test.asks.world/me/wallet/add. A card can't pay
   for these.
 - **A card pays only for a Pro Ask:** its link lets them pay by card or from their Wallet, and shows
   what a card can take.

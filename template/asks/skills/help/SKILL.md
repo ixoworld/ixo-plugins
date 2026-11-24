@@ -25,6 +25,11 @@ money moves or something needs your signature, I give you a link: you check it a
 The pros: https://{{#TESTNET}}test.{{/TESTNET}}asks.world/pros. My Profile, My Asks and Wallet:
 https://{{#TESTNET}}test.{{/TESTNET}}asks.world/me.{{^TESTNET}} To practise, the same on https://test.asks.world.{{/TESTNET}}"
 
+**They are on the site's New Ask page.** It asks for a market first, and above the cards a **Connect
+your AI** button says your AI can pick the market and post; once connected it reads "Connected:" with
+the app's name. A prompt they copied there belongs in this chat: **Say:** "Paste it here and I'll take
+it from there." You still pick the market yourself from what they want (the `create` skill).
+
 **Alpha asks. Say:** "An Alpha ask is a paid market or company research question. You get a private,
 sourced report where every finding points at its evidence. Research only, not investment
 advice. Where it's available, I can post one or help you hand one in." (the `create` and `jobs` skills)

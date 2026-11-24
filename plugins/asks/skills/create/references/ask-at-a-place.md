@@ -4,7 +4,8 @@
 
 1. Ask, one at a time: "What do you want to know?" → `question` (12–300 characters, their words);
    "Where?" → `near` as `"lat,lon"` (read it back: "That's <street> in <town>, right?"); "A few words,
-   or a photo?" → `needs` (`observation` or `photo`; `url-check` for one web page, no place); "What
+   or a photo?" → `needs` (`observation` or `photo`; `url-check` only to check one web address is up, no place, with
+   `url` = that one exact `https://` address; never for a review of an app, see [brief.md](brief.md)); "What
    should one completion earn?" → `pay`.
 2. Call `ask_the_world` with those and a `title` (at most 80 characters), without `confirm`.
 3. **Say:** "Someone near <place> will check '<question>' within <hours> hours, for <reward>. It costs
@@ -25,5 +26,6 @@ they close it. It can't be private, a company's, or paid by card.
 
 **Never ask** anything that targets, follows or identifies a particular person (home, car, plate,
 routine), involves children, is sexual, violent or unlawful, asks for personal data, puts the doer in
-danger, or goes onto private land. A refused ask spends nothing. One held for a person's look posts but
-stays off the board until seen: say so before they confirm.
+danger, or goes onto private land. An ask is approved or turned down before it posts: turned down, or not
+checkable just now, nothing is posted and nothing is spent. Say the reason the tool gives and offer to
+reword it, or try again in a minute.

@@ -40,6 +40,14 @@ waiting, say so and offer the next step ("Nothing yet. Want me to invite more pe
   If a tool can't open an ask by invitation, they may not be signed in as the account that owns it
   (`connect` skill). Still not → **Say:** "I can't open that one from here. Open it on asks.world
   signed in." Never guess what came in.
+- **My Asks on the site** says how each one really stands, and so do you: live, **Not carried**
+  (turned down by the automatic screen), **Cancelled**, **Ended**, and **Money still held** with the
+  amount when money is still set aside on it. Never call a stopped or cancelled ask active.
+- **An ask that was stopped after posting:** its page tells them, and only them, why, and how to get
+  the money back. **Say** the reason in plain words, then offer: "Shall I close it so the money comes
+  back? To try again, we change the wording and post a new one." Close → `close_ask` (below).
+- Their own ask's page talks to them as the poster ("Your Ask is live", places taken, money set
+  aside); a completion they sent themselves is marked as their own.
 - Tell them what came back, how sure it is and what was **not** checked. Never call a completion certain,
   never soften or add to a finding. If nothing came back, say so.
 - **A plan:** `plan_status` — what each check found so far, in plain words.
@@ -75,5 +83,7 @@ link, and name the kind of money ("{{#TESTNET}}practice money{{/TESTNET}}{{^TEST
 - **An ask:** `close_ask` with its number, without `confirm`. **Say:** "This closes '<title>' to new
   completions and sends <amount> back to your account. <What stays, and why.> OK?" → again with
   `confirm: true`; it gives a link. **Say:** "Open this and tap to take it back: <link>. Tell me when
-  it's done." Then `read_ask` says it's closed. Only whoever posted it can close it.
+  it's done." Then `read_ask` says it's closed. Only whoever posted it can close it. Asks then emails
+  them that the money is back: which ask, how much, and that it is in their Asks balance (they can
+  switch that email off: the `account` skill, Emails).
 - **A plan:** `close_plan`, the same steps; `plan_status` says when it's closed.

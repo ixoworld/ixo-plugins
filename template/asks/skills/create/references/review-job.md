@@ -22,7 +22,8 @@ checks", never "the checker" or "the reviewer". A report that fails is not paid.
 ## What `draft_call` asks for
 
 - A title; what the work is on (for example an app) → `subject { name, version, where }` (a public link); up to 8 scenarios,
-  one line each (suggest some); a short intro → `lede`, `brief`.
+  one line each (suggest some); a short intro → `lede`, `brief`. Scenarios about a screen: see
+  [brief.md](brief.md), "Questions about a screen".
 - **Pay** → `money { entry_each, wanted, extra }`: what each good report pays, how many good reports
   they want, and how many extra (below). There is no fixed limit on reports.
 - **Days open** → `open_days`, any number of days.
@@ -43,6 +44,8 @@ checks", never "the checker" or "the reviewer". A report that fails is not paid.
   they still count. I suggest your <wanted> plus 3 extra. Money for reports that never come in comes
   back when you close it. Or take exactly <wanted> and add more later. Which?" → `extra` (3, or 0).
 - Private things like a test login go in the invitation's note, never in the Pro Ask.
+- Files for the brief (a PDF, pictures): the person attaches them on the page where they pay. On a
+  Pro Ask they stay private: only pros let in can download them.
 
 ## Market research, checked by Alpha (`research`)
 
