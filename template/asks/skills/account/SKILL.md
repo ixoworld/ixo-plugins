@@ -53,13 +53,17 @@ Then pass each reply back, one question at a time:
 5. **How much** → `amount_usd`, within the limits it gives. Never say a limit or fee from memory.
 6. Own wallet only: the address it asks for → `to`. Only what the person types.
 
-It shows what they'll receive and the fee: **Say:** "You'll receive $<X> (fee $<Y>). Go ahead?" On
-yes, again with `confirm: true`;
+A bank or mobile money: it shows what they'll receive and the fee. **Say:** "You'll receive $<X> (fee
+$<Y>). Go ahead?" Own wallet: it can't show the fee in the chat. **Say:** "Two steps on asks.world:
+first your $<X> becomes digital dollars in your own wallet, then you send them to your Base account.
+The page shows the fee before you send, and each send asks for a quick face check (the first may need
+a one-time identity check with your sign-in service). Go ahead?" On yes, again with `confirm: true`;
 it gives one link, already filled in. **Say:** "Open this and confirm with one tap: <link>. The money
 leaves only when you confirm there." Never confirm for them. If the amount changes, show the new one and get a fresh yes. The bank or
 mobile money name must match the name on their ID.
 
-**Where it stands:** `cash_out_status` with the id the confirm page shows (or that they read you).
+**Where it stands:** `cash_out_status` with the id the confirm page shows (or that they read you); own
+wallet has no id: call it without one, and the cash-out page follows the send.
 **Say** it in one line: "Not confirmed yet", "On its way", "Paid", or "Something needs fixing: <what>.
 Fix it here: <link>."{{/TESTNET}}{{#TESTNET}}Practice money can't be cashed out. **Say:** "Practice money can't be cashed out; it's only
 for trying things. Cashing out real money works the same way with asks.world's main connector." and stop.{{/TESTNET}}

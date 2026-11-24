@@ -126,5 +126,7 @@ them the completion first. **Say:** "Here's your completion: <it>. Send it?" On 
 
 **Do:** `check_verdict` with the ask's number. **Say** one of: "Approved and paid: <amount>." / "Passed
 the checks; waiting for the poster's final OK, which pays it." / "Not passed: <the reason, in plain
-words>." Approved completions pay by themselves, straight to their account; then offer: "Want to cash it
+words>." Not passed → say what it says they can do next: on a private ask (by link or invitation, a Pro
+Ask too) one the automatic check turned down can be fixed and sent again; an open ask takes one
+completion per person. Approved completions pay by themselves, straight to their account; then offer: "Want to cash it
 out?" (the `account` skill).

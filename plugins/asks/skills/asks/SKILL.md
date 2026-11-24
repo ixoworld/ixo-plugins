@@ -54,7 +54,7 @@ This connector is **real money** (https://asks.world).
 
 - **In the chat, nothing to tap:** anything that moves no money: reading asks and completions,
   invitations, applying, inviting, applications, messages, the pro page, LinkedIn, emails, a cash-out
-  quote. Call the tool (it previews where it needs a yes) and say what happened. Handing in work is
+  preview. Call the tool (it previews where it needs a yes) and say what happened. Handing in work is
   here too once they've ticked "Let my assistant send my completions for me": `submit_work` then
   replies "Sent" with no link (the `jobs` skill).
 - **A link to tap:** anything that moves money or needs their signature: posting, closing, approving a

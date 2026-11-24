@@ -25,7 +25,7 @@ they close it. It can't be private, a company's, or paid by card.
 [campaign.md](campaign.md); only certain people → [private.md](private.md).
 
 **Never ask** anything that targets, follows or identifies a particular person (home, car, plate,
-routine), involves children, is sexual, violent or unlawful, asks for personal data, puts the doer in
+routine), has a child take part, is sexual, violent, unlawful or deceptive (a fake review), asks for personal data, puts the doer in
 danger, or goes onto private land. An ask is approved or turned down before it posts: turned down, or not
 checkable just now, nothing is posted and nothing is spent. Say the reason the tool gives and offer to
 reword it, or try again in a minute.

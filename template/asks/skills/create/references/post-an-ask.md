@@ -58,7 +58,9 @@ The task mentions a photo, a file, a site, an app or a link, or needs checks wri
 **Files for the brief** (a PDF to read first, pictures): you can't send a file from the chat. A link
 they give goes in the task as a link. A file → **Say:** "Add the file on the page I'll give you, before
 you pay: up to 6 files (PDF, PNG, JPG or WebP, 5 MB each)." On a public ask anyone can download them;
-on a private ask only the people let in.
+on a private ask only the people let in. Each file is checked with the ask's words before it posts: one
+that fails, can't be checked or isn't a plain file of those kinds stops the post, and the page names it
+and says what to change.
 
 The same job in many places: give each the same `series` (lowercase letters, digits, dashes); the board
 shows them as one card.
