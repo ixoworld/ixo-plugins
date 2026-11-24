@@ -19,7 +19,7 @@ never switch mid-task). Signed in first (`connect` skill).
 ## What they have
 
 Read `my_status`; never repeat its lines about a "home address" or a setting. Their Wallet holds two
-kinds of money: **digital dollars** (what open asks pay, and what they top up) and **Asks credit**
+kinds of money: **digital dollars** (what open asks pay, and what they top up) and **Pro earnings**
 (what Pro Asks pay; `my_status` shows it as money "set aside for checks"). **Say:** "Your Balance is
 $<X>." and, when they have both, which part is which. "It's under Wallet:
 https://{{#TESTNET}}test.{{/TESTNET}}asks.world/me/wallet." If it also shows money set aside on their open
@@ -35,7 +35,7 @@ asks, add: "$<Y> is Committed to your Asks." Then the one next step that fits:
 them out on asks.world, Cash out: https://asks.world/me/cash-out. It shows what you'll receive and the
 fee before you confirm."
 
-**Asks credit** (Pro Ask earnings) is cashed out here in the chat, to a bank or to mobile money where
+**Pro earnings** are cashed out here in the chat, to a bank or to mobile money where
 their country has it, or to their own wallet. Banks are paid through Stripe in Europe, the US and
 Canada, and banks and mobile money through Yellow Card in parts of Africa. It needs their LinkedIn and
 an identity check. Each way has its own minimum and fee, which the tool shows; never say one from
@@ -108,7 +108,7 @@ foot of any email. Notifications on asks.world and on their phone don't change.
 
 - **Review budget:** `review_billing_status` with the company's id says whether one is needed and the
   price. Setting it up or raising it: the `create` skill (references/company.md, "Review budget"). Checks paused
-  because credits ran out → "Your check credits have run out. Top them up here: <link>. Tell me when
+  because the budget ran out → "Your company's review budget has run out. Raise it here: <link>. Tell me when
   it's done."
 - **How it pays people:** `set_payout_settings`: preview, their yes, then a link they tap to sign it
   (the `asks` skill's link way; the verifier list replaces the old one): references/company.md, "How it pays people". Or **Say:** "Open your company's

@@ -58,9 +58,9 @@ link they tap to sign it (the `asks` skill's link way). "Not confirmed" → chec
 ## Review budget
 
 **Check:** `review_billing_status` with the company's id says whether a budget is needed and the price.
-Only the company's owner can approve it. **Say:** "Each review costs $<price> from your review credits.
+Only the company's owner can approve it. **Say:** "Each review costs $<price> from your review budget.
 You approve a review budget once; you can raise it any time. Open <site>/org/<org>/settings#pay-for-reviews,
-set the budget, then click **Allow reviews to be paid from my credits**. Tell me when it's done."
+set the budget, then allow reviews to be paid from it. Tell me when it's done."
 Then `review_billing_status` again to see it's on. The Decision Console's **Billing › Pay for reviews**
 does the same.
 

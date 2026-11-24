@@ -26,6 +26,8 @@ const walk = (d: string) => {
 function scan(p: string) {
   let fenced = false;
   readFileSync(p, "utf8").split("\n").forEach((line, i) => {
+    // The token behind Pro Ask payments is never named, not even in code or on a plain-ok line (IXO-6826).
+    if (/\bPAY\b/.test(line)) bad.push(`${p}:${i + 1} [pay-token] ${line.trim().slice(0, 110)}`);
     if (/^\s*```/.test(line)) return void (fenced = !fenced);
     if (fenced || /^description:|^name:|plain-ok/.test(line)) return;
     const t = line.replace(/\{\{[#^/]?[A-Z_]+\}\}/g, "").replace(/`[^`]*`/g, "").replace(/https?:\/\/\S+/g, "").replace(NAMES, "");
