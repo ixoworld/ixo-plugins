@@ -81,4 +81,4 @@ without asking.
   is approved or turned down.
 - The screen could not check it just now → nothing is posted and nothing is spent. **Say:** "Asks
   couldn't check it just now. I'll try again in a minute." Then try once more.
-- A verifier with no review credits → the review budget ([company.md](company.md), "Review budget").
+- A verifier whose review budget has run out → the review budget ([company.md](company.md), "Review budget").
