@@ -4,7 +4,8 @@
 
 1. Ask, one at a time: "What do you want to know?" → `question` (12–300 characters, their words);
    "Where?" → `near` as `"lat,lon"` (read it back: "That's <street> in <town>, right?"); "A few words,
-   or a photo?" → `needs` (`observation` or `photo`; `url-check` for one web page, no place); "What
+   or a photo?" → `needs` (`observation` or `photo`; `url-check` only to check one web address is up, no place, with
+   `url` = that one exact `https://` address; never for a review of an app, see [brief.md](brief.md)); "What
    should one completion earn?" → `pay`.
 2. Call `ask_the_world` with those and a `title` (at most 80 characters), without `confirm`.
 3. **Say:** "Someone near <place> will check '<question>' within <hours> hours, for <reward>. It costs

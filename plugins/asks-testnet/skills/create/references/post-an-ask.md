@@ -5,7 +5,8 @@
 1. Ask the questions below, one at a time, skipping any they already told you.
 2. Call `post_ask` with what they said, without `confirm`.
 3. **Say:** "This posts '<title>' for <n> people, paying <reward> each, for <days> days. It costs
-   <total> in all (<real / practice> money). You give the final OK on each completion. OK?"
+   <total> in all (<real / practice> money). Each completion is checked for: <the checks the preview
+   lists>. You give the final OK on each completion. OK?"
 4. On "yes": `post_ask` again with `confirm` = that exact total. Give the link. Then `link_status`,
    and give them the ask's link (private with one link for everyone: its secret `/j/…` link, never
    `/t/<number>`; [private.md](private.md)). If the reply also gives a link to turn on their checks → **Say:** "Open
@@ -36,6 +37,13 @@ shows it.
 10. Only if they want it private: `access` `"apply"` (one link for everyone; people ask to join and they
     say yes; the default when private) or `"invite"` (only people they invite, one link per person), with `invite`: @names, addresses, or `"link"` once per private link. See
     [private.md](private.md).
+
+11. Only when the whole job is checking that one web address is up: `site_check` = that one exact
+    `https://` address (two addresses → ask which one). Never for a review or a test of an app, and
+    never with `report`. See [brief.md](brief.md).
+
+The task mentions a site, an app or a link, or needs checks written → [brief.md](brief.md) says how to
+pick the kind and word the checks.
 
 The same job in many places: give each the same `series` (lowercase letters, digits, dashes); the board
 shows them as one card.

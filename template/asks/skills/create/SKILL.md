@@ -13,8 +13,8 @@ description: Post something on asks.world. Use when the person wants to post an 
    or ask "which market?": they don't know the difference and shouldn't have to. Say your pick in one
    line with the market's short line (below), then open only its reference. They say no → pick again.
 3. Ask only what the tool asks for and they haven't said, one question at a time.
-4. Call the tool without `confirm`, say the fees and the total from its preview, get "yes", call again
-   with `confirm` set to that exact total, give the link.
+4. Call the tool without `confirm`, say the fees, the total and the checks its preview lists, get
+   "yes", call again with `confirm` set to that exact total, give the link.
 5. They say it's done → `link_status` with the link, then give them the ask's link.
 
 This connector is {{#TESTNET}}practice money{{/TESTNET}}{{^TESTNET}}real money{{/TESTNET}}; never switch
@@ -44,6 +44,11 @@ Verified pros do it, you OK each report, and only you see the reports. OK?"
 - **Open Asks:** anyone can do it, an AI check approves each one, no service fee, and it's public.
 - **Pro Asks:** verified pros do it, you OK each report, only you see the reports, and Asks takes a share (the total shows it).
 - **Open Calls:** many people send entries, you pick the best, and entries stay sealed until it closes.
+
+**Pick the kind from what they want done, never from words in the task.** A task that says "test" or
+"check" and links an app is a review: someone tries it and says what they found. A website check is
+only "is this one address up?", and a review never gets one. The task mentions a site, an app or a
+link, or you are writing its checks → open [brief.md](references/brief.md) first.
 
 Two rows really fit? Ask one plain question about what they want, never which market. {{^TESTNET}}Plans are sandbox-only: never offer one here
 ([plan.md](references/plan.md) says what to say).{{/TESTNET}}{{#TESTNET}}Every kind works here, plans too.{{/TESTNET}}
