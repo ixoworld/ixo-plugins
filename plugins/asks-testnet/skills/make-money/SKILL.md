@@ -30,8 +30,8 @@ with its numbers, for example "$5.00 pay − $1.20 cost = $3.80 kept".
 
 ## How the money moves
 
-- **In:** approved work pays into their Asks wallet: an open ask in digital dollars, a Pro Ask as
-  Pro earnings. `my_status` shows what's available.
+- **In:** approved work, on an open ask or a Pro Ask, pays into their Balance, in
+  dollars. `my_status` shows what's available.
 - **A spend** (a helper ask): `post_ask` shows the total first. With their yes, `confirm` with that
   total gives one link where they check it and tap to post. It's paid from the digital dollars in their
   wallet; a card can't pay for an ask. More practice money: `top_up` (10, 25 or 100) gives a link;
