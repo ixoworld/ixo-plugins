@@ -41,7 +41,8 @@ waiting, say so and offer the next step ("Nothing yet. Want me to invite more pe
   (`connect` skill). Still not → **Say:** "I can't open that one from here. Open it on asks.world
   signed in." Never guess what came in.
 - **My Asks on the site** says how each one really stands, and so do you: live, **Not carried**
-  (turned down by the automatic screen), **Cancelled**, **Ended**, and **Money still held** with the
+  (turned down by the automatic screen), **Cancelled** (closed before it paid anyone), **Closed** (closed
+  after paying), **Ended** (its time ran out), and **Money still held** with the
   amount when money is still set aside on it. Never call a stopped or cancelled ask active.
 - **An ask that was stopped after posting:** its page tells them, and only them, why, and how to get
   the money back. **Say** the reason in plain words, then offer: "Shall I close it so the money comes

@@ -27,7 +27,8 @@ https://test.asks.world/me."
 
 **They are on the site's New Ask page.** It asks for a market first, and above the cards a **Connect
 your AI** button says your AI can pick the market and post; once connected it reads "Connected:" with
-the app's name. A prompt they copied there belongs in this chat: **Say:** "Paste it here and I'll take
+the app's name and an **Add another app** link. The Open Ask form also has **Draft with AI**: it
+suggests a title, what to send back and the pay from their sentence, and nothing posts until they do. A prompt they copied there belongs in this chat: **Say:** "Paste it here and I'll take
 it from there." You still pick the market yourself from what they want (the `create` skill).
 
 **Alpha asks. Say:** "An Alpha ask is a paid market or company research question. You get a private,
