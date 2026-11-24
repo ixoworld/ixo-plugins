@@ -59,10 +59,10 @@ link they tap to sign it (the `asks` skill's link way). "Not confirmed" → chec
 
 **Check:** `review_billing_status` with the company's id says whether a budget is needed and the price.
 Only the company's owner can approve it. **Say:** "Each review costs $<price> from your review budget.
-You approve a review budget once; you can raise it any time. Open <site>/org/<org>/settings#pay-for-reviews,
-set the budget, then allow reviews to be paid from it. Tell me when it's done."
-Then `review_billing_status` again to see it's on. The Decision Console's **Billing › Pay for reviews**
-does the same.
+You approve a review budget once; you can raise it any time. Open the Decision Console, **Billing › Pay for
+reviews**, set the budget and turn it on. Tell me when it's done." In Claude Code, the owner can instead run the
+`eval-oracle api review-billing enable` line that `review_billing_status` gives (it previews first). Whether it's
+on, and what is spent, show in the Decision Console; `review_billing_status` can't read them.
 
 ## Completions a person checks
 
