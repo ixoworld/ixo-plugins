@@ -62,7 +62,7 @@ when you close it. An open ask has no service fee, only a check fee for each com
 On a Pro Ask the AI check is free and a share for the network goes on top, so each pro gets exactly
 the pay you set. The preview shows every fee and the total before you pay; cashing out shows what
 you'll receive and the fee first.
-A company's review budget, which it pays for by card, only pays review fees; it is never a reward. Nothing is
+A company's checks can be paid from its review budget, if it has one; that budget is never a reward. Nothing is
 spent without a preview, your yes and your tap on asks.world, and the same per-ask and per-day caps
 apply in the chat and on the page. On asks.world it's all under **Wallet**: your **Balance** (yours
 now) and what is **Committed to your Asks** (set aside until it's paid out or comes back).
