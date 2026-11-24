@@ -47,8 +47,10 @@ Verified pros do it, you OK each report, and only you see the reports. OK?"
 
 **Pick the kind from what they want done, never from words in the task.** A task that says "test" or
 "check" and links an app is a review: someone tries it and says what they found. A website check is
-only "is this one address up?", and a review never gets one. The task mentions a site, an app or a
-link, or you are writing its checks → open [brief.md](references/brief.md) first.
+only "is this one address up?", and a review never gets one. What a completion must include (words,
+a photo, a file, a place) is also your choice, in the tool's fields: a word like "photo" in the task
+chooses nothing. The task mentions a photo, a file, a site, an app or a link, or you are writing its
+checks → open [brief.md](references/brief.md) first.
 
 Two rows really fit? Ask one plain question about what they want, never which market. {{^TESTNET}}Plans are sandbox-only: never offer one here
 ([plan.md](references/plan.md) says what to say).{{/TESTNET}}{{#TESTNET}}Every kind works here, plans too.{{/TESTNET}}

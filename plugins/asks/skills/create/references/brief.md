@@ -1,6 +1,25 @@
-# The kind of work, and its checks
+# The kind of work, what a completion must include, and its checks
 
-Open this when the task mentions a website, an app or a link, or when you write the checks for an ask.
+Open this when the task mentions a photo, a file, a website, an app or a link, or when you write the
+checks for an ask.
+
+## Choose what a completion must include
+
+No word in the task chooses anything. "Photo", "screenshot", "PDF", a link, a question mark or a
+phrase in quotes add nothing by themselves: you choose, in the tool's own fields, from what the person
+wants back. With nothing chosen, an ask is answered in words and checked only for handing over actual
+work.
+
+| They want back … | Choose |
+| --- | --- |
+| a written answer | nothing more |
+| a photo taken now | the photo choice (`post_ask`: `proof` `photo`; an ask at a place: `needs` `photo`) |
+| a file (a document, a recording, screenshots) | the file choice (`post_ask`: `proof` `file`) |
+| it done at a place | the place (`near`, as coordinates) |
+| a full review report | the report choice (`report`) |
+| a check that one web address is up | the website check (below) |
+
+Say what you chose when you read the preview: "They send a photo, taken within 400 m of <place>."
 
 ## Pick the kind yourself, from what they want done
 
