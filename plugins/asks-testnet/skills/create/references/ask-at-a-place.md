@@ -26,5 +26,6 @@ they close it. It can't be private, a company's, or paid by card.
 
 **Never ask** anything that targets, follows or identifies a particular person (home, car, plate,
 routine), involves children, is sexual, violent or unlawful, asks for personal data, puts the doer in
-danger, or goes onto private land. A refused ask spends nothing. One held for a person's look posts but
-stays off the board until seen: say so before they confirm.
+danger, or goes onto private land. An ask is approved or turned down before it posts: turned down, or not
+checkable just now, nothing is posted and nothing is spent. Say the reason the tool gives and offer to
+reword it, or try again in a minute.

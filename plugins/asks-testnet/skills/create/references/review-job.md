@@ -44,6 +44,8 @@ checks", never "the checker" or "the reviewer". A report that fails is not paid.
   they still count. I suggest your <wanted> plus 3 extra. Money for reports that never come in comes
   back when you close it. Or take exactly <wanted> and add more later. Which?" → `extra` (3, or 0).
 - Private things like a test login go in the invitation's note, never in the Pro Ask.
+- Files for the brief (a PDF, pictures): the person attaches them on the page where they pay. On a
+  Pro Ask they stay private: only pros let in can download them.
 
 ## Market research, checked by Alpha (`research`)
 

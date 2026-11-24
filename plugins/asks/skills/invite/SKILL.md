@@ -33,7 +33,9 @@ skill). This all happens in the chat, and nothing here spends.
   for everyone gets it at once; an invite-only one gets it when they turn it on. On a Pro Ask,
   LinkedIn-checked pros with a pro page join with it at once. On any other private ask or call, it shows
   the brief and **Ask to join**, and the person says yes or no to each. `link_status`, `call_invites`,
-  `my_pro_asks` and `my_status` show it.
+  `my_pro_asks` and `my_status` show it. Call it by the name the tool gives it: a **secret link** on
+  an ask that is off the board (every private ask), a **share link** on an open call that is listed on
+  the board. An ask the screen stopped, or a closed one, has no link to share.
   - Turn it on: `invite_to_call` with the ask's number and `group: "make"`; give them the link.
   - Replace it (it got out) or turn it off: `invite_to_call` with `group: "replace"` or `"off"` first
     shows what will happen and changes nothing. **Say:** "The old link stops working at once; people

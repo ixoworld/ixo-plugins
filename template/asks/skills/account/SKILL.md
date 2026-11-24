@@ -75,18 +75,23 @@ open it for them. Then `my_status` to see it arrived.{{/TESTNET}}{{^TESTNET}}Onl
 
 **Say:** "Add money on asks.world: Wallet, then Top up balance: https://asks.world/me/wallet/add. Send
 digital dollars on Base to your own address shown there, then tap to move them into your wallet. The fee
-and time show first. It needs a Google or Apple sign-in." Never send or move it for them. Then
+and time show first. It needs a Google or Apple sign-in." Coming from an ask's pay page, Top up
+balance already knows how much is missing: it says the least to send, fee included, in dollars, and
+offers the way back to pay once the money has arrived. Never send or move it for them. Then
 `my_status` to see it arrived. A card pays only for a Pro Ask, on its pay page.{{/TESTNET}}
 
 ## Emails
 
 `email_settings` with nothing lists the emails asks.world sends them, each on or off, with when it's
 sent. To change: `kinds` with each one's key set to `false` (stop) or `true` (back on), or `all`.
-Keys: `invited` (invited to a Pro Ask), `ok-waiting` (a report waits for their OK), `ok-reminder`
-(still waiting 3 days later), `full` (their Pro Ask is filled), `target-reached` (they have the
-reports they wanted), `digest` (the hourly summary).
+The list it returns names each email and its key: use the keys it gives, never a key from memory.
+Among them: invited to a Pro Ask, a report waiting for their OK and its reminder, their Pro Ask
+filled or at its target, paid for a report or a report not approved, **money back from an ask** (sent
+when they cancel or close an ask and what wasn't used comes back), their assistant allowed to send,
+and the hourly summary.
 
-- "Stop the hourly summary" → `kinds: { digest: false }`.
+- "Stop the hourly summary" → that kind's key set to `false`.
+- "Stop the money-back email" → that kind's key set to `false`.
 - "Stop all emails" → `all: false`; "turn emails back on" → `all: true`.
 - "Only email me about X" → read the list first, then `false` for every other kind and `true` for X.
 

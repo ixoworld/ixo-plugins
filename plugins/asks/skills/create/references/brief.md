@@ -7,12 +7,12 @@ checks for an ask.
 
 No word in the task chooses anything. "Photo", "screenshot", "PDF", a link, a question mark or a
 phrase in quotes add nothing by themselves: you choose, in the tool's own fields, from what the person
-wants back. With nothing chosen, an ask is answered in words and checked only for handing over actual
+wants back. With nothing chosen, an ask is completed in words and checked only for handing over actual
 work.
 
 | They want back … | Choose |
 | --- | --- |
-| a written answer | nothing more |
+| words only | nothing more |
 | a photo taken now | the photo choice (`post_ask`: `proof` `photo`; an ask at a place: `needs` `photo`) |
 | a file (a document, a recording, screenshots) | the file choice (`post_ask`: `proof` `file`) |
 | it done at a place | the place (`near`, as coordinates) |
@@ -47,7 +47,7 @@ summary of it.
 
 - Good: "Include the observed HTTP status code, or describe the connection failure if the request did
   not return a response."
-- Bad: "Reports what the site answered."
+- Bad: "Reports what the site said."
 
 Keep what a machine checks (a status code, a length, a location) apart from what a person reviews
 (was it clear, is it on topic). Never write a machine check for something only a person can judge.

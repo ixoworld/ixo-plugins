@@ -9,9 +9,10 @@
 2. Ask who to invite: @names, addresses, or how many private links.
 3. Follow [post-an-ask.md](post-an-ask.md) with `access` (`"apply"` or `"invite"`) and `invite` (the
    @names and addresses, plus `"link"` once per private link).
-4. Before they confirm, distinguish the brief from reports. With `access: "invite"`, the brief is
-   restricted to admitted people and stays off the board and search. With `access: "apply"`, the
-   brief is listed publicly. Reports stay private in both cases: the asker, named final approver
+4. Before they confirm, distinguish the brief from reports. Either way the ask is private: it stays
+   off the board and search, and its page shows nothing to a stranger. With `access: "invite"`, only
+   invited people read the brief. With `access: "apply"`, anyone who has its secret link reads the
+   brief and asks to join. Reports stay private in both cases: the asker, named final approver
    and the service checking the work may read them; each author may read their own. An invitation alone does not let
    someone read other people's reports. Authorised services process them to store and check them.
    A separate read permission can add a reader; never grant one just to demonstrate the product.
@@ -22,14 +23,17 @@
    Invite-only → give each person their own invite link, never the ask's page link. It can still get a
    secret link later (the `invite` skill, "The secret link").
 
-- **"One link for everyone"** (`access: "apply"`, the default when private): on the board; one secret
-  link to share anywhere; whoever opens it sees the brief and asks to join, and the person says yes or no
-  to each (the `invite` skill).
+- **"One link for everyone"** (`access: "apply"`, the default when private): not on the board; one
+  secret link to share anywhere; whoever opens it sees the brief and asks to join, and the person says
+  yes or no to each (the `invite` skill). People without the link see nothing, and nobody can ask to
+  join by the ask's number: they need the link.
 - **"Only people I invite"** (`access: "invite"`): not on the board; only the invited can complete it.
   Each invitation link works for one person.
 - Anyone can be invited: an @name, an address, or a one-person link. No LinkedIn needed.
 - Money is the same as an ask: the pay goes to the person in full, no service fee, a check fee for each
   completion the AI checks, and what isn't paid comes back when they close it. Repeat the preview's total.
+- **Files for the brief** (a PDF, pictures): the person attaches them on the page where they pay, up
+  to 6. On a private ask only people let in can download them. See [post-an-ask.md](post-an-ask.md).
 - App testing by verified pros → a Pro Ask ([review-job.md](review-job.md)) instead.
 - Someone completing a private ask may get an Allow link first: pass it on and wait.
 

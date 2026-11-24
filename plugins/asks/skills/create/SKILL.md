@@ -66,8 +66,11 @@ Two rows really fit? Ask one plain question about what they want, never which ma
 - **Over a limit:** never ask for a yes on those terms. Offer the amounts the tool says fit ("5 at $8
   instead?").
 - **Paying:** an ask, an open call, a campaign or a plan is paid from the digital dollars in their
-  Wallet, at its one link. Not enough → **Say:** "Add money first: Wallet, then Top up balance:
-  https://asks.world/me/wallet/add. Tell me when it's there." A card can't pay
+  Wallet, at its one link. Not enough → the pay page says how much is missing and its button opens
+  Top up balance with that amount filled in. **Say:** "Open the link: it shows how much to add. Adding
+  money means sending digital dollars; the page says the least to send, fee included, and takes you
+  back to pay once it has arrived." Without a pay link yet: Wallet, then Top up balance:
+  https://asks.world/me/wallet/add. A card can't pay
   for these.
 - **A card pays only for a Pro Ask:** its link lets them pay by card or from their Wallet, and shows
   what a card can take.
