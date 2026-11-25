@@ -56,7 +56,10 @@ All of this happens in the chat; nothing to tap.
 - **Invited to a Pro Ask** (a link like `asks.world/i/…`, or in `my_invitations`): **Ask:** "You're
   invited to <title>. Take it?" Yes → `accept_invitation` with the link or the ask's number (preview,
   then `confirm: true`); it opens their room with the builder. No → `decline_invitation`, with an
-  optional short `note`. They can also tap **Accept** or **Decline** on the link itself. Their job is
+  optional short `note`. Some Pro Asks can be taken only by pros in certain countries (`read_ask` and
+  `my_invitations` say "Pros in … can take this Pro Ask"). Refused with "Add your bank details to take
+  this Pro Ask: <link>" → **Say:** "To take this one, add your bank details once (a few minutes):
+  <link>. Tell me when it's done." Then accept again. They can also tap **Accept** or **Decline** on the link itself. Their job is
   then at https://test.asks.world/me/work/<number>.
 - **A secret link for everyone** (`asks.world/j/…`): `read_ask` with the link shows the brief; say it.
   **Ask:** "<title>: join it?" Yes → `accept_invitation` with that link (preview, then `confirm: true`);

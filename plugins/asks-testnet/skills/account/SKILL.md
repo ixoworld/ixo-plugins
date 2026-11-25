@@ -25,6 +25,9 @@ https://test.asks.world/me/wallet." If it also shows money set aside on their op
 asks, add: "$<Y> is Committed to your Asks." Then the one next step that fits:
 
 - **Has money to cash out:** "Want to cash it out?"
+- **Paying for a Pro Ask:** by card where their country has it (each approved report is charged then),
+  otherwise from their Wallet when it's posted. The Pro Ask's link picks the way; the `create` skill's
+  Money section has the details.
 - **"Move my earnings to my account":** it's already there. **Say:** "What you earn is paid straight
   to your asks.world account. Want to cash it out?"
 

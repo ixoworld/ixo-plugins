@@ -56,12 +56,13 @@ Two rows really fit? Ask one plain question about what they want, never which ma
 
 ## Money
 
-- **On a Pro Ask the AI check is free** (the Alpha check too); the extra cost is the network's share
-  on top, which the preview shows. An open call by invitation or application carries the same share.
+- **On a Pro Ask the AI check is free** (the Alpha check too); paid from the Wallet, the extra cost is
+  the network's share on top, which the preview shows (by card: 16% inside the price instead). An open call by invitation or application carries the same share.
   An open ask has no service fee, only a check fee for each completion the AI checks. Read the
   preview's numbers as they are; never work one out yourself.
-- **Set aside when posted:** the money is set aside on the ask when it's posted; a person is paid from
-  it only for approved work, and what isn't paid comes back when they close it.
+- **Set aside when posted:** paid from the Wallet, the money is set aside on the ask when it's posted;
+  a person is paid from it only for approved work, and what isn't paid comes back when they close it.
+  A Pro Ask paid by card sets nothing aside.
 - **Over a limit:** never ask for a yes on those terms. Offer the amounts the tool says fit ("5 at $8
   instead?").
 - **Paying:** an ask, an open call, a campaign or a plan is paid from the digital dollars in their
@@ -71,8 +72,12 @@ Two rows really fit? Ask one plain question about what they want, never which ma
   back to pay once it has arrived." Without a pay link yet: Wallet, then Top up balance:
   https://test.asks.world/me/wallet/add. A card can't pay
   for these.
-- **A card pays only for a Pro Ask:** its link lets them pay by card or from their Wallet, and shows
-  what a card can take.
+- **A card pays only for a Pro Ask, and only where the person lives in a country it's offered in:** the
+  Pro Ask's link picks the way for them. By card nothing is charged when it's posted; each report they
+  approve is charged its price then, straight to that pro. Fees are 16% of the price, card fees
+  included, and the pro gets 84%; nothing is added on top. Elsewhere the whole Pro Ask is paid from
+  their Wallet when it's posted, with the network's share on top. A price under $3.87 a report is
+  paid from the Wallet too.
 
 ## After posting
 

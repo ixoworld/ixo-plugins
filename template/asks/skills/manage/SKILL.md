@@ -61,6 +61,11 @@ Approving pays, and only the person decides, with their own tap. Never approve o
   pays; read it to them. On their yes it gives the report's page with its Approve button. **Say:**
   "Open <link>, read the report and tap **Approve the report** to pay it. Tell me when it's done."
   Then `collect_answer` or `check_verdict` says it's paid.
+- **A Pro Ask paid by card:** approving charges their card the report's price on that page, straight
+  to the pro, before the OK is sent. Their bank may ask them to confirm there. No card saved yet, or a
+  declined card → the page asks for a card, then they approve again. **Say:** "Approving charges your
+  card <price> for this report, on that page. Your bank may ask you to confirm." A turned-down report
+  charges nothing.
 - **Other completions:** "Open <the link>, under **Waiting for you to check**, read each and press **Send
   decision**." To turn one down: pick **No** for what it misses, then **Send decision**; it isn't paid.
 - **A company's completions** that need a person wait in the Decision Console's review queue; nobody
