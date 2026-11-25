@@ -73,10 +73,17 @@ said out loud and confirmed, never hidden). The differences:
 
 Read the preview's money sentence as it is. Never work a number out yourself.
 
-**Any work:** the AI check is free. The extra cost is a share for the network that runs Asks, on top, so
-each pro gets exactly the pay they were promised; the preview shows the share and the total before they
-pay. They pay only for reports they approve; what isn't paid comes back when they close it. If the
-total is more than one card payment can take, `draft_call` says so.
+**Any work:** the AI check is free. How it's paid is picked on its link from the country they're in:
+
+- **By card** (offered in the US, Canada, Mexico, the UK, Switzerland, the EU, Norway, Liechtenstein,
+  Australia, New Zealand, Japan, Singapore, Hong Kong, Thailand and the UAE): nothing is charged when it's
+  posted. Each report they approve is charged its price then, straight to that pro. Fees are 16% of the
+  price, card fees included; the pro gets 84%, and nothing is added on top. Only pros in those countries
+  can take it.
+- **From the Wallet** (anywhere else, or under $3.87 a report): the whole Pro Ask is paid when it's posted,
+  with a share for the network that runs Asks on top, so each pro gets exactly the pay they were promised;
+  the preview shows the share and the total. They pay only for reports they approve; what isn't paid
+  comes back when they close it.
 
 **Market research, checked by Alpha:** the Alpha check is free too, and the same network share is
 added on each report they approve, so the researcher gets the full price. Nothing is paid without their OK.

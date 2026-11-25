@@ -41,6 +41,13 @@ what lets you cash out." Then carry on below with
 the name, headline, LinkedIn link and suggested @name it returns. A refusal (for example that LinkedIn account
 already verifies another account, or it isn't set up yet) → say it in the tool's plain words and stop.
 
+## Bank details
+
+Some Pro Asks can be taken only by pros in certain countries, once they've added their bank details.
+"How do I get paid for those?" or a refusal saying "Add your bank details" → **Say:** "Add your bank
+details once here (a few minutes): https://{{#TESTNET}}test.{{/TESTNET}}asks.world/pros/payout-setup.
+It's also under Settings, **Your bank details**." Never fill it in for them.
+
 ## Make or change the page
 
 Pre-fill from LinkedIn and what they already said; never ask for what you have. **Say:** "From LinkedIn
